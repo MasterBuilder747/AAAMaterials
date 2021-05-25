@@ -21,7 +21,9 @@ public class RegE {
     */
     private static ArrayList<Chemical> chemicals;
     public static void regElements() throws IOException {
-        FileReader fr = new FileReader("/Users/Joseph/Documents/IdeaProjects/AAAMaterials/src/elements.txt");
+        String pc = "C:\\Users\\jaath\\IdeaProjects\\AAAMaterials\\src\\elements.txt";
+        String mac = "/Users/Joseph/Documents/IdeaProjects/AAAMaterials/src/elements.txt";
+        FileReader fr = new FileReader(pc);
         BufferedReader br = new BufferedReader(fr);
         chemicals = readFile(br);
     }
