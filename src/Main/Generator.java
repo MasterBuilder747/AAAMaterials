@@ -17,7 +17,7 @@ public class Generator {
 
         //System.out.println(r.build());
 
-        OreVariant b = new OreVariant("iron", new String[]{"minecraft:stone","minecraft:end_stone","minecraft:netherrack"}, new int[]{1, 1, 1}, new int[]{1, 1, 1}, new int[]{1, 1, 1}, new String[]{"pickaxe", "pickaxe", "pickaxe"});
+        OreVariant b = new OreVariant("iron", new Block[]{new Block("minecraft:stone"), new Block("minecraft:netherrack"), new Block("minecraft:end_stone"),});
         System.out.println(b.build());
     }
 }

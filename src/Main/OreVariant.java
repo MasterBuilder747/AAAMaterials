@@ -1,29 +1,36 @@
 package Main;
 
 public class OreVariant {
+    Block[] b;
     String name; //the variable name, not the name of the block itself
-
-    //defines block properties for one block
-    int numVariants = 1;
-    String[] variants;
+    String[] variants; //name of the blocks themselves
+    String[] tools;
     int[] hardness;
     int[] resistance;
     int[] miningLevel;
-    String[] tool;
 
-    OreVariant(String name, String[] variants, int[] hardness, int[] resistance, int[] miningLevel, String[] harvestTool) {
+    OreVariant(String name, Block[] b) {
         this.name = name;
-        this.variants = variants;
-        this.hardness = hardness;
-        this.resistance = resistance;
-        this.miningLevel = miningLevel;
-        this.tool = harvestTool;
+        this.b = b;
+        this.variants = new String[b.length];
+        this.tools = new String[b.length];
+        this.hardness = new int[b.length];
+        this.resistance = new int[b.length];
+        this.miningLevel = new int[b.length];
     }
     private OreVariant() {
 
     }
 
     public String build() {
+        for (int i = 0; i < this.b.length; i++) {
+            this.variants[i] = this.b[i].name;
+            this.tools[i] = this.b[i].tool;
+            this.hardness[i] = this.b[i].hardness;
+            this.resistance[i] = this.b[i].resistance;
+            this.miningLevel[i] = this.b[i].miningLevel;
+        }
+
         StringBuilder sb = new StringBuilder();
         sb.append(this.name).append(".addDataValue(\"variants\", \"");
         for (int i = 0; i < this.variants.length - 1; i++) {
@@ -42,10 +49,10 @@ public class OreVariant {
         }
         sb.append(this.resistance[this.resistance.length-1]).append("\");\n");
         sb.append(this.name).append(".addDataValue(\"harvestTool\", \"");
-        for (int i = 0; i < this.tool.length - 1; i++) {
-            sb.append(this.tool[i]).append(",");
+        for (int i = 0; i < this.tools.length - 1; i++) {
+            sb.append(this.tools[i]).append(",");
         }
-        sb.append(this.tool[this.tool.length-1]).append("\");\n");
+        sb.append(this.tools[this.tools.length-1]).append("\");\n");
         sb.append(this.name).append(".addDataValue(\"harvestLevel\", \"");
         for (int i = 0; i < this.miningLevel.length - 1; i++) {
             sb.append(this.miningLevel[i]).append(",");
