@@ -1,48 +1,25 @@
 package Main;
 
 public class Element {
-    //store all information about building an element material
+    Chemical e;
+    int amount;
 
-    String name;
-    String localName; //shown in game, capitalized
-    String symbol;
-    int color; //uses java int color
-
-    Ore ore; //if ores need to be generated
-    Smelt smelt; //if the element can be smelted
-    Gem gem; //if the element is a gem
-
-    Element(String name, Chemical c, int color, Ore o, Smelt s, Gem g) {
-        this.name = name;
-        this.localName = c.name; //names in elements.txt are already capitalized
-        this.symbol = c.symbol;
-        this.color = color;
-        this.ore = o;
-        this.smelt = s;
-        this.gem = g;
+    //holds a chemical that is already in the registry and an amount
+    public Element(Chemical e) {
+        this.e = e;
+        this.amount = 1;
+    }
+    public Element(Chemical e, int amount) {
+        this.e = e;
+        this.amount = amount;
     }
 
-    //generates all code for building this material
-    public String build() {
+    public String toString() {
         StringBuilder sb = new StringBuilder();
-        String build = "var " + this.name + " = MaterialSystem.getMaterialBuilder().setName(\"" +
-                this.localName + "\").setColor(" + this.color + ").build();";
-        sb.append(build).append("\n");
-        sb.append("var ")
-                .append(this.name)
-                .append("2 = ")
-                .append(this.name)
-                .append(".registerParts(dust_parts);");
-        if (this.ore != null) {
-
-        }
-        if (this.smelt != null) {
-
-        }
-        if (this.gem != null) {
-
+        sb.append(this.e.symbol);
+        if (this.amount != 1) {
+            sb.append(this.amount);
         }
         return sb.toString();
     }
-
 }

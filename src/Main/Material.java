@@ -1,10 +1,10 @@
 package Main;
 
 public class Material {
+    //required components
     String name;
     String localizedName;
     int color;
-    String formula; //toolTip
 
     //every material is a dust material!
     boolean ore;
@@ -16,10 +16,10 @@ public class Material {
     //only if compound is true
     //compounds include different materials, not multiple of just 1! ex: H2 gas is NOT a compound
     //f = physical, t = chemical
-    boolean compound = false; //alloy, gem, mineral, ore dust
     int separation; //2 = chemical, 1 = physical separation/combination, 0 is none
     int combination; //2 = chemical, 1 = physical separation/combination, 0 is none
-    String composition; //a string of defined element(s) and their count(s) in a string with special syntax
+    Composition composition; //a string of defined element(s) and their count(s) in a string with special syntax
+
 
     //1) set basic info
     public Material(String name, String localizedName, int color) {
@@ -27,16 +27,20 @@ public class Material {
         this.localizedName = localizedName;
         this.color = color;
     }
+    private Material() {
+
+    }
+
     //2) element or compound? Cannot be both
-    public void setElement(String composition) {
+    public void setComposition(Composition composition) {
         this.composition = composition;
     }
-    public void setCompound(String composition, int separation, int combination) {
-        this.compound = true;
+    public void setComposition(Composition composition, int separation, int combination) {
         this.composition = composition;
         this.separation = separation;
         this.combination = combination;
     }
+
     //3) set attributes (what parts should generate?)
     public void ore() {
         this.ore = true;
@@ -53,6 +57,7 @@ public class Material {
     public void blast() {
         this.blast = true;
     }
+
     //4) build the code based off these attributes
     public String buildBuilder() {
         //1) build the material
@@ -71,6 +76,7 @@ public class Material {
         //}
         //var blockData = Material.registerPart("block").getData();
         //3) generate toolTip based of the composition string
+
         return sb.toString();
     }
 

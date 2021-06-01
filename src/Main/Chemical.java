@@ -20,9 +20,10 @@ public class Chemical {
     int melting; //solid -> liquid
     int boiling; //liquid -> gas
 
-    public Chemical(int period, int number, String symbol, String name, double weight) {
+    public Chemical(int period, int group, int number, String symbol, String name, double weight) {
         this.name = name;
-        this.period = period; //file will contain this info, but not the group
+        this.period = period;
+        this.group = group;
         this.number = number;
         this.symbol = symbol;
         this.weight = weight;
@@ -33,6 +34,6 @@ public class Chemical {
     //1: H, Hydrogen, 1, 1.008
     @Override
     public String toString() {
-        return this.period + ": " + this.symbol + ", " + this.name + ", " + this.number + ", " + this.weight;
+        return this.period + ", " + this.group + ": " + this.symbol + ", " + this.name + ", " + this.number + ", " + this.weight;
     }
 }
