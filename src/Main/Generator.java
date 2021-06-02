@@ -7,11 +7,14 @@ public class Generator {
         //files to be generated:
         //1 the .zs script file (one giant one)
         //2 the .lang file for localization
-
+        Reg.regChemicals();
         Reg.regElements();
+        Reg.regCompounds();
 
-        Composition c = new Composition(new Compound(new Element[]{new Element(Reg.getE("H"), 2), new Element(Reg.getE("O"))}), new Composition(new Element(Reg.getE("C"), 4)));
-        System.out.println(c);
+        Reg.printElements();
+        Reg.printCompounds();
+
+        //Composition c = new Composition(new Compound(new Element[]{new Element(Reg.getCh("H"), 2), new Element(Reg.getCh("O"))}), new Composition(new Element(Reg.getCh("C"), 4)));
 
         Material m = new Material("iron", "Iron", 101010);
 
