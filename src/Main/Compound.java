@@ -4,17 +4,16 @@ public class Compound {
     //array of elements
     private final Element[] e;
     String name;
-    int amount;
+    String symbol;
 
-    Compound(String name, Element[] elements) {
+    public Compound(String name, Element[] elements) {
         this.name = name;
         this.e = elements;
-        this.amount = 1;
-    }
-    Compound(String name, Element[] elements, int amount) {
-        this.name = name;
-        this.e = elements;
-        this.amount = amount;
+        StringBuilder sb = new StringBuilder();
+        for (Element i : elements) {
+            sb.append(i.symbol);
+        }
+        this.symbol = sb.toString();
     }
 
     public String toString() {
@@ -24,9 +23,6 @@ public class Compound {
             sb.append(e);
         }
         sb.append(")");
-        if (this.amount != 1) {
-            sb.append(this.amount);
-        }
         return sb.toString();
     }
 }

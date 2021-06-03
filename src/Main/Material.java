@@ -3,10 +3,17 @@ package Main;
 public class Material {
     //required components
     String name;
-    String localizedName;
+    String localName;
     int color;
 
-    //every material is a dust material!
+    //states (other than solid)
+    boolean customItem; //one singular item to be generated (lots of manual work here)
+    boolean solid;
+    boolean liquid; //does not generate molten and no solid parts
+    boolean gas; //does not generate molten and no solid parts
+    boolean plasma; //does not generate a liquid, a new item part for plasma will be used
+
+    boolean dust = true;
     boolean ore;
     boolean gem;
     boolean smelt;
@@ -22,16 +29,23 @@ public class Material {
 
 
     //1) set basic info
-    public Material(String name, String localizedName, int color) {
+    public Material(String name, String localName, int color) {
         this.name = name;
-        this.localizedName = localizedName;
+        this.localName = localName;
         this.color = color;
     }
     private Material() {
 
     }
 
-    //2) element or compound? Cannot be both
+    //2) set state (what parts should generate?)
+    public void stateSolid() { this.solid = true; }
+    public void stateLiquid() { this.liquid = true; } //see: https://docs.blamejared.com/1.12/en/Mods/ContentTweaker/Vanilla/Creatable_Content/Fluid/
+    public void stateGas() { this.gas = true; }
+    public void statePlasma() { this.plasma = true; }
+    public void customItem() { this.customItem = true; } //if the material system is not needed, use this to block parts from being generated
+
+    //3) element or compound? Cannot be both (can be neither if applicable)
     public void setComposition(Composition composition) {
         this.composition = composition;
     }
@@ -41,10 +55,10 @@ public class Material {
         this.combination = combination;
     }
 
-    //3) set attributes (what parts should generate?)
-    public void ore() {
-        this.ore = true;
-    }
+    //4) set attributes (what parts should generate?)
+    //order of these following keywords do not matter:
+    public void noDust() { this.dust = false; } //for custom items, liquids, or gases, etc
+    public void ore() { this.ore = true; }
     public void gem() {
         this.gem = true;
     }
@@ -58,10 +72,13 @@ public class Material {
         this.blast = true;
     }
 
-    //4) build the code based off these attributes
+    //5) build the code based off these attributes
+    public String toString() {
+        return buildBuilder() + buildMaterial();
+    }
     public String buildBuilder() {
         //1) build the material
-        return "var " + this.name + " = MaterialSystem.getMaterialBuilder().setName(\"" + this.localizedName + "\").setColor(" + this.color + ").build();\n";
+        return "var " + this.name + " = MaterialSystem.getMaterialBuilder().setName(\"" + this.localName + "\").setColor(" + this.color + ").build();\n";
     }
     public String buildMaterial() {
         StringBuilder sb = new StringBuilder();
@@ -79,5 +96,4 @@ public class Material {
 
         return sb.toString();
     }
-
 }

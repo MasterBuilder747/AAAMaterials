@@ -5,26 +5,31 @@ public class Composition {
     //used primarily to generate a tooltip for every item
     private Element e;
     private Compound c;
+    int amount;
     boolean isCompound;
     Composition comp; //the next one in the linked list
 
     public Composition(Element e) {
         this.e = e;
+        this.amount = 1;
+    }
+    public Composition(Element e, int amount) {
+        this.e = e;
+        this.amount = amount;
     }
     public Composition(Compound c) {
         this.c = c;
+        this.amount = 1;
         this.isCompound = true;
     }
-    //add an element
-    public Composition(Element e, Composition comp) {
-        this.e = e;
-        this.comp = comp;
-    }
-    //add a compound
-    public Composition(Compound c, Composition comp) {
+    public Composition(Compound c, int amount) {
         this.c = c;
-        this.comp = comp;
+        this.amount = amount;
         this.isCompound = true;
+    }
+
+    public void add(Composition c) {
+        this.comp = c;
     }
 
     public String toString() {
