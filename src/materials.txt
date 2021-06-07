@@ -1,0 +1,1 @@
+iron, Iron, 101010, solid, Fe, oresmeltconduct, 0, 0

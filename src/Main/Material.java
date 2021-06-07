@@ -20,11 +20,8 @@ public class Material {
     boolean conductive; //requires smelt
     boolean blast; //requires smelt
 
-    //only if compound is true
-    //compounds include different materials, not multiple of just 1! ex: H2 gas is NOT a compound
-    //f = physical, t = chemical
-    int separation; //2 = chemical, 1 = physical separation/combination, 0 is none
-    int combination; //2 = chemical, 1 = physical separation/combination, 0 is none
+    int separation; //-1 = chemical, 1 = physical separation/combination, 0 is none
+    int combination; //-1 = chemical, 1 = physical separation/combination, 0 is none
     Composition composition; //a string of defined element(s) and their count(s) in a string with special syntax
 
 
@@ -46,9 +43,6 @@ public class Material {
     public void customItem() { this.customItem = true; } //if the material system is not needed, use this to block parts from being generated
 
     //3) element or compound? Cannot be both (can be neither if applicable)
-    public void setComposition(Composition composition) {
-        this.composition = composition;
-    }
     public void setComposition(Composition composition, int separation, int combination) {
         this.composition = composition;
         this.separation = separation;
@@ -65,9 +59,7 @@ public class Material {
     public void smelt() {
         this.smelt = true;
     }
-    public void conductive() {
-        this.conductive = true;
-    }
+    public void conductive() { this.conductive = true; }
     public void blast() {
         this.blast = true;
     }
@@ -95,5 +87,31 @@ public class Material {
         //3) generate toolTip based of the composition string
 
         return sb.toString();
+    }
+    public void displayAttributes() {
+        System.out.print(this.name + ", " + this.localName + ", " + this.color + ", " + this.composition + ": ");
+
+        if (this.customItem) System.out.print("custom ");
+        if (this.solid) System.out.print("solid ");
+        if (this.liquid) System.out.print("liquid ");
+        if (this.gas) System.out.print("gas ");
+        if (this.plasma) System.out.print("plasma ");
+        System.out.print("| ");
+
+        if (this.dust) System.out.print("dust ");
+        if (this.ore) System.out.print("ore ");
+        if (this.gem) System.out.print("gem ");
+        if (this.smelt) System.out.print("smelt ");
+        if (this.conductive) System.out.print("conductive ");
+        if (this.blast) System.out.print("blast_furnace ");
+        System.out.print("| ");
+
+        if (this.separation == -1) System.out.print("chemical separation");
+        if (this.separation == 1) System.out.print("physical separation");
+        if (this.separation == 0) System.out.print("no separation");
+        if (this.combination == -1) System.out.print("chemical separation");
+        if (this.combination == 1) System.out.print("physical separation");
+        if (this.combination == 0) System.out.print("no separation");
+        System.out.println();
     }
 }
