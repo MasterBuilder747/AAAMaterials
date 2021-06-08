@@ -11,7 +11,7 @@ public class Generator {
         //Reg.regMaterials();
         //Reg.printMaterials();
 
-        System.out.println(Reg.createComp("COHIK"));
+        System.out.println(Reg.createComp("H2O"));
 
         //Reg.build();
 

@@ -149,7 +149,6 @@ public class Reg {
                 if (isOut(s, i+1)) {
                     //at the end: symbol
                     comps.add(new Composition(getE(s0)));
-                    break;
                 } else {
                     String s1 = String.valueOf(s.charAt(i+1));
                     if (isNumeric(s1)) {
@@ -161,31 +160,27 @@ public class Reg {
                             if (isOut(s, i+2)) {
                                 //at the end: symbolSymbol
                                 comps.add(new Composition(getE(s0+s1)));
-                                break;
+                                i++;
                             } else {
                                 String s2 = String.valueOf(s.charAt(i+2));
                                 if (isNumeric(s2)) {
                                     //symbolSymbolNumber
                                     comps.add(new Composition(getE(s0+s1), Integer.parseInt(s2)));
-                                    if (isOut(s, i+3)) {
-                                        break;
-                                    } else {
-                                        i+=2;
-                                    }
+                                    i+=2;
+                                } else {
+                                    //symbolSymbol
+                                    comps.add(new Composition(getE(s0+s1)));
+                                    i++;
                                 }
                             }
                         } else {
+                            //symbol
                             comps.add(new Composition(getE(s0)));
                         }
                     }
                 }
             }
         }
-        for (Composition c : comps) {
-            System.out.println(c);
-        }
-        System.out.println();
-
         Composition out = comps.get(0);
         Composition hop;
         if (comps.size() > 1) {
