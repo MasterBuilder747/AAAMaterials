@@ -32,8 +32,10 @@ public class Element {
 
     //period, number, symbol, name, weight
     //1: H, Hydrogen, 1, 1.008
-    @Override
-    public String toString() {
+    public String print() {
         return this.period + ", " + this.group + ": " + this.symbol + ", " + this.name + ", " + this.number + ", " + this.weight;
+    }
+    public String toString() {
+        return this.symbol;
     }
 }

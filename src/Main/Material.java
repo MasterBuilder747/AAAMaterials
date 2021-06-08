@@ -106,12 +106,12 @@ public class Material {
         if (this.blast) System.out.print("blast_furnace ");
         System.out.print("| ");
 
-        if (this.separation == -1) System.out.print("chemical separation");
-        if (this.separation == 1) System.out.print("physical separation");
-        if (this.separation == 0) System.out.print("no separation");
-        if (this.combination == -1) System.out.print("chemical separation");
-        if (this.combination == 1) System.out.print("physical separation");
-        if (this.combination == 0) System.out.print("no separation");
+        if (this.separation == -1) System.out.print("chemical separation, ");
+        if (this.separation == 1) System.out.print("physical separation, ");
+        if (this.separation == 0) System.out.print("no separation, ");
+        if (this.combination == -1) System.out.print("chemical combination ");
+        if (this.combination == 1) System.out.print("physical combination ");
+        if (this.combination == 0) System.out.print("no combination ");
         System.out.println();
     }
 }

@@ -1,1 +1,3 @@
-iron, Iron, 101010, solid, Fe, oresmeltconduct, 0, 0
+silver, Silver, 101010, solid, Ag, oresmeltconduct, 0, 0
+gold, Gold, 303030, solid, Au, oresmeltconduct, 0, 0
+electrum, Electrum, 202020, solid, AgAu, smeltconduct, -1, -1

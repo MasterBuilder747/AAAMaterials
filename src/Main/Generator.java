@@ -8,9 +8,12 @@ public class Generator {
         //1 the .zs script file (one giant one)
         //2 the .lang file for localization
         Reg.regElements();
-        Reg.regMaterials();
+        //Reg.regMaterials();
+        //Reg.printMaterials();
 
-        Reg.build();
+        System.out.println(Reg.createComp("COHIK"));
+
+        //Reg.build();
 
     }
 }
