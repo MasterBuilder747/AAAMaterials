@@ -4,7 +4,6 @@ import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Arrays;
 
 public class Reg {
     //stores all known chemicals, elements, compounds, and materials
@@ -12,6 +11,7 @@ public class Reg {
     //these are not obtainable or registered in the game,
     //rather they are used for the tooltip system and in material composition definitions
     private static ArrayList<Element> elements;
+    private static ArrayList<Composition> compositions;
     private static ArrayList<Material> materials;
 
     public static void regElements() throws IOException {
@@ -65,6 +65,33 @@ public class Reg {
         return out;
     }
 
+    public static void regCompositions() throws IOException {
+        String pc = "C:\\Users\\jaath\\IdeaProjects\\AAAMaterials\\src\\compositions.txt";
+        String mac = "/Users/jaudras/IdeaProjects/AAAMaterials/src/compositions.txt";
+        FileReader fr = new FileReader(mac);
+        BufferedReader br = new BufferedReader(fr);
+        compositions = readCompositionFile(br);
+    }
+    private static ArrayList<Composition> readCompositionFile(BufferedReader br) throws IOException {
+        ArrayList<Composition> out = new ArrayList<>();
+        int line = 1;
+        while (true) {
+            String s1 = br.readLine(); //row value or atomic number
+            if (s1 != null) {
+                try {
+                    out.add(createComp(s1));
+                } catch (IllegalArgumentException e) {
+                    System.out.println("Error at line " + line + ":");
+                    out.add(createComp(s1));
+                }
+                line++;
+            } else {
+                break;
+            }
+        }
+        return out;
+    }
+
     public static void regMaterials() throws IOException {
         String pc = "C:\\Users\\jaath\\IdeaProjects\\AAAMaterials\\src\\materials.txt";
         String mac = "/Users/jaudras/IdeaProjects/AAAMaterials/src/materials.txt";
@@ -105,9 +132,7 @@ public class Reg {
                 if (s[3].equals("custom")) m.customItem();
 
                 //composition
-                String comp = s[4];
-                Composition j = null;
-
+                Composition j = createComp(s[4]);
 
                 //attributes
                 if (s[5].contains("noDust")) m.noDust();
@@ -247,6 +272,13 @@ public class Reg {
         }
         System.out.println();
     }
+    public static void printCompositions() {
+        System.out.println("Compositions:");
+        for (Composition c : compositions) {
+            System.out.println(c);
+        }
+        System.out.println();
+    }
     public static void printMaterials() {
         System.out.println("Materials:");
         for (Material m : materials) {
@@ -254,7 +286,7 @@ public class Reg {
         }
         System.out.println();
     }
-    public static Element getE(String symbol) throws IllegalArgumentException {
+    private static Element getE(String symbol) throws IllegalArgumentException {
         for (Element c : elements) {
             if (c.symbol.matches(symbol)) {
                 return c;
@@ -270,17 +302,33 @@ public class Reg {
         }
         return true;
     }
-    public static Material getM(String symbol) throws IllegalArgumentException {
+    private static Composition getC(String comp) throws IllegalArgumentException {
+        for (Composition c : compositions) {
+            if (c.toString().matches(comp)) {
+                return c;
+            }
+        }
+        throw new IllegalArgumentException("Unknown composition: " + comp);
+    }
+    private static boolean isC(String s) {
+        try {
+            getE(s);
+        } catch (IllegalArgumentException e) {
+            return false;
+        }
+        return true;
+    }
+    private static Material getM(String name) throws IllegalArgumentException {
         for (Material m : materials) {
-            if (m.composition.toString().matches(symbol)) {
+            if (m.name.matches(name)) {
                 return m;
             }
         }
-        throw new IllegalArgumentException("Unknown material: " + symbol);
+        throw new IllegalArgumentException("Unknown material: " + name);
     }
-    private static boolean isM(String s) {
+    private static boolean isM(String name) {
         try {
-            getM(s);
+            getM(name);
         } catch (IllegalArgumentException e) {
             return false;
         }

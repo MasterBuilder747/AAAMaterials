@@ -8,12 +8,11 @@ public class Generator {
         //1 the .zs script file (one giant one)
         //2 the .lang file for localization
         Reg.regElements();
-        //Reg.regMaterials();
-        //Reg.printMaterials();
+        Reg.regCompositions();
+        Reg.regMaterials();
 
-        System.out.println(Reg.createComp("ClH20UY"));
-
-        //Reg.build();
-
+        Reg.printCompositions();
+        Reg.printMaterials();
+        Reg.build();
     }
 }
