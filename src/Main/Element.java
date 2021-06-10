@@ -13,7 +13,7 @@ public class Element {
     int group;
 
     int state; //default state at 20C / 273K
-    //0 = unknown, 1 = solid, 2 = liquid, 3 = gas, 4 = plasma, 5 = bose-einstein
+    //0 = unknown, 1 = solid, 2 = liquid, 3 = gas, 4 = plasma?
     //String groupName; //determined by the registry
 
     //temps: in Celsius
@@ -29,6 +29,18 @@ public class Element {
         this.weight = weight;
         this.state = 1; //defaults to solid, can be changed later
     }
+    //allows for custom elements not in the known ptable
+    public Element(String name, String symbol) {
+        this.name = name;
+        this.symbol= symbol;
+    }
+
+    //attributes
+    public void stateLiquid() { this.state = 2; }
+    public void stateGas() { this.state = 3; }
+    public void stateUnknown() { this.state = 0; }
+    public void setMeltingPoint(int tempC) { this.melting = tempC; }
+    public void setBoilingPoint(int tempC) { this.boiling = tempC; }
 
     //period, number, symbol, name, weight
     //1: H, Hydrogen, 1, 1.008

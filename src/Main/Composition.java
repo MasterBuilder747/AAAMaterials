@@ -41,7 +41,7 @@ public class Composition {
 
         StringBuilder sb = new StringBuilder();
         if (this.isMaterial) {
-            sb.append(this.m);
+            sb.append(this.m.composition);
         } else {
             sb.append(this.e);
         }

@@ -35,19 +35,19 @@ public class Material {
 
     }
 
-    //2) set state (what parts should generate?)
-    public void stateSolid() { this.solid = true; }
-    public void stateLiquid() { this.liquid = true; } //see: https://docs.blamejared.com/1.12/en/Mods/ContentTweaker/Vanilla/Creatable_Content/Fluid/
-    public void stateGas() { this.gas = true; }
-    public void statePlasma() { this.plasma = true; }
-    public void customItem() { this.customItem = true; } //if the material system is not needed, use this to block parts from being generated
-
-    //3) element or compound? Cannot be both (can be neither if applicable)
+    //2) element or compound? Cannot be both (can be neither if applicable)
     public void setComposition(Composition composition, int separation, int combination) {
         this.composition = composition;
         this.separation = separation;
         this.combination = combination;
     }
+
+    //3) set state (what parts should generate?)
+    public void stateSolid() { this.solid = true; }
+    public void stateLiquid() { this.liquid = true; } //see: https://docs.blamejared.com/1.12/en/Mods/ContentTweaker/Vanilla/Creatable_Content/Fluid/
+    public void stateGas() { this.gas = true; }
+    public void statePlasma() { this.plasma = true; }
+    public void customItem() { this.customItem = true; } //if the material system is not needed, use this to block parts from being generated
 
     //4) set attributes (what parts should generate?)
     //order of these following keywords do not matter:
@@ -89,7 +89,14 @@ public class Material {
         return sb.toString();
     }
     public void displayAttributes() {
-        System.out.print(this.name + ", " + this.localName + ", " + this.color + ", " + this.composition + ": ");
+        System.out.print(this.name + ", " + this.localName + ", " + this.color + ", ");
+
+        if (this.composition.isMaterial) {
+            System.out.print("compound, ");
+        } else {
+            System.out.print("molecule, ");
+        }
+        System.out.print(this.composition + ": ");
 
         if (this.customItem) System.out.print("custom ");
         if (this.solid) System.out.print("solid ");

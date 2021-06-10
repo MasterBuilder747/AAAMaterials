@@ -10,18 +10,18 @@ public class Reg {
     //entirely static class
     //these are not obtainable or registered in the game,
     //rather they are used for the tooltip system and in material composition definitions
-    private static ArrayList<Element> elements;
-    private static ArrayList<Composition> compositions;
-    private static ArrayList<Material> materials;
+    private static final ArrayList<Element> elements = new ArrayList<>();
+    private static final ArrayList<Composition> compositions = new ArrayList<>();
+    private static final ArrayList<Material> materials = new ArrayList<>();
 
     public static void regElements() throws IOException {
         String pc = "C:\\Users\\jaath\\IdeaProjects\\AAAMaterials\\src\\elements.txt";
         String mac = "/Users/jaudras/IdeaProjects/AAAMaterials/src/elements.txt";
         FileReader fr = new FileReader(mac);
         BufferedReader br = new BufferedReader(fr);
-        elements = readElementFile(br);
+        readElementFile(br);
     }
-    private static ArrayList<Element> readElementFile(BufferedReader br) throws IOException {
+    private static void readElementFile(BufferedReader br) throws IOException {
         /*
         int row1
         [repeating]:
@@ -34,7 +34,6 @@ public class Reg {
         etc...
         */
         String pd = null;
-        ArrayList<Element> out = new ArrayList<>();
         while (true) {
             String s1 = br.readLine(); //row value or atomic number
             if (s1 != null) {
@@ -45,7 +44,7 @@ public class Reg {
                     //s2 = atomic number; store the row number
                     //period, group, number, symbol, name, weight
                     pd = s1;
-                    out.add(new Element(Integer.parseInt(s1), Integer.parseInt(br.readLine()), Integer.parseInt(s2), br.readLine(), br.readLine(), Double.parseDouble(br.readLine())));
+                    elements.add(new Element(Integer.parseInt(s1), Integer.parseInt(br.readLine()), Integer.parseInt(s2), br.readLine(), br.readLine(), Double.parseDouble(br.readLine())));
                     //Chemical c = new Chemical(Integer.parseInt(s1), Integer.parseInt(br.readLine()), Integer.parseInt(s2), br.readLine(), br.readLine(), Double.parseDouble(br.readLine()));
                     //System.out.println(c);
                 } else {
@@ -53,7 +52,7 @@ public class Reg {
                     //period, number, symbol, name, weight
                     if (pd != null) {
                         //System.out.println(pd + " " + s1 + " " + s2 + " " + br.readLine() + " " + br.readLine());
-                        out.add(new Element(Integer.parseInt(pd), Integer.parseInt(br.readLine()), Integer.parseInt(s1), s2, br.readLine(), Double.parseDouble(br.readLine())));
+                        elements.add(new Element(Integer.parseInt(pd), Integer.parseInt(br.readLine()), Integer.parseInt(s1), s2, br.readLine(), Double.parseDouble(br.readLine())));
                     } else {
                         throw new IllegalAccessError("Chemical file: Must provide the period first before listing elements");
                     }
@@ -62,7 +61,6 @@ public class Reg {
                 break;
             }
         }
-        return out;
     }
 
     public static void regCompositions() throws IOException {
@@ -70,26 +68,24 @@ public class Reg {
         String mac = "/Users/jaudras/IdeaProjects/AAAMaterials/src/compositions.txt";
         FileReader fr = new FileReader(mac);
         BufferedReader br = new BufferedReader(fr);
-        compositions = readCompositionFile(br);
+        readCompositionFile(br);
     }
-    private static ArrayList<Composition> readCompositionFile(BufferedReader br) throws IOException {
-        ArrayList<Composition> out = new ArrayList<>();
+    private static void readCompositionFile(BufferedReader br) throws IOException {
         int line = 1;
         while (true) {
             String s1 = br.readLine(); //row value or atomic number
             if (s1 != null) {
                 try {
-                    out.add(createComp(s1));
+                    compositions.add(createMoleculeComp(s1));
                 } catch (IllegalArgumentException e) {
                     System.out.println("Error at line " + line + ":");
-                    out.add(createComp(s1));
+                    compositions.add(createMoleculeComp(s1));
                 }
                 line++;
             } else {
                 break;
             }
         }
-        return out;
     }
 
     public static void regMaterials() throws IOException {
@@ -100,39 +96,52 @@ public class Reg {
         readMaterialFile(br);
     }
     private static void readMaterialFile(BufferedReader br) throws IOException {
-        materials = new ArrayList<>();
         int line = 1;
         while (true) {
             String s1 = br.readLine();
             if (s1 != null) {
-                //ex: iron, Iron, 101010, solid, Fe, oresmeltconduct, 0, 0
+                //ex: iron, Iron, 101010, Fe, solid, oresmeltconduct, 0, 0
                 //(0-2): name, localname, color,
-                //(3): state, (solid, liquid, gas, plasma, custom)
-                //(4): composition (needs a method for string conversion!)
+                //(3): composition (needs a method for string conversion!)
+                //(4): state, (solid, liquid, gas, plasma, custom)
                 //(5-7): attributes (see material.java for methods, use any combination of these keywords), separation, combination (-1 chemical, 0 none, 1 physical)
                 //size 8 array of strings:
-                String[] s = s1.trim().split(",\\s*");
+                String[] s = s1.replace(" ", "").split(",\\s*");
                 if (s.length != 8) {
-                    throw new IllegalArgumentException("Incorrect amount of parameters in material.txt on line " + line);
+                    throw new IllegalArgumentException("materials.txt: Incorrect amount of parameters at line " + line);
                 }
 
                 //material creation
-                Material m = null;
+                Material m;
                 try {
                     m = new Material(s[0], s[1], Integer.parseInt(s[2]));
                 } catch (NumberFormatException e) {
-                    throw new IllegalArgumentException("Incorrect input for color input on line " + line);
+                    throw new IllegalArgumentException("materials.txt: Incorrect input for color input at line " + line);
+                }
+
+                //composition must already be registered
+                Composition j;
+                if (isC(s[3])) {
+                    j = createMoleculeComp(s[3]);
+                } else {
+                    if (s[3].contains("[") && s[3].contains("]")) {
+                        try {
+                            j = createCompoundComp(s[3]);
+                        } catch (IllegalArgumentException e) {
+                            System.out.println("materials.txt: Error at line " + line + ":");
+                            j = createCompoundComp(s[3]);
+                        }
+                    } else {
+                        throw new IllegalArgumentException("materials.txt: Incorrect composition for material " + s[0] + " at line " + line);
+                    }
                 }
 
                 //state
-                if (s[3].equals("solid")) m.stateSolid();
-                if (s[3].equals("liquid")) m.stateLiquid();
-                if (s[3].equals("gas")) m.stateGas();
-                if (s[3].equals("plasma")) m.statePlasma();
-                if (s[3].equals("custom")) m.customItem();
-
-                //composition
-                Composition j = createComp(s[4]);
+                if (s[4].equals("solid")) m.stateSolid();
+                if (s[4].equals("liquid")) m.stateLiquid();
+                if (s[4].equals("gas")) m.stateGas();
+                if (s[4].equals("plasma")) m.statePlasma();
+                if (s[4].equals("custom")) m.customItem();
 
                 //attributes
                 if (s[5].contains("noDust")) m.noDust();
@@ -146,7 +155,7 @@ public class Reg {
                 try {
                     m.setComposition(j, Integer.parseInt(s[6]), Integer.parseInt(s[7]));
                 } catch (NumberFormatException e) {
-                    throw new IllegalArgumentException("Incorrect input for compound attributes input on line " + line);
+                    throw new IllegalArgumentException("materials.txt: Incorrect input for compound attributes input at line " + line);
                 }
 
                 materials.add(m);
@@ -156,6 +165,7 @@ public class Reg {
             line++;
         }
     }
+
     public static void build() {
         for (Material m : materials) {
             System.out.println(m);
@@ -163,7 +173,33 @@ public class Reg {
         System.out.println();
     }
 
-    public static Composition createComp(String s) throws IllegalArgumentException {
+    //these are both to be used in material composition creation
+    //this creates a material composition that consists of materials
+    public static Composition createCompoundComp(String s) throws IllegalArgumentException {
+        //[molecule1; molecule2*2; molecule3 * 3]
+        String s1 = s.substring(1, s.length()-1);
+        String[] moles = s1.split(";\\s*");
+
+        ArrayList<Composition> comps = new ArrayList<>();
+        for (String name : moles) {
+            if (name.contains("*")) {
+                if (isM(name.substring(0, name.indexOf("*")))) {
+                    comps.add(new Composition(getM(name.substring(0, name.indexOf("*"))), Integer.parseInt(name.substring(name.indexOf("*")+1))));
+                } else {
+                    throw new IllegalArgumentException("Unknown material " + name.substring(0, name.indexOf("*")));
+                }
+            } else {
+                if (isM(name)) {
+                    comps.add(new Composition(getM(name)));
+                } else {
+                    throw new IllegalArgumentException("Unknown material " + name);
+                }
+            }
+        }
+        return buildComposition(comps);
+    }
+    //this creates a new material composition
+    public static Composition createMoleculeComp(String s) throws IllegalArgumentException {
         ArrayList<Composition> comps = new ArrayList<>();
         //symbol
         //symbol[_Symbol]
@@ -251,6 +287,11 @@ public class Reg {
                 }
             }
         }
+        return buildComposition(comps);
+    }
+
+    //Utilities
+    public static Composition buildComposition(ArrayList<Composition> comps) {
         Composition out = comps.get(0);
         Composition hop;
         if (comps.size() > 1) {
@@ -263,8 +304,6 @@ public class Reg {
         }
         return out;
     }
-
-    //Utilities
     public static void printElements() {
         System.out.println("Elements:");
         for (Element e : elements) {
@@ -312,13 +351,13 @@ public class Reg {
     }
     private static boolean isC(String s) {
         try {
-            getE(s);
+            getC(s);
         } catch (IllegalArgumentException e) {
             return false;
         }
         return true;
     }
-    private static Material getM(String name) throws IllegalArgumentException {
+    public static Material getM(String name) throws IllegalArgumentException {
         for (Material m : materials) {
             if (m.name.matches(name)) {
                 return m;

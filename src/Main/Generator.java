@@ -11,8 +11,8 @@ public class Generator {
         Reg.regCompositions();
         Reg.regMaterials();
 
-        Reg.printCompositions();
+        //Reg.printCompositions();
         Reg.printMaterials();
-        Reg.build();
+        //Reg.build();
     }
 }
