@@ -11,7 +11,6 @@ centrifuged_ore
 rock
 ore_rock
 casing
-missing
 dense_plate
 block
 shard

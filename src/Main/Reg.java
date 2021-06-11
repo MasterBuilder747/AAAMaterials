@@ -371,6 +371,8 @@ public class Reg {
         return true;
     }
 
+    //process ores and blocks here
+
     public static void build() {
         //starting script code
         System.out.println("#loader contenttweaker\n" +

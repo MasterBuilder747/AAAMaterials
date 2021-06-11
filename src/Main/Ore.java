@@ -16,14 +16,14 @@ public class Ore {
     //as the same size as the blocks and variants
 
     //only one variant
-    Ore(Block b, int variant) {
+    public Ore(Block b, int variant) {
         this.blocks = new Block[1];
         this.blocks[0] = b;
         this.variants = new String[1];
         this.variants[0] = this.bVariants[variant];
     }
     //more than one variant, defined in arrays
-    Ore(Block[] b, int[] variants) {
+    public Ore(Block[] b, int[] variants) {
         this.blocks = b;
         this.variants = new String[variants.length];
         this.mapVariants(variants);

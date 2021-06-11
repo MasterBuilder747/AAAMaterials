@@ -1,34 +1,24 @@
 package Main;
 
 public class Block {
-    String name; //the variable name, not the name of the block itself
+    String name; //the material name
+    String type = "block"; //block type other than type block
 
     //defines block properties for one block
     int hardness = 5;
     int resistance = 6;
-    int miningLevel = 1;
-    String[] harvestTool = {
-            "pickaxe", //0, most likely
-            "shovel", //1
-            "axe", //2
-            "hoe", //3
-            "sword" //4
-    };
+    int miningLevel = 2;
     String tool = "pickaxe";
 
-    Block(String name, int hardness, int resistance, int miningLevel, int harvestTool) {
+    public Block(String name, String type, int hardness, int resistance, String tool, int miningLevel) {
         this.name = name;
+        this.type = type;
         this.hardness = hardness;
         this.resistance = resistance;
         this.miningLevel = miningLevel;
-        this.tool = this.harvestTool[harvestTool];
+        this.tool = tool;
     }
-    Block(String name, int harvestTool) {
-        //define only harvest tool
-        this.name = name;
-        this.tool = this.harvestTool[harvestTool];
-    }
-    Block(String name) {
+    public Block(String name) {
         //use all default values
         this.name = name;
     }
@@ -37,9 +27,14 @@ public class Block {
     }
 
     public String build() {
-        return this.name + ".addDataValue(\"hardness\", \"" + this.hardness + "\");\n" +
-                this.name + ".addDataValue(\"resistance\", \"" + this.resistance + "\");\n" +
-                this.name + ".addDataValue(\"harvestTool\", \"" + this.tool + "\");\n" +
-                this.name + ".addDataValue(\"harvestLevel\", \"" + this.miningLevel + "\");\n";
+        String var = this.name + this.type;
+        return "var " + var + " = " + this.name + ".registerParts(" + this.type + "_blocks);\n" +
+                "for i, ore in " + var + " {\n" +
+                    "\tvar data = ore.getData();\n" +
+                    "\t" + this.name + ".addDataValue(\"hardness\", \"" + this.hardness + "\");\n" +
+                    "\t" + this.name + ".addDataValue(\"resistance\", \"" + this.resistance + "\");\n" +
+                    "\t" + this.name + ".addDataValue(\"harvestTool\", \"" + this.tool + "\");\n" +
+                    "\t" + this.name + ".addDataValue(\"harvestLevel\", \"" + this.miningLevel + "\");\n" +
+                "}";
     }
 }

@@ -4,3 +4,8 @@ dust_parts: molten, dust, small_dust, tiny_dust
 smelt_parts: ingot, nugget, casing, plate, plate_curved, plate_tough, dense_plate, rod_small, rod, long_rod, small_spring, large_spring, beam, bolt, screw, round, foil, ring, gear_small, gear, rotor
 blast_parts: hot_ingot
 gem_parts: gem_morsel, chipped_gem, flawed_gem, crystal, flawless_gem, gem_exquisite
+frame_blocks: frame
+block_blocks: block
+ore_blocks: ore
+poorore_blocks: poor_ore
+denseore_blocks: dense_ore

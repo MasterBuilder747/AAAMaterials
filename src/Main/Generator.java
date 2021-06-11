@@ -21,6 +21,6 @@ public class Generator {
         //Reg.printCompositions();
         //Reg.printMaterials();
 
-        Reg.build();
+        //Reg.build();
     }
 }
