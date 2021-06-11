@@ -1,0 +1,54 @@
+nugget
+beam
+dirty_dust
+cluster
+ring
+rod
+crystal
+plate
+chipped_gem
+centrifuged_ore
+rock
+ore_rock
+casing
+missing
+dense_plate
+block
+shard
+molten
+flawless_gem
+dust
+crushed_ore
+ore
+small_dust
+long_rod
+small_spring
+clump
+flawed_gem
+large_spring
+purified_ore
+poor_ore
+minecart
+armor
+round
+ore_sample
+dense_ore
+bolt
+ingot
+tiny_dust
+gear
+wire, true
+fine_wire, true
+coil, true
+hot_ingot, true
+dust_pure, true
+foil, false
+gear_small, false
+rotor, false
+screw, false
+plate_tough, false
+plate_curved, false
+rod_small, false
+gem_morsel, false
+gem_exquisite, false
+frame, false, block

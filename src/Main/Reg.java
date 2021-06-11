@@ -6,13 +6,149 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 public class Reg {
-    //stores all known chemicals, elements, compounds, and materials
+    //stores all known objects to be added/used in the game
     //entirely static class
-    //these are not obtainable or registered in the game,
-    //rather they are used for the tooltip system and in material composition definitions
+    private static final ArrayList<Part> parts = new ArrayList<>();
+    private static final ArrayList<PartGroup> partgroups = new ArrayList<>();
     private static final ArrayList<Element> elements = new ArrayList<>();
     private static final ArrayList<Composition> compositions = new ArrayList<>();
     private static final ArrayList<Material> materials = new ArrayList<>();
+
+    public static void regParts() throws IOException {
+        String pc = "C:\\Users\\jaath\\IdeaProjects\\AAAMaterials\\src\\parts.txt";
+        String mac = "/Users/jaudras/IdeaProjects/AAAMaterials/src/parts.txt";
+        FileReader fr = new FileReader(mac);
+        BufferedReader br = new BufferedReader(fr);
+        readPartFile(br);
+    }
+    public static void printParts() {
+        System.out.println("Parts:");
+        for (Part p: parts) {
+            p.print();
+            System.out.println();
+        }
+        System.out.println();
+    }
+    private static void readPartFile(BufferedReader br) throws IOException {
+        int line = 1;
+        while (true) {
+            String s1 = br.readLine();
+            if (s1 != null) {
+                //String name, boolean hasOverlay
+                String[] s = s1.replace(" ", "").split(",\\s*");
+                if (s.length < 1 || s.length > 3) {
+                    throw new IllegalArgumentException("parts.txt: Incorrect amount of parameters at line " + line);
+                }
+
+                if (s.length == 1) {
+                    parts.add(new Part(s[0]));
+                }
+                if (s.length == 2) {
+                    if (s[1].matches("true")) {
+                        parts.add(new Part(s[0], true));
+                    } else if (s[1].matches("false")) {
+                        parts.add(new Part(s[0], false));
+                    } else {
+                        throw new IllegalArgumentException("parts.txt: Neither true or false is used for hasOverlay at line " + line);
+                    }
+                }
+                if (s.length == 3) {
+                    Part p;
+                    if (s[1].matches("true")) {
+                        p = new Part(s[0], true);
+                    } else if (s[1].matches("false")) {
+                        p = new Part(s[0], false);
+                    } else {
+                        throw new IllegalArgumentException("parts.txt: Neither true or false is used for hasOverlay at line " + line);
+                    }
+                    p.setType(s[2]);
+                    parts.add(p);
+                }
+            } else {
+                break;
+            }
+            line++;
+        }
+    }
+    private static Part getP(String part) throws IllegalArgumentException {
+        for (Part p : parts) {
+            if (p.name.matches(part)) {
+                return p;
+            }
+        }
+        throw new IllegalArgumentException("Unknown element: " + part);
+    }
+    private static boolean isP(String s) {
+        try {
+            getP(s);
+        } catch (IllegalArgumentException e) {
+            return false;
+        }
+        return true;
+    }
+
+    public static void regPartGroups() throws IOException {
+        String pc = "C:\\Users\\jaath\\IdeaProjects\\AAAMaterials\\src\\partgroups.txt";
+        String mac = "/Users/jaudras/IdeaProjects/AAAMaterials/src/partgroups.txt";
+        FileReader fr = new FileReader(mac);
+        BufferedReader br = new BufferedReader(fr);
+        readPartGroupFile(br);
+    }
+    public static void printPartGroups() {
+        System.out.println("PartGroups:");
+        for (PartGroup p : partgroups) {
+            p.print();
+        }
+        System.out.println();
+    }
+    private static void readPartGroupFile(BufferedReader br) throws IOException {
+        int line = 1;
+        while (true) {
+            String s1 = br.readLine();
+            if (s1 != null) {
+                if (!s1.contains(":")) {
+                    throw new IllegalArgumentException("partgroups.txt: Must contain a \":\" to denote the group name and the parts in that group, at line " + line);
+                }
+
+                //String name: String part1, String part2, ...
+                String trim = s1.replaceAll(" ", "");
+                String name = trim.substring(0, s1.indexOf(":"));
+                String s2 = trim.substring(s1.indexOf(":")+1);
+                String[] parts = s2.split(",\\s*");
+                if (parts.length == 0) {
+                    throw new IllegalArgumentException("partgroups.txt: Empty parts at line " + line);
+                }
+                ArrayList<Part> partgroup = new ArrayList<>();
+                for (String s : parts) {
+                    if (isP(s)) {
+                        partgroup.add(getP(s));
+                    } else {
+                        throw new IllegalArgumentException("partgroups.txt: Unknown part " + s + " at line " + line);
+                    }
+                }
+                partgroups.add(new PartGroup(name, partgroup.toArray(new Part[0])));
+            } else {
+                break;
+            }
+            line++;
+        }
+    }
+    private static PartGroup getG(String part) throws IllegalArgumentException {
+        for (PartGroup p : partgroups) {
+            if (p.name.matches(part)) {
+                return p;
+            }
+        }
+        throw new IllegalArgumentException("Unknown part group: " + part);
+    }
+    private static boolean isG(String s) {
+        try {
+            getG(s);
+        } catch (IllegalArgumentException e) {
+            return false;
+        }
+        return true;
+    }
 
     public static void regElements() throws IOException {
         String pc = "C:\\Users\\jaath\\IdeaProjects\\AAAMaterials\\src\\elements.txt";
@@ -20,6 +156,13 @@ public class Reg {
         FileReader fr = new FileReader(mac);
         BufferedReader br = new BufferedReader(fr);
         readElementFile(br);
+    }
+    public static void printElements() {
+        System.out.println("Elements:");
+        for (Element e : elements) {
+            System.out.println(e);
+        }
+        System.out.println();
     }
     private static void readElementFile(BufferedReader br) throws IOException {
         /*
@@ -62,6 +205,22 @@ public class Reg {
             }
         }
     }
+    private static Element getE(String symbol) throws IllegalArgumentException {
+        for (Element c : elements) {
+            if (c.symbol.matches(symbol)) {
+                return c;
+            }
+        }
+        throw new IllegalArgumentException("Unknown element: " + symbol);
+    }
+    private static boolean isE(String s) {
+        try {
+            getE(s);
+        } catch (IllegalArgumentException e) {
+            return false;
+        }
+        return true;
+    }
 
     public static void regCompositions() throws IOException {
         String pc = "C:\\Users\\jaath\\IdeaProjects\\AAAMaterials\\src\\compositions.txt";
@@ -69,6 +228,13 @@ public class Reg {
         FileReader fr = new FileReader(mac);
         BufferedReader br = new BufferedReader(fr);
         readCompositionFile(br);
+    }
+    public static void printCompositions() {
+        System.out.println("Compositions:");
+        for (Composition c : compositions) {
+            System.out.println(c);
+        }
+        System.out.println();
     }
     private static void readCompositionFile(BufferedReader br) throws IOException {
         int line = 1;
@@ -87,6 +253,22 @@ public class Reg {
             }
         }
     }
+    private static Composition getC(String comp) throws IllegalArgumentException {
+        for (Composition c : compositions) {
+            if (c.toString().matches(comp)) {
+                return c;
+            }
+        }
+        throw new IllegalArgumentException("Unknown composition: " + comp);
+    }
+    private static boolean isC(String s) {
+        try {
+            getC(s);
+        } catch (IllegalArgumentException e) {
+            return false;
+        }
+        return true;
+    }
 
     public static void regMaterials() throws IOException {
         String pc = "C:\\Users\\jaath\\IdeaProjects\\AAAMaterials\\src\\materials.txt";
@@ -94,6 +276,13 @@ public class Reg {
         FileReader fr = new FileReader(mac);
         BufferedReader br = new BufferedReader(fr);
         readMaterialFile(br);
+    }
+    public static void printMaterials() {
+        System.out.println("Materials:");
+        for (Material m : materials) {
+            m.displayAttributes();
+        }
+        System.out.println();
     }
     private static void readMaterialFile(BufferedReader br) throws IOException {
         int line = 1;
@@ -165,14 +354,54 @@ public class Reg {
             line++;
         }
     }
+    public static Material getM(String name) throws IllegalArgumentException {
+        for (Material m : materials) {
+            if (m.name.matches(name)) {
+                return m;
+            }
+        }
+        throw new IllegalArgumentException("Unknown material: " + name);
+    }
+    private static boolean isM(String name) {
+        try {
+            getM(name);
+        } catch (IllegalArgumentException e) {
+            return false;
+        }
+        return true;
+    }
 
     public static void build() {
+        //starting script code
+        System.out.println("#loader contenttweaker\n" +
+                "import mods.contenttweaker.Material;\n" +
+                "import mods.contenttweaker.MaterialSystem;\n" +
+                "import mods.contenttweaker.PartBuilder;\n");
+
+        //part registration
+        System.out.println("# part registration:");
+        for (Part p : parts) {
+            if (!p.exists) {
+                System.out.println(p);
+            }
+        }
+        System.out.println();
+
+        //part group definitions
+        System.out.println("# part groups:");
+        for (PartGroup p : partgroups) {
+            System.out.println(p);
+        }
+
+        //material registration and parts
+        System.out.println("# material registration");
         for (Material m : materials) {
             System.out.println(m);
         }
         System.out.println();
     }
 
+    //Compositions
     //these are both to be used in material composition creation
     //this creates a material composition that consists of materials
     public static Composition createCompoundComp(String s) throws IllegalArgumentException {
@@ -289,8 +518,6 @@ public class Reg {
         }
         return buildComposition(comps);
     }
-
-    //Utilities
     public static Composition buildComposition(ArrayList<Composition> comps) {
         Composition out = comps.get(0);
         Composition hop;
@@ -303,75 +530,6 @@ public class Reg {
             }
         }
         return out;
-    }
-    public static void printElements() {
-        System.out.println("Elements:");
-        for (Element e : elements) {
-            System.out.println(e);
-        }
-        System.out.println();
-    }
-    public static void printCompositions() {
-        System.out.println("Compositions:");
-        for (Composition c : compositions) {
-            System.out.println(c);
-        }
-        System.out.println();
-    }
-    public static void printMaterials() {
-        System.out.println("Materials:");
-        for (Material m : materials) {
-            m.displayAttributes();
-        }
-        System.out.println();
-    }
-    private static Element getE(String symbol) throws IllegalArgumentException {
-        for (Element c : elements) {
-            if (c.symbol.matches(symbol)) {
-                return c;
-            }
-        }
-        throw new IllegalArgumentException("Unknown element: " + symbol);
-    }
-    private static boolean isE(String s) {
-        try {
-            getE(s);
-        } catch (IllegalArgumentException e) {
-            return false;
-        }
-        return true;
-    }
-    private static Composition getC(String comp) throws IllegalArgumentException {
-        for (Composition c : compositions) {
-            if (c.toString().matches(comp)) {
-                return c;
-            }
-        }
-        throw new IllegalArgumentException("Unknown composition: " + comp);
-    }
-    private static boolean isC(String s) {
-        try {
-            getC(s);
-        } catch (IllegalArgumentException e) {
-            return false;
-        }
-        return true;
-    }
-    public static Material getM(String name) throws IllegalArgumentException {
-        for (Material m : materials) {
-            if (m.name.matches(name)) {
-                return m;
-            }
-        }
-        throw new IllegalArgumentException("Unknown material: " + name);
-    }
-    private static boolean isM(String name) {
-        try {
-            getM(name);
-        } catch (IllegalArgumentException e) {
-            return false;
-        }
-        return true;
     }
 
     //Utilities

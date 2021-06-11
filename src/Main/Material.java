@@ -76,18 +76,45 @@ public class Material {
         StringBuilder sb = new StringBuilder();
         //make sure the vars are defined since they are in the same scope
         //2) generate parts, ores, blocks (get variable arrays)
-        //Material.registerParts(ore)
-        //Material.registerParts(dust, etc...)
+        //Material.registerParts(ore);
         //var ores = Material.registerParts(ore_types);
+        if (this.dust) {
+            sb.append(this.name);
+            sb.append(".registerParts(dust_parts);\n");
+        }
+        if (this.ore) {
+            sb.append(this.name);
+            sb.append(".registerParts(ore_parts);\n");
+        }
+        if (this.gem) {
+            sb.append(this.name);
+            sb.append(".registerParts(gem_parts);\n");
+        }
+        if (this.smelt) {
+            sb.append(this.name);
+            sb.append(".registerParts(smelt_parts);\n");
+        }
+        if (this.conductive) {
+            sb.append(this.name);
+            sb.append(".registerParts(conductive_parts);\n");
+        }
+        if (this.blast) {
+            sb.append(this.name);
+            sb.append(".registerParts(blast_parts);\n");
+        }
+
+        //3) generate blocks and their data
         //for i, ore in ores {
         //  var oreData = ore.getData();
         //  //build OreVariant here
         //}
         //var blockData = Material.registerPart("block").getData();
+
         //3) generate toolTip based of the composition string
 
         return sb.toString();
     }
+
     public void displayAttributes() {
         System.out.print(this.name + ", " + this.localName + ", " + this.color + ", ");
 
