@@ -41,13 +41,13 @@ fine_wire, true
 coil, true
 hot_ingot, true
 dust_pure, true
+frame, true
 foil, false
-gear_small, false
+small_gear, false
 rotor, false
 screw, false
-plate_tough, false
-plate_curved, false
-rod_small, false
-gem_morsel, false
-gem_exquisite, false
-frame, false, block
+tough_plate, false
+curved_plate, false
+small_rod, false
+morsel, false
+exquisite_gem, false

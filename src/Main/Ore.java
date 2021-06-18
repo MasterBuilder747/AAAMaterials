@@ -2,43 +2,73 @@ package Main;
 
 public class Ore {
     //generates ores and its components for a specified material
-    private final String[] bVariants = {
-            "minecraft:stone", //0
-            "minecraft:netherrack", //1
-            "minecraft:end_stone", //2
-            "minecraft:gravel", //3
-            "minecraft:bedrock" //4
-    };
-    Block[] blocks;
-    String[] variants; //same size as blocks
-    String[] drop; //optional: defaults to itself,
-    //otherwise this can be defined per variant,
-    //as the same size as the blocks and variants
+    //Also handles generation (2 files)
+    Block[] b;
+    String name; //the material name
+    String[] variants; //name of the blocks themselves
+    String[] tools;
+    int[] hardness;
+    int[] resistance;
+    int[] miningLevel;
 
-    //only one variant
-    public Ore(Block b, int variant) {
-        this.blocks = new Block[1];
-        this.blocks[0] = b;
-        this.variants = new String[1];
-        this.variants[0] = this.bVariants[variant];
+    public Ore(String name, Block[] b) {
+        this.name = name;
+        this.b = b;
+        this.variants = new String[b.length];
+        this.tools = new String[b.length];
+        this.hardness = new int[b.length];
+        this.resistance = new int[b.length];
+        this.miningLevel = new int[b.length];
     }
-    //more than one variant, defined in arrays
-    public Ore(Block[] b, int[] variants) {
-        this.blocks = b;
-        this.variants = new String[variants.length];
-        this.mapVariants(variants);
-    }
-    private void mapVariants(int[] v) {
-        //must allocate variants first
-        System.arraycopy(bVariants, 0, this.variants, 0, v.length);
-    }
-    //adds a drop value to each variant, provided it matches the size of the blocks
-    public void addDrops(String[] d) {
-        this.drop = d;
+    private Ore() {
+
     }
 
-    //builds all the code needed to generate the ore data for a material
-    public void build() {
+    public String build() {
+        for (int i = 0; i < this.b.length; i++) {
+            this.variants[i] = this.b[i].name;
+            this.tools[i] = this.b[i].tool;
+            this.hardness[i] = this.b[i].hardness;
+            this.resistance[i] = this.b[i].resistance;
+            this.miningLevel[i] = this.b[i].miningLevel;
+        }
 
+        StringBuilder sb = new StringBuilder();
+        sb.append("var "); sb.append(this.name); sb.append("ore = "); sb.append(this.name); sb.append(".registerParts(ore_blocks);\n");
+        sb.append("for i, ore in "); sb.append(this.name); sb.append("ore {\n");
+            sb.append("\tvar data = ore.getData();\n");
+            sb.append("\tdata.addDataValue(\"variants\", \"");
+            for (int i = 0; i < this.variants.length - 1; i++) {
+                sb.append(this.variants[i]).append(",");
+            }
+            sb.append(this.variants[this.variants.length-1]).append("\");\n");
+
+            sb.append("\tdata.addDataValue(\"hardness\", \"");
+            for (int i = 0; i < this.hardness.length - 1; i++) {
+                sb.append(this.hardness[i]).append(",");
+            }
+            sb.append(this.hardness[this.hardness.length-1]).append("\");\n");
+
+            sb.append("\tdata.addDataValue(\"resistance\", \"");
+            for (int i = 0; i < this.resistance.length - 1; i++) {
+                sb.append(this.resistance[i]).append(",");
+            }
+            sb.append(this.resistance[this.resistance.length-1]).append("\");\n");
+
+            sb.append("\tdata.addDataValue(\"harvestTool\", \"");
+            for (int i = 0; i < this.tools.length - 1; i++) {
+                sb.append(this.tools[i]).append(",");
+            }
+            sb.append(this.tools[this.tools.length-1]).append("\");\n");
+
+            sb.append("\tdata.addDataValue(\"harvestLevel\", \"");
+            for (int i = 0; i < this.miningLevel.length - 1; i++) {
+                sb.append(this.miningLevel[i]).append(",");
+            }
+            sb.append(this.miningLevel[this.miningLevel.length-1]).append("\");\n");
+
+        sb.append("}");
+
+        return sb.toString();
     }
 }

@@ -1,3 +1,1 @@
-silver; block: 5, 6, pickaxe, 2
-silver; frame: 5, 6, pickaxe, 2
-silver; ore: 5, 6, pickaxe, 2
+mica, rock, 5, 6, 2, pickaxe

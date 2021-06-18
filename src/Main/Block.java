@@ -2,21 +2,29 @@ package Main;
 
 public class Block {
     String name; //the material name
-    String type = "block"; //block type other than type block
 
     //defines block properties for one block
     int hardness = 5;
     int resistance = 6;
     int miningLevel = 2;
+    String material; //must be a valid vanilla material
     String tool = "pickaxe";
 
-    public Block(String name, String type, int hardness, int resistance, String tool, int miningLevel) {
+    public Block(String name, String material, int hardness, int resistance, int miningLevel, String tool) {
         this.name = name;
-        this.type = type;
+        this.material = material;
         this.hardness = hardness;
         this.resistance = resistance;
         this.miningLevel = miningLevel;
         this.tool = tool;
+    }
+    //for ores only
+    public Block(String name, int hardness, int resistance, int miningLevel) {
+        this.name = name;
+        this.material = "rock";
+        this.hardness = hardness;
+        this.resistance = resistance;
+        this.miningLevel = miningLevel;
     }
     public Block(String name) {
         //use all default values
@@ -26,15 +34,16 @@ public class Block {
 
     }
 
-    public String build() {
-        String var = this.name + this.type;
-        return "var " + var + " = " + this.name + ".registerParts(" + this.type + "_blocks);\n" +
-                "for i, ore in " + var + " {\n" +
-                    "\tvar data = ore.getData();\n" +
-                    "\t" + this.name + ".addDataValue(\"hardness\", \"" + this.hardness + "\");\n" +
-                    "\t" + this.name + ".addDataValue(\"resistance\", \"" + this.resistance + "\");\n" +
-                    "\t" + this.name + ".addDataValue(\"harvestTool\", \"" + this.tool + "\");\n" +
-                    "\t" + this.name + ".addDataValue(\"harvestLevel\", \"" + this.miningLevel + "\");\n" +
-                "}";
+    public void print() {
+        System.out.println(this.material + "; " + this.name + ": " + this.hardness + ", " + this.resistance + ", " + this.tool + ", " + this.miningLevel);
+    }
+
+    public String toString() {
+        return "var " + this.name + "block = VanillaFactory.createBlock(\"" + this.name + "\", <blockmaterial:" + this.material + ">)\n" +
+                "\t.setBlockHardness(" + this.hardness + ")\n" +
+                "\t.setBlockResistance(" + this.resistance + ")\n" +
+                "\t.setToolClass(" + this.tool + ")\n" +
+                "\t.setToolLevel(" + this.miningLevel + ")\n" +
+                "\t.register();";
     }
 }

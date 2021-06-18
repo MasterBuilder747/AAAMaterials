@@ -8,19 +8,24 @@ public class Generator {
         //1 the .zs script file (one giant one)
         //2 the .lang file for localization
         //Registration
+        Reg.regBlocks();
+        Reg.regItems();
+        Reg.regFluids();
         Reg.regParts();
         Reg.regPartGroups();
         Reg.regElements();
         Reg.regCompositions();
         Reg.regMaterials();
+        Reg.genLang();
 
         //printing for debugging
-        //Reg.printParts();
-        //Reg.printPartGroups();
-        //Reg.printElements();
-        //Reg.printCompositions();
-        //Reg.printMaterials();
+//        Reg.printBlocks();
+//        Reg.printParts();
+//        Reg.printPartGroups();
+//        Reg.printElements();
+//        Reg.printCompositions();
+//        Reg.printMaterials();
 
-        //Reg.build();
+        Reg.build();
     }
 }

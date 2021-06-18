@@ -4,7 +4,7 @@ public class Material {
     //required components
     String name;
     String localName;
-    int color;
+    String color;
 
     //states (other than solid)
     boolean customItem; //one singular item to be generated (lots of manual work here)
@@ -26,7 +26,7 @@ public class Material {
 
 
     //1) set basic info
-    public Material(String name, String localName, int color) {
+    public Material(String name, String localName, String color) {
         this.name = name;
         this.localName = localName;
         this.color = color;
@@ -70,7 +70,7 @@ public class Material {
     }
     public String buildBuilder() {
         //1) build the material
-        return "var " + this.name + " = MaterialSystem.getMaterialBuilder().setName(\"" + this.localName + "\").setColor(" + this.color + ").build();\n";
+        return "var " + this.name + " = MaterialSystem.getMaterialBuilder().setName(\"" + this.localName + "\").setColor(Color.fromHex(" + this.color + ")).build();\n";
     }
     public String buildMaterial() {
         StringBuilder sb = new StringBuilder();

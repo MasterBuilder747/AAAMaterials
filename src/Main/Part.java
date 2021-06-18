@@ -31,8 +31,14 @@ public class Part {
         this.type = t;
     }
 
+    public static String func() {
+        return "";
+    }
+
     public void print() {
-        System.out.print("New part: " + this.exists + "; " + this.name + ", " + this.localName + ", " + this.type + ", " + this.hasOverlay + ", " + this.oreDict);
+        if (!this.exists) {
+            System.out.println(this.name + ": " + this.localName + ", " + this.type + ", " + this.hasOverlay + ", " + this.oreDict);
+        }
     }
 
     public String toString() {

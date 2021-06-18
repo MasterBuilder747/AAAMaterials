@@ -1,18 +1,160 @@
 package Main;
 
-import java.io.BufferedReader;
-import java.io.FileReader;
-import java.io.IOException;
+import java.io.*;
 import java.util.ArrayList;
+import java.util.Locale;
 
 public class Reg {
     //stores all known objects to be added/used in the game
     //entirely static class
+    private static final ArrayList<Block> blocks = new ArrayList<>();
+    private static final ArrayList<Item> items = new ArrayList<>();
+    private static final ArrayList<Fluid> fluids = new ArrayList<>();
     private static final ArrayList<Part> parts = new ArrayList<>();
     private static final ArrayList<PartGroup> partgroups = new ArrayList<>();
     private static final ArrayList<Element> elements = new ArrayList<>();
     private static final ArrayList<Composition> compositions = new ArrayList<>();
     private static final ArrayList<Material> materials = new ArrayList<>();
+
+    public static void regBlocks() throws IOException {
+        String pc = "C:\\Users\\jaath\\IdeaProjects\\AAAMaterials\\src\\blocks.txt";
+        String mac = "/Users/jaudras/IdeaProjects/AAAMaterials/src/blocks.txt";
+        FileReader fr = new FileReader(mac);
+        BufferedReader br = new BufferedReader(fr);
+        readBlockFile(br);
+    }
+    public static void printBlocks() {
+        System.out.println("Blocks:");
+        System.out.println("name: hardness, resistance, harvest tool, level");
+        for (Block b : blocks) {
+            b.print();
+        }
+        System.out.println();
+    }
+    private static void readBlockFile(BufferedReader br) throws IOException {
+        int line = 1;
+        while (true) {
+            String s1 = br.readLine();
+            if (s1 != null) {
+                //String name, String material, int hardness, int resistance, int miningLevel, String tool
+                String[] s = s1.replace(" ", "").split(",\\s*");
+                if (s.length != 6) throw new IllegalArgumentException("blocks.txt: Expected 6 parameters at line " + line);
+                try {
+                    blocks.add(new Block(s[0], s[1], Integer.parseInt(s[2]), Integer.parseInt(s[3]), Integer.parseInt(s[4]), s[5]));
+                } catch (NumberFormatException e) {
+                    throw new NumberFormatException("blocks.txt: Invalid number format at line " + line);
+                }
+            } else {
+                break;
+            }
+            line++;
+        }
+    }
+    private static Block getB(String name) throws IllegalArgumentException {
+        for (Block b : blocks) {
+            if (b.name.matches(name)) {
+                return b;
+            }
+        }
+        throw new IllegalArgumentException("Unknown block: " + name);
+    }
+    private static boolean isB(String s) {
+        try {
+            getP(s);
+        } catch (IllegalArgumentException e) {
+            return false;
+        }
+        return true;
+    }
+
+    public static void regItems() throws IOException {
+        String pc = "C:\\Users\\jaath\\IdeaProjects\\AAAMaterials\\src\\items.txt";
+        String mac = "/Users/jaudras/IdeaProjects/AAAMaterials/src/items.txt";
+        FileReader fr = new FileReader(mac);
+        BufferedReader br = new BufferedReader(fr);
+        readItemFile(br);
+    }
+    public static void printItems() {
+        System.out.println("Items:");
+        for (Item i : items) {
+            System.out.println(i.name);
+        }
+        System.out.println();
+    }
+    private static void readItemFile(BufferedReader br) throws IOException {
+        int line = 1;
+        while (true) {
+            String s1 = br.readLine();
+            if (s1 != null) {
+                items.add(new Item(s1));
+            } else {
+                break;
+            }
+            line++;
+        }
+    }
+    private static Item getI(String name) throws IllegalArgumentException {
+        for (Item i : items) {
+            if (i.name.matches(name)) {
+                return i;
+            }
+        }
+        throw new IllegalArgumentException("Unknown item: " + name);
+    }
+    private static boolean isI(String s) {
+        try {
+            getI(s);
+        } catch (IllegalArgumentException e) {
+            return false;
+        }
+        return true;
+    }
+
+    public static void regFluids() throws IOException {
+        String pc = "C:\\Users\\jaath\\IdeaProjects\\AAAMaterials\\src\\fluids-gases.txt";
+        String mac = "/Users/jaudras/IdeaProjects/AAAMaterials/src/fluids-gases.txt";
+        FileReader fr = new FileReader(mac);
+        BufferedReader br = new BufferedReader(fr);
+        readFluidFile(br);
+    }
+    public static void printFluids() {
+        System.out.println("Fluids:");
+        for (Fluid f : fluids) {
+            System.out.println(f.name);
+        }
+        System.out.println();
+    }
+    private static void readFluidFile(BufferedReader br) throws IOException {
+        int line = 1;
+        while (true) {
+            String s1 = br.readLine();
+            if (s1 != null) {
+                //String name, String hexColor
+                String[] s = s1.replace(" ", "").split(",\\s*");
+                if (s.length != 2) throw new IllegalArgumentException("fluids-gases.txt: Expected 2 parameters at line " + line);
+                fluids.add(new Fluid(s[0], s[1]));
+            } else {
+                break;
+            }
+            line++;
+        }
+    }
+    private static Fluid getF(String name) throws IllegalArgumentException {
+        for (Fluid f : fluids) {
+            if (f.name.matches(name)) {
+                return f;
+            }
+        }
+        throw new IllegalArgumentException("Unknown item: " + name);
+    }
+    private static boolean isF(String s) {
+        try {
+            getF(s);
+        } catch (IllegalArgumentException e) {
+            return false;
+        }
+        return true;
+    }
 
     public static void regParts() throws IOException {
         String pc = "C:\\Users\\jaath\\IdeaProjects\\AAAMaterials\\src\\parts.txt";
@@ -25,7 +167,6 @@ public class Reg {
         System.out.println("Parts:");
         for (Part p: parts) {
             p.print();
-            System.out.println();
         }
         System.out.println();
     }
@@ -37,7 +178,7 @@ public class Reg {
                 //String name, boolean hasOverlay
                 String[] s = s1.replace(" ", "").split(",\\s*");
                 if (s.length < 1 || s.length > 3) {
-                    throw new IllegalArgumentException("parts.txt: Incorrect amount of parameters at line " + line);
+                    throw new IllegalArgumentException("parts.txt: Expected 1, 2, or 3 parameters at line " + line);
                 }
 
                 if (s.length == 1) {
@@ -160,7 +301,7 @@ public class Reg {
     public static void printElements() {
         System.out.println("Elements:");
         for (Element e : elements) {
-            System.out.println(e);
+            e.print();
         }
         System.out.println();
     }
@@ -297,16 +438,12 @@ public class Reg {
                 //size 8 array of strings:
                 String[] s = s1.replace(" ", "").split(",\\s*");
                 if (s.length != 8) {
-                    throw new IllegalArgumentException("materials.txt: Incorrect amount of parameters at line " + line);
+                    throw new IllegalArgumentException("materials.txt: Expected 8 parameters at line " + line);
                 }
 
                 //material creation
                 Material m;
-                try {
-                    m = new Material(s[0], s[1], Integer.parseInt(s[2]));
-                } catch (NumberFormatException e) {
-                    throw new IllegalArgumentException("materials.txt: Incorrect input for color input at line " + line);
-                }
+                m = new Material(s[0], s[1], s[2]);
 
                 //composition must already be registered
                 Composition j;
@@ -371,6 +508,62 @@ public class Reg {
         return true;
     }
 
+    //generate the .lang file based off of what is registered at this point
+    //path: ./resources/contenttweaker/lang/en_us.lang
+    public static void genLang() throws IOException {
+        String pc = "C:\\Users\\jaath\\IdeaProjects\\AAAMaterials\\src\\en_us.lang";
+        String mac = "/Users/jaudras/IdeaProjects/AAAMaterials/src/en_us.lang";
+        FileWriter fw = new FileWriter(mac);
+        BufferedWriter bw = new BufferedWriter(fw);
+
+        //materials don't need localization!
+
+        //parts (items and blocks)
+        for (Part p : parts) {
+            if (!p.exists) {
+                bw.write("contenttweaker.part.");
+                bw.write(p.name);
+                bw.write("=");
+                if (p.localName.contains("_")) {
+                    if (p.localName.contains("_gem")) {
+                        //gem
+                        //contenttweaker.part.[name]=%s [LocalName1]
+                        bw.write(p.localName.substring(0, 1).toUpperCase(Locale.ROOT));
+                        bw.write(p.localName.substring(1, p.localName.indexOf("_")));
+                        bw.write(" %s");
+                    } else {
+                        //contenttweaker.part.[name]=[LocalName1] %s [LocalName2]
+                        bw.write(p.localName.substring(0, 1).toUpperCase(Locale.ROOT));
+                        bw.write(p.localName.substring(1, p.localName.indexOf("_")));
+                        bw.write(" %s ");
+                        bw.write(p.localName.substring(p.localName.indexOf("_")+1, p.localName.indexOf("_")+2).toUpperCase(Locale.ROOT));
+                        bw.write(p.localName.substring(p.localName.indexOf("_")+2));
+                    }
+                } else {
+                    //contenttweaker.part.[name]=%s [LocalName]
+                    bw.write("%s ");
+                    bw.write(p.localName.substring(0, 1).toUpperCase(Locale.ROOT));
+                    bw.write(p.localName.substring(1));
+                }
+                bw.write("\n");
+            }
+        }
+        bw.close();
+
+        //fluids
+        //fluid.[name]=[LocalName]
+        //fluid.[name]=[LocalName] Gas
+
+
+        //blocks
+        //tile.contenttweaker.[name].name=[LocalName]
+
+
+        //items
+        //item.contenttweaker.[name].name=[LocalName]
+
+    }
+
     //process ores and blocks here
 
     public static void build() {
@@ -378,10 +571,35 @@ public class Reg {
         System.out.println("#loader contenttweaker\n" +
                 "import mods.contenttweaker.Material;\n" +
                 "import mods.contenttweaker.MaterialSystem;\n" +
-                "import mods.contenttweaker.PartBuilder;\n");
+                "import mods.contenttweaker.PartBuilder;\n" +
+                "import mods.contenttweaker.VanillaFactory;\n" +
+                "import mods.contenttweaker.Block;\n" +
+                "import mods.contenttweaker.Color;\n");
+
+        //block registration
+        System.out.println("# -blocks:");
+        for (Block b : blocks) {
+            System.out.println(b);
+        }
+        System.out.println();
+
+        //item registration
+        System.out.println("# -items:");
+        for (Item i : items) {
+            System.out.println(i);
+        }
+        System.out.println();
+
+        //fluid registration
+        System.out.println("# -fluids:");
+        for (Fluid f : fluids) {
+            System.out.println(f);
+        }
+        System.out.println();
 
         //part registration
-        System.out.println("# part registration:");
+        System.out.println("# -parts:");
+        System.out.println();
         for (Part p : parts) {
             if (!p.exists) {
                 System.out.println(p);
@@ -390,13 +608,13 @@ public class Reg {
         System.out.println();
 
         //part group definitions
-        System.out.println("# part groups:");
+        System.out.println("# -partgroups");
         for (PartGroup p : partgroups) {
             System.out.println(p);
         }
 
         //material registration and parts
-        System.out.println("# material registration");
+        System.out.println("# -materials");
         for (Material m : materials) {
             System.out.println(m);
         }

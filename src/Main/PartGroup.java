@@ -21,19 +21,12 @@ public class PartGroup {
 
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("var ");
-        sb.append(this.name);
-        sb.append(" = [\n");
+        sb.append("var "); sb.append(this.name); sb.append(" = [");
         for(int i = 0; i < this.parts.length-1; i++) {
-            sb.append("\t\"");
-            sb.append(this.parts[i].name);
-            sb.append("\"");
-            sb.append(",\n");
+            sb.append("\""); sb.append(this.parts[i].name); sb.append("\""); sb.append(", ");
         }
-        sb.append("\t\"");
-        sb.append(this.parts[this.parts.length-1].name);
-        sb.append("\"\n");
-        sb.append("] as string[];\n");
+        sb.append("\""); sb.append(this.parts[this.parts.length-1].name); sb.append("\""); sb.append("] as string[];\n");
+
         return sb.toString();
     }
 }
