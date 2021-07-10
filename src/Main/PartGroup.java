@@ -25,7 +25,7 @@ public class PartGroup {
         for(int i = 0; i < this.parts.length-1; i++) {
             sb.append("\""); sb.append(this.parts[i].name); sb.append("\""); sb.append(", ");
         }
-        sb.append("\""); sb.append(this.parts[this.parts.length-1].name); sb.append("\""); sb.append("] as string[];\n");
+        sb.append("\""); sb.append(this.parts[this.parts.length-1].name); sb.append("\""); sb.append("] as string[];");
 
         return sb.toString();
     }

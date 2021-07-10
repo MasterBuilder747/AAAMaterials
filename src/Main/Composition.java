@@ -1,7 +1,5 @@
 package Main;
 
-import org.jetbrains.annotations.NotNull;
-
 public class Composition {
     //an array of elements and/or compounds that are contained in a material.
     //used primarily to generate a tooltip for every item
@@ -11,26 +9,26 @@ public class Composition {
     boolean isMaterial;
     Composition comp; //the next one in the linked list
 
-    public Composition(@NotNull Element e) {
+    public Composition(Element e) {
         this.e = e;
         this.amount = 1;
     }
-    public Composition(@NotNull Element e, int amount) {
+    public Composition(Element e, int amount) {
         this.e = e;
         this.amount = amount;
     }
-    public Composition(@NotNull Material m) {
+    public Composition(Material m) {
         this.m = m;
         this.amount = 1;
         this.isMaterial = true;
     }
-    public Composition(@NotNull Material m, int amount) {
+    public Composition(Material m, int amount) {
         this.m = m;
         this.amount = amount;
         this.isMaterial = true;
     }
 
-    public void add(@NotNull Composition c) {
+    public void add(Composition c) {
         this.comp = c;
     }
 

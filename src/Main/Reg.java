@@ -16,10 +16,12 @@ public class Reg {
     private static final ArrayList<Composition> compositions = new ArrayList<>();
     private static final ArrayList<Material> materials = new ArrayList<>();
 
+    public static String pc = "C:\\Users\\jaath\\IdeaProjects\\AAAMaterials\\src\\";
+    public static String mac = "/Users/jaudras/IdeaProjects/AAAMaterials/src/";
+    public static String home = pc; //home directory, specified at startup
+
     public static void regBlocks() throws IOException {
-        String pc = "C:\\Users\\jaath\\IdeaProjects\\AAAMaterials\\src\\blocks.txt";
-        String mac = "/Users/jaudras/IdeaProjects/AAAMaterials/src/blocks.txt";
-        FileReader fr = new FileReader(mac);
+        FileReader fr = new FileReader(home+"blocks.txt");
         BufferedReader br = new BufferedReader(fr);
         readBlockFile(br);
     }
@@ -68,9 +70,7 @@ public class Reg {
     }
 
     public static void regItems() throws IOException {
-        String pc = "C:\\Users\\jaath\\IdeaProjects\\AAAMaterials\\src\\items.txt";
-        String mac = "/Users/jaudras/IdeaProjects/AAAMaterials/src/items.txt";
-        FileReader fr = new FileReader(mac);
+        FileReader fr = new FileReader(home+"items.txt");
         BufferedReader br = new BufferedReader(fr);
         readItemFile(br);
     }
@@ -86,7 +86,11 @@ public class Reg {
         while (true) {
             String s1 = br.readLine();
             if (s1 != null) {
-                items.add(new Item(s1));
+                //String name, String localName
+                String[] s = s1.replace(" ", "").split(",\\s*");
+                if (s.length != 2) throw new IllegalArgumentException("items.txt: Expected 2 parameters at line " + line);
+                String local = s[1].replace("-", " ");
+                items.add(new Item(s[0], local));
             } else {
                 break;
             }
@@ -111,9 +115,7 @@ public class Reg {
     }
 
     public static void regFluids() throws IOException {
-        String pc = "C:\\Users\\jaath\\IdeaProjects\\AAAMaterials\\src\\fluids-gases.txt";
-        String mac = "/Users/jaudras/IdeaProjects/AAAMaterials/src/fluids-gases.txt";
-        FileReader fr = new FileReader(mac);
+        FileReader fr = new FileReader(home+"fluids-gases.txt");
         BufferedReader br = new BufferedReader(fr);
         readFluidFile(br);
     }
@@ -129,10 +131,16 @@ public class Reg {
         while (true) {
             String s1 = br.readLine();
             if (s1 != null) {
-                //String name, String hexColor
+                //String name, String hexColor, boolean isGas
                 String[] s = s1.replace(" ", "").split(",\\s*");
-                if (s.length != 2) throw new IllegalArgumentException("fluids-gases.txt: Expected 2 parameters at line " + line);
-                fluids.add(new Fluid(s[0], s[1]));
+                if (s.length != 3) throw new IllegalArgumentException("fluids-gases.txt: Expected 3 parameters at line " + line);
+                if (s[2].matches("true")) {
+                    fluids.add(new Fluid(s[0], s[1], true));
+                } else if (s[2].matches("false")) {
+                    fluids.add(new Fluid(s[0], s[1], false));
+                } else {
+                    throw new IllegalArgumentException("fluids-gases.txt: Unknown parameter for gas definition at line " + line);
+                }
             } else {
                 break;
             }
@@ -157,9 +165,7 @@ public class Reg {
     }
 
     public static void regParts() throws IOException {
-        String pc = "C:\\Users\\jaath\\IdeaProjects\\AAAMaterials\\src\\parts.txt";
-        String mac = "/Users/jaudras/IdeaProjects/AAAMaterials/src/parts.txt";
-        FileReader fr = new FileReader(mac);
+        FileReader fr = new FileReader(home+"parts.txt");
         BufferedReader br = new BufferedReader(fr);
         readPartFile(br);
     }
@@ -229,9 +235,7 @@ public class Reg {
     }
 
     public static void regPartGroups() throws IOException {
-        String pc = "C:\\Users\\jaath\\IdeaProjects\\AAAMaterials\\src\\partgroups.txt";
-        String mac = "/Users/jaudras/IdeaProjects/AAAMaterials/src/partgroups.txt";
-        FileReader fr = new FileReader(mac);
+        FileReader fr = new FileReader(home+"partgroups.txt");
         BufferedReader br = new BufferedReader(fr);
         readPartGroupFile(br);
     }
@@ -292,9 +296,7 @@ public class Reg {
     }
 
     public static void regElements() throws IOException {
-        String pc = "C:\\Users\\jaath\\IdeaProjects\\AAAMaterials\\src\\elements.txt";
-        String mac = "/Users/jaudras/IdeaProjects/AAAMaterials/src/elements.txt";
-        FileReader fr = new FileReader(mac);
+        FileReader fr = new FileReader(home+"elements.txt");
         BufferedReader br = new BufferedReader(fr);
         readElementFile(br);
     }
@@ -364,9 +366,7 @@ public class Reg {
     }
 
     public static void regCompositions() throws IOException {
-        String pc = "C:\\Users\\jaath\\IdeaProjects\\AAAMaterials\\src\\compositions.txt";
-        String mac = "/Users/jaudras/IdeaProjects/AAAMaterials/src/compositions.txt";
-        FileReader fr = new FileReader(mac);
+        FileReader fr = new FileReader(home+"compositions.txt");
         BufferedReader br = new BufferedReader(fr);
         readCompositionFile(br);
     }
@@ -412,9 +412,7 @@ public class Reg {
     }
 
     public static void regMaterials() throws IOException {
-        String pc = "C:\\Users\\jaath\\IdeaProjects\\AAAMaterials\\src\\materials.txt";
-        String mac = "/Users/jaudras/IdeaProjects/AAAMaterials/src/materials.txt";
-        FileReader fr = new FileReader(mac);
+        FileReader fr = new FileReader(home+"materials.txt");
         BufferedReader br = new BufferedReader(fr);
         readMaterialFile(br);
     }
@@ -511,9 +509,7 @@ public class Reg {
     //generate the .lang file based off of what is registered at this point
     //path: ./resources/contenttweaker/lang/en_us.lang
     public static void genLang() throws IOException {
-        String pc = "C:\\Users\\jaath\\IdeaProjects\\AAAMaterials\\src\\en_us.lang";
-        String mac = "/Users/jaudras/IdeaProjects/AAAMaterials/src/en_us.lang";
-        FileWriter fw = new FileWriter(mac);
+        FileWriter fw = new FileWriter(home+"en_us.lang");
         BufferedWriter bw = new BufferedWriter(fw);
 
         //materials don't need localization!
@@ -548,6 +544,41 @@ public class Reg {
                 bw.write("\n");
             }
         }
+        bw.write("\n");
+
+        //items
+        for (Item i : items) {
+            bw.write("item.contenttweaker.");
+            bw.write(i.name);
+            bw.write(".name=");
+            bw.write(i.localName);
+            bw.write("\n");
+        }
+        bw.write("\n");
+
+        //blocks
+        for (Block b : blocks) {
+            bw.write("tile.contenttweaker.");
+            bw.write(b.name);
+            bw.write(".name=");
+            bw.write(b.name.substring(0, 1).toUpperCase(Locale.ROOT));
+            bw.write(b.name.substring(1));
+            bw.write("\n");
+        }
+        bw.write("\n");
+
+        //fluids
+        for (Fluid f : fluids) {
+            bw.write("fluid.");
+            bw.write(f.name);
+            bw.write("=");
+            bw.write(f.name.substring(0, 1).toUpperCase(Locale.ROOT));
+            bw.write(f.name.substring(1));
+            if (f.gas) bw.write(" Gas");
+            bw.write("\n");
+        }
+        bw.write("\n");
+
         bw.close();
 
         //fluids
@@ -566,59 +597,70 @@ public class Reg {
 
     //process ores and blocks here
 
-    public static void build() {
+    public static void build() throws IOException {
+        FileWriter fw = new FileWriter(home+"script.zs");
+        BufferedWriter bw = new BufferedWriter(fw);
+
         //starting script code
-        System.out.println("#loader contenttweaker\n" +
+        bw.write("#loader contenttweaker\n" +
                 "import mods.contenttweaker.Material;\n" +
                 "import mods.contenttweaker.MaterialSystem;\n" +
                 "import mods.contenttweaker.PartBuilder;\n" +
                 "import mods.contenttweaker.VanillaFactory;\n" +
                 "import mods.contenttweaker.Block;\n" +
-                "import mods.contenttweaker.Color;\n");
+                "import mods.contenttweaker.Color;\n\n");
 
         //block registration
-        System.out.println("# -blocks:");
+        bw.write("# -blocks:\n");
         for (Block b : blocks) {
-            System.out.println(b);
+            bw.write(b.toString());
+            bw.write("\n");
         }
-        System.out.println();
+        bw.write("\n");
 
         //item registration
-        System.out.println("# -items:");
+        bw.write("# -items:\n");
         for (Item i : items) {
-            System.out.println(i);
+            bw.write(i.toString());
+            bw.write("\n");
         }
-        System.out.println();
+        bw.write("\n");
 
         //fluid registration
-        System.out.println("# -fluids:");
+        bw.write("# -fluids:\n");
         for (Fluid f : fluids) {
-            System.out.println(f);
+            bw.write(f.toString());
+            bw.write("\n");
         }
-        System.out.println();
+        bw.write("\n");
 
         //part registration
-        System.out.println("# -parts:");
-        System.out.println();
+        bw.write("# -parts:\n");
         for (Part p : parts) {
             if (!p.exists) {
-                System.out.println(p);
+                bw.write(p.toString());
+                bw.write("\n");
             }
         }
-        System.out.println();
+        bw.write("\n");
 
         //part group definitions
-        System.out.println("# -partgroups");
+        bw.write("# -partgroups\n");
         for (PartGroup p : partgroups) {
-            System.out.println(p);
+            bw.write(p.toString());
+            bw.write("\n");
         }
+        bw.write("\n");
 
         //material registration and parts
-        System.out.println("# -materials");
+        bw.write("# -materials\n");
         for (Material m : materials) {
-            System.out.println(m);
+            bw.write(m.toString());
+            bw.write("\n");
         }
-        System.out.println();
+        bw.write("\n");
+
+        bw.close();
     }
 
     //Compositions

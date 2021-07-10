@@ -39,11 +39,12 @@ public class Block {
     }
 
     public String toString() {
-        return "var " + this.name + "block = VanillaFactory.createBlock(\"" + this.name + "\", <blockmaterial:" + this.material + ">)\n" +
-                "\t.setBlockHardness(" + this.hardness + ")\n" +
-                "\t.setBlockResistance(" + this.resistance + ")\n" +
-                "\t.setToolClass(" + this.tool + ")\n" +
-                "\t.setToolLevel(" + this.miningLevel + ")\n" +
-                "\t.register();";
+        String name = this.name + "block";
+        return "var " + name + " = VanillaFactory.createBlock(\"" + this.name + "\", <blockmaterial:" + this.material + ">);\n" +
+            name + ".setBlockHardness(" + this.hardness + ");\n" +
+            name + ".setBlockResistance(" + this.resistance + ");\n" +
+            name + ".setToolClass(\"" + this.tool + "\");\n" +
+            name + ".setToolLevel(" + this.miningLevel + ");\n" +
+            name + ".register();";
     }
 }

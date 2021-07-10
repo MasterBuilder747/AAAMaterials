@@ -1,1 +1,1 @@
-circuit_lv
+circuit_lv, LV-Circuit
