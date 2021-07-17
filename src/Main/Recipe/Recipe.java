@@ -1,4 +1,6 @@
-package Main;
+package Main.Recipe;
+
+import Main.Data.Material;
 
 public class Recipe {
     //defines the power needed for a material process to occur

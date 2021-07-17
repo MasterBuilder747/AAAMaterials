@@ -1,16 +1,20 @@
-package Main;
+package Main.Data;
 
-public class Item {
-    String name;
-    String localName;
+public class Item extends Data {
+    private final String localName;
 
     public Item(String name, String localName) {
+        super(name);
         this.localName = localName;
-        this.name = name;
     }
 
     public String toString() {
         String var = this.name + "item";
         return "var " + var + " = mods.contenttweaker.VanillaFactory.createItem(\"" + this.name + "\").register();";
+    }
+
+    @Override
+    public void print() {
+        System.out.println(this.name);
     }
 }

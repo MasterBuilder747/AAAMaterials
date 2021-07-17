@@ -1,4 +1,4 @@
-package Main;
+package Main.Recipe;
 
 public class Gem {
     //automatically adds gem parts, no parameters for now

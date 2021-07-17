@@ -1,15 +1,15 @@
-package Main;
+package Main.Data;
 
-public class PartGroup {
+public class PartGroup extends Data {
     //defines a Part[] in zs form
-    String name;
     Part[] parts;
 
-    PartGroup(String name, Part[] parts) {
-        this.name = name;
+    public PartGroup(String name, Part[] parts) {
+        super(name);
         this.parts = parts;
     }
 
+    @Override
     public void print() {
         System.out.print(this.name + ": ");
         for(int i = 0; i < this.parts.length-1; i++) {

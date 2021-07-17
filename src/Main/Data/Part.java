@@ -1,17 +1,16 @@
-package Main;
+package Main.Data;
 
-public class Part {
+public class Part extends Data {
     //this defines a material part to be used in materials
-    String name;
-    String localName;
     String type;
     boolean hasOverlay;
     String oreDict;
     boolean exists;
+    public String localName;
 
-    public Part(String name, boolean hasOverlay) {
-        this.name = name;
-        this.localName = name;
+    public Part(String name, String localName, boolean hasOverlay) {
+        super(name);
+        this.localName = localName;
         this.type = "item"; //default
         this.hasOverlay = hasOverlay;
         if (name.contains("_")) {
@@ -24,9 +23,10 @@ public class Part {
     //this part already exists in contentTweaker
     //to be used in a PartGroup
     public Part(String name) {
-        this.name = name;
+        super(name);
         this.exists = true;
     }
+
     public void setType(String t) {
         this.type = t;
     }

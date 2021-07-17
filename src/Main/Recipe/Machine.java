@@ -1,4 +1,4 @@
-package Main;
+package Main.Recipe;
 
 public class Machine {
     //defines a machine based on its input and output types

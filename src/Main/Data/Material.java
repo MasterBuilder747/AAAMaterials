@@ -1,9 +1,9 @@
-package Main;
+package Main.Data;
 
-public class Material {
+import Main.Composition;
+
+public class Material extends Data {
     //required components
-    String name;
-    String localName;
     String color;
 
     //states (other than solid)
@@ -23,16 +23,14 @@ public class Material {
     int separation; //-1 = chemical, 1 = physical separation/combination, 0 is none
     int combination; //-1 = chemical, 1 = physical separation/combination, 0 is none
     Composition composition; //a string of defined element(s) and their count(s) in a string with special syntax
+    private final String localName;
 
 
     //1) set basic info
     public Material(String name, String localName, String color) {
-        this.name = name;
+        super(name);
         this.localName = localName;
         this.color = color;
-    }
-    private Material() {
-
     }
 
     //2) element or compound? Cannot be both (can be neither if applicable)
@@ -68,11 +66,11 @@ public class Material {
     public String toString() {
         return buildBuilder() + buildMaterial();
     }
-    public String buildBuilder() {
+    private String buildBuilder() {
         //1) build the material
         return "var " + this.name + " = MaterialSystem.getMaterialBuilder().setName(\"" + this.localName + "\").setColor(Color.fromHex(" + this.color + ")).build();\n";
     }
-    public String buildMaterial() {
+    private String buildMaterial() {
         StringBuilder sb = new StringBuilder();
         //make sure the vars are defined since they are in the same scope
         //2) generate parts, ores, blocks (get variable arrays)
@@ -147,5 +145,10 @@ public class Material {
         if (this.combination == 1) System.out.print("physical combination ");
         if (this.combination == 0) System.out.print("no combination ");
         System.out.println();
+    }
+
+    @Override
+    public void print() {
+        this.displayAttributes();
     }
 }

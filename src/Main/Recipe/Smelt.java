@@ -1,4 +1,4 @@
-package Main;
+package Main.Recipe;
 
 public class Smelt {
     //defaults to false

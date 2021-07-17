@@ -1,8 +1,6 @@
-package Main;
+package Main.Data;
 
-public class Block {
-    String name; //the material name
-
+public class Block extends Data {
     //defines block properties for one block
     int hardness = 5;
     int resistance = 6;
@@ -11,7 +9,7 @@ public class Block {
     String tool = "pickaxe";
 
     public Block(String name, String material, int hardness, int resistance, int miningLevel, String tool) {
-        this.name = name;
+        super(name);
         this.material = material;
         this.hardness = hardness;
         this.resistance = resistance;
@@ -20,20 +18,14 @@ public class Block {
     }
     //for ores only
     public Block(String name, int hardness, int resistance, int miningLevel) {
-        this.name = name;
+        super(name);
         this.material = "rock";
         this.hardness = hardness;
         this.resistance = resistance;
         this.miningLevel = miningLevel;
     }
-    public Block(String name) {
-        //use all default values
-        this.name = name;
-    }
-    private Block() {
 
-    }
-
+    @Override
     public void print() {
         System.out.println(this.material + "; " + this.name + ": " + this.hardness + ", " + this.resistance + ", " + this.tool + ", " + this.miningLevel);
     }

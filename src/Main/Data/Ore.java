@@ -1,10 +1,9 @@
-package Main;
+package Main.Data;
 
-public class Ore {
+public class Ore extends Data {
     //generates ores and its components for a specified material
     //Also handles generation (2 files)
     Block[] b;
-    String name; //the material name
     String[] variants; //name of the blocks themselves
     String[] tools;
     int[] hardness;
@@ -12,16 +11,13 @@ public class Ore {
     int[] miningLevel;
 
     public Ore(String name, Block[] b) {
-        this.name = name;
+        super(name);
         this.b = b;
         this.variants = new String[b.length];
         this.tools = new String[b.length];
         this.hardness = new int[b.length];
         this.resistance = new int[b.length];
         this.miningLevel = new int[b.length];
-    }
-    private Ore() {
-
     }
 
     public String build() {
@@ -70,5 +66,10 @@ public class Ore {
         sb.append("}");
 
         return sb.toString();
+    }
+
+    @Override
+    public void print() {
+        System.out.println(this.name);
     }
 }

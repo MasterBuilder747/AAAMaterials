@@ -1,9 +1,7 @@
-package Main;
+package Main.Data;
 
-public class Element {
-
+public class Element extends Data {
     //PT general classification
-    public String name;
     public String symbol;
     int number;
     double weight;
@@ -21,7 +19,7 @@ public class Element {
     int boiling; //liquid -> gas
 
     public Element(int period, int group, int number, String symbol, String name, double weight) {
-        this.name = name;
+        super(name);
         this.period = period;
         this.group = group;
         this.number = number;
@@ -31,7 +29,7 @@ public class Element {
     }
     //allows for custom elements not in the known ptable
     public Element(String name, String symbol) {
-        this.name = name;
+        super(name);
         this.symbol= symbol;
     }
 
@@ -44,8 +42,8 @@ public class Element {
 
     //period, number, symbol, name, weight
     //1: H, Hydrogen, 1, 1.008
-    public String print() {
-        return this.period + ", " + this.group + ": " + this.symbol + ", " + this.name + ", " + this.number + ", " + this.weight;
+    public void print() {
+        System.out.println(this.period + ", " + this.group + ": " + this.symbol + ", " + this.name + ", " + this.number + ", " + this.weight);
     }
     public String toString() {
         return this.symbol;
