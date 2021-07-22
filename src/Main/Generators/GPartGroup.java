@@ -8,8 +8,8 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 public class GPartGroup extends Generator<PartGroup> {
-    GPartGroup(String name) {
-        super(name);
+    public GPartGroup(String filename) {
+        super(filename);
     }
 
     @Override
@@ -31,7 +31,7 @@ public class GPartGroup extends Generator<PartGroup> {
                 }
                 ArrayList<Part> partgroup = new ArrayList<>();
                 for (String s : parts) {
-                    if (isP(s)) {
+                    if (is(s)) {
                         partgroup.add(getP(s));
                     } else {
                         throw new IllegalArgumentException("partgroups.txt: Unknown part " + s + " at line " + line);

@@ -1,7 +1,5 @@
 package Main.Data;
 
-import Main.Composition;
-
 public class Material extends Data {
     //required components
     String color;
@@ -22,7 +20,7 @@ public class Material extends Data {
 
     int separation; //-1 = chemical, 1 = physical separation/combination, 0 is none
     int combination; //-1 = chemical, 1 = physical separation/combination, 0 is none
-    Composition composition; //a string of defined element(s) and their count(s) in a string with special syntax
+    public Composition composition; //a string of defined element(s) and their count(s) in a string with special syntax
     private final String localName;
 
 
@@ -63,15 +61,14 @@ public class Material extends Data {
     }
 
     //5) build the code based off these attributes
-    public String toString() {
-        return buildBuilder() + buildMaterial();
-    }
-    private String buildBuilder() {
-        //1) build the material
-        return "var " + this.name + " = MaterialSystem.getMaterialBuilder().setName(\"" + this.localName + "\").setColor(Color.fromHex(" + this.color + ")).build();\n";
-    }
-    private String buildMaterial() {
+    @Override
+    public String build() {
         StringBuilder sb = new StringBuilder();
+        //1) build the material
+        sb.append("var " + this.name + " = MaterialSystem.getMaterialBuilder().setName(\"" + this.localName + "\")" +
+                ".setColor(Color.fromHex(" + this.color + "))" +
+                ".build();\n");
+
         //make sure the vars are defined since they are in the same scope
         //2) generate parts, ores, blocks (get variable arrays)
         //Material.registerParts(ore);
@@ -113,7 +110,8 @@ public class Material extends Data {
         return sb.toString();
     }
 
-    public void displayAttributes() {
+    @Override
+    public void print() {
         System.out.print(this.name + ", " + this.localName + ", " + this.color + ", ");
 
         if (this.composition.isMaterial) {
@@ -145,10 +143,5 @@ public class Material extends Data {
         if (this.combination == 1) System.out.print("physical combination ");
         if (this.combination == 0) System.out.print("no combination ");
         System.out.println();
-    }
-
-    @Override
-    public void print() {
-        this.displayAttributes();
     }
 }

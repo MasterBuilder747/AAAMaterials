@@ -19,7 +19,8 @@ public class PartGroup extends Data {
         System.out.println(this.parts[this.parts.length-1].name);
     }
 
-    public String toString() {
+    @Override
+    public String build() {
         StringBuilder sb = new StringBuilder();
         sb.append("var "); sb.append(this.name); sb.append(" = [");
         for(int i = 0; i < this.parts.length-1; i++) {

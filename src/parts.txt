@@ -36,18 +36,17 @@ bolt
 ingot
 tiny_dust
 gear
-wire, true
-fine_wire, true
-coil, true
-hot_ingot, true
-dust_pure, true
-frame, true
-foil, false
-small_gear, false
-rotor, false
-screw, false
-tough_plate, false
-curved_plate, false
-small_rod, false
-morsel, false
-exquisite_gem, false
+wire, wire, true
+fine_wire, Fine Wire, true
+coil, Coil, true
+hot_ingot, Hot Ingot, true
+dust_pure, Pure Dust, true
+foil, Foil, false
+small_gear, Small Gear, false
+rotor, Rotor, false
+screw, Screw, false
+tough_plate, Tough Plate, false
+curved_plate, Curved Plate, false
+small_rod, Small Rod, false
+morsel, Morsel, false
+exquisite_gem, Exquisite Gem, false

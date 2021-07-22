@@ -7,7 +7,7 @@ import java.io.BufferedReader;
 import java.io.IOException;
 
 public class GElement extends Generator<Element> {
-    GElement(String name) {
+    public GElement(String name) {
         super(name);
     }
 

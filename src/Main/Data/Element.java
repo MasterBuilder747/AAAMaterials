@@ -42,10 +42,13 @@ public class Element extends Data {
 
     //period, number, symbol, name, weight
     //1: H, Hydrogen, 1, 1.008
+    @Override
     public void print() {
         System.out.println(this.period + ", " + this.group + ": " + this.symbol + ", " + this.name + ", " + this.number + ", " + this.weight);
     }
-    public String toString() {
-        return this.symbol;
+
+    @Override
+    public String build() {
+        return "";
     }
 }

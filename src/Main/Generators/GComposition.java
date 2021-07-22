@@ -1,60 +1,35 @@
-package Main;
+package Main.Generators;
 
-import Main.Data.Element;
-import Main.Data.Material;
+import Main.Data.Composition;
+import Main.Reg;
 
+import java.io.BufferedReader;
+import java.io.IOException;
 import java.util.ArrayList;
 
-public class Composition {
-    //an array of elements and/or compounds that are contained in a material.
-    //used primarily to generate a tooltip for every item
-    private Element e = null;
-    private Material m = null;
-    int amount;
-    boolean isMaterial;
-    Composition comp; //the next one in the linked list
+public class GComposition extends Generator<Composition> {
 
-    public Composition(Element e) {
-        this.e = e;
-        this.amount = 1;
-    }
-    public Composition(Element e, int amount) {
-        this.e = e;
-        this.amount = amount;
-    }
-    public Composition(Material m) {
-        this.m = m;
-        this.amount = 1;
-        this.isMaterial = true;
-    }
-    public Composition(Material m, int amount) {
-        this.m = m;
-        this.amount = amount;
-        this.isMaterial = true;
+    public GComposition(String name) {
+        super(name);
     }
 
-    public void add(Composition c) {
-        this.comp = c;
-    }
-
-    public String toString() {
-        //outputs the entire tooltip
-        //UTF-8 characters:
-        //0-9: \u2080-\u2089
-
-        StringBuilder sb = new StringBuilder();
-        if (this.isMaterial) {
-            sb.append(this.m.composition);
-        } else {
-            sb.append(this.e);
+    @Override
+    void readFile(BufferedReader br) throws IOException {
+        int line = 1;
+        while (true) {
+            String s1 = br.readLine(); //row value or atomic number
+            if (s1 != null) {
+                try {
+                    objects.add(createMoleculeComp(s1));
+                } catch (IllegalArgumentException e) {
+                    System.out.println("Error at line " + line + ":");
+                    objects.add(createMoleculeComp(s1));
+                }
+                line++;
+            } else {
+                break;
+            }
         }
-        if (this.amount != 1) {
-            sb.append(this.amount);
-        }
-        if (this.comp != null) {
-            sb.append(this.comp);
-        }
-        return sb.toString();
     }
 
     //Compositions
@@ -105,19 +80,19 @@ public class Composition {
         } else {
             for (int i = 0; i < s.length(); i++) {
                 String s0 = String.valueOf(s.charAt(i));
-                if (isOut(s, i+1)) {
+                if (Reg.isOut(s, i+1)) {
                     //symbol[Empty]
                     comps.add(new Composition(getE(s0)));
                 } else {
                     String s1 = String.valueOf(s.charAt(i+1));
-                    if (isNumeric(s1)) {
-                        if (isOut(s, i+2)) {
+                    if (Reg.isNumeric(s1)) {
+                        if (Reg.isOut(s, i+2)) {
                             //symbolNumber[Empty]
                             comps.add(new Composition(getE(s0), Integer.parseInt(s1)));
                             i++;
                         } else {
                             String s2 = String.valueOf(s.charAt(i+2));
-                            if (isNumeric(s2)) {
+                            if (Reg.isNumeric(s2)) {
                                 //symbolNumberNumber
                                 comps.add(new Composition(getE(s0), Integer.parseInt(s1+s2)));
                                 i+=2;
@@ -128,15 +103,15 @@ public class Composition {
                             }
                         }
                     } else {
-                        if (!isUppercase(s1)) {
-                            if (isOut(s, i+2)) {
+                        if (!Reg.isUppercase(s1)) {
+                            if (Reg.isOut(s, i+2)) {
                                 //symbolSymbol[Empty]
                                 comps.add(new Composition(getE(s0+s1)));
                                 i++;
                             } else {
                                 String s2 = String.valueOf(s.charAt(i+2));
-                                if (isOut(s, i+3)) {
-                                    if (isNumeric(s2)) {
+                                if (Reg.isOut(s, i+3)) {
+                                    if (Reg.isNumeric(s2)) {
                                         //symbolSymbolNumber[Empty]
                                         comps.add(new Composition(getE(s0+s1), Integer.parseInt(s2)));
                                         i+=2;
@@ -146,9 +121,9 @@ public class Composition {
                                         i++;
                                     }
                                 } else {
-                                    if (isNumeric(s2)) {
+                                    if (Reg.isNumeric(s2)) {
                                         String s3 = String.valueOf(s.charAt(i+3));
-                                        if (isNumeric(s3)) {
+                                        if (Reg.isNumeric(s3)) {
                                             //symbolSymbolNumberNumber
                                             comps.add(new Composition(getE(s0+s1), Integer.parseInt(s2+s3)));
                                             i+=3;

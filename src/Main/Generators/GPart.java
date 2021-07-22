@@ -5,10 +5,10 @@ import Main.Data.Part;
 import java.io.BufferedReader;
 import java.io.IOException;
 
-public class GPart extends Generator<Part> {
+public class GPart extends LocalGenerator<Part> {
 
-    GPart(String name, String localName) {
-        super(name);
+    public GPart(String filename) {
+        super(filename);
     }
 
     @Override
@@ -17,15 +17,16 @@ public class GPart extends Generator<Part> {
         while (true) {
             String s1 = br.readLine();
             if (s1 != null) {
-                //String name, boolean hasOverlay
                 String[] s = s1.replace(" ", "").split(",\\s*");
                 if (s.length < 1 || s.length > 3) {
                     throw new IllegalArgumentException("parts.txt: Expected 1, 2, or 3 parameters at line " + line);
                 }
 
                 if (s.length == 1) {
-                    objects.add(new Part(s[0]));
+                    //String existingPartName
+                    objects.add(new Part(s[0], ""));
                 }
+                //String name, String localName, boolean hasOverlay
                 if (s.length == 2) {
                     if (s[1].matches("true")) {
                         objects.add(new Part(s[0], true));

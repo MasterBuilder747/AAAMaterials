@@ -8,30 +8,42 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
 
-public abstract class Generator<E extends Data> {
-    //defines a data generating object
-    public String name; //the data type, capitalized, used for logging
-    final ArrayList<E> objects;
+public abstract class Generator<D extends Data> {
+    //holds an arraylist and can generate code using it
+    String filename; //the name of the file
+    ArrayList<D> objects;
 
-    Generator(String name) {
-        this.name = name;
+    public Generator(String filename) {
+        this.filename = filename;
         objects = new ArrayList<>();
     }
 
-    public void register() throws IOException {
-        FileReader fr = new FileReader(Reg.home+this.name.toLowerCase()+".txt");
+    public String register() throws IOException {
+        //read the file
+        FileReader fr = new FileReader(Reg.HOME+this.filename.toLowerCase()+".txt");
         BufferedReader br = new BufferedReader(fr);
+        //populate the ArrayList
         readFile(br);
+        StringBuilder sb = new StringBuilder();
+        //output the zs code for each object
+        sb.append("# -");
+        sb.append(this.filename);
+        sb.append("s\n");
+        for (D o : objects) {
+            sb.append(o.build());
+        }
+        sb.append("\n");
+        return sb.toString();
     }
     abstract void readFile(BufferedReader br) throws IOException; //this populates the arraylist with the specified object
 
     public Data get(String s) {
-        for (E o : objects) {
+        for (D o : objects) {
             if (o.name.matches(s)) {
                 return o;
             }
         }
-        throw new IllegalArgumentException("Unknown block: " + name);
+        throw new IllegalArgumentException("Unknown " + filename + ": " + s);
     }
     public boolean is(String s) {
         try {
@@ -42,8 +54,8 @@ public abstract class Generator<E extends Data> {
         return true;
     }
     public void print() {
-        System.out.println(this.name+":");
-        for (E o : objects) {
+        System.out.println(this.filename +":");
+        for (D o : objects) {
             System.out.println(o.name);
         }
         System.out.println();

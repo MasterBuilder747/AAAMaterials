@@ -20,6 +20,7 @@ public class Ore extends Data {
         this.miningLevel = new int[b.length];
     }
 
+    @Override
     public String build() {
         for (int i = 0; i < this.b.length; i++) {
             this.variants[i] = this.b[i].name;

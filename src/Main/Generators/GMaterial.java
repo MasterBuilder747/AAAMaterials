@@ -1,13 +1,13 @@
 package Main.Generators;
 
-import Main.Composition;
+import Main.Data.Composition;
 import Main.Data.Material;
 
 import java.io.BufferedReader;
 import java.io.IOException;
 
 public class GMaterial extends Generator<Material> {
-    GMaterial(String name) {
+    public GMaterial(String name) {
         super(name);
     }
 
@@ -35,14 +35,14 @@ public class GMaterial extends Generator<Material> {
                 //composition must already be registered
                 Composition j;
                 if (isC(s[3])) {
-                    j = createMoleculeComp(s[3]);
+                    j = Composition.createMoleculeComp(s[3]);
                 } else {
                     if (s[3].contains("[") && s[3].contains("]")) {
                         try {
-                            j = createCompoundComp(s[3]);
+                            j = Composition.createCompoundComp(s[3]);
                         } catch (IllegalArgumentException e) {
                             System.out.println("materials.txt: Error at line " + line + ":");
-                            j = createCompoundComp(s[3]);
+                            j = Composition.createCompoundComp(s[3]);
                         }
                     } else {
                         throw new IllegalArgumentException("materials.txt: Incorrect composition for material " + s[0] + " at line " + line);
