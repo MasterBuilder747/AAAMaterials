@@ -20,7 +20,7 @@ public abstract class Generator<D extends Data> {
 
     public String register() throws IOException {
         //read the file
-        FileReader fr = new FileReader(Reg.HOME+this.filename.toLowerCase()+".txt");
+        FileReader fr = new FileReader(Reg.HOME+this.filename.toLowerCase()+"s.txt");
         BufferedReader br = new BufferedReader(fr);
         //populate the ArrayList
         readFile(br);
@@ -37,7 +37,7 @@ public abstract class Generator<D extends Data> {
     }
     abstract void readFile(BufferedReader br) throws IOException; //this populates the arraylist with the specified object
 
-    public Data get(String s) {
+    public D get(String s) {
         for (D o : objects) {
             if (o.name.matches(s)) {
                 return o;

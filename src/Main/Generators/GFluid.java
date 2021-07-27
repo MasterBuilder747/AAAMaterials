@@ -25,7 +25,7 @@ public class GFluid extends LocalGenerator<Fluid> {
                 } else if (s[3].matches("false")) {
                     objects.add(new Fluid(s[0], s[1], s[2], false));
                 } else {
-                    throw new IllegalArgumentException("fluids-gases.txt: Unknown parameter for gas definition at line " + line);
+                    throw new IllegalArgumentException("fluids-gases.txt: Unknown boolean for gas definition at line " + line);
                 }
             } else {
                 break;

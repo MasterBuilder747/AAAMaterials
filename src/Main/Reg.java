@@ -14,13 +14,18 @@ public class Reg {
     private final static GFluid fluid = new GFluid("fluid");
     private final static GPart part = new GPart("part");
 
+    private final static GPartGroup partGroup = new GPartGroup("partgroup", part);
+
     private final static GElement element = new GElement("element");
-    private final static GPartGroup partGroup = new GPartGroup("partgroup");
-    private final static GComposition composition = new GComposition("composition");
-    private final static GMaterial material = new GMaterial("material");
+    private final static GMolecule molecule = new GMolecule("moleculeComposition", element);
+    private final static GMolMaterial molMat = new GMolMaterial("moleculeMaterial", molecule);
+    private final static GCompound compound = new GCompound("compoundComposition", element, molMat);
+    private final static GCompMaterial compMat = new GCompMaterial("compoundMaterial", compound);
+
     private final static GOre ore = new GOre("ore");
 
     public static void build() throws IOException {
+
         FileWriter fw = new FileWriter(HOME +"s.zs");
         BufferedWriter bw = new BufferedWriter(fw);
 
@@ -36,11 +41,14 @@ public class Reg {
         bw.write(item.register());
         bw.write(fluid.register());
         bw.write(part.register());
+        bw.write(partGroup.register());
 
         bw.write(element.register());
-        bw.write(partGroup.register());
-        bw.write(composition.register());
-        bw.write(material.register());
+        bw.write(molecule.register());
+        bw.write(molMat.register());
+        bw.write(compound.register());
+        bw.write(compMat.register());
+
         bw.write(ore.register());
         bw.close();
     }

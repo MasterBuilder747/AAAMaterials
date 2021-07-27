@@ -8,8 +8,11 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 public class GPartGroup extends Generator<PartGroup> {
-    public GPartGroup(String filename) {
+    GPart parts;
+
+    public GPartGroup(String filename, GPart parts) {
         super(filename);
+        this.parts = parts;
     }
 
     @Override
@@ -25,14 +28,14 @@ public class GPartGroup extends Generator<PartGroup> {
                 String trim = s1.replaceAll(" ", "");
                 String name = trim.substring(0, s1.indexOf(":"));
                 String s2 = trim.substring(s1.indexOf(":")+1);
-                String[] parts = s2.split(",\\s*");
-                if (parts.length == 0) {
+                String[] partNames = s2.split(",\\s*");
+                if (partNames.length == 0) {
                     throw new IllegalArgumentException("partgroups.txt: Empty parts at line " + line);
                 }
                 ArrayList<Part> partgroup = new ArrayList<>();
-                for (String s : parts) {
-                    if (is(s)) {
-                        partgroup.add(getP(s));
+                for (String s : partNames) {
+                    if (parts.is(s)) {
+                        partgroup.add(parts.get(s));
                     } else {
                         throw new IllegalArgumentException("partgroups.txt: Unknown part " + s + " at line " + line);
                     }

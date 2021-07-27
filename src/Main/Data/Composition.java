@@ -9,20 +9,24 @@ public class Composition extends Data {
     public boolean isMaterial;
     public Composition comp; //the next one in the linked list
 
-    public Composition(Element e) {
+    public Composition(String name, Element e) {
+        super(name);
         this.e = e;
         this.amount = 1;
     }
-    public Composition(Element e, int amount) {
+    public Composition(String name, Element e, int amount) {
+        super(name);
         this.e = e;
         this.amount = amount;
     }
-    public Composition(Material m) {
+    public Composition(String name, Material m) {
+        super(name);
         this.m = m;
         this.amount = 1;
         this.isMaterial = true;
     }
-    public Composition(Material m, int amount) {
+    public Composition(String name, Material m, int amount) {
+        super(name);
         this.m = m;
         this.amount = amount;
         this.isMaterial = true;

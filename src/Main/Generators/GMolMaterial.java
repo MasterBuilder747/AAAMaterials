@@ -6,9 +6,15 @@ import Main.Data.Material;
 import java.io.BufferedReader;
 import java.io.IOException;
 
-public class GMaterial extends Generator<Material> {
-    public GMaterial(String name) {
+public class GMolMaterial extends Generator<Material> {
+    //these are materials that contain a single element in their composition, or a molecule
+    //these are base materials that do not contain any sub materials in their composition
+
+    GMolecule comp;
+
+    public GMolMaterial(String name, GMolecule comp) {
         super(name);
+        this.comp = comp;
     }
 
     @Override
@@ -32,21 +38,12 @@ public class GMaterial extends Generator<Material> {
                 Material m;
                 m = new Material(s[0], s[1], s[2]);
 
-                //composition must already be registered
+                //molecule composition must already be registered
                 Composition j;
-                if (isC(s[3])) {
-                    j = Composition.createMoleculeComp(s[3]);
+                if (comp.is(s[3])) {
+                    j = comp.createMoleculeComp(s[3]);
                 } else {
-                    if (s[3].contains("[") && s[3].contains("]")) {
-                        try {
-                            j = Composition.createCompoundComp(s[3]);
-                        } catch (IllegalArgumentException e) {
-                            System.out.println("materials.txt: Error at line " + line + ":");
-                            j = Composition.createCompoundComp(s[3]);
-                        }
-                    } else {
-                        throw new IllegalArgumentException("materials.txt: Incorrect composition for material " + s[0] + " at line " + line);
-                    }
+                    throw new IllegalArgumentException(this.filename + ".txt: Unknown molecule composition: " + s[3] + " at line " + line);
                 }
 
                 //state
