@@ -1,7 +1,7 @@
 package Main.Generators;
 
 import Main.Data.Data;
-import Main.Reg;
+import Main.Main;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
@@ -19,20 +19,25 @@ public abstract class Generator<D extends Data> {
     }
 
     public String register() throws IOException {
-        //read the file
-        FileReader fr = new FileReader(Reg.HOME+this.filename.toLowerCase()+"s.txt");
+        //read: populate the ArrayList
+        FileReader fr = new FileReader(Main.HOME + this.filename.toLowerCase() + "s.txt");
         BufferedReader br = new BufferedReader(fr);
-        //populate the ArrayList
         readFile(br);
+        fr.close();
+
+        //write: build the zs code if needed
         StringBuilder sb = new StringBuilder();
-        //output the zs code for each object
-        sb.append("# -");
-        sb.append(this.filename);
-        sb.append("s\n");
-        for (D o : objects) {
-            sb.append(o.build());
+        if (!objects.get(0).build().matches("")) {
+
+            //output the zs code for each object
+            sb.append("# -");
+            sb.append(this.filename);
+            sb.append("s\n");
+            for (D o : objects) {
+                sb.append(o.build());
+            }
+            sb.append("\n");
         }
-        sb.append("\n");
         return sb.toString();
     }
     abstract void readFile(BufferedReader br) throws IOException; //this populates the arraylist with the specified object

@@ -38,7 +38,7 @@ public class Block extends LocalizedData {
                 name + ".setBlockResistance(" + this.resistance + ");\n" +
                 name + ".setToolClass(\"" + this.tool + "\");\n" +
                 name + ".setToolLevel(" + this.miningLevel + ");\n" +
-                name + ".register();";
+                name + ".register();\n";
     }
 
     @Override

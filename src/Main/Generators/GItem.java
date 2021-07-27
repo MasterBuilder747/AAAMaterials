@@ -17,8 +17,9 @@ public class GItem extends LocalGenerator<Item> {
             String s1 = br.readLine();
             if (s1 != null) {
                 //String name, String localName
+                //a dash "-" indicates a space in localName
                 String[] s = s1.replace(" ", "").split(",\\s*");
-                if (s.length != 2) throw new IllegalArgumentException(this.filename+".txt: Expected 2 parameters at line " + line);
+                if (s.length != 2) throw new IllegalArgumentException(this.filename+"s.txt: Expected 2 parameters at line " + line);
                 String local = s[1].replace("-", " ");
                 objects.add(new Item(s[0], local));
             } else {

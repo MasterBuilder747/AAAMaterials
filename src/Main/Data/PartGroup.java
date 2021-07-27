@@ -26,7 +26,7 @@ public class PartGroup extends Data {
         for(int i = 0; i < this.parts.length-1; i++) {
             sb.append("\""); sb.append(this.parts[i].name); sb.append("\""); sb.append(", ");
         }
-        sb.append("\""); sb.append(this.parts[this.parts.length-1].name); sb.append("\""); sb.append("] as string[];");
+        sb.append("\""); sb.append(this.parts[this.parts.length-1].name); sb.append("\""); sb.append("] as string[];\n");
 
         return sb.toString();
     }

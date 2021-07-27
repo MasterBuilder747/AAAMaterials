@@ -1,7 +1,7 @@
 ore_parts: ore_sample, rock, ore_rock, cluster, clump, shard, crushed_ore, purified_ore, centrifuged_ore, dust_pure
 conductive_parts: fine_wire, wire, coil
 dust_parts: molten, dust, small_dust, tiny_dust
-smelt_parts: ingot, morsel, nugget, casing, frame, plate, curved_plate, tough_plate, dense_plate, small_rod, rod, long_rod, small_spring, large_spring, beam, bolt, screw, round, foil, ring, small_gear, gear, rotor
+smelt_parts: ingot, morsel, nugget, casing, plate, curved_plate, tough_plate, dense_plate, small_rod, rod, long_rod, small_spring, large_spring, beam, bolt, screw, round, foil, ring, small_gear, gear, rotor
 blast_parts: hot_ingot
 gem_parts: chipped_gem, flawed_gem, crystal, flawless_gem, exquisite_gem
 ore_blocks: ore, poor_ore, dense_ore

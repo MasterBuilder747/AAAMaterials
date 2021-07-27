@@ -27,10 +27,6 @@ public class Part extends LocalizedData {
         this.exists = true;
     }
 
-    public void setType(String t) {
-        this.type = t;
-    }
-
     @Override
     public void print() {
         if (!this.exists) {
@@ -43,41 +39,20 @@ public class Part extends LocalizedData {
         if (this.exists) {
             return "";
         } else {
-            return "var " + this.name + " = mods.contenttweaker.MaterialSystem.getPartBuilder().setName(\"" + this.localName + "\").setPartType(mods.contenttweaker.MaterialSystem.getPartType(\"" + this.type + "\")).setHasOverlay(" + this.hasOverlay + ").setOreDictName(\"" + this.oreDict + "\").build();";
+            return "var " + this.name + " = mods.contenttweaker.MaterialSystem.getPartBuilder().setName(\"" + this.localName + "\").setPartType(mods.contenttweaker.MaterialSystem.getPartType(\"" + this.type + "\")).setHasOverlay(" + this.hasOverlay + ").setOreDictName(\"" + this.oreDict + "\").build();\n";
         }
     }
 
     @Override
-    public String localize() {
-        if (this.exists) {
-            StringBuilder sb = new StringBuilder();
-            sb.append("contenttweaker.part.");
-            sb.append(this.name);
-            sb.append("=");
-            String name = this.localName;
-            if (name.contains("_")) {
-                if (name.contains("_gem")) {
-                    //gem
-                    //contenttweaker.part.[name]=%s [LocalName1]
-                    sb.append(name.substring(0, 1).toUpperCase(Locale.ROOT));
-                    sb.append(name.substring(1, name.indexOf("_")));
-                    sb.append(" %s");
-                } else {
-                    //contenttweaker.part.[name]=[LocalName1] %s [LocalName2]
-                    sb.append(name.substring(0, 1).toUpperCase(Locale.ROOT));
-                    sb.append(name.substring(1, name.indexOf("_")));
-                    sb.append(" %s ");
-                    sb.append(name.substring(name.indexOf("_") + 1, name.indexOf("_") + 2).toUpperCase(Locale.ROOT));
-                    sb.append(name.substring(name.indexOf("_") + 2));
-                }
+    public String localize() throws IllegalArgumentException {
+        if (!this.exists) {
+            //contenttweaker.part.[name]=localName
+            //localName must contain "%s" somewhere in it to indicate the material name in the localName
+            if (this.localName.contains("%s")) {
+                return "contenttweaker.part." + this.name + "=" + this.localName + "\n";
             } else {
-                //contenttweaker.part.[name]=%s [LocalName]
-                sb.append("%s ");
-                sb.append(name.substring(0, 1).toUpperCase(Locale.ROOT));
-                sb.append(name.substring(1));
+                throw new IllegalArgumentException("Part " + this.name + " does not contain a \"%s\" to denote the material name for localization");
             }
-            sb.append("\n");
-            return sb.toString();
         } else return "";
     }
 }

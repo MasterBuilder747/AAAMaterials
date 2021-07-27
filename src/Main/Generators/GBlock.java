@@ -19,11 +19,11 @@ public class GBlock extends LocalGenerator<Block> {
             if (s1 != null) {
                 //String name, String localName, String material, int hardness, int resistance, int miningLevel, String tool
                 String[] s = s1.replace(" ", "").split(",\\s*");
-                if (s.length != 7) throw new IllegalArgumentException("blocks.txt: Expected 7 parameters at line " + line);
+                if (s.length != 7) throw new IllegalArgumentException(this.filename + "s.txt: Expected 7 parameters at line " + line);
                 try {
                     objects.add(new Block(s[0], s[1], s[2], Integer.parseInt(s[3]), Integer.parseInt(s[4]), Integer.parseInt(s[5]), s[6]));
                 } catch (NumberFormatException e) {
-                    throw new NumberFormatException("blocks.txt: Invalid number format at line " + line);
+                    throw new NumberFormatException(this.filename + "s.txt: Invalid number format at line " + line);
                 }
             } else {
                 break;

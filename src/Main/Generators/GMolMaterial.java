@@ -31,7 +31,7 @@ public class GMolMaterial extends Generator<Material> {
                 //size 8 array of strings:
                 String[] s = s1.replace(" ", "").split(",\\s*");
                 if (s.length != 8) {
-                    throw new IllegalArgumentException("materials.txt: Expected 8 parameters at line " + line);
+                    throw new IllegalArgumentException(this.filename + "s.txt: Expected 8 parameters at line " + line);
                 }
 
                 //material creation
@@ -40,10 +40,10 @@ public class GMolMaterial extends Generator<Material> {
 
                 //molecule composition must already be registered
                 Composition j;
-                if (comp.is(s[3])) {
+                try {
                     j = comp.createMoleculeComp(s[3]);
-                } else {
-                    throw new IllegalArgumentException(this.filename + ".txt: Unknown molecule composition: " + s[3] + " at line " + line);
+                } catch (IllegalArgumentException e) {
+                    throw new IllegalArgumentException(this.filename + "s.txt: Unknown molecule composition: " + s[3] + " at line " + line);
                 }
 
                 //state
@@ -65,7 +65,7 @@ public class GMolMaterial extends Generator<Material> {
                 try {
                     m.setComposition(j, Integer.parseInt(s[6]), Integer.parseInt(s[7]));
                 } catch (NumberFormatException e) {
-                    throw new IllegalArgumentException("materials.txt: Incorrect input for compound attributes input at line " + line);
+                    throw new IllegalArgumentException(this.filename + "s.txt: Incorrect input for compound attributes input at line " + line);
                 }
 
                 objects.add(m);

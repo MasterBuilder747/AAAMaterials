@@ -8,10 +8,18 @@ abstract class LocalGenerator<L extends LocalizedData> extends Generator<L> {
         super(filename);
     }
 
+    //this is not an override, it is its own method separate from LocalizedData
     public String localize() {
+        int line = 1;
         StringBuilder sb = new StringBuilder();
         for (L o : objects) {
-            sb.append(o.localize());
+            try {
+                sb.append(o.localize());
+            } catch (IllegalArgumentException e) {
+                System.out.println(this.filename + ".txt: Error at line " + line + ":");
+                o.localize();
+            }
+            line++;
         }
         sb.append("\n");
         return sb.toString();

@@ -1,11 +1,7 @@
 package Main.Generators;
 
-import Main.Data.Composition;
-import Main.Reg;
-
 import java.io.BufferedReader;
 import java.io.IOException;
-import java.util.ArrayList;
 
 public class GMolecule extends AComposition {
     //single element material composition definition repository
@@ -23,7 +19,7 @@ public class GMolecule extends AComposition {
                 try {
                     objects.add(createMoleculeComp(s1));
                 } catch (IllegalArgumentException e) {
-                    System.out.println(this.filename + ".txt: Unknown element " + s1 + " at line " + line);
+                    System.out.println(this.filename + "s.txt: Unknown element " + s1 + " at line " + line);
                 }
                 line++;
             } else {

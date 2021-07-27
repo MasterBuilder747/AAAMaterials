@@ -1,7 +1,0 @@
-Ag
-Au
-AgAu
-H2
-H2O
-O2
-SO4

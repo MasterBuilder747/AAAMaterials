@@ -14,7 +14,7 @@ public class Item extends LocalizedData {
     @Override
     public String build() {
         String var = this.name + "item";
-        return "var " + var + " = mods.contenttweaker.VanillaFactory.createItem(\"" + this.name + "\").register();";
+        return "var " + var + " = mods.contenttweaker.VanillaFactory.createItem(\"" + this.name + "\").register();\n";
     }
 
     @Override

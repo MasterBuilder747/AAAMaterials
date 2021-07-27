@@ -28,28 +28,23 @@ public class GCompMaterial extends Generator<Material> {
                 //size 8 array of strings:
                 String[] s = s1.replace(" ", "").split(",\\s*");
                 if (s.length != 8) {
-                    throw new IllegalArgumentException("materials.txt: Expected 8 parameters at line " + line);
+                    throw new IllegalArgumentException(this.filename + "s.txt: Expected 8 parameters at line " + line);
                 }
 
                 //material creation
                 Material m;
                 m = new Material(s[0], s[1], s[2]);
 
-                //composition must already be registered
                 Composition j;
-                if (comp.is(s[3])) {
-                    if (s[3].contains("[") && s[3].contains("]")) {
-                        try {
-                            j = comp.createCompound(s[3]);
-                        } catch (IllegalArgumentException e) {
-                            System.out.println("materials.txt: Error at line " + line + ":");
-                            j = comp.createCompound(s[3]);
-                        }
-                    } else {
-                        throw new IllegalArgumentException(this.filename + ".txt: Incorrect composition for material " + s[0] + " at line " + line);
+                if (s[3].contains("[") && s[3].contains("]")) {
+                    try {
+                        j = comp.createCompound(s[3]);
+                    } catch (IllegalArgumentException e) {
+                        System.out.println("materials.txt: Error at line " + line + ":");
+                        j = comp.createCompound(s[3]);
                     }
                 } else {
-                    throw new IllegalArgumentException(this.filename + ".txt: Composition " + s[3] + " does not exist at line " + line);
+                    throw new IllegalArgumentException(this.filename + "s.txt: Incorrect composition for material " + s[0] + " at line " + line);
                 }
 
                 //state
@@ -71,7 +66,7 @@ public class GCompMaterial extends Generator<Material> {
                 try {
                     m.setComposition(j, Integer.parseInt(s[6]), Integer.parseInt(s[7]));
                 } catch (NumberFormatException e) {
-                    throw new IllegalArgumentException("materials.txt: Incorrect input for compound attributes input at line " + line);
+                    throw new IllegalArgumentException(this.filename + "s.txt: Incorrect input for compound attributes input at line " + line);
                 }
 
                 objects.add(m);

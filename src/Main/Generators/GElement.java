@@ -1,7 +1,7 @@
 package Main.Generators;
 
 import Main.Data.Element;
-import Main.Reg;
+import Main.Main;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -9,6 +9,27 @@ import java.io.IOException;
 public class GElement extends Generator<Element> {
     public GElement(String name) {
         super(name);
+    }
+
+    @Override
+    //search by symbol, not name only for elements
+    public Element get(String s) {
+        for (Element o : objects) {
+            if (o.symbol.matches(s)) {
+                return o;
+            }
+        }
+        throw new IllegalArgumentException("Unknown " + filename + ": " + s);
+    }
+
+    @Override
+    public boolean is(String s) {
+        try {
+            get(s);
+        } catch (IllegalArgumentException e) {
+            return false;
+        }
+        return true;
     }
 
     @Override
@@ -31,7 +52,7 @@ public class GElement extends Generator<Element> {
                 //first is always a number
                 String s2 = br.readLine(); //atomic number or symbol (use stored row value)
                 //System.out.println(s1 + " " + s2);
-                if (Reg.isNumeric(s2)) {
+                if (Main.isNumeric(s2)) {
                     //s2 = atomic number; store the row number
                     //period, group, number, symbol, name, weight
                     pd = s1;
@@ -45,7 +66,7 @@ public class GElement extends Generator<Element> {
                         //System.out.println(pd + " " + s1 + " " + s2 + " " + br.readLine() + " " + br.readLine());
                         objects.add(new Element(Integer.parseInt(pd), Integer.parseInt(br.readLine()), Integer.parseInt(s1), s2, br.readLine(), Double.parseDouble(br.readLine())));
                     } else {
-                        throw new IllegalAccessError("Chemical file: Must provide the period first before listing elements");
+                        throw new IllegalAccessError(this.filename + "s.txt: Must provide the period first before listing elements");
                     }
                 }
             } else {

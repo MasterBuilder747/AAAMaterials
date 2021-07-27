@@ -1,9 +1,15 @@
+tile.contenttweaker.mica.name=Mica
+
+item.contenttweaker.circuit_lv.name=LV Circuit
+
+fluid.matter=Matter
+fluid.fart=Fart Gas
+
 contenttweaker.part.wire=%s Wire
 contenttweaker.part.fine_wire=Fine %s Wire
 contenttweaker.part.coil=%s Coil
 contenttweaker.part.hot_ingot=Hot %s Ingot
-contenttweaker.part.dust_pure=Dust %s Pure
-contenttweaker.part.frame=%s Frame
+contenttweaker.part.dust_pure=Pure %s Dust
 contenttweaker.part.foil=%s Foil
 contenttweaker.part.small_gear=Small %s Gear
 contenttweaker.part.rotor=%s Rotor
@@ -13,11 +19,4 @@ contenttweaker.part.curved_plate=Curved %s Plate
 contenttweaker.part.small_rod=Small %s Rod
 contenttweaker.part.morsel=%s Morsel
 contenttweaker.part.exquisite_gem=Exquisite %s
-
-item.contenttweaker.circuit_lv.name=LV Circuit
-
-tile.contenttweaker.mica.name=Mica
-
-fluid.matter=Matter
-fluid.fart=Fart Gas
 

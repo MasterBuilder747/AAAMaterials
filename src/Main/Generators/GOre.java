@@ -12,6 +12,6 @@ public class GOre extends Generator<Ore> {
 
     @Override
     void readFile(BufferedReader br) throws IOException {
-        //TODO: implement ores
+
     }
 }

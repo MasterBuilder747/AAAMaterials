@@ -19,7 +19,7 @@ public class GPart extends LocalGenerator<Part> {
             if (s1 != null) {
                 String[] s = s1.replace(" ", "").split(",\\s*");
                 if (s.length < 1 || s.length > 3 || s.length == 2) {
-                    throw new IllegalArgumentException("parts.txt: Expected 1 or 3 parameters at line " + line);
+                    throw new IllegalArgumentException(this.filename + "s.txt: Expected 1 or 3 parameters at line " + line);
                 }
                 if (s.length == 1) {
                     //String existingPartName
@@ -27,12 +27,13 @@ public class GPart extends LocalGenerator<Part> {
                 }
                 //String name, String localName, boolean hasOverlay
                 if (s.length == 3) {
+                    String name = s[1].replace("-", " ");
                     if (s[2].matches("true")) {
-                        objects.add(new Part(s[0], s[1],true));
+                        objects.add(new Part(s[0], name,true));
                     } else if (s[2].matches("false")) {
-                        objects.add(new Part(s[0], s[1],false));
+                        objects.add(new Part(s[0], name,false));
                     } else {
-                        throw new IllegalArgumentException("parts.txt: Neither true or false is used for hasOverlay at line " + line);
+                        throw new IllegalArgumentException(this.filename + "s.txt: Neither true or false is used for hasOverlay at line " + line);
                     }
                 }
             } else {
