@@ -1,16 +1,48 @@
 package Main;
 
 import Main.Generators.*;
+import Main.Recipe.Recipe;
 
 import java.io.*;
 
 public class Main {
+
     //files to be generated:
     //1 the .zs script file (one giant one)
     //2 the .lang file for localization
     private final String PC = "C:\\Users\\jaath\\IdeaProjects\\AAAMaterials\\src\\";
     private final static String MAC = "/Users/jaudras/IdeaProjects/AAAMaterials/src/";
     public final static String HOME = MAC; //home directory, specified at startup
+/*
+    public static void main(String[] args) {
+        Recipe r = new Recipe("basic", 1,4, 20, 1.0);
+        String[] itemI = {
+                "ore:ingotIron",
+                "minecraft:wool:2*5"
+        };
+        String[] itemO = {
+                "minecraft:gold_ingot*2"
+        };
+        String[] chemI = {
+                "water"
+        };
+        String[] chemO = {
+                "lava"
+        };
+        int data = 1000;
+        String[] matterI = {
+                "-red*100"
+        };
+        String[] matterO = {
+                "+orange*10"
+        };
+        r.setInputs(itemI, new String[]{});
+        r.setOutputs(itemO, new String[]{});
+        r.setAdditionalRequirements(chemI, chemO, data, matterI, matterO);
+        System.out.println(r.build());
+    }
+
+ */
 
     public static void main(String[] args) throws IOException {
         FileWriter fw = new FileWriter(HOME +"s.zs");

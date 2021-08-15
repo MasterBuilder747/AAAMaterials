@@ -1,121 +1,219 @@
 package Main.Recipe;
 
-import Main.Data.Material;
-
 public class Recipe {
-    //defines the power needed for a material process to occur
+    //machine, tier, time, itemIn1; itemIn2; ..., liquidIn, energyIn, itemOut, liquidOut, energyOut, chemicalIn, chemicalOut, dataIn amount, [-/+]matter * amount
 
-    //this won't be used unless a recipe needs to be individually defined
-
-    String name;
-    Machine ma;
-    int time; //base recipe time: 1-10 sec is ideal
+    String machine; //the name of the machine this is for
+    int tier; //minimum voltage tier this recipe gets unlocked at
+    int time; //base recipe time in ticks
+    int priority; //optional, but here in case
+    int id;
+    String name; //some unique name
 
     String[] itemInputs;
     String[] itemOutputs;
     String[] liquidInputs;
     String[] liquidOutputs;
-    int energyIn;
-    int energyOut;
+    String[] chemicalIn; //handled like liquids
+    String[] chemicalOut;
+    int dataIn;
+    String[] matterIn; //[-/+]matter * amount
+    String[] matterOut;
+    double powerMultiplier; //0.5 or 1.0
 
-    //final ints of tiers here
-
-    /*
-    val reci = mods.modularmachinery.RecipeBuilder.newBuilder("recipeRegistryName", "associatedMachineRegistryName", 1000, 0);
-    reci.addEnergyPerTickInput(int perTick);
-        setChance(float chance); //called after each event
-    reci.addEnergyPerTickOutput(int perTick);
-    reci.addItemInput(IItemStack stack);
-    reci.addItemInput(IOreDictEntry oreDict);
-    reci.addItemInput(IOreDictEntry oreDict, int amount);
-    reci.addFluidInput(ILiquidStack stack);
-    reci.addItemOutput(IItemStack stack);
-    reci.addItemOutput(IOreDictEntry oreDict);
-    reci.addItemOutput(IOreDictEntry oreDict, int amount);
-    reci.addFluidOutput(ILiquidStack stack);
-    reci.addItemOutput(<minecraft:gold_ingot>);
-    reci.build();
-    */
-
-    public Recipe(Material m, int id, Machine ma, int time) {
-        this.name = m.name+id;
-        this.ma = ma;
+    public Recipe(String machine, int id, int tier, int time, double powerMultiplier) {
+        this.machine = machine;
+        this.tier = tier;
         this.time = time;
-    }
-    public Recipe(String name, int id, Machine ma, int time) {
-        this.name = name+id;
-        this.ma = ma;
-        this.time = time;
+        this.id = id;
+        this.priority = -1;
+        this.powerMultiplier = powerMultiplier;
     }
 
-    public void setInputs(String[] itemInputs, String[] liquidInputs, int energyIn) {
+    public void setInputs(String[] itemInputs, String[] liquidInputs) {
         this.itemInputs = itemInputs;
         this.liquidInputs = liquidInputs;
-        this.energyIn = energyIn;
     }
-    public void setOutputs(String[] itemOutputs, String[] liquidOutputs, int energyOut) {
+    public void setOutputs(String[] itemOutputs, String[] liquidOutputs) {
         this.itemOutputs = itemOutputs;
         this.liquidOutputs = liquidOutputs;
-        this.energyOut = energyOut;
+    }
+    public void setAdditionalRequirements(String[] chemicalIn, String[] chemicalOut, int dataIn, String[] matterIn, String[] matterOut) {
+        this.chemicalIn = chemicalIn;
+        this.chemicalOut = chemicalOut;
+        this.dataIn = dataIn;
+        this.matterIn = matterIn;
+        this.matterOut = matterOut;
+    }
+    public void setPriority(int priority) { //optional
+        this.priority = priority;
     }
 
     public String build() {
+        /*
+        val reci = mods.modularmachinery.RecipeBuilder.newBuilder("recipeRegistryName", "associatedMachineRegistryName", timeTicks);
+        val reci = mods.modularmachinery.RecipeBuilder.newBuilder("recipeRegistryName", "associatedMachineRegistryName", timeTicks, priority);
+        reci.addEnergyPerTickInput(int perTick);
+        setChance(float chance); //called after each event
+        reci.addEnergyPerTickOutput(int perTick);
+        reci.addItemInput(IItemStack stack);
+        reci.addItemInput(IOreDictEntry oreDict);
+        reci.addItemInput(IOreDictEntry oreDict, int amount);
+        reci.addFluidInput(ILiquidStack stack);
+        reci.addItemOutput(IItemStack stack);
+        reci.addItemOutput(IOreDictEntry oreDict);
+        reci.addItemOutput(IOreDictEntry oreDict, int amount);
+        reci.addFluidOutput(ILiquidStack stack);
+        reci.build();
+        */
+        if (this.tier < 1 || this.tier > 15) {
+            throw new IllegalArgumentException(this.name + ": voltage tier must be between 1 and 15");
+        }
         StringBuilder sb = new StringBuilder();
-        //variable name = material name + id
-        //recipe registry name = machine name + name
-        sb.append("val ").append(this.name).append(" = mods.modularmachinery.RecipeBuilder.newBuilder(\"")
-                .append(this.ma.name).append(this.name).append("\", \"").append(this.ma.name).append("\", ").append(this.time).append(");\n");
-        if (this.ma.energyIn) {
-            if (this.energyIn > 0) {
-                sb.append(this.name).append(".addEnergyPerTickInput(").append(this.energyIn).append(");\n");
+
+        if (this.tier < 5) { //LV-EV
+            this.name = this.machine+this.id+"_basic";
+            sb.append(buildMain((int)((8 * Math.pow(4, this.tier-1)) * this.powerMultiplier)));
+            this.tier += 4;
+        }
+        if (this.tier < 9) { //IV-UV
+            this.name = this.machine+this.id+"_advanced";
+            sb.append(buildMain((int)((8 * Math.pow(4, this.tier-1)) * this.powerMultiplier)));
+            sb.append(buildChemicals());
+            this.tier += 4;
+        }
+        if (this.tier < 13) { //UMV-UIV
+            this.name = this.machine+this.id+"_industrial";
+            sb.append(buildMain((int)((8 * Math.pow(4, this.tier-1)) * this.powerMultiplier)));
+            sb.append(buildChemicals());
+            sb.append(buildData());
+            if (this.tier == 12) {
+                this.tier += 3;
             } else {
-                throw new IllegalArgumentException("Illegal amount of energy input");
+                this.tier += 4;
             }
         }
-        if (this.ma.itemInputs != 0) {
-            if (this.itemInputs != null && this.itemInputs.length <= this.ma.itemInputs) {
-                for (String itemInput : this.itemInputs) {
-                    sb.append(this.name).append(".addItemInput(").append(itemInput).append(");\n");
-                }
-            } else {
-                throw new IllegalArgumentException("Too many/no item inputs for recipe " + this.name);
-            }
+        if (this.tier < 15) { //ULV-UZV (2 tiers)
+            this.name = this.machine+this.id+"_ultimate";
+            sb.append(buildMain((int)((8 * Math.pow(4, this.tier-1)) * this.powerMultiplier)));
+            sb.append(buildChemicals());
+            sb.append(buildData());
+            sb.append(buildMatter());
         }
-        if (this.ma.liquidInputs != 0) {
-            if (this.liquidInputs != null && this.liquidInputs.length <= this.ma.liquidInputs) {
-                for (String liquidInput : this.liquidInputs) {
-                    sb.append(this.name).append(".addFluidInput(").append(liquidInput).append(");\n");
-                }
-            } else {
-                throw new IllegalArgumentException("Too many/no liquid inputs for recipe " + this.name);
-            }
-        }
-        if (this.ma.energyOut) {
-            if (this.energyOut > 0) {
-                sb.append(this.name).append(".addEnergyPerTickOutput(").append(this.energyOut).append(");\n");
-            } else {
-                throw new IllegalArgumentException("Illegal amount of energy output");
-            }
-        }
-        if (this.ma.itemOutputs != 0) {
-            if (this.itemOutputs != null && this.itemOutputs.length <= this.ma.itemOutputs) {
-                for (String itemOutput : this.itemOutputs) {
-                    sb.append(this.name).append(".addItemOutput(").append(itemOutput).append(");\n");
-                }
-            } else {
-                throw new IllegalArgumentException("Too many/no item outputs for recipe " + this.name);
-            }
-        }
-        if (this.ma.liquidOutputs != 0) {
-            if (this.liquidOutputs != null && this.liquidOutputs.length <= this.ma.liquidOutputs) {
-                for (String liquidOutput : this.liquidOutputs) {
-                    sb.append(this.name).append(".addFluidOutput(").append(liquidOutput).append(");\n");
-                }
-            } else {
-                throw new IllegalArgumentException("Too many/no liquid outputs for recipe " + this.name);
-            }
+        if (this.tier == 15) { //final tier, must be 2 or 1 billion power
+            this.name = this.machine+this.id+"_ultimate";
+            sb.append(buildMain((int)(2_000_000_000 * this.powerMultiplier)));
+            sb.append(buildChemicals());
+            sb.append(buildData());
+            sb.append(buildMatter());
         }
         sb.append(this.name).append(".build();\n");
+        return sb.toString();
+    }
+
+    private String buildMain(int power) {
+        StringBuilder sb = new StringBuilder();
+        sb.append("var ").append(this.name).append(" = mods.modularmachinery.RecipeBuilder.newBuilder(\"")
+                .append(this.name).append("\", \"").append(this.machine).append("\", ").append(this.time);
+        if (this.priority == -1) {
+            sb.append(");\n");
+        } else {
+            sb.append(", ").append(this.priority).append(");\n");
+        }
+        //IO
+        for (String s : this.itemInputs) {
+            if (s.contains("ore:")) {
+                if (s.contains("*")) {
+                    sb.append(this.name).append(".addItemInput(<").append(s, 0, s.indexOf("*")).append(">, ").append(s.substring(s.indexOf("*")+1)).append(");\n");
+                } else {
+                    sb.append(this.name).append(".addItemInput(<").append(s).append(">);\n");
+                }
+            } else {
+                if (s.contains("*")) {
+                    sb.append(this.name).append(".addItemInput(<").append(s, 0, s.indexOf("*")).append("> * ").append(s.substring(s.indexOf("*")+1)).append(");\n");
+                } else {
+                    sb.append(this.name).append(".addItemInput(<").append(s).append(">);\n");
+                }
+            }
+        }
+        for (String s : this.liquidInputs) {
+            if (s.contains("*")) {
+                sb.append(this.name).append(".addFluidInput(<liquid:").append(s, 0, s.indexOf("*")).append("> * ").append(s.substring(s.indexOf("*")+1)).append(");\n");
+            } else {
+                sb.append(this.name).append(".addFluidInput(<liquid:").append(s).append(">);\n");
+            }
+        }
+        for (String s : this.itemOutputs) {
+            if (s.contains("ore:")) {
+                if (s.contains("*")) {
+                    sb.append(this.name).append(".addItemOutput(<").append(s, 0, s.indexOf("*")).append(">, ").append(s.substring(s.indexOf("*")+1)).append(");\n");
+                } else {
+                    sb.append(this.name).append(".addItemOutput(<").append(s).append(">);\n");
+                }
+            } else {
+                if (s.contains("*")) {
+                    sb.append(this.name).append(".addItemOutput(<").append(s, 0, s.indexOf("*")).append("> * ").append(s.substring(s.indexOf("*")+1)).append(");\n");
+                } else {
+                    sb.append(this.name).append(".addItemOutput(<").append(s).append(">);\n");
+                }
+            }
+        }
+        for (String s : this.liquidOutputs) {
+            if (s.contains("*")) {
+                sb.append(this.name).append(".addFluidOutput(<liquid:").append(s, 0, s.indexOf("*")).append("> * ").append(s.substring(s.indexOf("*")+1)).append(");\n");
+            } else {
+                sb.append(this.name).append(".addFluidOutput(<liquid:").append(s).append(">);\n");
+            }
+        }
+        sb.append(this.name).append(".addEnergyPerTickInput(").append(power).append(");\n");
+        return sb.toString();
+    }
+    private String buildChemicals() {
+        //chemicals
+        StringBuilder sb = new StringBuilder();
+        for (String s : this.chemicalIn) {
+            if (s.contains("*")) {
+                sb.append(this.name).append(".addFluidInput(<liquid:").append(s, 0, s.indexOf("*")).append("> * ").append(s.substring(s.indexOf("*")+1)).append(");\n");
+            } else {
+                sb.append(this.name).append(".addFluidInput(<liquid:").append(s).append(">);\n");
+            }
+        }
+        for (String s : this.chemicalOut) {
+            if (s.contains("*")) {
+                sb.append(this.name).append(".addFluidOutput(<liquid:").append(s, 0, s.indexOf("*")).append("> * ").append(s.substring(s.indexOf("*")+1)).append(");\n");
+            } else {
+                sb.append(this.name).append(".addFluidOutput(<liquid:").append(s).append(">);\n");
+            }
+        }
+        return sb.toString();
+    }
+    private String buildData() {
+        return this.name + ".addFluidInput(<liquid:data> * " + this.dataIn + ");\n";
+    }
+    private String buildMatter() {
+        StringBuilder sb = new StringBuilder();
+        //matter
+        // [-/+]matterColorName * amount
+        for (String s : this.matterIn) {
+            if (s.charAt(0) == '-') {
+                //<liquid:[polarity][color]matter> * someAmount
+                sb.append(this.name).append(".addFluidInput(<liquid:neg").append(s, 1, s.indexOf("*")).append("matter> * ").append(s.substring(s.indexOf("*")+1)).append(");\n");
+            } else if (s.charAt(0) == '+') {
+                sb.append(this.name).append(".addFluidInput(<liquid:pos").append(s, 1, s.indexOf("*")).append("matter> * ").append(s.substring(s.indexOf("*")+1)).append(");\n");
+            } else {
+                throw new IllegalArgumentException("For recipe " + this.name + ", matter property must contain polarity");
+            }
+        }
+        for (String s : this.matterOut) {
+            if (s.charAt(0) == '-') {
+                //<liquid:[polarity][color]matter> * someAmount
+                sb.append(this.name).append(".addFluidOutput(<liquid:neg").append(s, 1, s.indexOf("*")).append("matter> * ").append(s.substring(s.indexOf("*")+1)).append(");\n");
+            } else if (s.charAt(0) == '+') {
+                sb.append(this.name).append(".addFluidOutput(<liquid:pos").append(s, 1, s.indexOf("*")).append("matter> * ").append(s.substring(s.indexOf("*")+1)).append(");\n");
+            } else {
+                throw new IllegalArgumentException("For recipe " + this.name + ", matter property must contain polarity");
+            }
+        }
         return sb.toString();
     }
 }
