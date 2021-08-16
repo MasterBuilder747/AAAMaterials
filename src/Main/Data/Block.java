@@ -32,13 +32,9 @@ public class Block extends LocalizedData {
 
     @Override
     public String build() {
-        String name = this.name + "block";
-        return "var " + name + " = VanillaFactory.createBlock(\"" + this.name + "\", <blockmaterial:" + this.material + ">);\n" +
-                name + ".setBlockHardness(" + this.hardness + ");\n" +
-                name + ".setBlockResistance(" + this.resistance + ");\n" +
-                name + ".setToolClass(\"" + this.tool + "\");\n" +
-                name + ".setToolLevel(" + this.miningLevel + ");\n" +
-                name + ".register();\n";
+        //genBlock("mica", "Mica", <blockMaterial:rock>, 5, 6, "pickaxe", 1);
+        return "genBlock(\"" + this.name + "\", \"" + this.localName + "\", <blockMaterial:" + this.material + ">, "
+                + this.hardness + ", " + this.resistance + ", \"" + this.tool + "\", " + this.miningLevel + ");\n";
     }
 
     @Override

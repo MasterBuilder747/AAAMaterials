@@ -27,8 +27,7 @@ public abstract class Generator<D extends Data> {
 
         //write: build the zs code if needed
         StringBuilder sb = new StringBuilder();
-        if (!objects.get(0).build().matches("")) {
-
+        if (!objects.get(0).build().matches("NULL")) { //indicates that the generator doesn't need to build anything
             //output the zs code for each object
             sb.append("# -");
             sb.append(this.filename);

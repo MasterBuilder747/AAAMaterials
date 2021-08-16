@@ -17,10 +17,8 @@ public class Fluid extends LocalizedData {
 
     @Override
     public String build() {
-        String var = this.name + "fluid";
-        return "var " + var + " = mods.contenttweaker.VanillaFactory.createFluid(\"" + this.name + "\", Color.fromHex(" + this.color + "));\n" +
-                var + ".setGaseous(" + this.gas + ");\n" +
-                var + ".register();\n";
+        //genFluid("fluid", "101010", true);
+        return "genFluid(\"" + this.name + "\", \"" + this.color + "\", " + this.gas + ");\n";
     }
 
     @Override

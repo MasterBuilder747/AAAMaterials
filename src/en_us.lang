@@ -3,7 +3,7 @@ tile.contenttweaker.mica.name=Mica
 item.contenttweaker.circuit_lv.name=LV Circuit
 
 fluid.matter=Matter
-fluid.fart=Fart Gas
+fluid.hydrogen=Hydrogen Gas
 
 contenttweaker.part.wire=%s Wire
 contenttweaker.part.fine_wire=Fine %s Wire

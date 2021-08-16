@@ -1,14 +1,13 @@
 package Main.Recipe;
 
-public class Recipe {
-    //machine, tier, time, itemIn1; itemIn2; ..., liquidIn, energyIn, itemOut, liquidOut, energyOut, chemicalIn, chemicalOut, dataIn amount, [-/+]matter * amount
+import Main.Data.Data;
 
+public class Recipe extends Data {
+    String realName; //the actual unique name, uses name
     String machine; //the name of the machine this is for
     int tier; //minimum voltage tier this recipe gets unlocked at
     int time; //base recipe time in ticks
     int priority; //optional, but here in case
-    int id;
-    String name; //some unique name
 
     String[] itemInputs;
     String[] itemOutputs;
@@ -20,12 +19,13 @@ public class Recipe {
     String[] matterIn; //[-/+]matter * amount
     String[] matterOut;
     double powerMultiplier; //0.5 or 1.0
+    int realTier; //the tier that gets changed
 
-    public Recipe(String machine, int id, int tier, int time, double powerMultiplier) {
+    public Recipe(String machine, String name, int tier, int time, double powerMultiplier) {
+        super(name);
         this.machine = machine;
         this.tier = tier;
         this.time = time;
-        this.id = id;
         this.priority = -1;
         this.powerMultiplier = powerMultiplier;
     }
@@ -49,6 +49,12 @@ public class Recipe {
         this.priority = priority;
     }
 
+    @Override
+    public void print() {
+        System.out.println();
+    }
+
+    @Override
     public String build() {
         /*
         val reci = mods.modularmachinery.RecipeBuilder.newBuilder("recipeRegistryName", "associatedMachineRegistryName", timeTicks);
@@ -67,54 +73,50 @@ public class Recipe {
         reci.build();
         */
         if (this.tier < 1 || this.tier > 15) {
-            throw new IllegalArgumentException(this.name + ": voltage tier must be between 1 and 15");
+            throw new IllegalArgumentException("For recipe" + this.name + ": voltage tier must be between 1 and 15");
         }
         StringBuilder sb = new StringBuilder();
-
-        if (this.tier < 5) { //LV-EV
-            this.name = this.machine+this.id+"_basic";
-            sb.append(buildMain((int)((8 * Math.pow(4, this.tier-1)) * this.powerMultiplier)));
-            this.tier += 4;
+        this.realTier = this.tier;
+        if (this.realTier < 5) { //LV-EV
+            this.realName = this.name+"_basic";
+            sb.append(buildMain((int)((8 * Math.pow(4, this.realTier-1)) * this.powerMultiplier)));
+            this.realTier = 5;
         }
-        if (this.tier < 9) { //IV-UV
-            this.name = this.machine+this.id+"_advanced";
-            sb.append(buildMain((int)((8 * Math.pow(4, this.tier-1)) * this.powerMultiplier)));
+        if (this.realTier < 9) { //IV-UV
+            this.realName = this.name+"_advanced";
+            sb.append(buildMain((int)((8 * Math.pow(4, this.realTier-1)) * this.powerMultiplier)));
             sb.append(buildChemicals());
-            this.tier += 4;
+            this.realTier = 9;
         }
-        if (this.tier < 13) { //UMV-UIV
-            this.name = this.machine+this.id+"_industrial";
-            sb.append(buildMain((int)((8 * Math.pow(4, this.tier-1)) * this.powerMultiplier)));
+        if (this.realTier < 13) { //UMV-UIV
+            this.realName = this.name+"_industrial";
+            sb.append(buildMain((int)((8 * Math.pow(4, this.realTier-1)) * this.powerMultiplier)));
             sb.append(buildChemicals());
             sb.append(buildData());
-            if (this.tier == 12) {
-                this.tier += 3;
-            } else {
-                this.tier += 4;
-            }
+            this.realTier = 13;
         }
-        if (this.tier < 15) { //ULV-UZV (2 tiers)
-            this.name = this.machine+this.id+"_ultimate";
-            sb.append(buildMain((int)((8 * Math.pow(4, this.tier-1)) * this.powerMultiplier)));
+        if (this.realTier < 15) { //ULV-UZV (2 realTiers)
+            this.realName = this.name+"_ultimate";
+            sb.append(buildMain((int)((8 * Math.pow(4, this.realTier-1)) * this.powerMultiplier)));
             sb.append(buildChemicals());
             sb.append(buildData());
             sb.append(buildMatter());
         }
-        if (this.tier == 15) { //final tier, must be 2 or 1 billion power
-            this.name = this.machine+this.id+"_ultimate";
+        if (this.realTier == 15) { //final realTier, must be 2 or 1 billion power
+            this.realName = this.name+"_ultimate";
             sb.append(buildMain((int)(2_000_000_000 * this.powerMultiplier)));
             sb.append(buildChemicals());
             sb.append(buildData());
             sb.append(buildMatter());
         }
-        sb.append(this.name).append(".build();\n");
+        sb.append(this.realName).append(".build();\n");
         return sb.toString();
     }
 
     private String buildMain(int power) {
         StringBuilder sb = new StringBuilder();
-        sb.append("var ").append(this.name).append(" = mods.modularmachinery.RecipeBuilder.newBuilder(\"")
-                .append(this.name).append("\", \"").append(this.machine).append("\", ").append(this.time);
+        sb.append("var ").append(this.realName).append(" = mods.modularmachinery.RecipeBuilder.newBuilder(\"")
+                .append(this.realName).append("\", \"").append(this.machine).append("\", ").append(this.time);
         if (this.priority == -1) {
             sb.append(");\n");
         } else {
@@ -124,48 +126,48 @@ public class Recipe {
         for (String s : this.itemInputs) {
             if (s.contains("ore:")) {
                 if (s.contains("*")) {
-                    sb.append(this.name).append(".addItemInput(<").append(s, 0, s.indexOf("*")).append(">, ").append(s.substring(s.indexOf("*")+1)).append(");\n");
+                    sb.append(this.realName).append(".addItemInput(<").append(s, 0, s.indexOf("*")).append(">, ").append(s.substring(s.indexOf("*")+1)).append(");\n");
                 } else {
-                    sb.append(this.name).append(".addItemInput(<").append(s).append(">);\n");
+                    sb.append(this.realName).append(".addItemInput(<").append(s).append(">);\n");
                 }
             } else {
                 if (s.contains("*")) {
-                    sb.append(this.name).append(".addItemInput(<").append(s, 0, s.indexOf("*")).append("> * ").append(s.substring(s.indexOf("*")+1)).append(");\n");
+                    sb.append(this.realName).append(".addItemInput(<").append(s, 0, s.indexOf("*")).append("> * ").append(s.substring(s.indexOf("*")+1)).append(");\n");
                 } else {
-                    sb.append(this.name).append(".addItemInput(<").append(s).append(">);\n");
+                    sb.append(this.realName).append(".addItemInput(<").append(s).append(">);\n");
                 }
             }
         }
         for (String s : this.liquidInputs) {
             if (s.contains("*")) {
-                sb.append(this.name).append(".addFluidInput(<liquid:").append(s, 0, s.indexOf("*")).append("> * ").append(s.substring(s.indexOf("*")+1)).append(");\n");
+                sb.append(this.realName).append(".addFluidInput(<liquid:").append(s, 0, s.indexOf("*")).append("> * ").append(s.substring(s.indexOf("*")+1)).append(");\n");
             } else {
-                sb.append(this.name).append(".addFluidInput(<liquid:").append(s).append(">);\n");
+                sb.append(this.realName).append(".addFluidInput(<liquid:").append(s).append(">);\n");
             }
         }
         for (String s : this.itemOutputs) {
             if (s.contains("ore:")) {
                 if (s.contains("*")) {
-                    sb.append(this.name).append(".addItemOutput(<").append(s, 0, s.indexOf("*")).append(">, ").append(s.substring(s.indexOf("*")+1)).append(");\n");
+                    sb.append(this.realName).append(".addItemOutput(<").append(s, 0, s.indexOf("*")).append(">, ").append(s.substring(s.indexOf("*")+1)).append(");\n");
                 } else {
-                    sb.append(this.name).append(".addItemOutput(<").append(s).append(">);\n");
+                    sb.append(this.realName).append(".addItemOutput(<").append(s).append(">);\n");
                 }
             } else {
                 if (s.contains("*")) {
-                    sb.append(this.name).append(".addItemOutput(<").append(s, 0, s.indexOf("*")).append("> * ").append(s.substring(s.indexOf("*")+1)).append(");\n");
+                    sb.append(this.realName).append(".addItemOutput(<").append(s, 0, s.indexOf("*")).append("> * ").append(s.substring(s.indexOf("*")+1)).append(");\n");
                 } else {
-                    sb.append(this.name).append(".addItemOutput(<").append(s).append(">);\n");
+                    sb.append(this.realName).append(".addItemOutput(<").append(s).append(">);\n");
                 }
             }
         }
         for (String s : this.liquidOutputs) {
             if (s.contains("*")) {
-                sb.append(this.name).append(".addFluidOutput(<liquid:").append(s, 0, s.indexOf("*")).append("> * ").append(s.substring(s.indexOf("*")+1)).append(");\n");
+                sb.append(this.realName).append(".addFluidOutput(<liquid:").append(s, 0, s.indexOf("*")).append("> * ").append(s.substring(s.indexOf("*")+1)).append(");\n");
             } else {
-                sb.append(this.name).append(".addFluidOutput(<liquid:").append(s).append(">);\n");
+                sb.append(this.realName).append(".addFluidOutput(<liquid:").append(s).append(">);\n");
             }
         }
-        sb.append(this.name).append(".addEnergyPerTickInput(").append(power).append(");\n");
+        sb.append(this.realName).append(".addEnergyPerTickInput(").append(power).append(");\n");
         return sb.toString();
     }
     private String buildChemicals() {
@@ -173,45 +175,48 @@ public class Recipe {
         StringBuilder sb = new StringBuilder();
         for (String s : this.chemicalIn) {
             if (s.contains("*")) {
-                sb.append(this.name).append(".addFluidInput(<liquid:").append(s, 0, s.indexOf("*")).append("> * ").append(s.substring(s.indexOf("*")+1)).append(");\n");
+                sb.append(this.realName).append(".addFluidInput(<liquid:").append(s, 0, s.indexOf("*")).append("> * ").append(s.substring(s.indexOf("*")+1)).append(");\n");
             } else {
-                sb.append(this.name).append(".addFluidInput(<liquid:").append(s).append(">);\n");
+                sb.append(this.realName).append(".addFluidInput(<liquid:").append(s).append(">);\n");
             }
         }
         for (String s : this.chemicalOut) {
             if (s.contains("*")) {
-                sb.append(this.name).append(".addFluidOutput(<liquid:").append(s, 0, s.indexOf("*")).append("> * ").append(s.substring(s.indexOf("*")+1)).append(");\n");
+                sb.append(this.realName).append(".addFluidOutput(<liquid:").append(s, 0, s.indexOf("*")).append("> * ").append(s.substring(s.indexOf("*")+1)).append(");\n");
             } else {
-                sb.append(this.name).append(".addFluidOutput(<liquid:").append(s).append(">);\n");
+                sb.append(this.realName).append(".addFluidOutput(<liquid:").append(s).append(">);\n");
             }
         }
         return sb.toString();
     }
     private String buildData() {
-        return this.name + ".addFluidInput(<liquid:data> * " + this.dataIn + ");\n";
+        return this.realName + ".addFluidInput(<liquid:data> * " + this.dataIn + ");\n";
     }
     private String buildMatter() {
         StringBuilder sb = new StringBuilder();
         //matter
-        // [-/+]matterColorName * amount
+        // [-/+]matterColorrealName * amount
         for (String s : this.matterIn) {
+            if (!s.contains("*")) {
+                throw new IllegalArgumentException("Matter must contains some amount denoted with *");
+            }
             if (s.charAt(0) == '-') {
                 //<liquid:[polarity][color]matter> * someAmount
-                sb.append(this.name).append(".addFluidInput(<liquid:neg").append(s, 1, s.indexOf("*")).append("matter> * ").append(s.substring(s.indexOf("*")+1)).append(");\n");
+                sb.append(this.realName).append(".addFluidInput(<liquid:neg").append(s, 1, s.indexOf("*")).append("matter> * ").append(s.substring(s.indexOf("*")+1)).append(");\n");
             } else if (s.charAt(0) == '+') {
-                sb.append(this.name).append(".addFluidInput(<liquid:pos").append(s, 1, s.indexOf("*")).append("matter> * ").append(s.substring(s.indexOf("*")+1)).append(");\n");
+                sb.append(this.realName).append(".addFluidInput(<liquid:pos").append(s, 1, s.indexOf("*")).append("matter> * ").append(s.substring(s.indexOf("*")+1)).append(");\n");
             } else {
-                throw new IllegalArgumentException("For recipe " + this.name + ", matter property must contain polarity");
+                throw new IllegalArgumentException("Matter property must contain polarity denoted by (-/+) as the first character");
             }
         }
         for (String s : this.matterOut) {
             if (s.charAt(0) == '-') {
                 //<liquid:[polarity][color]matter> * someAmount
-                sb.append(this.name).append(".addFluidOutput(<liquid:neg").append(s, 1, s.indexOf("*")).append("matter> * ").append(s.substring(s.indexOf("*")+1)).append(");\n");
+                sb.append(this.realName).append(".addFluidOutput(<liquid:neg").append(s, 1, s.indexOf("*")).append("matter> * ").append(s.substring(s.indexOf("*")+1)).append(");\n");
             } else if (s.charAt(0) == '+') {
-                sb.append(this.name).append(".addFluidOutput(<liquid:pos").append(s, 1, s.indexOf("*")).append("matter> * ").append(s.substring(s.indexOf("*")+1)).append(");\n");
+                sb.append(this.realName).append(".addFluidOutput(<liquid:pos").append(s, 1, s.indexOf("*")).append("matter> * ").append(s.substring(s.indexOf("*")+1)).append(");\n");
             } else {
-                throw new IllegalArgumentException("For recipe " + this.name + ", matter property must contain polarity");
+                throw new IllegalArgumentException("Matter property must contain polarity denoted by (-/+) as the first character");
             }
         }
         return sb.toString();

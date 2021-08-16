@@ -63,6 +63,6 @@ public class Composition extends Data {
 
     @Override
     public String build() {
-        return "";
+        return "NULL";
     }
 }

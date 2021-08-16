@@ -49,6 +49,6 @@ public class Element extends Data {
 
     @Override
     public String build() {
-        return "";
+        return "NULL";
     }
 }

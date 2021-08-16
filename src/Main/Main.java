@@ -10,42 +10,13 @@ public class Main {
     //files to be generated:
     //1 the .zs script file (one giant one)
     //2 the .lang file for localization
-    private final String PC = "C:\\Users\\jaath\\IdeaProjects\\AAAMaterials\\src\\";
+    private final static String PC = "C:\\Users\\jaath\\IdeaProjects\\AAAMaterials\\src\\";
     private final static String MAC = "/Users/jaudras/IdeaProjects/AAAMaterials/src/";
-    public final static String HOME = MAC; //home directory, specified at startup
-/*
-    public static void main(String[] args) {
-        Recipe r = new Recipe("basic", 1,4, 20, 1.0);
-        String[] itemI = {
-                "ore:ingotIron",
-                "minecraft:wool:2*5"
-        };
-        String[] itemO = {
-                "minecraft:gold_ingot*2"
-        };
-        String[] chemI = {
-                "water"
-        };
-        String[] chemO = {
-                "lava"
-        };
-        int data = 1000;
-        String[] matterI = {
-                "-red*100"
-        };
-        String[] matterO = {
-                "+orange*10"
-        };
-        r.setInputs(itemI, new String[]{});
-        r.setOutputs(itemO, new String[]{});
-        r.setAdditionalRequirements(chemI, chemO, data, matterI, matterO);
-        System.out.println(r.build());
-    }
-
- */
+    public final static String HOME = PC; //home directory, specified at startup
+    public final static String SCRIPT = "script";
 
     public static void main(String[] args) throws IOException {
-        FileWriter fw = new FileWriter(HOME +"s.zs");
+        FileWriter fw = new FileWriter(HOME + SCRIPT + ".zs");
         BufferedWriter bw = new BufferedWriter(fw);
 
         //starting script code
@@ -82,12 +53,12 @@ public class Main {
         GCompMaterial compMat = new GCompMaterial("compoundMaterial", compound);
         bw.write(compMat.register());
 
+        //machine recipes
+        GRecipe recipe = new GRecipe("recipe");
+        bw.write(recipe.register());
+
         //TODO: ore system
         GOre ore = new GOre("ore");
-
-
-        //TODO: machines and recipe system
-
 
         bw.close();
 
