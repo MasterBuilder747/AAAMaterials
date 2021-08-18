@@ -14,7 +14,7 @@ public class Item extends LocalizedData {
     @Override
     public String build() {
         //genItem("circuit_lv");
-        return "genBlock(\"" + this.name + "\");\n";
+        return "genItem(\"" + this.name + "\");\n";
     }
 
     @Override

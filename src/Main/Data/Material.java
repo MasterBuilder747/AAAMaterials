@@ -66,7 +66,7 @@ public class Material extends Data {
         StringBuilder sb = new StringBuilder();
         //1) build the material
         sb.append("var " + this.name + " = MaterialSystem.getMaterialBuilder().setName(\"" + this.localName + "\")" +
-                ".setColor(Color.fromHex(" + this.color + "))" +
+                ".setColor(Color.fromHex(\"" + this.color + "\"))" +
                 ".build();\n");
 
         //make sure the vars are defined since they are in the same scope

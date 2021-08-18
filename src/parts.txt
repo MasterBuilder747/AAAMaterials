@@ -36,17 +36,36 @@ bolt
 ingot
 tiny_dust
 gear
-wire, %s-Wire, true
-fine_wire, Fine-%s-Wire, true
+boule, %s-Boule, false
+chain, %s-Chain, false
 coil, %s-Coil, true
-hot_ingot, Hot-%s-Ingot, true
-dust_pure, Pure-%s-Dust, true
-foil, %s-Foil, false
-small_gear, Small-%s-Gear, false
-rotor, %s-Rotor, false
-screw, %s-Screw, false
-tough_plate, Tough-%s-Plate, false
 curved_plate, Curved-%s-Plate, false
-small_rod, Small-%s-Rod, false
-morsel, %s-Morsel, false
+dense_wire, Dense-%s-Wire, true
+drill, %s-Drill-Head, false
 exquisite_gem, Exquisite-%s, false
+fiber, %s-Fiber, false
+fine_wire, Fine-%s-Wire, true
+foil, %s-Foil, false
+gem, %s, false
+hot_ingot, Hot-%s-Ingot, true
+lens, %s-Lens, true
+morsel, %s-Morsel, false
+pebble, %s-Pebble, true
+pure_dust, Pure-%s-Dust, true
+rail, %s-Rail, false
+raw_ore, Raw-%s-Ore, false
+rotor, %s-Rotor, false
+saw, %s-Saw-Blade, false
+screw, %s-Screw, false
+small_centrifuged_ore, Small-Centrifuged-%s-Ore, false
+small_crushed_ore, Small-Crushed-%s-Ore, true
+small_gear, Small-%s-Gear, false
+small_plate, Small-%s-Plate, false
+small_purified_ore, Small-Purified-%s-Ore, false
+small_rod, Small-%s-Rod, false
+spring, %s-Spring, false
+superior_gem, Superior-%s, false
+tiny_plate, Tiny-%s-Plate, false
+tough_plate, Tough-%s-Plate, false
+turbine, %s-Turbine-Blade, false
+wire, %s-Wire, true

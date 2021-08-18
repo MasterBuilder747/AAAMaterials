@@ -1,2 +1,2 @@
 silver, Silver, 101010, Ag, solid, oresmeltconduct, 0, 0
-gold, Gold, 303030, Au, solid, oresmeltconduct, 0, 0
+gold, Gold, ffe121, Au, solid, oresmeltconduct, 0, 0
