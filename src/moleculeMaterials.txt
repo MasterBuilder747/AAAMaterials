@@ -1,2 +1,3 @@
 silver, Silver, 101010, Ag, solid, oresmeltconduct, 0, 0
 gold, Gold, ffe121, Au, solid, oresmeltconduct, 0, 0
+lumium, Lumium, f5e36c, Ag, solid, oresmeltconduct, 0, 0

@@ -1,71 +1,98 @@
-nugget
-beam
-dirty_dust
-cluster
-ring
-rod
-crystal
-plate
-chipped_gem
-centrifuged_ore
+tiny_dust
+small_dust
+dust
+molten
+poor_ore
+ore
+dense_ore
 rock
 ore_rock
-casing
-dense_plate
-block
-shard
-molten
-flawless_gem
-dust
-crushed_ore
-ore
-small_dust
-long_rod
-small_spring
+cluster
 clump
-flawed_gem
-large_spring
+shard
+crushed_ore
 purified_ore
-poor_ore
+centrifuged_ore
+dirty_dust
+ore_sample
+flawless_gem
+crystal
+flawed_gem
+chipped_gem
+nugget
+ingot
+block
+plate
+dense_plate
+casing
+beam
+gear
+rod
+long_rod
+bolt
+ring
+small_spring
+large_spring
+round
 minecart
 armor
-round
-ore_sample
-dense_ore
-bolt
-ingot
-tiny_dust
-gear
 boule, %s-Boule, false
 chain, %s-Chain, false
+chunk, %s-Chunk, false
 coil, %s-Coil, true
+concentrated_ore, Concentrated-%s-Ore, false
 curved_plate, Curved-%s-Plate, false
+dense_fibers, Dense-%s-Fibers, false
 dense_wire, Dense-%s-Wire, true
-drill, %s-Drill-Head, false
+drill_head, %s-Drill-Head, false
 exquisite_gem, Exquisite-%s, false
 fiber, %s-Fiber, false
+fibers, %s-Fibers, false
+fine_dust, Fine-%s-Dust, false
 fine_wire, Fine-%s-Wire, true
 foil, %s-Foil, false
+gearbox, %s-Gearbox, false
 gem, %s, false
 hot_ingot, Hot-%s-Ingot, true
+infused_wafer, Infused-%s-Wafer, false
+infused_boule, Infused-%s-Boule, false
+large_plate, Large-%s-Plate, false
+large_scrap, Large-%s-Scrap, false
 lens, %s-Lens, true
+long_stick, Long-%s-Stick, false
 morsel, %s-Morsel, false
 pebble, %s-Pebble, true
+piece, %s-Piece, false
+powder, %s-Powder, false
 pure_dust, Pure-%s-Dust, true
 rail, %s-Rail, false
-raw_ore, Raw-%s-Ore, false
+raw_ore, Raw-%s-Ore, true
 rotor, %s-Rotor, false
-saw, %s-Saw-Blade, false
+saw_blade, %s-Saw-Blade, false
+scrap, %s-Scrap, false
 screw, %s-Screw, false
+screwed_plate, Screwed-%s-Plate, false
+small_bolt, Small-%s-Bolt, false
+small_casing, Small-%s-Casing, false
 small_centrifuged_ore, Small-Centrifuged-%s-Ore, false
 small_crushed_ore, Small-Crushed-%s-Ore, true
+small_fine_dust, Small-Fine-%s-Dust, false
 small_gear, Small-%s-Gear, false
 small_plate, Small-%s-Plate, false
+small_powder, Small-%s-Powder, false
 small_purified_ore, Small-Purified-%s-Ore, false
 small_rod, Small-%s-Rod, false
+small_screwed_plate, Small-Screwed-%s-Plate, false
+small_spring, Small-%s-Spring, false
+solid_metal, Solid-%s-Metal, false
 spring, %s-Spring, false
+stick, %s-Stick, false
+stone_plate, %s-Plate, false
 superior_gem, Superior-%s, false
-tiny_plate, Tiny-%s-Plate, false
+tiny_fine_dust, Tiny-Fine-%s-Dust, false
+tiny_powder, Tiny-%s-Powder, false
 tough_plate, Tough-%s-Plate, false
-turbine, %s-Turbine-Blade, false
+turbine_blade, %s-Turbine-Blade, false
+wafer, %s-Wafer, false
 wire, %s-Wire, true
+wood_plate, %s-Plate, false
