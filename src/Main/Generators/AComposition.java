@@ -17,7 +17,7 @@ public abstract class AComposition extends Generator<Composition> {
     }
 
     @Override
-    abstract void readFile(BufferedReader br) throws IOException;
+    abstract void readLine(BufferedReader br, String[] s) throws IOException;
 
     static Composition buildComposition(ArrayList<Composition> comps) {
         Composition out = comps.get(0);

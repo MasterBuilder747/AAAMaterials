@@ -2,6 +2,7 @@ package Main.Generators;
 
 import Main.Data.Data;
 import Main.Main;
+import org.jetbrains.annotations.NotNull;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
@@ -12,6 +13,9 @@ public abstract class Generator<D extends Data> {
     //holds an arraylist and can generate code using it
     String filename; //the name of the file
     ArrayList<D> objects;
+    int line = 1;
+    String s1;
+    String[] s;
 
     public Generator(String filename) {
         this.filename = filename;
@@ -27,19 +31,34 @@ public abstract class Generator<D extends Data> {
 
         //write: build the zs code if needed
         StringBuilder sb = new StringBuilder();
-        if (!objects.get(0).build().matches("NULL")) { //indicates that the generator doesn't need to build anything
-            //output the zs code for each object
-            sb.append("# -");
-            sb.append(this.filename);
-            sb.append("s\n");
-            for (D o : objects) {
-                sb.append(o.build());
+        if (objects.size() > 0) {
+            if (!objects.get(0).build().matches("NULL")) { //indicates that the generator doesn't need to build anything
+                //output the zs code for each object
+                sb.append("# -");
+                sb.append(this.filename);
+                sb.append("s\n");
+                for (D o : objects) {
+                    sb.append(o.build());
+                }
+                sb.append("\n");
             }
-            sb.append("\n");
         }
         return sb.toString();
     }
-    abstract void readFile(BufferedReader br) throws IOException; //this populates the arraylist with the specified object
+
+    void readFile(@NotNull BufferedReader br) throws IOException {
+        while (true) {
+            s1 = br.readLine();
+            if (s1 != null) {
+                s = s1.replace(" ", "").split(",\\s*");
+                readLine(br, s);
+            } else {
+                break;
+            }
+            line++;
+        }
+    }
+    abstract void readLine(BufferedReader br, String[] s) throws IOException; //this populates the arraylist with the specified object
 
     public D get(String s) {
         for (D o : objects) {

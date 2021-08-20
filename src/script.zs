@@ -86,7 +86,7 @@ var string_parts = ["fiber", "fibers", "dense_fibers"] as string[];
 var conductive_parts = ["wire", "fine_wire", "dense_wire", "coil"] as string[];
 var dust_parts = ["dust", "small_dust", "tiny_dust", "fine_dust", "small_fine_dust", "tiny_fine_dust", "powder", "small_powder", "tiny_powder"] as string[];
 var machine_parts = ["turbine_blade", "drill_head", "saw_blade", "rotor", "gearbox"] as string[];
-var smelt_parts = ["molten", "ingot", "morsel", "nugget", "casing", "plate", "curved_plate", "tough_plate", "dense_plate", "small_rod", "rod", "long_rod", "small_spring", "large_spring", "beam", "bolt", "screw", "round", "foil", "ring", "small_gear", "gear", "small_plate", "spring", "small_spring", "chain", "rail", "large_plate", "small_bolt", "small_casing", "small_screwed_plate"] as string[];
+var smelt_parts = ["molten", "ingot", "morsel", "nugget", "casing", "plate", "curved_plate", "tough_plate", "dense_plate", "small_rod", "rod", "long_rod", "small_spring", "large_spring", "beam", "bolt", "screw", "round", "foil", "ring", "small_gear", "gear", "small_plate", "spring", "chain", "rail", "large_plate", "small_bolt", "small_casing", "small_screwed_plate"] as string[];
 var blast_parts = ["hot_ingot"] as string[];
 var gem_parts = ["gem", "chipped_gem", "flawed_gem", "crystal", "flawless_gem", "exquisite_gem", "superior_gem", "piece", "lens"] as string[];
 var semi_conductive_parts = ["boule", "infused_boule", "wafer", "infused_wafer"] as string[];
@@ -94,20 +94,41 @@ var wood_parts = ["wood_plate", "stick", "long_stick"] as string[];
 var stone_parts = ["stone_plate", "pebble"] as string[];
 
 # -moleculeMaterials
+var silver = MaterialSystem.getMaterialBuilder().setName("Silver").setColor(Color.fromHex("101010")).build();
+silver.registerParts(dust_parts);
+silver.registerParts(ore_parts);
+silver.registerParts(smelt_parts);
+silver.registerParts(conductive_parts);
+var gold = MaterialSystem.getMaterialBuilder().setName("Gold").setColor(Color.fromHex("ffe121")).build();
+gold.registerParts(dust_parts);
+gold.registerParts(ore_parts);
+gold.registerParts(smelt_parts);
+gold.registerParts(conductive_parts);
 var lumium = MaterialSystem.getMaterialBuilder().setName("Lumium").setColor(Color.fromHex("f5e36c")).build();
 lumium.registerParts(dust_parts);
 lumium.registerParts(ore_parts);
 lumium.registerParts(smelt_parts);
 lumium.registerParts(conductive_parts);
-lumium.registerParts(machine_parts);
 lumium.registerParts(blast_parts);
-lumium.registerParts(string_parts);
-var oak = MaterialSystem.getMaterialBuilder().setName("Oak").setColor(Color.fromHex("785608")).build();
-oak.registerParts(wood_parts);
-var granite = MaterialSystem.getMaterialBuilder().setName("Granite").setColor(Color.fromHex("bd988e")).build();
-granite.registerParts(stone_parts);
-var silicon = MaterialSystem.getMaterialBuilder().setName("Silicon").setColor(Color.fromHex("39466e")).build();
-silicon.registerParts(semi_conductive_parts);
-var ruby = MaterialSystem.getMaterialBuilder().setName("Ruby").setColor(Color.fromHex("f50000")).build();
-ruby.registerParts(dust_parts);
-ruby.registerParts(gem_parts);
+
+# -compoundMaterials
+var electrum = MaterialSystem.getMaterialBuilder().setName("Electrum").setColor(Color.fromHex("202020")).build();
+electrum.registerParts(dust_parts);
+electrum.registerParts(smelt_parts);
+electrum.registerParts(conductive_parts);
+
+# -recipes
+var basic1_ultimate = mods.modularmachinery.RecipeBuilder.newBuilder("basic1_ultimate", "basic", 20);
+basic1_ultimate.addItemInput(<ore:ingotIron>);
+basic1_ultimate.addItemInput(<minecraft:wool:2> * 5);
+basic1_ultimate.addFluidInput(<liquid:water>);
+basic1_ultimate.addItemOutput(<minecraft:gold_ingot> * 2);
+basic1_ultimate.addFluidOutput(<liquid:lava>);
+basic1_ultimate.addEnergyPerTickInput(2000000000);
+basic1_ultimate.addFluidInput(<liquid:hydrogen>);
+basic1_ultimate.addFluidOutput(<liquid:oxygen>);
+basic1_ultimate.addFluidInput(<liquid:data> * 1000);
+basic1_ultimate.addFluidInput(<liquid:negredmatter> * 100);
+basic1_ultimate.addFluidOutput(<liquid:posorangematter> * 10);
+basic1_ultimate.build();
+

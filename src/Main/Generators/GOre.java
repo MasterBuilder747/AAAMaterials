@@ -11,7 +11,7 @@ public class GOre extends Generator<Ore> {
     }
 
     @Override
-    void readFile(BufferedReader br) throws IOException {
+    void readLine(BufferedReader br, String[] s) throws IOException {
 
     }
 }

@@ -41,20 +41,11 @@ public class GCompound extends AComposition {
     }
 
     @Override
-    void readFile(BufferedReader br) throws IOException {
-        int line = 1;
-        while (true) {
-            String s1 = br.readLine(); //row value or atomic number
-            if (s1 != null) {
-                try {
-                    objects.add(createMoleculeComp(s1));
-                } catch (IllegalArgumentException e) {
-                    System.out.println(this.filename + "s.txt: Unknown element " + s1 + " at line " + line);
-                }
-                line++;
-            } else {
-                break;
-            }
+    void readLine(BufferedReader br, String[] s) throws IOException {
+        try {
+            objects.add(createMoleculeComp(s1));
+        } catch (IllegalArgumentException e) {
+            System.out.println(this.filename + "s.txt: Unknown element " + s1 + " at line " + line);
         }
     }
 }
