@@ -5,7 +5,7 @@ import Main.Data.Item;
 import java.io.BufferedReader;
 import java.io.IOException;
 
-public class GItem extends LocalGenerator<Item> {
+public class GItem extends ALocal<Item> {
     public GItem(String filename) {
         super(filename);
     }

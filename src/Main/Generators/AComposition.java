@@ -7,7 +7,7 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.util.ArrayList;
 
-public abstract class AComposition extends Generator<Composition> {
+public abstract class AComposition extends AGenerator<Composition> {
 
     GElement ele;
 

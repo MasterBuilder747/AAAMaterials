@@ -45,11 +45,11 @@ public class Main {
         bw.write(element.register());
         GMolecule molecule = new GMolecule("moleculeComposition", element);
         bw.write(molecule.register());
-        GMolMaterial molMat = new GMolMaterial("moleculeMaterial", molecule);
+        MMolMaterial molMat = new MMolMaterial("moleculeMaterial", partGroup, molecule);
         bw.write(molMat.register());
         GCompound compound = new GCompound("compoundComposition", element, molMat);
         bw.write(compound.register());
-        GCompMaterial compMat = new GCompMaterial("compoundMaterial", compound);
+        MCompMaterial compMat = new MCompMaterial("compoundMaterial", partGroup, compound);
         bw.write(compMat.register());
 
         //machine recipes

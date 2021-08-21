@@ -2,20 +2,36 @@ package Main.Generators;
 
 import Main.Data.Composition;
 import Main.Data.Material;
+import Main.Data.MaterialType;
+import Main.Data.PartGroup;
+import org.jetbrains.annotations.NotNull;
 
 import java.io.BufferedReader;
 import java.io.IOException;
+import java.util.ArrayList;
 
-public class GCompMaterial extends Generator<Material> {
-    GCompound comp;
+public abstract class AMaterial extends AGenerator<Material> {
+    GPartGroup groups;
 
-    public GCompMaterial(String name, GCompound comp) {
-        super(name);
-        this.comp = comp;
+    public AMaterial(String filename, GPartGroup groups) {
+        super(filename);
+        this.groups = groups;
+    }
+
+    private MaterialType setType(String name, String @NotNull [] pg) {
+        ArrayList<PartGroup> ps = new ArrayList<>();
+        for (String s : pg) {
+            if (groups.is(s)) {
+                ps.add(groups.get(s));
+            } else {
+                throw new IllegalArgumentException("Invalid partGroup type: " + s);
+            }
+        }
+        return new MaterialType(name, ps.toArray(new PartGroup[0]));
     }
 
     @Override
-    public void readLine(BufferedReader br, String[] s) throws IOException {
+    void readLine(BufferedReader br, String @NotNull [] s) throws IOException {
         //ex: electrum, Electrum, 101010, AuAg, solid, oresmeltconduct, 0, 0
         //(0-2): name, localname, color,
         //(3): composition (needs a method for string conversion!)
@@ -30,17 +46,8 @@ public class GCompMaterial extends Generator<Material> {
         Material m;
         m = new Material(s[0], s[1], s[2]);
 
-        Composition j;
-        if (s[3].contains("[") && s[3].contains("]")) {
-            try {
-                j = comp.createCompound(s[3]);
-            } catch (IllegalArgumentException e) {
-                System.out.println("materials.txt: Error at line " + line + ":");
-                j = comp.createCompound(s[3]);
-            }
-        } else {
-            throw new IllegalArgumentException(this.filename + "s.txt: Incorrect composition for material " + s[0] + " at line " + line);
-        }
+        //composition creation, handled by composition objects
+        Composition j = parseComp(s[3], s[0]);
 
         //state
         if (s[4].equals("solid")) m.stateSolid();
@@ -66,4 +73,6 @@ public class GCompMaterial extends Generator<Material> {
 
         objects.add(m);
     }
+
+    abstract Composition parseComp(String s, String mat);
 }

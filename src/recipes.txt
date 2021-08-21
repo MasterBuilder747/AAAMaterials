@@ -1,1 +1,1 @@
-basic, 15, 20, 1.0, ore:ingotIron; minecraft:wool:2 * 5, water, minecraft:gold_ingot * 2, lava, hydrogen, oxygen, 1000, -red*100, +orange*10
+/basic, 15, 20, 1.0, ore:ingotIron; minecraft:wool:2 * 5, water, minecraft:gold_ingot * 2, lava, hydrogen, oxygen, 1000, -red*100, +orange*10

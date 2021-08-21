@@ -23,7 +23,6 @@ public class Material extends Data {
     public Composition composition; //a string of defined element(s) and their count(s) in a string with special syntax
     private final String localName;
 
-
     //1) set basic info
     public Material(String name, String localName, String color) {
         super(name);
@@ -97,15 +96,6 @@ public class Material extends Data {
             sb.append(this.name);
             sb.append(".registerParts(blast_parts);\n");
         }
-
-        //3) generate blocks and their data
-        //for i, ore in ores {
-        //  var oreData = ore.getData();
-        //  //build OreVariant here
-        //}
-        //var blockData = Material.registerPart("block").getData();
-
-        //3) generate toolTip based of the composition string
 
         return sb.toString();
     }

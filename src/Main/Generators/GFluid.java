@@ -5,7 +5,7 @@ import Main.Data.Fluid;
 import java.io.BufferedReader;
 import java.io.IOException;
 
-public class GFluid extends LocalGenerator<Fluid> {
+public class GFluid extends ALocal<Fluid> {
 
     public GFluid(String filename) {
         super(filename);

@@ -5,7 +5,7 @@ import Main.Data.Block;
 import java.io.BufferedReader;
 import java.io.IOException;
 
-public class GBlock extends LocalGenerator<Block> {
+public class GBlock extends ALocal<Block> {
 
     public GBlock(String filename) {
         super(filename);

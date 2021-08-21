@@ -9,9 +9,9 @@ import java.util.ArrayList;
 public class GCompound extends AComposition {
 
     //composition definition that contains multiple molecule materials in it
-    GMolMaterial mol;
+    MMolMaterial mol;
 
-    public GCompound(String filename, GElement ele, GMolMaterial mol) {
+    public GCompound(String filename, GElement ele, MMolMaterial mol) {
         super(filename, ele);
         this.mol = mol;
     }

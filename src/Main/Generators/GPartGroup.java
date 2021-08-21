@@ -7,7 +7,7 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.util.ArrayList;
 
-public class GPartGroup extends Generator<PartGroup> {
+public class GPartGroup extends AGenerator<PartGroup> {
     GPart parts;
 
     public GPartGroup(String filename, GPart parts) {

@@ -6,7 +6,7 @@ import Main.Main;
 import java.io.BufferedReader;
 import java.io.IOException;
 
-public class GElement extends Generator<Element> {
+public class GElement extends AGenerator<Element> {
     String pd = null;
 
     public GElement(String name) {

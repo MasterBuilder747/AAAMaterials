@@ -9,7 +9,7 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
 
-public abstract class Generator<D extends Data> {
+public abstract class AGenerator<D extends Data> {
     //holds an arraylist and can generate code using it
     String filename; //the name of the file
     ArrayList<D> objects;
@@ -17,7 +17,7 @@ public abstract class Generator<D extends Data> {
     String s1;
     String[] s;
 
-    public Generator(String filename) {
+    public AGenerator(String filename) {
         this.filename = filename;
         objects = new ArrayList<>();
     }
@@ -50,8 +50,10 @@ public abstract class Generator<D extends Data> {
         while (true) {
             s1 = br.readLine();
             if (s1 != null) {
-                s = s1.replace(" ", "").split(",\\s*");
-                readLine(br, s);
+                if (s1.charAt(0) != '/') { //commented out line, ignored
+                    s = s1.replace(" ", "").split(",\\s*");
+                    readLine(br, s);
+                }
             } else {
                 break;
             }

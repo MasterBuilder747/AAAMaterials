@@ -5,7 +5,7 @@ import Main.Recipe.Recipe;
 import java.io.BufferedReader;
 import java.io.IOException;
 
-public class GRecipe extends Generator<Recipe> {
+public class GRecipe extends AGenerator<Recipe> {
 
     public GRecipe(String filename) {
         super(filename);

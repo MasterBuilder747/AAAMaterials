@@ -5,7 +5,7 @@ import Main.Data.Part;
 import java.io.BufferedReader;
 import java.io.IOException;
 
-public class GPart extends LocalGenerator<Part> {
+public class GPart extends ALocal<Part> {
 
     public GPart(String filename) {
         super(filename);

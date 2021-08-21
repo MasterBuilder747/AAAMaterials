@@ -1,10 +1,5 @@
-tile.contenttweaker.mica.name=Mica
-tile.contenttweaker.coil_block_2.name=Coil Block
 
-item.contenttweaker.infi_single.name=Infinity Singularity
 
-fluid.matter=Matter
-fluid.hydrogen=Hydrogen Gas
 
 contenttweaker.part.boule=%s Boule
 contenttweaker.part.chain=%s Chain
