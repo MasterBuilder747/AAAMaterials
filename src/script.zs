@@ -69,15 +69,14 @@ var wire = mods.contenttweaker.MaterialSystem.getPartBuilder().setName("wire").s
 var wood_plate = mods.contenttweaker.MaterialSystem.getPartBuilder().setName("wood_plate").setPartType(mods.contenttweaker.MaterialSystem.getPartType("item")).setHasOverlay(false).setOreDictName("woodPlate").build();
 
 # -partgroups
-var ore_blocks = ["ore", "poor_ore", "dense_ore"] as string[];
-var ore_parts = ["ore_sample", "rock", "ore_rock", "cluster", "clump", "shard", "crushed_ore", "small_crushed_ore", "purified_ore", "small_purified_ore", "centrifuged_ore", "small_centrifuged_ore", "pure_dust", "raw_ore", "chunk", "scrap", "large_scrap"] as string[];
-var string_parts = ["fiber", "fibers", "dense_fibers"] as string[];
-var conductive_parts = ["wire", "fine_wire", "dense_wire", "coil"] as string[];
 var dust_parts = ["dust", "small_dust", "tiny_dust", "fine_dust", "small_fine_dust", "tiny_fine_dust", "powder", "small_powder", "tiny_powder"] as string[];
-var machine_parts = ["turbine_blade", "drill_head", "saw_blade", "rotor", "gearbox"] as string[];
-var smelt_parts = ["molten", "ingot", "morsel", "nugget", "casing", "plate", "curved_plate", "tough_plate", "dense_plate", "small_rod", "rod", "long_rod", "small_spring", "large_spring", "beam", "bolt", "screw", "round", "foil", "ring", "small_gear", "gear", "small_plate", "spring", "chain", "rail", "large_plate", "small_bolt", "small_casing", "small_screwed_plate"] as string[];
-var blast_parts = ["hot_ingot"] as string[];
+var ore_parts = ["ore_sample", "rock", "ore_rock", "cluster", "clump", "shard", "crushed_ore", "small_crushed_ore", "purified_ore", "small_purified_ore", "centrifuged_ore", "small_centrifuged_ore", "pure_dust", "raw_ore", "chunk", "scrap", "large_scrap"] as string[];
 var gem_parts = ["gem", "chipped_gem", "flawed_gem", "crystal", "flawless_gem", "exquisite_gem", "superior_gem", "piece", "lens"] as string[];
+var smelt_parts = ["molten", "ingot", "morsel", "nugget", "casing", "plate", "curved_plate", "tough_plate", "dense_plate", "small_rod", "rod", "long_rod", "small_spring", "large_spring", "beam", "bolt", "screw", "round", "foil", "ring", "small_gear", "gear", "small_plate", "spring", "chain", "rail", "large_plate", "small_bolt", "small_casing", "small_screwed_plate"] as string[];
+var conductive_parts = ["wire", "fine_wire", "dense_wire", "coil"] as string[];
+var blast_parts = ["hot_ingot"] as string[];
+var machine_parts = ["turbine_blade", "drill_head", "saw_blade", "rotor", "gearbox"] as string[];
+var string_parts = ["fiber", "fibers", "dense_fibers"] as string[];
 var semi_conductive_parts = ["boule", "infused_boule", "wafer", "infused_wafer"] as string[];
 var wood_parts = ["wood_plate", "stick", "long_stick"] as string[];
 var stone_parts = ["stone_plate", "pebble"] as string[];
@@ -89,4 +88,13 @@ lumium.registerParts(ore_parts);
 lumium.registerParts(smelt_parts);
 lumium.registerParts(conductive_parts);
 lumium.registerParts(blast_parts);
+var ruby = MaterialSystem.getMaterialBuilder().setName("Ruby").setColor(Color.fromHex("785608")).build();
+ruby.registerParts(dust_parts);
+ruby.registerParts(gem_parts);
+var silicon = MaterialSystem.getMaterialBuilder().setName("Silicon").setColor(Color.fromHex("39466e")).build();
+silicon.registerParts(dust_parts);
+silicon.registerParts(ore_parts);
+var granite = MaterialSystem.getMaterialBuilder().setName("Granite").setColor(Color.fromHex("f50000")).build();
+granite.registerParts(dust_parts);
+granite.registerParts(ore_parts);
 

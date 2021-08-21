@@ -1,3 +1,7 @@
+/moleculeElement
+/ex: H
+/ex2: H2
+/ex3: Mn2
 Ag
 Au
 H2

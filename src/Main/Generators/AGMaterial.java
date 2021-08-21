@@ -2,36 +2,20 @@ package Main.Generators;
 
 import Main.Data.Composition;
 import Main.Data.Material;
-import Main.Data.MaterialType;
-import Main.Data.PartGroup;
-import org.jetbrains.annotations.NotNull;
 
 import java.io.BufferedReader;
 import java.io.IOException;
-import java.util.ArrayList;
 
-public abstract class AMaterial extends AGenerator<Material> {
+public abstract class AGMaterial extends AGenerator<Material> {
     GPartGroup groups;
 
-    public AMaterial(String filename, GPartGroup groups) {
+    public AGMaterial(String filename, GPartGroup groups) {
         super(filename);
         this.groups = groups;
     }
 
-    private MaterialType setType(String name, String @NotNull [] pg) {
-        ArrayList<PartGroup> ps = new ArrayList<>();
-        for (String s : pg) {
-            if (groups.is(s)) {
-                ps.add(groups.get(s));
-            } else {
-                throw new IllegalArgumentException("Invalid partGroup type: " + s);
-            }
-        }
-        return new MaterialType(name, ps.toArray(new PartGroup[0]));
-    }
-
     @Override
-    void readLine(BufferedReader br, String @NotNull [] s) throws IOException {
+    void readLine(BufferedReader br, String[] s) throws IOException {
         //ex: electrum, Electrum, 101010, AuAg, solid, oresmeltconduct, 0, 0
         //(0-2): name, localname, color,
         //(3): composition (needs a method for string conversion!)
@@ -63,6 +47,11 @@ public abstract class AMaterial extends AGenerator<Material> {
         if (s[5].contains("gem")) m.gem();
         if (s[5].contains("conduct")) m.conductive();
         if (s[5].contains("blast")) m.blast();
+        if (s[5].contains("string")) m.string();
+        if (s[5].contains("semi")) m.semi();
+        if (s[5].contains("wood")) m.wood();
+        if (s[5].contains("stone")) m.stone();
+        if (s[5].contains("machine")) m.machine();
 
         //set composition
         try {

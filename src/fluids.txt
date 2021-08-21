@@ -1,2 +1,3 @@
-/matter, Matter, 123456, false
+/name, localizedName, hexColor, bool isGas
+/ex: matter, Matter, 123456, false
 /hydrogen, Hydrogen, 101010, true

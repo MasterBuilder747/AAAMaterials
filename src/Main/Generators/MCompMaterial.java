@@ -2,7 +2,7 @@ package Main.Generators;
 
 import Main.Data.Composition;
 
-public class MCompMaterial extends AMaterial {
+public class MCompMaterial extends AGMaterial {
     GCompound comp;
 
     public MCompMaterial(String name, GPartGroup type, GCompound comp) {

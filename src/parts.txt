@@ -1,3 +1,10 @@
+/existing_part
+/name, localization-%s, bool hasOverlay
+/%s is required and denotes the material name
+/- denotes a space
+/ex: tiny_dust
+/ex2: boule, %s-Boule, false
+/ex3: raw_ore, Raw-%s-Ore, true
 tiny_dust
 small_dust
 dust

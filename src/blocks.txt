@@ -1,2 +1,4 @@
-/mica, Mica, rock, 5, 6, 1, pickaxe
+/name, LocalizedName, materialType, int hardness, int resistance, int miningLevel, tool
+/materialTypes: use /ct blockmaterial to see all supported block materials
+/ex: mica, Mica, rock, 5, 6, 1, pickaxe
 /coil_block_2, Coil-Block, iron, 5, 6, 2, pickaxe

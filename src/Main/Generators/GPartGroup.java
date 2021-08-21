@@ -22,8 +22,8 @@ public class GPartGroup extends AGenerator<PartGroup> {
         }
         //String name: String part1, String part2, ...
         String trim = s1.replaceAll(" ", "");
-        String name = trim.substring(0, s1.indexOf(":"));
-        String s2 = trim.substring(s1.indexOf(":")+1);
+        String name = trim.substring(0, trim.indexOf(":"));
+        String s2 = trim.substring(trim.indexOf(":")+1);
         String[] partNames = s2.split(",\\s*");
         if (partNames.length == 0) {
             throw new IllegalArgumentException(this.filename + "s.txt: Empty parts at line " + line);

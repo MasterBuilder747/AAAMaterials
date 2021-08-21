@@ -2,7 +2,6 @@ package Main.Generators;
 
 import Main.Data.Data;
 import Main.Main;
-import org.jetbrains.annotations.NotNull;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
@@ -46,7 +45,7 @@ public abstract class AGenerator<D extends Data> {
         return sb.toString();
     }
 
-    void readFile(@NotNull BufferedReader br) throws IOException {
+    void readFile(BufferedReader br) throws IOException {
         while (true) {
             s1 = br.readLine();
             if (s1 != null) {

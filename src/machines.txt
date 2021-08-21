@@ -1,1 +1,2 @@
+/name, localizedName, int unlockedVoltageTier
 basic, Basic, 1

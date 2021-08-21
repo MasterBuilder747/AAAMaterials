@@ -2,7 +2,7 @@ package Main.Generators;
 
 import Main.Data.Composition;
 
-public class MMolMaterial extends AMaterial {
+public class MMolMaterial extends AGMaterial {
     //these are materials that contain a single element in their composition, or a molecule
     //these are base materials that do not contain any sub materials in their composition
 

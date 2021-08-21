@@ -1,1 +1,2 @@
-AgAu
+/element1Element2...
+/ex: AgAu

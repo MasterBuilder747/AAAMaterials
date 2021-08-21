@@ -1,1 +1,2 @@
-/infi_single, Infinity-Singularity
+/name, localizedName
+/ex: infi_single, Infinity-Singularity

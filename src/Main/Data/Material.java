@@ -17,6 +17,11 @@ public class Material extends Data {
     boolean smelt;
     boolean conductive; //requires smelt
     boolean blast; //requires smelt
+    boolean machine; //requires smelt
+    boolean string;
+    boolean semi;
+    boolean wood;
+    boolean stone;
 
     int separation; //-1 = chemical, 1 = physical separation/combination, 0 is none
     int combination; //-1 = chemical, 1 = physical separation/combination, 0 is none
@@ -44,7 +49,7 @@ public class Material extends Data {
     public void statePlasma() { this.plasma = true; }
     public void customItem() { this.customItem = true; } //if the material system is not needed, use this to block parts from being generated
 
-    //4) set attributes (what parts should generate?)
+    //4) set material type
     //order of these following keywords do not matter:
     public void noDust() { this.dust = false; } //for custom items, liquids, or gases, etc
     public void ore() { this.ore = true; }
@@ -57,6 +62,21 @@ public class Material extends Data {
     public void conductive() { this.conductive = true; }
     public void blast() {
         this.blast = true;
+    }
+    public void machine() {
+        this.machine = true;
+    }
+    public void string() {
+        this.string = true;
+    }
+    public void semi() {
+        this.semi = true;
+    }
+    public void wood() {
+        this.wood = true;
+    }
+    public void stone() {
+        this.stone = true;
     }
 
     //5) build the code based off these attributes
@@ -73,31 +93,43 @@ public class Material extends Data {
         //Material.registerParts(ore);
         //var ores = Material.registerParts(ore_types);
         if (this.dust) {
-            sb.append(this.name);
-            sb.append(".registerParts(dust_parts);\n");
+            sb.append(setAttribute("dust"));
         }
         if (this.ore) {
-            sb.append(this.name);
-            sb.append(".registerParts(ore_parts);\n");
+            sb.append(setAttribute("ore"));
         }
         if (this.gem) {
-            sb.append(this.name);
-            sb.append(".registerParts(gem_parts);\n");
+            sb.append(setAttribute("gem"));
         }
         if (this.smelt) {
-            sb.append(this.name);
-            sb.append(".registerParts(smelt_parts);\n");
+            sb.append(setAttribute("smelt"));
         }
         if (this.conductive) {
-            sb.append(this.name);
-            sb.append(".registerParts(conductive_parts);\n");
+            sb.append(setAttribute("conductive"));
         }
         if (this.blast) {
-            sb.append(this.name);
-            sb.append(".registerParts(blast_parts);\n");
+            sb.append(setAttribute("blast"));
         }
-
+        if (this.machine) {
+            sb.append(setAttribute("machine"));
+        }
+        if (this.string) {
+            sb.append(setAttribute("string"));
+        }
+        if (this.semi) {
+            sb.append(setAttribute("semi"));
+        }
+        if (this.wood) {
+            sb.append(setAttribute("wood"));
+        }
+        if (this.stone) {
+            sb.append(setAttribute("stone"));
+        }
         return sb.toString();
+    }
+
+    private String setAttribute(String s) {
+        return this.name+".registerParts("+s+"_parts);\n";
     }
 
     @Override
@@ -123,7 +155,12 @@ public class Material extends Data {
         if (this.gem) System.out.print("gem ");
         if (this.smelt) System.out.print("smelt ");
         if (this.conductive) System.out.print("conductive ");
-        if (this.blast) System.out.print("blast_furnace ");
+        if (this.blast) System.out.print("blast ");
+        if (this.blast) System.out.print("machine ");
+        if (this.blast) System.out.print("string ");
+        if (this.blast) System.out.print("semi_conductive ");
+        if (this.blast) System.out.print("wood ");
+        if (this.blast) System.out.print("stone ");
         System.out.print("| ");
 
         if (this.separation == -1) System.out.print("chemical separation, ");
