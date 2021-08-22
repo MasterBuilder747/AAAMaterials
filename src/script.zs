@@ -116,7 +116,7 @@ for i, ore in oreBlocks {
 	data.addDataValue("hardness","5,5,5,3,70");
 	data.addDataValue("resistance","6,6,9,1,1200");
 	data.addDataValue("harvestTool","pickaxe,pickaxe,pickaxe,shovel,pickaxe");
-	data.addDataValue("harvestTool","2,2,2,2,3");
+	data.addDataValue("harvestLevel","2,2,2,2,3");
 }
 var poorBlocks = lumium.registerParts(poor_blocks);
 for i, ore in poorBlocks {
@@ -125,7 +125,7 @@ for i, ore in poorBlocks {
 	data.addDataValue("hardness","5,5,5,3,70");
 	data.addDataValue("resistance","6,6,9,1,1200");
 	data.addDataValue("harvestTool","pickaxe,pickaxe,pickaxe,shovel,pickaxe");
-	data.addDataValue("harvestTool","2,2,2,2,3");
+	data.addDataValue("harvestLevel","2,2,2,2,3");
 }
 var denseBlocks = lumium.registerParts(dense_blocks);
 for i, ore in denseBlocks {
@@ -134,7 +134,7 @@ for i, ore in denseBlocks {
 	data.addDataValue("hardness","5,5,5,3,70");
 	data.addDataValue("resistance","6,6,9,1,1200");
 	data.addDataValue("harvestTool","pickaxe,pickaxe,pickaxe,shovel,pickaxe");
-	data.addDataValue("harvestTool","2,2,2,2,3");
+	data.addDataValue("harvestLevel","2,2,2,2,3");
 }
 
 

@@ -59,7 +59,7 @@ public class OreType extends Data {
         }
         sb.append(this.variants[length-1].b.tool).append("\");\n");
 
-        sb.append("\tdata.addDataValue(\"harvestTool\",\"");
+        sb.append("\tdata.addDataValue(\"harvestLevel\",\"");
         for (int i = 0; i < length - 1; i++) {
             sb.append(this.variants[i].b.miningLevel).append(",");
         }
