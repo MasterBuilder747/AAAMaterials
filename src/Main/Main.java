@@ -40,7 +40,6 @@ public class Main {
         //material system
         GPartGroup partGroup = new GPartGroup("partgroup", part);
         bw.write(partGroup.register());
-
         GElement element = new GElement("element");
         bw.write(element.register());
         GMolecule molecule = new GMolecule("moleculeComposition", element);
@@ -56,9 +55,13 @@ public class Main {
         GRecipe recipe = new GRecipe("recipe");
         bw.write(recipe.register());
 
-        //TODO: ore system
-        GOre ore = new GOre("ore");
+        //ore system
+        GVariant variant = new GVariant("variant");
+        bw.write(variant.register());
+        GOre ore = new GOre("ore", variant, molMat, compMat);
+        bw.write(ore.register());
 
+        //finish
         bw.close();
 
         //generate the .lang file based off of what is registered at this point

@@ -1,0 +1,7 @@
+/use /ct blockmaterial to get blockmaterials
+/ex: stone, rock, pickaxe
+minecraft:stone, rock, pickaxe
+minecraft:netherrack, rock, pickaxe
+minecraft:end_stone, rock, pickaxe
+minecraft:gravel, sand, shovel
+minecraft:bedrock, rock, pickaxe

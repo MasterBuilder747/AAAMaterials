@@ -2,11 +2,12 @@ package Main.Data;
 
 public class Block extends LocalizedData {
     //defines block properties for one block
-    public int hardness = 5; //public for Ore to access
-    public int resistance = 6;
-    public int miningLevel = 2;
-    public String tool = "pickaxe";
-    String material; //must be a valid vanilla material
+    //semi-colon-separated in Ore definition
+    public int hardness;
+    public int resistance;
+    public int miningLevel;
+    public String tool;
+    String material;
 
     public Block(String name, String localName, String material, int hardness, int resistance, int miningLevel, String tool) {
         super(name, localName);
@@ -16,10 +17,13 @@ public class Block extends LocalizedData {
         this.miningLevel = miningLevel;
         this.tool = tool;
     }
-    //for ores only
-    public Block(String name, String localName, int hardness, int resistance, int miningLevel) {
-        super(name, localName);
-        this.material = "rock";
+    //for variants
+    public Block(String name, String material, String tool) {
+        super(name, name);
+        this.material = material;
+        this.tool = tool;
+    }
+    public void setAttributes(int hardness, int resistance, int miningLevel) {
         this.hardness = hardness;
         this.resistance = resistance;
         this.miningLevel = miningLevel;

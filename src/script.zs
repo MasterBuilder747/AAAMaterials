@@ -80,6 +80,9 @@ var string_parts = ["fiber", "fibers", "dense_fibers"] as string[];
 var semi_conductive_parts = ["boule", "infused_boule", "wafer", "infused_wafer"] as string[];
 var wood_parts = ["wood_plate", "stick", "long_stick"] as string[];
 var stone_parts = ["stone_plate", "pebble"] as string[];
+var ore_blocks = ["ore"] as string[];
+var poor_blocks = ["poor_ore"] as string[];
+var dense_blocks = ["dense_ore"] as string[];
 
 # -moleculeMaterials
 var lumium = MaterialSystem.getMaterialBuilder().setName("Lumium").setColor(Color.fromHex("f5e36c")).build();
@@ -88,13 +91,50 @@ lumium.registerParts(ore_parts);
 lumium.registerParts(smelt_parts);
 lumium.registerParts(conductive_parts);
 lumium.registerParts(blast_parts);
-var ruby = MaterialSystem.getMaterialBuilder().setName("Ruby").setColor(Color.fromHex("785608")).build();
+lumium.registerParts(machine_parts);
+var wool = MaterialSystem.getMaterialBuilder().setName("Wool").setColor(Color.fromHex("ffffff")).build();
+wool.registerParts(dust_parts);
+wool.registerParts(string_parts);
+var ruby = MaterialSystem.getMaterialBuilder().setName("Ruby").setColor(Color.fromHex("f50000")).build();
 ruby.registerParts(dust_parts);
 ruby.registerParts(gem_parts);
 var silicon = MaterialSystem.getMaterialBuilder().setName("Silicon").setColor(Color.fromHex("39466e")).build();
 silicon.registerParts(dust_parts);
-silicon.registerParts(ore_parts);
-var granite = MaterialSystem.getMaterialBuilder().setName("Granite").setColor(Color.fromHex("f50000")).build();
+silicon.registerParts(semi_conductive_parts);
+var granite = MaterialSystem.getMaterialBuilder().setName("Granite").setColor(Color.fromHex("bd8f86")).build();
 granite.registerParts(dust_parts);
-granite.registerParts(ore_parts);
+granite.registerParts(stone_parts);
+var balsa = MaterialSystem.getMaterialBuilder().setName("Balsa").setColor(Color.fromHex("bfaa8e")).build();
+balsa.registerParts(dust_parts);
+balsa.registerParts(wood_parts);
+
+# -ores
+var oreBlocks = lumium.registerParts(ore_blocks);
+for i, ore in oreBlocks {
+	var data = ore.getData();
+	data.addDataValue("variants","minecraft:stone,minecraft:netherrack,minecraft:end_stone,minecraft:gravel,minecraft:bedrock");
+	data.addDataValue("hardness","5,5,5,3,70");
+	data.addDataValue("resistance","6,6,9,1,1200");
+	data.addDataValue("harvestTool","pickaxe,pickaxe,pickaxe,shovel,pickaxe");
+	data.addDataValue("harvestTool","2,2,2,2,3");
+}
+var poorBlocks = lumium.registerParts(poor_blocks);
+for i, ore in poorBlocks {
+	var data = ore.getData();
+	data.addDataValue("variants","minecraft:stone,minecraft:netherrack,minecraft:end_stone,minecraft:gravel,minecraft:bedrock");
+	data.addDataValue("hardness","5,5,5,3,70");
+	data.addDataValue("resistance","6,6,9,1,1200");
+	data.addDataValue("harvestTool","pickaxe,pickaxe,pickaxe,shovel,pickaxe");
+	data.addDataValue("harvestTool","2,2,2,2,3");
+}
+var denseBlocks = lumium.registerParts(dense_blocks);
+for i, ore in denseBlocks {
+	var data = ore.getData();
+	data.addDataValue("variants","minecraft:stone,minecraft:netherrack,minecraft:end_stone,minecraft:gravel,minecraft:bedrock");
+	data.addDataValue("hardness","5,5,5,3,70");
+	data.addDataValue("resistance","6,6,9,1,1200");
+	data.addDataValue("harvestTool","pickaxe,pickaxe,pickaxe,shovel,pickaxe");
+	data.addDataValue("harvestTool","2,2,2,2,3");
+}
+
 

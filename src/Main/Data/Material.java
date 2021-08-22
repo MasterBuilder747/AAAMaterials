@@ -11,6 +11,7 @@ public class Material extends Data {
     boolean gas; //does not generate molten and no solid parts
     boolean plasma; //does not generate a liquid, a new item part for plasma will be used
 
+    //partGroups to add
     boolean dust = true;
     boolean ore;
     boolean gem;
@@ -22,6 +23,11 @@ public class Material extends Data {
     boolean semi;
     boolean wood;
     boolean stone;
+
+    //ore blocks to add
+    boolean oreBlock = true;
+    boolean poorOre;
+    boolean denseOre;
 
     int separation; //-1 = chemical, 1 = physical separation/combination, 0 is none
     int combination; //-1 = chemical, 1 = physical separation/combination, 0 is none
@@ -49,8 +55,7 @@ public class Material extends Data {
     public void statePlasma() { this.plasma = true; }
     public void customItem() { this.customItem = true; } //if the material system is not needed, use this to block parts from being generated
 
-    //4) set material type
-    //order of these following keywords do not matter:
+    //4) part item attributes
     public void noDust() { this.dust = false; } //for custom items, liquids, or gases, etc
     public void ore() { this.ore = true; }
     public void gem() {
@@ -77,6 +82,17 @@ public class Material extends Data {
     }
     public void stone() {
         this.stone = true;
+    }
+
+    //5) ore block attributes
+    public void noOre() {
+        this.oreBlock = false;
+    }
+    public void poor() {
+        this.poorOre = true;
+    }
+    public void dense() {
+        this.denseOre = true;
     }
 
     //5) build the code based off these attributes
@@ -117,7 +133,7 @@ public class Material extends Data {
             sb.append(setAttribute("string"));
         }
         if (this.semi) {
-            sb.append(setAttribute("semi"));
+            sb.append(setAttribute("semi_conductive"));
         }
         if (this.wood) {
             sb.append(setAttribute("wood"));

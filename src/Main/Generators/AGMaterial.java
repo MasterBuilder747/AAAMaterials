@@ -22,8 +22,8 @@ public abstract class AGMaterial extends AGenerator<Material> {
         //(4): state, (solid, liquid, gas, plasma, custom)
         //(5-7): attributes (see material.java for methods, use any combination of these keywords), separation, combination (-1 chemical, 0 none, 1 physical)
         //size 8 array of strings:
-        if (s.length != 8) {
-            throw new IllegalArgumentException(this.filename + "s.txt: Expected 8 parameters at line " + line);
+        if (s.length != 9) {
+            throw new IllegalArgumentException(this.filename + "s.txt: Expected 9 parameters at line " + line);
         }
 
         //material creation
@@ -40,7 +40,7 @@ public abstract class AGMaterial extends AGenerator<Material> {
         if (s[4].equals("plasma")) m.statePlasma();
         if (s[4].equals("custom")) m.customItem();
 
-        //attributes
+        //item attributes
         if (s[5].contains("noDust")) m.noDust();
         if (s[5].contains("ore")) m.ore();
         if (s[5].contains("smelt")) m.smelt();
@@ -53,11 +53,16 @@ public abstract class AGMaterial extends AGenerator<Material> {
         if (s[5].contains("stone")) m.stone();
         if (s[5].contains("machine")) m.machine();
 
+        //ore block attributes
+        if (s[6].contains("none")) m.noOre();
+        if (s[6].contains("poor")) m.poor();
+        if (s[6].contains("dense")) m.dense();
+
         //set composition
         try {
-            m.setComposition(j, Integer.parseInt(s[6]), Integer.parseInt(s[7]));
+            m.setComposition(j, Integer.parseInt(s[7]), Integer.parseInt(s[8]));
         } catch (NumberFormatException e) {
-            throw new IllegalArgumentException(this.filename + "s.txt: Incorrect input for compound attributes input at line " + line);
+            throw new IllegalArgumentException(this.filename + "s.txt: Incorrect number input for compound attributes input at line " + line);
         }
 
         objects.add(m);
