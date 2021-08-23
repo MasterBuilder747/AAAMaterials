@@ -14,8 +14,11 @@ public class Ore extends Data {
     public String build() {
         StringBuilder sb = new StringBuilder();
         for (OreType ore : this.types) {
-            sb.append("var "); sb.append(ore.name); sb.append("Blocks = "); sb.append(this.name); sb.append(".registerParts(").append(ore.name).append("_blocks);\n");
+            String var = this.name+ore.name; //allows for unique var name
+            sb.append("var ").append(var).append("Blocks = ").append(this.name).append(".registerParts(").append(ore.name).append("_blocks);\n");
+            sb.append("for i, ore in "); sb.append(var).append("Blocks {\n");
             sb.append(ore.build());
+            sb.append("}\n");
         }
         sb.append("\n");
         return sb.toString();

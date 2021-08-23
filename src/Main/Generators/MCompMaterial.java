@@ -16,7 +16,7 @@ public class MCompMaterial extends AGMaterial {
             try {
                 return comp.createCompound(s);
             } catch (IllegalArgumentException e) {
-                System.out.println("materials.txt: Error at line " + line + ":");
+                error("Missing brackets");
                 return comp.createCompound(s);
             }
         } else {

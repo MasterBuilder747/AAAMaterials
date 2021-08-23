@@ -31,7 +31,6 @@ public class OreType extends Data {
     @Override
     public String build() {
         StringBuilder sb = new StringBuilder();
-        sb.append("for i, ore in "); sb.append(this.name); sb.append("Blocks {\n");
 
         sb.append("\tvar data = ore.getData();\n");
         sb.append("\tdata.addDataValue(\"variants\",\"");
@@ -65,7 +64,6 @@ public class OreType extends Data {
         }
         sb.append(this.variants[length-1].b.miningLevel).append("\");\n");
 
-        sb.append("}\n");
         return sb.toString();
     }
 }

@@ -14,13 +14,13 @@ public class GFluid extends ALocal<Fluid> {
     @Override
     void readLine(BufferedReader br, String[] s) throws IOException {
         //String name, String localName, String hexColor, boolean isGas
-        if (s.length != 4) throw new IllegalArgumentException(this.filename + "s.txt: Expected 4 parameters at line " + line);
+        if (s.length != 4) error(4);
         if (s[3].matches("true")) {
             objects.add(new Fluid(s[0], s[1], s[2], true));
         } else if (s[3].matches("false")) {
             objects.add(new Fluid(s[0], s[1], s[2], false));
         } else {
-            throw new IllegalArgumentException(this.filename + "s.txt: Unknown boolean for gas definition at line " + line);
+            error("Unknown boolean for gas definition");
         }
     }
 }

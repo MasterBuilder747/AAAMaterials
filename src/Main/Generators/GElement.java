@@ -47,6 +47,8 @@ public class GElement extends AGenerator<Element> {
         [repeating]:
         etc...
         */
+        //use this element for elementless materials
+        objects.add(new Element(0, 0, 0, "Nn", "None", 0.0));
         //first is always a number
         String s2 = br.readLine(); //atomic number or symbol (use stored row value)
         //System.out.println(s1 + " " + s2);
@@ -64,7 +66,7 @@ public class GElement extends AGenerator<Element> {
                 //System.out.println(pd + " " + s1 + " " + s2 + " " + br.readLine() + " " + br.readLine());
                 objects.add(new Element(Integer.parseInt(pd), Integer.parseInt(br.readLine()), Integer.parseInt(s1), s2, br.readLine(), Double.parseDouble(br.readLine())));
             } else {
-                throw new IllegalAccessError(this.filename + "s.txt: Must provide the period first before listing elements");
+                error("Must provide the period first before listing elements");
             }
         }
     }

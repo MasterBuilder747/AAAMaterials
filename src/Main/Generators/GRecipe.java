@@ -21,7 +21,7 @@ public class GRecipe extends AGenerator<Recipe> {
         //recipeName follows this format: machineName+ID+machineTier without the +
 
         //ex: basic, 4, 20, 1.0, ore:ingotIron; minecraft:wool:2 * 5, minecraft:gold_ingot * 2, water, lava, hydrogen, oxygen, 1000, -red*100, +orange*10, 0
-        if (s.length != 13 && s.length != 14) throw new IllegalArgumentException(this.filename+"s.txt: Expected 13 or 14 parameters at line " + line);
+        if (s.length != 13 && s.length != 14) error(new int[]{13, 14});
         Recipe r = new Recipe(s[0], s[0]+line, Integer.parseInt(s[1]), Integer.parseInt(s[2]), Double.parseDouble(s[3]));
         String[] itemI = s[4].split(";\\s*");
         String[] liquidI = s[5].split(";\\s*");

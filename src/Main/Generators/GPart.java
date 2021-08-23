@@ -14,7 +14,7 @@ public class GPart extends ALocal<Part> {
     @Override
     void readLine(BufferedReader br, String[] s) throws IOException {
         if (s.length < 1 || s.length > 3 || s.length == 2) {
-            throw new IllegalArgumentException(this.filename + "s.txt: Expected 1 or 3 parameters at line " + line);
+            error(new int[]{1, 3});
         }
         if (s.length == 1) {
             //String existingPartName
@@ -28,7 +28,7 @@ public class GPart extends ALocal<Part> {
             } else if (s[2].matches("false")) {
                 objects.add(new Part(s[0], name, false));
             } else {
-                throw new IllegalArgumentException(this.filename + "s.txt: Neither true or false is used for hasOverlay at line " + line);
+                error("Neither true or false is used for hasOverlay");
             }
         }
     }

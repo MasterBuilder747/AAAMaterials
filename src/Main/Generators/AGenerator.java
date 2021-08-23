@@ -33,9 +33,7 @@ public abstract class AGenerator<D extends Data> {
         if (objects.size() > 0) {
             if (!objects.get(0).build().matches("NULL")) { //indicates that the generator doesn't need to build anything
                 //output the zs code for each object
-                sb.append("# -");
-                sb.append(this.filename);
-                sb.append("s\n");
+                sb.append("# -").append(this.filename).append("s\n");
                 for (D o : objects) {
                     sb.append(o.build());
                 }
@@ -44,7 +42,6 @@ public abstract class AGenerator<D extends Data> {
         }
         return sb.toString();
     }
-
     void readFile(BufferedReader br) throws IOException {
         while (true) {
             s1 = br.readLine();
@@ -61,6 +58,7 @@ public abstract class AGenerator<D extends Data> {
     }
     abstract void readLine(BufferedReader br, String[] s) throws IOException; //this populates the arraylist with the specified object
 
+    //utilities
     public D get(String s) {
         for (D o : objects) {
             if (o.name.matches(s)) {
@@ -83,5 +81,24 @@ public abstract class AGenerator<D extends Data> {
             System.out.println(o.name);
         }
         System.out.println();
+    }
+
+    //exceptions
+    void error(String s) throws GeneratorException {
+        throw new GeneratorException(s, this.filename, this.line);
+    }
+    void error(int parameters) throws GeneratorException {
+        throw new GeneratorException("Expected " + parameters + " parameters", this.filename, this.line);
+    }
+    void error(int[] parameters) throws GeneratorException {
+        StringBuilder sb = new StringBuilder();
+        sb.append("Expected ");
+        for (int i = 0; i < parameters.length-1; i++) {
+            sb.append(parameters[i]);
+            sb.append(" or ");
+        }
+        sb.append(parameters[parameters.length-1]);
+        sb.append(" parameters");
+        throw new GeneratorException(sb.toString(), this.filename, this.line);
     }
 }

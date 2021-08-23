@@ -3,7 +3,6 @@
 /ex2: H2
 /ex3: Mn2
 /Nn is none
-Nn
 H
 He
 Li

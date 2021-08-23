@@ -16,7 +16,7 @@ public class GCompound extends AComposition {
         this.mol = mol;
     }
 
-    public Composition createCompound(String s) throws IllegalArgumentException {
+    public Composition createCompound(String s) {
         //[molecule1; molecule2*2; molecule3 * 3]
         String s1 = s.substring(1, s.length()-1);
         String[] moles = s1.split(";\\s*");
@@ -27,13 +27,13 @@ public class GCompound extends AComposition {
                 if (mol.is(name.substring(0, name.indexOf("*")))) {
                     comps.add(new Composition("", mol.get(name.substring(0, name.indexOf("*"))), Integer.parseInt(name.substring(name.indexOf("*")+1))));
                 } else {
-                    throw new IllegalArgumentException("Unknown material " + name.substring(0, name.indexOf("*")));
+                    error("Unknown material " + name.substring(0, name.indexOf("*")));
                 }
             } else {
                 if (mol.is(name)) {
                     comps.add(new Composition("", mol.get(name)));
                 } else {
-                    throw new IllegalArgumentException("Unknown material " + name);
+                    error("Unknown material " + name);
                 }
             }
         }
@@ -45,7 +45,7 @@ public class GCompound extends AComposition {
         try {
             objects.add(createMoleculeComp(s1));
         } catch (IllegalArgumentException e) {
-            System.out.println(this.filename + "s.txt: Unknown element " + s1 + " at line " + line);
+            error("Unknown element " + s1);
         }
     }
 }

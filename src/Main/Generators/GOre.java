@@ -29,10 +29,10 @@ public class GOre extends AGenerator<Ore> {
         //dense: stone; 5; 6; 2: netherrack; 5; 6; 2: end_stone: 5; 9; 2: gravel; 3; 1; 2: bedrock; 70; 1200; 3
         String name = s[0]; //the name of the entire ore itself
         if (!mol.is(name)) {
-            throw new IllegalArgumentException(this.filename + "s.txt: Unknown molecule material " + name + " at line " + line);
+            error("Unknown molecule material " + name);
         }
         if (!mol.is(name) && !comp.is(name)) {
-            throw new IllegalArgumentException(this.filename + "s.txt: Unknown molecule material " + name + " at line " + line);
+            error("Unknown molecule material " + name);
         }
         String[] ores = new String[s.length-1]; //includes each ore type
         System.arraycopy(s, 1, ores, 0, ores.length);
@@ -48,7 +48,7 @@ public class GOre extends AGenerator<Ore> {
             for (String variant : variants) {
                 String[] attributes = variant.split(";\\s*");
                 if (attributes.length != 4) {
-                    throw new IllegalArgumentException(this.filename + "s.txt: Not all block attributes are defined for variant " + attributes[0] + " for ore block type " + ore_name + " for ore of name " + name + " at line " + line);
+                    error("Not all block attributes are defined for variant " + attributes[0] + " for ore block type " + ore_name + " for ore of name " + name);
                 }
                 String var_name; //name of the variant
                 if (attributes[0].contains(":")) {
@@ -61,11 +61,11 @@ public class GOre extends AGenerator<Ore> {
                     try {
                         v.setAttributes(Integer.parseInt(attributes[1]), Integer.parseInt(attributes[2]), Integer.parseInt(attributes[3]));
                     } catch (NumberFormatException e) {
-                        throw new IllegalArgumentException(this.filename + "s.txt: Bad number format for variant " + var_name + " at line " + line);
+                        error("Bad number format for variant " + var_name);
                     }
                     vars.add(v);
                 } else {
-                    throw new IllegalArgumentException(this.filename + "s.txt: Unknown variant " + var_name + " at line " + line);
+                    error("Unknown variant " + var_name);
                 }
             }
             oreTypes.add(new OreType(ore_name, vars.toArray(new Variant[0])));

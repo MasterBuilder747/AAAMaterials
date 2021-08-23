@@ -18,7 +18,7 @@ public class GPartGroup extends AGenerator<PartGroup> {
     @Override
     public void readLine(BufferedReader br, String[] s) throws IOException {
         if (!s1.contains(":")) {
-            throw new IllegalArgumentException(this.filename + "s.txt: Must contain a \":\" to denote the group name and the parts in that group, at line " + line);
+            error("Must contain a \":\" to denote the group name and the parts in that group");
         }
         //String name: String part1, String part2, ...
         String trim = s1.replaceAll(" ", "");
@@ -26,14 +26,14 @@ public class GPartGroup extends AGenerator<PartGroup> {
         String s2 = trim.substring(trim.indexOf(":")+1);
         String[] partNames = s2.split(",\\s*");
         if (partNames.length == 0) {
-            throw new IllegalArgumentException(this.filename + "s.txt: Empty parts at line " + line);
+            error("Empty parts");
         }
         ArrayList<Part> partgroup = new ArrayList<>();
         for (String part : partNames) {
             if (parts.is(part)) {
                 partgroup.add(parts.get(part));
             } else {
-                throw new IllegalArgumentException(this.filename + "s.txt: Unknown part " + part + " at line " + line);
+                error("Unknown part " + part);
             }
         }
         objects.add(new PartGroup(name, partgroup.toArray(new Part[0])));

@@ -5,11 +5,12 @@ public class Material extends Data {
     String color;
 
     //states (other than solid)
-    boolean customItem; //one singular item to be generated (lots of manual work here)
-    boolean solid;
-    boolean liquid; //does not generate molten and no solid parts
-    boolean gas; //does not generate molten and no solid parts
-    boolean plasma; //does not generate a liquid, a new item part for plasma will be used
+    public String state;
+    //custom //one singular item to be generated (lots of manual work here)
+    //solid
+    //liquid //does not generate molten and no solid parts
+    //boolean gas //does not generate molten and no solid parts
+    //boolean plasma //does not generate a liquid, a new item part for plasma will be used
 
     //partGroups to add
     boolean dust = true;
@@ -25,7 +26,7 @@ public class Material extends Data {
     boolean stone;
 
     //ore blocks to add
-    boolean oreBlock = true;
+    boolean oreBlock;
     boolean poorOre;
     boolean denseOre;
 
@@ -49,15 +50,18 @@ public class Material extends Data {
     }
 
     //3) set state (what parts should generate?)
-    public void stateSolid() { this.solid = true; }
-    public void stateLiquid() { this.liquid = true; } //see: https://docs.blamejared.com/1.12/en/Mods/ContentTweaker/Vanilla/Creatable_Content/Fluid/
-    public void stateGas() { this.gas = true; }
-    public void statePlasma() { this.plasma = true; }
-    public void customItem() { this.customItem = true; } //if the material system is not needed, use this to block parts from being generated
+    public void setState(String state) {
+        //see: https://docs.blamejared.com/1.12/en/Mods/ContentTweaker/Vanilla/Creatable_Content/Fluid/
+        //if the material system is not needed, use custom to block parts from being generated
+        //solid, liquid, gas, plasma, custom
+        this.state = state;
+    }
+    public boolean isState(String s) {
+        return this.state.matches(s);
+    }
 
     //4) part item attributes
     public void noDust() { this.dust = false; } //for custom items, liquids, or gases, etc
-    public void ore() { this.ore = true; }
     public void gem() {
         this.gem = true;
     }
@@ -87,6 +91,11 @@ public class Material extends Data {
     //5) ore block attributes
     public void noOre() {
         this.oreBlock = false;
+        this.ore = false;
+    }
+    public void ore() {
+        this.oreBlock = true;
+        this.ore = true;
     }
     public void poor() {
         this.poorOre = true;
@@ -99,47 +108,59 @@ public class Material extends Data {
     @Override
     public String build() {
         StringBuilder sb = new StringBuilder();
-        //1) build the material
-        sb.append("var " + this.name + " = MaterialSystem.getMaterialBuilder().setName(\"" + this.localName + "\")" +
-                ".setColor(Color.fromHex(\"" + this.color + "\"))" +
-                ".build();\n");
 
-        //make sure the vars are defined since they are in the same scope
-        //2) generate parts, ores, blocks (get variable arrays)
-        //Material.registerParts(ore);
-        //var ores = Material.registerParts(ore_types);
-        if (this.dust) {
-            sb.append(setAttribute("dust"));
-        }
-        if (this.ore) {
-            sb.append(setAttribute("ore"));
-        }
-        if (this.gem) {
-            sb.append(setAttribute("gem"));
-        }
-        if (this.smelt) {
-            sb.append(setAttribute("smelt"));
-        }
-        if (this.conductive) {
-            sb.append(setAttribute("conductive"));
-        }
-        if (this.blast) {
-            sb.append(setAttribute("blast"));
-        }
-        if (this.machine) {
-            sb.append(setAttribute("machine"));
-        }
-        if (this.string) {
-            sb.append(setAttribute("string"));
-        }
-        if (this.semi) {
-            sb.append(setAttribute("semi_conductive"));
-        }
-        if (this.wood) {
-            sb.append(setAttribute("wood"));
-        }
-        if (this.stone) {
-            sb.append(setAttribute("stone"));
+        if (isState("solid")) {
+            //1) build the material
+            sb.append("var ").append(this.name).append(" = MaterialSystem.getMaterialBuilder().setName(\"").append(this.localName).append("\")");
+            if (this.color.charAt(0) == '#') {
+                sb.append(".setColor(Color.fromHex(\"").append(this.color.substring(1)).append("\"))");
+            } else {
+                sb.append(".setColor(").append(this.color).append(")");
+            }
+            sb.append(".build();\n");
+
+            //make sure the vars are defined since they are in the same scope
+            //2) generate parts, ores, blocks (get variable arrays)
+            //Material.registerParts(ore);
+            //var ores = Material.registerParts(ore_types);
+            if (this.dust) {
+                sb.append(setAttribute("dust"));
+            }
+            if (this.ore) {
+                sb.append(setAttribute("ore"));
+            }
+            if (this.gem) {
+                sb.append(setAttribute("gem"));
+            }
+            if (this.smelt) {
+                sb.append(setAttribute("smelt"));
+            }
+            if (this.conductive) {
+                sb.append(setAttribute("conductive"));
+            }
+            if (this.blast) {
+                sb.append(setAttribute("blast"));
+            }
+            if (this.machine) {
+                sb.append(setAttribute("machine"));
+            }
+            if (this.string) {
+                sb.append(setAttribute("string"));
+            }
+            if (this.semi) {
+                sb.append(setAttribute("semi_conductive"));
+            }
+            if (this.wood) {
+                sb.append(setAttribute("wood"));
+            }
+            if (this.stone) {
+                sb.append(setAttribute("stone"));
+            }
+        } else if (isState("liquid")) {
+            //color for liquid/gas materials must be in hex
+            sb.append(new Fluid(this.name, this.localName, this.color.substring(1), false).build());
+        } else if (isState("gas") || isState("plasma")) {
+            sb.append(new Fluid(this.name, this.localName, this.color.substring(1), true).build());
         }
         return sb.toString();
     }
@@ -159,11 +180,7 @@ public class Material extends Data {
         }
         System.out.print(this.composition + ": ");
 
-        if (this.customItem) System.out.print("custom ");
-        if (this.solid) System.out.print("solid ");
-        if (this.liquid) System.out.print("liquid ");
-        if (this.gas) System.out.print("gas ");
-        if (this.plasma) System.out.print("plasma ");
+        System.out.print(this.state);
         System.out.print("| ");
 
         if (this.dust) System.out.print("dust ");

@@ -15,7 +15,7 @@ public class GMolecule extends AComposition {
         try {
             objects.add(createMoleculeComp(s1));
         } catch (IllegalArgumentException e) {
-            System.out.println(this.filename + "s.txt: Unknown element " + s1 + " at line " + line);
+            error("Unknown element " + s1);
         }
     }
 }
