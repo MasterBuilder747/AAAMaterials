@@ -25,10 +25,11 @@ public abstract class AGMaterial extends AGenerator<Material> {
         if (s.length != 9) {
             throw new IllegalArgumentException(this.filename + "s.txt: Expected 9 parameters at line " + line);
         }
+        String local = s[1].replaceAll("-", " ");
 
         //material creation
         Material m;
-        m = new Material(s[0], s[1], s[2]);
+        m = new Material(s[0], local, s[2]);
 
         //composition creation, handled by composition objects
         Composition j = parseComp(s[3], s[0]);

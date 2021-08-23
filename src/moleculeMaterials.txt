@@ -7,9 +7,31 @@
 /itemParts are defined in partGroups.txt
 /blockParts: dense, poor, none(no ore is added)
 /lumium, Lumium, f5e36c, Ag, solid, oresmeltconductblastmachine, poordense, 0, 0
+/required:
 lumium, Lumium, f5e36c, Ag, solid, oresmeltconductblastmachine, poordense, 0, 0
+/natural:
+/woods:
 wool, Wool, ffffff, Ag, solid, string, none, 0, 0
-ruby, Ruby, f50000, Ag, solid, gem, none, 0, 0
-silicon, Silicon, 39466e, Ag, solid, semi, none, 0, 0
+/stones:
 granite, Granite, bd8f86, Ag, solid, stone, none, 0, 0
-balsa, Balsa, bfaa8e, Ag, solid, wood, none, 0, 0
+/mob:
+/elements:
+hydrogen, Hydrogen, , H, solid, semi, none, 0, 0
+silicon, Silicon, 39466e, Si, solid, semi, none, 0, 0
+/alloys:
+/gems:
+netherstar, Netherstar, f50000, Nn, solid, gem, none, 0, 0
+greensapphire, Green-Sapphire, f50000, Nn, solid, gem, none, 0, 0
+garnetred, Red-Garnet, f50000, Nn, solid, gem, none, 0, 0
+garnetyellow, Yellow-Garnet, f50000, Nn, solid, gem, none, 0, 0
+diamond, Diamond, f50000, Nn, solid, gem, none, 0, 0
+cinnabar, Cinnabar, f50000, Nn, solid, gem, none, 0, 0
+coal, Coal, f50000, Nn, solid, gem, none, 0, 0
+tanzanite, Tanzanite, f50000, Nn, solid, gem, none, 0, 0
+lignite, Lignite, f50000, Nn, solid, gem, none, 0, 0
+apatite, Apatite, f50000, Nn, solid, gem, none, 0, 0
+monazite, Monazite, f50000, Nn, solid, gem, none, 0, 0
+netherquartz, Nether-Quartz, f50000, Nn, solid, gem, none, 0, 0
+certusquartz, Certus_Quartz, f50000, Nn, solid, gem, none, 0, 0
+ruby, Ruby, f50000, Nn, solid, gem, none, 0, 0
+sapphire, Sapphire, 4179d9, Nn, solid, gem, none, 0, 0
