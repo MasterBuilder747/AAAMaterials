@@ -32,7 +32,7 @@ public class GOre extends AGenerator<Ore> {
             error("Unknown molecule material " + name);
         }
         if (!mol.is(name) && !comp.is(name)) {
-            error("Unknown molecule material " + name);
+            error("Unknown compound material " + name);
         }
         String[] ores = new String[s.length-1]; //includes each ore type
         System.arraycopy(s, 1, ores, 0, ores.length);

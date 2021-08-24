@@ -185,57 +185,55 @@ galena.registerParts(dust_parts);
 galena.registerParts(ore_parts);
 var lithium = MaterialSystem.getMaterialBuilder().setName("Lithium").setColor(11844740).build();
 lithium.registerParts(dust_parts);
+lithium.registerParts(ore_parts);
 lithium.registerParts(smelt_parts);
-lithium.registerParts(conductive_parts);
 lithium.registerParts(blast_parts);
 lithium.registerParts(machine_parts);
 var beryllium = MaterialSystem.getMaterialBuilder().setName("Beryllium").setColor(994575).build();
 beryllium.registerParts(dust_parts);
+beryllium.registerParts(ore_parts);
 beryllium.registerParts(smelt_parts);
-beryllium.registerParts(conductive_parts);
 beryllium.registerParts(blast_parts);
 beryllium.registerParts(machine_parts);
 var boron = MaterialSystem.getMaterialBuilder().setName("Boron").setColor(3554609).build();
 boron.registerParts(dust_parts);
 boron.registerParts(smelt_parts);
-boron.registerParts(conductive_parts);
-boron.registerParts(blast_parts);
 boron.registerParts(machine_parts);
 var carbon = MaterialSystem.getMaterialBuilder().setName("Carbon").setColor(4210752).build();
 carbon.registerParts(dust_parts);
-carbon.registerParts(smelt_parts);
-carbon.registerParts(conductive_parts);
-carbon.registerParts(blast_parts);
-carbon.registerParts(machine_parts);
 var sodium = MaterialSystem.getMaterialBuilder().setName("Sodium").setColor(3217).build();
 sodium.registerParts(dust_parts);
 sodium.registerParts(smelt_parts);
-sodium.registerParts(conductive_parts);
-sodium.registerParts(blast_parts);
 sodium.registerParts(machine_parts);
 var magnesium = MaterialSystem.getMaterialBuilder().setName("Magnesium").setColor(14262243).build();
 magnesium.registerParts(dust_parts);
+magnesium.registerParts(ore_parts);
 magnesium.registerParts(smelt_parts);
-magnesium.registerParts(conductive_parts);
 magnesium.registerParts(blast_parts);
 magnesium.registerParts(machine_parts);
 var aluminium = MaterialSystem.getMaterialBuilder().setName("Aluminium").setColor(7332333).build();
 aluminium.registerParts(dust_parts);
+aluminium.registerParts(ore_parts);
 aluminium.registerParts(smelt_parts);
 aluminium.registerParts(conductive_parts);
 aluminium.registerParts(blast_parts);
 aluminium.registerParts(machine_parts);
 var silicon = MaterialSystem.getMaterialBuilder().setName("Silicon").setColor(393267).build();
 silicon.registerParts(dust_parts);
+silicon.registerParts(smelt_parts);
+silicon.registerParts(blast_parts);
+silicon.registerParts(machine_parts);
 silicon.registerParts(semi_conductive_parts);
 var phosphorus = MaterialSystem.getMaterialBuilder().setName("Phosphorus").setColor(8014087).build();
 phosphorus.registerParts(dust_parts);
+phosphorus.registerParts(ore_parts);
 phosphorus.registerParts(smelt_parts);
 phosphorus.registerParts(conductive_parts);
 phosphorus.registerParts(blast_parts);
 phosphorus.registerParts(machine_parts);
 var sulfur = MaterialSystem.getMaterialBuilder().setName("Sulfur").setColor(10717970).build();
 sulfur.registerParts(dust_parts);
+sulfur.registerParts(ore_parts);
 sulfur.registerParts(smelt_parts);
 sulfur.registerParts(conductive_parts);
 sulfur.registerParts(blast_parts);
@@ -260,54 +258,63 @@ scandium.registerParts(blast_parts);
 scandium.registerParts(machine_parts);
 var titanium = MaterialSystem.getMaterialBuilder().setName("Titanium").setColor(14915803).build();
 titanium.registerParts(dust_parts);
+titanium.registerParts(ore_parts);
 titanium.registerParts(smelt_parts);
 titanium.registerParts(conductive_parts);
 titanium.registerParts(blast_parts);
 titanium.registerParts(machine_parts);
 var vanadium = MaterialSystem.getMaterialBuilder().setName("Vanadium").setColor(2435123).build();
 vanadium.registerParts(dust_parts);
+vanadium.registerParts(ore_parts);
 vanadium.registerParts(smelt_parts);
 vanadium.registerParts(conductive_parts);
 vanadium.registerParts(blast_parts);
 vanadium.registerParts(machine_parts);
 var chrome = MaterialSystem.getMaterialBuilder().setName("Chrome").setColor(16638207).build();
 chrome.registerParts(dust_parts);
+chrome.registerParts(ore_parts);
 chrome.registerParts(smelt_parts);
 chrome.registerParts(conductive_parts);
 chrome.registerParts(blast_parts);
 chrome.registerParts(machine_parts);
 var manganese = MaterialSystem.getMaterialBuilder().setName("Manganese").setColor(14730719).build();
 manganese.registerParts(dust_parts);
+manganese.registerParts(ore_parts);
 manganese.registerParts(smelt_parts);
 manganese.registerParts(conductive_parts);
 manganese.registerParts(blast_parts);
 manganese.registerParts(machine_parts);
 var iron = MaterialSystem.getMaterialBuilder().setName("Iron").setColor(14276569).build();
 iron.registerParts(dust_parts);
+iron.registerParts(ore_parts);
 iron.registerParts(smelt_parts);
 iron.registerParts(conductive_parts);
 iron.registerParts(blast_parts);
 iron.registerParts(machine_parts);
 var cobalt = MaterialSystem.getMaterialBuilder().setName("Cobalt").setColor(3232488).build();
 cobalt.registerParts(dust_parts);
+cobalt.registerParts(ore_parts);
 cobalt.registerParts(smelt_parts);
 cobalt.registerParts(conductive_parts);
 cobalt.registerParts(blast_parts);
 cobalt.registerParts(machine_parts);
 var nickel = MaterialSystem.getMaterialBuilder().setName("Nickel").setColor(15128234).build();
 nickel.registerParts(dust_parts);
+nickel.registerParts(ore_parts);
 nickel.registerParts(smelt_parts);
 nickel.registerParts(conductive_parts);
 nickel.registerParts(blast_parts);
 nickel.registerParts(machine_parts);
 var copper = MaterialSystem.getMaterialBuilder().setName("Copper").setColor(16103251).build();
 copper.registerParts(dust_parts);
+copper.registerParts(ore_parts);
 copper.registerParts(smelt_parts);
 copper.registerParts(conductive_parts);
 copper.registerParts(blast_parts);
 copper.registerParts(machine_parts);
 var zinc = MaterialSystem.getMaterialBuilder().setName("Zinc").setColor(14345704).build();
 zinc.registerParts(dust_parts);
+zinc.registerParts(ore_parts);
 zinc.registerParts(smelt_parts);
 zinc.registerParts(conductive_parts);
 zinc.registerParts(blast_parts);
@@ -368,6 +375,7 @@ niobium.registerParts(blast_parts);
 niobium.registerParts(machine_parts);
 var molybdenum = MaterialSystem.getMaterialBuilder().setName("Molybdenum").setColor(12229588).build();
 molybdenum.registerParts(dust_parts);
+molybdenum.registerParts(ore_parts);
 molybdenum.registerParts(smelt_parts);
 molybdenum.registerParts(conductive_parts);
 molybdenum.registerParts(blast_parts);
@@ -398,6 +406,7 @@ palladium.registerParts(blast_parts);
 palladium.registerParts(machine_parts);
 var silver = MaterialSystem.getMaterialBuilder().setName("Silver").setColor(14808562).build();
 silver.registerParts(dust_parts);
+silver.registerParts(ore_parts);
 silver.registerParts(smelt_parts);
 silver.registerParts(conductive_parts);
 silver.registerParts(blast_parts);
@@ -416,12 +425,14 @@ indium.registerParts(blast_parts);
 indium.registerParts(machine_parts);
 var tin = MaterialSystem.getMaterialBuilder().setName("Tin").setColor(2978815).build();
 tin.registerParts(dust_parts);
+tin.registerParts(ore_parts);
 tin.registerParts(smelt_parts);
 tin.registerParts(conductive_parts);
 tin.registerParts(blast_parts);
 tin.registerParts(machine_parts);
 var antimony = MaterialSystem.getMaterialBuilder().setName("Antimony").setColor(15457451).build();
 antimony.registerParts(dust_parts);
+antimony.registerParts(ore_parts);
 antimony.registerParts(smelt_parts);
 antimony.registerParts(conductive_parts);
 antimony.registerParts(blast_parts);
@@ -470,6 +481,7 @@ praseodymium.registerParts(blast_parts);
 praseodymium.registerParts(machine_parts);
 var neodymium = MaterialSystem.getMaterialBuilder().setName("Neodymium").setColor(7500423).build();
 neodymium.registerParts(dust_parts);
+neodymium.registerParts(ore_parts);
 neodymium.registerParts(smelt_parts);
 neodymium.registerParts(conductive_parts);
 neodymium.registerParts(blast_parts);
@@ -548,12 +560,14 @@ hafnium.registerParts(blast_parts);
 hafnium.registerParts(machine_parts);
 var tantalum = MaterialSystem.getMaterialBuilder().setName("Tantalum").setColor(12373199).build();
 tantalum.registerParts(dust_parts);
+tantalum.registerParts(ore_parts);
 tantalum.registerParts(smelt_parts);
 tantalum.registerParts(conductive_parts);
 tantalum.registerParts(blast_parts);
 tantalum.registerParts(machine_parts);
 var tungsten = MaterialSystem.getMaterialBuilder().setName("Tungsten").setColor(1052708).build();
 tungsten.registerParts(dust_parts);
+tungsten.registerParts(ore_parts);
 tungsten.registerParts(smelt_parts);
 tungsten.registerParts(conductive_parts);
 tungsten.registerParts(blast_parts);
@@ -566,24 +580,28 @@ rhenium.registerParts(blast_parts);
 rhenium.registerParts(machine_parts);
 var osmium = MaterialSystem.getMaterialBuilder().setName("Osmium").setColor(255).build();
 osmium.registerParts(dust_parts);
+osmium.registerParts(ore_parts);
 osmium.registerParts(smelt_parts);
 osmium.registerParts(conductive_parts);
 osmium.registerParts(blast_parts);
 osmium.registerParts(machine_parts);
 var iridium = MaterialSystem.getMaterialBuilder().setName("Iridium").setColor(15597565).build();
 iridium.registerParts(dust_parts);
+iridium.registerParts(ore_parts);
 iridium.registerParts(smelt_parts);
 iridium.registerParts(conductive_parts);
 iridium.registerParts(blast_parts);
 iridium.registerParts(machine_parts);
 var platinum = MaterialSystem.getMaterialBuilder().setName("Platinum").setColor(13555675).build();
 platinum.registerParts(dust_parts);
+platinum.registerParts(ore_parts);
 platinum.registerParts(smelt_parts);
 platinum.registerParts(conductive_parts);
 platinum.registerParts(blast_parts);
 platinum.registerParts(machine_parts);
 var gold = MaterialSystem.getMaterialBuilder().setName("Gold").setColor(16767324).build();
 gold.registerParts(dust_parts);
+gold.registerParts(ore_parts);
 gold.registerParts(smelt_parts);
 gold.registerParts(conductive_parts);
 gold.registerParts(blast_parts);
@@ -602,6 +620,7 @@ thallium.registerParts(blast_parts);
 thallium.registerParts(machine_parts);
 var lead = MaterialSystem.getMaterialBuilder().setName("Lead").setColor(9925035).build();
 lead.registerParts(dust_parts);
+lead.registerParts(ore_parts);
 lead.registerParts(smelt_parts);
 lead.registerParts(conductive_parts);
 lead.registerParts(blast_parts);
@@ -644,6 +663,7 @@ actinium.registerParts(blast_parts);
 actinium.registerParts(machine_parts);
 var thorium = MaterialSystem.getMaterialBuilder().setName("Thorium").setColor(2759734).build();
 thorium.registerParts(dust_parts);
+thorium.registerParts(ore_parts);
 thorium.registerParts(smelt_parts);
 thorium.registerParts(conductive_parts);
 thorium.registerParts(blast_parts);
@@ -656,6 +676,7 @@ protactinium.registerParts(blast_parts);
 protactinium.registerParts(machine_parts);
 var uranium = MaterialSystem.getMaterialBuilder().setName("Uranium").setColor(65356).build();
 uranium.registerParts(dust_parts);
+uranium.registerParts(ore_parts);
 uranium.registerParts(smelt_parts);
 uranium.registerParts(conductive_parts);
 uranium.registerParts(blast_parts);
@@ -828,7 +849,7 @@ nichrome.registerParts(smelt_parts);
 nichrome.registerParts(conductive_parts);
 nichrome.registerParts(blast_parts);
 nichrome.registerParts(machine_parts);
-var tinalloy = MaterialSystem.getMaterialBuilder().setName("TinAlloy").setColor(11193548).build();
+var tinalloy = MaterialSystem.getMaterialBuilder().setName("Tin Alloy").setColor(11193548).build();
 tinalloy.registerParts(dust_parts);
 tinalloy.registerParts(smelt_parts);
 tinalloy.registerParts(conductive_parts);
@@ -840,61 +861,61 @@ magnalium.registerParts(smelt_parts);
 magnalium.registerParts(conductive_parts);
 magnalium.registerParts(blast_parts);
 magnalium.registerParts(machine_parts);
-var rosegold = MaterialSystem.getMaterialBuilder().setName("RoseGold").setColor(15624262).build();
+var rosegold = MaterialSystem.getMaterialBuilder().setName("Rose Gold").setColor(15624262).build();
 rosegold.registerParts(dust_parts);
 rosegold.registerParts(smelt_parts);
 rosegold.registerParts(conductive_parts);
 rosegold.registerParts(blast_parts);
 rosegold.registerParts(machine_parts);
-var sterlingsilver = MaterialSystem.getMaterialBuilder().setName("SterlingSilver").setColor(13558754).build();
+var sterlingsilver = MaterialSystem.getMaterialBuilder().setName("Sterling Silver").setColor(13558754).build();
 sterlingsilver.registerParts(dust_parts);
 sterlingsilver.registerParts(smelt_parts);
 sterlingsilver.registerParts(conductive_parts);
 sterlingsilver.registerParts(blast_parts);
 sterlingsilver.registerParts(machine_parts);
-var niobiumtitanium = MaterialSystem.getMaterialBuilder().setName("NiobiumTitanium").setColor(13857394).build();
+var niobiumtitanium = MaterialSystem.getMaterialBuilder().setName("Niobium Titanium").setColor(13857394).build();
 niobiumtitanium.registerParts(dust_parts);
 niobiumtitanium.registerParts(smelt_parts);
 niobiumtitanium.registerParts(conductive_parts);
 niobiumtitanium.registerParts(blast_parts);
 niobiumtitanium.registerParts(machine_parts);
-var bluesteel = MaterialSystem.getMaterialBuilder().setName("BlueSteel").setColor(221871).build();
+var bluesteel = MaterialSystem.getMaterialBuilder().setName("Blue Steel").setColor(221871).build();
 bluesteel.registerParts(dust_parts);
 bluesteel.registerParts(smelt_parts);
 bluesteel.registerParts(conductive_parts);
 bluesteel.registerParts(blast_parts);
 bluesteel.registerParts(machine_parts);
-var redsteel = MaterialSystem.getMaterialBuilder().setName("RedSteel").setColor(11867927).build();
+var redsteel = MaterialSystem.getMaterialBuilder().setName("Red Steel").setColor(11867927).build();
 redsteel.registerParts(dust_parts);
 redsteel.registerParts(smelt_parts);
 redsteel.registerParts(conductive_parts);
 redsteel.registerParts(blast_parts);
 redsteel.registerParts(machine_parts);
-var stainlesssteel = MaterialSystem.getMaterialBuilder().setName("StainlessSteel").setColor(10197429).build();
+var stainlesssteel = MaterialSystem.getMaterialBuilder().setName("Stainless Steel").setColor(10197429).build();
 stainlesssteel.registerParts(dust_parts);
 stainlesssteel.registerParts(smelt_parts);
 stainlesssteel.registerParts(conductive_parts);
 stainlesssteel.registerParts(blast_parts);
 stainlesssteel.registerParts(machine_parts);
-var cobaltbrass = MaterialSystem.getMaterialBuilder().setName("CobaltBrass").setColor(2379151).build();
+var cobaltbrass = MaterialSystem.getMaterialBuilder().setName("Cobalt Brass").setColor(2379151).build();
 cobaltbrass.registerParts(dust_parts);
 cobaltbrass.registerParts(smelt_parts);
 cobaltbrass.registerParts(conductive_parts);
 cobaltbrass.registerParts(blast_parts);
 cobaltbrass.registerParts(machine_parts);
-var bismuthbronze = MaterialSystem.getMaterialBuilder().setName("BismuthBronze").setColor(3563573).build();
+var bismuthbronze = MaterialSystem.getMaterialBuilder().setName("Bismuth Bronze").setColor(3563573).build();
 bismuthbronze.registerParts(dust_parts);
 bismuthbronze.registerParts(smelt_parts);
 bismuthbronze.registerParts(conductive_parts);
 bismuthbronze.registerParts(blast_parts);
 bismuthbronze.registerParts(machine_parts);
-var blackbronze = MaterialSystem.getMaterialBuilder().setName("BlackBronze").setColor(7166495).build();
+var blackbronze = MaterialSystem.getMaterialBuilder().setName("Black Bronze").setColor(7166495).build();
 blackbronze.registerParts(dust_parts);
 blackbronze.registerParts(smelt_parts);
 blackbronze.registerParts(conductive_parts);
 blackbronze.registerParts(blast_parts);
 blackbronze.registerParts(machine_parts);
-var blacksteel = MaterialSystem.getMaterialBuilder().setName("BlackSteel").setColor(3094856).build();
+var blacksteel = MaterialSystem.getMaterialBuilder().setName("Black Steel").setColor(3094856).build();
 blacksteel.registerParts(dust_parts);
 blacksteel.registerParts(smelt_parts);
 blacksteel.registerParts(conductive_parts);
@@ -906,7 +927,7 @@ pewter.registerParts(smelt_parts);
 pewter.registerParts(conductive_parts);
 pewter.registerParts(blast_parts);
 pewter.registerParts(machine_parts);
-var galvanized_steel = MaterialSystem.getMaterialBuilder().setName("GalvanizedSteel").setColor(7831390).build();
+var galvanized_steel = MaterialSystem.getMaterialBuilder().setName("Galvanized Steel").setColor(7831390).build();
 galvanized_steel.registerParts(dust_parts);
 galvanized_steel.registerParts(smelt_parts);
 galvanized_steel.registerParts(conductive_parts);
@@ -918,13 +939,13 @@ tungstensteel.registerParts(smelt_parts);
 tungstensteel.registerParts(conductive_parts);
 tungstensteel.registerParts(blast_parts);
 tungstensteel.registerParts(machine_parts);
-var iridium_alloy = MaterialSystem.getMaterialBuilder().setName("IridiumAlloy").setColor(15396846).build();
+var iridium_alloy = MaterialSystem.getMaterialBuilder().setName("Iridium Alloy").setColor(15396846).build();
 iridium_alloy.registerParts(dust_parts);
 iridium_alloy.registerParts(smelt_parts);
 iridium_alloy.registerParts(conductive_parts);
 iridium_alloy.registerParts(blast_parts);
 iridium_alloy.registerParts(machine_parts);
-var advanced_alloy = MaterialSystem.getMaterialBuilder().setName("AdvancedAlloy").setColor(15222313).build();
+var advanced_alloy = MaterialSystem.getMaterialBuilder().setName("Advanced Alloy").setColor(15222313).build();
 advanced_alloy.registerParts(dust_parts);
 advanced_alloy.registerParts(smelt_parts);
 advanced_alloy.registerParts(conductive_parts);
@@ -990,43 +1011,43 @@ dilithium.registerParts(smelt_parts);
 dilithium.registerParts(conductive_parts);
 dilithium.registerParts(blast_parts);
 dilithium.registerParts(machine_parts);
-var titanium_aluminide = MaterialSystem.getMaterialBuilder().setName("TitaniumAluminide").setColor(212295).build();
+var titanium_aluminide = MaterialSystem.getMaterialBuilder().setName("Titanium Aluminide").setColor(212295).build();
 titanium_aluminide.registerParts(dust_parts);
 titanium_aluminide.registerParts(smelt_parts);
 titanium_aluminide.registerParts(conductive_parts);
 titanium_aluminide.registerParts(blast_parts);
 titanium_aluminide.registerParts(machine_parts);
-var titanium_iridium = MaterialSystem.getMaterialBuilder().setName("TitaniumIridium").setColor(15316149).build();
+var titanium_iridium = MaterialSystem.getMaterialBuilder().setName("Titanium Iridium").setColor(15316149).build();
 titanium_iridium.registerParts(dust_parts);
 titanium_iridium.registerParts(smelt_parts);
 titanium_iridium.registerParts(conductive_parts);
 titanium_iridium.registerParts(blast_parts);
 titanium_iridium.registerParts(machine_parts);
-var redstone_alloy = MaterialSystem.getMaterialBuilder().setName("RedstoneAlloy").setColor(15346197).build();
+var redstone_alloy = MaterialSystem.getMaterialBuilder().setName("Redstone Alloy").setColor(15346197).build();
 redstone_alloy.registerParts(dust_parts);
 redstone_alloy.registerParts(smelt_parts);
 redstone_alloy.registerParts(conductive_parts);
 redstone_alloy.registerParts(blast_parts);
 redstone_alloy.registerParts(machine_parts);
-var electrical_steel = MaterialSystem.getMaterialBuilder().setName("ElectricalSteel").setColor(11119794).build();
+var electrical_steel = MaterialSystem.getMaterialBuilder().setName("Electrical Steel").setColor(11119794).build();
 electrical_steel.registerParts(dust_parts);
 electrical_steel.registerParts(smelt_parts);
 electrical_steel.registerParts(conductive_parts);
 electrical_steel.registerParts(blast_parts);
 electrical_steel.registerParts(machine_parts);
-var conductive_iron = MaterialSystem.getMaterialBuilder().setName("ConductiveIron").setColor(12033434).build();
+var conductive_iron = MaterialSystem.getMaterialBuilder().setName("Conductive Iron").setColor(12033434).build();
 conductive_iron.registerParts(dust_parts);
 conductive_iron.registerParts(smelt_parts);
 conductive_iron.registerParts(conductive_parts);
 conductive_iron.registerParts(blast_parts);
 conductive_iron.registerParts(machine_parts);
-var dark_steel = MaterialSystem.getMaterialBuilder().setName("DarkSteel").setColor(3027759).build();
+var dark_steel = MaterialSystem.getMaterialBuilder().setName("Dark Steel").setColor(3027759).build();
 dark_steel.registerParts(dust_parts);
 dark_steel.registerParts(smelt_parts);
 dark_steel.registerParts(conductive_parts);
 dark_steel.registerParts(blast_parts);
 dark_steel.registerParts(machine_parts);
-var construction_alloy = MaterialSystem.getMaterialBuilder().setName("ConstructionAlloy").setColor(11907469).build();
+var construction_alloy = MaterialSystem.getMaterialBuilder().setName("Construction Alloy").setColor(11907469).build();
 construction_alloy.registerParts(dust_parts);
 construction_alloy.registerParts(smelt_parts);
 construction_alloy.registerParts(conductive_parts);
@@ -1044,24 +1065,18 @@ osmiridium.registerParts(smelt_parts);
 osmiridium.registerParts(conductive_parts);
 osmiridium.registerParts(blast_parts);
 osmiridium.registerParts(machine_parts);
-var redalloy = MaterialSystem.getMaterialBuilder().setName("RedAlloy").setColor(16711680).build();
+var redalloy = MaterialSystem.getMaterialBuilder().setName("Red Alloy").setColor(16711680).build();
 redalloy.registerParts(dust_parts);
 redalloy.registerParts(smelt_parts);
 redalloy.registerParts(conductive_parts);
 redalloy.registerParts(blast_parts);
 redalloy.registerParts(machine_parts);
-var electrum_flux = MaterialSystem.getMaterialBuilder().setName("GelidEnderium").setColor(16035876).build();
+var electrum_flux = MaterialSystem.getMaterialBuilder().setName("Gelid Enderium").setColor(16035876).build();
 electrum_flux.registerParts(dust_parts);
 electrum_flux.registerParts(smelt_parts);
 electrum_flux.registerParts(conductive_parts);
 electrum_flux.registerParts(blast_parts);
 electrum_flux.registerParts(machine_parts);
-var quartz_enriched_iron = MaterialSystem.getMaterialBuilder().setName("QuartzEnrichedIron").setColor(15920370).build();
-quartz_enriched_iron.registerParts(dust_parts);
-quartz_enriched_iron.registerParts(smelt_parts);
-quartz_enriched_iron.registerParts(conductive_parts);
-quartz_enriched_iron.registerParts(blast_parts);
-quartz_enriched_iron.registerParts(machine_parts);
 var signalum = MaterialSystem.getMaterialBuilder().setName("Signalum").setColor(16660993).build();
 signalum.registerParts(dust_parts);
 signalum.registerParts(smelt_parts);
@@ -1080,7 +1095,7 @@ enderium.registerParts(smelt_parts);
 enderium.registerParts(conductive_parts);
 enderium.registerParts(blast_parts);
 enderium.registerParts(machine_parts);
-var aluminum_brass = MaterialSystem.getMaterialBuilder().setName("AluminumBrass").setColor(15913032).build();
+var aluminum_brass = MaterialSystem.getMaterialBuilder().setName("Aluminum Brass").setColor(15913032).build();
 aluminum_brass.registerParts(dust_parts);
 aluminum_brass.registerParts(smelt_parts);
 aluminum_brass.registerParts(conductive_parts);
@@ -1092,7 +1107,7 @@ knightslime.registerParts(smelt_parts);
 knightslime.registerParts(conductive_parts);
 knightslime.registerParts(blast_parts);
 knightslime.registerParts(machine_parts);
-var pig_iron = MaterialSystem.getMaterialBuilder().setName("PigIron").setColor(14853790).build();
+var pig_iron = MaterialSystem.getMaterialBuilder().setName("Pig Iron").setColor(14853790).build();
 pig_iron.registerParts(dust_parts);
 pig_iron.registerParts(smelt_parts);
 pig_iron.registerParts(conductive_parts);
@@ -1104,25 +1119,25 @@ cupronickel.registerParts(smelt_parts);
 cupronickel.registerParts(conductive_parts);
 cupronickel.registerParts(blast_parts);
 cupronickel.registerParts(machine_parts);
-var aluminum_bronze = MaterialSystem.getMaterialBuilder().setName("AluminumBronze").setColor(15901512).build();
+var aluminum_bronze = MaterialSystem.getMaterialBuilder().setName("Aluminum Bronze").setColor(15901512).build();
 aluminum_bronze.registerParts(dust_parts);
 aluminum_bronze.registerParts(smelt_parts);
 aluminum_bronze.registerParts(conductive_parts);
 aluminum_bronze.registerParts(blast_parts);
 aluminum_bronze.registerParts(machine_parts);
-var nickel_aluminum_bronze = MaterialSystem.getMaterialBuilder().setName("NickelAluminumBronze").setColor(15389836).build();
+var nickel_aluminum_bronze = MaterialSystem.getMaterialBuilder().setName("NickelAluminum Bronze").setColor(15389836).build();
 nickel_aluminum_bronze.registerParts(dust_parts);
 nickel_aluminum_bronze.registerParts(smelt_parts);
 nickel_aluminum_bronze.registerParts(conductive_parts);
 nickel_aluminum_bronze.registerParts(blast_parts);
 nickel_aluminum_bronze.registerParts(machine_parts);
-var yttrium_barium_cuprate = MaterialSystem.getMaterialBuilder().setName("YttriumBariumCuprate").setColor(3869704).build();
+var yttrium_barium_cuprate = MaterialSystem.getMaterialBuilder().setName("Yttrium Barium Cuprate").setColor(3869704).build();
 yttrium_barium_cuprate.registerParts(dust_parts);
 yttrium_barium_cuprate.registerParts(smelt_parts);
 yttrium_barium_cuprate.registerParts(conductive_parts);
 yttrium_barium_cuprate.registerParts(blast_parts);
 yttrium_barium_cuprate.registerParts(machine_parts);
-var purple_steel = MaterialSystem.getMaterialBuilder().setName("PurpleSteel").setColor(7405677).build();
+var purple_steel = MaterialSystem.getMaterialBuilder().setName("Purple Steel").setColor(7405677).build();
 purple_steel.registerParts(dust_parts);
 purple_steel.registerParts(smelt_parts);
 purple_steel.registerParts(conductive_parts);
@@ -1134,7 +1149,7 @@ voidensteel.registerParts(smelt_parts);
 voidensteel.registerParts(conductive_parts);
 voidensteel.registerParts(blast_parts);
 voidensteel.registerParts(machine_parts);
-var white_gold = MaterialSystem.getMaterialBuilder().setName("WhiteGold").setColor(16776388).build();
+var white_gold = MaterialSystem.getMaterialBuilder().setName("White Gold").setColor(16776388).build();
 white_gold.registerParts(dust_parts);
 white_gold.registerParts(smelt_parts);
 white_gold.registerParts(conductive_parts);
@@ -1166,10 +1181,6 @@ spectraclium.registerParts(blast_parts);
 spectraclium.registerParts(machine_parts);
 var obsidian = MaterialSystem.getMaterialBuilder().setName("Obsidian").setColor(4325442).build();
 obsidian.registerParts(dust_parts);
-obsidian.registerParts(smelt_parts);
-obsidian.registerParts(conductive_parts);
-obsidian.registerParts(blast_parts);
-obsidian.registerParts(machine_parts);
 var nether_star = MaterialSystem.getMaterialBuilder().setName("Nether Star").setColor(Color.fromHex("fafeff")).build();
 nether_star.registerParts(dust_parts);
 nether_star.registerParts(gem_parts);
@@ -1187,9 +1198,11 @@ cinnabar.registerParts(dust_parts);
 cinnabar.registerParts(gem_parts);
 var coal = MaterialSystem.getMaterialBuilder().setName("Coal").setColor(Color.fromHex("26241f")).build();
 coal.registerParts(dust_parts);
+coal.registerParts(ore_parts);
 coal.registerParts(gem_parts);
 var lignite = MaterialSystem.getMaterialBuilder().setName("Lignite").setColor(Color.fromHex("66583e")).build();
 lignite.registerParts(dust_parts);
+lignite.registerParts(ore_parts);
 lignite.registerParts(gem_parts);
 var apatite = MaterialSystem.getMaterialBuilder().setName("Apatite").setColor(Color.fromHex("4887b8")).build();
 apatite.registerParts(dust_parts);
@@ -1308,62 +1321,6 @@ for i, ore in lumiumdenseBlocks {
 	data.addDataValue("harvestLevel","2,2,2,2,3");
 }
 
-var ironoreBlocks = iron.registerParts(ore_blocks);
-for i, ore in ironoreBlocks {
-	var data = ore.getData();
-	data.addDataValue("variants","minecraft:stone,minecraft:netherrack,minecraft:end_stone,minecraft:gravel,minecraft:bedrock");
-	data.addDataValue("hardness","5,5,5,3,70");
-	data.addDataValue("resistance","6,6,9,1,1200");
-	data.addDataValue("harvestTool","pickaxe,pickaxe,pickaxe,shovel,pickaxe");
-	data.addDataValue("harvestLevel","2,2,2,2,3");
-}
-var ironpoorBlocks = iron.registerParts(poor_blocks);
-for i, ore in ironpoorBlocks {
-	var data = ore.getData();
-	data.addDataValue("variants","minecraft:stone,minecraft:netherrack,minecraft:end_stone,minecraft:gravel,minecraft:bedrock");
-	data.addDataValue("hardness","5,5,5,3,70");
-	data.addDataValue("resistance","6,6,9,1,1200");
-	data.addDataValue("harvestTool","pickaxe,pickaxe,pickaxe,shovel,pickaxe");
-	data.addDataValue("harvestLevel","2,2,2,2,3");
-}
-var irondenseBlocks = iron.registerParts(dense_blocks);
-for i, ore in irondenseBlocks {
-	var data = ore.getData();
-	data.addDataValue("variants","minecraft:stone,minecraft:netherrack,minecraft:end_stone,minecraft:gravel,minecraft:bedrock");
-	data.addDataValue("hardness","5,5,5,3,70");
-	data.addDataValue("resistance","6,6,9,1,1200");
-	data.addDataValue("harvestTool","pickaxe,pickaxe,pickaxe,shovel,pickaxe");
-	data.addDataValue("harvestLevel","2,2,2,2,3");
-}
-
-var copperoreBlocks = copper.registerParts(ore_blocks);
-for i, ore in copperoreBlocks {
-	var data = ore.getData();
-	data.addDataValue("variants","minecraft:stone,minecraft:netherrack,minecraft:end_stone,minecraft:gravel,minecraft:bedrock");
-	data.addDataValue("hardness","5,5,5,3,70");
-	data.addDataValue("resistance","6,6,9,1,1200");
-	data.addDataValue("harvestTool","pickaxe,pickaxe,pickaxe,shovel,pickaxe");
-	data.addDataValue("harvestLevel","2,2,2,2,3");
-}
-var copperpoorBlocks = copper.registerParts(poor_blocks);
-for i, ore in copperpoorBlocks {
-	var data = ore.getData();
-	data.addDataValue("variants","minecraft:stone,minecraft:netherrack,minecraft:end_stone,minecraft:gravel,minecraft:bedrock");
-	data.addDataValue("hardness","5,5,5,3,70");
-	data.addDataValue("resistance","6,6,9,1,1200");
-	data.addDataValue("harvestTool","pickaxe,pickaxe,pickaxe,shovel,pickaxe");
-	data.addDataValue("harvestLevel","2,2,2,2,3");
-}
-var copperdenseBlocks = copper.registerParts(dense_blocks);
-for i, ore in copperdenseBlocks {
-	var data = ore.getData();
-	data.addDataValue("variants","minecraft:stone,minecraft:netherrack,minecraft:end_stone,minecraft:gravel,minecraft:bedrock");
-	data.addDataValue("hardness","5,5,5,3,70");
-	data.addDataValue("resistance","6,6,9,1,1200");
-	data.addDataValue("harvestTool","pickaxe,pickaxe,pickaxe,shovel,pickaxe");
-	data.addDataValue("harvestLevel","2,2,2,2,3");
-}
-
 var bauxiteoreBlocks = bauxite.registerParts(ore_blocks);
 for i, ore in bauxiteoreBlocks {
 	var data = ore.getData();
@@ -1412,6 +1369,762 @@ for i, ore in galenapoorBlocks {
 }
 var galenadenseBlocks = galena.registerParts(dense_blocks);
 for i, ore in galenadenseBlocks {
+	var data = ore.getData();
+	data.addDataValue("variants","minecraft:stone,minecraft:netherrack,minecraft:end_stone,minecraft:gravel,minecraft:bedrock");
+	data.addDataValue("hardness","5,5,5,3,70");
+	data.addDataValue("resistance","6,6,9,1,1200");
+	data.addDataValue("harvestTool","pickaxe,pickaxe,pickaxe,shovel,pickaxe");
+	data.addDataValue("harvestLevel","2,2,2,2,3");
+}
+
+var lithiumoreBlocks = lithium.registerParts(ore_blocks);
+for i, ore in lithiumoreBlocks {
+	var data = ore.getData();
+	data.addDataValue("variants","minecraft:stone,minecraft:netherrack,minecraft:end_stone,minecraft:gravel,minecraft:bedrock");
+	data.addDataValue("hardness","5,5,5,3,70");
+	data.addDataValue("resistance","6,6,9,1,1200");
+	data.addDataValue("harvestTool","pickaxe,pickaxe,pickaxe,shovel,pickaxe");
+	data.addDataValue("harvestLevel","2,2,2,2,3");
+}
+var lithiumpoorBlocks = lithium.registerParts(poor_blocks);
+for i, ore in lithiumpoorBlocks {
+	var data = ore.getData();
+	data.addDataValue("variants","minecraft:stone,minecraft:netherrack,minecraft:end_stone,minecraft:gravel,minecraft:bedrock");
+	data.addDataValue("hardness","5,5,5,3,70");
+	data.addDataValue("resistance","6,6,9,1,1200");
+	data.addDataValue("harvestTool","pickaxe,pickaxe,pickaxe,shovel,pickaxe");
+	data.addDataValue("harvestLevel","2,2,2,2,3");
+}
+var lithiumdenseBlocks = lithium.registerParts(dense_blocks);
+for i, ore in lithiumdenseBlocks {
+	var data = ore.getData();
+	data.addDataValue("variants","minecraft:stone,minecraft:netherrack,minecraft:end_stone,minecraft:gravel,minecraft:bedrock");
+	data.addDataValue("hardness","5,5,5,3,70");
+	data.addDataValue("resistance","6,6,9,1,1200");
+	data.addDataValue("harvestTool","pickaxe,pickaxe,pickaxe,shovel,pickaxe");
+	data.addDataValue("harvestLevel","2,2,2,2,3");
+}
+
+var berylliumoreBlocks = beryllium.registerParts(ore_blocks);
+for i, ore in berylliumoreBlocks {
+	var data = ore.getData();
+	data.addDataValue("variants","minecraft:stone,minecraft:netherrack,minecraft:end_stone,minecraft:gravel,minecraft:bedrock");
+	data.addDataValue("hardness","5,5,5,3,70");
+	data.addDataValue("resistance","6,6,9,1,1200");
+	data.addDataValue("harvestTool","pickaxe,pickaxe,pickaxe,shovel,pickaxe");
+	data.addDataValue("harvestLevel","2,2,2,2,3");
+}
+var berylliumpoorBlocks = beryllium.registerParts(poor_blocks);
+for i, ore in berylliumpoorBlocks {
+	var data = ore.getData();
+	data.addDataValue("variants","minecraft:stone,minecraft:netherrack,minecraft:end_stone,minecraft:gravel,minecraft:bedrock");
+	data.addDataValue("hardness","5,5,5,3,70");
+	data.addDataValue("resistance","6,6,9,1,1200");
+	data.addDataValue("harvestTool","pickaxe,pickaxe,pickaxe,shovel,pickaxe");
+	data.addDataValue("harvestLevel","2,2,2,2,3");
+}
+var berylliumdenseBlocks = beryllium.registerParts(dense_blocks);
+for i, ore in berylliumdenseBlocks {
+	var data = ore.getData();
+	data.addDataValue("variants","minecraft:stone,minecraft:netherrack,minecraft:end_stone,minecraft:gravel,minecraft:bedrock");
+	data.addDataValue("hardness","5,5,5,3,70");
+	data.addDataValue("resistance","6,6,9,1,1200");
+	data.addDataValue("harvestTool","pickaxe,pickaxe,pickaxe,shovel,pickaxe");
+	data.addDataValue("harvestLevel","2,2,2,2,3");
+}
+
+var magnesiumoreBlocks = magnesium.registerParts(ore_blocks);
+for i, ore in magnesiumoreBlocks {
+	var data = ore.getData();
+	data.addDataValue("variants","minecraft:stone,minecraft:netherrack,minecraft:end_stone,minecraft:gravel,minecraft:bedrock");
+	data.addDataValue("hardness","5,5,5,3,70");
+	data.addDataValue("resistance","6,6,9,1,1200");
+	data.addDataValue("harvestTool","pickaxe,pickaxe,pickaxe,shovel,pickaxe");
+	data.addDataValue("harvestLevel","2,2,2,2,3");
+}
+var magnesiumpoorBlocks = magnesium.registerParts(poor_blocks);
+for i, ore in magnesiumpoorBlocks {
+	var data = ore.getData();
+	data.addDataValue("variants","minecraft:stone,minecraft:netherrack,minecraft:end_stone,minecraft:gravel,minecraft:bedrock");
+	data.addDataValue("hardness","5,5,5,3,70");
+	data.addDataValue("resistance","6,6,9,1,1200");
+	data.addDataValue("harvestTool","pickaxe,pickaxe,pickaxe,shovel,pickaxe");
+	data.addDataValue("harvestLevel","2,2,2,2,3");
+}
+var magnesiumdenseBlocks = magnesium.registerParts(dense_blocks);
+for i, ore in magnesiumdenseBlocks {
+	var data = ore.getData();
+	data.addDataValue("variants","minecraft:stone,minecraft:netherrack,minecraft:end_stone,minecraft:gravel,minecraft:bedrock");
+	data.addDataValue("hardness","5,5,5,3,70");
+	data.addDataValue("resistance","6,6,9,1,1200");
+	data.addDataValue("harvestTool","pickaxe,pickaxe,pickaxe,shovel,pickaxe");
+	data.addDataValue("harvestLevel","2,2,2,2,3");
+}
+
+var phosphorusoreBlocks = phosphorus.registerParts(ore_blocks);
+for i, ore in phosphorusoreBlocks {
+	var data = ore.getData();
+	data.addDataValue("variants","minecraft:stone,minecraft:netherrack,minecraft:end_stone,minecraft:gravel,minecraft:bedrock");
+	data.addDataValue("hardness","5,5,5,3,70");
+	data.addDataValue("resistance","6,6,9,1,1200");
+	data.addDataValue("harvestTool","pickaxe,pickaxe,pickaxe,shovel,pickaxe");
+	data.addDataValue("harvestLevel","2,2,2,2,3");
+}
+var phosphoruspoorBlocks = phosphorus.registerParts(poor_blocks);
+for i, ore in phosphoruspoorBlocks {
+	var data = ore.getData();
+	data.addDataValue("variants","minecraft:stone,minecraft:netherrack,minecraft:end_stone,minecraft:gravel,minecraft:bedrock");
+	data.addDataValue("hardness","5,5,5,3,70");
+	data.addDataValue("resistance","6,6,9,1,1200");
+	data.addDataValue("harvestTool","pickaxe,pickaxe,pickaxe,shovel,pickaxe");
+	data.addDataValue("harvestLevel","2,2,2,2,3");
+}
+var phosphorusdenseBlocks = phosphorus.registerParts(dense_blocks);
+for i, ore in phosphorusdenseBlocks {
+	var data = ore.getData();
+	data.addDataValue("variants","minecraft:stone,minecraft:netherrack,minecraft:end_stone,minecraft:gravel,minecraft:bedrock");
+	data.addDataValue("hardness","5,5,5,3,70");
+	data.addDataValue("resistance","6,6,9,1,1200");
+	data.addDataValue("harvestTool","pickaxe,pickaxe,pickaxe,shovel,pickaxe");
+	data.addDataValue("harvestLevel","2,2,2,2,3");
+}
+
+var sulfuroreBlocks = sulfur.registerParts(ore_blocks);
+for i, ore in sulfuroreBlocks {
+	var data = ore.getData();
+	data.addDataValue("variants","minecraft:stone,minecraft:netherrack,minecraft:end_stone,minecraft:gravel,minecraft:bedrock");
+	data.addDataValue("hardness","5,5,5,3,70");
+	data.addDataValue("resistance","6,6,9,1,1200");
+	data.addDataValue("harvestTool","pickaxe,pickaxe,pickaxe,shovel,pickaxe");
+	data.addDataValue("harvestLevel","2,2,2,2,3");
+}
+var sulfurpoorBlocks = sulfur.registerParts(poor_blocks);
+for i, ore in sulfurpoorBlocks {
+	var data = ore.getData();
+	data.addDataValue("variants","minecraft:stone,minecraft:netherrack,minecraft:end_stone,minecraft:gravel,minecraft:bedrock");
+	data.addDataValue("hardness","5,5,5,3,70");
+	data.addDataValue("resistance","6,6,9,1,1200");
+	data.addDataValue("harvestTool","pickaxe,pickaxe,pickaxe,shovel,pickaxe");
+	data.addDataValue("harvestLevel","2,2,2,2,3");
+}
+var sulfurdenseBlocks = sulfur.registerParts(dense_blocks);
+for i, ore in sulfurdenseBlocks {
+	var data = ore.getData();
+	data.addDataValue("variants","minecraft:stone,minecraft:netherrack,minecraft:end_stone,minecraft:gravel,minecraft:bedrock");
+	data.addDataValue("hardness","5,5,5,3,70");
+	data.addDataValue("resistance","6,6,9,1,1200");
+	data.addDataValue("harvestTool","pickaxe,pickaxe,pickaxe,shovel,pickaxe");
+	data.addDataValue("harvestLevel","2,2,2,2,3");
+}
+
+var titaniumoreBlocks = titanium.registerParts(ore_blocks);
+for i, ore in titaniumoreBlocks {
+	var data = ore.getData();
+	data.addDataValue("variants","minecraft:stone,minecraft:netherrack,minecraft:end_stone,minecraft:gravel,minecraft:bedrock");
+	data.addDataValue("hardness","5,5,5,3,70");
+	data.addDataValue("resistance","6,6,9,1,1200");
+	data.addDataValue("harvestTool","pickaxe,pickaxe,pickaxe,shovel,pickaxe");
+	data.addDataValue("harvestLevel","2,2,2,2,3");
+}
+var titaniumpoorBlocks = titanium.registerParts(poor_blocks);
+for i, ore in titaniumpoorBlocks {
+	var data = ore.getData();
+	data.addDataValue("variants","minecraft:stone,minecraft:netherrack,minecraft:end_stone,minecraft:gravel,minecraft:bedrock");
+	data.addDataValue("hardness","5,5,5,3,70");
+	data.addDataValue("resistance","6,6,9,1,1200");
+	data.addDataValue("harvestTool","pickaxe,pickaxe,pickaxe,shovel,pickaxe");
+	data.addDataValue("harvestLevel","2,2,2,2,3");
+}
+var titaniumdenseBlocks = titanium.registerParts(dense_blocks);
+for i, ore in titaniumdenseBlocks {
+	var data = ore.getData();
+	data.addDataValue("variants","minecraft:stone,minecraft:netherrack,minecraft:end_stone,minecraft:gravel,minecraft:bedrock");
+	data.addDataValue("hardness","5,5,5,3,70");
+	data.addDataValue("resistance","6,6,9,1,1200");
+	data.addDataValue("harvestTool","pickaxe,pickaxe,pickaxe,shovel,pickaxe");
+	data.addDataValue("harvestLevel","2,2,2,2,3");
+}
+
+var vanadiumoreBlocks = vanadium.registerParts(ore_blocks);
+for i, ore in vanadiumoreBlocks {
+	var data = ore.getData();
+	data.addDataValue("variants","minecraft:stone,minecraft:netherrack,minecraft:end_stone,minecraft:gravel,minecraft:bedrock");
+	data.addDataValue("hardness","5,5,5,3,70");
+	data.addDataValue("resistance","6,6,9,1,1200");
+	data.addDataValue("harvestTool","pickaxe,pickaxe,pickaxe,shovel,pickaxe");
+	data.addDataValue("harvestLevel","2,2,2,2,3");
+}
+var vanadiumpoorBlocks = vanadium.registerParts(poor_blocks);
+for i, ore in vanadiumpoorBlocks {
+	var data = ore.getData();
+	data.addDataValue("variants","minecraft:stone,minecraft:netherrack,minecraft:end_stone,minecraft:gravel,minecraft:bedrock");
+	data.addDataValue("hardness","5,5,5,3,70");
+	data.addDataValue("resistance","6,6,9,1,1200");
+	data.addDataValue("harvestTool","pickaxe,pickaxe,pickaxe,shovel,pickaxe");
+	data.addDataValue("harvestLevel","2,2,2,2,3");
+}
+var vanadiumdenseBlocks = vanadium.registerParts(dense_blocks);
+for i, ore in vanadiumdenseBlocks {
+	var data = ore.getData();
+	data.addDataValue("variants","minecraft:stone,minecraft:netherrack,minecraft:end_stone,minecraft:gravel,minecraft:bedrock");
+	data.addDataValue("hardness","5,5,5,3,70");
+	data.addDataValue("resistance","6,6,9,1,1200");
+	data.addDataValue("harvestTool","pickaxe,pickaxe,pickaxe,shovel,pickaxe");
+	data.addDataValue("harvestLevel","2,2,2,2,3");
+}
+
+var chromeoreBlocks = chrome.registerParts(ore_blocks);
+for i, ore in chromeoreBlocks {
+	var data = ore.getData();
+	data.addDataValue("variants","minecraft:stone,minecraft:netherrack,minecraft:end_stone,minecraft:gravel,minecraft:bedrock");
+	data.addDataValue("hardness","5,5,5,3,70");
+	data.addDataValue("resistance","6,6,9,1,1200");
+	data.addDataValue("harvestTool","pickaxe,pickaxe,pickaxe,shovel,pickaxe");
+	data.addDataValue("harvestLevel","2,2,2,2,3");
+}
+var chromepoorBlocks = chrome.registerParts(poor_blocks);
+for i, ore in chromepoorBlocks {
+	var data = ore.getData();
+	data.addDataValue("variants","minecraft:stone,minecraft:netherrack,minecraft:end_stone,minecraft:gravel,minecraft:bedrock");
+	data.addDataValue("hardness","5,5,5,3,70");
+	data.addDataValue("resistance","6,6,9,1,1200");
+	data.addDataValue("harvestTool","pickaxe,pickaxe,pickaxe,shovel,pickaxe");
+	data.addDataValue("harvestLevel","2,2,2,2,3");
+}
+var chromedenseBlocks = chrome.registerParts(dense_blocks);
+for i, ore in chromedenseBlocks {
+	var data = ore.getData();
+	data.addDataValue("variants","minecraft:stone,minecraft:netherrack,minecraft:end_stone,minecraft:gravel,minecraft:bedrock");
+	data.addDataValue("hardness","5,5,5,3,70");
+	data.addDataValue("resistance","6,6,9,1,1200");
+	data.addDataValue("harvestTool","pickaxe,pickaxe,pickaxe,shovel,pickaxe");
+	data.addDataValue("harvestLevel","2,2,2,2,3");
+}
+
+var manganeseoreBlocks = manganese.registerParts(ore_blocks);
+for i, ore in manganeseoreBlocks {
+	var data = ore.getData();
+	data.addDataValue("variants","minecraft:stone,minecraft:netherrack,minecraft:end_stone,minecraft:gravel,minecraft:bedrock");
+	data.addDataValue("hardness","5,5,5,3,70");
+	data.addDataValue("resistance","6,6,9,1,1200");
+	data.addDataValue("harvestTool","pickaxe,pickaxe,pickaxe,shovel,pickaxe");
+	data.addDataValue("harvestLevel","2,2,2,2,3");
+}
+var manganesepoorBlocks = manganese.registerParts(poor_blocks);
+for i, ore in manganesepoorBlocks {
+	var data = ore.getData();
+	data.addDataValue("variants","minecraft:stone,minecraft:netherrack,minecraft:end_stone,minecraft:gravel,minecraft:bedrock");
+	data.addDataValue("hardness","5,5,5,3,70");
+	data.addDataValue("resistance","6,6,9,1,1200");
+	data.addDataValue("harvestTool","pickaxe,pickaxe,pickaxe,shovel,pickaxe");
+	data.addDataValue("harvestLevel","2,2,2,2,3");
+}
+var manganesedenseBlocks = manganese.registerParts(dense_blocks);
+for i, ore in manganesedenseBlocks {
+	var data = ore.getData();
+	data.addDataValue("variants","minecraft:stone,minecraft:netherrack,minecraft:end_stone,minecraft:gravel,minecraft:bedrock");
+	data.addDataValue("hardness","5,5,5,3,70");
+	data.addDataValue("resistance","6,6,9,1,1200");
+	data.addDataValue("harvestTool","pickaxe,pickaxe,pickaxe,shovel,pickaxe");
+	data.addDataValue("harvestLevel","2,2,2,2,3");
+}
+
+var ironoreBlocks = iron.registerParts(ore_blocks);
+for i, ore in ironoreBlocks {
+	var data = ore.getData();
+	data.addDataValue("variants","minecraft:stone,minecraft:netherrack,minecraft:end_stone,minecraft:gravel,minecraft:bedrock");
+	data.addDataValue("hardness","5,5,5,3,70");
+	data.addDataValue("resistance","6,6,9,1,1200");
+	data.addDataValue("harvestTool","pickaxe,pickaxe,pickaxe,shovel,pickaxe");
+	data.addDataValue("harvestLevel","2,2,2,2,3");
+}
+var ironpoorBlocks = iron.registerParts(poor_blocks);
+for i, ore in ironpoorBlocks {
+	var data = ore.getData();
+	data.addDataValue("variants","minecraft:stone,minecraft:netherrack,minecraft:end_stone,minecraft:gravel,minecraft:bedrock");
+	data.addDataValue("hardness","5,5,5,3,70");
+	data.addDataValue("resistance","6,6,9,1,1200");
+	data.addDataValue("harvestTool","pickaxe,pickaxe,pickaxe,shovel,pickaxe");
+	data.addDataValue("harvestLevel","2,2,2,2,3");
+}
+var irondenseBlocks = iron.registerParts(dense_blocks);
+for i, ore in irondenseBlocks {
+	var data = ore.getData();
+	data.addDataValue("variants","minecraft:stone,minecraft:netherrack,minecraft:end_stone,minecraft:gravel,minecraft:bedrock");
+	data.addDataValue("hardness","5,5,5,3,70");
+	data.addDataValue("resistance","6,6,9,1,1200");
+	data.addDataValue("harvestTool","pickaxe,pickaxe,pickaxe,shovel,pickaxe");
+	data.addDataValue("harvestLevel","2,2,2,2,3");
+}
+
+var cobaltoreBlocks = cobalt.registerParts(ore_blocks);
+for i, ore in cobaltoreBlocks {
+	var data = ore.getData();
+	data.addDataValue("variants","minecraft:stone,minecraft:netherrack,minecraft:end_stone,minecraft:gravel,minecraft:bedrock");
+	data.addDataValue("hardness","5,5,5,3,70");
+	data.addDataValue("resistance","6,6,9,1,1200");
+	data.addDataValue("harvestTool","pickaxe,pickaxe,pickaxe,shovel,pickaxe");
+	data.addDataValue("harvestLevel","2,2,2,2,3");
+}
+var cobaltpoorBlocks = cobalt.registerParts(poor_blocks);
+for i, ore in cobaltpoorBlocks {
+	var data = ore.getData();
+	data.addDataValue("variants","minecraft:stone,minecraft:netherrack,minecraft:end_stone,minecraft:gravel,minecraft:bedrock");
+	data.addDataValue("hardness","5,5,5,3,70");
+	data.addDataValue("resistance","6,6,9,1,1200");
+	data.addDataValue("harvestTool","pickaxe,pickaxe,pickaxe,shovel,pickaxe");
+	data.addDataValue("harvestLevel","2,2,2,2,3");
+}
+var cobaltdenseBlocks = cobalt.registerParts(dense_blocks);
+for i, ore in cobaltdenseBlocks {
+	var data = ore.getData();
+	data.addDataValue("variants","minecraft:stone,minecraft:netherrack,minecraft:end_stone,minecraft:gravel,minecraft:bedrock");
+	data.addDataValue("hardness","5,5,5,3,70");
+	data.addDataValue("resistance","6,6,9,1,1200");
+	data.addDataValue("harvestTool","pickaxe,pickaxe,pickaxe,shovel,pickaxe");
+	data.addDataValue("harvestLevel","2,2,2,2,3");
+}
+
+var nickeloreBlocks = nickel.registerParts(ore_blocks);
+for i, ore in nickeloreBlocks {
+	var data = ore.getData();
+	data.addDataValue("variants","minecraft:stone,minecraft:netherrack,minecraft:end_stone,minecraft:gravel,minecraft:bedrock");
+	data.addDataValue("hardness","5,5,5,3,70");
+	data.addDataValue("resistance","6,6,9,1,1200");
+	data.addDataValue("harvestTool","pickaxe,pickaxe,pickaxe,shovel,pickaxe");
+	data.addDataValue("harvestLevel","2,2,2,2,3");
+}
+var nickelpoorBlocks = nickel.registerParts(poor_blocks);
+for i, ore in nickelpoorBlocks {
+	var data = ore.getData();
+	data.addDataValue("variants","minecraft:stone,minecraft:netherrack,minecraft:end_stone,minecraft:gravel,minecraft:bedrock");
+	data.addDataValue("hardness","5,5,5,3,70");
+	data.addDataValue("resistance","6,6,9,1,1200");
+	data.addDataValue("harvestTool","pickaxe,pickaxe,pickaxe,shovel,pickaxe");
+	data.addDataValue("harvestLevel","2,2,2,2,3");
+}
+var nickeldenseBlocks = nickel.registerParts(dense_blocks);
+for i, ore in nickeldenseBlocks {
+	var data = ore.getData();
+	data.addDataValue("variants","minecraft:stone,minecraft:netherrack,minecraft:end_stone,minecraft:gravel,minecraft:bedrock");
+	data.addDataValue("hardness","5,5,5,3,70");
+	data.addDataValue("resistance","6,6,9,1,1200");
+	data.addDataValue("harvestTool","pickaxe,pickaxe,pickaxe,shovel,pickaxe");
+	data.addDataValue("harvestLevel","2,2,2,2,3");
+}
+
+var copperoreBlocks = copper.registerParts(ore_blocks);
+for i, ore in copperoreBlocks {
+	var data = ore.getData();
+	data.addDataValue("variants","minecraft:stone,minecraft:netherrack,minecraft:end_stone,minecraft:gravel,minecraft:bedrock");
+	data.addDataValue("hardness","5,5,5,3,70");
+	data.addDataValue("resistance","6,6,9,1,1200");
+	data.addDataValue("harvestTool","pickaxe,pickaxe,pickaxe,shovel,pickaxe");
+	data.addDataValue("harvestLevel","2,2,2,2,3");
+}
+var copperpoorBlocks = copper.registerParts(poor_blocks);
+for i, ore in copperpoorBlocks {
+	var data = ore.getData();
+	data.addDataValue("variants","minecraft:stone,minecraft:netherrack,minecraft:end_stone,minecraft:gravel,minecraft:bedrock");
+	data.addDataValue("hardness","5,5,5,3,70");
+	data.addDataValue("resistance","6,6,9,1,1200");
+	data.addDataValue("harvestTool","pickaxe,pickaxe,pickaxe,shovel,pickaxe");
+	data.addDataValue("harvestLevel","2,2,2,2,3");
+}
+var copperdenseBlocks = copper.registerParts(dense_blocks);
+for i, ore in copperdenseBlocks {
+	var data = ore.getData();
+	data.addDataValue("variants","minecraft:stone,minecraft:netherrack,minecraft:end_stone,minecraft:gravel,minecraft:bedrock");
+	data.addDataValue("hardness","5,5,5,3,70");
+	data.addDataValue("resistance","6,6,9,1,1200");
+	data.addDataValue("harvestTool","pickaxe,pickaxe,pickaxe,shovel,pickaxe");
+	data.addDataValue("harvestLevel","2,2,2,2,3");
+}
+
+var zincoreBlocks = zinc.registerParts(ore_blocks);
+for i, ore in zincoreBlocks {
+	var data = ore.getData();
+	data.addDataValue("variants","minecraft:stone,minecraft:netherrack,minecraft:end_stone,minecraft:gravel,minecraft:bedrock");
+	data.addDataValue("hardness","5,5,5,3,70");
+	data.addDataValue("resistance","6,6,9,1,1200");
+	data.addDataValue("harvestTool","pickaxe,pickaxe,pickaxe,shovel,pickaxe");
+	data.addDataValue("harvestLevel","2,2,2,2,3");
+}
+var zincpoorBlocks = zinc.registerParts(poor_blocks);
+for i, ore in zincpoorBlocks {
+	var data = ore.getData();
+	data.addDataValue("variants","minecraft:stone,minecraft:netherrack,minecraft:end_stone,minecraft:gravel,minecraft:bedrock");
+	data.addDataValue("hardness","5,5,5,3,70");
+	data.addDataValue("resistance","6,6,9,1,1200");
+	data.addDataValue("harvestTool","pickaxe,pickaxe,pickaxe,shovel,pickaxe");
+	data.addDataValue("harvestLevel","2,2,2,2,3");
+}
+var zincdenseBlocks = zinc.registerParts(dense_blocks);
+for i, ore in zincdenseBlocks {
+	var data = ore.getData();
+	data.addDataValue("variants","minecraft:stone,minecraft:netherrack,minecraft:end_stone,minecraft:gravel,minecraft:bedrock");
+	data.addDataValue("hardness","5,5,5,3,70");
+	data.addDataValue("resistance","6,6,9,1,1200");
+	data.addDataValue("harvestTool","pickaxe,pickaxe,pickaxe,shovel,pickaxe");
+	data.addDataValue("harvestLevel","2,2,2,2,3");
+}
+
+var molybdenumoreBlocks = molybdenum.registerParts(ore_blocks);
+for i, ore in molybdenumoreBlocks {
+	var data = ore.getData();
+	data.addDataValue("variants","minecraft:stone,minecraft:netherrack,minecraft:end_stone,minecraft:gravel,minecraft:bedrock");
+	data.addDataValue("hardness","5,5,5,3,70");
+	data.addDataValue("resistance","6,6,9,1,1200");
+	data.addDataValue("harvestTool","pickaxe,pickaxe,pickaxe,shovel,pickaxe");
+	data.addDataValue("harvestLevel","2,2,2,2,3");
+}
+var molybdenumpoorBlocks = molybdenum.registerParts(poor_blocks);
+for i, ore in molybdenumpoorBlocks {
+	var data = ore.getData();
+	data.addDataValue("variants","minecraft:stone,minecraft:netherrack,minecraft:end_stone,minecraft:gravel,minecraft:bedrock");
+	data.addDataValue("hardness","5,5,5,3,70");
+	data.addDataValue("resistance","6,6,9,1,1200");
+	data.addDataValue("harvestTool","pickaxe,pickaxe,pickaxe,shovel,pickaxe");
+	data.addDataValue("harvestLevel","2,2,2,2,3");
+}
+var molybdenumdenseBlocks = molybdenum.registerParts(dense_blocks);
+for i, ore in molybdenumdenseBlocks {
+	var data = ore.getData();
+	data.addDataValue("variants","minecraft:stone,minecraft:netherrack,minecraft:end_stone,minecraft:gravel,minecraft:bedrock");
+	data.addDataValue("hardness","5,5,5,3,70");
+	data.addDataValue("resistance","6,6,9,1,1200");
+	data.addDataValue("harvestTool","pickaxe,pickaxe,pickaxe,shovel,pickaxe");
+	data.addDataValue("harvestLevel","2,2,2,2,3");
+}
+
+var tinoreBlocks = tin.registerParts(ore_blocks);
+for i, ore in tinoreBlocks {
+	var data = ore.getData();
+	data.addDataValue("variants","minecraft:stone,minecraft:netherrack,minecraft:end_stone,minecraft:gravel,minecraft:bedrock");
+	data.addDataValue("hardness","5,5,5,3,70");
+	data.addDataValue("resistance","6,6,9,1,1200");
+	data.addDataValue("harvestTool","pickaxe,pickaxe,pickaxe,shovel,pickaxe");
+	data.addDataValue("harvestLevel","2,2,2,2,3");
+}
+var tinpoorBlocks = tin.registerParts(poor_blocks);
+for i, ore in tinpoorBlocks {
+	var data = ore.getData();
+	data.addDataValue("variants","minecraft:stone,minecraft:netherrack,minecraft:end_stone,minecraft:gravel,minecraft:bedrock");
+	data.addDataValue("hardness","5,5,5,3,70");
+	data.addDataValue("resistance","6,6,9,1,1200");
+	data.addDataValue("harvestTool","pickaxe,pickaxe,pickaxe,shovel,pickaxe");
+	data.addDataValue("harvestLevel","2,2,2,2,3");
+}
+var tindenseBlocks = tin.registerParts(dense_blocks);
+for i, ore in tindenseBlocks {
+	var data = ore.getData();
+	data.addDataValue("variants","minecraft:stone,minecraft:netherrack,minecraft:end_stone,minecraft:gravel,minecraft:bedrock");
+	data.addDataValue("hardness","5,5,5,3,70");
+	data.addDataValue("resistance","6,6,9,1,1200");
+	data.addDataValue("harvestTool","pickaxe,pickaxe,pickaxe,shovel,pickaxe");
+	data.addDataValue("harvestLevel","2,2,2,2,3");
+}
+
+var antimonyoreBlocks = antimony.registerParts(ore_blocks);
+for i, ore in antimonyoreBlocks {
+	var data = ore.getData();
+	data.addDataValue("variants","minecraft:stone,minecraft:netherrack,minecraft:end_stone,minecraft:gravel,minecraft:bedrock");
+	data.addDataValue("hardness","5,5,5,3,70");
+	data.addDataValue("resistance","6,6,9,1,1200");
+	data.addDataValue("harvestTool","pickaxe,pickaxe,pickaxe,shovel,pickaxe");
+	data.addDataValue("harvestLevel","2,2,2,2,3");
+}
+var antimonypoorBlocks = antimony.registerParts(poor_blocks);
+for i, ore in antimonypoorBlocks {
+	var data = ore.getData();
+	data.addDataValue("variants","minecraft:stone,minecraft:netherrack,minecraft:end_stone,minecraft:gravel,minecraft:bedrock");
+	data.addDataValue("hardness","5,5,5,3,70");
+	data.addDataValue("resistance","6,6,9,1,1200");
+	data.addDataValue("harvestTool","pickaxe,pickaxe,pickaxe,shovel,pickaxe");
+	data.addDataValue("harvestLevel","2,2,2,2,3");
+}
+var antimonydenseBlocks = antimony.registerParts(dense_blocks);
+for i, ore in antimonydenseBlocks {
+	var data = ore.getData();
+	data.addDataValue("variants","minecraft:stone,minecraft:netherrack,minecraft:end_stone,minecraft:gravel,minecraft:bedrock");
+	data.addDataValue("hardness","5,5,5,3,70");
+	data.addDataValue("resistance","6,6,9,1,1200");
+	data.addDataValue("harvestTool","pickaxe,pickaxe,pickaxe,shovel,pickaxe");
+	data.addDataValue("harvestLevel","2,2,2,2,3");
+}
+
+var neodymiumoreBlocks = neodymium.registerParts(ore_blocks);
+for i, ore in neodymiumoreBlocks {
+	var data = ore.getData();
+	data.addDataValue("variants","minecraft:stone,minecraft:netherrack,minecraft:end_stone,minecraft:gravel,minecraft:bedrock");
+	data.addDataValue("hardness","5,5,5,3,70");
+	data.addDataValue("resistance","6,6,9,1,1200");
+	data.addDataValue("harvestTool","pickaxe,pickaxe,pickaxe,shovel,pickaxe");
+	data.addDataValue("harvestLevel","2,2,2,2,3");
+}
+var neodymiumpoorBlocks = neodymium.registerParts(poor_blocks);
+for i, ore in neodymiumpoorBlocks {
+	var data = ore.getData();
+	data.addDataValue("variants","minecraft:stone,minecraft:netherrack,minecraft:end_stone,minecraft:gravel,minecraft:bedrock");
+	data.addDataValue("hardness","5,5,5,3,70");
+	data.addDataValue("resistance","6,6,9,1,1200");
+	data.addDataValue("harvestTool","pickaxe,pickaxe,pickaxe,shovel,pickaxe");
+	data.addDataValue("harvestLevel","2,2,2,2,3");
+}
+var neodymiumdenseBlocks = neodymium.registerParts(dense_blocks);
+for i, ore in neodymiumdenseBlocks {
+	var data = ore.getData();
+	data.addDataValue("variants","minecraft:stone,minecraft:netherrack,minecraft:end_stone,minecraft:gravel,minecraft:bedrock");
+	data.addDataValue("hardness","5,5,5,3,70");
+	data.addDataValue("resistance","6,6,9,1,1200");
+	data.addDataValue("harvestTool","pickaxe,pickaxe,pickaxe,shovel,pickaxe");
+	data.addDataValue("harvestLevel","2,2,2,2,3");
+}
+
+var tantalumoreBlocks = tantalum.registerParts(ore_blocks);
+for i, ore in tantalumoreBlocks {
+	var data = ore.getData();
+	data.addDataValue("variants","minecraft:stone,minecraft:netherrack,minecraft:end_stone,minecraft:gravel,minecraft:bedrock");
+	data.addDataValue("hardness","5,5,5,3,70");
+	data.addDataValue("resistance","6,6,9,1,1200");
+	data.addDataValue("harvestTool","pickaxe,pickaxe,pickaxe,shovel,pickaxe");
+	data.addDataValue("harvestLevel","2,2,2,2,3");
+}
+var tantalumpoorBlocks = tantalum.registerParts(poor_blocks);
+for i, ore in tantalumpoorBlocks {
+	var data = ore.getData();
+	data.addDataValue("variants","minecraft:stone,minecraft:netherrack,minecraft:end_stone,minecraft:gravel,minecraft:bedrock");
+	data.addDataValue("hardness","5,5,5,3,70");
+	data.addDataValue("resistance","6,6,9,1,1200");
+	data.addDataValue("harvestTool","pickaxe,pickaxe,pickaxe,shovel,pickaxe");
+	data.addDataValue("harvestLevel","2,2,2,2,3");
+}
+var tantalumdenseBlocks = tantalum.registerParts(dense_blocks);
+for i, ore in tantalumdenseBlocks {
+	var data = ore.getData();
+	data.addDataValue("variants","minecraft:stone,minecraft:netherrack,minecraft:end_stone,minecraft:gravel,minecraft:bedrock");
+	data.addDataValue("hardness","5,5,5,3,70");
+	data.addDataValue("resistance","6,6,9,1,1200");
+	data.addDataValue("harvestTool","pickaxe,pickaxe,pickaxe,shovel,pickaxe");
+	data.addDataValue("harvestLevel","2,2,2,2,3");
+}
+
+var tungstenoreBlocks = tungsten.registerParts(ore_blocks);
+for i, ore in tungstenoreBlocks {
+	var data = ore.getData();
+	data.addDataValue("variants","minecraft:stone,minecraft:netherrack,minecraft:end_stone,minecraft:gravel,minecraft:bedrock");
+	data.addDataValue("hardness","5,5,5,3,70");
+	data.addDataValue("resistance","6,6,9,1,1200");
+	data.addDataValue("harvestTool","pickaxe,pickaxe,pickaxe,shovel,pickaxe");
+	data.addDataValue("harvestLevel","2,2,2,2,3");
+}
+var tungstenpoorBlocks = tungsten.registerParts(poor_blocks);
+for i, ore in tungstenpoorBlocks {
+	var data = ore.getData();
+	data.addDataValue("variants","minecraft:stone,minecraft:netherrack,minecraft:end_stone,minecraft:gravel,minecraft:bedrock");
+	data.addDataValue("hardness","5,5,5,3,70");
+	data.addDataValue("resistance","6,6,9,1,1200");
+	data.addDataValue("harvestTool","pickaxe,pickaxe,pickaxe,shovel,pickaxe");
+	data.addDataValue("harvestLevel","2,2,2,2,3");
+}
+var tungstendenseBlocks = tungsten.registerParts(dense_blocks);
+for i, ore in tungstendenseBlocks {
+	var data = ore.getData();
+	data.addDataValue("variants","minecraft:stone,minecraft:netherrack,minecraft:end_stone,minecraft:gravel,minecraft:bedrock");
+	data.addDataValue("hardness","5,5,5,3,70");
+	data.addDataValue("resistance","6,6,9,1,1200");
+	data.addDataValue("harvestTool","pickaxe,pickaxe,pickaxe,shovel,pickaxe");
+	data.addDataValue("harvestLevel","2,2,2,2,3");
+}
+
+var osmiumoreBlocks = osmium.registerParts(ore_blocks);
+for i, ore in osmiumoreBlocks {
+	var data = ore.getData();
+	data.addDataValue("variants","minecraft:stone,minecraft:netherrack,minecraft:end_stone,minecraft:gravel,minecraft:bedrock");
+	data.addDataValue("hardness","5,5,5,3,70");
+	data.addDataValue("resistance","6,6,9,1,1200");
+	data.addDataValue("harvestTool","pickaxe,pickaxe,pickaxe,shovel,pickaxe");
+	data.addDataValue("harvestLevel","2,2,2,2,3");
+}
+var osmiumpoorBlocks = osmium.registerParts(poor_blocks);
+for i, ore in osmiumpoorBlocks {
+	var data = ore.getData();
+	data.addDataValue("variants","minecraft:stone,minecraft:netherrack,minecraft:end_stone,minecraft:gravel,minecraft:bedrock");
+	data.addDataValue("hardness","5,5,5,3,70");
+	data.addDataValue("resistance","6,6,9,1,1200");
+	data.addDataValue("harvestTool","pickaxe,pickaxe,pickaxe,shovel,pickaxe");
+	data.addDataValue("harvestLevel","2,2,2,2,3");
+}
+var osmiumdenseBlocks = osmium.registerParts(dense_blocks);
+for i, ore in osmiumdenseBlocks {
+	var data = ore.getData();
+	data.addDataValue("variants","minecraft:stone,minecraft:netherrack,minecraft:end_stone,minecraft:gravel,minecraft:bedrock");
+	data.addDataValue("hardness","5,5,5,3,70");
+	data.addDataValue("resistance","6,6,9,1,1200");
+	data.addDataValue("harvestTool","pickaxe,pickaxe,pickaxe,shovel,pickaxe");
+	data.addDataValue("harvestLevel","2,2,2,2,3");
+}
+
+var iridiumoreBlocks = iridium.registerParts(ore_blocks);
+for i, ore in iridiumoreBlocks {
+	var data = ore.getData();
+	data.addDataValue("variants","minecraft:stone,minecraft:netherrack,minecraft:end_stone,minecraft:gravel,minecraft:bedrock");
+	data.addDataValue("hardness","5,5,5,3,70");
+	data.addDataValue("resistance","6,6,9,1,1200");
+	data.addDataValue("harvestTool","pickaxe,pickaxe,pickaxe,shovel,pickaxe");
+	data.addDataValue("harvestLevel","2,2,2,2,3");
+}
+var iridiumpoorBlocks = iridium.registerParts(poor_blocks);
+for i, ore in iridiumpoorBlocks {
+	var data = ore.getData();
+	data.addDataValue("variants","minecraft:stone,minecraft:netherrack,minecraft:end_stone,minecraft:gravel,minecraft:bedrock");
+	data.addDataValue("hardness","5,5,5,3,70");
+	data.addDataValue("resistance","6,6,9,1,1200");
+	data.addDataValue("harvestTool","pickaxe,pickaxe,pickaxe,shovel,pickaxe");
+	data.addDataValue("harvestLevel","2,2,2,2,3");
+}
+var iridiumdenseBlocks = iridium.registerParts(dense_blocks);
+for i, ore in iridiumdenseBlocks {
+	var data = ore.getData();
+	data.addDataValue("variants","minecraft:stone,minecraft:netherrack,minecraft:end_stone,minecraft:gravel,minecraft:bedrock");
+	data.addDataValue("hardness","5,5,5,3,70");
+	data.addDataValue("resistance","6,6,9,1,1200");
+	data.addDataValue("harvestTool","pickaxe,pickaxe,pickaxe,shovel,pickaxe");
+	data.addDataValue("harvestLevel","2,2,2,2,3");
+}
+
+var platinumoreBlocks = platinum.registerParts(ore_blocks);
+for i, ore in platinumoreBlocks {
+	var data = ore.getData();
+	data.addDataValue("variants","minecraft:stone,minecraft:netherrack,minecraft:end_stone,minecraft:gravel,minecraft:bedrock");
+	data.addDataValue("hardness","5,5,5,3,70");
+	data.addDataValue("resistance","6,6,9,1,1200");
+	data.addDataValue("harvestTool","pickaxe,pickaxe,pickaxe,shovel,pickaxe");
+	data.addDataValue("harvestLevel","2,2,2,2,3");
+}
+var platinumpoorBlocks = platinum.registerParts(poor_blocks);
+for i, ore in platinumpoorBlocks {
+	var data = ore.getData();
+	data.addDataValue("variants","minecraft:stone,minecraft:netherrack,minecraft:end_stone,minecraft:gravel,minecraft:bedrock");
+	data.addDataValue("hardness","5,5,5,3,70");
+	data.addDataValue("resistance","6,6,9,1,1200");
+	data.addDataValue("harvestTool","pickaxe,pickaxe,pickaxe,shovel,pickaxe");
+	data.addDataValue("harvestLevel","2,2,2,2,3");
+}
+var platinumdenseBlocks = platinum.registerParts(dense_blocks);
+for i, ore in platinumdenseBlocks {
+	var data = ore.getData();
+	data.addDataValue("variants","minecraft:stone,minecraft:netherrack,minecraft:end_stone,minecraft:gravel,minecraft:bedrock");
+	data.addDataValue("hardness","5,5,5,3,70");
+	data.addDataValue("resistance","6,6,9,1,1200");
+	data.addDataValue("harvestTool","pickaxe,pickaxe,pickaxe,shovel,pickaxe");
+	data.addDataValue("harvestLevel","2,2,2,2,3");
+}
+
+var goldoreBlocks = gold.registerParts(ore_blocks);
+for i, ore in goldoreBlocks {
+	var data = ore.getData();
+	data.addDataValue("variants","minecraft:stone,minecraft:netherrack,minecraft:end_stone,minecraft:gravel,minecraft:bedrock");
+	data.addDataValue("hardness","5,5,5,3,70");
+	data.addDataValue("resistance","6,6,9,1,1200");
+	data.addDataValue("harvestTool","pickaxe,pickaxe,pickaxe,shovel,pickaxe");
+	data.addDataValue("harvestLevel","2,2,2,2,3");
+}
+var goldpoorBlocks = gold.registerParts(poor_blocks);
+for i, ore in goldpoorBlocks {
+	var data = ore.getData();
+	data.addDataValue("variants","minecraft:stone,minecraft:netherrack,minecraft:end_stone,minecraft:gravel,minecraft:bedrock");
+	data.addDataValue("hardness","5,5,5,3,70");
+	data.addDataValue("resistance","6,6,9,1,1200");
+	data.addDataValue("harvestTool","pickaxe,pickaxe,pickaxe,shovel,pickaxe");
+	data.addDataValue("harvestLevel","2,2,2,2,3");
+}
+var golddenseBlocks = gold.registerParts(dense_blocks);
+for i, ore in golddenseBlocks {
+	var data = ore.getData();
+	data.addDataValue("variants","minecraft:stone,minecraft:netherrack,minecraft:end_stone,minecraft:gravel,minecraft:bedrock");
+	data.addDataValue("hardness","5,5,5,3,70");
+	data.addDataValue("resistance","6,6,9,1,1200");
+	data.addDataValue("harvestTool","pickaxe,pickaxe,pickaxe,shovel,pickaxe");
+	data.addDataValue("harvestLevel","2,2,2,2,3");
+}
+
+var leadoreBlocks = lead.registerParts(ore_blocks);
+for i, ore in leadoreBlocks {
+	var data = ore.getData();
+	data.addDataValue("variants","minecraft:stone,minecraft:netherrack,minecraft:end_stone,minecraft:gravel,minecraft:bedrock");
+	data.addDataValue("hardness","5,5,5,3,70");
+	data.addDataValue("resistance","6,6,9,1,1200");
+	data.addDataValue("harvestTool","pickaxe,pickaxe,pickaxe,shovel,pickaxe");
+	data.addDataValue("harvestLevel","2,2,2,2,3");
+}
+var leadpoorBlocks = lead.registerParts(poor_blocks);
+for i, ore in leadpoorBlocks {
+	var data = ore.getData();
+	data.addDataValue("variants","minecraft:stone,minecraft:netherrack,minecraft:end_stone,minecraft:gravel,minecraft:bedrock");
+	data.addDataValue("hardness","5,5,5,3,70");
+	data.addDataValue("resistance","6,6,9,1,1200");
+	data.addDataValue("harvestTool","pickaxe,pickaxe,pickaxe,shovel,pickaxe");
+	data.addDataValue("harvestLevel","2,2,2,2,3");
+}
+var leaddenseBlocks = lead.registerParts(dense_blocks);
+for i, ore in leaddenseBlocks {
+	var data = ore.getData();
+	data.addDataValue("variants","minecraft:stone,minecraft:netherrack,minecraft:end_stone,minecraft:gravel,minecraft:bedrock");
+	data.addDataValue("hardness","5,5,5,3,70");
+	data.addDataValue("resistance","6,6,9,1,1200");
+	data.addDataValue("harvestTool","pickaxe,pickaxe,pickaxe,shovel,pickaxe");
+	data.addDataValue("harvestLevel","2,2,2,2,3");
+}
+
+var thoriumoreBlocks = thorium.registerParts(ore_blocks);
+for i, ore in thoriumoreBlocks {
+	var data = ore.getData();
+	data.addDataValue("variants","minecraft:stone,minecraft:netherrack,minecraft:end_stone,minecraft:gravel,minecraft:bedrock");
+	data.addDataValue("hardness","5,5,5,3,70");
+	data.addDataValue("resistance","6,6,9,1,1200");
+	data.addDataValue("harvestTool","pickaxe,pickaxe,pickaxe,shovel,pickaxe");
+	data.addDataValue("harvestLevel","2,2,2,2,3");
+}
+var thoriumpoorBlocks = thorium.registerParts(poor_blocks);
+for i, ore in thoriumpoorBlocks {
+	var data = ore.getData();
+	data.addDataValue("variants","minecraft:stone,minecraft:netherrack,minecraft:end_stone,minecraft:gravel,minecraft:bedrock");
+	data.addDataValue("hardness","5,5,5,3,70");
+	data.addDataValue("resistance","6,6,9,1,1200");
+	data.addDataValue("harvestTool","pickaxe,pickaxe,pickaxe,shovel,pickaxe");
+	data.addDataValue("harvestLevel","2,2,2,2,3");
+}
+var thoriumdenseBlocks = thorium.registerParts(dense_blocks);
+for i, ore in thoriumdenseBlocks {
+	var data = ore.getData();
+	data.addDataValue("variants","minecraft:stone,minecraft:netherrack,minecraft:end_stone,minecraft:gravel,minecraft:bedrock");
+	data.addDataValue("hardness","5,5,5,3,70");
+	data.addDataValue("resistance","6,6,9,1,1200");
+	data.addDataValue("harvestTool","pickaxe,pickaxe,pickaxe,shovel,pickaxe");
+	data.addDataValue("harvestLevel","2,2,2,2,3");
+}
+
+var uraniumoreBlocks = uranium.registerParts(ore_blocks);
+for i, ore in uraniumoreBlocks {
+	var data = ore.getData();
+	data.addDataValue("variants","minecraft:stone,minecraft:netherrack,minecraft:end_stone,minecraft:gravel,minecraft:bedrock");
+	data.addDataValue("hardness","5,5,5,3,70");
+	data.addDataValue("resistance","6,6,9,1,1200");
+	data.addDataValue("harvestTool","pickaxe,pickaxe,pickaxe,shovel,pickaxe");
+	data.addDataValue("harvestLevel","2,2,2,2,3");
+}
+var uraniumpoorBlocks = uranium.registerParts(poor_blocks);
+for i, ore in uraniumpoorBlocks {
+	var data = ore.getData();
+	data.addDataValue("variants","minecraft:stone,minecraft:netherrack,minecraft:end_stone,minecraft:gravel,minecraft:bedrock");
+	data.addDataValue("hardness","5,5,5,3,70");
+	data.addDataValue("resistance","6,6,9,1,1200");
+	data.addDataValue("harvestTool","pickaxe,pickaxe,pickaxe,shovel,pickaxe");
+	data.addDataValue("harvestLevel","2,2,2,2,3");
+}
+var uraniumdenseBlocks = uranium.registerParts(dense_blocks);
+for i, ore in uraniumdenseBlocks {
 	var data = ore.getData();
 	data.addDataValue("variants","minecraft:stone,minecraft:netherrack,minecraft:end_stone,minecraft:gravel,minecraft:bedrock");
 	data.addDataValue("hardness","5,5,5,3,70");

@@ -61,7 +61,7 @@ public abstract class AGenerator<D extends Data> {
     //utilities
     public D get(String s) {
         for (D o : objects) {
-            if (o.name.matches(s)) {
+            if (o.name.equals(s)) {
                 return o;
             }
         }
