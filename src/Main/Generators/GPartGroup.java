@@ -16,7 +16,7 @@ public class GPartGroup extends AGenerator<PartGroup> {
     }
 
     @Override
-    public void readLine(BufferedReader br, String[] s) throws IOException {
+    protected void readLine(BufferedReader br, String[] s) throws IOException {
         if (!s1.contains(":")) {
             error("Must contain a \":\" to denote the group name and the parts in that group");
         }

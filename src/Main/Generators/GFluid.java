@@ -12,7 +12,7 @@ public class GFluid extends ALocal<Fluid> {
     }
 
     @Override
-    void readLine(BufferedReader br, String[] s) throws IOException {
+    protected void readLine(BufferedReader br, String[] s) throws IOException {
         //String name, String localName, String hexColor, boolean isGas
         if (s.length != 4) error(4);
         if (s[3].matches("true")) {

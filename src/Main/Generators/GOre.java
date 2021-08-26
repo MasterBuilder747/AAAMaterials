@@ -10,10 +10,10 @@ import java.util.ArrayList;
 
 public class GOre extends AGenerator<Ore> {
     GVariant var;
-    MMolMaterial mol;
-    MCompMaterial comp;
+    AMMolecule mol;
+    AMCompound comp;
 
-    public GOre(String name, GVariant var, MMolMaterial mol, MCompMaterial comp) {
+    public GOre(String name, GVariant var, AMMolecule mol, AMCompound comp) {
         super(name);
         this.var = var;
         this.mol = mol;
@@ -21,7 +21,7 @@ public class GOre extends AGenerator<Ore> {
     }
 
     @Override
-    void readLine(BufferedReader br, String[] s) throws IOException {
+    protected void readLine(BufferedReader br, String[] s) throws IOException {
         //name, ore_part1: variant1; int hardness; int resistance; int miningLevel; miningTool: variant2; int hardness; int resistance; int miningLevel; miningTool, ore_part2...
         //ex: silver,
         //ore: stone; 4; 6; 2: netherrack; 4; 6; 2: end_stone: 4; 9; 2: gravel; 2; 1; 2: bedrock; 50; 1200; 3,

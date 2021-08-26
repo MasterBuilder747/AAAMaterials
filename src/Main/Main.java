@@ -1,6 +1,8 @@
 package Main;
 
 import Main.Generators.*;
+import Main.Generators.GCompound;
+import Main.Generators.GMolecule;
 
 import java.io.*;
 
@@ -44,12 +46,8 @@ public class Main {
         bw.write(element.register());
         GMolecule molecule = new GMolecule("moleculeComposition", element);
         bw.write(molecule.register());
-        MMolMaterial molMat = new MMolMaterial("moleculeMaterial", partGroup, molecule);
-        bw.write(molMat.register());
-        GCompound compound = new GCompound("compoundComposition", element, molMat);
+        GCompound compound = new GCompound("compoundComposition", element);
         bw.write(compound.register());
-        MCompMaterial compMat = new MCompMaterial("compoundMaterial", partGroup, compound);
-        bw.write(compMat.register());
 
         //machine recipes
         GRecipe recipe = new GRecipe("recipe");
@@ -58,7 +56,7 @@ public class Main {
         //ore system
         GVariant variant = new GVariant("variant");
         bw.write(variant.register());
-        GOre ore = new GOre("ore", variant, molMat, compMat);
+        GOre ore = new GOre("ore", variant);
         bw.write(ore.register());
 
         //finish

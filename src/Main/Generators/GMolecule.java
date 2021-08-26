@@ -11,7 +11,7 @@ public class GMolecule extends AComposition {
     }
 
     @Override
-    void readLine(BufferedReader br, String[] s) throws IOException {
+    protected void readLine(BufferedReader br, String[] s) throws IOException {
         try {
             objects.add(createMoleculeComp(s1));
         } catch (IllegalArgumentException e) {

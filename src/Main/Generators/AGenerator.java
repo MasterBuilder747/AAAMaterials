@@ -10,11 +10,11 @@ import java.util.ArrayList;
 
 public abstract class AGenerator<D extends Data> {
     //holds an arraylist and can generate code using it
-    String filename; //the name of the file
-    ArrayList<D> objects;
-    int line = 1;
-    String s1;
-    String[] s;
+    protected String filename; //the name of the file
+    protected ArrayList<D> objects;
+    protected int line = 1;
+    protected String s1;
+    protected String[] s;
 
     public AGenerator(String filename) {
         this.filename = filename;
@@ -42,7 +42,7 @@ public abstract class AGenerator<D extends Data> {
         }
         return sb.toString();
     }
-    void readFile(BufferedReader br) throws IOException {
+    protected void readFile(BufferedReader br) throws IOException {
         while (true) {
             s1 = br.readLine();
             if (s1 != null) {
@@ -56,10 +56,10 @@ public abstract class AGenerator<D extends Data> {
             line++;
         }
     }
-    abstract void readLine(BufferedReader br, String[] s) throws IOException; //this populates the arraylist with the specified object
+    protected abstract void readLine(BufferedReader br, String[] s) throws IOException; //this populates the arraylist with the specified object
 
     //utilities
-    public D get(String s) {
+    protected D get(String s) {
         for (D o : objects) {
             if (o.name.equals(s)) {
                 return o;
@@ -67,7 +67,7 @@ public abstract class AGenerator<D extends Data> {
         }
         throw new IllegalArgumentException("Unknown " + filename + ": " + s);
     }
-    public boolean is(String s) {
+    protected boolean is(String s) {
         try {
             get(s);
         } catch (IllegalArgumentException e) {
@@ -84,13 +84,13 @@ public abstract class AGenerator<D extends Data> {
     }
 
     //exceptions
-    void error(String s) throws GeneratorException {
+    protected void error(String s) throws GeneratorException {
         throw new GeneratorException(s, this.filename, this.line);
     }
-    void error(int parameters) throws GeneratorException {
+    protected void error(int parameters) throws GeneratorException {
         throw new GeneratorException("Expected " + parameters + " parameters", this.filename, this.line);
     }
-    void error(int[] parameters) throws GeneratorException {
+    protected void error(int[] parameters) throws GeneratorException {
         StringBuilder sb = new StringBuilder();
         sb.append("Expected ");
         for (int i = 0; i < parameters.length-1; i++) {

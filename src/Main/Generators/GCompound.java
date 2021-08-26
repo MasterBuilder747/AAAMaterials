@@ -9,9 +9,9 @@ import java.util.ArrayList;
 public class GCompound extends AComposition {
 
     //composition definition that contains multiple molecule materials in it
-    MMolMaterial mol;
+    AMMolecule mol;
 
-    public GCompound(String filename, GElement ele, MMolMaterial mol) {
+    public GCompound(String filename, GElement ele, AMMolecule mol) {
         super(filename, ele);
         this.mol = mol;
     }
@@ -41,7 +41,7 @@ public class GCompound extends AComposition {
     }
 
     @Override
-    void readLine(BufferedReader br, String[] s) throws IOException {
+    protected void readLine(BufferedReader br, String[] s) throws IOException {
         try {
             objects.add(createMoleculeComp(s1));
         } catch (IllegalArgumentException e) {

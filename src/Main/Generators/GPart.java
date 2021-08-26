@@ -12,7 +12,7 @@ public class GPart extends ALocal<Part> {
     }
 
     @Override
-    void readLine(BufferedReader br, String[] s) throws IOException {
+    protected void readLine(BufferedReader br, String[] s) throws IOException {
         if (s.length < 1 || s.length > 3 || s.length == 2) {
             error(new int[]{1, 3});
         }

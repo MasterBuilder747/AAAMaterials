@@ -12,7 +12,7 @@ public class GRecipe extends AGenerator<Recipe> {
     }
 
     @Override
-    void readLine(BufferedReader br, String[] s) throws IOException {
+    protected void readLine(BufferedReader br, String[] s) throws IOException {
         //everything is String unless otherwise specified
         //[]means follow the semicolon(;) separated strings
         //0-4: machineName, recipeName(see below), int tier, int time, double powerMultiplier(0.5 or 1.0),

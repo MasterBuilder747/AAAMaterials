@@ -35,7 +35,7 @@ public class GElement extends AGenerator<Element> {
     }
 
     @Override
-    void readLine(BufferedReader br, String[] s) throws IOException {
+    protected void readLine(BufferedReader br, String[] s) throws IOException {
         /*
         int row1
         [repeating]:

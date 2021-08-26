@@ -12,23 +12,9 @@ public class Material extends Data {
     //boolean gas //does not generate molten and no solid parts
     //boolean plasma //does not generate a liquid, a new item part for plasma will be used
 
-    //partGroups to add
-    boolean dust = true;
-    boolean ore;
-    boolean gem;
-    boolean smelt;
-    boolean conductive; //requires smelt
-    boolean blast; //requires smelt
-    boolean machine; //requires smelt
-    boolean string;
-    boolean semi;
-    boolean wood;
-    boolean stone;
-
-    //ore blocks to add
-    boolean oreBlock;
-    boolean poorOre;
-    boolean denseOre;
+    //partGroups
+    String itemParts;
+    String blockParts;
 
     int separation; //-1 = chemical, 1 = physical separation/combination, 0 is none
     int combination; //-1 = chemical, 1 = physical separation/combination, 0 is none
@@ -60,50 +46,6 @@ public class Material extends Data {
         return this.state.matches(s);
     }
 
-    //4) part item attributes
-    public void noDust() { this.dust = false; } //for custom items, liquids, or gases, etc
-    public void gem() {
-        this.gem = true;
-    }
-    public void smelt() {
-        this.smelt = true;
-    }
-    public void conductive() { this.conductive = true; }
-    public void blast() {
-        this.blast = true;
-    }
-    public void machine() {
-        this.machine = true;
-    }
-    public void string() {
-        this.string = true;
-    }
-    public void semi() {
-        this.semi = true;
-    }
-    public void wood() {
-        this.wood = true;
-    }
-    public void stone() {
-        this.stone = true;
-    }
-
-    //5) ore block attributes
-    public void noOre() {
-        this.oreBlock = false;
-        this.ore = false;
-    }
-    public void ore() {
-        this.oreBlock = true;
-        this.ore = true;
-    }
-    public void poor() {
-        this.poorOre = true;
-    }
-    public void dense() {
-        this.denseOre = true;
-    }
-
     //5) build the code based off these attributes
     @Override
     public String build() {
@@ -123,39 +65,8 @@ public class Material extends Data {
             //2) generate parts, ores, blocks (get variable arrays)
             //Material.registerParts(ore);
             //var ores = Material.registerParts(ore_types);
-            if (this.dust) {
-                sb.append(setAttribute("dust"));
-            }
-            if (this.ore) {
-                sb.append(setAttribute("ore"));
-            }
-            if (this.gem) {
-                sb.append(setAttribute("gem"));
-            }
-            if (this.smelt) {
-                sb.append(setAttribute("smelt"));
-            }
-            if (this.conductive) {
-                sb.append(setAttribute("conductive"));
-            }
-            if (this.blast) {
-                sb.append(setAttribute("blast"));
-            }
-            if (this.machine) {
-                sb.append(setAttribute("machine"));
-            }
-            if (this.string) {
-                sb.append(setAttribute("string"));
-            }
-            if (this.semi) {
-                sb.append(setAttribute("semi_conductive"));
-            }
-            if (this.wood) {
-                sb.append(setAttribute("wood"));
-            }
-            if (this.stone) {
-                sb.append(setAttribute("stone"));
-            }
+            sb.append(this.itemParts);
+            sb.append(this.blockParts);
         } else if (isState("liquid")) {
             //color for liquid/gas materials must be in hex
             sb.append(new Fluid(this.name, this.localName, this.color.substring(1), false).build());
@@ -165,8 +76,11 @@ public class Material extends Data {
         return sb.toString();
     }
 
-    private String setAttribute(String s) {
-        return this.name+".registerParts("+s+"_parts);\n";
+    public void setParts(String s) {
+        this.itemParts = this.itemParts + this.name+".registerParts("+s+"_parts);\n";
+    }
+    public void setBlocks(String s) {
+        this.blockParts = this.blockParts + this.name+".registerParts("+s+"_blocks);\n";
     }
 
     @Override
@@ -183,18 +97,16 @@ public class Material extends Data {
         System.out.print(this.state);
         System.out.print("| ");
 
-        if (this.dust) System.out.print("dust ");
-        if (this.ore) System.out.print("ore ");
-        if (this.gem) System.out.print("gem ");
-        if (this.smelt) System.out.print("smelt ");
-        if (this.conductive) System.out.print("conductive ");
-        if (this.blast) System.out.print("blast ");
-        if (this.blast) System.out.print("machine ");
-        if (this.blast) System.out.print("string ");
-        if (this.blast) System.out.print("semi_conductive ");
-        if (this.blast) System.out.print("wood ");
-        if (this.blast) System.out.print("stone ");
-        System.out.print("| ");
+        String[] s1 = this.itemParts.split("\n\\s*");
+        for (String s : s1) {
+            System.out.print(s.substring(s.indexOf('(')+1, s.indexOf('_')));
+        }
+        System.out.print(" | ");
+        s1 = this.blockParts.split("\n\\s*");
+        for (String s : s1) {
+            System.out.print(s.substring(s.indexOf('(')+1, s.indexOf('_')));
+        }
+        System.out.print(" | ");
 
         if (this.separation == -1) System.out.print("chemical separation, ");
         if (this.separation == 1) System.out.print("physical separation, ");

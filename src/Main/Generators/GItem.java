@@ -11,7 +11,7 @@ public class GItem extends ALocal<Item> {
     }
 
     @Override
-    void readLine(BufferedReader br, String[] s) throws IOException {
+    protected void readLine(BufferedReader br, String[] s) throws IOException {
         //String name, String localName
         //a dash "-" indicates a space in localName
         if (s.length != 2) error(2);

@@ -12,7 +12,7 @@ public class GBlock extends ALocal<Block> {
     }
 
     @Override
-    void readLine(BufferedReader br, String[] s) throws IOException {
+    protected void readLine(BufferedReader br, String[] s) throws IOException {
         //String name, String localName, String material, int hardness, int resistance, int miningLevel, String tool
         String local = s[1].replace("-", " ");
         if (s.length != 7) error(7);
