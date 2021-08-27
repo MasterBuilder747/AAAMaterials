@@ -1,6 +1,7 @@
 package Main.Data;
 
-public class Material extends Data {
+//data > material
+public abstract class AMaterial extends AData {
     //required components
     String color;
 
@@ -22,7 +23,7 @@ public class Material extends Data {
     private final String localName;
 
     //1) set basic info
-    public Material(String name, String localName, String color) {
+    public AMaterial(String name, String localName, String color) {
         super(name);
         this.localName = localName;
         this.color = color;
@@ -52,7 +53,7 @@ public class Material extends Data {
         StringBuilder sb = new StringBuilder();
 
         if (isState("solid")) {
-            //1) build the material
+            //1) build the material if solid
             sb.append("var ").append(this.name).append(" = MaterialSystem.getMaterialBuilder().setName(\"").append(this.localName).append("\")");
             if (this.color.charAt(0) == '#') {
                 sb.append(".setColor(Color.fromHex(\"").append(this.color.substring(1)).append("\"))");
@@ -60,7 +61,6 @@ public class Material extends Data {
                 sb.append(".setColor(").append(this.color).append(")");
             }
             sb.append(".build();\n");
-
             //make sure the vars are defined since they are in the same scope
             //2) generate parts, ores, blocks (get variable arrays)
             //Material.registerParts(ore);
@@ -76,6 +76,7 @@ public class Material extends Data {
         return sb.toString();
     }
 
+    //these match the partGroup name
     public void setParts(String s) {
         this.itemParts = this.itemParts + this.name+".registerParts("+s+"_parts);\n";
     }

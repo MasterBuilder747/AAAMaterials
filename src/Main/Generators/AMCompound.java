@@ -1,13 +1,14 @@
 package Main.Generators;
 
+import Main.Data.ACompound;
 import Main.Data.Composition;
-import Main.Data.Material;
 
-public abstract class AMCompound extends AGMaterial {
+//generator > material > compound
+public abstract class AMCompound<M extends ACompound> extends AGMaterial<M> {
     GCompound comp;
 
-    public AMCompound(String name, int params, String state, GPartGroup parts, GCompound comp) {
-        super(name, params, state, parts);
+    public AMCompound(String filename, GPartGroup groups, GCompound comp) {
+        super(filename, groups);
         this.comp = comp;
     }
 
@@ -23,7 +24,4 @@ public abstract class AMCompound extends AGMaterial {
             throw new IllegalArgumentException(filename + "s.txt: Incorrect composition for material " + name + " at line " + line);
         }
     }
-
-    @Override
-    abstract protected Material addParameters(Material m);
 }

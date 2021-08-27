@@ -1,6 +1,6 @@
 package Main.Data;
 
-public class PartGroup extends Data {
+public class PartGroup extends AData {
     //defines a Part[] in zs form
     Part[] parts;
 

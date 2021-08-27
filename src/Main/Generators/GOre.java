@@ -2,7 +2,7 @@ package Main.Generators;
 
 import Main.Data.Ore;
 import Main.Data.OreType;
-import Main.Data.Variant;
+import Main.Data.OreVariant;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -44,7 +44,7 @@ public class GOre extends AGenerator<Ore> {
             for (int i = 0; i < variants.length; i++) {
                 variants[i] = s2[i+1];
             }
-            ArrayList<Variant> vars = new ArrayList<>();
+            ArrayList<OreVariant> vars = new ArrayList<>();
             for (String variant : variants) {
                 String[] attributes = variant.split(";\\s*");
                 if (attributes.length != 4) {
@@ -57,7 +57,7 @@ public class GOre extends AGenerator<Ore> {
                     var_name = "minecraft:"+attributes[0];
                 }
                 if (var.is(var_name)) {
-                    Variant v = var.get(var_name);
+                    OreVariant v = var.get(var_name);
                     try {
                         v.setAttributes(Integer.parseInt(attributes[1]), Integer.parseInt(attributes[2]), Integer.parseInt(attributes[3]));
                     } catch (NumberFormatException e) {
@@ -68,7 +68,7 @@ public class GOre extends AGenerator<Ore> {
                     error("Unknown variant " + var_name);
                 }
             }
-            oreTypes.add(new OreType(ore_name, vars.toArray(new Variant[0])));
+            oreTypes.add(new OreType(ore_name, vars.toArray(new OreVariant[0])));
         }
         objects.add(new Ore(name, oreTypes.toArray(new OreType[0])));
     }

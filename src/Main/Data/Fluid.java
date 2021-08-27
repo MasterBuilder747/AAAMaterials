@@ -1,6 +1,6 @@
 package Main.Data;
 
-public class Fluid extends LocalizedData {
+public class Fluid extends ALocalizedData {
     String color;
     public boolean gas;
 

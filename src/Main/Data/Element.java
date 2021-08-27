@@ -1,6 +1,6 @@
 package Main.Data;
 
-public class Element extends Data {
+public class Element extends AData {
     //PT general classification
     public String symbol;
     int number;

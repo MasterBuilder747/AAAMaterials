@@ -1,6 +1,6 @@
 package Main.Generators;
 
-import Main.Data.Data;
+import Main.Data.AData;
 import Main.Main;
 
 import java.io.BufferedReader;
@@ -8,7 +8,7 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
 
-public abstract class AGenerator<D extends Data> {
+public abstract class AGenerator<D extends AData> {
     //holds an arraylist and can generate code using it
     protected String filename; //the name of the file
     protected ArrayList<D> objects;

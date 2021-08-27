@@ -1,12 +1,13 @@
 package Main.Generators;
 
-import Main.Recipe.Recipe;
+import Main.Data.MachineRecipe;
 
 import java.io.BufferedReader;
 import java.io.IOException;
 
-public class GRecipe extends AGenerator<Recipe> {
+public class GRecipe extends AGenerator<MachineRecipe> {
 
+    //for user-defined custom machine recipes
     public GRecipe(String filename) {
         super(filename);
     }
@@ -19,10 +20,10 @@ public class GRecipe extends AGenerator<Recipe> {
         //5-9: itemIn1; itemIn2; ..., liquidIn[], itemOut[], liquidOut[], chemicalIn[], chemicalOut[],
         //10-11/12: int dataIn, [-/+]matterIn * amount[], [-/+]matterOut * amount[], optional-int priority
         //recipeName follows this format: machineName+ID+machineTier without the +
-
+/*
         //ex: basic, 4, 20, 1.0, ore:ingotIron; minecraft:wool:2 * 5, minecraft:gold_ingot * 2, water, lava, hydrogen, oxygen, 1000, -red*100, +orange*10, 0
         if (s.length != 13 && s.length != 14) error(new int[]{13, 14});
-        Recipe r = new Recipe(s[0], s[0]+line, Integer.parseInt(s[1]), Integer.parseInt(s[2]), Double.parseDouble(s[3]));
+        MachineRecipe r = new MachineRecipe(s[0], s[0]+line, Integer.parseInt(s[1]), Integer.parseInt(s[2]), Double.parseDouble(s[3]));
         String[] itemI = s[4].split(";\\s*");
         String[] liquidI = s[5].split(";\\s*");
         String[] itemO = s[6].split(";\\s*");
@@ -39,5 +40,7 @@ public class GRecipe extends AGenerator<Recipe> {
             r.setPriority(Integer.parseInt(s[13]));
         }
         this.objects.add(r);
+
+ */
     }
 }

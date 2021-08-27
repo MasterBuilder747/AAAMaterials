@@ -1296,7 +1296,7 @@ aquamarine.registerParts(gem_parts);
 var lumiumoreBlocks = lumium.registerParts(ore_blocks);
 for i, ore in lumiumoreBlocks {
 	var data = ore.getData();
-	data.addDataValue("variants","minecraft:stone,minecraft:netherrack,minecraft:end_stone,minecraft:gravel,minecraft:bedrock");
+	data.addDataValue("oreVariants","minecraft:stone,minecraft:netherrack,minecraft:end_stone,minecraft:gravel,minecraft:bedrock");
 	data.addDataValue("hardness","5,5,5,3,70");
 	data.addDataValue("resistance","6,6,9,1,1200");
 	data.addDataValue("harvestTool","pickaxe,pickaxe,pickaxe,shovel,pickaxe");
@@ -1305,7 +1305,7 @@ for i, ore in lumiumoreBlocks {
 var lumiumpoorBlocks = lumium.registerParts(poor_blocks);
 for i, ore in lumiumpoorBlocks {
 	var data = ore.getData();
-	data.addDataValue("variants","minecraft:stone,minecraft:netherrack,minecraft:end_stone,minecraft:gravel,minecraft:bedrock");
+	data.addDataValue("oreVariants","minecraft:stone,minecraft:netherrack,minecraft:end_stone,minecraft:gravel,minecraft:bedrock");
 	data.addDataValue("hardness","5,5,5,3,70");
 	data.addDataValue("resistance","6,6,9,1,1200");
 	data.addDataValue("harvestTool","pickaxe,pickaxe,pickaxe,shovel,pickaxe");
@@ -1314,7 +1314,7 @@ for i, ore in lumiumpoorBlocks {
 var lumiumdenseBlocks = lumium.registerParts(dense_blocks);
 for i, ore in lumiumdenseBlocks {
 	var data = ore.getData();
-	data.addDataValue("variants","minecraft:stone,minecraft:netherrack,minecraft:end_stone,minecraft:gravel,minecraft:bedrock");
+	data.addDataValue("oreVariants","minecraft:stone,minecraft:netherrack,minecraft:end_stone,minecraft:gravel,minecraft:bedrock");
 	data.addDataValue("hardness","5,5,5,3,70");
 	data.addDataValue("resistance","6,6,9,1,1200");
 	data.addDataValue("harvestTool","pickaxe,pickaxe,pickaxe,shovel,pickaxe");
@@ -1324,7 +1324,7 @@ for i, ore in lumiumdenseBlocks {
 var bauxiteoreBlocks = bauxite.registerParts(ore_blocks);
 for i, ore in bauxiteoreBlocks {
 	var data = ore.getData();
-	data.addDataValue("variants","minecraft:stone,minecraft:netherrack,minecraft:end_stone,minecraft:gravel,minecraft:bedrock");
+	data.addDataValue("oreVariants","minecraft:stone,minecraft:netherrack,minecraft:end_stone,minecraft:gravel,minecraft:bedrock");
 	data.addDataValue("hardness","5,5,5,3,70");
 	data.addDataValue("resistance","6,6,9,1,1200");
 	data.addDataValue("harvestTool","pickaxe,pickaxe,pickaxe,shovel,pickaxe");
@@ -1333,7 +1333,7 @@ for i, ore in bauxiteoreBlocks {
 var bauxitepoorBlocks = bauxite.registerParts(poor_blocks);
 for i, ore in bauxitepoorBlocks {
 	var data = ore.getData();
-	data.addDataValue("variants","minecraft:stone,minecraft:netherrack,minecraft:end_stone,minecraft:gravel,minecraft:bedrock");
+	data.addDataValue("oreVariants","minecraft:stone,minecraft:netherrack,minecraft:end_stone,minecraft:gravel,minecraft:bedrock");
 	data.addDataValue("hardness","5,5,5,3,70");
 	data.addDataValue("resistance","6,6,9,1,1200");
 	data.addDataValue("harvestTool","pickaxe,pickaxe,pickaxe,shovel,pickaxe");
@@ -1342,7 +1342,7 @@ for i, ore in bauxitepoorBlocks {
 var bauxitedenseBlocks = bauxite.registerParts(dense_blocks);
 for i, ore in bauxitedenseBlocks {
 	var data = ore.getData();
-	data.addDataValue("variants","minecraft:stone,minecraft:netherrack,minecraft:end_stone,minecraft:gravel,minecraft:bedrock");
+	data.addDataValue("oreVariants","minecraft:stone,minecraft:netherrack,minecraft:end_stone,minecraft:gravel,minecraft:bedrock");
 	data.addDataValue("hardness","5,5,5,3,70");
 	data.addDataValue("resistance","6,6,9,1,1200");
 	data.addDataValue("harvestTool","pickaxe,pickaxe,pickaxe,shovel,pickaxe");
@@ -1352,7 +1352,7 @@ for i, ore in bauxitedenseBlocks {
 var galenaoreBlocks = galena.registerParts(ore_blocks);
 for i, ore in galenaoreBlocks {
 	var data = ore.getData();
-	data.addDataValue("variants","minecraft:stone,minecraft:netherrack,minecraft:end_stone,minecraft:gravel,minecraft:bedrock");
+	data.addDataValue("oreVariants","minecraft:stone,minecraft:netherrack,minecraft:end_stone,minecraft:gravel,minecraft:bedrock");
 	data.addDataValue("hardness","5,5,5,3,70");
 	data.addDataValue("resistance","6,6,9,1,1200");
 	data.addDataValue("harvestTool","pickaxe,pickaxe,pickaxe,shovel,pickaxe");
@@ -1361,7 +1361,7 @@ for i, ore in galenaoreBlocks {
 var galenapoorBlocks = galena.registerParts(poor_blocks);
 for i, ore in galenapoorBlocks {
 	var data = ore.getData();
-	data.addDataValue("variants","minecraft:stone,minecraft:netherrack,minecraft:end_stone,minecraft:gravel,minecraft:bedrock");
+	data.addDataValue("oreVariants","minecraft:stone,minecraft:netherrack,minecraft:end_stone,minecraft:gravel,minecraft:bedrock");
 	data.addDataValue("hardness","5,5,5,3,70");
 	data.addDataValue("resistance","6,6,9,1,1200");
 	data.addDataValue("harvestTool","pickaxe,pickaxe,pickaxe,shovel,pickaxe");
@@ -1370,7 +1370,7 @@ for i, ore in galenapoorBlocks {
 var galenadenseBlocks = galena.registerParts(dense_blocks);
 for i, ore in galenadenseBlocks {
 	var data = ore.getData();
-	data.addDataValue("variants","minecraft:stone,minecraft:netherrack,minecraft:end_stone,minecraft:gravel,minecraft:bedrock");
+	data.addDataValue("oreVariants","minecraft:stone,minecraft:netherrack,minecraft:end_stone,minecraft:gravel,minecraft:bedrock");
 	data.addDataValue("hardness","5,5,5,3,70");
 	data.addDataValue("resistance","6,6,9,1,1200");
 	data.addDataValue("harvestTool","pickaxe,pickaxe,pickaxe,shovel,pickaxe");
@@ -1380,7 +1380,7 @@ for i, ore in galenadenseBlocks {
 var lithiumoreBlocks = lithium.registerParts(ore_blocks);
 for i, ore in lithiumoreBlocks {
 	var data = ore.getData();
-	data.addDataValue("variants","minecraft:stone,minecraft:netherrack,minecraft:end_stone,minecraft:gravel,minecraft:bedrock");
+	data.addDataValue("oreVariants","minecraft:stone,minecraft:netherrack,minecraft:end_stone,minecraft:gravel,minecraft:bedrock");
 	data.addDataValue("hardness","5,5,5,3,70");
 	data.addDataValue("resistance","6,6,9,1,1200");
 	data.addDataValue("harvestTool","pickaxe,pickaxe,pickaxe,shovel,pickaxe");
@@ -1389,7 +1389,7 @@ for i, ore in lithiumoreBlocks {
 var lithiumpoorBlocks = lithium.registerParts(poor_blocks);
 for i, ore in lithiumpoorBlocks {
 	var data = ore.getData();
-	data.addDataValue("variants","minecraft:stone,minecraft:netherrack,minecraft:end_stone,minecraft:gravel,minecraft:bedrock");
+	data.addDataValue("oreVariants","minecraft:stone,minecraft:netherrack,minecraft:end_stone,minecraft:gravel,minecraft:bedrock");
 	data.addDataValue("hardness","5,5,5,3,70");
 	data.addDataValue("resistance","6,6,9,1,1200");
 	data.addDataValue("harvestTool","pickaxe,pickaxe,pickaxe,shovel,pickaxe");
@@ -1398,7 +1398,7 @@ for i, ore in lithiumpoorBlocks {
 var lithiumdenseBlocks = lithium.registerParts(dense_blocks);
 for i, ore in lithiumdenseBlocks {
 	var data = ore.getData();
-	data.addDataValue("variants","minecraft:stone,minecraft:netherrack,minecraft:end_stone,minecraft:gravel,minecraft:bedrock");
+	data.addDataValue("oreVariants","minecraft:stone,minecraft:netherrack,minecraft:end_stone,minecraft:gravel,minecraft:bedrock");
 	data.addDataValue("hardness","5,5,5,3,70");
 	data.addDataValue("resistance","6,6,9,1,1200");
 	data.addDataValue("harvestTool","pickaxe,pickaxe,pickaxe,shovel,pickaxe");
@@ -1408,7 +1408,7 @@ for i, ore in lithiumdenseBlocks {
 var berylliumoreBlocks = beryllium.registerParts(ore_blocks);
 for i, ore in berylliumoreBlocks {
 	var data = ore.getData();
-	data.addDataValue("variants","minecraft:stone,minecraft:netherrack,minecraft:end_stone,minecraft:gravel,minecraft:bedrock");
+	data.addDataValue("oreVariants","minecraft:stone,minecraft:netherrack,minecraft:end_stone,minecraft:gravel,minecraft:bedrock");
 	data.addDataValue("hardness","5,5,5,3,70");
 	data.addDataValue("resistance","6,6,9,1,1200");
 	data.addDataValue("harvestTool","pickaxe,pickaxe,pickaxe,shovel,pickaxe");
@@ -1417,7 +1417,7 @@ for i, ore in berylliumoreBlocks {
 var berylliumpoorBlocks = beryllium.registerParts(poor_blocks);
 for i, ore in berylliumpoorBlocks {
 	var data = ore.getData();
-	data.addDataValue("variants","minecraft:stone,minecraft:netherrack,minecraft:end_stone,minecraft:gravel,minecraft:bedrock");
+	data.addDataValue("oreVariants","minecraft:stone,minecraft:netherrack,minecraft:end_stone,minecraft:gravel,minecraft:bedrock");
 	data.addDataValue("hardness","5,5,5,3,70");
 	data.addDataValue("resistance","6,6,9,1,1200");
 	data.addDataValue("harvestTool","pickaxe,pickaxe,pickaxe,shovel,pickaxe");
@@ -1426,7 +1426,7 @@ for i, ore in berylliumpoorBlocks {
 var berylliumdenseBlocks = beryllium.registerParts(dense_blocks);
 for i, ore in berylliumdenseBlocks {
 	var data = ore.getData();
-	data.addDataValue("variants","minecraft:stone,minecraft:netherrack,minecraft:end_stone,minecraft:gravel,minecraft:bedrock");
+	data.addDataValue("oreVariants","minecraft:stone,minecraft:netherrack,minecraft:end_stone,minecraft:gravel,minecraft:bedrock");
 	data.addDataValue("hardness","5,5,5,3,70");
 	data.addDataValue("resistance","6,6,9,1,1200");
 	data.addDataValue("harvestTool","pickaxe,pickaxe,pickaxe,shovel,pickaxe");
@@ -1436,7 +1436,7 @@ for i, ore in berylliumdenseBlocks {
 var magnesiumoreBlocks = magnesium.registerParts(ore_blocks);
 for i, ore in magnesiumoreBlocks {
 	var data = ore.getData();
-	data.addDataValue("variants","minecraft:stone,minecraft:netherrack,minecraft:end_stone,minecraft:gravel,minecraft:bedrock");
+	data.addDataValue("oreVariants","minecraft:stone,minecraft:netherrack,minecraft:end_stone,minecraft:gravel,minecraft:bedrock");
 	data.addDataValue("hardness","5,5,5,3,70");
 	data.addDataValue("resistance","6,6,9,1,1200");
 	data.addDataValue("harvestTool","pickaxe,pickaxe,pickaxe,shovel,pickaxe");
@@ -1445,7 +1445,7 @@ for i, ore in magnesiumoreBlocks {
 var magnesiumpoorBlocks = magnesium.registerParts(poor_blocks);
 for i, ore in magnesiumpoorBlocks {
 	var data = ore.getData();
-	data.addDataValue("variants","minecraft:stone,minecraft:netherrack,minecraft:end_stone,minecraft:gravel,minecraft:bedrock");
+	data.addDataValue("oreVariants","minecraft:stone,minecraft:netherrack,minecraft:end_stone,minecraft:gravel,minecraft:bedrock");
 	data.addDataValue("hardness","5,5,5,3,70");
 	data.addDataValue("resistance","6,6,9,1,1200");
 	data.addDataValue("harvestTool","pickaxe,pickaxe,pickaxe,shovel,pickaxe");
@@ -1454,7 +1454,7 @@ for i, ore in magnesiumpoorBlocks {
 var magnesiumdenseBlocks = magnesium.registerParts(dense_blocks);
 for i, ore in magnesiumdenseBlocks {
 	var data = ore.getData();
-	data.addDataValue("variants","minecraft:stone,minecraft:netherrack,minecraft:end_stone,minecraft:gravel,minecraft:bedrock");
+	data.addDataValue("oreVariants","minecraft:stone,minecraft:netherrack,minecraft:end_stone,minecraft:gravel,minecraft:bedrock");
 	data.addDataValue("hardness","5,5,5,3,70");
 	data.addDataValue("resistance","6,6,9,1,1200");
 	data.addDataValue("harvestTool","pickaxe,pickaxe,pickaxe,shovel,pickaxe");
@@ -1464,7 +1464,7 @@ for i, ore in magnesiumdenseBlocks {
 var phosphorusoreBlocks = phosphorus.registerParts(ore_blocks);
 for i, ore in phosphorusoreBlocks {
 	var data = ore.getData();
-	data.addDataValue("variants","minecraft:stone,minecraft:netherrack,minecraft:end_stone,minecraft:gravel,minecraft:bedrock");
+	data.addDataValue("oreVariants","minecraft:stone,minecraft:netherrack,minecraft:end_stone,minecraft:gravel,minecraft:bedrock");
 	data.addDataValue("hardness","5,5,5,3,70");
 	data.addDataValue("resistance","6,6,9,1,1200");
 	data.addDataValue("harvestTool","pickaxe,pickaxe,pickaxe,shovel,pickaxe");
@@ -1473,7 +1473,7 @@ for i, ore in phosphorusoreBlocks {
 var phosphoruspoorBlocks = phosphorus.registerParts(poor_blocks);
 for i, ore in phosphoruspoorBlocks {
 	var data = ore.getData();
-	data.addDataValue("variants","minecraft:stone,minecraft:netherrack,minecraft:end_stone,minecraft:gravel,minecraft:bedrock");
+	data.addDataValue("oreVariants","minecraft:stone,minecraft:netherrack,minecraft:end_stone,minecraft:gravel,minecraft:bedrock");
 	data.addDataValue("hardness","5,5,5,3,70");
 	data.addDataValue("resistance","6,6,9,1,1200");
 	data.addDataValue("harvestTool","pickaxe,pickaxe,pickaxe,shovel,pickaxe");
@@ -1482,7 +1482,7 @@ for i, ore in phosphoruspoorBlocks {
 var phosphorusdenseBlocks = phosphorus.registerParts(dense_blocks);
 for i, ore in phosphorusdenseBlocks {
 	var data = ore.getData();
-	data.addDataValue("variants","minecraft:stone,minecraft:netherrack,minecraft:end_stone,minecraft:gravel,minecraft:bedrock");
+	data.addDataValue("oreVariants","minecraft:stone,minecraft:netherrack,minecraft:end_stone,minecraft:gravel,minecraft:bedrock");
 	data.addDataValue("hardness","5,5,5,3,70");
 	data.addDataValue("resistance","6,6,9,1,1200");
 	data.addDataValue("harvestTool","pickaxe,pickaxe,pickaxe,shovel,pickaxe");
@@ -1492,7 +1492,7 @@ for i, ore in phosphorusdenseBlocks {
 var sulfuroreBlocks = sulfur.registerParts(ore_blocks);
 for i, ore in sulfuroreBlocks {
 	var data = ore.getData();
-	data.addDataValue("variants","minecraft:stone,minecraft:netherrack,minecraft:end_stone,minecraft:gravel,minecraft:bedrock");
+	data.addDataValue("oreVariants","minecraft:stone,minecraft:netherrack,minecraft:end_stone,minecraft:gravel,minecraft:bedrock");
 	data.addDataValue("hardness","5,5,5,3,70");
 	data.addDataValue("resistance","6,6,9,1,1200");
 	data.addDataValue("harvestTool","pickaxe,pickaxe,pickaxe,shovel,pickaxe");
@@ -1501,7 +1501,7 @@ for i, ore in sulfuroreBlocks {
 var sulfurpoorBlocks = sulfur.registerParts(poor_blocks);
 for i, ore in sulfurpoorBlocks {
 	var data = ore.getData();
-	data.addDataValue("variants","minecraft:stone,minecraft:netherrack,minecraft:end_stone,minecraft:gravel,minecraft:bedrock");
+	data.addDataValue("oreVariants","minecraft:stone,minecraft:netherrack,minecraft:end_stone,minecraft:gravel,minecraft:bedrock");
 	data.addDataValue("hardness","5,5,5,3,70");
 	data.addDataValue("resistance","6,6,9,1,1200");
 	data.addDataValue("harvestTool","pickaxe,pickaxe,pickaxe,shovel,pickaxe");
@@ -1510,7 +1510,7 @@ for i, ore in sulfurpoorBlocks {
 var sulfurdenseBlocks = sulfur.registerParts(dense_blocks);
 for i, ore in sulfurdenseBlocks {
 	var data = ore.getData();
-	data.addDataValue("variants","minecraft:stone,minecraft:netherrack,minecraft:end_stone,minecraft:gravel,minecraft:bedrock");
+	data.addDataValue("oreVariants","minecraft:stone,minecraft:netherrack,minecraft:end_stone,minecraft:gravel,minecraft:bedrock");
 	data.addDataValue("hardness","5,5,5,3,70");
 	data.addDataValue("resistance","6,6,9,1,1200");
 	data.addDataValue("harvestTool","pickaxe,pickaxe,pickaxe,shovel,pickaxe");
@@ -1520,7 +1520,7 @@ for i, ore in sulfurdenseBlocks {
 var titaniumoreBlocks = titanium.registerParts(ore_blocks);
 for i, ore in titaniumoreBlocks {
 	var data = ore.getData();
-	data.addDataValue("variants","minecraft:stone,minecraft:netherrack,minecraft:end_stone,minecraft:gravel,minecraft:bedrock");
+	data.addDataValue("oreVariants","minecraft:stone,minecraft:netherrack,minecraft:end_stone,minecraft:gravel,minecraft:bedrock");
 	data.addDataValue("hardness","5,5,5,3,70");
 	data.addDataValue("resistance","6,6,9,1,1200");
 	data.addDataValue("harvestTool","pickaxe,pickaxe,pickaxe,shovel,pickaxe");
@@ -1529,7 +1529,7 @@ for i, ore in titaniumoreBlocks {
 var titaniumpoorBlocks = titanium.registerParts(poor_blocks);
 for i, ore in titaniumpoorBlocks {
 	var data = ore.getData();
-	data.addDataValue("variants","minecraft:stone,minecraft:netherrack,minecraft:end_stone,minecraft:gravel,minecraft:bedrock");
+	data.addDataValue("oreVariants","minecraft:stone,minecraft:netherrack,minecraft:end_stone,minecraft:gravel,minecraft:bedrock");
 	data.addDataValue("hardness","5,5,5,3,70");
 	data.addDataValue("resistance","6,6,9,1,1200");
 	data.addDataValue("harvestTool","pickaxe,pickaxe,pickaxe,shovel,pickaxe");
@@ -1538,7 +1538,7 @@ for i, ore in titaniumpoorBlocks {
 var titaniumdenseBlocks = titanium.registerParts(dense_blocks);
 for i, ore in titaniumdenseBlocks {
 	var data = ore.getData();
-	data.addDataValue("variants","minecraft:stone,minecraft:netherrack,minecraft:end_stone,minecraft:gravel,minecraft:bedrock");
+	data.addDataValue("oreVariants","minecraft:stone,minecraft:netherrack,minecraft:end_stone,minecraft:gravel,minecraft:bedrock");
 	data.addDataValue("hardness","5,5,5,3,70");
 	data.addDataValue("resistance","6,6,9,1,1200");
 	data.addDataValue("harvestTool","pickaxe,pickaxe,pickaxe,shovel,pickaxe");
@@ -1548,7 +1548,7 @@ for i, ore in titaniumdenseBlocks {
 var vanadiumoreBlocks = vanadium.registerParts(ore_blocks);
 for i, ore in vanadiumoreBlocks {
 	var data = ore.getData();
-	data.addDataValue("variants","minecraft:stone,minecraft:netherrack,minecraft:end_stone,minecraft:gravel,minecraft:bedrock");
+	data.addDataValue("oreVariants","minecraft:stone,minecraft:netherrack,minecraft:end_stone,minecraft:gravel,minecraft:bedrock");
 	data.addDataValue("hardness","5,5,5,3,70");
 	data.addDataValue("resistance","6,6,9,1,1200");
 	data.addDataValue("harvestTool","pickaxe,pickaxe,pickaxe,shovel,pickaxe");
@@ -1557,7 +1557,7 @@ for i, ore in vanadiumoreBlocks {
 var vanadiumpoorBlocks = vanadium.registerParts(poor_blocks);
 for i, ore in vanadiumpoorBlocks {
 	var data = ore.getData();
-	data.addDataValue("variants","minecraft:stone,minecraft:netherrack,minecraft:end_stone,minecraft:gravel,minecraft:bedrock");
+	data.addDataValue("oreVariants","minecraft:stone,minecraft:netherrack,minecraft:end_stone,minecraft:gravel,minecraft:bedrock");
 	data.addDataValue("hardness","5,5,5,3,70");
 	data.addDataValue("resistance","6,6,9,1,1200");
 	data.addDataValue("harvestTool","pickaxe,pickaxe,pickaxe,shovel,pickaxe");
@@ -1566,7 +1566,7 @@ for i, ore in vanadiumpoorBlocks {
 var vanadiumdenseBlocks = vanadium.registerParts(dense_blocks);
 for i, ore in vanadiumdenseBlocks {
 	var data = ore.getData();
-	data.addDataValue("variants","minecraft:stone,minecraft:netherrack,minecraft:end_stone,minecraft:gravel,minecraft:bedrock");
+	data.addDataValue("oreVariants","minecraft:stone,minecraft:netherrack,minecraft:end_stone,minecraft:gravel,minecraft:bedrock");
 	data.addDataValue("hardness","5,5,5,3,70");
 	data.addDataValue("resistance","6,6,9,1,1200");
 	data.addDataValue("harvestTool","pickaxe,pickaxe,pickaxe,shovel,pickaxe");
@@ -1576,7 +1576,7 @@ for i, ore in vanadiumdenseBlocks {
 var chromeoreBlocks = chrome.registerParts(ore_blocks);
 for i, ore in chromeoreBlocks {
 	var data = ore.getData();
-	data.addDataValue("variants","minecraft:stone,minecraft:netherrack,minecraft:end_stone,minecraft:gravel,minecraft:bedrock");
+	data.addDataValue("oreVariants","minecraft:stone,minecraft:netherrack,minecraft:end_stone,minecraft:gravel,minecraft:bedrock");
 	data.addDataValue("hardness","5,5,5,3,70");
 	data.addDataValue("resistance","6,6,9,1,1200");
 	data.addDataValue("harvestTool","pickaxe,pickaxe,pickaxe,shovel,pickaxe");
@@ -1585,7 +1585,7 @@ for i, ore in chromeoreBlocks {
 var chromepoorBlocks = chrome.registerParts(poor_blocks);
 for i, ore in chromepoorBlocks {
 	var data = ore.getData();
-	data.addDataValue("variants","minecraft:stone,minecraft:netherrack,minecraft:end_stone,minecraft:gravel,minecraft:bedrock");
+	data.addDataValue("oreVariants","minecraft:stone,minecraft:netherrack,minecraft:end_stone,minecraft:gravel,minecraft:bedrock");
 	data.addDataValue("hardness","5,5,5,3,70");
 	data.addDataValue("resistance","6,6,9,1,1200");
 	data.addDataValue("harvestTool","pickaxe,pickaxe,pickaxe,shovel,pickaxe");
@@ -1594,7 +1594,7 @@ for i, ore in chromepoorBlocks {
 var chromedenseBlocks = chrome.registerParts(dense_blocks);
 for i, ore in chromedenseBlocks {
 	var data = ore.getData();
-	data.addDataValue("variants","minecraft:stone,minecraft:netherrack,minecraft:end_stone,minecraft:gravel,minecraft:bedrock");
+	data.addDataValue("oreVariants","minecraft:stone,minecraft:netherrack,minecraft:end_stone,minecraft:gravel,minecraft:bedrock");
 	data.addDataValue("hardness","5,5,5,3,70");
 	data.addDataValue("resistance","6,6,9,1,1200");
 	data.addDataValue("harvestTool","pickaxe,pickaxe,pickaxe,shovel,pickaxe");
@@ -1604,7 +1604,7 @@ for i, ore in chromedenseBlocks {
 var manganeseoreBlocks = manganese.registerParts(ore_blocks);
 for i, ore in manganeseoreBlocks {
 	var data = ore.getData();
-	data.addDataValue("variants","minecraft:stone,minecraft:netherrack,minecraft:end_stone,minecraft:gravel,minecraft:bedrock");
+	data.addDataValue("oreVariants","minecraft:stone,minecraft:netherrack,minecraft:end_stone,minecraft:gravel,minecraft:bedrock");
 	data.addDataValue("hardness","5,5,5,3,70");
 	data.addDataValue("resistance","6,6,9,1,1200");
 	data.addDataValue("harvestTool","pickaxe,pickaxe,pickaxe,shovel,pickaxe");
@@ -1613,7 +1613,7 @@ for i, ore in manganeseoreBlocks {
 var manganesepoorBlocks = manganese.registerParts(poor_blocks);
 for i, ore in manganesepoorBlocks {
 	var data = ore.getData();
-	data.addDataValue("variants","minecraft:stone,minecraft:netherrack,minecraft:end_stone,minecraft:gravel,minecraft:bedrock");
+	data.addDataValue("oreVariants","minecraft:stone,minecraft:netherrack,minecraft:end_stone,minecraft:gravel,minecraft:bedrock");
 	data.addDataValue("hardness","5,5,5,3,70");
 	data.addDataValue("resistance","6,6,9,1,1200");
 	data.addDataValue("harvestTool","pickaxe,pickaxe,pickaxe,shovel,pickaxe");
@@ -1622,7 +1622,7 @@ for i, ore in manganesepoorBlocks {
 var manganesedenseBlocks = manganese.registerParts(dense_blocks);
 for i, ore in manganesedenseBlocks {
 	var data = ore.getData();
-	data.addDataValue("variants","minecraft:stone,minecraft:netherrack,minecraft:end_stone,minecraft:gravel,minecraft:bedrock");
+	data.addDataValue("oreVariants","minecraft:stone,minecraft:netherrack,minecraft:end_stone,minecraft:gravel,minecraft:bedrock");
 	data.addDataValue("hardness","5,5,5,3,70");
 	data.addDataValue("resistance","6,6,9,1,1200");
 	data.addDataValue("harvestTool","pickaxe,pickaxe,pickaxe,shovel,pickaxe");
@@ -1632,7 +1632,7 @@ for i, ore in manganesedenseBlocks {
 var ironoreBlocks = iron.registerParts(ore_blocks);
 for i, ore in ironoreBlocks {
 	var data = ore.getData();
-	data.addDataValue("variants","minecraft:stone,minecraft:netherrack,minecraft:end_stone,minecraft:gravel,minecraft:bedrock");
+	data.addDataValue("oreVariants","minecraft:stone,minecraft:netherrack,minecraft:end_stone,minecraft:gravel,minecraft:bedrock");
 	data.addDataValue("hardness","5,5,5,3,70");
 	data.addDataValue("resistance","6,6,9,1,1200");
 	data.addDataValue("harvestTool","pickaxe,pickaxe,pickaxe,shovel,pickaxe");
@@ -1641,7 +1641,7 @@ for i, ore in ironoreBlocks {
 var ironpoorBlocks = iron.registerParts(poor_blocks);
 for i, ore in ironpoorBlocks {
 	var data = ore.getData();
-	data.addDataValue("variants","minecraft:stone,minecraft:netherrack,minecraft:end_stone,minecraft:gravel,minecraft:bedrock");
+	data.addDataValue("oreVariants","minecraft:stone,minecraft:netherrack,minecraft:end_stone,minecraft:gravel,minecraft:bedrock");
 	data.addDataValue("hardness","5,5,5,3,70");
 	data.addDataValue("resistance","6,6,9,1,1200");
 	data.addDataValue("harvestTool","pickaxe,pickaxe,pickaxe,shovel,pickaxe");
@@ -1650,7 +1650,7 @@ for i, ore in ironpoorBlocks {
 var irondenseBlocks = iron.registerParts(dense_blocks);
 for i, ore in irondenseBlocks {
 	var data = ore.getData();
-	data.addDataValue("variants","minecraft:stone,minecraft:netherrack,minecraft:end_stone,minecraft:gravel,minecraft:bedrock");
+	data.addDataValue("oreVariants","minecraft:stone,minecraft:netherrack,minecraft:end_stone,minecraft:gravel,minecraft:bedrock");
 	data.addDataValue("hardness","5,5,5,3,70");
 	data.addDataValue("resistance","6,6,9,1,1200");
 	data.addDataValue("harvestTool","pickaxe,pickaxe,pickaxe,shovel,pickaxe");
@@ -1660,7 +1660,7 @@ for i, ore in irondenseBlocks {
 var cobaltoreBlocks = cobalt.registerParts(ore_blocks);
 for i, ore in cobaltoreBlocks {
 	var data = ore.getData();
-	data.addDataValue("variants","minecraft:stone,minecraft:netherrack,minecraft:end_stone,minecraft:gravel,minecraft:bedrock");
+	data.addDataValue("oreVariants","minecraft:stone,minecraft:netherrack,minecraft:end_stone,minecraft:gravel,minecraft:bedrock");
 	data.addDataValue("hardness","5,5,5,3,70");
 	data.addDataValue("resistance","6,6,9,1,1200");
 	data.addDataValue("harvestTool","pickaxe,pickaxe,pickaxe,shovel,pickaxe");
@@ -1669,7 +1669,7 @@ for i, ore in cobaltoreBlocks {
 var cobaltpoorBlocks = cobalt.registerParts(poor_blocks);
 for i, ore in cobaltpoorBlocks {
 	var data = ore.getData();
-	data.addDataValue("variants","minecraft:stone,minecraft:netherrack,minecraft:end_stone,minecraft:gravel,minecraft:bedrock");
+	data.addDataValue("oreVariants","minecraft:stone,minecraft:netherrack,minecraft:end_stone,minecraft:gravel,minecraft:bedrock");
 	data.addDataValue("hardness","5,5,5,3,70");
 	data.addDataValue("resistance","6,6,9,1,1200");
 	data.addDataValue("harvestTool","pickaxe,pickaxe,pickaxe,shovel,pickaxe");
@@ -1678,7 +1678,7 @@ for i, ore in cobaltpoorBlocks {
 var cobaltdenseBlocks = cobalt.registerParts(dense_blocks);
 for i, ore in cobaltdenseBlocks {
 	var data = ore.getData();
-	data.addDataValue("variants","minecraft:stone,minecraft:netherrack,minecraft:end_stone,minecraft:gravel,minecraft:bedrock");
+	data.addDataValue("oreVariants","minecraft:stone,minecraft:netherrack,minecraft:end_stone,minecraft:gravel,minecraft:bedrock");
 	data.addDataValue("hardness","5,5,5,3,70");
 	data.addDataValue("resistance","6,6,9,1,1200");
 	data.addDataValue("harvestTool","pickaxe,pickaxe,pickaxe,shovel,pickaxe");
@@ -1688,7 +1688,7 @@ for i, ore in cobaltdenseBlocks {
 var nickeloreBlocks = nickel.registerParts(ore_blocks);
 for i, ore in nickeloreBlocks {
 	var data = ore.getData();
-	data.addDataValue("variants","minecraft:stone,minecraft:netherrack,minecraft:end_stone,minecraft:gravel,minecraft:bedrock");
+	data.addDataValue("oreVariants","minecraft:stone,minecraft:netherrack,minecraft:end_stone,minecraft:gravel,minecraft:bedrock");
 	data.addDataValue("hardness","5,5,5,3,70");
 	data.addDataValue("resistance","6,6,9,1,1200");
 	data.addDataValue("harvestTool","pickaxe,pickaxe,pickaxe,shovel,pickaxe");
@@ -1697,7 +1697,7 @@ for i, ore in nickeloreBlocks {
 var nickelpoorBlocks = nickel.registerParts(poor_blocks);
 for i, ore in nickelpoorBlocks {
 	var data = ore.getData();
-	data.addDataValue("variants","minecraft:stone,minecraft:netherrack,minecraft:end_stone,minecraft:gravel,minecraft:bedrock");
+	data.addDataValue("oreVariants","minecraft:stone,minecraft:netherrack,minecraft:end_stone,minecraft:gravel,minecraft:bedrock");
 	data.addDataValue("hardness","5,5,5,3,70");
 	data.addDataValue("resistance","6,6,9,1,1200");
 	data.addDataValue("harvestTool","pickaxe,pickaxe,pickaxe,shovel,pickaxe");
@@ -1706,7 +1706,7 @@ for i, ore in nickelpoorBlocks {
 var nickeldenseBlocks = nickel.registerParts(dense_blocks);
 for i, ore in nickeldenseBlocks {
 	var data = ore.getData();
-	data.addDataValue("variants","minecraft:stone,minecraft:netherrack,minecraft:end_stone,minecraft:gravel,minecraft:bedrock");
+	data.addDataValue("oreVariants","minecraft:stone,minecraft:netherrack,minecraft:end_stone,minecraft:gravel,minecraft:bedrock");
 	data.addDataValue("hardness","5,5,5,3,70");
 	data.addDataValue("resistance","6,6,9,1,1200");
 	data.addDataValue("harvestTool","pickaxe,pickaxe,pickaxe,shovel,pickaxe");
@@ -1716,7 +1716,7 @@ for i, ore in nickeldenseBlocks {
 var copperoreBlocks = copper.registerParts(ore_blocks);
 for i, ore in copperoreBlocks {
 	var data = ore.getData();
-	data.addDataValue("variants","minecraft:stone,minecraft:netherrack,minecraft:end_stone,minecraft:gravel,minecraft:bedrock");
+	data.addDataValue("oreVariants","minecraft:stone,minecraft:netherrack,minecraft:end_stone,minecraft:gravel,minecraft:bedrock");
 	data.addDataValue("hardness","5,5,5,3,70");
 	data.addDataValue("resistance","6,6,9,1,1200");
 	data.addDataValue("harvestTool","pickaxe,pickaxe,pickaxe,shovel,pickaxe");
@@ -1725,7 +1725,7 @@ for i, ore in copperoreBlocks {
 var copperpoorBlocks = copper.registerParts(poor_blocks);
 for i, ore in copperpoorBlocks {
 	var data = ore.getData();
-	data.addDataValue("variants","minecraft:stone,minecraft:netherrack,minecraft:end_stone,minecraft:gravel,minecraft:bedrock");
+	data.addDataValue("oreVariants","minecraft:stone,minecraft:netherrack,minecraft:end_stone,minecraft:gravel,minecraft:bedrock");
 	data.addDataValue("hardness","5,5,5,3,70");
 	data.addDataValue("resistance","6,6,9,1,1200");
 	data.addDataValue("harvestTool","pickaxe,pickaxe,pickaxe,shovel,pickaxe");
@@ -1734,7 +1734,7 @@ for i, ore in copperpoorBlocks {
 var copperdenseBlocks = copper.registerParts(dense_blocks);
 for i, ore in copperdenseBlocks {
 	var data = ore.getData();
-	data.addDataValue("variants","minecraft:stone,minecraft:netherrack,minecraft:end_stone,minecraft:gravel,minecraft:bedrock");
+	data.addDataValue("oreVariants","minecraft:stone,minecraft:netherrack,minecraft:end_stone,minecraft:gravel,minecraft:bedrock");
 	data.addDataValue("hardness","5,5,5,3,70");
 	data.addDataValue("resistance","6,6,9,1,1200");
 	data.addDataValue("harvestTool","pickaxe,pickaxe,pickaxe,shovel,pickaxe");
@@ -1744,7 +1744,7 @@ for i, ore in copperdenseBlocks {
 var zincoreBlocks = zinc.registerParts(ore_blocks);
 for i, ore in zincoreBlocks {
 	var data = ore.getData();
-	data.addDataValue("variants","minecraft:stone,minecraft:netherrack,minecraft:end_stone,minecraft:gravel,minecraft:bedrock");
+	data.addDataValue("oreVariants","minecraft:stone,minecraft:netherrack,minecraft:end_stone,minecraft:gravel,minecraft:bedrock");
 	data.addDataValue("hardness","5,5,5,3,70");
 	data.addDataValue("resistance","6,6,9,1,1200");
 	data.addDataValue("harvestTool","pickaxe,pickaxe,pickaxe,shovel,pickaxe");
@@ -1753,7 +1753,7 @@ for i, ore in zincoreBlocks {
 var zincpoorBlocks = zinc.registerParts(poor_blocks);
 for i, ore in zincpoorBlocks {
 	var data = ore.getData();
-	data.addDataValue("variants","minecraft:stone,minecraft:netherrack,minecraft:end_stone,minecraft:gravel,minecraft:bedrock");
+	data.addDataValue("oreVariants","minecraft:stone,minecraft:netherrack,minecraft:end_stone,minecraft:gravel,minecraft:bedrock");
 	data.addDataValue("hardness","5,5,5,3,70");
 	data.addDataValue("resistance","6,6,9,1,1200");
 	data.addDataValue("harvestTool","pickaxe,pickaxe,pickaxe,shovel,pickaxe");
@@ -1762,7 +1762,7 @@ for i, ore in zincpoorBlocks {
 var zincdenseBlocks = zinc.registerParts(dense_blocks);
 for i, ore in zincdenseBlocks {
 	var data = ore.getData();
-	data.addDataValue("variants","minecraft:stone,minecraft:netherrack,minecraft:end_stone,minecraft:gravel,minecraft:bedrock");
+	data.addDataValue("oreVariants","minecraft:stone,minecraft:netherrack,minecraft:end_stone,minecraft:gravel,minecraft:bedrock");
 	data.addDataValue("hardness","5,5,5,3,70");
 	data.addDataValue("resistance","6,6,9,1,1200");
 	data.addDataValue("harvestTool","pickaxe,pickaxe,pickaxe,shovel,pickaxe");
@@ -1772,7 +1772,7 @@ for i, ore in zincdenseBlocks {
 var molybdenumoreBlocks = molybdenum.registerParts(ore_blocks);
 for i, ore in molybdenumoreBlocks {
 	var data = ore.getData();
-	data.addDataValue("variants","minecraft:stone,minecraft:netherrack,minecraft:end_stone,minecraft:gravel,minecraft:bedrock");
+	data.addDataValue("oreVariants","minecraft:stone,minecraft:netherrack,minecraft:end_stone,minecraft:gravel,minecraft:bedrock");
 	data.addDataValue("hardness","5,5,5,3,70");
 	data.addDataValue("resistance","6,6,9,1,1200");
 	data.addDataValue("harvestTool","pickaxe,pickaxe,pickaxe,shovel,pickaxe");
@@ -1781,7 +1781,7 @@ for i, ore in molybdenumoreBlocks {
 var molybdenumpoorBlocks = molybdenum.registerParts(poor_blocks);
 for i, ore in molybdenumpoorBlocks {
 	var data = ore.getData();
-	data.addDataValue("variants","minecraft:stone,minecraft:netherrack,minecraft:end_stone,minecraft:gravel,minecraft:bedrock");
+	data.addDataValue("oreVariants","minecraft:stone,minecraft:netherrack,minecraft:end_stone,minecraft:gravel,minecraft:bedrock");
 	data.addDataValue("hardness","5,5,5,3,70");
 	data.addDataValue("resistance","6,6,9,1,1200");
 	data.addDataValue("harvestTool","pickaxe,pickaxe,pickaxe,shovel,pickaxe");
@@ -1790,7 +1790,7 @@ for i, ore in molybdenumpoorBlocks {
 var molybdenumdenseBlocks = molybdenum.registerParts(dense_blocks);
 for i, ore in molybdenumdenseBlocks {
 	var data = ore.getData();
-	data.addDataValue("variants","minecraft:stone,minecraft:netherrack,minecraft:end_stone,minecraft:gravel,minecraft:bedrock");
+	data.addDataValue("oreVariants","minecraft:stone,minecraft:netherrack,minecraft:end_stone,minecraft:gravel,minecraft:bedrock");
 	data.addDataValue("hardness","5,5,5,3,70");
 	data.addDataValue("resistance","6,6,9,1,1200");
 	data.addDataValue("harvestTool","pickaxe,pickaxe,pickaxe,shovel,pickaxe");
@@ -1800,7 +1800,7 @@ for i, ore in molybdenumdenseBlocks {
 var tinoreBlocks = tin.registerParts(ore_blocks);
 for i, ore in tinoreBlocks {
 	var data = ore.getData();
-	data.addDataValue("variants","minecraft:stone,minecraft:netherrack,minecraft:end_stone,minecraft:gravel,minecraft:bedrock");
+	data.addDataValue("oreVariants","minecraft:stone,minecraft:netherrack,minecraft:end_stone,minecraft:gravel,minecraft:bedrock");
 	data.addDataValue("hardness","5,5,5,3,70");
 	data.addDataValue("resistance","6,6,9,1,1200");
 	data.addDataValue("harvestTool","pickaxe,pickaxe,pickaxe,shovel,pickaxe");
@@ -1809,7 +1809,7 @@ for i, ore in tinoreBlocks {
 var tinpoorBlocks = tin.registerParts(poor_blocks);
 for i, ore in tinpoorBlocks {
 	var data = ore.getData();
-	data.addDataValue("variants","minecraft:stone,minecraft:netherrack,minecraft:end_stone,minecraft:gravel,minecraft:bedrock");
+	data.addDataValue("oreVariants","minecraft:stone,minecraft:netherrack,minecraft:end_stone,minecraft:gravel,minecraft:bedrock");
 	data.addDataValue("hardness","5,5,5,3,70");
 	data.addDataValue("resistance","6,6,9,1,1200");
 	data.addDataValue("harvestTool","pickaxe,pickaxe,pickaxe,shovel,pickaxe");
@@ -1818,7 +1818,7 @@ for i, ore in tinpoorBlocks {
 var tindenseBlocks = tin.registerParts(dense_blocks);
 for i, ore in tindenseBlocks {
 	var data = ore.getData();
-	data.addDataValue("variants","minecraft:stone,minecraft:netherrack,minecraft:end_stone,minecraft:gravel,minecraft:bedrock");
+	data.addDataValue("oreVariants","minecraft:stone,minecraft:netherrack,minecraft:end_stone,minecraft:gravel,minecraft:bedrock");
 	data.addDataValue("hardness","5,5,5,3,70");
 	data.addDataValue("resistance","6,6,9,1,1200");
 	data.addDataValue("harvestTool","pickaxe,pickaxe,pickaxe,shovel,pickaxe");
@@ -1828,7 +1828,7 @@ for i, ore in tindenseBlocks {
 var antimonyoreBlocks = antimony.registerParts(ore_blocks);
 for i, ore in antimonyoreBlocks {
 	var data = ore.getData();
-	data.addDataValue("variants","minecraft:stone,minecraft:netherrack,minecraft:end_stone,minecraft:gravel,minecraft:bedrock");
+	data.addDataValue("oreVariants","minecraft:stone,minecraft:netherrack,minecraft:end_stone,minecraft:gravel,minecraft:bedrock");
 	data.addDataValue("hardness","5,5,5,3,70");
 	data.addDataValue("resistance","6,6,9,1,1200");
 	data.addDataValue("harvestTool","pickaxe,pickaxe,pickaxe,shovel,pickaxe");
@@ -1837,7 +1837,7 @@ for i, ore in antimonyoreBlocks {
 var antimonypoorBlocks = antimony.registerParts(poor_blocks);
 for i, ore in antimonypoorBlocks {
 	var data = ore.getData();
-	data.addDataValue("variants","minecraft:stone,minecraft:netherrack,minecraft:end_stone,minecraft:gravel,minecraft:bedrock");
+	data.addDataValue("oreVariants","minecraft:stone,minecraft:netherrack,minecraft:end_stone,minecraft:gravel,minecraft:bedrock");
 	data.addDataValue("hardness","5,5,5,3,70");
 	data.addDataValue("resistance","6,6,9,1,1200");
 	data.addDataValue("harvestTool","pickaxe,pickaxe,pickaxe,shovel,pickaxe");
@@ -1846,7 +1846,7 @@ for i, ore in antimonypoorBlocks {
 var antimonydenseBlocks = antimony.registerParts(dense_blocks);
 for i, ore in antimonydenseBlocks {
 	var data = ore.getData();
-	data.addDataValue("variants","minecraft:stone,minecraft:netherrack,minecraft:end_stone,minecraft:gravel,minecraft:bedrock");
+	data.addDataValue("oreVariants","minecraft:stone,minecraft:netherrack,minecraft:end_stone,minecraft:gravel,minecraft:bedrock");
 	data.addDataValue("hardness","5,5,5,3,70");
 	data.addDataValue("resistance","6,6,9,1,1200");
 	data.addDataValue("harvestTool","pickaxe,pickaxe,pickaxe,shovel,pickaxe");
@@ -1856,7 +1856,7 @@ for i, ore in antimonydenseBlocks {
 var neodymiumoreBlocks = neodymium.registerParts(ore_blocks);
 for i, ore in neodymiumoreBlocks {
 	var data = ore.getData();
-	data.addDataValue("variants","minecraft:stone,minecraft:netherrack,minecraft:end_stone,minecraft:gravel,minecraft:bedrock");
+	data.addDataValue("oreVariants","minecraft:stone,minecraft:netherrack,minecraft:end_stone,minecraft:gravel,minecraft:bedrock");
 	data.addDataValue("hardness","5,5,5,3,70");
 	data.addDataValue("resistance","6,6,9,1,1200");
 	data.addDataValue("harvestTool","pickaxe,pickaxe,pickaxe,shovel,pickaxe");
@@ -1865,7 +1865,7 @@ for i, ore in neodymiumoreBlocks {
 var neodymiumpoorBlocks = neodymium.registerParts(poor_blocks);
 for i, ore in neodymiumpoorBlocks {
 	var data = ore.getData();
-	data.addDataValue("variants","minecraft:stone,minecraft:netherrack,minecraft:end_stone,minecraft:gravel,minecraft:bedrock");
+	data.addDataValue("oreVariants","minecraft:stone,minecraft:netherrack,minecraft:end_stone,minecraft:gravel,minecraft:bedrock");
 	data.addDataValue("hardness","5,5,5,3,70");
 	data.addDataValue("resistance","6,6,9,1,1200");
 	data.addDataValue("harvestTool","pickaxe,pickaxe,pickaxe,shovel,pickaxe");
@@ -1874,7 +1874,7 @@ for i, ore in neodymiumpoorBlocks {
 var neodymiumdenseBlocks = neodymium.registerParts(dense_blocks);
 for i, ore in neodymiumdenseBlocks {
 	var data = ore.getData();
-	data.addDataValue("variants","minecraft:stone,minecraft:netherrack,minecraft:end_stone,minecraft:gravel,minecraft:bedrock");
+	data.addDataValue("oreVariants","minecraft:stone,minecraft:netherrack,minecraft:end_stone,minecraft:gravel,minecraft:bedrock");
 	data.addDataValue("hardness","5,5,5,3,70");
 	data.addDataValue("resistance","6,6,9,1,1200");
 	data.addDataValue("harvestTool","pickaxe,pickaxe,pickaxe,shovel,pickaxe");
@@ -1884,7 +1884,7 @@ for i, ore in neodymiumdenseBlocks {
 var tantalumoreBlocks = tantalum.registerParts(ore_blocks);
 for i, ore in tantalumoreBlocks {
 	var data = ore.getData();
-	data.addDataValue("variants","minecraft:stone,minecraft:netherrack,minecraft:end_stone,minecraft:gravel,minecraft:bedrock");
+	data.addDataValue("oreVariants","minecraft:stone,minecraft:netherrack,minecraft:end_stone,minecraft:gravel,minecraft:bedrock");
 	data.addDataValue("hardness","5,5,5,3,70");
 	data.addDataValue("resistance","6,6,9,1,1200");
 	data.addDataValue("harvestTool","pickaxe,pickaxe,pickaxe,shovel,pickaxe");
@@ -1893,7 +1893,7 @@ for i, ore in tantalumoreBlocks {
 var tantalumpoorBlocks = tantalum.registerParts(poor_blocks);
 for i, ore in tantalumpoorBlocks {
 	var data = ore.getData();
-	data.addDataValue("variants","minecraft:stone,minecraft:netherrack,minecraft:end_stone,minecraft:gravel,minecraft:bedrock");
+	data.addDataValue("oreVariants","minecraft:stone,minecraft:netherrack,minecraft:end_stone,minecraft:gravel,minecraft:bedrock");
 	data.addDataValue("hardness","5,5,5,3,70");
 	data.addDataValue("resistance","6,6,9,1,1200");
 	data.addDataValue("harvestTool","pickaxe,pickaxe,pickaxe,shovel,pickaxe");
@@ -1902,7 +1902,7 @@ for i, ore in tantalumpoorBlocks {
 var tantalumdenseBlocks = tantalum.registerParts(dense_blocks);
 for i, ore in tantalumdenseBlocks {
 	var data = ore.getData();
-	data.addDataValue("variants","minecraft:stone,minecraft:netherrack,minecraft:end_stone,minecraft:gravel,minecraft:bedrock");
+	data.addDataValue("oreVariants","minecraft:stone,minecraft:netherrack,minecraft:end_stone,minecraft:gravel,minecraft:bedrock");
 	data.addDataValue("hardness","5,5,5,3,70");
 	data.addDataValue("resistance","6,6,9,1,1200");
 	data.addDataValue("harvestTool","pickaxe,pickaxe,pickaxe,shovel,pickaxe");
@@ -1912,7 +1912,7 @@ for i, ore in tantalumdenseBlocks {
 var tungstenoreBlocks = tungsten.registerParts(ore_blocks);
 for i, ore in tungstenoreBlocks {
 	var data = ore.getData();
-	data.addDataValue("variants","minecraft:stone,minecraft:netherrack,minecraft:end_stone,minecraft:gravel,minecraft:bedrock");
+	data.addDataValue("oreVariants","minecraft:stone,minecraft:netherrack,minecraft:end_stone,minecraft:gravel,minecraft:bedrock");
 	data.addDataValue("hardness","5,5,5,3,70");
 	data.addDataValue("resistance","6,6,9,1,1200");
 	data.addDataValue("harvestTool","pickaxe,pickaxe,pickaxe,shovel,pickaxe");
@@ -1921,7 +1921,7 @@ for i, ore in tungstenoreBlocks {
 var tungstenpoorBlocks = tungsten.registerParts(poor_blocks);
 for i, ore in tungstenpoorBlocks {
 	var data = ore.getData();
-	data.addDataValue("variants","minecraft:stone,minecraft:netherrack,minecraft:end_stone,minecraft:gravel,minecraft:bedrock");
+	data.addDataValue("oreVariants","minecraft:stone,minecraft:netherrack,minecraft:end_stone,minecraft:gravel,minecraft:bedrock");
 	data.addDataValue("hardness","5,5,5,3,70");
 	data.addDataValue("resistance","6,6,9,1,1200");
 	data.addDataValue("harvestTool","pickaxe,pickaxe,pickaxe,shovel,pickaxe");
@@ -1930,7 +1930,7 @@ for i, ore in tungstenpoorBlocks {
 var tungstendenseBlocks = tungsten.registerParts(dense_blocks);
 for i, ore in tungstendenseBlocks {
 	var data = ore.getData();
-	data.addDataValue("variants","minecraft:stone,minecraft:netherrack,minecraft:end_stone,minecraft:gravel,minecraft:bedrock");
+	data.addDataValue("oreVariants","minecraft:stone,minecraft:netherrack,minecraft:end_stone,minecraft:gravel,minecraft:bedrock");
 	data.addDataValue("hardness","5,5,5,3,70");
 	data.addDataValue("resistance","6,6,9,1,1200");
 	data.addDataValue("harvestTool","pickaxe,pickaxe,pickaxe,shovel,pickaxe");
@@ -1940,7 +1940,7 @@ for i, ore in tungstendenseBlocks {
 var osmiumoreBlocks = osmium.registerParts(ore_blocks);
 for i, ore in osmiumoreBlocks {
 	var data = ore.getData();
-	data.addDataValue("variants","minecraft:stone,minecraft:netherrack,minecraft:end_stone,minecraft:gravel,minecraft:bedrock");
+	data.addDataValue("oreVariants","minecraft:stone,minecraft:netherrack,minecraft:end_stone,minecraft:gravel,minecraft:bedrock");
 	data.addDataValue("hardness","5,5,5,3,70");
 	data.addDataValue("resistance","6,6,9,1,1200");
 	data.addDataValue("harvestTool","pickaxe,pickaxe,pickaxe,shovel,pickaxe");
@@ -1949,7 +1949,7 @@ for i, ore in osmiumoreBlocks {
 var osmiumpoorBlocks = osmium.registerParts(poor_blocks);
 for i, ore in osmiumpoorBlocks {
 	var data = ore.getData();
-	data.addDataValue("variants","minecraft:stone,minecraft:netherrack,minecraft:end_stone,minecraft:gravel,minecraft:bedrock");
+	data.addDataValue("oreVariants","minecraft:stone,minecraft:netherrack,minecraft:end_stone,minecraft:gravel,minecraft:bedrock");
 	data.addDataValue("hardness","5,5,5,3,70");
 	data.addDataValue("resistance","6,6,9,1,1200");
 	data.addDataValue("harvestTool","pickaxe,pickaxe,pickaxe,shovel,pickaxe");
@@ -1958,7 +1958,7 @@ for i, ore in osmiumpoorBlocks {
 var osmiumdenseBlocks = osmium.registerParts(dense_blocks);
 for i, ore in osmiumdenseBlocks {
 	var data = ore.getData();
-	data.addDataValue("variants","minecraft:stone,minecraft:netherrack,minecraft:end_stone,minecraft:gravel,minecraft:bedrock");
+	data.addDataValue("oreVariants","minecraft:stone,minecraft:netherrack,minecraft:end_stone,minecraft:gravel,minecraft:bedrock");
 	data.addDataValue("hardness","5,5,5,3,70");
 	data.addDataValue("resistance","6,6,9,1,1200");
 	data.addDataValue("harvestTool","pickaxe,pickaxe,pickaxe,shovel,pickaxe");
@@ -1968,7 +1968,7 @@ for i, ore in osmiumdenseBlocks {
 var iridiumoreBlocks = iridium.registerParts(ore_blocks);
 for i, ore in iridiumoreBlocks {
 	var data = ore.getData();
-	data.addDataValue("variants","minecraft:stone,minecraft:netherrack,minecraft:end_stone,minecraft:gravel,minecraft:bedrock");
+	data.addDataValue("oreVariants","minecraft:stone,minecraft:netherrack,minecraft:end_stone,minecraft:gravel,minecraft:bedrock");
 	data.addDataValue("hardness","5,5,5,3,70");
 	data.addDataValue("resistance","6,6,9,1,1200");
 	data.addDataValue("harvestTool","pickaxe,pickaxe,pickaxe,shovel,pickaxe");
@@ -1977,7 +1977,7 @@ for i, ore in iridiumoreBlocks {
 var iridiumpoorBlocks = iridium.registerParts(poor_blocks);
 for i, ore in iridiumpoorBlocks {
 	var data = ore.getData();
-	data.addDataValue("variants","minecraft:stone,minecraft:netherrack,minecraft:end_stone,minecraft:gravel,minecraft:bedrock");
+	data.addDataValue("oreVariants","minecraft:stone,minecraft:netherrack,minecraft:end_stone,minecraft:gravel,minecraft:bedrock");
 	data.addDataValue("hardness","5,5,5,3,70");
 	data.addDataValue("resistance","6,6,9,1,1200");
 	data.addDataValue("harvestTool","pickaxe,pickaxe,pickaxe,shovel,pickaxe");
@@ -1986,7 +1986,7 @@ for i, ore in iridiumpoorBlocks {
 var iridiumdenseBlocks = iridium.registerParts(dense_blocks);
 for i, ore in iridiumdenseBlocks {
 	var data = ore.getData();
-	data.addDataValue("variants","minecraft:stone,minecraft:netherrack,minecraft:end_stone,minecraft:gravel,minecraft:bedrock");
+	data.addDataValue("oreVariants","minecraft:stone,minecraft:netherrack,minecraft:end_stone,minecraft:gravel,minecraft:bedrock");
 	data.addDataValue("hardness","5,5,5,3,70");
 	data.addDataValue("resistance","6,6,9,1,1200");
 	data.addDataValue("harvestTool","pickaxe,pickaxe,pickaxe,shovel,pickaxe");
@@ -1996,7 +1996,7 @@ for i, ore in iridiumdenseBlocks {
 var platinumoreBlocks = platinum.registerParts(ore_blocks);
 for i, ore in platinumoreBlocks {
 	var data = ore.getData();
-	data.addDataValue("variants","minecraft:stone,minecraft:netherrack,minecraft:end_stone,minecraft:gravel,minecraft:bedrock");
+	data.addDataValue("oreVariants","minecraft:stone,minecraft:netherrack,minecraft:end_stone,minecraft:gravel,minecraft:bedrock");
 	data.addDataValue("hardness","5,5,5,3,70");
 	data.addDataValue("resistance","6,6,9,1,1200");
 	data.addDataValue("harvestTool","pickaxe,pickaxe,pickaxe,shovel,pickaxe");
@@ -2005,7 +2005,7 @@ for i, ore in platinumoreBlocks {
 var platinumpoorBlocks = platinum.registerParts(poor_blocks);
 for i, ore in platinumpoorBlocks {
 	var data = ore.getData();
-	data.addDataValue("variants","minecraft:stone,minecraft:netherrack,minecraft:end_stone,minecraft:gravel,minecraft:bedrock");
+	data.addDataValue("oreVariants","minecraft:stone,minecraft:netherrack,minecraft:end_stone,minecraft:gravel,minecraft:bedrock");
 	data.addDataValue("hardness","5,5,5,3,70");
 	data.addDataValue("resistance","6,6,9,1,1200");
 	data.addDataValue("harvestTool","pickaxe,pickaxe,pickaxe,shovel,pickaxe");
@@ -2014,7 +2014,7 @@ for i, ore in platinumpoorBlocks {
 var platinumdenseBlocks = platinum.registerParts(dense_blocks);
 for i, ore in platinumdenseBlocks {
 	var data = ore.getData();
-	data.addDataValue("variants","minecraft:stone,minecraft:netherrack,minecraft:end_stone,minecraft:gravel,minecraft:bedrock");
+	data.addDataValue("oreVariants","minecraft:stone,minecraft:netherrack,minecraft:end_stone,minecraft:gravel,minecraft:bedrock");
 	data.addDataValue("hardness","5,5,5,3,70");
 	data.addDataValue("resistance","6,6,9,1,1200");
 	data.addDataValue("harvestTool","pickaxe,pickaxe,pickaxe,shovel,pickaxe");
@@ -2024,7 +2024,7 @@ for i, ore in platinumdenseBlocks {
 var goldoreBlocks = gold.registerParts(ore_blocks);
 for i, ore in goldoreBlocks {
 	var data = ore.getData();
-	data.addDataValue("variants","minecraft:stone,minecraft:netherrack,minecraft:end_stone,minecraft:gravel,minecraft:bedrock");
+	data.addDataValue("oreVariants","minecraft:stone,minecraft:netherrack,minecraft:end_stone,minecraft:gravel,minecraft:bedrock");
 	data.addDataValue("hardness","5,5,5,3,70");
 	data.addDataValue("resistance","6,6,9,1,1200");
 	data.addDataValue("harvestTool","pickaxe,pickaxe,pickaxe,shovel,pickaxe");
@@ -2033,7 +2033,7 @@ for i, ore in goldoreBlocks {
 var goldpoorBlocks = gold.registerParts(poor_blocks);
 for i, ore in goldpoorBlocks {
 	var data = ore.getData();
-	data.addDataValue("variants","minecraft:stone,minecraft:netherrack,minecraft:end_stone,minecraft:gravel,minecraft:bedrock");
+	data.addDataValue("oreVariants","minecraft:stone,minecraft:netherrack,minecraft:end_stone,minecraft:gravel,minecraft:bedrock");
 	data.addDataValue("hardness","5,5,5,3,70");
 	data.addDataValue("resistance","6,6,9,1,1200");
 	data.addDataValue("harvestTool","pickaxe,pickaxe,pickaxe,shovel,pickaxe");
@@ -2042,7 +2042,7 @@ for i, ore in goldpoorBlocks {
 var golddenseBlocks = gold.registerParts(dense_blocks);
 for i, ore in golddenseBlocks {
 	var data = ore.getData();
-	data.addDataValue("variants","minecraft:stone,minecraft:netherrack,minecraft:end_stone,minecraft:gravel,minecraft:bedrock");
+	data.addDataValue("oreVariants","minecraft:stone,minecraft:netherrack,minecraft:end_stone,minecraft:gravel,minecraft:bedrock");
 	data.addDataValue("hardness","5,5,5,3,70");
 	data.addDataValue("resistance","6,6,9,1,1200");
 	data.addDataValue("harvestTool","pickaxe,pickaxe,pickaxe,shovel,pickaxe");
@@ -2052,7 +2052,7 @@ for i, ore in golddenseBlocks {
 var leadoreBlocks = lead.registerParts(ore_blocks);
 for i, ore in leadoreBlocks {
 	var data = ore.getData();
-	data.addDataValue("variants","minecraft:stone,minecraft:netherrack,minecraft:end_stone,minecraft:gravel,minecraft:bedrock");
+	data.addDataValue("oreVariants","minecraft:stone,minecraft:netherrack,minecraft:end_stone,minecraft:gravel,minecraft:bedrock");
 	data.addDataValue("hardness","5,5,5,3,70");
 	data.addDataValue("resistance","6,6,9,1,1200");
 	data.addDataValue("harvestTool","pickaxe,pickaxe,pickaxe,shovel,pickaxe");
@@ -2061,7 +2061,7 @@ for i, ore in leadoreBlocks {
 var leadpoorBlocks = lead.registerParts(poor_blocks);
 for i, ore in leadpoorBlocks {
 	var data = ore.getData();
-	data.addDataValue("variants","minecraft:stone,minecraft:netherrack,minecraft:end_stone,minecraft:gravel,minecraft:bedrock");
+	data.addDataValue("oreVariants","minecraft:stone,minecraft:netherrack,minecraft:end_stone,minecraft:gravel,minecraft:bedrock");
 	data.addDataValue("hardness","5,5,5,3,70");
 	data.addDataValue("resistance","6,6,9,1,1200");
 	data.addDataValue("harvestTool","pickaxe,pickaxe,pickaxe,shovel,pickaxe");
@@ -2070,7 +2070,7 @@ for i, ore in leadpoorBlocks {
 var leaddenseBlocks = lead.registerParts(dense_blocks);
 for i, ore in leaddenseBlocks {
 	var data = ore.getData();
-	data.addDataValue("variants","minecraft:stone,minecraft:netherrack,minecraft:end_stone,minecraft:gravel,minecraft:bedrock");
+	data.addDataValue("oreVariants","minecraft:stone,minecraft:netherrack,minecraft:end_stone,minecraft:gravel,minecraft:bedrock");
 	data.addDataValue("hardness","5,5,5,3,70");
 	data.addDataValue("resistance","6,6,9,1,1200");
 	data.addDataValue("harvestTool","pickaxe,pickaxe,pickaxe,shovel,pickaxe");
@@ -2080,7 +2080,7 @@ for i, ore in leaddenseBlocks {
 var thoriumoreBlocks = thorium.registerParts(ore_blocks);
 for i, ore in thoriumoreBlocks {
 	var data = ore.getData();
-	data.addDataValue("variants","minecraft:stone,minecraft:netherrack,minecraft:end_stone,minecraft:gravel,minecraft:bedrock");
+	data.addDataValue("oreVariants","minecraft:stone,minecraft:netherrack,minecraft:end_stone,minecraft:gravel,minecraft:bedrock");
 	data.addDataValue("hardness","5,5,5,3,70");
 	data.addDataValue("resistance","6,6,9,1,1200");
 	data.addDataValue("harvestTool","pickaxe,pickaxe,pickaxe,shovel,pickaxe");
@@ -2089,7 +2089,7 @@ for i, ore in thoriumoreBlocks {
 var thoriumpoorBlocks = thorium.registerParts(poor_blocks);
 for i, ore in thoriumpoorBlocks {
 	var data = ore.getData();
-	data.addDataValue("variants","minecraft:stone,minecraft:netherrack,minecraft:end_stone,minecraft:gravel,minecraft:bedrock");
+	data.addDataValue("oreVariants","minecraft:stone,minecraft:netherrack,minecraft:end_stone,minecraft:gravel,minecraft:bedrock");
 	data.addDataValue("hardness","5,5,5,3,70");
 	data.addDataValue("resistance","6,6,9,1,1200");
 	data.addDataValue("harvestTool","pickaxe,pickaxe,pickaxe,shovel,pickaxe");
@@ -2098,7 +2098,7 @@ for i, ore in thoriumpoorBlocks {
 var thoriumdenseBlocks = thorium.registerParts(dense_blocks);
 for i, ore in thoriumdenseBlocks {
 	var data = ore.getData();
-	data.addDataValue("variants","minecraft:stone,minecraft:netherrack,minecraft:end_stone,minecraft:gravel,minecraft:bedrock");
+	data.addDataValue("oreVariants","minecraft:stone,minecraft:netherrack,minecraft:end_stone,minecraft:gravel,minecraft:bedrock");
 	data.addDataValue("hardness","5,5,5,3,70");
 	data.addDataValue("resistance","6,6,9,1,1200");
 	data.addDataValue("harvestTool","pickaxe,pickaxe,pickaxe,shovel,pickaxe");
@@ -2108,7 +2108,7 @@ for i, ore in thoriumdenseBlocks {
 var uraniumoreBlocks = uranium.registerParts(ore_blocks);
 for i, ore in uraniumoreBlocks {
 	var data = ore.getData();
-	data.addDataValue("variants","minecraft:stone,minecraft:netherrack,minecraft:end_stone,minecraft:gravel,minecraft:bedrock");
+	data.addDataValue("oreVariants","minecraft:stone,minecraft:netherrack,minecraft:end_stone,minecraft:gravel,minecraft:bedrock");
 	data.addDataValue("hardness","5,5,5,3,70");
 	data.addDataValue("resistance","6,6,9,1,1200");
 	data.addDataValue("harvestTool","pickaxe,pickaxe,pickaxe,shovel,pickaxe");
@@ -2117,7 +2117,7 @@ for i, ore in uraniumoreBlocks {
 var uraniumpoorBlocks = uranium.registerParts(poor_blocks);
 for i, ore in uraniumpoorBlocks {
 	var data = ore.getData();
-	data.addDataValue("variants","minecraft:stone,minecraft:netherrack,minecraft:end_stone,minecraft:gravel,minecraft:bedrock");
+	data.addDataValue("oreVariants","minecraft:stone,minecraft:netherrack,minecraft:end_stone,minecraft:gravel,minecraft:bedrock");
 	data.addDataValue("hardness","5,5,5,3,70");
 	data.addDataValue("resistance","6,6,9,1,1200");
 	data.addDataValue("harvestTool","pickaxe,pickaxe,pickaxe,shovel,pickaxe");
@@ -2126,7 +2126,7 @@ for i, ore in uraniumpoorBlocks {
 var uraniumdenseBlocks = uranium.registerParts(dense_blocks);
 for i, ore in uraniumdenseBlocks {
 	var data = ore.getData();
-	data.addDataValue("variants","minecraft:stone,minecraft:netherrack,minecraft:end_stone,minecraft:gravel,minecraft:bedrock");
+	data.addDataValue("oreVariants","minecraft:stone,minecraft:netherrack,minecraft:end_stone,minecraft:gravel,minecraft:bedrock");
 	data.addDataValue("hardness","5,5,5,3,70");
 	data.addDataValue("resistance","6,6,9,1,1200");
 	data.addDataValue("harvestTool","pickaxe,pickaxe,pickaxe,shovel,pickaxe");

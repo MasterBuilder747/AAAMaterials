@@ -1,10 +1,10 @@
 package Main.Data;
 
-public class Composition extends Data {
+public class Composition extends AData {
     //an array of elements and/or compounds that are contained in a material.
     //used primarily to generate a tooltip for every item
     private Element e = null;
-    private Material m = null;
+    private AMaterial m = null;
     int amount;
     public boolean isMaterial;
     public Composition comp; //the next one in the linked list
@@ -19,13 +19,13 @@ public class Composition extends Data {
         this.e = e;
         this.amount = amount;
     }
-    public Composition(String name, Material m) {
+    public Composition(String name, AMaterial m) {
         super(name);
         this.m = m;
         this.amount = 1;
         this.isMaterial = true;
     }
-    public Composition(String name, Material m, int amount) {
+    public Composition(String name, AMaterial m, int amount) {
         super(name);
         this.m = m;
         this.amount = amount;

@@ -1,15 +1,15 @@
-package Main.Generators;
+package Main.Data;
 
-import Main.Data.Composition;
-import Main.Data.Material;
+import Main.Generators.GElement;
 
-public class MMetal extends AMMolecule {
-    public MMetal(String name, int params, String state, GPartGroup parts, GMolecule comp) {
-        super(name, params, state, parts, comp);
+//data > material > molecule > chemical(m) > metal
+public class MMetal extends MChemical {
+    public MMetal(String name, String localName, String color, GElement ele) {
+        super(name, localName, color, ele);
     }
-
+/*
     @Override
-    protected Material addParameters(Material m) {
+    protected AMaterial addParameters(AMaterial m) {
         //name, localizedName, color, [comp1, comp2...], itemattributes, separation, combination
         //attributes:
         //blast = need to alloy this in a blast furnace
@@ -17,7 +17,7 @@ public class MMetal extends AMMolecule {
         //ex: silver, Silver, 101010, Ag, smelt, 0, 0
 
         //composition creation, handled by composition objects
-        Composition j = parseComp(s[3], s[0]);
+        //Composition j = parseComp(s[3], s[0]);
 
         //state: global per each Material subtype, not a parameter
         m.setState(this.state);
@@ -43,11 +43,13 @@ public class MMetal extends AMMolecule {
         }
 
         //set composition
-        try {
-            m.setComposition(j, Integer.parseInt(s[6]), Integer.parseInt(s[7]));
-        } catch (NumberFormatException e) {
-            error("Incorrect number input for compound attributes input");
-        }
+//        try {
+//            m.setComposition(j, Integer.parseInt(s[6]), Integer.parseInt(s[7]));
+//        } catch (NumberFormatException e) {
+//            error("Incorrect number input for compound attributes input");
+//        }
         return m;
     }
+
+ */
 }

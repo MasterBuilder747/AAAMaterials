@@ -1,6 +1,6 @@
 package Main.Data;
 
-public class Item extends LocalizedData {
+public class Item extends ALocalizedData {
 
     public Item(String name, String localName) {
         super(name, localName);

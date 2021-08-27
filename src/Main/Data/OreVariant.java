@@ -1,11 +1,11 @@
 package Main.Data;
 
-public class Variant extends Data {
+public class OreVariant extends AData {
     //colon-separated
     //one block per variant definition
     Block b;
 
-    public Variant(String name, Block b) {
+    public OreVariant(String name, Block b) {
         super(name);
         this.b = b;
     }

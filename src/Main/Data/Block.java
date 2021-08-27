@@ -1,6 +1,6 @@
 package Main.Data;
 
-public class Block extends LocalizedData {
+public class Block extends ALocalizedData {
     //defines block properties for one block
     //semi-colon-separated in Ore definition
     public int hardness;

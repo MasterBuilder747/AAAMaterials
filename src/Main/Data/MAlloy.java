@@ -1,15 +1,14 @@
-package Main.Generators;
+package Main.Data;
 
-import Main.Data.Composition;
-import Main.Data.Material;
+//data > material > compound > chemical(c) > alloy(metal)
+public class MAlloy extends MCChemical {
 
-public class MAlloy extends AMCompound {
-    public MAlloy(String name, String state, GPartGroup parts, GCompound comp) {
-        super(name, 7, state, parts, comp);
+    public MAlloy(String name, String localName, String color) {
+        super(name, localName, color);
     }
-
+/*
     @Override
-    protected Material addParameters(Material m) {
+    protected AMaterial addParameters(AMaterial m) {
         //name, localizedName, color, [comp1, comp2...], itemattributes, separation, combination
         //attributes:
         //blast = need to alloy this in a blast furnace
@@ -50,4 +49,5 @@ public class MAlloy extends AMCompound {
         }
         return m;
     }
+    */
 }

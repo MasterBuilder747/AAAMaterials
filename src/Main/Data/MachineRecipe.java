@@ -1,8 +1,6 @@
-package Main.Recipe;
+package Main.Data;
 
-import Main.Data.Data;
-
-public class Recipe extends Data {
+public class MachineRecipe extends AData {
     String realName; //the actual unique name, uses name
     String machine; //the name of the machine this is for
     int tier; //minimum voltage tier this recipe gets unlocked at
@@ -21,7 +19,7 @@ public class Recipe extends Data {
     double powerMultiplier; //0.5 or 1.0
     int realTier; //the tier that gets changed
 
-    public Recipe(String machine, String name, int tier, int time, double powerMultiplier) {
+    public MachineRecipe(String machine, String name, int tier, int time, double powerMultiplier) {
         super(name);
         this.machine = machine;
         this.tier = tier;
@@ -51,7 +49,7 @@ public class Recipe extends Data {
 
     @Override
     public void print() {
-        System.out.println();
+        System.out.print("");
     }
 
     @Override

@@ -1,8 +1,6 @@
 package Main.Data;
 
-import java.util.Locale;
-
-public class Part extends LocalizedData {
+public class Part extends ALocalizedData {
     //this defines a material part to be used in materials
     String type;
     boolean hasOverlay;

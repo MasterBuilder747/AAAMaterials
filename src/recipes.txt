@@ -1,3 +1,4 @@
+/these are custom recipes that the user might add
 /[]means follow the semicolon(;) separated strings
 /machineName, recipeName(see below), int tier, int time, double powerMultiplier(0.5 or 1.0),
 /itemIn1; itemIn2; ..., liquidIn[], itemOut[], liquidOut[], chemicalIn[], chemicalOut[],

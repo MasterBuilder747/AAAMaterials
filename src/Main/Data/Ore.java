@@ -1,6 +1,6 @@
 package Main.Data;
 
-public class Ore extends Data {
+public class Ore extends AData {
     //generates ores and its components for a specified material
     //Also handles generation (2 files)
     OreType[] types; //name of the blocks themselves
