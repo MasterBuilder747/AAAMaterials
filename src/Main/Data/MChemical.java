@@ -1,13 +1,12 @@
 package Main.Data;
 
-import Main.Generators.GElement;
-
 //data > material > molecule > chemical(m)
 public class MChemical extends AMolecule {
-    GElement ele;
+    //chemical molecules use elements in tooltips
+    Element e; //stores all elemental properties, if needed
 
-    public MChemical(String name, String localName, String color, GElement ele) {
+    public MChemical(String name, String localName, String color, Element e) {
         super(name, localName, color);
-        this.ele = ele;
+        this.e = e;
     }
 }

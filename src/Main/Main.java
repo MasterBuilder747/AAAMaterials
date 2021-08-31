@@ -13,7 +13,7 @@ public class Main {
     //2 the .lang file for localization
     private final static String PC = "C:\\Users\\jaath\\IdeaProjects\\AAAMaterials\\src\\";
     private final static String MAC = "/Users/jaudras/IdeaProjects/AAAMaterials/src/";
-    public final static String HOME = MAC; //home directory, specified at startup
+    public final static String HOME = PC; //home directory, specified at startup
     public final static String SCRIPT = "script";
 
     public static void main(String[] args) throws IOException {

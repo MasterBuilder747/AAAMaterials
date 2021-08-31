@@ -1,13 +1,11 @@
 package Main.Data;
 
-import Main.Generators.GElement;
-
 //data > material > molecule > chemical(m) > metal
 public class MMetal extends MChemical {
-    public MMetal(String name, String localName, String color, GElement ele) {
-        super(name, localName, color, ele);
+    public MMetal(String name, String localName, String color, Element e) {
+        super(name, localName, color, e);
     }
-/*
+/* //for GMetal
     @Override
     protected AMaterial addParameters(AMaterial m) {
         //name, localizedName, color, [comp1, comp2...], itemattributes, separation, combination

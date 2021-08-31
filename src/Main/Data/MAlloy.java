@@ -1,7 +1,7 @@
 package Main.Data;
 
 //data > material > compound > chemical(c) > alloy(metal)
-public class MAlloy extends MCChemical {
+public class MAlloy extends CChemical {
 
     public MAlloy(String name, String localName, String color) {
         super(name, localName, color);

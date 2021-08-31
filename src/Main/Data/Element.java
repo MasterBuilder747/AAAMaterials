@@ -1,6 +1,8 @@
 package Main.Data;
 
 public class Element extends AData {
+    AProperty[] properties;
+
     //PT general classification
     public String symbol;
     int number;
@@ -10,7 +12,6 @@ public class Element extends AData {
     int period;
     int group;
 
-    int state; //default state at 20C / 273K
     //0 = unknown, 1 = solid, 2 = liquid, 3 = gas, 4 = plasma?
     //String groupName; //determined by the registry
 
@@ -25,18 +26,17 @@ public class Element extends AData {
         this.number = number;
         this.symbol = symbol;
         this.weight = weight;
-        this.state = 1; //defaults to solid, can be changed later
     }
     //allows for custom elements not in the known ptable
     public Element(String name, String symbol) {
         super(name);
         this.symbol= symbol;
     }
+    public<D> void addProperty(AProperty<D> p) {
+        this.properties[0] = p;
+    }
 
     //attributes
-    public void stateLiquid() { this.state = 2; }
-    public void stateGas() { this.state = 3; }
-    public void stateUnknown() { this.state = 0; }
     public void setMeltingPoint(int tempC) { this.melting = tempC; }
     public void setBoilingPoint(int tempC) { this.boiling = tempC; }
 
