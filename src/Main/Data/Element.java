@@ -1,7 +1,10 @@
 package Main.Data;
 
+import java.util.ArrayList;
+
 public class Element extends AData {
-    AProperty[] properties;
+    //type:value
+    ArrayList<String> properties;
 
     //PT general classification
     public String symbol;
@@ -27,13 +30,8 @@ public class Element extends AData {
         this.symbol = symbol;
         this.weight = weight;
     }
-    //allows for custom elements not in the known ptable
-    public Element(String name, String symbol) {
-        super(name);
-        this.symbol= symbol;
-    }
-    public<D> void addProperty(AProperty<D> p) {
-        this.properties[0] = p;
+    public void setProperty(String p) {
+        this.properties.add(p);
     }
 
     //attributes

@@ -1,8 +1,10 @@
 package Main.Data;
 
-public class AProperty<P> extends AData {
+public class Property extends AData {
     //defines a property to be used for further details per element
-    public P property;
+    //key value pair:
+    //name is the key
+    public final String p; //value
 
     /*
     Series
@@ -31,8 +33,8 @@ public class AProperty<P> extends AData {
         return "NULL";
     }
 
-    public AProperty(String name, P property) {
+    public Property(String name, String p) {
         super(name);
-        this.property = property;
+        this.p = p;
     }
 }

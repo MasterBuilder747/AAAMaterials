@@ -1,9 +1,13 @@
 package Main.Data;
 
+import java.util.ArrayList;
+
 //data > material
 public abstract class AMaterial extends AData {
     //required components
     String color;
+
+    ArrayList<Part> parts = new ArrayList<>();
 
     //states (other than solid)
     public String state;
@@ -23,10 +27,11 @@ public abstract class AMaterial extends AData {
     private final String localName;
 
     //1) set basic info
-    public AMaterial(String name, String localName, String color) {
+    public AMaterial(String name, String localName, String color, String state) {
         super(name);
         this.localName = localName;
         this.color = color;
+        this.state = state;
     }
 
     //2) element or compound? Cannot be both (can be neither if applicable)
@@ -36,15 +41,16 @@ public abstract class AMaterial extends AData {
         this.combination = combination;
     }
 
-    //3) set state (what parts should generate?)
-    public void setState(String state) {
-        //see: https://docs.blamejared.com/1.12/en/Mods/ContentTweaker/Vanilla/Creatable_Content/Fluid/
-        //if the material system is not needed, use custom to block parts from being generated
-        //solid, liquid, gas, plasma, custom
-        this.state = state;
+    //these match the partGroup name
+    public void setParts(String s) {
+        this.itemParts = this.itemParts + this.name+".registerParts("+s+"_parts);\n";
     }
+    public void setBlocks(String s) {
+        this.blockParts = this.blockParts + this.name+".registerParts("+s+"_blocks);\n";
+    }
+
     public boolean isState(String s) {
-        return this.state.matches(s);
+        return this.state.equals(s);
     }
 
     //5) build the code based off these attributes
@@ -74,14 +80,6 @@ public abstract class AMaterial extends AData {
             sb.append(new Fluid(this.name, this.localName, this.color.substring(1), true).build());
         }
         return sb.toString();
-    }
-
-    //these match the partGroup name
-    public void setParts(String s) {
-        this.itemParts = this.itemParts + this.name+".registerParts("+s+"_parts);\n";
-    }
-    public void setBlocks(String s) {
-        this.blockParts = this.blockParts + this.name+".registerParts("+s+"_blocks);\n";
     }
 
     @Override

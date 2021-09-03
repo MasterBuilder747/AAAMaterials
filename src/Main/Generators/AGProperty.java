@@ -1,14 +1,15 @@
 package Main.Generators;
 
-import Main.Data.AProperty;
+import Main.Data.Property;
 import Main.Main;
 
 import java.io.BufferedReader;
 import java.io.IOException;
 
-public abstract class AGProperty<P extends AProperty<D>, D> extends AGenerator<P> {
+public abstract class AGProperty extends AGenerator<Property> {
     GElement ele;
 
+    //filename is also the property type
     public AGProperty(String filename, GElement ele) {
         super(filename);
         this.ele = ele;
@@ -27,14 +28,14 @@ public abstract class AGProperty<P extends AProperty<D>, D> extends AGenerator<P
         if (ele.is(s2)) {
             String s3 = br.readLine(); //the property, if there is one
             if (s3.equals(" ") || s3.contains("0")) {
-                this.addNothing();
+                ele.get(s2).setProperty(this.filename+":"+addNothing());
             } else {
-                this.add(s3);
+                ele.get(s2).setProperty(this.filename+":"+add(s3));
             }
         } else {
             error("Unknown element " + s2);
         }
     }
-    protected abstract void add(String property);
-    protected abstract void addNothing();
+    protected abstract String add(String s);
+    protected abstract String addNothing();
 }

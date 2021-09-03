@@ -9,11 +9,9 @@ import java.util.ArrayList;
 public class GCompound extends AComposition {
 
     //composition definition that contains multiple molecule materials in it
-    AMMolecule mol;
 
-    public GCompound(String filename, GElement ele, AMMolecule mol) {
+    public GCompound(String filename, GElement ele) {
         super(filename, ele);
-        this.mol = mol;
     }
 
     public Composition createCompound(String s) {
@@ -22,21 +20,21 @@ public class GCompound extends AComposition {
         String[] moles = s1.split(";\\s*");
 
         ArrayList<Composition> comps = new ArrayList<>();
-        for (String name : moles) {
-            if (name.contains("*")) {
-                if (mol.is(name.substring(0, name.indexOf("*")))) {
-                    comps.add(new Composition("", mol.get(name.substring(0, name.indexOf("*"))), Integer.parseInt(name.substring(name.indexOf("*")+1))));
-                } else {
-                    error("Unknown material " + name.substring(0, name.indexOf("*")));
-                }
-            } else {
-                if (mol.is(name)) {
-                    comps.add(new Composition("", mol.get(name)));
-                } else {
-                    error("Unknown material " + name);
-                }
-            }
-        }
+//        for (String name : moles) {
+//            if (name.contains("*")) {
+//                if (mol.is(name.substring(0, name.indexOf("*")))) {
+//                    comps.add(new Composition("", mol.get(name.substring(0, name.indexOf("*"))), Integer.parseInt(name.substring(name.indexOf("*")+1))));
+//                } else {
+//                    error("Unknown material " + name.substring(0, name.indexOf("*")));
+//                }
+//            } else {
+//                if (mol.is(name)) {
+//                    comps.add(new Composition("", mol.get(name)));
+//                } else {
+//                    error("Unknown material " + name);
+//                }
+//            }
+//        }
         return buildComposition(comps);
     }
 

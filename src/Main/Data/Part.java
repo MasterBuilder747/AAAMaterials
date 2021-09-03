@@ -11,18 +11,18 @@ public class Part extends ALocalizedData {
         super(name, localName);
         this.type = "item"; //default
         this.hasOverlay = hasOverlay;
-        if (name.contains("_")) {
-            int s = name.indexOf("_");
-            this.oreDict = name.substring(0, s)+name.substring(s+1, s+2).toUpperCase()+name.substring(s+2);
-        } else {
-            this.oreDict = name;
+        this.oreDict = this.name;
+        while (this.oreDict.contains("_")) {
+            int s = this.oreDict.indexOf("_");
+            this.oreDict = this.oreDict.substring(0, s)+this.oreDict.substring(s+1, s+2).toUpperCase()+this.oreDict.substring(s+2);
         }
     }
     //this part already exists in contentTweaker
     //to be used in a PartGroup
-    public Part(String name, String localName) {
+    public Part(String name, String localName, String oreDict) {
         super(name, localName);
         this.exists = true;
+        this.oreDict = oreDict;
     }
 
     @Override

@@ -5,44 +5,44 @@
 /ex: tiny_dust
 /ex2: boule, %s-Boule, false
 /ex3: raw_ore, Raw-%s-Ore, true
-tiny_dust
-small_dust
-dust
-molten
-poor_ore
-ore
-dense_ore
-rock
-ore_rock
-cluster
-clump
-shard
-crushed_ore
-purified_ore
-centrifuged_ore
-dirty_dust
-ore_sample
-flawless_gem
-crystal
-flawed_gem
-chipped_gem
-nugget
-ingot
-block
-plate
-dense_plate
-casing
-beam
-gear
-rod
-long_rod
-bolt
-ring
-small_spring
-large_spring
-round
-minecart
-armor
+tiny_dust, dustTiny
+small_dust, dustSmall
+dust, dust
+molten, *molten
+poor_ore, poorOre
+ore, ore
+dense_ore, denseOre
+rock, rock
+ore_rock, rockOre
+cluster, cluster
+clump, clump
+shard, shard
+crushed_ore, crushedOre
+purified_ore, orePurified
+centrifuged_ore, oreCentrifuged
+dirty_dust, dustDirty
+ore_sample, oreSample
+flawless_gem, gemFlawless
+crystal, crystal
+flawed_gem, gemFlawed
+chipped_gem, gemChipped
+nugget, nugget
+ingot, ingot
+block, block
+plate, plate
+dense_plate, plateDense
+casing, casing
+beam, beam
+gear, gear
+rod, rod
+long_rod, rodLong
+bolt, bolt
+ring, ring
+small_spring, smallSpring
+large_spring, springLarge
+round, round
+minecart, *minecart
+armor, *armor
 boule, %s-Boule, false
 chain, %s-Chain, false
 chunk, %s-Chunk, false

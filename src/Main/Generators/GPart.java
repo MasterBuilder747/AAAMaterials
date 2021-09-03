@@ -13,12 +13,12 @@ public class GPart extends ALocal<Part> {
 
     @Override
     protected void readLine(BufferedReader br, String[] s) throws IOException {
-        if (s.length < 1 || s.length > 3 || s.length == 2) {
-            error(new int[]{1, 3});
+        if (s.length < 2 || s.length > 3) {
+            error(new int[]{2, 3});
         }
-        if (s.length == 1) {
+        if (s.length == 2) {
             //String existingPartName
-            objects.add(new Part(s[0], ""));
+            objects.add(new Part(s[0], "", s[1]));
         }
         //String name, String localName, boolean hasOverlay
         if (s.length == 3) {

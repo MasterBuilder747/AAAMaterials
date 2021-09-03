@@ -10,14 +10,10 @@ import java.util.ArrayList;
 
 public class GOre extends AGenerator<Ore> {
     GVariant var;
-    AMMolecule mol;
-    AMCompound comp;
 
-    public GOre(String name, GVariant var, AMMolecule mol, AMCompound comp) {
+    public GOre(String name, GVariant var) {
         super(name);
         this.var = var;
-        this.mol = mol;
-        this.comp = comp;
     }
 
     @Override
@@ -28,12 +24,12 @@ public class GOre extends AGenerator<Ore> {
         //poor: stone; 3; 6; 2: netherrack; 3; 6; 2: end_stone: 3; 9; 2: gravel; 1; 1; 2: bedrock; 40; 1200; 3,
         //dense: stone; 5; 6; 2: netherrack; 5; 6; 2: end_stone: 5; 9; 2: gravel; 3; 1; 2: bedrock; 70; 1200; 3
         String name = s[0]; //the name of the entire ore itself
-        if (!mol.is(name)) {
-            error("Unknown molecule material " + name);
-        }
-        if (!mol.is(name) && !comp.is(name)) {
-            error("Unknown compound material " + name);
-        }
+//        if (!mol.is(name)) {
+//            error("Unknown molecule material " + name);
+//        }
+//        if (!mol.is(name) && !comp.is(name)) {
+//            error("Unknown compound material " + name);
+//        }
         String[] ores = new String[s.length-1]; //includes each ore type
         System.arraycopy(s, 1, ores, 0, ores.length);
         ArrayList<OreType> oreTypes = new ArrayList<>();

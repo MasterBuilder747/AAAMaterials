@@ -2,9 +2,16 @@ package Main.Data;
 
 //data > material > molecule > chemical(m) > metal
 public class MMetal extends MChemical {
-    public MMetal(String name, String localName, String color, Element e) {
-        super(name, localName, color, e);
+    //this is a malleable metal, which means that it can be molded into different metal parts
+    public MMetal(String name, String localName, String color, String state, Element e) {
+        super(name, localName, color, state, e);
+        this.setParts("smelt");
+        this.setParts("");
     }
+    public void conductive() {
+        this.setParts("conductive");
+    }
+
 /* //for GMetal
     @Override
     protected AMaterial addParameters(AMaterial m) {

@@ -48,7 +48,7 @@ public class GElement extends AGenerator<Element> {
         etc...
         */
         //use this element for elementless materials
-        objects.add(new Element(0, 0, 0, "Nn", "None", 0.0, 30));
+        objects.add(new Element(0, 0, 0, "Nn", "None", 0.0));
         //first is always a number
         String s2 = br.readLine(); //atomic number or symbol (use stored row value)
         //System.out.println(s1 + " " + s2);
@@ -56,7 +56,7 @@ public class GElement extends AGenerator<Element> {
             //s2 = atomic number; store the row number
             //period, group, number, symbol, name, weight
             pd = s1;
-            objects.add(new Element(Integer.parseInt(s1), Integer.parseInt(br.readLine()), Integer.parseInt(s2), br.readLine(), br.readLine(), Double.parseDouble(br.readLine()), 30));
+            objects.add(new Element(Integer.parseInt(s1), Integer.parseInt(br.readLine()), Integer.parseInt(s2), br.readLine(), br.readLine(), Double.parseDouble(br.readLine())));
             //Chemical c = new Chemical(Integer.parseInt(s1), Integer.parseInt(br.readLine()), Integer.parseInt(s2), br.readLine(), br.readLine(), Double.parseDouble(br.readLine()));
             //System.out.println(c);
         } else {
@@ -64,7 +64,7 @@ public class GElement extends AGenerator<Element> {
             //period, number, symbol, name, weight
             if (pd != null) {
                 //System.out.println(pd + " " + s1 + " " + s2 + " " + br.readLine() + " " + br.readLine());
-                objects.add(new Element(Integer.parseInt(pd), Integer.parseInt(br.readLine()), Integer.parseInt(s1), s2, br.readLine(), Double.parseDouble(br.readLine()), 30));
+                objects.add(new Element(Integer.parseInt(pd), Integer.parseInt(br.readLine()), Integer.parseInt(s1), s2, br.readLine(), Double.parseDouble(br.readLine())));
             } else {
                 error("Must provide the period first before listing elements");
             }

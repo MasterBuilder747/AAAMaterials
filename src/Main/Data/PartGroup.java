@@ -9,6 +9,10 @@ public class PartGroup extends AData {
         this.parts = parts;
     }
 
+    public Part[] getParts() {
+        return this.parts;
+    }
+
     @Override
     public void print() {
         System.out.print(this.name + ": ");
