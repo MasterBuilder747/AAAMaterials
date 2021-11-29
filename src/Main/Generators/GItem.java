@@ -14,7 +14,6 @@ public class GItem extends ALocal<Item> {
     protected void readLine(BufferedReader br, String[] s) throws IOException {
         //String name, String localName
         //a dash "-" indicates a space in localName
-        if (s.length != 2) error(2);
         String local = s[1].replace("-", " ");
         objects.add(new Item(s[0], local));
     }

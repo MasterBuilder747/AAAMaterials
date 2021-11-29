@@ -5,6 +5,9 @@ public class Ore extends AData {
     //Also handles generation (2 files)
     OreType[] types; //name of the blocks themselves
 
+    //<contenttweaker:sub_block_holder_0:8>
+    //<undergroundbiomes:igneous_stone_contenttweaker_sub_block_holder_0_9>
+
     public Ore(String name, OreType[] types) {
         super(name);
         this.types = types;

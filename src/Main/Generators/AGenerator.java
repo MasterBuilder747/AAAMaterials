@@ -7,6 +7,7 @@ import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashMap;
 
 public abstract class AGenerator<D extends AData> {
     //holds an arraylist and can generate code using it
@@ -15,10 +16,17 @@ public abstract class AGenerator<D extends AData> {
     protected int line = 1;
     protected String s1;
     protected String[] s;
+    protected HashMap<String, String> parameters; //name -> type
+    protected int numParams;
 
     public AGenerator(String filename) {
         this.filename = filename;
         objects = new ArrayList<>();
+    }
+
+    public void addParameters(HashMap<String, String> parameters) {
+        this.parameters = parameters;
+        this.numParams = this.parameters.size();
     }
 
     public String register() throws IOException {
@@ -48,7 +56,11 @@ public abstract class AGenerator<D extends AData> {
             if (s1 != null) {
                 if (s1.charAt(0) != '/') { //commented out line, ignored
                     s = s1.replace(" ", "").split(",\\s*");
-                    readLine(br, s);
+                    if (s.length == this.numParams) {
+                        readLine(br, s);
+                    } else {
+                        error(s.length + "is the incorrect amount of parameters. Expected " + this.numParams);
+                    }
                 }
             } else {
                 break;
