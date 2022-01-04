@@ -34,7 +34,7 @@ public abstract class AComposition extends AGenerator<Composition> {
     }
 
     //this creates a new material composition
-    Composition createMoleculeComp(String s) throws IllegalArgumentException {
+    protected Composition createMoleculeComp(String s) throws IllegalArgumentException {
         ArrayList<Composition> comps = new ArrayList<>();
         //symbol
         //symbol[_Symbol]

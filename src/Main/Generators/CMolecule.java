@@ -3,10 +3,10 @@ package Main.Generators;
 import java.io.BufferedReader;
 import java.io.IOException;
 
-public class GMolecule extends AComposition {
+public class CMolecule extends AComposition {
     //single element material composition definition repository
     
-    public GMolecule(String filename, GElement ele) {
+    public CMolecule(String filename, GElement ele) {
         super(filename, ele);
     }
 

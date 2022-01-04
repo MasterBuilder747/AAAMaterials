@@ -6,11 +6,11 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.util.ArrayList;
 
-public class GCompound extends AComposition {
+public class CCompound extends AComposition {
 
     //composition definition that contains multiple molecule materials in it
 
-    public GCompound(String filename, GElement ele) {
+    public CCompound(String filename, GElement ele) {
         super(filename, ele);
     }
 

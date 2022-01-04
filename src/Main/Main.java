@@ -1,8 +1,7 @@
 package Main;
 
 import Main.Generators.*;
-import Main.Generators.GCompound;
-import Main.Generators.GMolecule;
+import Main.Generators.CMolecule;
 
 import java.io.*;
 
@@ -44,7 +43,7 @@ public class Main {
         bw.write(partGroup.register());
         GElement element = new GElement("element");
         bw.write(element.register());
-        GMolecule molecule = new GMolecule("moleculeComposition", element);
+        CMolecule molecule = new CMolecule("moleculeComposition", element);
         bw.write(molecule.register());
 //        GCompound compound = new GCompound("compoundComposition", element);
 //        bw.write(compound.register());

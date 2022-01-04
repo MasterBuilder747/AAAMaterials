@@ -5,9 +5,9 @@ import Main.Data.Composition;
 
 //generator > material > compound
 public abstract class AMCompound<M extends ACompound> extends AGMaterial<M> {
-    GCompound comp;
+    CCompound comp;
 
-    public AMCompound(String filename, GPartGroup groups, GCompound comp) {
+    public AMCompound(String filename, GPartGroup groups, CCompound comp) {
         super(filename, groups);
         this.comp = comp;
     }
