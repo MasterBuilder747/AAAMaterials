@@ -1,7 +1,7 @@
 package Main.Generators;
 
 import Main.Data.AData;
-import Main.Main;
+import Main.Materials;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
@@ -24,7 +24,7 @@ public abstract class AGenerator<D extends AData> {
 
     public String register() throws IOException {
         //read: populate the ArrayList
-        FileReader fr = new FileReader(Main.HOME + this.filename.toLowerCase() + "s.txt");
+        FileReader fr = new FileReader(Materials.HOME + this.filename.toLowerCase() + "s.txt");
         BufferedReader br = new BufferedReader(fr);
         readFile(br);
         fr.close();

@@ -5,7 +5,7 @@ import Main.Generators.CMolecule;
 
 import java.io.*;
 
-public class Main {
+public class Materials {
 
     //files to be generated:
     //1 the .zs script file (one giant one)
