@@ -1,4 +1,7 @@
-package Main.Data;
+package Main.Data.Material;
+
+import Main.Data.AData;
+import Main.Data.OreType;
 
 public class Ore extends AData {
     //generates ores and its components for a specified material
@@ -14,17 +17,22 @@ public class Ore extends AData {
     }
 
     @Override
-    public String build() {
+    public String buildMaterial() {
         StringBuilder sb = new StringBuilder();
         for (OreType ore : this.types) {
             String var = this.name+ore.name; //allows for unique var name
             sb.append("var ").append(var).append("Blocks = ").append(this.name).append(".registerParts(").append(ore.name).append("_blocks);\n");
             sb.append("for i, ore in "); sb.append(var).append("Blocks {\n");
-            sb.append(ore.build());
+            sb.append(ore.buildMaterial());
             sb.append("}\n");
         }
         sb.append("\n");
         return sb.toString();
+    }
+
+    @Override
+    public String buildRecipe() {
+        return null;
     }
 
     @Override

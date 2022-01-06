@@ -1,10 +1,25 @@
-package Main.Data;
+package Main.Data.Material;
 
 //data > material > compound > chemical(c) > alloy(metal)
-public class MAlloy extends CChemical {
+public class Alloy extends AMaterialData {
 
-    public MAlloy(String name, String localName, String color, String state) {
-        super(name, localName, color, state);
+    public Alloy(Material m) {
+        super(m);
+    }
+
+    @Override
+    public void print() {
+
+    }
+
+    @Override
+    public String buildMaterial() {
+        return null;
+    }
+
+    @Override
+    public String buildRecipe() {
+        return null;
     }
 /*
     @Override

@@ -1,4 +1,6 @@
-package Main.Data;
+package Main.Recipe;
+
+import Main.Data.AData;
 
 public class MachineRecipe extends AData {
     String realName; //the actual unique name, uses name
@@ -53,7 +55,7 @@ public class MachineRecipe extends AData {
     }
 
     @Override
-    public String build() {
+    public String buildMaterial() {
         /*
         val reci = mods.modularmachinery.RecipeBuilder.newBuilder("recipeRegistryName", "associatedMachineRegistryName", timeTicks);
         val reci = mods.modularmachinery.RecipeBuilder.newBuilder("recipeRegistryName", "associatedMachineRegistryName", timeTicks, priority);
@@ -109,6 +111,11 @@ public class MachineRecipe extends AData {
         }
         sb.append(this.realName).append(".build();\n");
         return sb.toString();
+    }
+
+    @Override
+    public String buildRecipe() {
+        return null;
     }
 
     private String buildMain(int power) {

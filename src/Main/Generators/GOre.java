@@ -1,6 +1,6 @@
 package Main.Generators;
 
-import Main.Data.Ore;
+import Main.Data.Material.Ore;
 import Main.Data.OreType;
 import Main.Data.OreVariant;
 

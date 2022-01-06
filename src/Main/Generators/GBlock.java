@@ -1,6 +1,6 @@
 package Main.Generators;
 
-import Main.Data.Block;
+import Main.Data.Custom.Block;
 
 import java.io.BufferedReader;
 import java.io.IOException;

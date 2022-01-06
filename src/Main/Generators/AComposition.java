@@ -1,7 +1,7 @@
 package Main.Generators;
 
-import Main.Data.Composition;
-import Main.Materials;
+import Main.Data.Material.Composition;
+import Main.MainMaterials;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -55,19 +55,19 @@ public abstract class AComposition extends AGenerator<Composition> {
         } else {
             for (int i = 0; i < s.length(); i++) {
                 String s0 = String.valueOf(s.charAt(i));
-                if (Materials.isOut(s, i + 1)) {
+                if (MainMaterials.isOut(s, i + 1)) {
                     //symbol[Empty]
                     comps.add(new Composition("", ele.get(s0)));
                 } else {
                     String s1 = String.valueOf(s.charAt(i + 1));
-                    if (Materials.isNumeric(s1)) {
-                        if (Materials.isOut(s, i + 2)) {
+                    if (MainMaterials.isNumeric(s1)) {
+                        if (MainMaterials.isOut(s, i + 2)) {
                             //symbolNumber[Empty]
                             comps.add(new Composition("", ele.get(s0), Integer.parseInt(s1)));
                             i++;
                         } else {
                             String s2 = String.valueOf(s.charAt(i + 2));
-                            if (Materials.isNumeric(s2)) {
+                            if (MainMaterials.isNumeric(s2)) {
                                 //symbolNumberNumber
                                 comps.add(new Composition("", ele.get(s0), Integer.parseInt(s1 + s2)));
                                 i += 2;
@@ -78,15 +78,15 @@ public abstract class AComposition extends AGenerator<Composition> {
                             }
                         }
                     } else {
-                        if (!Materials.isUppercase(s1)) {
-                            if (Materials.isOut(s, i + 2)) {
+                        if (!MainMaterials.isUppercase(s1)) {
+                            if (MainMaterials.isOut(s, i + 2)) {
                                 //symbolSymbol[Empty]
                                 comps.add(new Composition("", ele.get(s0 + s1)));
                                 i++;
                             } else {
                                 String s2 = String.valueOf(s.charAt(i + 2));
-                                if (Materials.isOut(s, i + 3)) {
-                                    if (Materials.isNumeric(s2)) {
+                                if (MainMaterials.isOut(s, i + 3)) {
+                                    if (MainMaterials.isNumeric(s2)) {
                                         //symbolSymbolNumber[Empty]
                                         comps.add(new Composition("", ele.get(s0 + s1), Integer.parseInt(s2)));
                                         i += 2;
@@ -96,9 +96,9 @@ public abstract class AComposition extends AGenerator<Composition> {
                                         i++;
                                     }
                                 } else {
-                                    if (Materials.isNumeric(s2)) {
+                                    if (MainMaterials.isNumeric(s2)) {
                                         String s3 = String.valueOf(s.charAt(i + 3));
-                                        if (Materials.isNumeric(s3)) {
+                                        if (MainMaterials.isNumeric(s3)) {
                                             //symbolSymbolNumberNumber
                                             comps.add(new Composition("", ele.get(s0 + s1), Integer.parseInt(s2 + s3)));
                                             i += 3;

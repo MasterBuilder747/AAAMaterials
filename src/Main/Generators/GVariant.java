@@ -1,6 +1,6 @@
 package Main.Generators;
 
-import Main.Data.Block;
+import Main.Data.Custom.Block;
 import Main.Data.OreVariant;
 
 import java.io.BufferedReader;

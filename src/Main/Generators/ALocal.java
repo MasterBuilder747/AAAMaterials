@@ -1,6 +1,6 @@
 package Main.Generators;
 
-import Main.Data.ALocalizedData;
+import Main.Data.Custom.ALocalizedData;
 
 abstract class ALocal<L extends ALocalizedData> extends AGenerator<L> {
     //a variant of Generator that implements localized data

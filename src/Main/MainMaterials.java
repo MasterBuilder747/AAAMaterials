@@ -1,62 +1,59 @@
 package Main;
 
 import Main.Generators.*;
-import Main.Generators.CMolecule;
 
 import java.io.*;
 
-public class Materials {
-
+public class MainMaterials {
     //files to be generated:
     //1 the .zs script file (one giant one)
     //2 the .lang file for localization
     private final static String PC = "C:\\Users\\jaath\\IdeaProjects\\AAAMaterials\\src\\";
     private final static String MAC = "/Users/jaudras/IdeaProjects/AAAMaterials/src/";
     public final static String HOME = MAC; //home directory, specified at startup
-    public final static String SCRIPT = "script";
+    public final static String SCRIPT = "materials";
 
     public static void main(String[] args) throws IOException {
         FileWriter fw = new FileWriter(HOME + SCRIPT + ".zs");
         BufferedWriter bw = new BufferedWriter(fw);
 
         //starting script code
-        bw.write("#loader contenttweaker\n" +
-                "import mods.contenttweaker.Material;\n" +
-                "import mods.contenttweaker.MaterialSystem;\n" +
-                "import mods.contenttweaker.PartBuilder;\n" +
-                "import mods.contenttweaker.VanillaFactory;\n" +
-                "import mods.contenttweaker.Block;\n" +
-                "import mods.contenttweaker.Color;\n\n");
+        bw.write("""
+                #loader contenttweaker
+                import mods.contenttweaker.Material;
+                import mods.contenttweaker.MaterialSystem;
+                import mods.contenttweaker.PartBuilder;
+                import mods.contenttweaker.VanillaFactory;
+                import mods.contenttweaker.Block;
+                import mods.contenttweaker.Color;
+                
+                """);
 
         //custom content
         GBlock block = new GBlock("block");
-        bw.write(block.register());
+        bw.write(block.registerMaterials());
         GItem item = new GItem("item");
-        bw.write(item.register());
+        bw.write(item.registerMaterials());
         GFluid fluid = new GFluid("fluid");
-        bw.write(fluid.register());
+        bw.write(fluid.registerMaterials());
         GPart part = new GPart("part");
-        bw.write(part.register());
+        bw.write(part.registerMaterials());
 
         //material system
         GPartGroup partGroup = new GPartGroup("partgroup", part);
-        bw.write(partGroup.register());
+        bw.write(partGroup.registerMaterials());
         GElement element = new GElement("element");
-        bw.write(element.register());
-        CMolecule molecule = new CMolecule("moleculeComposition", element);
-        bw.write(molecule.register());
+        bw.write(element.registerMaterials());
+//        CMolecule molecule = new CMolecule("moleculeComposition", element);
+//        bw.write(molecule.register());
 //        GCompound compound = new GCompound("compoundComposition", element);
 //        bw.write(compound.register());
 
-        //machine recipes
-        GRecipe recipe = new GRecipe("recipe");
-        bw.write(recipe.register());
-
         //ore system
         GVariant variant = new GVariant("variant");
-        bw.write(variant.register());
+        bw.write(variant.registerMaterials());
         GOre ore = new GOre("ore", variant);
-        bw.write(ore.register());
+        bw.write(ore.registerMaterials());
 
         //finish
         bw.close();

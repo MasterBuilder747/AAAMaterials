@@ -29,7 +29,7 @@ public class OreType extends AData {
     }
 
     @Override
-    public String build() {
+    public String buildMaterial() {
         StringBuilder sb = new StringBuilder();
 
         sb.append("\tvar data = ore.getData();\n");
@@ -65,5 +65,10 @@ public class OreType extends AData {
         sb.append(this.oreVariants[length-1].b.miningLevel).append("\");\n");
 
         return sb.toString();
+    }
+
+    @Override
+    public String buildRecipe() {
+        return null;
     }
 }

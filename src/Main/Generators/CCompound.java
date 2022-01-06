@@ -1,6 +1,6 @@
 package Main.Generators;
 
-import Main.Data.Composition;
+import Main.Data.Material.Composition;
 
 import java.io.BufferedReader;
 import java.io.IOException;

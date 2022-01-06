@@ -1,4 +1,6 @@
-package Main.Data;
+package Main.Data.Custom;
+
+import Main.Data.Custom.ALocalizedData;
 
 public class Item extends ALocalizedData {
 
@@ -12,7 +14,7 @@ public class Item extends ALocalizedData {
     }
 
     @Override
-    public String build() {
+    public String buildMaterial() {
         //genItem("circuit_lv");
         return "genItem(\"" + this.name + "\");\n";
     }

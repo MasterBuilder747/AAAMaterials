@@ -1,4 +1,6 @@
-package Main.Data;
+package Main.Data.Custom;
+
+import Main.Data.AData;
 
 public abstract class ALocalizedData extends AData {
     //defines a data holding object
@@ -9,5 +11,10 @@ public abstract class ALocalizedData extends AData {
     public ALocalizedData(String name, String localName) {
         super(name);
         this.localName = localName;
+    }
+
+    @Override
+    public String buildRecipe() {
+        return "";
     }
 }

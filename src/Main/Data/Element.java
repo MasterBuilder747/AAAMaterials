@@ -46,7 +46,12 @@ public class Element extends AData {
     }
 
     @Override
-    public String build() {
+    public String buildMaterial() {
         return "NULL";
+    }
+
+    @Override
+    public String buildRecipe() {
+        return null;
     }
 }

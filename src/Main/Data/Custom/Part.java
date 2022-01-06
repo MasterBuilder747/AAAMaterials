@@ -1,4 +1,4 @@
-package Main.Data;
+package Main.Data.Custom;
 
 public class Part extends ALocalizedData {
     //this defines a material part to be used in materials
@@ -33,7 +33,7 @@ public class Part extends ALocalizedData {
     }
 
     @Override
-    public String build() {
+    public String buildMaterial() {
         if (this.exists) {
             return "";
         } else {

@@ -1,5 +1,7 @@
 package Main.Data;
 
+import Main.Data.Custom.Block;
+
 public class OreVariant extends AData {
     //colon-separated
     //one block per variant definition
@@ -17,7 +19,12 @@ public class OreVariant extends AData {
     public void print() {}
 
     @Override
-    public String build() {
+    public String buildMaterial() {
         return "NULL";
+    }
+
+    @Override
+    public String buildRecipe() {
+        return null;
     }
 }

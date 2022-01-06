@@ -1,6 +1,6 @@
 package Main.Generators;
 
-import Main.Data.Part;
+import Main.Data.Custom.Part;
 import Main.Data.PartGroup;
 
 import java.io.BufferedReader;

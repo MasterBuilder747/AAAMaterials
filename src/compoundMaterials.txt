@@ -1,8 +1,0 @@
-/name, localName, hexColor, [mat1; mat2...], state, parts, int(-1, 0, 1) separation, int(-1, 0, 1) combination
-/notes:
-/separation/combination flags: -1 = chemical, 1 = physical, 0 is none
-/parts: noDust, ore, smelt, gem, conduct, blast, string, semi, wood, stone, machine
-/states: solid, liquid, gas, plasma, custom
-/mats are existing materials that you defined
-/ex: silver, Silver, 101010, Ag, solid, oresmeltconduct, 0, 0
-/electrum, Electrum, 202020, [silver; gold], solid, smeltconduct, -1, -1

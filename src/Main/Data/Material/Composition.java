@@ -1,10 +1,15 @@
-package Main.Data;
+package Main.Data.Material;
 
+import Main.Data.AData;
+import Main.Data.Element;
+
+//an internal class that represents a chemical composition using materials/elements
+//this is a linked list
 public class Composition extends AData {
     //an array of elements and/or compounds that are contained in a material.
     //used primarily to generate a tooltip for every item
     private Element e = null;
-    private AMaterial m = null;
+    private Material m = null;
     int amount;
     public boolean isMaterial;
     public Composition comp; //the next one in the linked list
@@ -19,13 +24,13 @@ public class Composition extends AData {
         this.e = e;
         this.amount = amount;
     }
-    public Composition(String name, AMaterial m) {
+    public Composition(String name, Material m) {
         super(name);
         this.m = m;
         this.amount = 1;
         this.isMaterial = true;
     }
-    public Composition(String name, AMaterial m, int amount) {
+    public Composition(String name, Material m, int amount) {
         super(name);
         this.m = m;
         this.amount = amount;
@@ -42,11 +47,11 @@ public class Composition extends AData {
         //0-9: \u2080-\u2089
 
         StringBuilder sb = new StringBuilder();
-        if (this.isMaterial) {
+/*        if (this.isMaterial) {
             sb.append(this.m.composition);
         } else {
             sb.append(this.e);
-        }
+        }*/
         if (this.amount != 1) {
             sb.append(this.amount);
         }
@@ -62,7 +67,12 @@ public class Composition extends AData {
     }
 
     @Override
-    public String build() {
+    public String buildMaterial() {
         return "NULL";
+    }
+
+    @Override
+    public String buildRecipe() {
+        return null;
     }
 }

@@ -1,4 +1,4 @@
-package Main.Data;
+package Main.Data.Custom;
 
 public class Block extends ALocalizedData {
     //defines block properties for one block
@@ -35,7 +35,7 @@ public class Block extends ALocalizedData {
     }
 
     @Override
-    public String build() {
+    public String buildMaterial() {
         //genBlock("mica", "Mica", <blockMaterial:rock>, 5, 6, "pickaxe", 1);
         return "genBlock(\"" + this.name + "\", \"" + this.localName + "\", <blockMaterial:" + this.material + ">, "
                 + this.hardness + ", " + this.resistance + ", \"" + this.tool + "\", " + this.miningLevel + ");\n";

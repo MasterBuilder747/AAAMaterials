@@ -1,10 +1,10 @@
-package Main.Data;
+package Main.Data.Custom;
 
-public class Fluid extends ALocalizedData {
+public class Liquid extends ALocalizedData {
     String color;
     public boolean gas;
 
-    public Fluid(String name, String localName, String color, boolean gas) {
+    public Liquid(String name, String localName, String color, boolean gas) {
         super(name, localName);
         this.color = color;
         this.gas = gas;
@@ -16,7 +16,7 @@ public class Fluid extends ALocalizedData {
     }
 
     @Override
-    public String build() {
+    public String buildMaterial() {
         //genFluid("fluid", "101010", true);
         return "genFluid(\"" + this.name + "\", \"" + this.color + "\", " + this.gas + ");\n";
     }

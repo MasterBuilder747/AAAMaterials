@@ -1,6 +1,6 @@
-package Main.Recipe;
+package Main.Data.Material;
 
-public class Gem {
+public class Gem extends AMaterialData {
     //automatically adds gem parts, no parameters for now
     //note that a gem is conventionally not smeltable into ingot
     //a recipe definition of obtaining via gem prospecting will be here later though
@@ -15,7 +15,22 @@ public class Gem {
 	"gem_exquisite"
     */
 
-    Gem() {
+    Gem(Material m) {
+        super(m);
+    }
+
+    @Override
+    public String buildMaterial() {
+        return null;
+    }
+
+    @Override
+    public String buildRecipe() {
+        return null;
+    }
+
+    @Override
+    public void print() {
 
     }
 }

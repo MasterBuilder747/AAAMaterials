@@ -1,7 +1,7 @@
 package Main.Generators;
 
 import Main.Data.Property;
-import Main.Materials;
+import Main.MainMaterials;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -21,7 +21,7 @@ public abstract class AGProperty extends AGenerator<Property> {
             error("Commas not allowed in this file");
         }
         String s2 = null;
-        if (Materials.isNumeric(s1) && !s1.startsWith("0")) {
+        if (MainMaterials.isNumeric(s1) && !s1.startsWith("0")) {
             br.readLine(); //symbol
             s2 = br.readLine(); //name
         }
