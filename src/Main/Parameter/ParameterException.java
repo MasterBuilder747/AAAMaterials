@@ -1,4 +1,4 @@
-package Main.Generators;
+package Main.Parameter;
 
 public class ParameterException extends RuntimeException {
     public ParameterException(String s, String type, String filename, int line) {

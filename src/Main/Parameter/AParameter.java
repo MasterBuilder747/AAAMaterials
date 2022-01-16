@@ -1,4 +1,5 @@
-package Main.Generators;
+package Main.Parameter;
+
 
 public abstract class AParameter<D> {
     String type;

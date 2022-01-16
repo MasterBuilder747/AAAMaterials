@@ -3,6 +3,9 @@ package Main.Data.Material;
 //data > material > molecule > chemical(m) > metal
 public class Metal extends AMaterialData {
     //this is a malleable metal, which means that it can be molded into different metal parts
+
+
+
     public Metal(Material m) {
         super(m);
 //        this.setParts("smelt");

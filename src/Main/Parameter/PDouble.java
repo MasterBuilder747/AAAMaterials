@@ -1,4 +1,4 @@
-package Main.Generators;
+package Main.Parameter;
 
 public class PDouble extends AParameter<Double> {
     PDouble(String filename, int num) {

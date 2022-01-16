@@ -1,4 +1,4 @@
-package Main.Generators;
+package Main.Parameter;
 
 public class PInt extends AParameter<Integer> {
     PInt(String filename, int num) {

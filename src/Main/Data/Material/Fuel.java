@@ -1,6 +1,8 @@
 package Main.Data.Material;
 
 public class Fuel extends AMaterialData {
+    //furnace.setFuel(<minecraft:coal:1>, 800);
+
     public Fuel(Material m) {
         super(m);
     }

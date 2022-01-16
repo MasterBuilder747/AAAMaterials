@@ -1,6 +1,6 @@
-package Main.Generators;
+package Main.Parameter;
 
-public class PString extends AParameter<String>{
+public class PString extends AParameter<String> {
     PString(String filename, int num) {
         super("string", filename, num);
     }

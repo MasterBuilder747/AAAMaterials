@@ -1,4 +1,4 @@
-package Main.Generators;
+package Main.Parameter;
 
 public class PBool extends AParameter<Boolean> {
     PBool(String filename, int num) {

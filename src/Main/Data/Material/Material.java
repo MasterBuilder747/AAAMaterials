@@ -39,10 +39,10 @@ public class Material extends AData {
     Colorable colorable; //any item that can be colored using dye, creates colorizer machine recipes for it
     Natural natural; //for any natural misc items that needs methane/other extraction of chemicals
     MobDrop mobDrop; //for processing of mob drops for late/endgame farming machines
-    Food food; //not a crop, does not have planting/farming ability, for cooking system/nutritional system, seasonal system (mostly for survival pack version)
-    Crop crop; //the primitive crop and product, or cooking system/nutritional system, seasonal system (mostly for survival pack version)
     //mod compat
-    Tinkers tinkers; //allows this material to have tinker's armor and tool materials
+    Crop crop; //the primitive crop and product, or cooking system/nutritional system, seasonal system (mostly for survival pack version)
+    Food food; //not a crop, does not have planting/farming ability, for cooking system/nutritional system, seasonal system (mostly for survival pack version)
+    Tinkers tinkers; //allows this material to have tinker's armor and tool materials, recipe only
     //Chicken chicken; //skyblock pack?
 
     //1) set basic info
