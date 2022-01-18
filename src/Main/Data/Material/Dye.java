@@ -1,9 +1,9 @@
 package Main.Data.Material;
 
-public class Flower extends AMaterialData {
+public class Dye extends AMaterialData {
     String color;
 
-    public Flower(Material m) {
+    public Dye(Material m) {
         super(m);
     }
 

@@ -2,6 +2,7 @@ package Main.Data.Material;
 
 import Main.Data.AData;
 
+//data > material
 public abstract class AMaterialData extends AData {
     Material m; //in case basic data is needed
 

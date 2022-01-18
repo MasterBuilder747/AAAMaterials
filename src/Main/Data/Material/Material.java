@@ -2,6 +2,10 @@ package Main.Data.Material;
 
 import Main.Data.AData;
 import Main.Data.Custom.Liquid;
+import Main.Data.Material.Malleable.Alloy;
+import Main.Data.Material.Malleable.Metal;
+import Main.Data.Material.Malleable.Plastic;
+import Main.Data.Material.Malleable.Rubber;
 
 //data > material
 public class Material extends AData {
@@ -25,20 +29,27 @@ public class Material extends AData {
     Plasma plasma; //standalone gas (usually chemical), may allow changing of state (usually made in fusion)
     Matter matter; //a colored matter, positive and negative
     Data data; //the universal data liquid
-    //main
+
+    //inherits Malleable
     Metal metal; //Parts registered, metal processing, molten, blast furnace optional here
-    Ore ore; //World generation, processing, rock variant registration and processing, void ore processing, other planet gen?
-    Gem gem; //Gem prospecting via geodes, sifting, other byproducts
     Alloy alloy; //metal compound
+    Plastic plastic; //usually has a pulp, a poly-... and is made with the plastic process from a chemical
+    Rubber rubber; //might use poly-... but is more used in conveyor belts and pumps and insulation, etc
+
+    Ore ore; //World generation, processing, rock variant registration and processing, void ore processing, other planet gen?
+
+    Gem gem; //Gem prospecting via geodes, sifting, other byproducts
+
     //natural
     Ground ground; //for any ground block that naturally, clay, sand, gravel, dirt, mud, etc.
     Fuel fuel; //for coal, charcoal, etc, adds a burnable trait, other processing
     Wood wood; //Logs, planks, sticks, leaves, sawmill, sap/resin/oil/etc processing, other use, tree generation on other planet?
     Stone stone; //Custom or existing rocks that generate in the world or used in ores, uses a block and has other parts too
-    Flower flower; //associates with a dye color, existing
+    Dye dye; //associates with a dye color, existing
     Colorable colorable; //any item that can be colored using dye, creates colorizer machine recipes for it
     Natural natural; //for any natural misc items that needs methane/other extraction of chemicals
     MobDrop mobDrop; //for processing of mob drops for late/endgame farming machines
+
     //mod compat
     Crop crop; //the primitive crop and product, or cooking system/nutritional system, seasonal system (mostly for survival pack version)
     Food food; //not a crop, does not have planting/farming ability, for cooking system/nutritional system, seasonal system (mostly for survival pack version)

@@ -1,24 +1,26 @@
-package Main.Data.Material;
+package Main.Data.Material.Malleable;
 
-//data > material > compound > chemical(c) > alloy(metal)
-public class Alloy extends AMaterialData {
+import Main.Data.Material.Material;
+
+//data > material > malleable > alloy
+public class Alloy extends MMalleable {
 
     public Alloy(Material m) {
         super(m);
     }
 
     @Override
-    public void print() {
-
-    }
-
-    @Override
-    public String buildMaterial() {
+    String buildMetalPartMaterials() {
         return null;
     }
 
     @Override
-    public String buildRecipe() {
+    String buildMetalPartRecipes() {
+        return null;
+    }
+
+    @Override
+    String printMetalParts() {
         return null;
     }
 /*

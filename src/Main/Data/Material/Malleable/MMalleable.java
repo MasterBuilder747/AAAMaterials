@@ -1,27 +1,41 @@
-package Main.Data.Material;
+package Main.Data.Material.Malleable;
 
-//data > material > molecule > chemical(m) > metal
-public class Metal extends AMaterialData {
-    //this is a malleable metal, which means that it can be molded into different metal parts
+import Main.Data.Material.AMaterialData;
+import Main.Data.Material.Material;
 
-
-
-    public Metal(Material m) {
-        super(m);
+//data > material > malleable
+public abstract class MMalleable extends AMaterialData {
+    public MMalleable(Material m) {
 //        this.setParts("smelt");
 //        this.setParts("");
+        super(m);
     }
 
     @Override
     public String buildMaterial() {
-        return null;
+        StringBuilder sb = new StringBuilder();
+        sb.append(buildMetalPartMaterials());
+        //append any script related to parent here
+        return sb.toString();
     }
 
     @Override
     public String buildRecipe() {
-        return null;
+        StringBuilder sb = new StringBuilder();
+        sb.append(buildMetalPartRecipes());
+        //append any script related to parent here
+        return sb.toString();
     }
-//    public void conductive() {
+
+    @Override
+    public void print() {
+        StringBuilder sb = new StringBuilder();
+        sb.append(printMetalParts());
+        //append any script related to parent here
+        System.out.println(sb.toString());
+    }
+
+    //    public void conductive() {
 //        this.setParts("conductive");
 //    }
 
@@ -118,8 +132,7 @@ public class Metal extends AMaterialData {
     */
     int voltageTier;
 
-    @Override
-    public void print() {
-
-    }
+    abstract String buildMetalPartMaterials();
+    abstract String buildMetalPartRecipes();
+    abstract String printMetalParts();
 }
