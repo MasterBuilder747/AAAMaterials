@@ -5,6 +5,8 @@ import Main.Data.Material.Material;
 
 //data > material > malleable
 public abstract class MMalleable extends AMaterialData {
+    double meltingMultiplier = 1; //default is 1, but if 0, then recipes won't be generated
+
     public MMalleable(Material m) {
 //        this.setParts("smelt");
 //        this.setParts("");

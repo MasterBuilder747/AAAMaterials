@@ -6,8 +6,9 @@ public class Part extends ALocalizedData {
     boolean hasOverlay;
     String oreDict;
     boolean exists;
+    double amount; //amount of material this has in it; 1 = 1 ingot
 
-    public Part(String name, String localName, boolean hasOverlay) {
+    public Part(String name, String localName, boolean hasOverlay, double amount) {
         super(name, localName);
         this.type = "item"; //default
         this.hasOverlay = hasOverlay;
@@ -16,13 +17,15 @@ public class Part extends ALocalizedData {
             int s = this.oreDict.indexOf("_");
             this.oreDict = this.oreDict.substring(0, s)+this.oreDict.substring(s+1, s+2).toUpperCase()+this.oreDict.substring(s+2);
         }
+        this.amount = amount;
     }
     //this part already exists in contentTweaker
     //to be used in a PartGroup
-    public Part(String name, String localName, String oreDict) {
+    public Part(String name, String localName, String oreDict, double amount) {
         super(name, localName);
         this.exists = true;
         this.oreDict = oreDict;
+        this.amount = amount;
     }
 
     @Override
