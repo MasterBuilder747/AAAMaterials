@@ -55,7 +55,8 @@ fibers, %s-Fibers, false, 0
 fine_dust, Fine-%s-Dust, false, 1
 fine_wire, Fine-%s-Wire, true, 0.222222222222222
 foil, %s-Foil, false, 0.25
-gearbox, %s-Gearbox, false, [2 gears, 4 small gears, 4 screwed plates, 2 plates, 2 axles]
+gearbox, %s-Gearbox, false, 12.277777777777778
+/gearbox:[2 gears, 4 small gears, 4 screwed plates, 2 plates, 2 axles]
 gem, %s, false, 1
 hot_ingot, Hot-%s-Ingot, true, -1
 infused_wafer, Infused-%s-Wafer, false, 0
@@ -71,22 +72,24 @@ powder, %s-Powder, false, 1
 pure_dust, Pure-%s-Dust, true, 0
 rail, %s-Rail, false, 2.25
 raw_ore, Raw-%s-Ore, true, 0
-rotor, %s-Rotor, false, 3.25, 1.333333333333333
+rotor, %s-Rotor, false, 3.25
 saw_blade, %s-Saw-Blade, false, 1.5
 scrap, %s-Scrap, false, 0
 screw, %s-Screw, false, 0.25
-screwed_plate, Screwed-%s-Plate, false, [8 screws, 1 plate, 8 bolts]
+screwed_plate, Screwed-%s-Plate, false, 3.777777777777778
+/screwed_plate:[8 screws, 1 plate, 8 bolts]
 small_bolt, Small-%s-Bolt, false, 0.111111111111111
 small_casing, Small-%s-Casing, false, 0.444444444444444
 small_centrifuged_ore, Small-Centrifuged-%s-Ore, false, -0.25
 small_crushed_ore, Small-Crushed-%s-Ore, true, -0.25
 small_fine_dust, Small-Fine-%s-Dust, false, -0.25
-small_gear, Small-%s-Gear, false, 0.333333333333333
+small_gear, Small-%s-Gear, false, 0.5
 small_plate, Small-%s-Plate, false, 0.25
 small_powder, Small-%s-Powder, false, 0.25
 small_purified_ore, Small-Purified-%s-Ore, false, -0.25
 small_rod, Small-%s-Rod, false, 0.222222222222222
-small_screwed_plate, Small-Screwed-%s-Plate, false, [1 small plate, 4 screws, 4 small bolts]
+small_screwed_plate, Small-Screwed-%s-Plate, false, 1.6944444444444
+/small_screwed_plate:[1 small plate, 4 screws, 4 small bolts]
 small_spring, Small-%s-Spring, false, 0.111111111111111
 solid_metal, Solid-%s-Metal, false, 4
 spring, %s-Spring, false, 0.333333333333333

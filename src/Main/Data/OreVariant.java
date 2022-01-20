@@ -20,7 +20,7 @@ public class OreVariant extends AData {
 
     @Override
     public String buildMaterial() {
-        return "NULL";
+        return null;
     }
 
     @Override

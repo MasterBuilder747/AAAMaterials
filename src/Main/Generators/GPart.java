@@ -14,7 +14,7 @@ public class GPart extends ALocal<Part> {
     @Override
     protected void readLine(BufferedReader br, String[] s) throws IOException {
         if (s.length < 3 || s.length > 4) {
-            error(new int[]{2, 3});
+            error(new int[]{3, 4});
         }
         if (s.length == 3) {
             //String existingPartName, String oreDict, double amount

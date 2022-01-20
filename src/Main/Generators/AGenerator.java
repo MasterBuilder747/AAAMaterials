@@ -2,6 +2,7 @@ package Main.Generators;
 
 import Main.Data.AData;
 import Main.MainMaterials;
+import Main.Util;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
@@ -33,7 +34,7 @@ public abstract class AGenerator<D extends AData> {
         //write: build the zs code if needed
         StringBuilder sb = new StringBuilder();
         if (objects.size() > 0) {
-            if (!objects.get(0).buildMaterial().matches("NULL")) { //indicates that the generator doesn't need to build anything
+            if (objects.get(0).buildMaterial() != null) { //indicates that the generator doesn't need to build anything
                 //output the zs code for each object
                 sb.append("# -").append(this.filename).append("s\n");
                 for (D o : objects) {
@@ -70,7 +71,7 @@ public abstract class AGenerator<D extends AData> {
             s1 = br.readLine();
             if (s1 != null) {
                 if (s1.charAt(0) != '/') { //commented out line, ignored
-                    s = s1.replace(" ", "").split(",\\s*");
+                    s = Util.split(s1.replace(" ", ""), ",");
                     //if (s.length == this.numParams) {
                         readLine(br, s);
                         //error(s.length + " is the incorrect amount of parameters. Expected " + this.numParams);
@@ -103,7 +104,7 @@ public abstract class AGenerator<D extends AData> {
     public void print() {
         System.out.println(this.filename +":");
         for (D o : objects) {
-            System.out.println(o.name);
+            o.print();
         }
         System.out.println();
     }

@@ -1,6 +1,9 @@
 package Main;
 
 import Main.Generators.*;
+import Main.Json.Builder;
+import Main.Json.JsonObject;
+import Main.Json.Value;
 
 import java.io.*;
 
@@ -44,6 +47,11 @@ public class MainMaterials {
         bw.write(partGroup.registerMaterials());
         GElement element = new GElement("element");
         bw.write(element.registerMaterials());
+        GMaterial material = new GMaterial("material");
+        bw.write(material.registerMaterials());
+        GOreRegistry oreRegistry = new GOreRegistry("oreregistrie", material);
+        oreRegistry.registerMaterials();
+        oreRegistry.print();
 //        CMolecule molecule = new CMolecule("moleculeComposition", element);
 //        bw.write(molecule.register());
 //        GCompound compound = new GCompound("compoundComposition", element);

@@ -24,6 +24,7 @@ public class GRecipe extends AGenerator<MachineRecipe> {
         //ex: basic, 4, 20, 1.0, ore:ingotIron; minecraft:wool:2 * 5, minecraft:gold_ingot * 2, water, lava, hydrogen, oxygen, 1000, -red*100, +orange*10, 0
         if (s.length != 13 && s.length != 14) error(new int[]{13, 14});
         MachineRecipe r = new MachineRecipe(s[0], s[0]+line, Integer.parseInt(s[1]), Integer.parseInt(s[2]), Double.parseDouble(s[3]));
+        Util.split();
         String[] itemI = s[4].split(";\\s*");
         String[] liquidI = s[5].split(";\\s*");
         String[] itemO = s[6].split(";\\s*");

@@ -1,0 +1,2 @@
+/materialName, poorOreRegistry:meta, oreRegistry:meta, denseOreRegistry:meta
+lumium, sub_block_holder_0:3, sub_block_holder_0:9, sub_block_holder_0:8

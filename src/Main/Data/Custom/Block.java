@@ -37,7 +37,7 @@ public class Block extends ALocalizedData {
     @Override
     public String buildMaterial() {
         //genBlock("mica", "Mica", <blockMaterial:rock>, 5, 6, "pickaxe", 1);
-        return "genBlock(\"" + this.name + "\", \"" + this.localName + "\", <blockMaterial:" + this.material + ">, "
+        return "genBlock(\"" + this.name + "\", <blockMaterial:" + this.material + ">, "
                 + this.hardness + ", " + this.resistance + ", \"" + this.tool + "\", " + this.miningLevel + ");\n";
     }
 

@@ -1,6 +1,4 @@
-package Main.Data;
-
-import Main.Recipe.MachineRecipe;
+package Main.Recipe;
 
 public class OredictRecipe extends MachineRecipe {
 

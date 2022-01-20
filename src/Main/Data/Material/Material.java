@@ -94,8 +94,8 @@ public class Material extends AData {
             //2) generate parts, ores, blocks (get variable arrays)
             //Material.registerParts(ore);
             //var ores = Material.registerParts(ore_types);
-            sb.append(this.itemParts);
-            sb.append(this.blockParts);
+//            sb.append(this.itemParts);
+//            sb.append(this.blockParts);
         } else if (isState("liquid")) {
             //color for liquid/gas materials must be in hex
             sb.append(new Liquid(this.name, this.LOCALNAME, this.color.substring(1), false).buildMaterial());

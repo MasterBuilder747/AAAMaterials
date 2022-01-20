@@ -3,6 +3,7 @@ package Main.Generators;
 import Main.Data.Material.Ore;
 import Main.Data.OreType;
 import Main.Data.OreVariant;
+import Main.Util;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -34,7 +35,7 @@ public class GOre extends AGenerator<Ore> {
         System.arraycopy(s, 1, ores, 0, ores.length);
         ArrayList<OreType> oreTypes = new ArrayList<>();
         for (String block : ores) {
-            String[] s2 = block.split(":\\s*");
+            String[] s2 = Util.split(block, ":");
             String ore_name = s2[0]; //the name of the ore block part
             String[] variants = new String[s2.length-1];
             for (int i = 0; i < variants.length; i++) {
@@ -42,7 +43,7 @@ public class GOre extends AGenerator<Ore> {
             }
             ArrayList<OreVariant> vars = new ArrayList<>();
             for (String variant : variants) {
-                String[] attributes = variant.split(";\\s*");
+                String[] attributes = Util.split(variant, ";");
                 if (attributes.length != 4) {
                     error("Not all block attributes are defined for variant " + attributes[0] + " for ore block type " + ore_name + " for ore of name " + name);
                 }

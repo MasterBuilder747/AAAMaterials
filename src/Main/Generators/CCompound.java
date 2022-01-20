@@ -1,6 +1,7 @@
 package Main.Generators;
 
 import Main.Data.Material.Composition;
+import Main.Util;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -17,7 +18,7 @@ public class CCompound extends AComposition {
     public Composition createCompound(String s) {
         //[molecule1; molecule2*2; molecule3 * 3]
         String s1 = s.substring(1, s.length()-1);
-        String[] moles = s1.split(";\\s*");
+        String[] moles = Util.split(s1, ";");
 
         ArrayList<Composition> comps = new ArrayList<>();
 //        for (String name : moles) {

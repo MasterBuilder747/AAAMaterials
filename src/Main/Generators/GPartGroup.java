@@ -2,6 +2,7 @@ package Main.Generators;
 
 import Main.Data.Custom.Part;
 import Main.Data.PartGroup;
+import Main.Util;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -24,7 +25,7 @@ public class GPartGroup extends AGenerator<PartGroup> {
         String trim = s1.replaceAll(" ", "");
         String name = trim.substring(0, trim.indexOf(":"));
         String s2 = trim.substring(trim.indexOf(":")+1);
-        String[] partNames = s2.split(",\\s*");
+        String[] partNames = Util.split(s2, ",");
         if (partNames.length == 0) {
             error("Empty parts");
         }

@@ -30,7 +30,7 @@ public class Property extends AData {
 
     @Override
     public String buildMaterial() {
-        return "NULL";
+        return null;
     }
 
     @Override
