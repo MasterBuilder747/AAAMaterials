@@ -13,7 +13,7 @@ public class MainMaterials {
     //2 the .lang file for localization
     private final static String PC = "C:\\Users\\jaath\\IdeaProjects\\AAAMaterials\\src\\";
     private final static String MAC = "/Users/jaudras/IdeaProjects/AAAMaterials/src/";
-    public final static String HOME = MAC; //home directory, specified at startup
+    public final static String HOME = PC; //home directory, specified at startup
     public final static String SCRIPT = "materials";
 
     public static void main(String[] args) throws IOException {
@@ -49,9 +49,14 @@ public class MainMaterials {
         bw.write(element.registerMaterials());
         GMaterial material = new GMaterial("material");
         bw.write(material.registerMaterials());
+
+        //ore jsons
         GOreRegistry oreRegistry = new GOreRegistry("oreregistrie", material);
         oreRegistry.registerMaterials();
-        oreRegistry.print();
+        FileWriter fw2 = new FileWriter(HOME+"aaaores.json");
+        BufferedWriter bw2 = new BufferedWriter(fw2);
+        bw2.write(oreRegistry.genUBJson());
+        bw2.close();
 //        CMolecule molecule = new CMolecule("moleculeComposition", element);
 //        bw.write(molecule.register());
 //        GCompound compound = new GCompound("compoundComposition", element);

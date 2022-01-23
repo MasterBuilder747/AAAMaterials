@@ -16,7 +16,9 @@ public class Ore extends AData {
     //6. hide the CoT ore blocks as they have no use other than this generation
 
     //<contenttweaker:sub_block_holder_0:8>
-    //<undergroundbiomes:igneous_stone_contenttweaker_sub_block_holder_0_9>
+    //<undergroundbiomes:igneous_stone_contenttweaker_sub_block_holder_0_9:[0-7]>
+    //<undergroundbiomes:metamorphic_stone_contenttweaker_sub_block_holder_0_9:[0-7]>
+    //<undergroundbiomes:sedimentary_stone_contenttweaker_sub_block_holder_0_9:[0-7]>
 
     public Ore(String name, OreType[] types) {
         super(name);
@@ -27,18 +29,25 @@ public class Ore extends AData {
         //builds just the CoT ore blocks
         StringBuilder sb = new StringBuilder();
         for (OreType ore : this.types) {
-            String var = this.name+ore.name; //allows for unique var name
-            sb.append("var ").append(var).append("Blocks = ").append(this.name).append(".registerParts(").append(ore.name).append("_blocks);\n");
-            sb.append("for i, ore in "); sb.append(var).append("Blocks {\n");
+            String variant = "";
+            if (ore.name.equals("poor")) {
+                variant = "Poor";
+            } else if (ore.name.equals("dense")) {
+                variant = "Dense";
+            }
+            String oreType = "ore";
+            if (ore.name.equals("poor")) {
+                oreType = "poor_ore";
+            } else if (ore.name.equals("dense")) {
+                oreType = "dense_ore";
+            }
+            String var = this.name+variant; //allows for unique var name
+            sb.append("var ").append(var).append("Ore = ").append(this.name).append(".registerPart(\"").append(oreType).append("\");\n");
             sb.append(ore.buildMaterial());
-            sb.append("}\n");
+            sb.append("\n");
         }
         sb.append("\n");
         return sb.toString();
-    }
-
-    public void buildUBJson() {
-
     }
 
     @Override

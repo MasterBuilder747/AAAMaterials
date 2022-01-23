@@ -1,0 +1,29 @@
+[
+{
+	"internalOreName": "contenttweaker:sub_block_holder_0",
+	"meta": 3,
+	"overlay": "base:blocks/poor_ore",
+	"lightValue": 0,
+	"alphaOverlay": false,
+	"oreDirectories": ["poorOreLumium"],
+	"color": "#FFFFB8"
+},
+{
+	"internalOreName": "contenttweaker:sub_block_holder_0",
+	"meta": 9,
+	"overlay": "base:blocks/ore",
+	"lightValue": 0,
+	"alphaOverlay": false,
+	"oreDirectories": ["oreLumium"],
+	"color": "#FFFFB8"
+},
+{
+	"internalOreName": "contenttweaker:sub_block_holder_0",
+	"meta": 8,
+	"overlay": "base:blocks/dense_ore",
+	"lightValue": 0,
+	"alphaOverlay": false,
+	"oreDirectories": ["denseOreLumium"],
+	"color": "#B9FFFF"
+}
+]

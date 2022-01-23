@@ -1,11 +1,14 @@
 package Main.Generators;
 
 import Main.Data.Material.OreRegistry;
+import Main.Json.Builder;
+import Main.Json.JsonObject;
 import Main.RegistryName;
 import Main.Util;
 
 import java.io.BufferedReader;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Arrays;
 
 public class GOreRegistry extends AGenerator<OreRegistry> {
@@ -53,5 +56,17 @@ public class GOreRegistry extends AGenerator<OreRegistry> {
         } else {
             error("Unknown material " + s[0]);
         }
+    }
+
+    public String genUBJson() {
+        ArrayList<JsonObject> jsons = new ArrayList<>();
+        for (OreRegistry og : this.objects) {
+            JsonObject[] ins = og.generateUBJson();
+            jsons.add(ins[0]);
+            jsons.add(ins[1]);
+            jsons.add(ins[2]);
+        }
+        Builder b = new Builder(jsons.toArray(new JsonObject[0]));
+        return b.print();
     }
 }

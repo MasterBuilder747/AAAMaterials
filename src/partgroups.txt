@@ -13,6 +13,3 @@ string_parts: fiber, fibers, dense_fibers
 semi_conductive_parts: boule, infused_boule, wafer, infused_wafer
 wood_parts: wood_plate, stick, long_stick
 stone_parts: stone_plate, pebble
-ore_blocks: ore
-poor_blocks: poor_ore
-dense_blocks: dense_ore

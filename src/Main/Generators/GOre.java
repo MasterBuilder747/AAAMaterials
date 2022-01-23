@@ -24,7 +24,7 @@ public class GOre extends AGenerator<Ore> {
         //ore: stone; 4; 6; 2: netherrack; 4; 6; 2: end_stone: 4; 9; 2: gravel; 2; 1; 2: bedrock; 50; 1200; 3,
         //poor: stone; 3; 6; 2: netherrack; 3; 6; 2: end_stone: 3; 9; 2: gravel; 1; 1; 2: bedrock; 40; 1200; 3,
         //dense: stone; 5; 6; 2: netherrack; 5; 6; 2: end_stone: 5; 9; 2: gravel; 3; 1; 2: bedrock; 70; 1200; 3
-        String name = s[0]; //the name of the entire ore itself
+        String material = s[0];
 //        if (!mol.is(name)) {
 //            error("Unknown molecule material " + name);
 //        }
@@ -45,7 +45,7 @@ public class GOre extends AGenerator<Ore> {
             for (String variant : variants) {
                 String[] attributes = Util.split(variant, ";");
                 if (attributes.length != 4) {
-                    error("Not all block attributes are defined for variant " + attributes[0] + " for ore block type " + ore_name + " for ore of name " + name);
+                    error("Not all block attributes are defined for variant " + attributes[0] + " for ore block type " + ore_name + " for ore of name " + material);
                 }
                 String var_name; //name of the variant
                 if (attributes[0].contains(":")) {
@@ -65,8 +65,8 @@ public class GOre extends AGenerator<Ore> {
                     error("Unknown variant " + var_name);
                 }
             }
-            oreTypes.add(new OreType(ore_name, vars.toArray(new OreVariant[0])));
+            oreTypes.add(new OreType(material, ore_name, vars.toArray(new OreVariant[0])));
         }
-        objects.add(new Ore(name, oreTypes.toArray(new OreType[0])));
+        objects.add(new Ore(material, oreTypes.toArray(new OreType[0])));
     }
 }
