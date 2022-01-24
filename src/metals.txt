@@ -1,0 +1,11 @@
+/material --more properties added later like conductive, blasting etc
+iron
+tin
+copper
+lumium
+iridium
+platinum
+osmium
+thorium
+uranium
+zinc

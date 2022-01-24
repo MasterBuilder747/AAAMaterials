@@ -6,7 +6,7 @@
 	"lightValue": 0,
 	"alphaOverlay": false,
 	"oreDirectories": ["poorOreLumium"],
-	"color": "#FFFFB8"
+	"color": "#ffffb9"
 },
 {
 	"internalOreName": "contenttweaker:sub_block_holder_0",
@@ -15,7 +15,7 @@
 	"lightValue": 0,
 	"alphaOverlay": false,
 	"oreDirectories": ["oreLumium"],
-	"color": "#FFFFB8"
+	"color": "#ffffb9"
 },
 {
 	"internalOreName": "contenttweaker:sub_block_holder_0",
@@ -24,6 +24,6 @@
 	"lightValue": 0,
 	"alphaOverlay": false,
 	"oreDirectories": ["denseOreLumium"],
-	"color": "#B9FFFF"
+	"color": "#ffffb9"
 }
 ]

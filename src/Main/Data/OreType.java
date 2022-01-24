@@ -5,7 +5,7 @@ import Main.Util;
 public class OreType extends AData {
     //comma-separated
     OreVariant[] oreVariants;
-    String type;
+    public String type;
 
     public OreType(String name, String type, OreVariant[] oreVariants) {
         super(name); //the material name

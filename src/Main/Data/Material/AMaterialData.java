@@ -4,7 +4,7 @@ import Main.Data.AData;
 
 //data > material
 public abstract class AMaterialData extends AData {
-    Material m; //in case basic data is needed
+    protected Material m; //in case basic data is needed
 
     public AMaterialData(Material m) {
         super(m.name);

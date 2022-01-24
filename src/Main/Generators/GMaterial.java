@@ -1,9 +1,10 @@
 package Main.Generators;
 
 import Main.Data.Material.Material;
+import Main.MainMaterials;
+import Main.Util;
 
-import java.io.BufferedReader;
-import java.io.IOException;
+import java.io.*;
 
 public class GMaterial extends AGenerator<Material> {
     public GMaterial(String filename) {

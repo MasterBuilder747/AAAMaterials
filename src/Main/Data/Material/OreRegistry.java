@@ -3,13 +3,8 @@ package Main.Data.Material;
 import Main.Data.AData;
 import Main.Json.JsonObject;
 import Main.Json.Value;
-import Main.MainMaterials;
 import Main.RegistryName;
 import Main.Util;
-
-import java.io.BufferedWriter;
-import java.io.FileWriter;
-import java.io.IOException;
 
 public class OreRegistry extends AData {
     Material m; //the material being mapped to this registry

@@ -17,6 +17,7 @@ public class MainMaterials {
     public final static String SCRIPT = "materials";
 
     public static void main(String[] args) throws IOException {
+        //materials.zs
         FileWriter fw = new FileWriter(HOME + SCRIPT + ".zs");
         BufferedWriter bw = new BufferedWriter(fw);
 
@@ -50,28 +51,31 @@ public class MainMaterials {
         GMaterial material = new GMaterial("material");
         bw.write(material.registerMaterials());
 
-        //ore jsons
-        GOreRegistry oreRegistry = new GOreRegistry("oreregistrie", material);
-        oreRegistry.registerMaterials();
-        FileWriter fw2 = new FileWriter(HOME+"aaaores.json");
-        BufferedWriter bw2 = new BufferedWriter(fw2);
-        bw2.write(oreRegistry.genUBJson());
-        bw2.close();
-//        CMolecule molecule = new CMolecule("moleculeComposition", element);
-//        bw.write(molecule.register());
-//        GCompound compound = new GCompound("compoundComposition", element);
-//        bw.write(compound.register());
+        //add material data
+        GMetal metal = new GMetal("metal", material);
+        bw.write(metal.registerMaterials());
 
         //ore system
         GVariant variant = new GVariant("variant");
         bw.write(variant.registerMaterials());
         GOre ore = new GOre("ore", variant);
         bw.write(ore.registerMaterials());
-
+        //        CMolecule molecule = new CMolecule("moleculeComposition", element);
+//        bw.write(molecule.register());
+//        GCompound compound = new GCompound("compoundComposition", element);
+//        bw.write(compound.register());
         //finish
         bw.close();
 
-        //generate the .lang file based off of what is registered at this point
+        //ore .json file
+        GOreRegistry oreRegistry = new GOreRegistry("oreregistrie", material);
+        oreRegistry.registerMaterials();
+        fw = new FileWriter(HOME+"aaaores.json");
+        bw = new BufferedWriter(fw);
+        bw.write(oreRegistry.genUBJson());
+        bw.close();
+
+        //.lang file
         //path: .minecraft/resources/contenttweaker/lang/en_us.lang
         fw = new FileWriter(HOME +"en_us.lang");
         bw = new BufferedWriter(fw);

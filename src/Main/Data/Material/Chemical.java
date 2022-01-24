@@ -19,7 +19,7 @@ public class Chemical extends AMaterialData {
     public Chemical(Material m, Composition c) {
         super(m);
         if (m.isState("solid")) {
-            m.setParts("dust");
+            //m.setParts("dust");
         }
     }
 

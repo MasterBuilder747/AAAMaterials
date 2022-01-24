@@ -3,24 +3,24 @@ package Main.Data.Material.Malleable;
 import Main.Data.Material.Material;
 
 //data > material > malleable > alloy
-public class Alloy extends MMalleable {
+public class Alloy extends AMalleable {
 
     public Alloy(Material m) {
-        super(m);
+        super(m, 1);
     }
 
     @Override
-    String buildMetalPartMaterials() {
+    String buildPartMaterials() {
         return null;
     }
 
     @Override
-    String buildMetalPartRecipes() {
+    String buildPartRecipes() {
         return null;
     }
 
     @Override
-    String printMetalParts() {
+    String printParts() {
         return null;
     }
 /*

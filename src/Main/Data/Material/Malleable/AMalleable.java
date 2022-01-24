@@ -4,10 +4,17 @@ import Main.Data.Material.AMaterialData;
 import Main.Data.Material.Material;
 
 //data > material > malleable
-public abstract class MMalleable extends AMaterialData {
-    double meltingMultiplier = 1; //default is 1, but if 0, then recipes won't be generated
+public abstract class AMalleable extends AMaterialData {
+    double meltingMultiplier; //default is 1, but if 0, then recipes won't be generated,
+    //negative numbers indicate the value of this material, but it cannot be melted
 
-    public MMalleable(Material m) {
+    public AMalleable(Material m, double meltingMultiplier) {
+        /*
+        public void setParts(String s) {
+            this.itemParts = this.itemParts + this.name+".registerParts("+s+"_parts);\n";
+        }
+        */
+
 //        this.setParts("smelt");
 //        this.setParts("");
 
@@ -21,12 +28,13 @@ public abstract class MMalleable extends AMaterialData {
         //5. blast furnace to gas since there is no liquid form and it is so hot it is gaseous > gas freezer/etc to ingot/gas shape?
         //6. fusion furnace to plasma > ingot through plasma cooling chamber/etc
         super(m);
+        this.meltingMultiplier = meltingMultiplier;
     }
 
     @Override
     public String buildMaterial() {
         StringBuilder sb = new StringBuilder();
-        sb.append(buildMetalPartMaterials());
+        sb.append(buildPartMaterials());
         //append any script related to parent here
         return sb.toString();
     }
@@ -34,7 +42,7 @@ public abstract class MMalleable extends AMaterialData {
     @Override
     public String buildRecipe() {
         StringBuilder sb = new StringBuilder();
-        sb.append(buildMetalPartRecipes());
+        sb.append(buildPartRecipes());
         //append any script related to parent here
         return sb.toString();
     }
@@ -42,7 +50,7 @@ public abstract class MMalleable extends AMaterialData {
     @Override
     public void print() {
         StringBuilder sb = new StringBuilder();
-        sb.append(printMetalParts());
+        sb.append(printParts());
         //append any script related to parent here
         System.out.println(sb.toString());
     }
@@ -144,7 +152,7 @@ public abstract class MMalleable extends AMaterialData {
     */
     int voltageTier;
 
-    abstract String buildMetalPartMaterials();
-    abstract String buildMetalPartRecipes();
-    abstract String printMetalParts();
+    abstract String buildPartMaterials();
+    abstract String buildPartRecipes();
+    abstract String printParts();
 }

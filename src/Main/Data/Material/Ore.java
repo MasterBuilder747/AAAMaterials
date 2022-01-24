@@ -29,20 +29,13 @@ public class Ore extends AData {
         //builds just the CoT ore blocks
         StringBuilder sb = new StringBuilder();
         for (OreType ore : this.types) {
-            String variant = "";
-            if (ore.name.equals("poor")) {
-                variant = "Poor";
-            } else if (ore.name.equals("dense")) {
-                variant = "Dense";
-            }
             String oreType = "ore";
-            if (ore.name.equals("poor")) {
+            if (ore.type.equals("Poor")) {
                 oreType = "poor_ore";
-            } else if (ore.name.equals("dense")) {
+            } else if (ore.type.equals("Dense")) {
                 oreType = "dense_ore";
             }
-            String var = this.name+variant; //allows for unique var name
-            sb.append("var ").append(var).append("Ore = ").append(this.name).append(".registerPart(\"").append(oreType).append("\");\n");
+            sb.append("var ").append(this.name).append(ore.type).append("Ore = ").append(this.name).append(".registerPart(\"").append(oreType).append("\").getData();\n");
             sb.append(ore.buildMaterial());
             sb.append("\n");
         }

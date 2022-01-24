@@ -1,6 +1,6 @@
 package Main;
 
-import java.util.Arrays;
+import java.awt.*;
 import java.util.Locale;
 
 public class Util {
@@ -14,15 +14,15 @@ public class Util {
         return s.split(regex+"\\s*");
     }
 
-    //color conversions
-    public static int RGBtoInt(int[] c) {
-        return (c[0] << 24) | (c[1] << 16) | (c[2] << 8) | c[3];
+    //color conversions, alpha is ignored here
+    public static int HEXtoInt(String c) {
+        Color out = Color.decode(c);
+        return (out.getRed() << 16) | (out.getGreen() << 8) | out.getBlue();
     }
-    public static int[] IntToRGB(int c) {
-        int r = (c >> 24) & 0xff;
-        int g = (c >> 16) & 0xff;
-        int b = (c >> 8) & 0xff;
-        int a = c & 0xff;
-        return new int[]{a, r, g, b};
+    public static String IntToHEX(int c) {
+        int r = (c >> 16) & 0xff;
+        int g = (c >> 8) & 0xff;
+        int b = c & 0xff;
+        return String.format("#%02x%02x%02x", r, g, b);
     }
 }
