@@ -6,6 +6,9 @@ import Main.Data.Material.Malleable.Alloy;
 import Main.Data.Material.Malleable.Metal;
 import Main.Data.Material.Malleable.Plastic;
 import Main.Data.Material.Malleable.Rubber;
+import Main.Data.Material.State.Gas;
+import Main.Data.Material.State.SLiquid;
+import Main.Data.Material.State.Plasma;
 import Main.Util;
 
 //data > material
@@ -13,15 +16,14 @@ public class Material extends AData {
     //required components
     //name
     private final String LOCALNAME;
-    String color; //#HEX000 or 12345678
-    public String state; //solid, liquid, gas, plasma, custom
+    String color; //#HEX000 required
 
     //Material Part data, initializes to null if not registered, otherwise when building,
     //these will be read and used for various material parts and recipe generation:
     //states
     AMaterialData[] datas;
     Chemical chemical; //Chemical tooltip, breaking and forming composition recipes, if it has one
-    MLiquid liquid; //standalone liquid (usually chemical), may allow changing of state (if not default state)
+    SLiquid liquid; //standalone liquid (usually chemical), may allow changing of state (if not default state)
     Gas gas; //standalone gas (usually chemical), may allow changing of state (if not default state)
     Plasma plasma; //standalone gas (usually chemical), may allow changing of state (usually made in fusion)
     Matter matter; //a colored matter, positive and negative
@@ -53,44 +55,23 @@ public class Material extends AData {
     Tinkers tinkers; //allows this material to have tinker's armor and tool materials, recipe only
     //Chicken chicken; //skyblock pack?
 
-    public Material(String name, String localName, String color, String state) {
+    public Material(String name, String localName, String color) {
         super(name);
         this.LOCALNAME = localName;
         this.color = color;
-        this.state = state;
     }
     //int color support in case
-    public Material(String name, String localName, int color, String state) {
+    public Material(String name, String localName, int color) {
         super(name);
         this.LOCALNAME = localName;
         this.color = Util.IntToHEX(color);
-        this.state = state;
-    }
-    public boolean isState(String s) {
-        return this.state.equals(s);
     }
 
     //5) build the code based off these attributes
     @Override
     public String buildMaterial() {
-        StringBuilder sb = new StringBuilder();
-
-        if (isState("solid")) {
-            //1) build the material if solid
-            sb.append("var ").append(this.name).append(" = MaterialSystem.getMaterialBuilder().setName(\"").append(this.LOCALNAME).append("\")");
-            if (this.color.charAt(0) == '#') {
-                sb.append(".setColor(Color.fromHex(\"").append(this.color.substring(1)).append("\"))");
-            } else {
-                sb.append(".setColor(").append(this.color).append(")");
-            }
-            sb.append(".build();\n");
-        } else if (isState("liquid")) {
-            //color for liquid/gas materials must be in hex
-            sb.append(new Liquid(this.name, this.LOCALNAME, this.color.substring(1), false).buildMaterial());
-        } else if (isState("gas") || isState("plasma")) {
-            sb.append(new Liquid(this.name, this.LOCALNAME, this.color.substring(1), true).buildMaterial());
-        }
-        return sb.toString();
+        //even if non-solid, still need this in case it does have a solid form
+        return "var " + this.name + " = MaterialSystem.getMaterialBuilder().setName(\"" + this.LOCALNAME + "\")" + ".setColor(Color.fromHex(\"" + this.color.substring(1) + "\"))" + ".build();\n";
     }
 
     @Override
@@ -100,7 +81,7 @@ public class Material extends AData {
 
     @Override
     public void print() {
-        System.out.println(this.name + ", " + this.LOCALNAME + ", " + this.color + ", " + this.state);
+        System.out.println(this.name + ", " + this.LOCALNAME + ", " + this.color);
 /*
         if (this.composition.isMaterial) {
             System.out.print("compound, ");

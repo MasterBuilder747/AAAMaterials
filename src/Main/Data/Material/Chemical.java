@@ -18,9 +18,9 @@ public class Chemical extends AMaterialData {
 
     public Chemical(Material m, Composition c) {
         super(m);
-        if (m.isState("solid")) {
+        ///if (m.isState("solid")) {
             //m.setParts("dust");
-        }
+        //}
     }
 
     //element or compound? Cannot be both
