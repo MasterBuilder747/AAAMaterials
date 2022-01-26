@@ -12,6 +12,7 @@ public class GMetal extends AGMalleable<Metal> {
 
     @Override
     protected void readLine(BufferedReader br, String[] s) throws IOException {
-        objects.add(new Metal(material.get(s[0])));
+        if (s.length != 3) error(3);
+        objects.add(new Metal(material.get(s[0]), Boolean.parseBoolean(s[1]), Boolean.parseBoolean(s[2])));
     }
 }

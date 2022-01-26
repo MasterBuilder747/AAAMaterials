@@ -1,4 +1,4 @@
-package Main.Data.Custom;
+package Main.Data.Localized;
 
 import Main.Data.AData;
 

@@ -1,6 +1,6 @@
 package Main.Generators;
 
-import Main.Data.Custom.Part;
+import Main.Data.Localized.Part;
 import Main.Data.PartGroup;
 import Main.Util;
 

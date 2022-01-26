@@ -1,11 +1,11 @@
 package Main.Generators;
 
-import Main.Data.Custom.Block;
+import Main.Data.Localized.LBlock;
 
 import java.io.BufferedReader;
 import java.io.IOException;
 
-public class GBlock extends ALocal<Block> {
+public class GBlock extends ALocal<LBlock> {
 
     public GBlock(String filename) {
         super(filename);
@@ -17,7 +17,7 @@ public class GBlock extends ALocal<Block> {
         String local = s[1].replace("-", " ");
         if (s.length != 7) error(7);
         try {
-            objects.add(new Block(s[0], local, s[2], Integer.parseInt(s[3]), Integer.parseInt(s[4]), Integer.parseInt(s[5]), s[6]));
+            objects.add(new LBlock(s[0], local, s[2], Integer.parseInt(s[3]), Integer.parseInt(s[4]), Integer.parseInt(s[5]), s[6]));
         } catch (NumberFormatException e) {
             error("Invalid number format");
         }

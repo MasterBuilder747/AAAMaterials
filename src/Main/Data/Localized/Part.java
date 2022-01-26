@@ -1,4 +1,4 @@
-package Main.Data.Custom;
+package Main.Data.Localized;
 
 public class Part extends ALocalizedData {
     //this defines a material part to be used in materials
@@ -31,7 +31,7 @@ public class Part extends ALocalizedData {
     @Override
     public void print() {
         if (!this.exists) {
-            System.out.println(this.name + ": " + this.localName + ", " + this.type + ", " + this.hasOverlay + ", " + this.oreDict);
+            System.out.println(this.name + ": " + this.localName + ", " + this.type + ", " + this.hasOverlay + ", " + this.oreDict + ", " + this.amount);
         }
     }
 

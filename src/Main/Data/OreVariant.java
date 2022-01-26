@@ -1,13 +1,13 @@
 package Main.Data;
 
-import Main.Data.Custom.Block;
+import Main.Data.Localized.LBlock;
 
 public class OreVariant extends AData {
     //colon-separated
     //one block per variant definition
-    Block b;
+    LBlock b;
 
-    public OreVariant(String name, Block b) {
+    public OreVariant(String name, LBlock b) {
         super(name);
         this.b = b;
     }

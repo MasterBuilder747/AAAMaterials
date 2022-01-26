@@ -1,7 +1,6 @@
 package Main.Data.Material;
 
 import Main.Data.AData;
-import Main.Data.Custom.Liquid;
 import Main.Data.Material.Malleable.Alloy;
 import Main.Data.Material.Malleable.Metal;
 import Main.Data.Material.Malleable.Plastic;
@@ -9,6 +8,7 @@ import Main.Data.Material.Malleable.Rubber;
 import Main.Data.Material.State.Gas;
 import Main.Data.Material.State.SLiquid;
 import Main.Data.Material.State.Plasma;
+import Main.Data.Material.State.Solid;
 import Main.Util;
 
 //data > material
@@ -20,23 +20,28 @@ public class Material extends AData {
 
     //Material Part data, initializes to null if not registered, otherwise when building,
     //these will be read and used for various material parts and recipe generation:
-    //states
     AMaterialData[] datas;
     Chemical chemical; //Chemical tooltip, breaking and forming composition recipes, if it has one
+
+    //states
+    Solid solid;
     SLiquid liquid; //standalone liquid (usually chemical), may allow changing of state (if not default state)
     Gas gas; //standalone gas (usually chemical), may allow changing of state (if not default state)
     Plasma plasma; //standalone gas (usually chemical), may allow changing of state (usually made in fusion)
+
+    //later game mechanics
     Matter matter; //a colored matter, positive and negative
     Data data; //the universal data liquid
 
     //inherits Malleable
+    //partGroups: metal,
     Metal metal; //Parts registered, metal processing, molten, blast furnace optional here
     Alloy alloy; //metal compound
     Plastic plastic; //usually has a pulp, a poly-... and is made with the plastic process from a chemical
     Rubber rubber; //might use poly-... but is more used in conveyor belts and pumps and insulation, etc
 
+    //complex systems
     Ore ore; //World generation, processing, rock variant registration and processing, void ore processing, other planet gen?
-
     Gem gem; //Gem prospecting via geodes, sifting, other byproducts
 
     //natural

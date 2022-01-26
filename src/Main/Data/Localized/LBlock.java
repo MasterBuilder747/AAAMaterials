@@ -1,6 +1,6 @@
-package Main.Data.Custom;
+package Main.Data.Localized;
 
-public class Block extends ALocalizedData {
+public class LBlock extends ALocalizedData {
     //defines block properties for one block
     //semi-colon-separated in Ore definition
     public int hardness;
@@ -9,7 +9,7 @@ public class Block extends ALocalizedData {
     public String tool;
     String material;
 
-    public Block(String name, String localName, String material, int hardness, int resistance, int miningLevel, String tool) {
+    public LBlock(String name, String localName, String material, int hardness, int resistance, int miningLevel, String tool) {
         super(name, localName);
         this.material = material;
         this.hardness = hardness;
@@ -18,7 +18,7 @@ public class Block extends ALocalizedData {
         this.tool = tool;
     }
     //for variants
-    public Block(String name, String material, String tool) {
+    public LBlock(String name, String material, String tool) {
         super(name, name);
         this.material = material;
         this.tool = tool;

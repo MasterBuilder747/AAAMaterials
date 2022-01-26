@@ -320,6 +320,11 @@ var red_garnet = MaterialSystem.getMaterialBuilder().setName("Red Garnet").setCo
 var yellow_garnet = MaterialSystem.getMaterialBuilder().setName("Yellow Garnet").setColor(Color.fromHex("d6de36")).build();
 var aquamarine = MaterialSystem.getMaterialBuilder().setName("Aquamarine").setColor(Color.fromHex("229ce2")).build();
 
+# -solids
+lumium.registerParts(dust_parts);
+lumium.registerParts(fine_parts);
+lumium.registerParts(powder_parts);
+
 # -metals
 iron.registerParts(smelt_parts);
 iron.registerParts(machine_parts);

@@ -1,6 +1,6 @@
 package Main.Generators;
 
-import Main.Data.Custom.Liquid;
+import Main.Data.Localized.Liquid;
 
 import java.io.BufferedReader;
 import java.io.IOException;

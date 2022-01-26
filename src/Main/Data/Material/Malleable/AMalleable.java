@@ -9,15 +9,6 @@ public abstract class AMalleable extends AMaterialData {
     //negative numbers indicate the value of this material, but it cannot be melted
 
     public AMalleable(Material m, double meltingMultiplier) {
-        /*
-        public void setParts(String s) {
-            this.itemParts = this.itemParts + this.name+".registerParts("+s+"_parts);\n";
-        }
-        */
-
-//        this.setParts("smelt");
-//        this.setParts("");
-
         //smelting: ore -> ingot
         //melting: dust > ingot?
         //tiers of (s)melting:

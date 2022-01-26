@@ -1,6 +1,6 @@
 package Main.Generators;
 
-import Main.Data.Custom.Part;
+import Main.Data.Localized.Part;
 
 import java.io.BufferedReader;
 import java.io.IOException;

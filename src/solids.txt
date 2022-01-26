@@ -1,0 +1,2 @@
+/material, bool isDefaultState, bool addDust, bool addFineDust, bool addPowder
+lumium, true, true, true, true

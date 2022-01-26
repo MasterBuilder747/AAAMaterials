@@ -1,19 +1,17 @@
 package Main;
 
 import Main.Generators.*;
-import Main.Json.Builder;
-import Main.Json.JsonObject;
-import Main.Json.Value;
 
 import java.io.*;
 
 public class MainMaterials {
     //files to be generated:
     //1 the .zs script file (one giant one)
+    //3 the .json file for undergroundbiome ore registry
     //2 the .lang file for localization
     private final static String PC = "C:\\Users\\jaath\\IdeaProjects\\AAAMaterials\\src\\";
     private final static String MAC = "/Users/jaudras/IdeaProjects/AAAMaterials/src/";
-    public final static String HOME = PC; //home directory, specified at startup
+    public final static String HOME = MAC; //home directory, specified at startup
     public final static String SCRIPT = "materials";
 
     public static void main(String[] args) throws IOException {
@@ -52,6 +50,8 @@ public class MainMaterials {
         bw.write(material.registerMaterials());
 
         //add material data
+        GSolid solid = new GSolid("solid", material, partGroup);
+        bw.write(solid.registerMaterials());
         GMetal metal = new GMetal("metal", material);
         bw.write(metal.registerMaterials());
 
@@ -68,16 +68,17 @@ public class MainMaterials {
         bw.close();
 
         //ore .json file
+        //path: .minecraft/config/undergroundbiomes/ores/aaaores.json
         GOreRegistry oreRegistry = new GOreRegistry("oreregistrie", material);
         oreRegistry.registerMaterials();
-        fw = new FileWriter(HOME+"aaaores.json");
+        fw = new FileWriter(HOME + "aaaores.json");
         bw = new BufferedWriter(fw);
         bw.write(oreRegistry.genUBJson());
         bw.close();
 
         //.lang file
         //path: .minecraft/resources/contenttweaker/lang/en_us.lang
-        fw = new FileWriter(HOME +"en_us.lang");
+        fw = new FileWriter(HOME + "en_us.lang");
         bw = new BufferedWriter(fw);
         bw.write(block.localize());
         bw.write(item.localize());

@@ -1,10 +1,8 @@
-package Main.Data.Custom;
+package Main.Data.Localized;
 
-import Main.Data.Custom.ALocalizedData;
+public class LItem extends ALocalizedData {
 
-public class Item extends ALocalizedData {
-
-    public Item(String name, String localName) {
+    public LItem(String name, String localName) {
         super(name, localName);
     }
 

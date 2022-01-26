@@ -1,38 +1,38 @@
 package Main.Data;
 
-import Main.Data.Custom.Part;
+import Main.Data.Localized.Part;
 
 public class PartGroup extends AData {
     //defines a Part[] in zs form
-    Part[] parts;
+    Part[] Parts;
 
-    public PartGroup(String name, Part[] parts) {
+    public PartGroup(String name, Part[] Parts) {
         super(name);
-        this.parts = parts;
+        this.Parts = Parts;
     }
 
     public Part[] getParts() {
-        return this.parts;
+        return this.Parts;
     }
 
     @Override
     public void print() {
         System.out.print(this.name + ": ");
-        for(int i = 0; i < this.parts.length-1; i++) {
-            System.out.print(this.parts[i].name);
+        for(int i = 0; i < this.Parts.length-1; i++) {
+            System.out.print(this.Parts[i].name);
             System.out.print(", ");
         }
-        System.out.println(this.parts[this.parts.length-1].name);
+        System.out.println(this.Parts[this.Parts.length-1].name);
     }
 
     @Override
     public String buildMaterial() {
         StringBuilder sb = new StringBuilder();
         sb.append("var "); sb.append(this.name); sb.append(" = [");
-        for(int i = 0; i < this.parts.length-1; i++) {
-            sb.append("\""); sb.append(this.parts[i].name); sb.append("\""); sb.append(", ");
+        for(int i = 0; i < this.Parts.length-1; i++) {
+            sb.append("\""); sb.append(this.Parts[i].name); sb.append("\""); sb.append(", ");
         }
-        sb.append("\""); sb.append(this.parts[this.parts.length-1].name); sb.append("\""); sb.append("] as string[];\n");
+        sb.append("\""); sb.append(this.Parts[this.Parts.length-1].name); sb.append("\""); sb.append("] as string[];\n");
 
         return sb.toString();
     }

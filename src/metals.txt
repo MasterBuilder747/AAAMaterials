@@ -1,11 +1,12 @@
-/material --more properties added later like conductive, blasting etc
-iron
-tin
-copper
-lumium
-iridium
-platinum
-osmium
-thorium
-uranium
-zinc
+/material, bool addSmelt, bool addMachine
+/--more properties added later like conductive, blasting etc
+iron, true, true
+tin, true, true
+copper, true, true
+lumium, true, true
+iridium, true, true
+platinum, true, true
+osmium, true, true
+thorium, true, true
+uranium, true, true
+zinc, true, true

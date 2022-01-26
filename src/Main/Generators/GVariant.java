@@ -1,6 +1,6 @@
 package Main.Generators;
 
-import Main.Data.Custom.Block;
+import Main.Data.Localized.LBlock;
 import Main.Data.OreVariant;
 
 import java.io.BufferedReader;
@@ -15,6 +15,6 @@ public class GVariant extends AGenerator<OreVariant> {
     protected void readLine(BufferedReader br, String[] s) throws IOException {
         //name, blockmaterial, pickaxe
         if (s.length != 3) error(3);
-        objects.add(new OreVariant(s[0], new Block(s[0], s[1], s[2])));
+        objects.add(new OreVariant(s[0], new LBlock(s[0], s[1], s[2])));
     }
 }

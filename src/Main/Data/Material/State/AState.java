@@ -10,19 +10,4 @@ public abstract class AState extends AMaterialData {
         super(m);
         this.isDefault = isDefault;
     }
-
-    @Override
-    public void print() {
-
-    }
-
-    @Override
-    public String buildMaterial() {
-        return null;
-    }
-
-    @Override
-    public String buildRecipe() {
-        return null;
-    }
 }

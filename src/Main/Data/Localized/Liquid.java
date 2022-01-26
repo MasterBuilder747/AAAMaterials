@@ -1,4 +1,4 @@
-package Main.Data.Custom;
+package Main.Data.Localized;
 
 public class Liquid extends ALocalizedData {
     String color;

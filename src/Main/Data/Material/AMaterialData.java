@@ -11,7 +11,7 @@ public abstract class AMaterialData extends AData {
         this.m = m;
     }
 
-    //builds the script code needed for each part of the material
-    public abstract String buildMaterial();
-    public abstract String buildRecipe();
+    protected String buildPart(String partGroupName) {
+        return this.m.name + ".registerParts(" + partGroupName + ");\n";
+    }
 }
