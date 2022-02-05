@@ -1,6 +1,7 @@
 package Main.Data.Material;
 
 import Main.Data.AData;
+import Main.Data.Localized.LFood;
 import Main.Data.Material.Malleable.Alloy;
 import Main.Data.Material.Malleable.Metal;
 import Main.Data.Material.Malleable.Plastic;
@@ -56,7 +57,7 @@ public class Material extends AData {
 
     //mod compat
     Crop crop; //the primitive crop and product, or cooking system/nutritional system, seasonal system (mostly for survival pack version)
-    Food food; //not a crop, does not have planting/farming ability, for cooking system/nutritional system, seasonal system (mostly for survival pack version)
+    LFood LFood; //not a crop, does not have planting/farming ability, for cooking system/nutritional system, seasonal system (mostly for survival pack version)
     Tinkers tinkers; //allows this material to have tinker's armor and tool materials, recipe only
     //Chicken chicken; //skyblock pack?
 
