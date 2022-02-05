@@ -21,7 +21,7 @@ public class Material extends AData {
     //Material Part data, initializes to null if not registered, otherwise when building,
     //these will be read and used for various material parts and recipe generation:
     AMaterialData[] datas;
-    Chemical chemical; //Chemical tooltip, breaking and forming composition recipes, if it has one
+    ChemicalLabel chemicalLabel; //Chemical tooltip, breaking and forming composition recipes, if it has one
 
     //states
     Solid solid;

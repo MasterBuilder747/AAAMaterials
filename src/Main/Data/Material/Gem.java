@@ -5,6 +5,9 @@ public class Gem extends AMaterialData {
     //note that a gem is conventionally not smeltable into ingot
     //a recipe definition of obtaining via gem prospecting will be here later though
 
+    //gem prospecting info goes here
+    //this requires rocks and ores to be implemented first
+
     //added parts:
     /*
     "gem_morsel",

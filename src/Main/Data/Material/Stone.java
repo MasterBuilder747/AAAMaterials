@@ -5,6 +5,12 @@ public class Stone extends AMaterialData {
         super(m);
     }
 
+    //follows the cobblestone process:
+    //*added
+    //dust blocks are for skyblock only
+    //stone > cobblestone + dust* > gravel + flint* > sand + fine dust* > powder dust*
+    //clay: dirt + water sift> settled dirt > dry> clay
+
     //underground biome blocks:
     /* Masonry:
     24 variants:
@@ -47,6 +53,8 @@ public class Stone extends AMaterialData {
     as well as other sub byproducts (centrifuge/sift?)
 
     combine with water/some liquid for gem prospecting
+
+    this is used for gem prospecting as well
     */
 
     @Override

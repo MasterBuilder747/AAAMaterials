@@ -20,6 +20,9 @@ public class Ore extends AData {
     //<undergroundbiomes:metamorphic_stone_contenttweaker_sub_block_holder_0_9:[0-7]>
     //<undergroundbiomes:sedimentary_stone_contenttweaker_sub_block_holder_0_9:[0-7]>
 
+    //for the ore block generation, a file must be created for oreVeins to work with the underGroundBiomes mod's blocks
+    //each vein is generated in a certain biome, must specify this
+
     public Ore(String name, OreType[] types) {
         super(name);
         this.types = types;

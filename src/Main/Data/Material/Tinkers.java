@@ -5,6 +5,8 @@ public class Tinkers extends AMaterialData {
     //the smelt parts must be registered before using this, so only buildRecipe will be used
     //ex: need to specify the molten liquid when melting parts, ingot used when repairing, etc
 
+    //make sure to add TinkerStages support as well
+
     //see: https://docs.blamejared.com/1.12/en/Mods/ContentTweaker/Tinkers_Construct/Material
     public Tinkers(Material m) {
         super(m);
