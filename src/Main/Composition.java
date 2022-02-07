@@ -1,40 +1,28 @@
-package Main.Data.Material;
+package Main;
 
-import Main.Data.AData;
 import Main.Data.Element;
 
 //an internal class that represents a chemical composition using materials/elements
 //this is a linked list
-public class Composition extends AData {
+public class Composition {
     //an array of elements and/or compounds that are contained in a material.
     //used primarily to generate a tooltip for every item
-    private Element e = null;
-    private Material m = null;
     int amount;
-    public boolean isMaterial;
     public Composition comp; //the next one in the linked list
 
-    public Composition(String name, Element e) {
-        super(name);
-        this.e = e;
+    public Composition(Element e) {
         this.amount = 1;
     }
-    public Composition(String name, Element e, int amount) {
-        super(name);
-        this.e = e;
+    public Composition(Element e, int amount) {
         this.amount = amount;
     }
-    public Composition(String name, Material m) {
-        super(name);
-        this.m = m;
+    public Composition(Composition c) {
+        this.comp = c;
         this.amount = 1;
-        this.isMaterial = true;
     }
-    public Composition(String name, Material m, int amount) {
-        super(name);
-        this.m = m;
+    public Composition(Composition c, int amount) {
+        this.comp = c;
         this.amount = amount;
-        this.isMaterial = true;
     }
 
     public void add(Composition c) {
@@ -59,20 +47,5 @@ public class Composition extends AData {
             sb.append(this.comp);
         }
         return sb.toString();
-    }
-
-    @Override
-    public void print() {
-        System.out.println(this);
-    }
-
-    @Override
-    public String buildMaterial() {
-        return "NULL";
-    }
-
-    @Override
-    public String buildRecipe() {
-        return null;
     }
 }

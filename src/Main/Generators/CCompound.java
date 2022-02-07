@@ -1,19 +1,16 @@
 package Main.Generators;
 
-import Main.Data.Material.Composition;
+import Main.Composition;
 import Main.Util;
 
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.util.ArrayList;
 
-public class CCompound extends AComposition {
+public class CCompound {
 
     //composition definition that contains multiple molecule materials in it
-
-    public CCompound(String filename, GElement ele) {
-        super(filename, ele);
-    }
+/*
 
     public Composition createCompound(String s) {
         //[molecule1; molecule2*2; molecule3 * 3]
@@ -39,12 +36,5 @@ public class CCompound extends AComposition {
         return buildComposition(comps);
     }
 
-    @Override
-    protected void readLine(BufferedReader br, String[] s) throws IOException {
-        try {
-            objects.add(createMoleculeComp(s1));
-        } catch (IllegalArgumentException e) {
-            error("Unknown element " + s1);
-        }
-    }
+ */
 }

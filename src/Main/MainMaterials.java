@@ -31,27 +31,37 @@ public class MainMaterials {
                 
                 """);
 
-        //custom content
+        //LOAD ORDER for .zs:
+        //1. custom content not using the material system
         GBlock block = new GBlock("block");
         bw.write(block.registerMaterials());
         GItem item = new GItem("item");
         bw.write(item.registerMaterials());
         GFluid fluid = new GFluid("fluid");
         bw.write(fluid.registerMaterials());
+
+        //2. any established content needed for the material system
         GPart part = new GPart("part");
         bw.write(part.registerMaterials());
-
-        //material system
         GPartGroup partGroup = new GPartGroup("partgroup", part);
         bw.write(partGroup.registerMaterials());
         GElement element = new GElement("element");
         bw.write(element.registerMaterials());
+
+        //3. the materials
         GMaterial material = new GMaterial("material");
         bw.write(material.registerMaterials());
 
-        //add material data
+        //4. material states
         GSolid solid = new GSolid("solid", material, partGroup);
         bw.write(solid.registerMaterials());
+        //liquid, gas, plasma, etc states
+
+        //5. material compositions, material parts must be added after this!!!
+        //GComposition
+
+        //6. all other material data (unless there are some other requirements later)
+
         GMetal metal = new GMetal("metal", material);
         bw.write(metal.registerMaterials());
 

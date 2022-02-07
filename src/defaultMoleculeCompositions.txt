@@ -1,8 +1,8 @@
-/moleculeElement
-H
-He
-Li
-Be
+/material, defaultMoleculeComposition
+hydrogen, H
+helium, He
+lithium, Li
+..., Be
 B
 C
 N

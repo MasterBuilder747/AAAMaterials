@@ -1,5 +1,7 @@
 package Main.Data.Material;
 
+import Main.Composition;
+
 //defines a chemical composition to be applied to the material
 //convention:
 //single element: E, Ex
@@ -12,22 +14,23 @@ package Main.Data.Material;
 //-s solid, -g gas, -p plasma, etc...
 public class ChemicalLabel extends AMaterialData {
     //chemical molecules use elements in tooltips
-    int separation; //-1 = chemical, 1 = physical separation/combination, 0 is none
-    int combination; //-1 = chemical, 1 = physical separation/combination, 0 is none
+    boolean isMixing;
+    boolean isCentrifuge;
+    boolean isChemReact;
+    boolean isElectrolyze;
+
     public Composition composition; //a string of defined element(s) and their count(s) in a string with special syntax
+    boolean isDefault;  //is this the default composition that is associated with this material?
+                        //If so, then when a chemical composition is specified, it returns this material
 
-    public ChemicalLabel(Material m, Composition c) {
+    public ChemicalLabel(Material m, boolean isDefault, Composition c, boolean isMixing, boolean isCentrifuge, boolean isChemReact, boolean isElectrolyze) {
         super(m);
-        ///if (m.isState("solid")) {
-            //m.setParts("dust");
-        //}
-    }
-
-    //element or compound? Cannot be both
-    public void setComposition(Composition composition, int separation, int combination) {
-        this.composition = composition;
-        this.separation = separation;
-        this.combination = combination;
+        this.isDefault = isDefault;
+        this.composition = c;
+        this.isMixing = isMixing;
+        this.isChemReact = isChemReact;
+        this.isCentrifuge = isCentrifuge;
+        this.isElectrolyze = isElectrolyze;
     }
 
     @Override
