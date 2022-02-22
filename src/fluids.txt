@@ -1,3 +1,2 @@
-/name, localizedName, hexColor, bool isGas
-/ex: matter, Matter, 123456, false
+/String name, String localName, String color, int density, boolean gas, int luminosity, int temperature, int viscosity, boolean vaporize, String tex, String blockMaterial
 /hydrogen, Hydrogen, 101010, true
