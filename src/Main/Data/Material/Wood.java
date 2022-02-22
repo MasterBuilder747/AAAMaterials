@@ -23,7 +23,7 @@ public class Wood extends AMaterialData {
         //long plank > 2 planks (cut)
         //long plank > 4 short planks (cut)
         //bark + water > some chemical for leather processing
-        //log > sap/oil/resin/glue?/rosin/cellophane paper/cork/paper/cane?
+        //log > sap/oil/resin/glue?/rosin/cellophane paper/cork/cane?
         //dye, pitch, menthol, and scented oils
         //bark: Dyes and medicines
         //sap: maple syrup, chewing gum, crayons, paint, and soap
@@ -32,6 +32,9 @@ public class Wood extends AMaterialData {
         //wax
         //sponge
         //leaves and roots: oils for cosmetics and medicines
+        //cannot punch it
+        //dimension? overworld, nether, end, planets?
+        //mining levels?
         return null;
     }
 
