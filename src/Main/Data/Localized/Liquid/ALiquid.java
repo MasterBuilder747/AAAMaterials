@@ -1,8 +1,9 @@
-package Main.Data.Localized;
+package Main.Data.Localized.Liquid;
 
+import Main.Data.Localized.ALocalizedData;
 import Main.Util;
 
-public class Liquid extends ALocalizedData {
+public abstract class ALiquid extends ALocalizedData {
     String color;
     int density;
     boolean gas;
@@ -12,9 +13,9 @@ public class Liquid extends ALocalizedData {
     boolean vaporize;
     String tex;
     String blockMaterial;
-    String state; //molten, gas, plasma, qgp...
+    String state; //liquid, molten, gas, plasma, qgp...
 
-    public Liquid(String name, String localName, String color, int density, boolean gas, int luminosity, int temperature, int viscosity, boolean vaporize, String tex, String blockMaterial) {
+    public ALiquid(String name, String localName, String color, int density, boolean gas, int luminosity, int temperature, int viscosity, boolean vaporize, String tex, String blockMaterial) {
         super(name, localName);
         this.color = color;
         this.density = density;
@@ -25,6 +26,7 @@ public class Liquid extends ALocalizedData {
         this.vaporize = vaporize;
         this.tex = tex;
         this.blockMaterial = blockMaterial;
+        this.state = "liquid";
     }
 
     @Override
@@ -38,20 +40,20 @@ public class Liquid extends ALocalizedData {
         return "genFluid(\"" + this.name + "\", \"" + this.color + "\", " + this.density + ", " + this.gas + ", " + this.luminosity + ", " + this.temperature + ", " + this.viscosity + ", " + this.vaporize + ", \"contenttweaker:fluids/" + this.tex + "\", \"contenttweaker:fluids/" + this.tex + "_flowing\", <blockmaterial:" + this.blockMaterial + ">);\n";
     }
 
-    public void setState(String state) {
+    protected void setState(String state) {
         this.state = state;
     }
 
     @Override
     //fluid.[name]=[LocalName]
-    //fluid.[name]=[LocalName] Gas
+    //fluid.[name]=[LocalName] otherState
     public String localize() {
         StringBuilder sb = new StringBuilder();
         sb.append("fluid.");
         sb.append(this.name);
         sb.append("=");
         sb.append(this.localName);
-        if (this.state != null) {
+        if (!this.state.contains("liquid")) {
             sb.append(" ");
             sb.append(Util.toUpper(this.state));
         }

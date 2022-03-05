@@ -1,11 +1,12 @@
 package Main.Generators;
 
-import Main.Data.Localized.Liquid;
+import Main.Data.Localized.Liquid.ALiquid;
+import Main.Data.Localized.Liquid.Liquid;
 
 import java.io.BufferedReader;
 import java.io.IOException;
 
-public class GFluid extends ALocal<Liquid> {
+public class GFluid extends ALocal<ALiquid> {
 
     public GFluid(String filename) {
         super(filename);
