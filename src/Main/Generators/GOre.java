@@ -19,6 +19,13 @@ public class GOre extends AGenerator<Ore> {
 
     @Override
     protected void readLine(BufferedReader br, String[] s) throws IOException {
+        //HOW TO HANDLE VARIANTS:
+        //make a new material for netherrack, end, and bedrock, default will be stone
+        //do separate code blocks for these in the same way
+        //by changing the material name, we can now distinguish them in tellMe
+        //name is: [Variant amount] [Material] Ore
+        //ex: Lumium ore, Dense lumium ore, [Nether Lumium] ore, Dense [Bedrock Lumium] Ore
+
         //name, ore_part1: variant1; int hardness; int resistance; int miningLevel; miningTool: variant2; int hardness; int resistance; int miningLevel; miningTool, ore_part2...
         //ex: silver,
         //ore: stone; 4; 6; 2: netherrack; 4; 6; 2: end_stone: 4; 9; 2: gravel; 2; 1; 2: bedrock; 50; 1200; 3,
