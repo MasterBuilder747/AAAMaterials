@@ -28,9 +28,10 @@ public class GOre extends AGenerator<Ore> {
 
         //name, ore_part1: variant1; int hardness; int resistance; int miningLevel; miningTool: variant2; int hardness; int resistance; int miningLevel; miningTool, ore_part2...
         //ex: silver,
-        //ore: stone; 4; 6; 2: netherrack; 4; 6; 2: end_stone: 4; 9; 2: gravel; 2; 1; 2: bedrock; 50; 1200; 3,
-        //poor: stone; 3; 6; 2: netherrack; 3; 6; 2: end_stone: 3; 9; 2: gravel; 1; 1; 2: bedrock; 40; 1200; 3,
-        //dense: stone; 5; 6; 2: netherrack; 5; 6; 2: end_stone: 5; 9; 2: gravel; 3; 1; 2: bedrock; 70; 1200; 3
+        //stone: ore; 4; 6; 2: poor; 4; 6; 2: dense; 4; 9; 2,
+        //nether: ore; 4; 6; 2: poor; 4; 6; 2: dense; 4; 9; 2,
+        //end: ore; 4; 6; 2: poor; 4; 6; 2: dense; 4; 9; 2,
+        //bedrock: ore; 4; 6; 2: poor; 4; 6; 2: dense; 4; 9; 2
         String material = s[0];
 //        if (!mol.is(name)) {
 //            error("Unknown molecule material " + name);
@@ -38,23 +39,24 @@ public class GOre extends AGenerator<Ore> {
 //        if (!mol.is(name) && !comp.is(name)) {
 //            error("Unknown compound material " + name);
 //        }
-        String[] ores = new String[s.length-1]; //includes each ore type
-        System.arraycopy(s, 1, ores, 0, ores.length);
-        ArrayList<OreType> oreTypes = new ArrayList<>();
-        for (String block : ores) {
-            String[] s2 = Util.split(block, ":");
-            String ore_name = s2[0]; //the name of the ore block part
-            String[] variants = new String[s2.length-1];
-            for (int i = 0; i < variants.length; i++) {
-                variants[i] = s2[i+1];
-            }
+        String[] variants = new String[s.length-1]; //includes each ore variant
+        System.arraycopy(s, 1, variants, 0, variants.length);
+
+        ArrayList<OreType> oreVariants = new ArrayList<>();
+        for (String variant : variants) {
+            String[] s2 = Util.split(variant, ":");
+            String variant_name = s2[0]; //the name of the ore variant
+
+            String[] ores = new String[s2.length-1];
+            System.arraycopy(s2, 1, ores, 0, ores.length);
+
             ArrayList<OreVariant> vars = new ArrayList<>();
-            for (String variant : variants) {
-                String[] attributes = Util.split(variant, ";");
+            for (String ore : ores) {
+                String[] attributes = Util.split(ore, ";");
                 if (attributes.length != 4) {
-                    error("Not all block attributes are defined for variant " + attributes[0] + " for ore block type " + ore_name + " for ore of name " + material);
+                    error("Not all variant attributes are defined for ore " + attributes[0] + " for ore variant type " + variant_name + " for ore of name " + material);
                 }
-                String var_name; //name of the variant
+                String var_name; //name of the ore
                 if (attributes[0].contains(":")) {
                     var_name = attributes[0];
                 } else {
@@ -65,15 +67,15 @@ public class GOre extends AGenerator<Ore> {
                     try {
                         v.setAttributes(Integer.parseInt(attributes[1]), Integer.parseInt(attributes[2]), Integer.parseInt(attributes[3]));
                     } catch (NumberFormatException e) {
-                        error("Bad number format for variant " + var_name);
+                        error("Bad number format for ore " + var_name);
                     }
                     vars.add(v);
                 } else {
-                    error("Unknown variant " + var_name);
+                    error("Unknown ore " + var_name);
                 }
             }
-            oreTypes.add(new OreType(material, ore_name, vars.toArray(new OreVariant[0])));
+            oreVariants.add(new OreType(material, variant_name, vars.toArray(new OreVariant[0])));
         }
-        objects.add(new Ore(material, oreTypes.toArray(new OreType[0])));
+        objects.add(new Ore(material, oreVariants.toArray(new OreType[0])));
     }
 }

@@ -12,9 +12,9 @@ public class Detector {
 
     private static OperatingSystem getOperatingSystem() {
         String os = System.getProperty("os.name").toLowerCase();
-        if (os.indexOf("win") >= 0) {
+        if (os.contains("win")) {
             return OperatingSystem.WINDOWS;
-        } else if (os.indexOf("mac") >= 0) {
+        } else if (os.contains("mac")) {
             return OperatingSystem.MACOS;
         } else {
             return OperatingSystem.NONE;

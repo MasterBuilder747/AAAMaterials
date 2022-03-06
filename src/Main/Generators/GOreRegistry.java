@@ -3,7 +3,7 @@ package Main.Generators;
 import Main.Data.Material.OreRegistry;
 import Main.Json.Builder;
 import Main.Json.JsonObject;
-import Main.RegistryName;
+import Main.Data.Registry;
 import Main.Util;
 
 import java.io.BufferedReader;
@@ -26,7 +26,7 @@ public class GOreRegistry extends AGenerator<OreRegistry> {
             error(4);
         }
         if (material.is(s[0])) {
-            RegistryName[] rs = new RegistryName[3];
+            Registry[] rs = new Registry[3];
             for (int i = 1; i < 4; i++) {
                 String[] s1 = Util.split(s[i], ":");
                 if (s1.length != 2) {
@@ -34,7 +34,8 @@ public class GOreRegistry extends AGenerator<OreRegistry> {
                 }
                 String name = s1[0];
                 String meta = s1[1];
-                RegistryName r = new RegistryName(name);
+                /*
+                Registry r = new Registry(name);
                 r.setMeta(Integer.parseInt(meta));
                 String oreDict = switch(i) {
                     case 1 -> "poorOre";
@@ -51,6 +52,8 @@ public class GOreRegistry extends AGenerator<OreRegistry> {
                 r.setOre(oreDict + upper); //typeOreMaterial, oreMaterial
                 r.setLocal(type + upper + " Ore"); //type materialName Ore
                 rs[i-1] = r;
+
+                 */
             }
             objects.add(new OreRegistry(material.get(s[0]), rs[0], rs[1], rs[2]));
         } else {

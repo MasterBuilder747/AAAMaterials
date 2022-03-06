@@ -3,16 +3,16 @@ package Main.Data.Material;
 import Main.Data.AData;
 import Main.Json.JsonObject;
 import Main.Json.Value;
-import Main.RegistryName;
+import Main.Data.Registry;
 import Main.Util;
 
 public class OreRegistry extends AData {
     Material m; //the material being mapped to this registry
-    RegistryName poor;
-    RegistryName ore;
-    RegistryName dense;
+    Registry poor;
+    Registry ore;
+    Registry dense;
 
-    public OreRegistry(Material m, RegistryName poor, RegistryName ore, RegistryName dense) {
+    public OreRegistry(Material m, Registry poor, Registry ore, Registry dense) {
         super(m.name);
         this.m = m;
         this.poor = poor;
@@ -31,7 +31,7 @@ public class OreRegistry extends AData {
 
     @Override
     public void print() {
-        System.out.println(Util.toUpper(this.name) + " ores: poor: " + this.poor.print() + " | ore: " + this.ore.print() + " | dense: " + this.dense.print());
+        //System.out.println(Util.toUpper(this.name) + " ores: poor: " + this.poor.print() + " | ore: " + this.ore.print() + " | dense: " + this.dense.print());
     }
 
     @Override

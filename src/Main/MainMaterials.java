@@ -11,10 +11,14 @@ public class MainMaterials {
     //2 the .lang file for localization
     private final static String PC = "C:\\Users\\jaath\\IdeaProjects\\AAAMaterials\\src\\";
     private final static String MAC = "/Users/jaudras/IdeaProjects/AAAMaterials/src/";
-    public final static String HOME = MAC; //home directory, specified at startup
+    public final static String HOME = Detector.isMac() ? MAC : PC;
     public final static String SCRIPT = "materials";
 
     public static void main(String[] args) throws IOException {
+        //this is only reading for data, item registry comes before everything
+        GRegistry gr = new GRegistry("registry");
+        gr.registerMaterials();
+
         //materials.zs
         FileWriter fw = new FileWriter(HOME + SCRIPT + ".zs");
         BufferedWriter bw = new BufferedWriter(fw);
