@@ -1,11 +1,11 @@
-/name, ore_part1: variant1; int hardness; int resistance; int miningLevel; miningTool: variant2; int hardness; int resistance; int miningLevel; miningTool, ore_part2...
+/name, variant1: ore_part1; int hardness; int resistance; int miningLevel: ...
 /the second parameter can be repeated indefinitely as long as the correct oreVariants and ore types are being used:
-/oreVariants: stone, netherrack, end_stone, gravel, bedrock
+/oreVariants: stone, nether, end, bedrock
 /ore types: ore, poor, dense
-/these block properties can be in any order as long as they are not the first parameter
-/poor: stone; 3; 6; 2: netherrack; 3; 6; 2: end_stone: 3; 9; 2: gravel; 1; 1; 2: bedrock; 40; 1200; 3,
-/ore: stone; 4; 6; 2: netherrack; 4; 6; 2: end_stone: 4; 9; 2: gravel; 2; 1; 2: bedrock; 50; 1200; 3,
-/dense: stone; 5; 6; 2: netherrack; 5; 6; 2: end_stone: 5; 9; 2: gravel; 3; 1; 2: bedrock; 70; 1200; 3
-lumium, poor: stone; 3; 6; 2: netherrack; 3; 6; 2: end_stone; 3; 9; 2, ore: stone; 4; 6; 2: netherrack; 4; 6; 2: end_stone; 4; 9; 2, dense: stone; 5; 6; 2: netherrack; 5; 6; 2: end_stone; 5; 9; 2: bedrock; 70; 1200; 3
-bauxite, poor: stone; 3; 6; 2: netherrack; 3; 6; 2: end_stone; 3; 9; 2, ore: stone; 4; 6; 2: netherrack; 4; 6; 2: end_stone; 4; 9; 2, dense: stone; 5; 6; 2: netherrack; 5; 6; 2: end_stone; 5; 9; 2: bedrock; 70; 1200; 3
-galena, poor: stone; 3; 6; 2: netherrack; 3; 6; 2: end_stone; 3; 9; 2, ore: stone; 4; 6; 2: netherrack; 4; 6; 2: end_stone; 4; 9; 2, dense: stone; 5; 6; 2: netherrack; 5; 6; 2: end_stone; 5; 9; 2: bedrock; 70; 1200; 3
+/these block properties can be in any order as long as they are not the first parameter:
+//ex: silver,
+//stone: ore; 4; 6; 2: poor; 4; 6; 2: dense; 4; 9; 2,
+//nether: ore; 4; 6; 2: poor; 4; 6; 2: dense; 4; 9; 2,
+//end: ore; 4; 6; 2: poor; 4; 6; 2: dense; 4; 9; 2,
+//bedrock: ore; 4; 6; 2: poor; 4; 6; 2: dense; 4; 9; 2
+lumium, stone: poor; 3; 6; 2: ore; 4; 6; 2: dense; 5; 6; 2, nether: poor; 3; 6; 2: ore; 4; 6; 2: dense; 5; 6; 2, end: poor; 3; 9; 2: ore; 4; 9; 2: dense; 5; 9; 2, bedrock: dense; 70; 1200; 3

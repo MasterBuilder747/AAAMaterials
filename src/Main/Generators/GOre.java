@@ -26,7 +26,6 @@ public class GOre extends AGenerator<Ore> {
         //name is: [Variant amount] [Material] Ore
         //ex: Lumium ore, Dense lumium ore, [Nether Lumium] ore, Dense [Bedrock Lumium] Ore
 
-        //name, ore_part1: variant1; int hardness; int resistance; int miningLevel; miningTool: variant2; int hardness; int resistance; int miningLevel; miningTool, ore_part2...
         //ex: silver,
         //stone: ore; 4; 6; 2: poor; 4; 6; 2: dense; 4; 9; 2,
         //nether: ore; 4; 6; 2: poor; 4; 6; 2: dense; 4; 9; 2,
