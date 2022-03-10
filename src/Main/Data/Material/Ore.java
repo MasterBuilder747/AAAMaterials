@@ -1,12 +1,12 @@
 package Main.Data.Material;
 
 import Main.Data.AData;
-import Main.Data.OreType;
+import Main.Data.OreVariant;
 
 public class Ore extends AData {
     //generates ores and its components for a specified material
     //Also handles generation (2 files)
-    OreType[] types; //name of the blocks themselves
+    OreVariant[] variants; //name of the blocks themselves
 
     //1. generate CoT ore blocks using parttype
     //2. load the game
@@ -23,34 +23,18 @@ public class Ore extends AData {
     //for the ore block generation, a file must be created for oreVeins to work with the underGroundBiomes mod's blocks
     //each vein is generated in a certain biome, must specify this
 
-    public Ore(String name, OreType[] types) {
+    public Ore(String name, OreVariant[] variants) {
         super(name);
-        this.types = types;
-    }
-
-    public String buildOre() {
-        //builds just the CoT ore blocks
-        StringBuilder sb = new StringBuilder();
-        for (OreType ore : this.types) {
-            String oreType = "ore";
-            if (ore.type.equals("Poor")) {
-                oreType = "poor_ore";
-            } else if (ore.type.equals("Dense")) {
-                oreType = "dense_ore";
-            }
-            sb.append("var ").append(this.name).append(ore.type).append("Ore = ").append(this.name).append(".registerPart(\"").append(oreType).append("\").getData();\n");
-            sb.append(ore.buildMaterial());
-            sb.append("\n");
-        }
-        sb.append("\n");
-        return sb.toString();
+        this.variants = variants;
     }
 
     @Override
     public String buildMaterial() {
         StringBuilder sb = new StringBuilder();
-        sb.append(buildOre());
-
+        for (OreVariant variant : this.variants) {
+            sb.append(variant.buildMaterial());
+        }
+        sb.append("\n");
         return sb.toString();
     }
 

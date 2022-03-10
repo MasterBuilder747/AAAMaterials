@@ -1,6 +1,6 @@
 /name, variant1: ore_part1; int hardness; int resistance; int miningLevel: ...
-/the second parameter can be repeated indefinitely as long as the correct oreVariants and ore types are being used:
-/oreVariants: stone, nether, end, bedrock
+/the second parameter can be repeated indefinitely as long as the correct oreTypes and ore types are being used:
+/oreTypes: stone, nether, end, bedrock
 /ore types: ore, poor, dense
 /these block properties can be in any order as long as they are not the first parameter:
 //ex: silver,

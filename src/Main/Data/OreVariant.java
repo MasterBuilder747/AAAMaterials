@@ -1,18 +1,19 @@
 package Main.Data;
 
-import Main.Data.Localized.LBlock;
+import Main.Util;
 
 public class OreVariant extends AData {
-    //colon-separated
-    //one block per variant definition
-    LBlock b;
+    //comma-separated
+    //name is the material name
+    OreType[] oreTypes;
+    public String block;
+    String color;
 
-    public OreVariant(String name, LBlock b) {
-        super(name);
-        this.b = b;
-    }
-    public void setAttributes(int hardness, int resistance, int miningLevel) {
-        this.b.setAttributes(hardness, resistance, miningLevel);
+    public OreVariant(String name, String color, String block, OreType[] oreTypes) {
+        super(name); //the material name
+        this.color = color;
+        this.block = block;
+        this.oreTypes = oreTypes;
     }
 
     @Override
@@ -20,7 +21,17 @@ public class OreVariant extends AData {
 
     @Override
     public String buildMaterial() {
-        return null;
+        StringBuilder sb = new StringBuilder();
+        if (!this.block.equals("stone")) {
+            sb.append("var ").append(this.block).append("_").append(this.name);
+            sb.append(" = MaterialSystem.getMaterialBuilder().setName(\"").append(Util.toUpper(this.block)).append(" ");
+            sb.append(Util.toUpper(this.name)).append("\").setColor(Color.fromHex(\"").append(this.color).append("\")).build();\n");
+        }
+        for (OreType type : this.oreTypes) {
+            sb.append(type.buildMaterial());
+        }
+        sb.append("\n");
+        return sb.toString();
     }
 
     @Override

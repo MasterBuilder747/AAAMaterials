@@ -1,8 +1,8 @@
 package Main.Generators;
 
 import Main.Data.Material.Ore;
-import Main.Data.OreType;
 import Main.Data.OreVariant;
+import Main.Data.OreType;
 import Main.Util;
 
 import java.io.BufferedReader;
@@ -10,11 +10,12 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 public class GOre extends AGenerator<Ore> {
-    GVariant var;
 
-    public GOre(String name, GVariant var) {
+    GMaterial material;
+
+    public GOre(String name, GMaterial material) {
         super(name);
-        this.var = var;
+        this.material = material;
     }
 
     @Override
@@ -41,7 +42,7 @@ public class GOre extends AGenerator<Ore> {
         String[] variants = new String[s.length-1]; //includes each ore variant
         System.arraycopy(s, 1, variants, 0, variants.length);
 
-        ArrayList<OreType> oreVariants = new ArrayList<>();
+        ArrayList<OreVariant> oreVariants = new ArrayList<>();
         for (String variant : variants) {
             String[] s2 = Util.split(variant, ":");
             String variant_name = s2[0]; //the name of the ore variant
@@ -49,7 +50,7 @@ public class GOre extends AGenerator<Ore> {
             String[] ores = new String[s2.length-1];
             System.arraycopy(s2, 1, ores, 0, ores.length);
 
-            ArrayList<OreVariant> vars = new ArrayList<>();
+            ArrayList<OreType> vars = new ArrayList<>();
             for (String ore : ores) {
                 String[] attributes = Util.split(ore, ";");
                 if (attributes.length != 4) {
@@ -61,20 +62,10 @@ public class GOre extends AGenerator<Ore> {
                 } else {
                     var_name = "minecraft:"+attributes[0];
                 }
-                if (var.is(var_name)) {
-                    OreVariant v = var.get(var_name);
-                    try {
-                        v.setAttributes(Integer.parseInt(attributes[1]), Integer.parseInt(attributes[2]), Integer.parseInt(attributes[3]));
-                    } catch (NumberFormatException e) {
-                        error("Bad number format for ore " + var_name);
-                    }
-                    vars.add(v);
-                } else {
-                    error("Unknown ore " + var_name);
-                }
+
             }
-            oreVariants.add(new OreType(material, variant_name, vars.toArray(new OreVariant[0])));
+            //oreVariants.add(new OreVariant(material, variant_name, vars.toArray(new OreType[0])));
         }
-        objects.add(new Ore(material, oreVariants.toArray(new OreType[0])));
+        objects.add(new Ore(material, oreVariants.toArray(new OreVariant[0])));
     }
 }

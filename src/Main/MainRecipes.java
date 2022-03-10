@@ -59,11 +59,6 @@ public class MainRecipes {
         GRecipe recipe = new GRecipe("recipe");
         bw.write(recipe.registerMaterials());
 
-        //ore system
-        GVariant variant = new GVariant("variant");
-        bw.write(variant.registerMaterials());
-        GOre ore = new GOre("ore", variant);
-        bw.write(ore.registerMaterials());
 
         //finish
         bw.close();
