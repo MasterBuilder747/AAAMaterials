@@ -77,7 +77,7 @@ public class Material extends AData {
     @Override
     public String buildMaterial() {
         //even if non-solid, still need this in case it does have a solid form
-        return "var " + this.name + " = MaterialSystem.getMaterialBuilder().setName(\"" + this.LOCALNAME + "\")" + ".setColor(Color.fromHex(\"" + this.color.substring(1) + "\"))" + ".build();\n";
+        return "var " + this.name + " = MaterialSystem.getMaterialBuilder().setName(\"" + this.LOCALNAME + "\")" + ".setColor(Color.fromHex(\"" + this.color + "\"))" + ".build();\n";
     }
 
     @Override

@@ -266,7 +266,7 @@ var osmiridium = MaterialSystem.getMaterialBuilder().setName("Osmiridium").setCo
 var redalloy = MaterialSystem.getMaterialBuilder().setName("Red Alloy").setColor(Color.fromHex("ff0000")).build();
 var electrum_flux = MaterialSystem.getMaterialBuilder().setName("Gelid Enderium").setColor(Color.fromHex("f4b024")).build();
 var signalum = MaterialSystem.getMaterialBuilder().setName("Signalum").setColor(Color.fromHex("fe3a01")).build();
-var lumium = MaterialSystem.getMaterialBuilder().setName("Lumium").setColor(Color.fromHex("ffffb9")).build();
+var lumium = MaterialSystem.getMaterialBuilder().setName("Lumium").setColor(Color.fromHex("ffffb6")).build();
 var enderium = MaterialSystem.getMaterialBuilder().setName("Enderium").setColor(Color.fromHex("008839")).build();
 var aluminum_brass = MaterialSystem.getMaterialBuilder().setName("Aluminum Brass").setColor(Color.fromHex("f2d048")).build();
 var knightslime = MaterialSystem.getMaterialBuilder().setName("Knightslime").setColor(Color.fromHex("c741d8")).build();
@@ -367,7 +367,7 @@ lumiumStoneDense.addDataValue("resistance","6");
 lumiumStoneDense.addDataValue("harvestLevel","2");
 lumiumStoneDense.addDataValue("harvestTool","pickaxe");
 
-var nether_lumium = MaterialSystem.getMaterialBuilder().setName("Nether Lumium").setColor(Color.fromHex("#ffffb9")).build();
+var nether_lumium = MaterialSystem.getMaterialBuilder().setName("Nether Lumium").setColor(Color.fromHex("ffffb6")).build();
 var nether_lumiumNetherPoor = nether_lumium.registerPart("poor_ore").getData();
 nether_lumiumNetherPoor.addDataValue("variants","minecraft:netherrack");
 nether_lumiumNetherPoor.addDataValue("hardness","3");
@@ -387,7 +387,7 @@ nether_lumiumNetherDense.addDataValue("resistance","6");
 nether_lumiumNetherDense.addDataValue("harvestLevel","2");
 nether_lumiumNetherDense.addDataValue("harvestTool","pickaxe");
 
-var end_lumium = MaterialSystem.getMaterialBuilder().setName("End Lumium").setColor(Color.fromHex("#ffffb9")).build();
+var end_lumium = MaterialSystem.getMaterialBuilder().setName("End Lumium").setColor(Color.fromHex("ffffb6")).build();
 var end_lumiumEndPoor = end_lumium.registerPart("poor_ore").getData();
 end_lumiumEndPoor.addDataValue("variants","minecraft:end_stone");
 end_lumiumEndPoor.addDataValue("hardness","3");
@@ -407,13 +407,13 @@ end_lumiumEndDense.addDataValue("resistance","9");
 end_lumiumEndDense.addDataValue("harvestLevel","2");
 end_lumiumEndDense.addDataValue("harvestTool","pickaxe");
 
-var bedrock_lumium = MaterialSystem.getMaterialBuilder().setName("Bedrock Lumium").setColor(Color.fromHex("#ffffb9")).build();
+var bedrock_lumium = MaterialSystem.getMaterialBuilder().setName("Bedrock Lumium").setColor(Color.fromHex("ffffb6")).build();
 var bedrock_lumiumBedrockDense = bedrock_lumium.registerPart("dense_ore").getData();
 bedrock_lumiumBedrockDense.addDataValue("variants","minecraft:bedrock");
-bedrock_lumiumBedrockDense.addDataValue("hardness","70");
-bedrock_lumiumBedrockDense.addDataValue("resistance","1200");
-bedrock_lumiumBedrockDense.addDataValue("harvestLevel","3");
-bedrock_lumiumBedrockDense.addDataValue("harvestTool","pickaxe");
+bedrock_lumiumBedrockDense.addDataValue("hardness","-1");
+bedrock_lumiumBedrockDense.addDataValue("resistance","3600000");
+bedrock_lumiumBedrockDense.addDataValue("harvestLevel","0");
+bedrock_lumiumBedrockDense.addDataValue("harvestTool","none");
 
 
 

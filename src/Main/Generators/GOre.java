@@ -84,11 +84,14 @@ public class GOre extends AGenerator<Ore> {
                     error("Not all type attributes are defined for oreType " + type_name + " for ore block " + block_name + " for ore of name " + material_name);
                 }
                 LBlock b;
+                String tool = "pickaxe";
+                String material = "rock";
                 if (block_name.equals("gravel")) {
-                    b = new LBlock(block_name, "rock", "shovel");
-                } else {
-                    b = new LBlock(block_name, "rock", "pickaxe");
+                    tool = "shovel";
+                } else if (block_name.equals("bedrock")) {
+                    tool = "none";
                 }
+                b = new LBlock(block_name, "rock", tool);
                 b.setAttributes(Integer.parseInt(attributes[1]), Integer.parseInt(attributes[2]), Integer.parseInt(attributes[3]));
                 if (block_name.equals("stone")) {
                     types.add(new OreType(material_name, type_name, b));
