@@ -12,15 +12,15 @@ public class MainMaterials {
     private final static String PC = "C:\\Users\\jaath\\IdeaProjects\\AAAMaterials\\src\\";
     private final static String MAC = "/Users/jaudras/IdeaProjects/AAAMaterials/src/";
     public final static String HOME = Detector.isMac() ? MAC : PC;
-    public final static String SCRIPT = "materials";
+    public final static String DEPLOY = "Deployment/";
 
     public static void main(String[] args) throws IOException {
         //this is only reading for data, item registry comes before everything
-        GRegistry gr = new GRegistry("registry");
-        gr.registerMaterials();
+        GRegistry registry = new GRegistry("registry");
+        registry.registerMaterials();
 
         //materials.zs
-        FileWriter fw = new FileWriter(HOME + SCRIPT + ".zs");
+        FileWriter fw = new FileWriter(HOME + DEPLOY + "scripts/materials" + ".zs");
         BufferedWriter bw = new BufferedWriter(fw);
 
         //starting script code
@@ -69,28 +69,27 @@ public class MainMaterials {
         GMetal metal = new GMetal("metal", material);
         bw.write(metal.registerMaterials());
 
-        //ore system
-        GOre ore = new GOre("ore", material);
+        //7. ore system
+        GOre ore = new GOre("ore", material, registry);
         bw.write(ore.registerMaterials());
         //        CMolecule molecule = new CMolecule("moleculeComposition", element);
 //        bw.write(molecule.register());
 //        GCompound compound = new GCompound("compoundComposition", element);
 //        bw.write(compound.register());
-        //finish
+
+        //8. finish
         bw.close();
 
         //ore .json file
         //path: .minecraft/config/undergroundbiomes/ores/aaaores.json
-        GOreRegistry oreRegistry = new GOreRegistry("oreregistrie", material);
-        oreRegistry.registerMaterials();
-        fw = new FileWriter(HOME + "aaaores.json");
+        fw = new FileWriter(HOME + DEPLOY + "config/undergroundbiomes/ores/aaaores.json");
         bw = new BufferedWriter(fw);
-        bw.write(oreRegistry.genUBJson());
+        bw.write(ore.genUBJson());
         bw.close();
 
         //.lang file
         //path: .minecraft/resources/contenttweaker/lang/en_us.lang
-        fw = new FileWriter(HOME + "en_us.lang");
+        fw = new FileWriter(HOME + DEPLOY + "resources/contenttweaker/lang/en_us.lang");
         bw = new BufferedWriter(fw);
         bw.write(block.localize());
         bw.write(item.localize());

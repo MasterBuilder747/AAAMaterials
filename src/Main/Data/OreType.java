@@ -14,9 +14,6 @@ public class OreType extends AData {
         this.type = type; //dense, ore, poor
         this.b = b; //stores the block variant name
     }
-    public void setAttributes(int hardness, int resistance, int miningLevel) {
-        this.b.setAttributes(hardness, resistance, miningLevel);
-    }
 
     @Override
     public void print() {}
@@ -32,8 +29,20 @@ public class OreType extends AData {
         lumiumStoneOre.addDataValue("harvestTool","pickaxe");
         */
         String var = this.name + Util.toUpper(this.b.name) + Util.toUpper(this.type);
-        sb.append("var ").append(var).append(" = ").append(this.name).append(".registerPart(\"").append(this.type).append("\").getData();\n");
-        sb.append(var).append(".addDataValue(\"variants\",\"minecraft:").append(this.b.name).append("\");\n");
+        sb.append("var ").append(var).append(" = ").append(this.name).append(".registerPart(\"").append(this.type);
+        if (this.type.equals("ore")) {
+            sb.append("\").getData();\n");
+        } else {
+            sb.append("_ore\").getData();\n");
+        }
+        sb.append(var).append(".addDataValue(\"variants\",\"minecraft:").append(this.b.name);
+        if (this.b.name.equals("nether")) {
+            sb.append("rack\");\n");
+        } else if (this.b.name.equals("end")) {
+            sb.append("_stone\");\n");
+        } else {
+            sb.append("\");\n");
+        }
         sb.append(var).append(".addDataValue(\"hardness\",\"").append(this.b.hardness).append("\");\n");
         sb.append(var).append(".addDataValue(\"resistance\",\"").append(this.b.resistance).append("\");\n");
         sb.append(var).append(".addDataValue(\"harvestLevel\",\"").append(this.b.miningLevel).append("\");\n");

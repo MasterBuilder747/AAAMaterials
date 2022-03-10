@@ -1132,8 +1132,6 @@
 "ContentTweaker","contenttweaker:sub_block_holder_0",4718,10,"true","Dense Galena Ore","denseOreGalena"
 "ContentTweaker","contenttweaker:sub_block_holder_0",4718,11,"true","Lumium Ore","oreLumium"
 "ContentTweaker","contenttweaker:sub_block_holder_0",4718,12,"true","Dense Lumium Ore","denseOreLumium"
-"ContentTweaker","contenttweaker:sub_block_holder_0",4718,13,"true","Poor Lumium Ore","poorOreLumium"
-"ContentTweaker","contenttweaker:sub_block_holder_0",4718,14,"true","Poor Lumium Ore","poorOreLumium"
 "ContentTweaker","contenttweaker:sub_block_holder_0",4718,15,"true","Dense Lumium Ore","denseOreLumium"
 "ContentTweaker","contenttweaker:sub_block_holder_1",4717,0,"true","Dense Galena Ore","denseOreGalena"
 "ContentTweaker","contenttweaker:sub_block_holder_1",4717,1,"true","Lumium Ore","oreLumium"

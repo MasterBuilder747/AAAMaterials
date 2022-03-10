@@ -17,7 +17,7 @@ public class Material extends AData {
     //required components
     //name
     private final String LOCALNAME;
-    String color; //#HEX000 required
+    public String color; //#HEX000 required
 
     //Material Part data, initializes to null if not registered, otherwise when building,
     //these will be read and used for various material parts and recipe generation:

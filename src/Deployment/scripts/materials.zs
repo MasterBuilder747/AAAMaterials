@@ -348,70 +348,72 @@ zinc.registerParts(smelt_parts);
 zinc.registerParts(machine_parts);
 
 # -ores
-var lumiumPoorOre = lumium.registerPart("poor_ore").getData();
-lumiumPoorOre.addDataValue("variants","minecraft:stone,minecraft:netherrack,minecraft:end_stone");
-lumiumPoorOre.addDataValue("hardness","5,5,5");
-lumiumPoorOre.addDataValue("resistance","6,6,9");
-lumiumPoorOre.addDataValue("harvestTool","pickaxe,pickaxe,pickaxe");
-lumiumPoorOre.addDataValue("harvestLevel","2,2,2");
+var lumiumStonePoor = lumium.registerPart("poor_ore").getData();
+lumiumStonePoor.addDataValue("variants","minecraft:stone");
+lumiumStonePoor.addDataValue("hardness","3");
+lumiumStonePoor.addDataValue("resistance","6");
+lumiumStonePoor.addDataValue("harvestLevel","2");
+lumiumStonePoor.addDataValue("harvestTool","pickaxe");
+var lumiumStoneOre = lumium.registerPart("ore").getData();
+lumiumStoneOre.addDataValue("variants","minecraft:stone");
+lumiumStoneOre.addDataValue("hardness","4");
+lumiumStoneOre.addDataValue("resistance","6");
+lumiumStoneOre.addDataValue("harvestLevel","2");
+lumiumStoneOre.addDataValue("harvestTool","pickaxe");
+var lumiumStoneDense = lumium.registerPart("dense_ore").getData();
+lumiumStoneDense.addDataValue("variants","minecraft:stone");
+lumiumStoneDense.addDataValue("hardness","5");
+lumiumStoneDense.addDataValue("resistance","6");
+lumiumStoneDense.addDataValue("harvestLevel","2");
+lumiumStoneDense.addDataValue("harvestTool","pickaxe");
 
-var lumiumOre = lumium.registerPart("ore").getData();
-lumiumOre.addDataValue("variants","minecraft:stone,minecraft:netherrack,minecraft:end_stone");
-lumiumOre.addDataValue("hardness","5,5,5");
-lumiumOre.addDataValue("resistance","6,6,9");
-lumiumOre.addDataValue("harvestTool","pickaxe,pickaxe,pickaxe");
-lumiumOre.addDataValue("harvestLevel","2,2,2");
+var nether_lumium = MaterialSystem.getMaterialBuilder().setName("Nether Lumium").setColor(Color.fromHex("#ffffb9")).build();
+var nether_lumiumNetherPoor = nether_lumium.registerPart("poor_ore").getData();
+nether_lumiumNetherPoor.addDataValue("variants","minecraft:netherrack");
+nether_lumiumNetherPoor.addDataValue("hardness","3");
+nether_lumiumNetherPoor.addDataValue("resistance","6");
+nether_lumiumNetherPoor.addDataValue("harvestLevel","2");
+nether_lumiumNetherPoor.addDataValue("harvestTool","pickaxe");
+var nether_lumiumNetherOre = nether_lumium.registerPart("ore").getData();
+nether_lumiumNetherOre.addDataValue("variants","minecraft:netherrack");
+nether_lumiumNetherOre.addDataValue("hardness","4");
+nether_lumiumNetherOre.addDataValue("resistance","6");
+nether_lumiumNetherOre.addDataValue("harvestLevel","2");
+nether_lumiumNetherOre.addDataValue("harvestTool","pickaxe");
+var nether_lumiumNetherDense = nether_lumium.registerPart("dense_ore").getData();
+nether_lumiumNetherDense.addDataValue("variants","minecraft:netherrack");
+nether_lumiumNetherDense.addDataValue("hardness","5");
+nether_lumiumNetherDense.addDataValue("resistance","6");
+nether_lumiumNetherDense.addDataValue("harvestLevel","2");
+nether_lumiumNetherDense.addDataValue("harvestTool","pickaxe");
 
-var lumiumDenseOre = lumium.registerPart("dense_ore").getData();
-lumiumDenseOre.addDataValue("variants","minecraft:stone,minecraft:netherrack,minecraft:end_stone,minecraft:bedrock");
-lumiumDenseOre.addDataValue("hardness","5,5,5,70");
-lumiumDenseOre.addDataValue("resistance","6,6,9,1200");
-lumiumDenseOre.addDataValue("harvestTool","pickaxe,pickaxe,pickaxe,pickaxe");
-lumiumDenseOre.addDataValue("harvestLevel","2,2,2,3");
+var end_lumium = MaterialSystem.getMaterialBuilder().setName("End Lumium").setColor(Color.fromHex("#ffffb9")).build();
+var end_lumiumEndPoor = end_lumium.registerPart("poor_ore").getData();
+end_lumiumEndPoor.addDataValue("variants","minecraft:end_stone");
+end_lumiumEndPoor.addDataValue("hardness","3");
+end_lumiumEndPoor.addDataValue("resistance","9");
+end_lumiumEndPoor.addDataValue("harvestLevel","2");
+end_lumiumEndPoor.addDataValue("harvestTool","pickaxe");
+var end_lumiumEndOre = end_lumium.registerPart("ore").getData();
+end_lumiumEndOre.addDataValue("variants","minecraft:end_stone");
+end_lumiumEndOre.addDataValue("hardness","4");
+end_lumiumEndOre.addDataValue("resistance","9");
+end_lumiumEndOre.addDataValue("harvestLevel","2");
+end_lumiumEndOre.addDataValue("harvestTool","pickaxe");
+var end_lumiumEndDense = end_lumium.registerPart("dense_ore").getData();
+end_lumiumEndDense.addDataValue("variants","minecraft:end_stone");
+end_lumiumEndDense.addDataValue("hardness","5");
+end_lumiumEndDense.addDataValue("resistance","9");
+end_lumiumEndDense.addDataValue("harvestLevel","2");
+end_lumiumEndDense.addDataValue("harvestTool","pickaxe");
 
-
-var bauxitePoorOre = bauxite.registerPart("poor_ore").getData();
-bauxitePoorOre.addDataValue("variants","minecraft:stone,minecraft:netherrack,minecraft:end_stone");
-bauxitePoorOre.addDataValue("hardness","5,5,5");
-bauxitePoorOre.addDataValue("resistance","6,6,9");
-bauxitePoorOre.addDataValue("harvestTool","pickaxe,pickaxe,pickaxe");
-bauxitePoorOre.addDataValue("harvestLevel","2,2,2");
-
-var bauxiteOre = bauxite.registerPart("ore").getData();
-bauxiteOre.addDataValue("variants","minecraft:stone,minecraft:netherrack,minecraft:end_stone");
-bauxiteOre.addDataValue("hardness","5,5,5");
-bauxiteOre.addDataValue("resistance","6,6,9");
-bauxiteOre.addDataValue("harvestTool","pickaxe,pickaxe,pickaxe");
-bauxiteOre.addDataValue("harvestLevel","2,2,2");
-
-var bauxiteDenseOre = bauxite.registerPart("dense_ore").getData();
-bauxiteDenseOre.addDataValue("variants","minecraft:stone,minecraft:netherrack,minecraft:end_stone,minecraft:bedrock");
-bauxiteDenseOre.addDataValue("hardness","5,5,5,70");
-bauxiteDenseOre.addDataValue("resistance","6,6,9,1200");
-bauxiteDenseOre.addDataValue("harvestTool","pickaxe,pickaxe,pickaxe,pickaxe");
-bauxiteDenseOre.addDataValue("harvestLevel","2,2,2,3");
-
-
-var galenaPoorOre = galena.registerPart("poor_ore").getData();
-galenaPoorOre.addDataValue("variants","minecraft:stone,minecraft:netherrack,minecraft:end_stone");
-galenaPoorOre.addDataValue("hardness","5,5,5");
-galenaPoorOre.addDataValue("resistance","6,6,9");
-galenaPoorOre.addDataValue("harvestTool","pickaxe,pickaxe,pickaxe");
-galenaPoorOre.addDataValue("harvestLevel","2,2,2");
-
-var galenaOre = galena.registerPart("ore").getData();
-galenaOre.addDataValue("variants","minecraft:stone,minecraft:netherrack,minecraft:end_stone");
-galenaOre.addDataValue("hardness","5,5,5");
-galenaOre.addDataValue("resistance","6,6,9");
-galenaOre.addDataValue("harvestTool","pickaxe,pickaxe,pickaxe");
-galenaOre.addDataValue("harvestLevel","2,2,2");
-
-var galenaDenseOre = galena.registerPart("dense_ore").getData();
-galenaDenseOre.addDataValue("variants","minecraft:stone,minecraft:netherrack,minecraft:end_stone,minecraft:bedrock");
-galenaDenseOre.addDataValue("hardness","5,5,5,70");
-galenaDenseOre.addDataValue("resistance","6,6,9,1200");
-galenaDenseOre.addDataValue("harvestTool","pickaxe,pickaxe,pickaxe,pickaxe");
-galenaDenseOre.addDataValue("harvestLevel","2,2,2,3");
+var bedrock_lumium = MaterialSystem.getMaterialBuilder().setName("Bedrock Lumium").setColor(Color.fromHex("#ffffb9")).build();
+var bedrock_lumiumBedrockDense = bedrock_lumium.registerPart("dense_ore").getData();
+bedrock_lumiumBedrockDense.addDataValue("variants","minecraft:bedrock");
+bedrock_lumiumBedrockDense.addDataValue("hardness","70");
+bedrock_lumiumBedrockDense.addDataValue("resistance","1200");
+bedrock_lumiumBedrockDense.addDataValue("harvestLevel","3");
+bedrock_lumiumBedrockDense.addDataValue("harvestTool","pickaxe");
 
 
 

@@ -23,9 +23,8 @@ public class Registry extends AData {
         this.ore = ore;
     }
 
-    public String getRegistry() {
-        return "<" + this.mod + ":" + this.registry + ":" + this.meta + ">";
-    }
+    public String getCTItem() { return "<" + this.mod + ":" + this.registry + ":" + this.meta + ">"; }
+    public String getUnlocalizedName() { return this.mod + ":" + this.registry; }
 
     //no script is needed to be generated and written to, this is an internal data object
     @Override
