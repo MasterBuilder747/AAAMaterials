@@ -17,7 +17,8 @@ public class Material extends AData {
     //required components
     //name
     private final String LOCALNAME;
-    public String color; //#HEX000 required
+    public String color; //HEX000 required
+    String state; //default state of the material, determines other states
 
     //Material Part data, initializes to null if not registered, otherwise when building,
     //these will be read and used for various material parts and recipe generation:
@@ -61,16 +62,11 @@ public class Material extends AData {
     Tinkers tinkers; //allows this material to have tinker's armor and tool materials, recipe only
     //Chicken chicken; //skyblock pack?
 
-    public Material(String name, String localName, String color) {
+    public Material(String name, String localName, String color, String state) {
         super(name);
         this.LOCALNAME = localName;
         this.color = color;
-    }
-    //int color support in case
-    public Material(String name, String localName, int color) {
-        super(name);
-        this.LOCALNAME = localName;
-        this.color = Util.IntToHEX(color);
+        this.state = state;
     }
 
     //5) build the code based off these attributes

@@ -13,10 +13,10 @@ public class GMaterial extends AGenerator<Material> {
 
     @Override
     protected void readLine(BufferedReader br, String[] s) throws IOException {
-        //unlocalizedName, localizedName, #HEXColor
-        if (s.length < 2 || s.length > 3) {
-            error(3);
+        //unlocalizedName, localizedName, HEXColor
+        if (s.length != 4) {
+            error(4);
         }
-        objects.add(new Material(s[0], s[1].replace("-", " "), s[2]));
+        objects.add(new Material(s[0], s[1].replace("-", " "), s[2], s[3]));
     }
 }

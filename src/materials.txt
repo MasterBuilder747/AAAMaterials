@@ -1,259 +1,259 @@
-/name, localName, hexColor
+/name, localName, hexColor, defaultState
 /ex: lumium, Lumium, 12345678
 /woods:
-oak, Oak, 966f35
-spruce, Spruce, 734712
-birch, Birch, e0d1a4
-jungle, Jungle, d19e71
-acacia, Acacia, d1732c
-dark_oak, Dark-Oak, 472104
+oak, Oak, 966f35, solid
+spruce, Spruce, 734712, solid
+birch, Birch, e0d1a4, solid
+jungle, Jungle, d19e71, solid
+acacia, Acacia, d1732c, solid
+dark_oak, Dark-Oak, 472104, solid
 /stones:
-andesite, Andesite, d5dbdb
-basalt, Basalt, 414d4c
-blue_schist, Blue-Schist, 36918e
-green_schist, Green-Schist, 3d805f
-chalk, Chalk, ded0ca
-dacite, Dacite, d5dbdb
-dolomite, Dolomite, 65705e
-eclogite, Ecelogite, 918273
-gabbro, Gabbro, 7e7985
-gneiss, Gneiss, 595c63
-greywacke, Greywacke, bcc2be
-komatiite, komatiite, dbb856
-limestone, Limestone, bccca3
-marble, Marble, e3e8e7
-migmatite, Migmatite, 6e7985
-quartzite, Quartzite, 91857d
-rhyolite, Rhyolite, 7b877b
-shale, Shale, abadb8
-siltstone, Siltstone, ab8572
-soapstone, Soapstone, c0c9d1
-slate, Slate, 454852
-red_granite, Red-Granite, bd8f86
-black_granite, Black-Granite, 262321
+andesite, Andesite, d5dbdb, solid
+basalt, Basalt, 414d4c, solid
+blue_schist, Blue-Schist, 36918e, solid
+green_schist, Green-Schist, 3d805f, solid
+chalk, Chalk, ded0ca, solid
+dacite, Dacite, d5dbdb, solid
+dolomite, Dolomite, 65705e, solid
+eclogite, Ecelogite, 918273, solid
+gabbro, Gabbro, 7e7985, solid
+gneiss, Gneiss, 595c63, solid
+greywacke, Greywacke, bcc2be, solid
+komatiite, komatiite, dbb856, solid
+limestone, Limestone, bccca3, solid
+marble, Marble, e3e8e7, solid
+migmatite, Migmatite, 6e7985, solid
+quartzite, Quartzite, 91857d, solid
+rhyolite, Rhyolite, 7b877b, solid
+shale, Shale, abadb8, solid, solid
+siltstone, Siltstone, ab8572, solid
+soapstone, Soapstone, c0c9d1, solid
+slate, Slate, 454852, solid
+red_granite, Red-Granite, bd8f86, solid
+black_granite, Black-Granite, 262321, solid
 /mob:
-wool, Wool, f2f4f7
+wool, Wool, f2f4f7, solid
 /elements:
 /gas
-/hydrogen, hydrogen, ffadc1
-/nitrogen, nitrogen, 629df0
-/oxygen, oxygen, 8db1e3
-/fluorine, fluorine, d7d975
-/chlorine, chlorine, d4e0a6
-/helium, helium, e84a4a
-/neon, neon, ff3526
-/argon, argon, eb9de7
-/krypton, krypton, 81d2f7
-/xenon, xenon, c8dae3
-/radon, radon, ff2bf4
+/hydrogen, hydrogen, ffadc1, gas
+/nitrogen, nitrogen, 629df0, gas
+/oxygen, oxygen, 8db1e3, gas
+/fluorine, fluorine, d7d975, gas
+/chlorine, chlorine, d4e0a6, gas
+/helium, helium, e84a4a, gas
+/neon, neon, ff3526, gas
+/argon, argon, eb9de7, gas
+/krypton, krypton, 81d2f7, gas
+/xenon, xenon, c8dae3, gas
+/radon, radon, ff2bf4, gas
 /liquid:
-/bromine, bromine, ab2507
-/mercury, mercury, 8c8280
+/bromine, bromine, ab2507, liquid
+/mercury, mercury, 8c8280, liquid
 /ores:
-bauxite, Bauxite, ff9b79
-galena, Galena, af78b6
+bauxite, Bauxite, ff9b79, solid
+galena, Galena, af78b6, solid
 /solid:
-lithium, Lithium, b4bc84
-beryllium, Beryllium, 0f2d0f
-boron, Boron, 363d31
-carbon, Carbon, 404040
-sodium, Sodium, 000c91
-magnesium, Magnesium, d99fe3
-aluminium, Aluminium, 6fe1ed
-silicon, Silicon, 060033
-phosphorus, Phosphorus, 7a4907
-sulfur, Sulfur, a38b12
-potassium, Potassium, ccc6a5
-calcium, Calcium, fff2b3
-scandium, Scandium, 689c97
-titanium, Titanium, e398db
-vanadium, Vanadium, 252833
-chrome, Chrome, fde0ff
-manganese, Manganese, e0c5df
-iron, Iron, d9d7d9
-cobalt, Cobalt, 3152e8
-nickel, Nickel, e6d6aa
-copper, Copper, f5b753
-zinc, Zinc, dae5e8
-gallium, Gallium, 75c7aa
-germanium, Germanium, eaf4f9
-arsenic, Arsenic, cfd4c3
-selenium, Selenium, 630e0e
-rubidium, Rubidium, 855151
-strontium, Strontium, b0a884
-yttrium, Yttrium, b1c9ab
-zirconium, Zirconium, b5b833
-niobium, Niobium, 5c246b
-molybdenum, Molybdenum, ba9bd4
-technetium, Technetium, b1efda
-ruthenium, Ruthenium, eae3e7
-rhodium, Rhodium, efeaeb
-palladium, Palladium, 6e26ff
-silver, Silver, e1f5f2
-cadmium, Cadmium, 406e99
-indium, Indium, 8b00b5
-tin, Tin, 2d73ff
-antimony, Antimony, ebdcab
-tellurium, Tellurium, 52919e
-iodine, Iodine, 5f3368
-caesium, Caesium, a4a0ad
-barium, Barium, a84d14
-lanthanum, Lanthanum, 96a2ab
-cerium, Cerium, 516675
-praseodymium, Praseodymium, 163d59
-neodymium, Neodymium, 727287
-promethium, Promethium, ab7291
-samarium, Samarium, 486959
-europium, Europium, 9c7e75
-gadolinium, Gadolinium, bab88c
-terbium, Terbium, 788a5a
-dysprosium, Dysprosium, 6e3054
-holmium, Holmium, 877e6d
-erbium, Erbium, 6d877f
-thulium, Thulium, 072742
-ytterbium, Ytterbium, 3f3f4a
-lutetium, Lutetium, 7b989c
-hafnium, Hafnium, afbbce
-tantalum, Tantalum, bccccf
-tungsten, Tungsten, 101024
-rhenium, Rhenium, dfd2ef
-osmium, Osmium, 0000ff
-iridium, Iridium, edfffd
-platinum, Platinum, ced7db
-gold, Gold, ffd95c
-mercury, Mercury, ff5c5c
-thallium, Thallium, c6d7f2
-lead, Lead, 9771ab
-bismuth, Bismuth, 54946e
-polonium, Polonium, 66421f
-astatine, Astatine, 2a2b30
-francium, Francium, 434a46
-radium, Radium, c7c6b5
-actinium, Actinium, 415fc1
-thorium, Thorium, 2a1c36
-protactinium, Protactinium, dadff2
-uranium, Uranium, 00ff4c
-neptunium, Neptunium, 4b4de3
-plutonium, Plutonium, abacd4
-americium, Americium, ffa382
-curium, Curium, 3b4066
-berkelium, Berkelium, 825f19
-californium, Californium, c44310
-einsteinium, Einsteinium, 0e2784
-fermium, Fermium, abaf79
-mendelevium, Mendelevium, 79afa9
-nobelium, Nobelium, a679af
-lawrencium, Lawrencium, c1b343
-rutherfordium, Rutherfordium, d4bfa7
-dubnium, Dubnium, b5c9c7
-seaborgium, Seaborgium, 9dc3c7
-bohrium, Bohrium, 5c3f3f
-hassium, Hassium, 8f7951
-meitnerium, Meitnerium, b097ab
-darmstadtium, Darmstadtium, cee6b1
-roentgenium, Roentgenium, 5f6b63
-copernicium, Copernicium, 7c8c8f
-nihonium, Nihonium, a8bab2
-flerovium, Flerovium, bac3cc
-moscovium, Moscovium, c28274
-livermorium, Livermorium, ada87b
-tennessine, Tennessine, a27ee0
-oganesson, Oganesson, 949494
+lithium, Lithium, b4bc84, solid
+beryllium, Beryllium, 0f2d0f, solid
+boron, Boron, 363d31, solid
+carbon, Carbon, 404040, solid
+sodium, Sodium, 000c91, solid
+magnesium, Magnesium, d99fe3, solid
+aluminium, Aluminium, 6fe1ed, solid
+silicon, Silicon, 060033, solid
+phosphorus, Phosphorus, 7a4907, solid
+sulfur, Sulfur, a38b12, solid
+potassium, Potassium, ccc6a5, solid
+calcium, Calcium, fff2b3, solid
+scandium, Scandium, 689c97, solid
+titanium, Titanium, e398db, solid
+vanadium, Vanadium, 252833, solid
+chrome, Chrome, fde0ff, solid
+manganese, Manganese, e0c5df, solid
+iron, Iron, d9d7d9, solid
+cobalt, Cobalt, 3152e8, solid
+nickel, Nickel, e6d6aa, solid
+copper, Copper, f5b753, solid
+zinc, Zinc, dae5e8, solid
+gallium, Gallium, 75c7aa, solid
+germanium, Germanium, eaf4f9, solid
+arsenic, Arsenic, cfd4c3, solid
+selenium, Selenium, 630e0e, solid
+rubidium, Rubidium, 855151, solid
+strontium, Strontium, b0a884, solid
+yttrium, Yttrium, b1c9ab, solid
+zirconium, Zirconium, b5b833, solid
+niobium, Niobium, 5c246b, solid
+molybdenum, Molybdenum, ba9bd4, solid
+technetium, Technetium, b1efda, solid
+ruthenium, Ruthenium, eae3e7, solid
+rhodium, Rhodium, efeaeb, solid
+palladium, Palladium, 6e26ff, solid
+silver, Silver, e1f5f2, solid
+cadmium, Cadmium, 406e99, solid
+indium, Indium, 8b00b5, solid
+tin, Tin, 2d73ff, solid
+antimony, Antimony, ebdcab, solid
+tellurium, Tellurium, 52919e, solid
+iodine, Iodine, 5f3368, solid
+caesium, Caesium, a4a0ad, solid
+barium, Barium, a84d14, solid
+lanthanum, Lanthanum, 96a2ab, solid
+cerium, Cerium, 516675, solid
+praseodymium, Praseodymium, 163d59, solid
+neodymium, Neodymium, 727287, solid
+promethium, Promethium, ab7291, solid
+samarium, Samarium, 486959, solid
+europium, Europium, 9c7e75, solid
+gadolinium, Gadolinium, bab88c, solid
+terbium, Terbium, 788a5a, solid
+dysprosium, Dysprosium, 6e3054, solid
+holmium, Holmium, 877e6d, solid
+erbium, Erbium, 6d877f, solid
+thulium, Thulium, 072742, solid
+ytterbium, Ytterbium, 3f3f4a, solid
+lutetium, Lutetium, 7b989c, solid
+hafnium, Hafnium, afbbce, solid
+tantalum, Tantalum, bccccf, solid
+tungsten, Tungsten, 101024, solid
+rhenium, Rhenium, dfd2ef, solid
+osmium, Osmium, 0000ff, solid
+iridium, Iridium, edfffd, solid
+platinum, Platinum, ced7db, solid
+gold, Gold, ffd95c, solid
+mercury, Mercury, ff5c5c, solid
+thallium, Thallium, c6d7f2, solid
+lead, Lead, 9771ab, solid
+bismuth, Bismuth, 54946e, solid
+polonium, Polonium, 66421f, solid
+astatine, Astatine, 2a2b30, solid
+francium, Francium, 434a46, solid
+radium, Radium, c7c6b5, solid
+actinium, Actinium, 415fc1, solid
+thorium, Thorium, 2a1c36, solid
+protactinium, Protactinium, dadff2, solid
+uranium, Uranium, 00ff4c, solid
+neptunium, Neptunium, 4b4de3, solid
+plutonium, Plutonium, abacd4, solid
+americium, Americium, ffa382, solid
+curium, Curium, 3b4066, solid
+berkelium, Berkelium, 825f19, solid
+californium, Californium, c44310, solid
+einsteinium, Einsteinium, 0e2784, solid
+fermium, Fermium, abaf79, solid
+mendelevium, Mendelevium, 79afa9, solid
+nobelium, Nobelium, a679af, solid
+lawrencium, Lawrencium, c1b343, solid
+rutherfordium, Rutherfordium, d4bfa7, solid
+dubnium, Dubnium, b5c9c7, solid
+seaborgium, Seaborgium, 9dc3c7, solid
+bohrium, Bohrium, 5c3f3f, solid
+hassium, Hassium, 8f7951, solid
+meitnerium, Meitnerium, b097ab, solid
+darmstadtium, Darmstadtium, cee6b1, solid
+roentgenium, Roentgenium, 5f6b63, solid
+copernicium, Copernicium, 7c8c8f, solid
+nihonium, Nihonium, a8bab2, solid
+flerovium, Flerovium, bac3cc, solid
+moscovium, Moscovium, c28274, solid
+livermorium, Livermorium, ada87b, solid
+tennessine, Tennessine, a27ee0, solid
+oganesson, Oganesson, 949494, solid
 /alloys:
-kanthal, Kanthal, abad4b
-nichrome, Nichrome, be7dff
-tinalloy, Tin-Alloy, aacccc
-magnalium, Magnalium, 496281
-rosegold, Rose-Gold, ee6846
-sterlingsilver, Sterling-Silver, cee3e2
-niobiumtitanium, Niobium-Titanium, d37272
-bluesteel, Blue-Steel, 0362af
-redsteel, Red-Steel, b51717
-stainlesssteel, Stainless-Steel, 9b99b5
-cobaltbrass, Cobalt-Brass, 244d8f
-bismuthbronze, Bismuth-Bronze, 366035
-blackbronze, Black-Bronze, 6d5a1f
-blacksteel, Black-Steel, 2f3948
-pewter, Pewter, bbd1ab
-galvanized_steel, Galvanized-Steel, 777f5e
-tungstensteel, Tungstensteel, 1b2431
-iridium_alloy, Iridium-Alloy, eaefee
-advanced_alloy, Advanced-Alloy, e84629
-bronze, Bronze, ff881a
-electrum, Electrum, f9e600
-constantan, Constantan, fd5c17
-steel, Steel, 869a9b
-brass, Brass, f2b600
-invar, Invar, b0ae6a
-hssg, HSS-G, 929434
-hsse, HSS-E, 335c2a
-hsss, HSS-S, 63283e
-dilithium, Dilithium, e4e2ba
-titanium_aluminide, Titanium-Aluminide, 033d47
-titanium_iridium, Titanium-Iridium, e9b4b5
-redstone_alloy, Redstone-Alloy, ea2a15
-electrical_steel, Electrical-Steel, a9acb2
-conductive_iron, Conductive-Iron, b79d9a
-dark_steel, Dark-Steel, 2e332f
-construction_alloy, Construction-Alloy, b5b18d
-alumite, Alumite, ffc9f0
-osmiridium, Osmiridium, 7999c8
-redalloy, Red-Alloy, ff0000
-electrum_flux, Gelid-Enderium, f4b024
-signalum, Signalum, fe3a01
-lumium, Lumium, ffffb6
-enderium, Enderium, 008839
-aluminum_brass, Aluminum-Brass, f2d048
-knightslime, Knightslime, c741d8
-pig_iron, Pig-Iron, e2a69e
-cupronickel, Cupronickel, d89115
-aluminum_bronze, Aluminum-Bronze, f2a348
-nickel_aluminum_bronze, NickelAluminum-Bronze, ead48c
-yttrium_barium_cuprate, Yttrium-Barium-Cuprate, 3b0c08
-purple_steel, Purple-Steel, 71006d
-voidensteel, Voidensteel, 531135
-white_gold, White-Gold, fffcc4
-nichromium, Nichromium, 945252
-chromodium, Chromodium, 7b0425
-fluxalitium, Fluxalitium, ffe097
-spectraclium, Spectraclium, e8fffe
+kanthal, Kanthal, abad4b, solid
+nichrome, Nichrome, be7dff, solid
+tinalloy, Tin-Alloy, aacccc, solid
+magnalium, Magnalium, 496281, solid
+rosegold, Rose-Gold, ee6846, solid
+sterlingsilver, Sterling-Silver, cee3e2, solid
+niobiumtitanium, Niobium-Titanium, d37272, solid
+bluesteel, Blue-Steel, 0362af, solid
+redsteel, Red-Steel, b51717, solid
+stainlesssteel, Stainless-Steel, 9b99b5, solid
+cobaltbrass, Cobalt-Brass, 244d8f, solid
+bismuthbronze, Bismuth-Bronze, 366035, solid
+blackbronze, Black-Bronze, 6d5a1f, solid
+blacksteel, Black-Steel, 2f3948, solid
+pewter, Pewter, bbd1ab, solid
+galvanized_steel, Galvanized-Steel, 777f5e, solid
+tungstensteel, Tungstensteel, 1b2431, solid
+iridium_alloy, Iridium-Alloy, eaefee, solid
+advanced_alloy, Advanced-Alloy, e84629, solid
+bronze, Bronze, ff881a, solid
+electrum, Electrum, f9e600, solid
+constantan, Constantan, fd5c17, solid
+steel, Steel, 869a9b, solid
+brass, Brass, f2b600, solid
+invar, Invar, b0ae6a, solid
+hssg, HSS-G, 929434, solid
+hsse, HSS-E, 335c2a, solid
+hsss, HSS-S, 63283e, solid
+dilithium, Dilithium, e4e2ba, solid
+titanium_aluminide, Titanium-Aluminide, 033d47, solid
+titanium_iridium, Titanium-Iridium, e9b4b5, solid
+redstone_alloy, Redstone-Alloy, ea2a15, solid
+electrical_steel, Electrical-Steel, a9acb2, solid
+conductive_iron, Conductive-Iron, b79d9a, solid
+dark_steel, Dark-Steel, 2e332f, solid
+construction_alloy, Construction-Alloy, b5b18d, solid
+alumite, Alumite, ffc9f0, solid
+osmiridium, Osmiridium, 7999c8, solid
+redalloy, Red-Alloy, ff0000, solid
+electrum_flux, Gelid-Enderium, f4b024, solid
+signalum, Signalum, fe3a01, solid
+lumium, Lumium, ffffb6, solid
+enderium, Enderium, 008839, solid
+aluminum_brass, Aluminum-Brass, f2d048, solid
+knightslime, Knightslime, c741d8, solid
+pig_iron, Pig-Iron, e2a69e, solid
+cupronickel, Cupronickel, d89115, solid
+aluminum_bronze, Aluminum-Bronze, f2a348, solid
+nickel_aluminum_bronze, NickelAluminum-Bronze, ead48c, solid
+yttrium_barium_cuprate, Yttrium-Barium-Cuprate, 3b0c08, solid
+purple_steel, Purple-Steel, 71006d, solid
+voidensteel, Voidensteel, 531135, solid
+white_gold, White-Gold, fffcc4, solid
+nichromium, Nichromium, 945252, solid
+chromodium, Chromodium, 7b0425, solid
+fluxalitium, Fluxalitium, ffe097, solid
+spectraclium, Spectraclium, e8fffe, solid
 /natural other:
-obsidian, Obsidian, 420042
+obsidian, Obsidian, 420042, solid
 /gems:
 /vinteum,
-nether_star, Nether-Star, fafeff
-green_sapphire, Green-Sapphire, 47b560
-diamond, Diamond, c9ffff
-emerald, Emerald, 5ebf3b
-cinnabar, Cinnabar, 751d23
-coal, Coal, 26241f
-lignite, Lignite, 66583e
-apatite, Apatite, 4887b8
-monazite, Monazite, 557864
-nether_quartz, Nether-Quartz, fffcfa
-sunny_quartz, Sunny-Quartz, fffce8
-rose_quartz, Rose-Quartz, ffe8e8
-elven_quartz, Elven-Quartz, e3ffe7
-mana_quartz, Mana-Quartz, e3f4ff
-lavender_quartz, Lavender-Quartz, e5dff0
-blaze_quartz, Blaze-Quartz, fff1de
-certus_quartz, Certus-Quartz, f0f3ff
-black_quartz, Black-Quartz, 242435
-lava_crystal, Lava-Crystal, c6751c
-electrical, Electrical, aab5b4
-adamantine, Adamantine, 5e3c30
-cold_iron, Cold-Iron, b6d7ef
-star_steel, Star-Steel, 070519
-aquarium, Aquarium, 244775
-ruby, Ruby, b00000
-amber, Amber, feac63
-topaz, Topaz, ea7500
-peridot, Peridot, 71e100
-malachite, Malachite, 00f0a8
-sapphire, Sapphire, 4500d5
-amethyst, Amethyst, da82ff
-tanzanite, Tanzanite, 490f79
-moonstone, Moonstone, 424566
-red_garnet, Red-Garnet, db3c3c
-yellow_garnet, Yellow-Garnet, d6de36
-aquamarine, Aquamarine, 229ce2
+nether_star, Nether-Star, fafeff, solid
+green_sapphire, Green-Sapphire, 47b560, solid
+diamond, Diamond, c9ffff, solid
+emerald, Emerald, 5ebf3b, solid
+cinnabar, Cinnabar, 751d23, solid
+coal, Coal, 26241f, solid
+lignite, Lignite, 66583e, solid
+apatite, Apatite, 4887b8, solid
+monazite, Monazite, 557864, solid
+nether_quartz, Nether-Quartz, fffcfa, solid
+sunny_quartz, Sunny-Quartz, fffce8, solid
+rose_quartz, Rose-Quartz, ffe8e8, solid
+elven_quartz, Elven-Quartz, e3ffe7, solid
+mana_quartz, Mana-Quartz, e3f4ff, solid
+lavender_quartz, Lavender-Quartz, e5dff0, solid
+blaze_quartz, Blaze-Quartz, fff1de, solid
+certus_quartz, Certus-Quartz, f0f3ff, solid
+black_quartz, Black-Quartz, 242435, solid
+lava_crystal, Lava-Crystal, c6751c, solid
+electrical, Electrical, aab5b4, solid
+adamantine, Adamantine, 5e3c30, solid
+cold_iron, Cold-Iron, b6d7ef, solid
+star_steel, Star-Steel, 070519, solid
+aquarium, Aquarium, 244775, solid
+ruby, Ruby, b00000, solid
+amber, Amber, feac63, solid
+topaz, Topaz, ea7500, solid
+peridot, Peridot, 71e100, solid
+malachite, Malachite, 00f0a8, solid
+sapphire, Sapphire, 4500d5, solid
+amethyst, Amethyst, da82ff, solid
+tanzanite, Tanzanite, 490f79, solid
+moonstone, Moonstone, 424566, solid
+red_garnet, Red-Garnet, db3c3c, solid
+yellow_garnet, Yellow-Garnet, d6de36, solid
+aquamarine, Aquamarine, 229ce2, solid
