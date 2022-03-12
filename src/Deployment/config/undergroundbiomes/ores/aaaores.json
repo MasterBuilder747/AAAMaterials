@@ -1,7 +1,7 @@
 [
 {
 	"internalOreName": "contenttweaker:sub_block_holder_0",
-	"meta": 0,
+	"meta": 13,
 	"overlay": "base:blocks/poor_ore",
 	"lightValue": 0,
 	"alphaOverlay": false,
@@ -9,8 +9,8 @@
 	"color": "#ffffb6"
 },
 {
-	"internalOreName": "contenttweaker:sub_block_holder_0",
-	"meta": 2,
+	"internalOreName": "contenttweaker:sub_block_holder_1",
+	"meta": 5,
 	"overlay": "base:blocks/ore",
 	"lightValue": 0,
 	"alphaOverlay": false,
@@ -19,7 +19,7 @@
 },
 {
 	"internalOreName": "contenttweaker:sub_block_holder_0",
-	"meta": 1,
+	"meta": 15,
 	"overlay": "base:blocks/dense_ore",
 	"lightValue": 0,
 	"alphaOverlay": false,

@@ -25,7 +25,7 @@ marble, Marble, e3e8e7, solid
 migmatite, Migmatite, 6e7985, solid
 quartzite, Quartzite, 91857d, solid
 rhyolite, Rhyolite, 7b877b, solid
-shale, Shale, abadb8, solid, solid
+shale, Shale, abadb8, solid
 siltstone, Siltstone, ab8572, solid
 soapstone, Soapstone, c0c9d1, solid
 slate, Slate, 454852, solid

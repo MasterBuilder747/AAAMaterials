@@ -38,7 +38,8 @@ public class GOre extends AGenerator<Ore> {
         //stone: ore; 4; 6; 2: poor; 4; 6; 2: dense; 4; 9; 2,
         //nether: ore; 4; 6; 2: poor; 4; 6; 2: dense; 4; 9; 2,
         //end: ore; 4; 6; 2: poor; 4; 6; 2: dense; 4; 9; 2,
-        //bedrock: ore; 4; 6; 2: poor; 4; 6; 2: dense; 4; 9; 2
+        //bedrock: ore; 4; 6; 2: poor; 4; 6; 2: dense; 4; 9; 2,
+        //configure ore gen here
         String material_name = s[0];
         if (!this.material.is(material_name)) {
             error("Unknown material " + material_name);

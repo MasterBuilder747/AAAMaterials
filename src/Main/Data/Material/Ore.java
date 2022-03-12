@@ -32,6 +32,48 @@ public class Ore extends AData {
     //for the ore block generation, a file must be created for oreVeins to work with the underGroundBiomes mod's blocks
     //each vein is generated in a certain biome, must specify this
 
+    /*
+    HOT,
+    COLD,
+    //Tags specifying the amount of vegetation a biome has. Specifying neither implies a biome to have moderate amounts
+    SPARSE,
+    DENSE,
+    //Tags specifying how moist a biome is. Specifying neither implies the biome as having moderate humidity
+    WET,
+    DRY,
+    //Tree-based tags, SAVANNA refers to dry, desert-like trees (Such as Acacia), CONIFEROUS refers to snowy trees (Such as Spruce) and JUNGLE refers to jungle trees.
+    //Specifying no tag implies a biome has temperate trees (Such as Oak)
+    SAVANNA,
+    CONIFEROUS,
+    JUNGLE,
+
+    //Tags specifying the nature of a biome
+    SPOOKY,
+    DEAD,
+    LUSH,
+    NETHER,
+    END,
+    MUSHROOM,
+    MAGICAL,
+
+    OCEAN,
+    RIVER,
+    //A general tag for all water-based biomes. Shown as present if OCEAN or RIVER are.
+    WATER(OCEAN, RIVER),
+
+    //Generic types which a biome can be
+    MESA,
+    FOREST,
+    PLAINS,
+    MOUNTAIN,
+    HILLS,
+    SWAMP,
+    SANDY,
+    SNOWY,
+    WASTELAND,
+    BEACH;
+     */
+
     public Ore(String name, Material m, OreVariant[] variants, Registry poor, Registry ore, Registry dense) {
         super(name);
         this.m = m;
