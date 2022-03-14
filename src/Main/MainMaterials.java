@@ -70,9 +70,9 @@ public class MainMaterials {
         bw.write(metal.registerMaterials());
 
         //7. ore system
-        GOre ore = new GOre("ore", material, registry);
+        GOre ore = new GOre("ore", material, registry, false);
         bw.write(ore.registerMaterials());
-        //        CMolecule molecule = new CMolecule("moleculeComposition", element);
+//        CMolecule molecule = new CMolecule("moleculeComposition", element);
 //        bw.write(molecule.register());
 //        GCompound compound = new GCompound("compoundComposition", element);
 //        bw.write(compound.register());
@@ -80,15 +80,19 @@ public class MainMaterials {
         //8. finish
         bw.close();
 
-        //ore .json file
-        //path: .minecraft/config/undergroundbiomes/ores/aaaores.json
+        //cofh world gen .json file
+        fw = new FileWriter(HOME + DEPLOY + "config/cofh/world/01_aaaores.json");
+        bw = new BufferedWriter(fw);
+        bw.write(ore.genCWJson());
+        bw.close();
+
+        //underground biomes ore .json file
         fw = new FileWriter(HOME + DEPLOY + "config/undergroundbiomes/ores/aaaores.json");
         bw = new BufferedWriter(fw);
         bw.write(ore.genUBJson());
         bw.close();
 
         //.lang file
-        //path: .minecraft/resources/contenttweaker/lang/en_us.lang
         fw = new FileWriter(HOME + DEPLOY + "resources/contenttweaker/lang/en_us.lang");
         bw = new BufferedWriter(fw);
         bw.write(block.localize());

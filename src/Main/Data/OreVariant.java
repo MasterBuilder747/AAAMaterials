@@ -6,7 +6,7 @@ public class OreVariant extends AData {
     //comma-separated
     //name is the material name
     OreType[] oreTypes;
-    public String block;
+    public String block; //stone, nether, end, bedrock
     String color;
 
     public OreVariant(String name, String color, String block, OreType[] oreTypes) {

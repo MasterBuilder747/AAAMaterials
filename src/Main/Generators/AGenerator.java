@@ -110,6 +110,9 @@ public abstract class AGenerator<D extends AData> {
     }
 
     //exceptions
+    protected void warn(String s) {
+        System.out.println("Warning in file " + this.filename+"s.txt: " + s + " at line " + this.line);
+    }
     protected void error(String s) throws GeneratorException {
         throw new GeneratorException(s, this.filename, this.line);
     }

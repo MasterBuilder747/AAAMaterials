@@ -6,9 +6,21 @@
 			"generator": {
 				"type": "large-vein",
 				"block": [
-					{"name": "contenttweaker:sub_block_holder_1", "metadata": 5, "weight":60},
-					{"name": "contenttweaker:sub_block_holder_0", "metadata": 13, "weight":30},
-					{"name": "contenttweaker:sub_block_holder_0", "metadata": 15, "weight":10}
+					{
+						"name": "contenttweaker:sub_block_holder_1",
+						"metadata": 5,
+						"weight": 60
+					},
+					{
+						"name": "contenttweaker:sub_block_holder_0",
+						"metadata": 13,
+						"weight": 30
+					},
+					{
+						"name": "contenttweaker:sub_block_holder_0",
+						"metadata": 15,
+						"weight": 10
+					}
 				],
 				"material": "minecraft:stone",
 				"cluster-size": 2000
@@ -29,18 +41,13 @@
 				"value": [
 					{
 						"type": "id",
-						"entry": [
-							"biomesoplenty:woodland"
-						]
+						"entry": ["biomesoplenty:woodland"]
 					}
 				]
 			},
 			"dimension": {
-				"restriction": "blacklist",
-				"value": [
-					-1,
-					1
-				]
+				"restriction": "whitelist",
+				"value": [0]
 			}
 		},
 		"lumium_nether": {
@@ -49,9 +56,21 @@
 			"generator": {
 				"type": "large-vein",
 				"block": [
-					{"name": "contenttweaker:sub_block_holder_0", "metadata": 2, "weight":60},
-					{"name": "contenttweaker:sub_block_holder_0", "metadata": 4, "weight":30},
-					{"name": "contenttweaker:sub_block_holder_0", "metadata": 5, "weight":10}
+					{
+						"name": "contenttweaker:sub_block_holder_0",
+						"metadata": 2,
+						"weight": 60
+					},
+					{
+						"name": "contenttweaker:sub_block_holder_0",
+						"metadata": 4,
+						"weight": 30
+					},
+					{
+						"name": "contenttweaker:sub_block_holder_0",
+						"metadata": 5,
+						"weight": 10
+					}
 				],
 				"material": "minecraft:netherrack",
 				"cluster-size": 2500
@@ -69,9 +88,7 @@
 			"retrogen": false,
 			"dimension": {
 				"restriction": "whitelist",
-				"value": [
-					-1
-				]
+				"value": [-1]
 			}
 		},
 		"lumium_end": {
@@ -80,12 +97,24 @@
 			"generator": {
 				"type": "large-vein",
 				"block": [
-					{"name": "contenttweaker:sub_block_holder_0", "metadata": 1, "weight":60},
-					{"name": "contenttweaker:sub_block_holder_0", "metadata": 6, "weight":30},
-					{"name": "contenttweaker:sub_block_holder_0", "metadata": 3, "weight":10}
+					{
+						"name": "contenttweaker:sub_block_holder_0",
+						"metadata": 1,
+						"weight": 60
+					},
+					{
+						"name": "contenttweaker:sub_block_holder_0",
+						"metadata": 6,
+						"weight": 30
+					},
+					{
+						"name": "contenttweaker:sub_block_holder_0",
+						"metadata": 3,
+						"weight": 10
+					}
 				],
 				"material": "minecraft:end_stone",
-				"cluster-size": 2500
+				"cluster-size": 3000
 			},
 			"chunk-chance": 30,
 			"cluster-count": {
@@ -100,9 +129,7 @@
 			"retrogen": false,
 			"dimension": {
 				"restriction": "whitelist",
-				"value": [
-					1
-				]
+				"value": [1]
 			}
 		},
 		"lumium_bedrock": {
@@ -121,13 +148,11 @@
 			"cluster-count": 1,
 			"min-height": 0,
 			"max-height": 0,
-			"retrogen": true,
+			"retrogen": false,
 			"biome": "all",
 			"dimension": {
 				"restriction": "whitelist",
-				"value": [
-					0
-				]
+				"value": [0]
 			}
 		}
 	}

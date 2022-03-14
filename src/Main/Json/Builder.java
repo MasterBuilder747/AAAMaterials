@@ -8,15 +8,19 @@ public class Builder {
         this.objects = objects;
     }
 
-    public String print() {
+    public String print(boolean brackets) {
+        String b1 = brackets ? "[" : "{";
+        String b2 = brackets ? "]" : "}";
         StringBuilder sb = new StringBuilder();
-        sb.append("[\n");
+        sb.append(b1);
+        sb.append("\n");
         for (int i = 0; i < this.objects.length-1; i++) {
             sb.append(this.objects[i].print());
             sb.append(",\n");
         }
         sb.append(this.objects[this.objects.length-1].print());
-        sb.append("\n]");
+        sb.append("\n");
+        sb.append(b2);
         return sb.toString();
     }
 }

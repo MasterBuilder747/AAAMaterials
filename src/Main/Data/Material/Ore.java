@@ -7,15 +7,37 @@ import Main.Json.JsonObject;
 import Main.Json.Value;
 import Main.Util;
 
-public class Ore extends AData {
+import java.util.ArrayList;
+
+public class Ore extends AMaterialData {
     //generates ores and its components for a specified material
     //Also handles generation (2 files)
     OreVariant[] variants; //name of the blocks themselves
 
-    Material m; //the material being mapped to this registry
-    Registry poor;
-    Registry ore;
-    Registry dense;
+    Registry poorStone;
+    Registry oreStone;
+    Registry denseStone;
+    Registry poorNether;
+    Registry oreNether;
+    Registry denseNether;
+    Registry poorEnd;
+    Registry oreEnd;
+    Registry denseEnd;
+    Registry denseBedrock;
+
+    //for generation of the ore
+    //order: stone, nether, end, other planets?
+    int stoneChunkChance;
+    int netherChunkChance;
+    int endChunkChance;
+    int bedrockChunkChance;
+    int stoneMinHeight;
+    int netherMinHeight;
+    int endMinHeight;
+    String biome;
+    
+    //for bedrock ore gen
+
 
     //1. generate CoT ore blocks using parttype
     //2. load the game
@@ -74,22 +96,271 @@ public class Ore extends AData {
     BEACH;
      */
 
-    public Ore(String name, Material m, OreVariant[] variants, Registry poor, Registry ore, Registry dense) {
-        super(name);
-        this.m = m;
+    public Ore(Material m) {
+        super(m);
+    }
+    public void addVariants(OreVariant[] variants) {
         this.variants = variants;
-        this.poor = poor;
-        this.ore = ore;
-        this.dense = dense;
+    }
+    public void addStoneGen(Registry ore, Registry poor, Registry dense, int chunkChance, int minHeight, String biome) {
+        this.poorStone = poor;
+        this.oreStone = ore;
+        this.denseStone = dense;
+        this.stoneMinHeight = minHeight;
+        this.stoneChunkChance = chunkChance;
+        this.biome = biome;
+    }
+    public void addNetherGen(Registry ore, Registry poor, Registry dense, int chunkChance, int minHeight) {
+        this.poorNether = poor;
+        this.oreNether = ore;
+        this.denseNether = dense;
+        this.stoneMinHeight = minHeight;
+        this.stoneChunkChance = chunkChance;
+    }
+    public void addEndGen(Registry ore, Registry poor, Registry dense, int chunkChance, int minHeight) {
+        this.poorEnd = poor;
+        this.oreEnd = ore;
+        this.denseEnd = dense;
+        this.endMinHeight = minHeight;
+        this.endChunkChance = chunkChance;
+    }
+    public void addBedrockGen(Registry denseBedrock, int bedrockChunkChance) {
+        this.denseBedrock = denseBedrock;
+        this.bedrockChunkChance = bedrockChunkChance;
+    }
+
+    //oregen
+    public String generateCWJson() {
+        StringBuilder sb = new StringBuilder();
+        for (int i = 0; i < this.variants.length; i++) {
+            String block = this.variants[i].block;
+            if (block.equals("bedrock")) {
+                ArrayList<Value> keys = new ArrayList<>();
+                    keys.add(new Value("enabled"));
+                    keys.add(new Value("distribution"));
+                    keys.add(new Value("generator"));
+                    keys.add(new Value("chunk-chance"));
+                    keys.add(new Value("cluster-count"));
+                    keys.add(new Value("min-height"));
+                    keys.add(new Value("max-height"));
+                    keys.add(new Value("retrogen"));
+                    keys.add(new Value("biome"));
+                    keys.add(new Value("dimension"));
+                ArrayList<Value> values = new ArrayList<>();
+                    values.add(new Value("bool", "true"));
+                    values.add(new Value("uniform"));
+                    values.add(new Value("json", this.genBedrockOreGenerator(block)));
+                    values.add(new Value("int", String.valueOf(this.bedrockChunkChance))); //get custom value here
+                    values.add(new Value("json", this.genClusterCount()));
+                    values.add(new Value("int", "0"));
+                    values.add(new Value("int", "0"));
+                    values.add(new Value("bool", "false"));
+                    values.add(new Value("str", "all"));
+                    values.add(new Value("json", this.genDimensionGen(block)));
+                sb.append(new JsonObject(keys.toArray(new Value[0]), values.toArray(new Value[0]), this.m.name + "_" + block).print());
+            } else {
+                ArrayList<Value> keys = new ArrayList<>();
+                    keys.add(new Value("enabled"));
+                    keys.add(new Value("distribution"));
+                    keys.add(new Value("generator"));
+                    keys.add(new Value("chunk-chance"));
+                    keys.add(new Value("chunk-count"));
+                    keys.add(new Value("min-height"));
+                    keys.add(new Value("vein-height"));
+                    keys.add(new Value("vein-diameter"));
+                    keys.add(new Value("vertical-density"));
+                    keys.add(new Value("horizontal-density"));
+                    keys.add(new Value("retrogen"));
+                    keys.add(new Value("dimension"));
+                ArrayList<Value> values = new ArrayList<>();
+                    values.add(new Value("bool", "true"));
+                    values.add(new Value("fractal"));
+                    values.add(new Value("json", this.genOreGenerator(block)));
+                    values.add(new Value("int", "15"));
+                    values.add(new Value("json", this.genClusterCount()));
+                    values.add(new Value("int", "1")); //get custom value here
+                    values.add(new Value("int", "128"));
+                    values.add(new Value("int", "400"));
+                    values.add(new Value("int", "100"));
+                    values.add(new Value("int", "100"));
+                    values.add(new Value("bool", "false"));
+                    values.add(new Value("json", this.genDimensionGen(block)));
+                if (block.equals("stone")) {
+                    keys.add(new Value("biome"));
+                    values.add(new Value("json", this.genBiomeGen()));
+                }
+                sb.append(new JsonObject(keys.toArray(new Value[0]), values.toArray(new Value[0]), this.m.name + "_" + block).print());
+            }
+            if (i != this.variants.length-1) {
+                sb.append(",\n");
+            }
+        }
+        return sb.toString();
+    }
+    private JsonObject genDimensionGen(String type) {
+        int dim;
+        switch (type) {
+            case "stone", "bedrock" -> dim = 0;
+            case "nether" -> dim = -1;
+            case "end" -> dim = 1;
+            default -> dim = -1000000000;
+            //planets?
+        }
+        Value[] keys = {
+                new Value("restriction"),
+                new Value("value")
+        };
+        Value[] values = {
+                new Value("str", "whitelist"),
+                new Value("arr", "int", String.valueOf(dim))
+        };
+        return new JsonObject(keys, values);
+    }
+    //only applies to stone type
+    private JsonObject genBiomeGen() {
+        JsonObject[] jsons = {this.genBiomeValue(biome)};
+        Value[] keys = {
+                new Value("restriction"),
+                new Value("value")
+        };
+        Value[] values = {
+                new Value("str", "whitelist"),
+                new Value("arr", "json", jsons)
+        };
+        return new JsonObject(keys, values);
+    }
+    private JsonObject genBiomeValue(String biome) {
+        Value[] keys = {
+                new Value("type"),
+                new Value("entry")
+        };
+        Value[] values = {
+                new Value("str", "id"),
+                new Value("arr", "str", biome)
+        };
+        return new JsonObject(keys, values);
+    }
+    private JsonObject genClusterCount() {
+        Value[] keys = {
+                new Value("min"),
+                new Value("max")
+        };
+        Value[] values = {
+                new Value("int", "1"),
+                new Value("int", "1")
+        };
+        return new JsonObject(keys, values);
+    }
+    private JsonObject genBedrockOreGenerator(String blockType) {
+        Value[] keys = {
+                new Value("block"),
+                new Value("material"),
+                new Value("cluster-size")
+        };
+        Value[] values = {
+                new Value("json", this.genBedrockBlock()),
+                new Value("str", "minecraft:"+blockType),
+                new Value("int", "1")
+        };
+        return new JsonObject(keys, values, "generator");
+    }
+    private JsonObject genBedrockBlock() {
+        Value[] keys = {
+                new Value("name"),
+                new Value("metadata"),
+                new Value("cluster-size")
+        };
+        Value[] values = {
+                new Value("str", this.denseBedrock.getUnlocalizedName()),
+                new Value("int", String.valueOf(this.denseBedrock.meta)),
+                new Value("int", "1")
+        };
+        return new JsonObject(keys, values);
+    }
+    private JsonObject genOreGenerator(String blockType) {
+        String clusterSize = "2000";
+        JsonObject[] jsons = {
+                this.genJsonBlocks(blockType, "ore"),
+                this.genJsonBlocks(blockType, "poor"),
+                this.genJsonBlocks(blockType, "dense")
+        };
+        if (blockType.equals("nether")) {
+            clusterSize = "2500";
+            blockType = "netherrack";
+        } else if (blockType.equals("end")) {
+            clusterSize = "3000";
+            blockType = "end_stone";
+        }
+        Value[] keys = {
+                new Value("type"),
+                new Value("block"),
+                new Value("material"),
+                new Value("cluster-size")
+        };
+        Value[] values = {
+                new Value("str", "large-vein"),
+                new Value("arr", "json", jsons),
+                new Value("str", "minecraft:"+blockType),
+                new Value("int", clusterSize)
+        };
+        return new JsonObject(keys, values, "generator");
+    }
+    private JsonObject genJsonBlocks(String block, String type) {
+        String blockName;
+        String meta;
+        String weight;
+        switch (type) {
+            case "ore" -> weight = "60";
+            case "poor" -> weight = "30";
+            case "dense" -> weight = "10";
+            default -> weight = "";
+        }
+        switch (block) {
+            case "stone" -> {
+                blockName = this.oreStone.getUnlocalizedName();
+                meta = String.valueOf(this.oreStone.meta);
+            }
+            case "nether" -> {
+                blockName = this.oreNether.getUnlocalizedName();
+                meta = String.valueOf(this.oreNether.meta);
+            }
+            case "end" -> {
+                blockName = this.oreEnd.getUnlocalizedName();
+                meta = String.valueOf(this.oreEnd.meta);
+            }
+            default -> {
+                blockName = "";
+                meta = "";
+            }
+        }
+        Value[] keys = {
+                new Value("name"),
+                new Value("metadata"),
+                new Value("weight")
+        };
+        Value[] values = {
+                new Value("str", blockName),
+                new Value("int", meta),
+                new Value("int", weight)
+        };
+        return new JsonObject(keys, values);
     }
 
     //every ore needs 3 json objects, so this returns that in an array
+    //this only executes for stone ore
     public JsonObject[] generateUBJson() {
-        Value[] keys = {new Value("internalOreName"), new Value("meta"), new Value("overlay"), new Value("lightValue"), new Value("alphaOverlay"), new Value("oreDirectories"), new Value("color")};
-        Value[] poors = {new Value(this.poor.getUnlocalizedName()), new Value("int", Integer.toString(this.poor.meta)), new Value("base:blocks/poor_ore"), new Value("int", "0"), new Value("bool", "false"), new Value("arr", "str", "poorOre" + Util.toUpper(this.m.name)), new Value("#"+this.m.color)};
-        Value[] ores = {new Value(this.ore.getUnlocalizedName()), new Value("int", Integer.toString(this.ore.meta)), new Value("base:blocks/ore"), new Value("int", "0"), new Value("bool", "false"), new Value("arr", "str", "ore" + Util.toUpper(this.m.name)), new Value("#"+this.m.color)};
-        Value[] denses = {new Value(this.dense.getUnlocalizedName()), new Value("int", Integer.toString(this.dense.meta)), new Value("base:blocks/dense_ore"), new Value("int", "0"), new Value("bool", "false"), new Value("arr", "str", "denseOre" + Util.toUpper(this.m.name)), new Value("#"+this.m.color)};
-        return new JsonObject[]{new JsonObject(keys, poors), new JsonObject(keys, ores), new JsonObject(keys, denses)};
+        if (this.oreStone != null) {
+            Registry ore = this.oreStone;
+            Registry poor = this.poorStone;
+            Registry dense = this.denseStone;
+            Value[] keys = {new Value("internalOreName"), new Value("meta"), new Value("overlay"), new Value("lightValue"), new Value("alphaOverlay"), new Value("oreDirectories"), new Value("color")};
+            Value[] poors = {new Value(poor.getUnlocalizedName()), new Value("int", Integer.toString(poor.meta)), new Value("base:blocks/poor_ore"), new Value("int", "0"), new Value("bool", "false"), new Value("arr", "str", "poorOre" + Util.toUpper(this.m.name)), new Value("#" + this.m.color)};
+            Value[] ores = {new Value(ore.getUnlocalizedName()), new Value("int", Integer.toString(ore.meta)), new Value("base:blocks/ore"), new Value("int", "0"), new Value("bool", "false"), new Value("arr", "str", "ore" + Util.toUpper(this.m.name)), new Value("#" + this.m.color)};
+            Value[] denses = {new Value(dense.getUnlocalizedName()), new Value("int", Integer.toString(dense.meta)), new Value("base:blocks/dense_ore"), new Value("int", "0"), new Value("bool", "false"), new Value("arr", "str", "denseOre" + Util.toUpper(this.m.name)), new Value("#" + this.m.color)};
+            return new JsonObject[]{new JsonObject(keys, poors), new JsonObject(keys, ores), new JsonObject(keys, denses)};
+        } else {
+            return null;
+        }
     }
 
     @Override

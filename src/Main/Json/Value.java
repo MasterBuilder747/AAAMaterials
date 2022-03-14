@@ -4,7 +4,7 @@ import Main.Util;
 
 public class Value {
     String value;
-    String type;
+    String type; //str, bool, double, arr, json
 
     public Value(String value) {
         this.type = "str";
@@ -14,7 +14,7 @@ public class Value {
         this.type = type;
         if (type.equals("str")) {
             this.value = "\"" + value + "\"";
-        } else if (type.equals("int") || type.equals("bool") || type.equals("double")) {
+        } else {
             this.value = value;
         }
     }
@@ -23,7 +23,7 @@ public class Value {
         if (type.equals("arr")) {
             StringBuilder sb = new StringBuilder();
             sb.append("[");
-            String[] s1 = Util.split(array, ",");
+            String[] s1 = Util.split(array.replace(" ", ""), ",");
             for (int i = 0; i < s1.length - 1; i++) {
                 sb.append(new Value(arrType, s1[i]).value);
                 sb.append(", ");
@@ -33,6 +33,31 @@ public class Value {
             this.value = sb.toString();
         } else {
             throw new IllegalArgumentException("Invalid array value declaration in json API");
+        }
+    }
+    //type always equals arr
+    //arrayType is always json
+    public Value(String type, String arrType, JsonObject[] array) {
+        if (type.equals("arr") && arrType.equals("json")) {
+            StringBuilder sb = new StringBuilder();
+            sb.append("[");
+            for (int i = 0; i < array.length - 1; i++) {
+                sb.append(array[i].print());
+                sb.append(", ");
+            }
+            sb.append(array[array.length-1].print());
+            sb.append("]");
+            this.value = sb.toString();
+        } else {
+            throw new IllegalArgumentException("Invalid array value declaration in json API");
+        }
+    }
+    //type always equals json
+    public Value(String type, JsonObject json) {
+        if (type.equals("json")) {
+            this.value = json.print();
+        } else {
+            throw new IllegalArgumentException("Invalid json value declaration in json API");
         }
     }
 }

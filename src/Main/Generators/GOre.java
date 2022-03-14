@@ -18,11 +18,13 @@ public class GOre extends AGenerator<Ore> {
 
     GMaterial material;
     GRegistry registry;
+    boolean enableChecks; //this allows the code to be rerun after the registry is updated,
 
-    public GOre(String name, GMaterial material, GRegistry registry) {
+    public GOre(String name, GMaterial material, GRegistry registry, boolean enableChecks) {
         super(name);
         this.material = material;
         this.registry = registry;
+        this.enableChecks = enableChecks; //for oreGen
     }
 
     @Override
@@ -34,86 +36,189 @@ public class GOre extends AGenerator<Ore> {
         //name is: [Variant amount] [Material] Ore
         //ex: Lumium ore, Dense Lumium Ore, [Nether Lumium] Ore, Dense [Bedrock Lumium] Ore
 
-        //ex: silver,
-        //stone: ore; 4; 6; 2: poor; 4; 6; 2: dense; 4; 9; 2,
-        //nether: ore; 4; 6; 2: poor; 4; 6; 2: dense; 4; 9; 2,
-        //end: ore; 4; 6; 2: poor; 4; 6; 2: dense; 4; 9; 2,
-        //bedrock: ore; 4; 6; 2: poor; 4; 6; 2: dense; 4; 9; 2,
+        //ex:
+        //silver,
+        //stone:
+        // ore; 4; 6; 2:
+        // poor; 4; 6; 2:
+        // dense; 4; 9; 2:
+        // int chunkChance; int minHeight; String biome,
+        //nether:
+        // ore; 4; 6; 2:
+        // poor; 4; 6; 2:
+        // dense; 4; 9; 2:
+        // int chunkChance; int minHeight,
+        //end:
+        // ore; 4; 6; 2:
+        // poor; 4; 6; 2:
+        // dense; 4; 9; 2:
+        // int chunkChance; int minHeight,
+        //bedrock:
+        // dense; 4; 9; 2:
+        // int bedrockChunkChance
+
         //configure ore gen here
         String material_name = s[0];
         if (!this.material.is(material_name)) {
             error("Unknown material " + material_name);
         }
         Material m = this.material.get(material_name);
-
-        //get block registries for UB json
-        if (!this.registry.is("Poor" + Util.toUpper(m.name) + "Ore")) {
-            error("Poor ore type for material " + material_name + " does not exist in the registry");
-        }
-        if (!this.registry.is(Util.toUpper(m.name) + "Ore")) {
-            error("Ore type for material " + material_name + " does not exist in the registry");
-        }
-        if (!this.registry.is("Dense" + Util.toUpper(m.name) + "Ore")) {
-            error("Dense ore type for material " + material_name + " does not exist in the registry");
-        }
-        Registry poor = this.registry.get("Poor" + Util.toUpper(m.name) + "Ore");
-        Registry ore = this.registry.get(Util.toUpper(m.name) + "Ore");
-        Registry dense = this.registry.get("Dense" + Util.toUpper(m.name) + "Ore");
-
 //        if (!mol.is(name)) {
 //            error("Unknown molecule material " + name);
 //        }
 //        if (!mol.is(name) && !comp.is(name)) {
 //            error("Unknown compound material " + name);
 //        }
-        String[] variants = new String[s.length-1]; //includes each ore variant
-        System.arraycopy(s, 1, variants, 0, variants.length);
+
+        String[] blocks = new String[s.length-1]; //includes each ore variant
+        System.arraycopy(s, 1, blocks, 0, blocks.length);
+
+        Ore o = new Ore(m);
 
         ArrayList<OreVariant> oreVariants = new ArrayList<>();
-        for (String variant : variants) {
+        for (String variant : blocks) {
             String[] s2 = Util.split(variant, ":");
-            String block_name = s2[0]; //the name of the ore variant
+            String block = s2[0]; //the name of the ore block
 
             String[] ores = new String[s2.length-1];
             System.arraycopy(s2, 1, ores, 0, ores.length);
+            
+            //ores.txt now requires certain amounts of attributes if such block variants are present:
+            //parse the line
+            String[] ore_props = null;
+            String gen_props = null;
+            if (block.equals("stone") || block.equals("nether") || block.equals("end")) {
+                if (ores.length != 4)
+                    error("stone/nether/end ore attributes requires 4 sections: ore properties, poor ore properties, dense ore properties, and ore gen properties");
+                ore_props = new String[3];
+                ore_props[0] = ores[0]; //ore
+                ore_props[1] = ores[1]; //poor
+                ore_props[2] = ores[2]; //dense
+                gen_props = ores[3]; //oregen
+            } else if (block.equals("bedrock")) {
+                if (ores.length != 2)
+                    error("bedrock attributes requires 2 sections: dense ore properties and ore gen properties");
+                ore_props = new String[1];
+                ore_props[0] = ores[0]; //dense
+                gen_props = ores[1]; //oregen
+            } else {
+                error("invalid or no ore blocks specified for material " + m.name);
+            }
+            String[] gens = null;
+            if (gen_props == null) {
+                error("ore generation not specified for material " + m.name);
+            } else {
+                gens = Util.split(gen_props, ";");
+            }
 
+            //handle block's variant(s)' blockData(s)
             ArrayList<OreType> types = new ArrayList<>();
-            for (String ore2 : ores) {
-                String[] attributes = Util.split(ore2, ";");
-                String type_name = attributes[0];
-                if (attributes.length != 4) {
-                    error("Not all type attributes are defined for oreType " + type_name + " for ore block " + block_name + " for ore of name " + material_name);
-                }
+            assert ore_props != null;
+            for (String prop : ore_props) {
+                String[] attributes = Util.split(prop, ";");
+                String type_name = attributes[0]; //ore, poor, dense
                 LBlock b;
                 String tool = "pickaxe";
-                String material = "rock";
-                if (block_name.equals("gravel")) {
-                    tool = "shovel";
-                } else if (block_name.equals("bedrock")) {
+                if (block.equals("bedrock")) {
                     tool = "none";
                 }
-                b = new LBlock(block_name, "rock", tool);
+                b = new LBlock(block, "rock", tool);
                 b.setAttributes(Integer.parseInt(attributes[1]), Integer.parseInt(attributes[2]), Integer.parseInt(attributes[3]));
-                if (block_name.equals("stone")) {
-                    types.add(new OreType(material_name, type_name, b));
+                if (block.equals("stone")) {
+                    types.add(new OreType(m.name, type_name, b));
                 } else {
-                    types.add(new OreType(block_name+"_"+material_name, type_name, b));
+                    types.add(new OreType(block+"_"+m.name, type_name, b));
                 }
             }
-            oreVariants.add(new OreVariant(material_name, m.color, block_name, types.toArray(new OreType[0])));
+            oreVariants.add(new OreVariant(m.name, m.color, block, types.toArray(new OreType[0])));
+
+            //handle block's oreGen
+            if (block.equals("bedrock")) {
+                if (this.enableChecks) {
+                    if (!this.registry.is("DenseBedrock" + Util.toUpper(m.name) + "Ore")) {
+                        error("bedrock ore does not exist in the registry for material " + m.name);
+                    } else {
+                        Registry denseBedrock = this.registry.get("DenseBedrock" + Util.toUpper(m.name) + "Ore");
+                        assert gen_props != null;
+                        o.addBedrockGen(denseBedrock, Integer.parseInt(gen_props));
+                    }
+                } else {
+                    warn("checks are not enabled for bedrock oregen of material " + m.name + " as specified");
+                }
+            } else {
+                assert gens != null;
+                switch (block) {
+                    case "stone" -> {
+                        if (gens.length != 3)
+                            error("3 stone ore gen attributes required: int chunkChance; int minHeight; String biome for material " + m.name);
+                        Registry ore = this.oreRegistryCheck("ore", block, m.name);
+                        Registry poor = this.oreRegistryCheck("poor", block, m.name);
+                        Registry dense = this.oreRegistryCheck("dense", block, m.name);
+                        o.addStoneGen(ore, poor, dense, Integer.parseInt(gens[0]), Integer.parseInt(gens[1]), gens[2]);
+                    }
+                    case "nether" -> {
+                        if (gens.length != 2)
+                            error("2 nether ore gen attributes required: int chunkChance; int minHeight for material " + m.name);
+                        Registry ore = this.oreRegistryCheck("ore", block, m.name);
+                        Registry poor = this.oreRegistryCheck("poor", block, m.name);
+                        Registry dense = this.oreRegistryCheck("dense", block, m.name);
+                        o.addNetherGen(ore, poor, dense, Integer.parseInt(gens[0]), Integer.parseInt(gens[1]));
+                    }
+                    case "end" -> {
+                        if (gens.length != 2)
+                            error("2 end ore gen attributes required: int chunkChance; int minHeight for material " + m.name);
+                        Registry ore = this.oreRegistryCheck("ore", block, m.name);
+                        Registry poor = this.oreRegistryCheck("poor", block, m.name);
+                        Registry dense = this.oreRegistryCheck("dense", block, m.name);
+                        o.addEndGen(ore, poor, dense, Integer.parseInt(gens[0]), Integer.parseInt(gens[1]));
+                    }
+                    case "bedrock" -> {
+                        Registry dense = this.oreRegistryCheck("dense", block, m.name);
+                        o.addBedrockGen(dense, Integer.parseInt(gen_props));
+                    }
+                }
+            }
         }
-        objects.add(new Ore(material_name, m, oreVariants.toArray(new OreVariant[0]), poor, ore, dense));
+        o.addVariants(oreVariants.toArray(new OreVariant[0]));
+        objects.add(o);
     }
 
     public String genUBJson() {
         ArrayList<JsonObject> jsons = new ArrayList<>();
         for (Ore o : this.objects) {
             JsonObject[] ins = o.generateUBJson();
-            jsons.add(ins[0]);
-            jsons.add(ins[1]);
-            jsons.add(ins[2]);
+            if (ins != null) {
+                jsons.add(ins[0]);
+                jsons.add(ins[1]);
+                jsons.add(ins[2]);
+            }
         }
         Builder b = new Builder(jsons.toArray(new JsonObject[0]));
-        return b.print();
+        return b.print(true);
+    }
+
+    public String genCWJson() {
+        StringBuilder sb = new StringBuilder();
+        sb.append("{\n");
+        sb.append("populate: {\n");
+        for (int i = 0; i < this.objects.size(); i++) {
+            sb.append(this.objects.get(i).generateCWJson());
+            if (i != this.objects.size()-1) {
+                sb.append(",");
+            }
+            sb.append("\n");
+        }
+        sb.append("}");
+        sb.append("\n}");
+        return sb.toString();
+    }
+    private Registry oreRegistryCheck(String variant, String block, String material) {
+        String check = Util.toUpper(variant)+Util.toUpper(block)+Util.toUpper(material)+"Ore";
+        if (this.registry.is(check)) {
+            return this.registry.get(check);
+        } else {
+            error(Util.toUpper(variant)+" "+Util.toUpper(block)+" "+Util.toUpper(material) + " Ore does not exist in the registry");
+        }
+        return null;
     }
 }
