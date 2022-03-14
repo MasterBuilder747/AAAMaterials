@@ -133,19 +133,7 @@ public class GOre extends AGenerator<Ore> {
             oreVariants.add(new OreVariant(m.name, m.color, block, types.toArray(new OreType[0])));
 
             //handle block's oreGen
-            if (block.equals("bedrock")) {
-                if (this.enableChecks) {
-                    if (!this.registry.is("DenseBedrock" + Util.toUpper(m.name) + "Ore")) {
-                        error("bedrock ore does not exist in the registry for material " + m.name);
-                    } else {
-                        Registry denseBedrock = this.registry.get("DenseBedrock" + Util.toUpper(m.name) + "Ore");
-                        assert gen_props != null;
-                        o.addBedrockGen(denseBedrock, Integer.parseInt(gen_props));
-                    }
-                } else {
-                    warn("checks are not enabled for bedrock oregen of material " + m.name + " as specified");
-                }
-            } else {
+            if (this.enableChecks) {
                 assert gens != null;
                 switch (block) {
                     case "stone" -> {
@@ -177,6 +165,8 @@ public class GOre extends AGenerator<Ore> {
                         o.addBedrockGen(dense, Integer.parseInt(gen_props));
                     }
                 }
+            } else {
+                warn("checks are not enabled for bedrock oregen of material " + m.name + " as specified");
             }
         }
         o.addVariants(oreVariants.toArray(new OreVariant[0]));
@@ -213,7 +203,16 @@ public class GOre extends AGenerator<Ore> {
         return sb.toString();
     }
     private Registry oreRegistryCheck(String variant, String block, String material) {
-        String check = Util.toUpper(variant)+Util.toUpper(block)+Util.toUpper(material)+"Ore";
+        String var1 = "";
+        String blk1 = "";
+        if (!variant.equals("ore")) {
+            var1 = Util.toUpper(variant);
+        }
+        if (!block.equals("stone")) {
+            blk1 = Util.toUpper(block);
+        }
+        String check = var1+blk1+Util.toUpper(material)+"Ore";
+
         if (this.registry.is(check)) {
             return this.registry.get(check);
         } else {
