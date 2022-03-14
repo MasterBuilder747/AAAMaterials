@@ -1,6 +1,5 @@
 package Main.Data.Material;
 
-import Main.Data.AData;
 import Main.Data.OreVariant;
 import Main.Data.Registry;
 import Main.Json.JsonObject;
@@ -164,7 +163,7 @@ public class Ore extends AMaterialData {
                     keys.add(new Value("distribution"));
                     keys.add(new Value("generator"));
                     keys.add(new Value("chunk-chance"));
-                    keys.add(new Value("chunk-count"));
+                    keys.add(new Value("cluster-count"));
                     keys.add(new Value("min-height"));
                     keys.add(new Value("vein-height"));
                     keys.add(new Value("vein-diameter"));
@@ -176,9 +175,23 @@ public class Ore extends AMaterialData {
                     values.add(new Value("bool", "true"));
                     values.add(new Value("fractal"));
                     values.add(new Value("json", this.genOreGenerator(block)));
-                    values.add(new Value("int", "15"));
-                    values.add(new Value("json", this.genClusterCount()));
-                    values.add(new Value("int", "1")); //get custom value here
+                    switch(block) {
+                        case "stone" -> {
+                            values.add(new Value("int", String.valueOf(this.stoneChunkChance)));
+                            values.add(new Value("json", this.genClusterCount()));
+                            values.add(new Value("int", String.valueOf(this.stoneMinHeight)));
+                        }
+                        case "nether" -> {
+                            values.add(new Value("int", String.valueOf(this.netherChunkChance)));
+                            values.add(new Value("json", this.genClusterCount()));
+                            values.add(new Value("int", String.valueOf(this.netherMinHeight)));
+                        }
+                        case "end" -> {
+                            values.add(new Value("int", String.valueOf(this.endChunkChance)));
+                            values.add(new Value("json", this.genClusterCount()));
+                            values.add(new Value("int", String.valueOf(this.endMinHeight)));
+                        }
+                    }
                     values.add(new Value("int", "128"));
                     values.add(new Value("int", "400"));
                     values.add(new Value("int", "100"));
@@ -262,7 +275,7 @@ public class Ore extends AMaterialData {
                 new Value("str", "minecraft:"+blockType),
                 new Value("int", "1")
         };
-        return new JsonObject(keys, values, "generator");
+        return new JsonObject(keys, values);
     }
     private JsonObject genBedrockBlock() {
         Value[] keys = {
@@ -303,34 +316,65 @@ public class Ore extends AMaterialData {
                 new Value("str", "minecraft:"+blockType),
                 new Value("int", clusterSize)
         };
-        return new JsonObject(keys, values, "generator");
+        return new JsonObject(keys, values);
     }
     private JsonObject genJsonBlocks(String block, String type) {
-        String blockName;
-        String meta;
-        String weight;
+        String blockName = "";
+        String meta = "";
+        String weight = "";
         switch (type) {
             case "ore" -> weight = "60";
             case "poor" -> weight = "30";
             case "dense" -> weight = "10";
-            default -> weight = "";
         }
         switch (block) {
             case "stone" -> {
-                blockName = this.oreStone.getUnlocalizedName();
-                meta = String.valueOf(this.oreStone.meta);
+                switch (type) {
+                    case "ore" -> {
+                        blockName = this.oreStone.getUnlocalizedName();
+                        meta = String.valueOf(this.oreStone.meta);
+                    }
+                    case "poor" -> {
+                        blockName = this.poorStone.getUnlocalizedName();
+                        meta = String.valueOf(this.poorStone.meta);
+                    }
+                    case "dense" -> {
+                        blockName = this.denseStone.getUnlocalizedName();
+                        meta = String.valueOf(this.denseStone.meta);
+                    }
+                }
             }
             case "nether" -> {
-                blockName = this.oreNether.getUnlocalizedName();
-                meta = String.valueOf(this.oreNether.meta);
+                switch (type) {
+                    case "ore" -> {
+                        blockName = this.oreNether.getUnlocalizedName();
+                        meta = String.valueOf(this.oreNether.meta);
+                    }
+                    case "poor" -> {
+                        blockName = this.poorNether.getUnlocalizedName();
+                        meta = String.valueOf(this.poorNether.meta);
+                    }
+                    case "dense" -> {
+                        blockName = this.denseNether.getUnlocalizedName();
+                        meta = String.valueOf(this.denseNether.meta);
+                    }
+                }
             }
             case "end" -> {
-                blockName = this.oreEnd.getUnlocalizedName();
-                meta = String.valueOf(this.oreEnd.meta);
-            }
-            default -> {
-                blockName = "";
-                meta = "";
+                switch (type) {
+                    case "ore" -> {
+                        blockName = this.oreEnd.getUnlocalizedName();
+                        meta = String.valueOf(this.oreEnd.meta);
+                    }
+                    case "poor" -> {
+                        blockName = this.poorEnd.getUnlocalizedName();
+                        meta = String.valueOf(this.poorEnd.meta);
+                    }
+                    case "dense" -> {
+                        blockName = this.denseEnd.getUnlocalizedName();
+                        meta = String.valueOf(this.denseEnd.meta);
+                    }
+                }
             }
         }
         Value[] keys = {

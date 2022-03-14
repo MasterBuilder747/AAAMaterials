@@ -190,7 +190,7 @@ public class GOre extends AGenerator<Ore> {
     public String genCWJson() {
         StringBuilder sb = new StringBuilder();
         sb.append("{\n");
-        sb.append("populate: {\n");
+        sb.append("\"populate\": {\n");
         for (int i = 0; i < this.objects.size(); i++) {
             sb.append(this.objects.get(i).generateCWJson());
             if (i != this.objects.size()-1) {

@@ -28,7 +28,7 @@ public class Value {
                 sb.append(new Value(arrType, s1[i]).value);
                 sb.append(", ");
             }
-            sb.append(new Value(s1[s1.length-1]).value);
+            sb.append(new Value(arrType, s1[s1.length-1]).value);
             sb.append("]");
             this.value = sb.toString();
         } else {
