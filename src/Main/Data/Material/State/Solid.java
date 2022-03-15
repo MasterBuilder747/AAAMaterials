@@ -21,9 +21,9 @@ public class Solid extends AState {
     public String buildMaterial() {
         StringBuilder sb = new StringBuilder();
         //these shouldn't be hardcoded, need to find a way to avoid this
-        if (this.addDust) sb.append(buildPart("dust_parts"));
-        if (this.addFineDust) sb.append(buildPart("fine_parts"));
-        if (this.addPowder) sb.append(buildPart("powder_parts"));
+        if (this.addDust) sb.append(buildPart("dust"));
+        if (this.addFineDust) sb.append(buildPart("fine"));
+        if (this.addPowder) sb.append(buildPart("powder"));
         return sb.toString();
     }
 

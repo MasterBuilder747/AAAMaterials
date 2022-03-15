@@ -411,6 +411,9 @@ public class Ore extends AMaterialData {
     @Override
     public String buildMaterial() {
         StringBuilder sb = new StringBuilder();
+        if (this.oreStone != null) {
+            sb.append(buildPart("ore")); //this only does the stone version
+        }
         for (OreVariant variant : this.variants) {
             sb.append(variant.buildMaterial());
         }

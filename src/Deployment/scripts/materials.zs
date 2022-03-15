@@ -348,6 +348,7 @@ zinc.registerParts(smelt_parts);
 zinc.registerParts(machine_parts);
 
 # -ores
+lumium.registerParts(ore_parts);
 var lumiumStoneOre = lumium.registerPart("ore").getData();
 lumiumStoneOre.addDataValue("variants","minecraft:stone");
 lumiumStoneOre.addDataValue("hardness","4");
@@ -368,6 +369,7 @@ lumiumStoneDense.addDataValue("harvestLevel","2");
 lumiumStoneDense.addDataValue("harvestTool","pickaxe");
 
 var nether_lumium = MaterialSystem.getMaterialBuilder().setName("Nether Lumium").setColor(Color.fromHex("ffffb6")).build();
+nether_lumium.registerParts(ore_parts);
 var nether_lumiumNetherOre = nether_lumium.registerPart("ore").getData();
 nether_lumiumNetherOre.addDataValue("variants","minecraft:netherrack");
 nether_lumiumNetherOre.addDataValue("hardness","4");
@@ -388,6 +390,7 @@ nether_lumiumNetherDense.addDataValue("harvestLevel","2");
 nether_lumiumNetherDense.addDataValue("harvestTool","pickaxe");
 
 var end_lumium = MaterialSystem.getMaterialBuilder().setName("End Lumium").setColor(Color.fromHex("ffffb6")).build();
+end_lumium.registerParts(ore_parts);
 var end_lumiumEndOre = end_lumium.registerPart("ore").getData();
 end_lumiumEndOre.addDataValue("variants","minecraft:end_stone");
 end_lumiumEndOre.addDataValue("hardness","4");

@@ -18,6 +18,6 @@ public abstract class AMaterialData extends AData {
     }
 
     protected String buildPart(String partGroupName) {
-        return this.m.name + ".registerParts(" + partGroupName + ");\n";
+        return this.m.name + ".registerParts(" + partGroupName + "_parts);\n";
     }
 }

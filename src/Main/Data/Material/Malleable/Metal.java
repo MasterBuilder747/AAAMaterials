@@ -16,7 +16,7 @@ public class Metal extends AMalleable {
 
     @Override
     String buildPartMaterials() {
-        return buildPart("smelt_parts") + buildPart("machine_parts");
+        return buildPart("smelt") + buildPart("machine");
     }
 
     @Override

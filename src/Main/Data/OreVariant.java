@@ -23,9 +23,15 @@ public class OreVariant extends AData {
     public String buildMaterial() {
         StringBuilder sb = new StringBuilder();
         if (!this.block.equals("stone")) {
-            sb.append("var ").append(this.block).append("_").append(this.name);
+            String var = this.block + "_" + this.name;
+            sb.append("var ").append(var);
             sb.append(" = MaterialSystem.getMaterialBuilder().setName(\"").append(Util.toUpper(this.block)).append(" ");
             sb.append(Util.toUpper(this.name)).append("\").setColor(Color.fromHex(\"").append(this.color).append("\")).build();\n");
+            if (!this.block.equals("bedrock")) { //bedrock is a multi-block, not harvestable
+                //add ore parts to this block variant of this material as well:
+                sb.append(var); //NOTE: this is hardcoded, no way to use AMaterialData's method
+                sb.append(".registerParts(ore_parts);\n"); //processing these parts will be handled differently in recipes
+            }
         }
         for (OreType type : this.oreTypes) {
             sb.append(type.buildMaterial());
