@@ -13,6 +13,7 @@ import Main.Util;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Arrays;
 
 public class GOre extends AGenerator<Ore> {
 
@@ -142,7 +143,6 @@ public class GOre extends AGenerator<Ore> {
                         Registry ore = this.oreRegistryCheck("ore", block, m.name);
                         Registry poor = this.oreRegistryCheck("poor", block, m.name);
                         Registry dense = this.oreRegistryCheck("dense", block, m.name);
-                        System.out.println(gens[0] + ", " + gens[1] + ", " + gens[2]);
                         o.addStoneGen(ore, poor, dense, Integer.parseInt(gens[0]), Integer.parseInt(gens[1]), gens[2]);
                     }
                     case "nether" -> {
@@ -151,7 +151,6 @@ public class GOre extends AGenerator<Ore> {
                         Registry ore = this.oreRegistryCheck("ore", block, m.name);
                         Registry poor = this.oreRegistryCheck("poor", block, m.name);
                         Registry dense = this.oreRegistryCheck("dense", block, m.name);
-                        System.out.println(gens[0] + ", " + gens[1]);
                         o.addNetherGen(ore, poor, dense, Integer.parseInt(gens[0]), Integer.parseInt(gens[1]));
                     }
                     case "end" -> {
@@ -160,16 +159,17 @@ public class GOre extends AGenerator<Ore> {
                         Registry ore = this.oreRegistryCheck("ore", block, m.name);
                         Registry poor = this.oreRegistryCheck("poor", block, m.name);
                         Registry dense = this.oreRegistryCheck("dense", block, m.name);
-                        System.out.println(gens[0] + ", " + gens[1]);
                         o.addEndGen(ore, poor, dense, Integer.parseInt(gens[0]), Integer.parseInt(gens[1]));
                     }
                     case "bedrock" -> {
+                        if (gens.length != 1)
+                            error("only one parameter is required for bedrock gen, the chunk chance, for material " + m.name);
                         Registry dense = this.oreRegistryCheck("dense", block, m.name);
                         o.addBedrockGen(dense, Integer.parseInt(gen_props));
                     }
                 }
             } else {
-                warn("checks are not enabled for bedrock oregen of material " + m.name + " as specified");
+                warn("checks are not enabled for oregen of material " + m.name + " as specified");
             }
         }
         o.addVariants(oreVariants.toArray(new OreVariant[0]));

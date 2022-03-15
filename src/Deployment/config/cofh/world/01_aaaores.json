@@ -26,7 +26,7 @@
 	"min": 1,
 	"max": 1
 },
-	"min-height": 40,
+	"min-height": 2,
 	"vein-height": 128,
 	"vein-diameter": 400,
 	"vertical-density": 100,
@@ -40,7 +40,7 @@
 	"restriction": "whitelist",
 	"value": [{
 	"type": "id",
-	"entry": ["plains"]
+	"entry": ["forest"]
 }]
 }
 },
@@ -65,12 +65,12 @@
 	"material": "minecraft:netherrack",
 	"cluster-size": 2500
 },
-	"chunk-chance": 0,
+	"chunk-chance": 3,
 	"cluster-count": {
 	"min": 1,
 	"max": 1
 },
-	"min-height": 0,
+	"min-height": 4,
 	"vein-height": 128,
 	"vein-diameter": 400,
 	"vertical-density": 100,
@@ -102,12 +102,12 @@
 	"material": "minecraft:end_stone",
 	"cluster-size": 3000
 },
-	"chunk-chance": 20,
+	"chunk-chance": 5,
 	"cluster-count": {
 	"min": 1,
 	"max": 1
 },
-	"min-height": 20,
+	"min-height": 6,
 	"vein-height": 128,
 	"vein-diameter": 400,
 	"vertical-density": 100,
@@ -130,7 +130,7 @@
 	"material": "minecraft:bedrock",
 	"cluster-size": 1
 },
-	"chunk-chance": 8,
+	"chunk-chance": 7,
 	"cluster-count": {
 	"min": 1,
 	"max": 1

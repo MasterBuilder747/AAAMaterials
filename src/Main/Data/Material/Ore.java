@@ -113,8 +113,8 @@ public class Ore extends AMaterialData {
         this.poorNether = poor;
         this.oreNether = ore;
         this.denseNether = dense;
-        this.stoneMinHeight = minHeight;
-        this.stoneChunkChance = chunkChance;
+        this.netherMinHeight = minHeight;
+        this.netherChunkChance = chunkChance;
     }
     public void addEndGen(Registry ore, Registry poor, Registry dense, int chunkChance, int minHeight) {
         this.poorEnd = poor;
@@ -176,18 +176,18 @@ public class Ore extends AMaterialData {
                     values.add(new Value("fractal"));
                     values.add(new Value("json", this.genOreGenerator(block)));
                     switch(block) {
-                        case "stone" -> {
-                            values.add(new Value("int", String.valueOf(this.stoneChunkChance))); //this is not the right value when passed through
+                        case "stone" -> { //test: 1, 2
+                            values.add(new Value("int", String.valueOf(this.stoneChunkChance)));
                             values.add(new Value("json", this.genClusterCount()));
                             values.add(new Value("int", String.valueOf(this.stoneMinHeight)));
-                            System.out.println("stone");
+                            //System.out.println("stone");
                         }
-                        case "nether" -> {
+                        case "nether" -> { //test: 3, 4 //this is being passed through to stone, and therefore not giving any values (0) to nether
                             values.add(new Value("int", String.valueOf(this.netherChunkChance)));
                             values.add(new Value("json", this.genClusterCount()));
                             values.add(new Value("int", String.valueOf(this.netherMinHeight)));
                         }
-                        case "end" -> {
+                        case "end" -> { //test: 5, 6
                             values.add(new Value("int", String.valueOf(this.endChunkChance)));
                             values.add(new Value("json", this.genClusterCount()));
                             values.add(new Value("int", String.valueOf(this.endMinHeight)));
