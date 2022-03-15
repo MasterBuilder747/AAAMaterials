@@ -21,7 +21,7 @@
 	"material": "minecraft:stone",
 	"cluster-size": 2000
 },
-	"chunk-chance": 30,
+	"chunk-chance": 1,
 	"cluster-count": {
 	"min": 1,
 	"max": 1
@@ -102,12 +102,12 @@
 	"material": "minecraft:end_stone",
 	"cluster-size": 3000
 },
-	"chunk-chance": 30,
+	"chunk-chance": 20,
 	"cluster-count": {
 	"min": 1,
 	"max": 1
 },
-	"min-height": 10,
+	"min-height": 20,
 	"vein-height": 128,
 	"vein-diameter": 400,
 	"vertical-density": 100,

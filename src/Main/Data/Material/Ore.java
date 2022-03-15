@@ -177,9 +177,10 @@ public class Ore extends AMaterialData {
                     values.add(new Value("json", this.genOreGenerator(block)));
                     switch(block) {
                         case "stone" -> {
-                            values.add(new Value("int", String.valueOf(this.stoneChunkChance)));
+                            values.add(new Value("int", String.valueOf(this.stoneChunkChance))); //this is not the right value when passed through
                             values.add(new Value("json", this.genClusterCount()));
                             values.add(new Value("int", String.valueOf(this.stoneMinHeight)));
+                            System.out.println("stone");
                         }
                         case "nether" -> {
                             values.add(new Value("int", String.valueOf(this.netherChunkChance)));
