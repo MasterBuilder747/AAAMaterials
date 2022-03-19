@@ -11,3 +11,4 @@
 //end: ore; 4; 6; 2: poor; 4; 6; 2: dense; 4; 9; 2: int chunkChance; int minHeight,
 //bedrock: dense; 4; 9; 2: int bedrockChunkChance
 lumium, stone: ore; 4; 6; 2: poor; 3; 6; 2: dense; 5; 6; 2: 15; 20; plains, nether: ore; 4; 6; 2: poor; 3; 6; 2: dense; 5; 6; 2: 25; 20, end: ore; 4; 9; 2: poor; 3; 9; 2: dense; 5; 9; 2: 30; 10, bedrock: dense; -1; 3600000; -1: 7
+bauxite, stone: ore; 4; 6; 2: poor; 3; 6; 2: dense; 5; 6; 2: 15; 20; plains, bedrock: dense; -1; 3600000; -1: 7

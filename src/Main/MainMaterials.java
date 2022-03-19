@@ -70,7 +70,7 @@ public class MainMaterials {
         bw.write(metal.registerMaterials());
 
         //7. ore system
-        GOre ore = new GOre("ore", material, registry, true);
+        GOre ore = new GOre("ore", material, registry, false);
         bw.write(ore.registerMaterials());
 //        CMolecule molecule = new CMolecule("moleculeComposition", element);
 //        bw.write(molecule.register());

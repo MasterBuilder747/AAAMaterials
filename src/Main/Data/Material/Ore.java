@@ -320,6 +320,7 @@ public class Ore extends AMaterialData {
         return new JsonObject(keys, values);
     }
     private JsonObject genJsonBlocks(String block, String type) {
+        //only should run if stone ore is registered
         String blockName = "";
         String meta = "";
         String weight = "";
