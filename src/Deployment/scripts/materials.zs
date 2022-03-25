@@ -348,7 +348,6 @@ zinc.registerParts(smelt_parts);
 zinc.registerParts(machine_parts);
 
 # -ores
-lumium.registerParts(ore_parts);
 var lumiumStoneOre = lumium.registerPart("ore").getData();
 lumiumStoneOre.addDataValue("variants","minecraft:stone");
 lumiumStoneOre.addDataValue("hardness","4");
@@ -417,6 +416,34 @@ bedrock_lumiumBedrockDense.addDataValue("hardness","-1");
 bedrock_lumiumBedrockDense.addDataValue("resistance","3600000");
 bedrock_lumiumBedrockDense.addDataValue("harvestLevel","-1");
 bedrock_lumiumBedrockDense.addDataValue("harvestTool","none");
+
+
+var bauxiteStoneOre = bauxite.registerPart("ore").getData();
+bauxiteStoneOre.addDataValue("variants","minecraft:stone");
+bauxiteStoneOre.addDataValue("hardness","4");
+bauxiteStoneOre.addDataValue("resistance","6");
+bauxiteStoneOre.addDataValue("harvestLevel","2");
+bauxiteStoneOre.addDataValue("harvestTool","pickaxe");
+var bauxiteStonePoor = bauxite.registerPart("poor_ore").getData();
+bauxiteStonePoor.addDataValue("variants","minecraft:stone");
+bauxiteStonePoor.addDataValue("hardness","3");
+bauxiteStonePoor.addDataValue("resistance","6");
+bauxiteStonePoor.addDataValue("harvestLevel","2");
+bauxiteStonePoor.addDataValue("harvestTool","pickaxe");
+var bauxiteStoneDense = bauxite.registerPart("dense_ore").getData();
+bauxiteStoneDense.addDataValue("variants","minecraft:stone");
+bauxiteStoneDense.addDataValue("hardness","5");
+bauxiteStoneDense.addDataValue("resistance","6");
+bauxiteStoneDense.addDataValue("harvestLevel","2");
+bauxiteStoneDense.addDataValue("harvestTool","pickaxe");
+
+var bedrock_bauxite = MaterialSystem.getMaterialBuilder().setName("Bedrock Bauxite").setColor(Color.fromHex("ff9b79")).build();
+var bedrock_bauxiteBedrockDense = bedrock_bauxite.registerPart("dense_ore").getData();
+bedrock_bauxiteBedrockDense.addDataValue("variants","minecraft:bedrock");
+bedrock_bauxiteBedrockDense.addDataValue("hardness","-1");
+bedrock_bauxiteBedrockDense.addDataValue("resistance","3600000");
+bedrock_bauxiteBedrockDense.addDataValue("harvestLevel","-1");
+bedrock_bauxiteBedrockDense.addDataValue("harvestTool","none");
 
 
 
