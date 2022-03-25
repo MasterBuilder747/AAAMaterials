@@ -13,16 +13,7 @@ public class Ore extends AMaterialData {
     //Also handles generation (2 files)
     OreVariant[] variants; //name of the blocks themselves
 
-    Registry poorStone;
-    Registry oreStone;
-    Registry denseStone;
-    Registry poorNether;
-    Registry oreNether;
-    Registry denseNether;
-    Registry poorEnd;
-    Registry oreEnd;
-    Registry denseEnd;
-    Registry denseBedrock;
+    public boolean enableGen;
 
     //for generation of the ore
     //order: stone, nether, end, other planets?
@@ -34,9 +25,6 @@ public class Ore extends AMaterialData {
     int netherMinHeight;
     int endMinHeight;
     String biome;
-    
-    //for bedrock ore gen
-
 
     //1. generate CoT ore blocks using parttype
     //2. load the game
@@ -95,36 +83,56 @@ public class Ore extends AMaterialData {
     BEACH;
      */
 
-    public Ore(Material m) {
+    public Ore(Material m, boolean enableGen) {
         super(m);
+        this.enableGen = enableGen;
     }
+
+    @Override
+    public String buildMaterial() {
+        StringBuilder sb = new StringBuilder();
+        if (this.is("oreStone")) {
+            sb.append(buildPart("ore")); //this only does the stone version
+        }
+        for (OreVariant variant : this.variants) {
+            sb.append(variant.buildMaterial());
+        }
+        sb.append("\n");
+        return sb.toString();
+    }
+
+    @Override
+    public String buildRecipe() {
+        return null;
+    }
+
     public void addVariants(OreVariant[] variants) {
         this.variants = variants;
     }
     public void addStoneGen(Registry ore, Registry poor, Registry dense, int chunkChance, int minHeight, String biome) {
-        this.poorStone = poor;
-        this.oreStone = ore;
-        this.denseStone = dense;
+        this.add("poorStone" , poor);
+        this.add("oreStone", ore);
+        this.add("denseStone", dense);
         this.stoneMinHeight = minHeight;
         this.stoneChunkChance = chunkChance;
         this.biome = biome;
     }
     public void addNetherGen(Registry ore, Registry poor, Registry dense, int chunkChance, int minHeight) {
-        this.poorNether = poor;
-        this.oreNether = ore;
-        this.denseNether = dense;
+        this.add("poorNether", poor);
+        this.add("oreNether", ore);
+        this.add("denseNether", dense);
         this.netherMinHeight = minHeight;
         this.netherChunkChance = chunkChance;
     }
     public void addEndGen(Registry ore, Registry poor, Registry dense, int chunkChance, int minHeight) {
-        this.poorEnd = poor;
-        this.oreEnd = ore;
-        this.denseEnd = dense;
+        this.add("poorEnd", poor);
+        this.add("oreEnd", ore);
+        this.add("denseEnd", dense);
         this.endMinHeight = minHeight;
         this.endChunkChance = chunkChance;
     }
     public void addBedrockGen(Registry denseBedrock, int bedrockChunkChance) {
-        this.denseBedrock = denseBedrock;
+        this.add("denseBedrock", denseBedrock);
         this.bedrockChunkChance = bedrockChunkChance;
     }
 
@@ -285,8 +293,8 @@ public class Ore extends AMaterialData {
                 new Value("cluster-size")
         };
         Value[] values = {
-                new Value("str", this.denseBedrock.getUnlocalizedName()),
-                new Value("int", String.valueOf(this.denseBedrock.meta)),
+                new Value("str", this.get("denseBedrock").getUnlocalizedName()),
+                new Value("int", String.valueOf(this.get("denseBedrock").meta)),
                 new Value("int", "1")
         };
         return new JsonObject(keys, values);
@@ -320,72 +328,21 @@ public class Ore extends AMaterialData {
         return new JsonObject(keys, values);
     }
     private JsonObject genJsonBlocks(String block, String type) {
-        String blockName = "";
-        String meta = "";
         String weight = "";
         switch (type) {
             case "ore" -> weight = "60";
             case "poor" -> weight = "30";
             case "dense" -> weight = "10";
         }
-        switch (block) {
-            case "stone" -> {
-                switch (type) {
-                    case "ore" -> {
-                        blockName = this.oreStone.getUnlocalizedName();
-                        meta = String.valueOf(this.oreStone.meta);
-                    }
-                    case "poor" -> {
-                        blockName = this.poorStone.getUnlocalizedName();
-                        meta = String.valueOf(this.poorStone.meta);
-                    }
-                    case "dense" -> {
-                        blockName = this.denseStone.getUnlocalizedName();
-                        meta = String.valueOf(this.denseStone.meta);
-                    }
-                }
-            }
-            case "nether" -> {
-                switch (type) {
-                    case "ore" -> {
-                        blockName = this.oreNether.getUnlocalizedName();
-                        meta = String.valueOf(this.oreNether.meta);
-                    }
-                    case "poor" -> {
-                        blockName = this.poorNether.getUnlocalizedName();
-                        meta = String.valueOf(this.poorNether.meta);
-                    }
-                    case "dense" -> {
-                        blockName = this.denseNether.getUnlocalizedName();
-                        meta = String.valueOf(this.denseNether.meta);
-                    }
-                }
-            }
-            case "end" -> {
-                switch (type) {
-                    case "ore" -> {
-                        blockName = this.oreEnd.getUnlocalizedName();
-                        meta = String.valueOf(this.oreEnd.meta);
-                    }
-                    case "poor" -> {
-                        blockName = this.poorEnd.getUnlocalizedName();
-                        meta = String.valueOf(this.poorEnd.meta);
-                    }
-                    case "dense" -> {
-                        blockName = this.denseEnd.getUnlocalizedName();
-                        meta = String.valueOf(this.denseEnd.meta);
-                    }
-                }
-            }
-        }
+        Registry r = this.get(type+Util.toUpper(block));
         Value[] keys = {
                 new Value("name"),
                 new Value("metadata"),
                 new Value("weight")
         };
         Value[] values = {
-                new Value("str", blockName),
-                new Value("int", meta),
+                new Value("str", r.getUnlocalizedName()),
+                new Value("int", String.valueOf(r.meta)),
                 new Value("int", weight)
         };
         return new JsonObject(keys, values);
@@ -393,11 +350,11 @@ public class Ore extends AMaterialData {
 
     //every ore needs 3 json objects, so this returns that in an array
     //this only executes for stone ore
-    public JsonObject[] generateUBJson() {
-        if (this.oreStone != null) {
-            Registry ore = this.oreStone;
-            Registry poor = this.poorStone;
-            Registry dense = this.denseStone;
+    public JsonObject[] genStoneVariants() {
+        if (this.is("oreStone")) {
+            Registry ore = this.get("oreStone");
+            Registry poor = this.get("poorStone");
+            Registry dense = this.get("denseStone");
             Value[] keys = {new Value("internalOreName"), new Value("meta"), new Value("overlay"), new Value("lightValue"), new Value("alphaOverlay"), new Value("oreDirectories"), new Value("color")};
             Value[] poors = {new Value(poor.getUnlocalizedName()), new Value("int", Integer.toString(poor.meta)), new Value("base:blocks/poor_ore"), new Value("int", "0"), new Value("bool", "false"), new Value("arr", "str", "poorOre" + Util.toUpper(this.m.name)), new Value("#" + this.m.color)};
             Value[] ores = {new Value(ore.getUnlocalizedName()), new Value("int", Integer.toString(ore.meta)), new Value("base:blocks/ore"), new Value("int", "0"), new Value("bool", "false"), new Value("arr", "str", "ore" + Util.toUpper(this.m.name)), new Value("#" + this.m.color)};
@@ -406,24 +363,6 @@ public class Ore extends AMaterialData {
         } else {
             return null;
         }
-    }
-
-    @Override
-    public String buildMaterial() {
-        StringBuilder sb = new StringBuilder();
-        if (this.oreStone != null) {
-            sb.append(buildPart("ore")); //this only does the stone version
-        }
-        for (OreVariant variant : this.variants) {
-            sb.append(variant.buildMaterial());
-        }
-        sb.append("\n");
-        return sb.toString();
-    }
-
-    @Override
-    public String buildRecipe() {
-        return null;
     }
 
     @Override

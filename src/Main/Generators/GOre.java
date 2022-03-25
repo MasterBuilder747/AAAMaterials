@@ -19,13 +19,11 @@ public class GOre extends AGenerator<Ore> {
 
     GMaterial material;
     GRegistry registry;
-    boolean enableChecks; //this allows the code to be rerun after the registry is updated,
 
-    public GOre(String name, GMaterial material, GRegistry registry, boolean enableChecks) {
+    public GOre(String name, GMaterial material, GRegistry registry) {
         super(name);
         this.material = material;
         this.registry = registry;
-        this.enableChecks = enableChecks; //for oreGen
     }
 
     @Override
@@ -38,7 +36,7 @@ public class GOre extends AGenerator<Ore> {
         //ex: Lumium ore, Dense Lumium Ore, [Nether Lumium] Ore, Dense [Bedrock Lumium] Ore
 
         //ex:
-        //silver,
+        //silver, false,
         //stone:
         // ore; 4; 6; 2:
         // poor; 4; 6; 2:
@@ -64,18 +62,15 @@ public class GOre extends AGenerator<Ore> {
             error("Unknown material " + material_name);
         }
         Material m = this.material.get(material_name);
+        String[] blocks = new String[s.length-2]; //includes each ore variant
+        System.arraycopy(s, 2, blocks, 0, blocks.length);
 //        if (!mol.is(name)) {
 //            error("Unknown molecule material " + name);
 //        }
 //        if (!mol.is(name) && !comp.is(name)) {
 //            error("Unknown compound material " + name);
 //        }
-
-        String[] blocks = new String[s.length-1]; //includes each ore variant
-        System.arraycopy(s, 1, blocks, 0, blocks.length);
-
-        Ore o = new Ore(m);
-
+        Ore o = new Ore(m, Boolean.parseBoolean(s[1]));
         ArrayList<OreVariant> oreVariants = new ArrayList<>();
         for (String variant : blocks) {
             String[] s2 = Util.split(variant, ":");
@@ -134,7 +129,7 @@ public class GOre extends AGenerator<Ore> {
             oreVariants.add(new OreVariant(m.name, m.color, block, types.toArray(new OreType[0])));
 
             //handle block's oreGen
-            if (this.enableChecks) {
+            if (o.enableGen) {
                 assert gens != null;
                 switch (block) {
                     case "stone" -> {
@@ -169,7 +164,7 @@ public class GOre extends AGenerator<Ore> {
                     }
                 }
             } else {
-                warn("checks are not enabled for oregen of material " + m.name + " as specified");
+                warn("checks are not enabled for oregen of material " + m.name + "'s ore of type " + block + " as specified");
             }
         }
         o.addVariants(oreVariants.toArray(new OreVariant[0]));
@@ -179,7 +174,7 @@ public class GOre extends AGenerator<Ore> {
     public String genUBJson() {
         ArrayList<JsonObject> jsons = new ArrayList<>();
         for (Ore o : this.objects) {
-            JsonObject[] ins = o.generateUBJson();
+            JsonObject[] ins = o.genStoneVariants();
             if (ins != null) {
                 jsons.add(ins[0]);
                 jsons.add(ins[1]);
@@ -195,9 +190,12 @@ public class GOre extends AGenerator<Ore> {
         sb.append("{\n");
         sb.append("\"populate\": {\n");
         for (int i = 0; i < this.objects.size(); i++) {
-            sb.append(this.objects.get(i).generateCWJson());
-            if (i != this.objects.size()-1) {
-                sb.append(",");
+            Ore ore = this.objects.get(i);
+            if (ore.enableGen) {
+                if (i != 0) {
+                    sb.append(",");
+                }
+                sb.append(ore.generateCWJson());
             }
             sb.append("\n");
         }
