@@ -6,19 +6,14 @@ import Main.Data.Material.Malleable.Alloy;
 import Main.Data.Material.Malleable.Metal;
 import Main.Data.Material.Malleable.Plastic;
 import Main.Data.Material.Malleable.Rubber;
-import Main.Data.Material.State.Gas;
-import Main.Data.Material.State.SLiquid;
-import Main.Data.Material.State.Plasma;
-import Main.Data.Material.State.Solid;
-import Main.Util;
 
 //data > material
 public class Material extends AData {
     //required components
     //name
-    private final String LOCALNAME;
+    public final String LOCALNAME;
     public String color; //HEX000 required
-    String state; //default state of the material, determines other states
+    public String state; //default state of the material, determines other states
 
     //Material Part data, initializes to null if not registered, otherwise when building,
     //these will be read and used for various material parts and recipe generation:

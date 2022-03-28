@@ -93,29 +93,31 @@ var birch = MaterialSystem.getMaterialBuilder().setName("Birch").setColor(Color.
 var jungle = MaterialSystem.getMaterialBuilder().setName("Jungle").setColor(Color.fromHex("d19e71")).build();
 var acacia = MaterialSystem.getMaterialBuilder().setName("Acacia").setColor(Color.fromHex("d1732c")).build();
 var dark_oak = MaterialSystem.getMaterialBuilder().setName("Dark Oak").setColor(Color.fromHex("472104")).build();
-var andesite = MaterialSystem.getMaterialBuilder().setName("Andesite").setColor(Color.fromHex("d5dbdb")).build();
-var basalt = MaterialSystem.getMaterialBuilder().setName("Basalt").setColor(Color.fromHex("414d4c")).build();
-var blue_schist = MaterialSystem.getMaterialBuilder().setName("Blue Schist").setColor(Color.fromHex("36918e")).build();
-var green_schist = MaterialSystem.getMaterialBuilder().setName("Green Schist").setColor(Color.fromHex("3d805f")).build();
-var chalk = MaterialSystem.getMaterialBuilder().setName("Chalk").setColor(Color.fromHex("ded0ca")).build();
-var dacite = MaterialSystem.getMaterialBuilder().setName("Dacite").setColor(Color.fromHex("d5dbdb")).build();
-var dolomite = MaterialSystem.getMaterialBuilder().setName("Dolomite").setColor(Color.fromHex("65705e")).build();
-var eclogite = MaterialSystem.getMaterialBuilder().setName("Ecelogite").setColor(Color.fromHex("918273")).build();
-var gabbro = MaterialSystem.getMaterialBuilder().setName("Gabbro").setColor(Color.fromHex("7e7985")).build();
-var gneiss = MaterialSystem.getMaterialBuilder().setName("Gneiss").setColor(Color.fromHex("595c63")).build();
-var greywacke = MaterialSystem.getMaterialBuilder().setName("Greywacke").setColor(Color.fromHex("bcc2be")).build();
-var komatiite = MaterialSystem.getMaterialBuilder().setName("komatiite").setColor(Color.fromHex("dbb856")).build();
-var limestone = MaterialSystem.getMaterialBuilder().setName("Limestone").setColor(Color.fromHex("bccca3")).build();
-var marble = MaterialSystem.getMaterialBuilder().setName("Marble").setColor(Color.fromHex("e3e8e7")).build();
-var migmatite = MaterialSystem.getMaterialBuilder().setName("Migmatite").setColor(Color.fromHex("6e7985")).build();
-var quartzite = MaterialSystem.getMaterialBuilder().setName("Quartzite").setColor(Color.fromHex("91857d")).build();
+var granite = MaterialSystem.getMaterialBuilder().setName("Granite").setColor(Color.fromHex("785d5c")).build();
+var diabase = MaterialSystem.getMaterialBuilder().setName("Diabase").setColor(Color.fromHex("262321")).build();
 var rhyolite = MaterialSystem.getMaterialBuilder().setName("Rhyolite").setColor(Color.fromHex("7b877b")).build();
+var kimberlite = MaterialSystem.getMaterialBuilder().setName("Kimberlite").setColor(Color.fromHex("414d4c")).build();
+var komatiite = MaterialSystem.getMaterialBuilder().setName("komatiite").setColor(Color.fromHex("dbb856")).build();
+var dacite = MaterialSystem.getMaterialBuilder().setName("Dacite").setColor(Color.fromHex("d5dbdb")).build();
+var gneiss = MaterialSystem.getMaterialBuilder().setName("Gneiss").setColor(Color.fromHex("595c63")).build();
+var eclogite = MaterialSystem.getMaterialBuilder().setName("Ecelogite").setColor(Color.fromHex("918273")).build();
+var marble = MaterialSystem.getMaterialBuilder().setName("Marble").setColor(Color.fromHex("e3e8e7")).build();
+var quartzite = MaterialSystem.getMaterialBuilder().setName("Quartzite").setColor(Color.fromHex("91857d")).build();
+var hornfels = MaterialSystem.getMaterialBuilder().setName("Hornfels").setColor(Color.fromHex("36918e")).build();
+var schist = MaterialSystem.getMaterialBuilder().setName("Schist").setColor(Color.fromHex("3d805f")).build();
+var soapstone = MaterialSystem.getMaterialBuilder().setName("Soapstone").setColor(Color.fromHex("c0c9d1")).build();
+var migmatite = MaterialSystem.getMaterialBuilder().setName("Migmatite").setColor(Color.fromHex("6e7985")).build();
+var chalk = MaterialSystem.getMaterialBuilder().setName("Chalk").setColor(Color.fromHex("ded0ca")).build();
+var dolomite = MaterialSystem.getMaterialBuilder().setName("Dolomite").setColor(Color.fromHex("65705e")).build();
+var gabbro = MaterialSystem.getMaterialBuilder().setName("Gabbro").setColor(Color.fromHex("7e7985")).build();
+var conglomerate = MaterialSystem.getMaterialBuilder().setName("Conglomerate").setColor(Color.fromHex("0a0a12")).build();
+var greywacke = MaterialSystem.getMaterialBuilder().setName("Greywacke").setColor(Color.fromHex("bcc2be")).build();
+var limestone = MaterialSystem.getMaterialBuilder().setName("Limestone").setColor(Color.fromHex("bccca3")).build();
 var shale = MaterialSystem.getMaterialBuilder().setName("Shale").setColor(Color.fromHex("abadb8")).build();
 var siltstone = MaterialSystem.getMaterialBuilder().setName("Siltstone").setColor(Color.fromHex("ab8572")).build();
-var soapstone = MaterialSystem.getMaterialBuilder().setName("Soapstone").setColor(Color.fromHex("c0c9d1")).build();
-var slate = MaterialSystem.getMaterialBuilder().setName("Slate").setColor(Color.fromHex("454852")).build();
-var red_granite = MaterialSystem.getMaterialBuilder().setName("Red Granite").setColor(Color.fromHex("bd8f86")).build();
-var black_granite = MaterialSystem.getMaterialBuilder().setName("Black Granite").setColor(Color.fromHex("262321")).build();
+var coal = MaterialSystem.getMaterialBuilder().setName("Coal").setColor(Color.fromHex("0d0c12")).build();
+var lignite = MaterialSystem.getMaterialBuilder().setName("Lignite").setColor(Color.fromHex("292626")).build();
+var charcoal = MaterialSystem.getMaterialBuilder().setName("Charcoal").setColor(Color.fromHex("1c1616")).build();
 var wool = MaterialSystem.getMaterialBuilder().setName("Wool").setColor(Color.fromHex("f2f4f7")).build();
 var bauxite = MaterialSystem.getMaterialBuilder().setName("Bauxite").setColor(Color.fromHex("ff9b79")).build();
 var galena = MaterialSystem.getMaterialBuilder().setName("Galena").setColor(Color.fromHex("af78b6")).build();
@@ -348,6 +350,7 @@ zinc.registerParts(smelt_parts);
 zinc.registerParts(machine_parts);
 
 # -ores
+lumium.registerParts(ore_parts);
 var lumiumStoneOre = lumium.registerPart("ore").getData();
 lumiumStoneOre.addDataValue("variants","minecraft:stone");
 lumiumStoneOre.addDataValue("hardness","4");
@@ -416,34 +419,6 @@ bedrock_lumiumBedrockDense.addDataValue("hardness","-1");
 bedrock_lumiumBedrockDense.addDataValue("resistance","3600000");
 bedrock_lumiumBedrockDense.addDataValue("harvestLevel","-1");
 bedrock_lumiumBedrockDense.addDataValue("harvestTool","none");
-
-
-var bauxiteStoneOre = bauxite.registerPart("ore").getData();
-bauxiteStoneOre.addDataValue("variants","minecraft:stone");
-bauxiteStoneOre.addDataValue("hardness","4");
-bauxiteStoneOre.addDataValue("resistance","6");
-bauxiteStoneOre.addDataValue("harvestLevel","2");
-bauxiteStoneOre.addDataValue("harvestTool","pickaxe");
-var bauxiteStonePoor = bauxite.registerPart("poor_ore").getData();
-bauxiteStonePoor.addDataValue("variants","minecraft:stone");
-bauxiteStonePoor.addDataValue("hardness","3");
-bauxiteStonePoor.addDataValue("resistance","6");
-bauxiteStonePoor.addDataValue("harvestLevel","2");
-bauxiteStonePoor.addDataValue("harvestTool","pickaxe");
-var bauxiteStoneDense = bauxite.registerPart("dense_ore").getData();
-bauxiteStoneDense.addDataValue("variants","minecraft:stone");
-bauxiteStoneDense.addDataValue("hardness","5");
-bauxiteStoneDense.addDataValue("resistance","6");
-bauxiteStoneDense.addDataValue("harvestLevel","2");
-bauxiteStoneDense.addDataValue("harvestTool","pickaxe");
-
-var bedrock_bauxite = MaterialSystem.getMaterialBuilder().setName("Bedrock Bauxite").setColor(Color.fromHex("ff9b79")).build();
-var bedrock_bauxiteBedrockDense = bedrock_bauxite.registerPart("dense_ore").getData();
-bedrock_bauxiteBedrockDense.addDataValue("variants","minecraft:bedrock");
-bedrock_bauxiteBedrockDense.addDataValue("hardness","-1");
-bedrock_bauxiteBedrockDense.addDataValue("resistance","3600000");
-bedrock_bauxiteBedrockDense.addDataValue("harvestLevel","-1");
-bedrock_bauxiteBedrockDense.addDataValue("harvestTool","none");
 
 
 

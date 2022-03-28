@@ -12,7 +12,7 @@ public abstract class ALiquid extends ALocalizedData {
     int viscosity;
     boolean vaporize;
     String tex;
-    String blockMaterial;
+    String blockMaterial; //lava, water
     String state; //liquid, molten, gas, plasma, qgp...
 
     public ALiquid(String name, String localName, String color, int density, boolean gas, int luminosity, int temperature, int viscosity, boolean vaporize, String tex, String blockMaterial) {
@@ -36,8 +36,14 @@ public abstract class ALiquid extends ALocalizedData {
 
     @Override
     public String buildMaterial() {
-        //genFluid("molten_iron", "ff0000", 6000, false, 15, 1000, 6000, false, "contenttweaker:fluids/molten", "contenttweaker:fluids/molten_flowing", <blockmaterial:lava>);
-        return "genFluid(\"" + this.name + "\", \"" + this.color + "\", " + this.density + ", " + this.gas + ", " + this.luminosity + ", " + this.temperature + ", " + this.viscosity + ", " + this.vaporize + ", \"contenttweaker:fluids/" + this.tex + "\", \"contenttweaker:fluids/" + this.tex + "_flowing\", <blockmaterial:" + this.blockMaterial + ">);\n";
+                //genFluid(
+                //"molten_iron", "ff0000", 6000, false,
+                //15, 1000, 6000, false,
+                //"contenttweaker:fluids/molten", "contenttweaker:fluids/molten_flowing", <blockmaterial:lava>);
+        return "genFluid(\"" +
+                this.name + "\", \"" + this.color + "\", " + this.density + ", " + this.gas + ", " +
+                this.luminosity + ", " + this.temperature + ", " + this.viscosity + ", " + this.vaporize +
+                ", \"contenttweaker:fluids/" + this.tex + "\", \"contenttweaker:fluids/" + this.tex + "_flowing\", <blockmaterial:" + this.blockMaterial + ">);\n";
     }
 
     protected void setState(String state) {

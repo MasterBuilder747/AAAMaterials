@@ -1,5 +1,5 @@
 /name, localName, hexColor, defaultState
-/ex: lumium, Lumium, 12345678
+/ex: lumium, Lumium, 12345678, solid
 /woods:
 oak, Oak, 966f35, solid
 spruce, Spruce, 734712, solid
@@ -8,29 +8,41 @@ jungle, Jungle, d19e71, solid
 acacia, Acacia, d1732c, solid
 dark_oak, Dark-Oak, 472104, solid
 /stones:
-andesite, Andesite, d5dbdb, solid
-basalt, Basalt, 414d4c, solid
-blue_schist, Blue-Schist, 36918e, solid
-green_schist, Green-Schist, 3d805f, solid
-chalk, Chalk, ded0ca, solid
-dacite, Dacite, d5dbdb, solid
-dolomite, Dolomite, 65705e, solid
-eclogite, Ecelogite, 918273, solid
-gabbro, Gabbro, 7e7985, solid
-gneiss, Gneiss, 595c63, solid
-greywacke, Greywacke, bcc2be, solid
-komatiite, komatiite, dbb856, solid
-limestone, Limestone, bccca3, solid
-marble, Marble, e3e8e7, solid
-migmatite, Migmatite, 6e7985, solid
-quartzite, Quartzite, 91857d, solid
+/vanilla:
+/stone, Stone, 363837, solid
+/diorite, Diorite, aba4a2, solid
+/igneous:
+granite, Granite, 785d5c, solid
+diabase, Diabase, 262321, solid
 rhyolite, Rhyolite, 7b877b, solid
+kimberlite, Kimberlite, 414d4c, solid
+komatiite, komatiite, dbb856, solid
+dacite, Dacite, d5dbdb, solid
+/metamorphic:
+gneiss, Gneiss, 595c63, solid
+eclogite, Ecelogite, 918273, solid
+marble, Marble, e3e8e7, solid
+quartzite, Quartzite, 91857d, solid
+hornfels, Hornfels, 36918e, solid
+schist, Schist, 3d805f, solid
+soapstone, Soapstone, c0c9d1, solid
+migmatite, Migmatite, 6e7985, solid
+/sedimentary:
+chalk, Chalk, ded0ca, solid
+dolomite, Dolomite, 65705e, solid
+gabbro, Gabbro, 7e7985, solid
+conglomerate, Conglomerate, 0a0a12, solid
+greywacke, Greywacke, bcc2be, solid
+limestone, Limestone, bccca3, solid
 shale, Shale, abadb8, solid
 siltstone, Siltstone, ab8572, solid
-soapstone, Soapstone, c0c9d1, solid
-slate, Slate, 454852, solid
-red_granite, Red-Granite, bd8f86, solid
-black_granite, Black-Granite, 262321, solid
+/custom:
+/slate, Slate, 454852, solid
+/mica?
+/fuel:
+coal, Coal, 0d0c12, solid
+lignite, Lignite, 292626, solid
+charcoal, Charcoal, 1c1616, solid
 /mob:
 wool, Wool, f2f4f7, solid
 /elements:

@@ -1,8 +1,6 @@
 package Main.Generators;
 
 import Main.Data.Material.Material;
-import Main.MainMaterials;
-import Main.Util;
 
 import java.io.*;
 
@@ -13,7 +11,7 @@ public class GMaterial extends AGenerator<Material> {
 
     @Override
     protected void readLine(BufferedReader br, String[] s) throws IOException {
-        //unlocalizedName, localizedName, HEXColor
+        //unlocalizedName, localizedName, HEXColor, defaultState
         if (s.length != 4) {
             error(4);
         }

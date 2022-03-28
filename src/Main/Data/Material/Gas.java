@@ -1,10 +1,8 @@
-package Main.Data.Material.State;
+package Main.Data.Material;
 
-import Main.Data.Material.Material;
-
-public class SLiquid extends AState {
-    public SLiquid(Material m, boolean isDefault) {
-        super(m, isDefault);
+public class Gas extends AMaterialData {
+    public Gas(Material m) {
+        super(m);
     }
 
     @Override

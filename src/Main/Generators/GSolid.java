@@ -1,11 +1,11 @@
 package Main.Generators;
 
-import Main.Data.Material.State.Solid;
+import Main.Data.Material.Solid;
 
 import java.io.BufferedReader;
 import java.io.IOException;
 
-public class GSolid extends AGState<Solid> {
+public class GSolid extends AGMaterialData<Solid> {
     GPartGroup partGroup;
 
     public GSolid(String filename, GMaterial material, GPartGroup partGroup) {
@@ -15,8 +15,10 @@ public class GSolid extends AGState<Solid> {
 
     @Override
     protected void readLine(BufferedReader br, String[] s) throws IOException {
-        if (s.length != 5) error(5);
-        objects.add(new Solid(material.get(s[0]),
-                Boolean.parseBoolean(s[1]), Boolean.parseBoolean(s[2]), Boolean.parseBoolean(s[3]), Boolean.parseBoolean(s[4])));
+        //material, bool addDust, bool addFineDust, bool addPowder, OPT String customName(for other states)
+        if (s.length != 4 && s.length != 5) error(new int[]{4, 5});
+        Solid sol = new Solid(material.get(s[0]), Boolean.parseBoolean(s[1]), Boolean.parseBoolean(s[2]), Boolean.parseBoolean(s[3]));
+        if (s.length == 5) sol.addAltName(s[4]);
+        objects.add(sol);
     }
 }

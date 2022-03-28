@@ -1,2 +1,3 @@
-/material, bool isDefaultState, bool addDust, bool addFineDust, bool addPowder
-lumium, true, true, true, true
+/material, bool addDust, bool addFineDust, bool addPowder, OPT String customName(for other states)
+/water, false, false, false, ice /by putting this here, you are adding its parts, not claiming its default state (that is defined in the material)
+lumium, true, true, true

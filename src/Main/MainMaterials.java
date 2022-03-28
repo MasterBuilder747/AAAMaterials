@@ -41,7 +41,7 @@ public class MainMaterials {
         bw.write(block.registerMaterials());
         GItem item = new GItem("item");
         bw.write(item.registerMaterials());
-        GFluid fluid = new GFluid("fluid");
+        GFluid fluid = new GFluid("custom-fluid");
         bw.write(fluid.registerMaterials());
 
         //2. any established content needed for the material system
@@ -92,7 +92,7 @@ public class MainMaterials {
         bw.write(ore.genUBJson());
         bw.close();
 
-        //.lang file
+        //CoT .lang file
         fw = new FileWriter(HOME + DEPLOY + "resources/contenttweaker/lang/en_us.lang");
         bw = new BufferedWriter(fw);
         bw.write(block.localize());

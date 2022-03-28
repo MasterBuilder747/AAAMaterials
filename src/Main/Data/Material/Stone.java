@@ -1,69 +1,109 @@
 package Main.Data.Material;
 
+import Main.Data.Registry;
+
 public class Stone extends AMaterialData {
     public Stone(Material m) {
         super(m);
     }
 
-    //follows the cobblestone process:
-    //*added
-    //dust blocks are for skyblock only
-    //stone > cobblestone + dust* > gravel + flint* > sand + fine dust* > powder dust*
-    //clay: dirt + water sift> settled dirt > dry> clay
-
-    //underground biome blocks:
-    /* Masonry:
-    24 variants:
-    default parts:
-    stone
-    monster egg
-    cobblestone
-    bricks
-    gravel
-    sand
-    sandstone
-    smooth sandstone
-    chiseled sandstone
-    clay
-    overgrown stone (BoP)
-    snowy stone (BoP)
-    moss stone (BoP)
-    stone button
-    cobblestone button
-    wall (stone, cobblestone, brick)
-    stairs (stone, cobblestone, brick)
-    slab ((stone, cobblestone, brick))
-    ores...
-    additional parts:
-    clay brick
-    clay "gem"
-    dirt?
-    powder block
-    powder dust
-    dust
-    dust block
-    fine dust
-    fine dust block
-    chisel custom designs?
-
-    stone processing compound byproducts:
-    SiO2, TiO2, Al2O3, FeO, MnO, MgO, CaO,
-    Na2O, K2O, P2O5, LiO, CO2(LOI), Fe2O3,
-    CaCO3, MgCO3, B2O3, H2O, SO3
-    as well as other sub byproducts (centrifuge/sift?)
-
-    combine with water/some liquid for gem prospecting
-
-    this is used for gem prospecting as well
-    */
+    //this assumes that all registries are in the registry
+    public void addVariants(Registry[] registries) {
+        /*
+        UB parts, for all 24 stones:
+        0 stone
+        1 monster egg //monster egg doesn't spawn
+        2 cobblestone
+        3 bricks
+        4 gravel
+        5 sand
+        6 sandstone
+        7 smooth sandstone
+        8 chiseled sandstone
+        9 clay //doesn't spawn, drops normal clay
+        10 overgrown stone (BoP)
+        11 snowy stone (BoP)
+        12 mossy cobblestone
+        13 speleothem
+        slab (
+        14 stone,
+        15 cobblestone,
+        16 brick)
+        17 stone button
+        18 cobblestone button
+        wall (
+        19 stone,
+        20 cobblestone,
+        21 brick)
+        stairs (
+        22 stone,
+        23 cobblestone,
+        24 brick)
+        */
+        this.add("stone", registries[0]);
+        this.add("monsterEgg", registries[1]);
+        this.add("cobblestone", registries[2]);
+        this.add("bricks", registries[3]);
+        this.add("gravel", registries[4]);
+        this.add("sand", registries[5]);
+        this.add("sandstone", registries[6]);
+        this.add("smoothSandstone", registries[7]);
+        this.add("chiseledSandstone", registries[8]);
+        this.add("clay", registries[9]);
+        this.add("overgrownStone", registries[10]);
+        this.add("snowyStone", registries[11]);
+        this.add("mossyCobblestone", registries[12]);
+        this.add("speleothem", registries[13]);
+        this.add("slabStone", registries[14]);
+        this.add("slabCobblestone", registries[15]);
+        this.add("slabBrick", registries[16]);
+        this.add("stoneButton", registries[17]);
+        this.add("cobblestoneButton", registries[18]);
+        this.add("wallStone", registries[19]);
+        this.add("wallCobblestone", registries[20]);
+        this.add("wallBrick", registries[21]);
+        this.add("stairStone", registries[22]);
+        this.add("stairCobblestone", registries[23]);
+        this.add("stairBrick", registries[24]);
+    }
 
     @Override
     public String buildMaterial() {
+        /*
+        //add these custom parts (COLORIZE BLOCKS LATER):
+        additional parts:
+        powder block
+        powder dust
+        dust
+        dust block
+        fine dust
+        fine dust block
+        chisel custom designs?
+        pebble
+        */
         return null;
     }
 
     @Override
     public String buildRecipe() {
+        /*
+        stone processing compound byproducts:
+        SiO2, TiO2, Al2O3, FeO, MnO, MgO, CaO,
+        Na2O, K2O, P2O5, LiO, CO2(LOI), Fe2O3,
+        CaCO3, MgCO3, B2O3, H2O, SO3
+        as well as other sub byproducts (centrifuge/sift?)
+
+        combine with water/some liquid for gem prospecting
+
+        this is used for gem prospecting as well
+
+        //follows the cobblestone process:
+        //*added
+        //dust blocks are for skyblock only
+        //stone > cobblestone + dust* > gravel + flint* > sand + fine dust* > powder dust*
+        //clay: dirt + water sift> settled dirt > dry> clay
+        */
+
         return null;
     }
 
