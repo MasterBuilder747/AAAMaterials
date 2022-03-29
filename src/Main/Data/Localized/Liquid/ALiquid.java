@@ -1,8 +1,8 @@
 package Main.Data.Localized.Liquid;
 
 import Main.Data.Localized.ALocalizedData;
-import Main.Util;
 
+//this is a custom liquid
 public abstract class ALiquid extends ALocalizedData {
     String color;
     int density;
@@ -13,7 +13,6 @@ public abstract class ALiquid extends ALocalizedData {
     boolean vaporize;
     String tex;
     String blockMaterial; //lava, water
-    String state; //liquid, molten, gas, plasma, qgp...
 
     public ALiquid(String name, String localName, String color, int density, boolean gas, int luminosity, int temperature, int viscosity, boolean vaporize, String tex, String blockMaterial) {
         super(name, localName);
@@ -26,7 +25,6 @@ public abstract class ALiquid extends ALocalizedData {
         this.vaporize = vaporize;
         this.tex = tex;
         this.blockMaterial = blockMaterial;
-        this.state = "liquid";
     }
 
     @Override
@@ -46,24 +44,9 @@ public abstract class ALiquid extends ALocalizedData {
                 ", \"contenttweaker:fluids/" + this.tex + "\", \"contenttweaker:fluids/" + this.tex + "_flowing\", <blockmaterial:" + this.blockMaterial + ">);\n";
     }
 
-    protected void setState(String state) {
-        this.state = state;
-    }
-
     @Override
     //fluid.[name]=[LocalName]
-    //fluid.[name]=[LocalName] otherState
     public String localize() {
-        StringBuilder sb = new StringBuilder();
-        sb.append("fluid.");
-        sb.append(this.name);
-        sb.append("=");
-        sb.append(this.localName);
-        if (!this.state.contains("liquid")) {
-            sb.append(" ");
-            sb.append(Util.toUpper(this.state));
-        }
-        sb.append("\n");
-        return sb.toString();
+        return "fluid." + this.name + "=" + this.localName + "\n";
     }
 }

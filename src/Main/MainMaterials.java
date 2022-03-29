@@ -41,7 +41,7 @@ public class MainMaterials {
         bw.write(block.registerMaterials());
         GItem item = new GItem("item");
         bw.write(item.registerMaterials());
-        GFluid fluid = new GFluid("custom-fluid");
+        GFluid fluid = new GFluid("liquid");
         bw.write(fluid.registerMaterials());
 
         //2. any established content needed for the material system

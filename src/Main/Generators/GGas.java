@@ -1,6 +1,6 @@
 package Main.Generators;
 
-import Main.Data.Material.Gas;
+import Main.Data.Material.State.Gas;
 
 import java.io.BufferedReader;
 import java.io.IOException;

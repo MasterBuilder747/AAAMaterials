@@ -1,6 +1,6 @@
 package Main.Generators;
 
-import Main.Data.Material.Solid;
+import Main.Data.Material.State.Solid;
 
 import java.io.BufferedReader;
 import java.io.IOException;

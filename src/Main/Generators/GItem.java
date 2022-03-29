@@ -5,7 +5,7 @@ import Main.Data.Localized.LItem;
 import java.io.BufferedReader;
 import java.io.IOException;
 
-public class GItem extends ALocal<LItem> {
+public class GItem extends AGLocal<LItem> {
     public GItem(String filename) {
         super(filename);
     }

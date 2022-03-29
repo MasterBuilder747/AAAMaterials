@@ -5,7 +5,7 @@ import Main.Data.Localized.LBlock;
 import java.io.BufferedReader;
 import java.io.IOException;
 
-public class GBlock extends ALocal<LBlock> {
+public class GBlock extends AGLocal<LBlock> {
 
     public GBlock(String filename) {
         super(filename);

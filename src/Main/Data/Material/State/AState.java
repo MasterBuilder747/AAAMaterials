@@ -1,12 +1,15 @@
-package Main.Data.Material;
+package Main.Data.Material.State;
 
 import Main.Data.Localized.Liquid.Liquid;
+import Main.Data.Material.AMaterialData;
+import Main.Data.Material.Material;
 
-public class SLiquid extends AMaterialData {
+public abstract class AState extends AMaterialData {
 
     Liquid l;
+    String type;
 
-    public SLiquid(Material m, int density, int luminosity, int temperature, int viscosity, boolean vaporize) {
+    public AState(String type, Material m, int density, int luminosity, int temperature, int viscosity, boolean vaporize) {
         super(m);
         //tex: liquid, molten, gas, plasma, ...
         //blockMaterial: lava, water
@@ -20,7 +23,20 @@ public class SLiquid extends AMaterialData {
         //quark-gluon plasma
         //genFluid("iron_qgp", "ff3000", 100, true, 0, 100000, 20, true, "contenttweaker:fluids/gas", "contenttweaker:fluids/gas_flowing", <blockmaterial:water>);
         */
-        this.l = new Liquid(m.name+"_"+, m.LOCALNAME, m.color, density, luminosity, temperature, viscosity, vaporize, );
+        this.type = type;
+        String blockMaterial;
+        boolean gas = false;
+        switch (type) {
+            case "molten", "plasma" -> blockMaterial = "lava";
+            case "liquid", "gas" -> blockMaterial = "water";
+            default -> throw new IllegalArgumentException("");
+        }
+        switch (type) {
+            case "gas", "plasma" -> gas = true;
+        }
+        //String name, String localName, String color,
+        //int density, boolean gas, int luminosity, int temperature, int viscosity, boolean vaporize,
+        //String tex, String blockMaterial
     }
 
     @Override

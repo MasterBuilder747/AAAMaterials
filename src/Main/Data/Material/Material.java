@@ -6,6 +6,10 @@ import Main.Data.Material.Malleable.Alloy;
 import Main.Data.Material.Malleable.Metal;
 import Main.Data.Material.Malleable.Plastic;
 import Main.Data.Material.Malleable.Rubber;
+import Main.Data.Material.State.AState;
+import Main.Data.Material.State.Gas;
+import Main.Data.Material.State.Plasma;
+import Main.Data.Material.State.Solid;
 
 //data > material
 public class Material extends AData {
@@ -22,7 +26,7 @@ public class Material extends AData {
 
     //states
     Solid solid;
-    SLiquid liquid; //standalone liquid (usually chemical), may allow changing of state (if not default state)
+    AState liquid; //standalone liquid (usually chemical), may allow changing of state (if not default state)
     Gas gas; //standalone gas (usually chemical), may allow changing of state (if not default state)
     Plasma plasma; //standalone gas (usually chemical), may allow changing of state (usually made in fusion)
 

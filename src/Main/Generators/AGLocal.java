@@ -2,9 +2,9 @@ package Main.Generators;
 
 import Main.Data.Localized.ALocalizedData;
 
-abstract class ALocal<L extends ALocalizedData> extends AGenerator<L> {
+abstract class AGLocal<L extends ALocalizedData> extends AGenerator<L> {
     //a variant of Generator that implements localized data
-    public ALocal(String filename) {
+    public AGLocal(String filename) {
         super(filename);
     }
 

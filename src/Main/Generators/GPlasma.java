@@ -1,6 +1,6 @@
 package Main.Generators;
 
-import Main.Data.Material.Plasma;
+import Main.Data.Material.State.Plasma;
 
 import java.io.BufferedReader;
 import java.io.IOException;
