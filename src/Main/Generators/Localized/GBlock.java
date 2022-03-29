@@ -1,4 +1,4 @@
-package Main.Generators;
+package Main.Generators.Localized;
 
 import Main.Data.Localized.LBlock;
 

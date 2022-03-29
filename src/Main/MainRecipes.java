@@ -1,6 +1,9 @@
 package Main;
 
 import Main.Generators.*;
+import Main.Generators.Localized.GBlock;
+import Main.Generators.Localized.GItem;
+import Main.Generators.Localized.GPart;
 
 import java.io.BufferedWriter;
 import java.io.FileWriter;
@@ -40,8 +43,6 @@ public class MainRecipes {
         block.registerMaterials();
         GItem item = new GItem("item");
         item.registerMaterials();
-        GFluid fluid = new GFluid("fluid");
-        fluid.registerMaterials();
         GPart part = new GPart("part");
         part.registerMaterials();
 

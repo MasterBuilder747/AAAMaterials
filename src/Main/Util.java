@@ -1,7 +1,6 @@
 package Main;
 
 import java.awt.*;
-import java.util.Arrays;
 import java.util.Locale;
 
 public class Util {

@@ -1,4 +1,4 @@
-package Main.Generators;
+package Main.Generators.Material;
 
 import Main.Data.Localized.LBlock;
 import Main.Data.Material.Material;
@@ -6,28 +6,26 @@ import Main.Data.Material.Ore;
 import Main.Data.OreVariant;
 import Main.Data.OreType;
 import Main.Data.Registry;
+import Main.Generators.GMaterial;
+import Main.Generators.GRegistry;
 import Main.Json.Builder;
 import Main.Json.JsonObject;
 import Main.Util;
 
-import java.io.BufferedReader;
-import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Arrays;
 
-public class GOre extends AGenerator<Ore> {
+public class GOre extends AGMaterialData<Ore> {
 
-    GMaterial material;
     GRegistry registry;
 
     public GOre(String name, GMaterial material, GRegistry registry) {
-        super(name);
+        super(name, material);
         this.material = material;
         this.registry = registry;
     }
 
     @Override
-    protected void readLine(BufferedReader br, String[] s) throws IOException {
+    protected void readMaterialParameters(Material m, String[] s) {
         //HOW TO HANDLE VARIANTS:
         //make a new material for netherrack, end, and bedrock, default will be stone
         //do separate code blocks for these in the same way
@@ -36,7 +34,7 @@ public class GOre extends AGenerator<Ore> {
         //ex: Lumium ore, Dense Lumium Ore, [Nether Lumium] Ore, Dense [Bedrock Lumium] Ore
 
         //ex:
-        //silver, false,
+        //false,
         //stone:
         // ore; 4; 6; 2:
         // poor; 4; 6; 2:
@@ -57,20 +55,15 @@ public class GOre extends AGenerator<Ore> {
         // int bedrockChunkChance
 
         //configure ore gen here
-        String material_name = s[0];
-        if (!this.material.is(material_name)) {
-            error("Unknown material " + material_name);
-        }
-        Material m = this.material.get(material_name);
-        String[] blocks = new String[s.length-2]; //includes each ore variant
-        System.arraycopy(s, 2, blocks, 0, blocks.length);
+        Ore o = new Ore(m, Boolean.parseBoolean(s[0]));
+        String[] blocks = new String[s.length-1]; //includes each ore variant
+        System.arraycopy(s, 1, blocks, 0, blocks.length);
 //        if (!mol.is(name)) {
 //            error("Unknown molecule material " + name);
 //        }
 //        if (!mol.is(name) && !comp.is(name)) {
 //            error("Unknown compound material " + name);
 //        }
-        Ore o = new Ore(m, Boolean.parseBoolean(s[1]));
         ArrayList<OreVariant> oreVariants = new ArrayList<>();
         for (String variant : blocks) {
             String[] s2 = Util.split(variant, ":");

@@ -1,4 +1,4 @@
-package Main.Generators;
+package Main;
 
 import Main.Composition;
 import Main.Util;
@@ -7,6 +7,7 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.util.ArrayList;
 
+//MIGHT DELETE LATER, ARCHIVED
 public class CCompound {
 
     //composition definition that contains multiple molecule materials in it

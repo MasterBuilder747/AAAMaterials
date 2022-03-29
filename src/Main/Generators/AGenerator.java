@@ -85,7 +85,7 @@ public abstract class AGenerator<D extends AData> {
     protected abstract void readLine(BufferedReader br, String[] s) throws IOException; //this populates the arraylist with the specified object
 
     //utilities
-    protected D get(String s) {
+    public D get(String s) {
         for (D o : objects) {
             if (o.name.equals(s)) {
                 return o;
@@ -93,7 +93,7 @@ public abstract class AGenerator<D extends AData> {
         }
         throw new IllegalArgumentException("Unknown " + filename + ": " + s);
     }
-    protected boolean is(String s) {
+    public boolean is(String s) {
         try {
             get(s);
         } catch (IllegalArgumentException e) {

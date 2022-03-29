@@ -1,6 +1,16 @@
 package Main;
 
 import Main.Generators.*;
+import Main.Generators.Localized.GBlock;
+import Main.Generators.Localized.GItem;
+import Main.Generators.Localized.GPart;
+import Main.Generators.Localized.Liquid.GGas;
+import Main.Generators.Localized.Liquid.GLiquid;
+import Main.Generators.Localized.Liquid.GMolten;
+import Main.Generators.Localized.Liquid.GPlasma;
+import Main.Generators.Material.GOre;
+import Main.Generators.Material.Malleable.GMetal;
+import Main.Generators.Material.GSolid;
 
 import java.io.*;
 
@@ -41,8 +51,14 @@ public class MainMaterials {
         bw.write(block.registerMaterials());
         GItem item = new GItem("item");
         bw.write(item.registerMaterials());
-//        GLiquid liquid = new GLiquid("liquid");
-//        bw.write(liquid.registerMaterials());
+        GLiquid liquid = new GLiquid("liquid");
+        liquid.registerMaterials();
+        GMolten molten = new GMolten(("molten"));
+        molten.registerMaterials();
+        GGas gas = new GGas("gase");
+        gas.registerMaterials();
+        GPlasma plasma = new GPlasma("plasma");
+        plasma.registerMaterials();
 
         //2. any established content needed for the material system
         GPart part = new GPart("part");

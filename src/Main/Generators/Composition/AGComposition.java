@@ -1,8 +1,11 @@
-package Main.Generators;
+package Main.Generators.Composition;
 
 import Main.Composition;
 import Main.Data.Material.AMaterialData;
 import Main.Data.Material.ChemicalLabel;
+import Main.Generators.AGenerator;
+import Main.Generators.GElement;
+import Main.Generators.GMaterial;
 import Main.MainMaterials;
 
 import java.util.ArrayList;
@@ -18,7 +21,6 @@ public abstract class AGComposition<C extends AMaterialData> extends AGenerator<
     }
 
     //this creates a new material composition
-    //TODO: make this automatically work with the material composition syntax as well
     protected Composition createMoleculeComp(String s) throws IllegalArgumentException {
         ArrayList<Composition> comps = new ArrayList<>();
         //symbol

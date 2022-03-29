@@ -1,6 +1,8 @@
-package Main.Generators;
+package Main.Generators.Property;
 
 import Main.Data.Property;
+import Main.Generators.AGenerator;
+import Main.Generators.GElement;
 import Main.MainMaterials;
 
 import java.io.BufferedReader;

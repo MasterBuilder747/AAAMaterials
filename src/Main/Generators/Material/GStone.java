@@ -1,9 +1,9 @@
-package Main.Generators;
+package Main.Generators.Material;
 
+import Main.Data.Material.Material;
 import Main.Data.Material.Stone;
-
-import java.io.BufferedReader;
-import java.io.IOException;
+import Main.Generators.GMaterial;
+import Main.Generators.GRegistry;
 
 public class GStone extends AGMaterialData<Stone> {
     GRegistry registry;
@@ -14,7 +14,7 @@ public class GStone extends AGMaterialData<Stone> {
     }
 
     @Override
-    protected void readLine(BufferedReader br, String[] s) throws IOException {
+    protected void readMaterialParameters(Material m, String[] s) {
 
     }
 }

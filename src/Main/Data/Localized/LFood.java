@@ -1,6 +1,5 @@
 package Main.Data.Localized;
 
-
 public class LFood extends ALocalizedData {
     //https://docs.blamejared.com/1.12/en/Mods/ContentTweaker/Vanilla/Creatable_Content/ItemFood
 

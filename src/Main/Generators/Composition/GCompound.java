@@ -1,6 +1,8 @@
-package Main.Generators;
+package Main.Generators.Composition;
 
 import Main.Data.Material.ChemicalLabel;
+import Main.Generators.GElement;
+import Main.Generators.GMaterial;
 
 import java.io.BufferedReader;
 import java.io.IOException;

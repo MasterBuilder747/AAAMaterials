@@ -1,7 +1,5 @@
 package Main.Data.Material;
 
-import Main.Data.Material.AMaterialData;
-import Main.Data.Material.Material;
 import Main.Util;
 
 public class Solid extends AMaterialData {

@@ -1,11 +1,12 @@
-package Main.Generators;
+package Main.Generators.Localized;
 
 import Main.Data.Localized.ALocalizedData;
+import Main.Generators.AGenerator;
 
-abstract class AGLocal<L extends ALocalizedData> extends AGenerator<L> {
+public abstract class AGLocal<L extends ALocalizedData> extends AGenerator<L> {
     //a variant of Generator that implements localized data
     public AGLocal(String filename) {
-        super(filename);
+        super("custom-"+filename);
     }
 
     //this is not an override, it is its own method separate from LocalizedData

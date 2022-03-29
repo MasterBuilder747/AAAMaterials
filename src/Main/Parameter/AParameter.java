@@ -1,6 +1,6 @@
 package Main.Parameter;
 
-
+//API MAY BE DELETED LATER
 public abstract class AParameter<D> {
     String type;
     String filename;

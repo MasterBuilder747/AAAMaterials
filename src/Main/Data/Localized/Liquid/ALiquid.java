@@ -38,6 +38,8 @@ public abstract class ALiquid extends ALocalizedData {
                 //"molten_iron", "ff0000", 6000, false,
                 //15, 1000, 6000, false,
                 //"contenttweaker:fluids/molten", "contenttweaker:fluids/molten_flowing", <blockmaterial:lava>);
+                //tex: liquid, molten, gas, plasma, ...
+                //blockMaterial: lava, water
         return "genFluid(\"" +
                 this.name + "\", \"" + this.color + "\", " + this.density + ", " + this.gas + ", " +
                 this.luminosity + ", " + this.temperature + ", " + this.viscosity + ", " + this.vaporize +
