@@ -41,8 +41,8 @@ public class MainMaterials {
         bw.write(block.registerMaterials());
         GItem item = new GItem("item");
         bw.write(item.registerMaterials());
-        GFluid fluid = new GFluid("liquid");
-        bw.write(fluid.registerMaterials());
+//        GLiquid liquid = new GLiquid("liquid");
+//        bw.write(liquid.registerMaterials());
 
         //2. any established content needed for the material system
         GPart part = new GPart("part");
@@ -97,7 +97,7 @@ public class MainMaterials {
         bw = new BufferedWriter(fw);
         bw.write(block.localize());
         bw.write(item.localize());
-        bw.write(fluid.localize());
+        //bw.write(fluid.localize());
         bw.write(part.localize());
         bw.close();
     }

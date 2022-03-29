@@ -2,14 +2,13 @@ package Main.Data.Material;
 
 import Main.Data.AData;
 import Main.Data.Localized.LFood;
+import Main.Data.Material.MLiquid.MLiquid;
 import Main.Data.Material.Malleable.Alloy;
 import Main.Data.Material.Malleable.Metal;
 import Main.Data.Material.Malleable.Plastic;
 import Main.Data.Material.Malleable.Rubber;
-import Main.Data.Material.State.AState;
-import Main.Data.Material.State.Gas;
-import Main.Data.Material.State.Plasma;
-import Main.Data.Material.State.Solid;
+import Main.Data.Material.MLiquid.MGas;
+import Main.Data.Material.MLiquid.MPlasma;
 
 //data > material
 public class Material extends AData {
@@ -26,9 +25,9 @@ public class Material extends AData {
 
     //states
     Solid solid;
-    AState liquid; //standalone liquid (usually chemical), may allow changing of state (if not default state)
-    Gas gas; //standalone gas (usually chemical), may allow changing of state (if not default state)
-    Plasma plasma; //standalone gas (usually chemical), may allow changing of state (usually made in fusion)
+    MLiquid liquid; //standalone liquid (usually chemical), may allow changing of state (if not default state)
+    MGas gas; //standalone gas (usually chemical), may allow changing of state (if not default state)
+    MPlasma plasma; //standalone gas (usually chemical), may allow changing of state (usually made in fusion)
 
     //later game mechanics
     Matter matter; //a colored matter, positive and negative

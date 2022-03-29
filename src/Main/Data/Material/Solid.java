@@ -1,4 +1,4 @@
-package Main.Data.Material.State;
+package Main.Data.Material;
 
 import Main.Data.Material.AMaterialData;
 import Main.Data.Material.Material;
