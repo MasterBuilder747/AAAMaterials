@@ -6,7 +6,10 @@ import java.util.Locale;
 public class Util {
     //any global utilities needed for coding
     public static String toUpper(String s) {
-        if (s.equals("")) throw new IllegalArgumentException("No string specified to uppercase!");
+        if (s.equals("")) {
+            throw new IllegalArgumentException("No string specified to uppercase!");
+            //return s;
+        }
         return s.substring(0, 1).toUpperCase(Locale.ROOT) + s.substring(1);
     }
 

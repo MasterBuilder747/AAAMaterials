@@ -24,6 +24,15 @@ public class Solid extends AMaterialData {
     @Override
     public String buildMaterial() {
         StringBuilder sb = new StringBuilder();
+        /*
+        ADD BLOCKS LATER (NEED TO COLORIZE BLOCK TEXTURES):
+        dust
+        dust block
+        fine dust
+        fine dust block
+        powder dust
+        powder block
+        */
         //these shouldn't be hardcoded, need to find a way to avoid this (use GPartGroup)
         if (this.altName != null) {
             sb.append("var ").append(this.altName);

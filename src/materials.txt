@@ -16,11 +16,11 @@ granite, Granite, 785d5c, solid
 diabase, Diabase, 262321, solid
 rhyolite, Rhyolite, 7b877b, solid
 kimberlite, Kimberlite, 414d4c, solid
-komatiite, komatiite, dbb856, solid
+komatiite, Komatiite, dbb856, solid
 dacite, Dacite, d5dbdb, solid
 /metamorphic:
 gneiss, Gneiss, 595c63, solid
-eclogite, Ecelogite, 918273, solid
+eclogite, Eclogite, 918273, solid
 marble, Marble, e3e8e7, solid
 quartzite, Quartzite, 91857d, solid
 hornfels, Hornfels, 36918e, solid

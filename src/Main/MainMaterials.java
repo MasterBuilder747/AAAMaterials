@@ -9,6 +9,7 @@ import Main.Generators.Localized.Liquid.GLiquid;
 import Main.Generators.Localized.Liquid.GMolten;
 import Main.Generators.Localized.Liquid.GPlasma;
 import Main.Generators.Material.GOre;
+import Main.Generators.Material.GStone;
 import Main.Generators.Material.Malleable.GMetal;
 import Main.Generators.Material.GSolid;
 
@@ -52,13 +53,13 @@ public class MainMaterials {
         GItem item = new GItem("item");
         bw.write(item.registerMaterials());
         GLiquid liquid = new GLiquid("liquid");
-        liquid.registerMaterials();
+        bw.write(liquid.registerMaterials());
         GMolten molten = new GMolten(("molten"));
-        molten.registerMaterials();
+        bw.write(molten.registerMaterials());
         GGas gas = new GGas("gase");
-        gas.registerMaterials();
+        bw.write(gas.registerMaterials());
         GPlasma plasma = new GPlasma("plasma");
-        plasma.registerMaterials();
+        bw.write(plasma.registerMaterials());
 
         //2. any established content needed for the material system
         GPart part = new GPart("part");
@@ -81,7 +82,8 @@ public class MainMaterials {
         //GComposition
 
         //6. all other material data (unless there are some other requirements later)
-
+        GStone stone = new GStone("stone", material, registry);
+        bw.write(stone.registerMaterials());
         GMetal metal = new GMetal("metal", material);
         bw.write(metal.registerMaterials());
 
