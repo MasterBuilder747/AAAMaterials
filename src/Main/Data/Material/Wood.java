@@ -1,14 +1,73 @@
 package Main.Data.Material;
 
-public class Wood extends AMaterialData {
-    //furnace.setFuel(<minecraft:coal:1>, 800);
+import Main.Data.Registry;
 
-    public Wood(Material m) {
+public class Wood extends AMaterialData {
+    boolean isVanilla; //for quark integration
+
+    public Wood(Material m, boolean isVanilla) {
         super(m);
+        this.isVanilla = isVanilla;
+    }
+
+    public void addVariants(Registry[] registries) {
+        /*
+        0 log
+        1 planks
+        2 sapling
+        3 stairs
+        4 slab
+        5 fence
+        6 fence_gate
+        7 door
+        8 boat
+        9 leaves
+        10 button
+        11 pressure_plate
+        12 bark
+        13 carved_wood
+        14 bookshelf
+        15 chest
+        16 chest_trap
+        17 leave_carpet
+        18 vertical_planks
+        19 bark_slab
+        20 bark_stairs
+        21 bark_wall
+        custom:
+        plank
+        */
+        if (isVanilla) {
+            this.add("log", registries[0]);
+            this.add("planks", registries[1]);
+            this.add("sapling", registries[2]);
+            this.add("stairs", registries[3]);
+            this.add("slab", registries[4]);
+            this.add("fence", registries[5]);
+            this.add("fence_gate", registries[6]);
+            this.add("door", registries[7]);
+            this.add("boat", registries[8]);
+            this.add("leaves", registries[9]);
+            this.add("button", registries[10]);
+            this.add("pressure_plate", registries[11]);
+            this.add("bark", registries[12]);
+            this.add("carved_wood", registries[13]);
+            this.add("bookshelf", registries[15]);
+            this.add("chest", registries[16]);
+            this.add("chest_trap", registries[17]);
+            this.add("leaf_carpet", registries[18]);
+            this.add("vertical_planks", registries[19]);
+            this.add("bark_slab", registries[20]);
+            this.add("bark_stairs", registries[21]);
+            this.add("bark_wall", registries[22]);
+        } else {
+
+        }
     }
 
     @Override
     public String buildMaterial() {
+
         return null;
     }
 
@@ -35,6 +94,8 @@ public class Wood extends AMaterialData {
         //cannot punch it
         //dimension? overworld, nether, end, planets?
         //mining levels?
+
+        //furnace.setFuel(<minecraft:coal:1>, 800);
         return null;
     }
 
