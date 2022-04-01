@@ -9,6 +9,25 @@ public abstract class AMalleable extends AMaterialData {
     //negative numbers indicate the value of this material, but it cannot be melted
 
     public AMalleable(Material m, double meltingMultiplier) {
+        super(m);
+        this.meltingMultiplier = meltingMultiplier;
+    }
+
+    @Override
+    public String buildMaterial() {
+        /*
+        Metal blocks?
+        Block-of: [material]?
+        block, slab, wall, stairs
+        */
+        StringBuilder sb = new StringBuilder();
+        sb.append(buildPartMaterials());
+        //append any script related to parent here
+        return sb.toString();
+    }
+
+    @Override
+    public String buildRecipe() {
         //smelting: ore -> ingot
         //melting: dust > ingot?
         //tiers of (s)melting:
@@ -18,26 +37,6 @@ public abstract class AMalleable extends AMaterialData {
         //4. blast furnace to super hot ingot > cryo freezer/chamber etc using cryo fluid/fuel
         //5. blast furnace to gas since there is no liquid form and it is so hot it is gaseous > gas freezer/etc to ingot/gas shape?
         //6. fusion furnace to plasma > ingot through plasma cooling chamber/etc
-
-        /*
-        Metal blocks?
-        Block-of: [material]?
-        block, slab, wall, stairs
-         */
-        super(m);
-        this.meltingMultiplier = meltingMultiplier;
-    }
-
-    @Override
-    public String buildMaterial() {
-        StringBuilder sb = new StringBuilder();
-        sb.append(buildPartMaterials());
-        //append any script related to parent here
-        return sb.toString();
-    }
-
-    @Override
-    public String buildRecipe() {
         StringBuilder sb = new StringBuilder();
         sb.append(buildPartRecipes());
         //append any script related to parent here
