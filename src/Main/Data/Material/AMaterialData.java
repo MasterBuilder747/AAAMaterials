@@ -9,11 +9,35 @@ import java.util.ArrayList;
 public abstract class AMaterialData extends AData {
     protected Material m; //in case basic data is needed
     ArrayList<MaterialData> datas; //the array of registries that are used for adding recipes and other things
+    protected PartGroup[] partGroups;
+    protected boolean[] enablePartGroups;
 
     public AMaterialData(Material m) {
         super(m.name);
         this.m = m;
         this.datas = new ArrayList<>();
+    }
+    public void setPartGroups(PartGroup[] partGroups, boolean[] enablePartGroups) {
+        this.partGroups = partGroups;
+        this.enablePartGroups = enablePartGroups;
+    }
+    protected String genPartGroups() {
+        StringBuilder sb = new StringBuilder();
+        for (int i = 0; i < this.partGroups.length; i++) {
+            if (this.enablePartGroups[i]) {
+                sb.append(this.buildPart(this.partGroups[i]));
+            }
+        }
+        return sb.toString();
+    }
+    protected String genAltPartGroups(String[] strings) {
+        StringBuilder sb = new StringBuilder();
+        for (int i = 0; i < this.partGroups.length; i++) {
+            if (this.enablePartGroups[i]) {
+                sb.append(this.buildAltPart(strings[i], this.partGroups[i]));
+            }
+        }
+        return sb.toString();
     }
 
     protected void add(String key, Registry r) {
@@ -51,10 +75,10 @@ public abstract class AMaterialData extends AData {
         }
     }
 
-    protected String buildPart(String partGroupName) {
-        return this.m.name + ".registerParts(" + partGroupName + "_parts);\n";
+    protected String buildPart(PartGroup partGroup) {
+        return this.m.name + ".registerParts(" + partGroup.name + ");\n";
     }
-    protected String buildAltPart(String name, String partGroupName) {
-        return name + ".registerParts(" + partGroupName + "_parts);\n";
+    protected String buildAltPart(String name, PartGroup partGroup) {
+        return name + ".registerParts(" + partGroup.name + ");\n";
     }
 }

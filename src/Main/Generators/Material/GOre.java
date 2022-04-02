@@ -3,10 +3,11 @@ package Main.Generators.Material;
 import Main.Data.Localized.LBlock;
 import Main.Data.Material.Material;
 import Main.Data.Material.Ore;
-import Main.Data.OreVariant;
+import Main.Data.Material.OreVariant;
 import Main.Data.OreType;
 import Main.Data.Registry;
 import Main.Generators.GMaterial;
+import Main.Generators.GPartGroup;
 import Main.Generators.GRegistry;
 import Main.Json.Builder;
 import Main.Json.JsonObject;
@@ -18,8 +19,8 @@ public class GOre extends AGMaterialData<Ore> {
 
     GRegistry registry;
 
-    public GOre(String name, GMaterial material, GRegistry registry) {
-        super(name, material);
+    public GOre(String name, GMaterial material, GPartGroup partGroup, GRegistry registry) {
+        super(name, material, partGroup);
         this.material = material;
         this.registry = registry;
     }
@@ -119,7 +120,7 @@ public class GOre extends AGMaterialData<Ore> {
                     types.add(new OreType(block+"_"+m.name, type_name, b));
                 }
             }
-            oreVariants.add(new OreVariant(m.name, m.color, block, types.toArray(new OreType[0])));
+            oreVariants.add(new OreVariant(m, block, types.toArray(new OreType[0]), this.partGroup.getPart("ore")));
 
             //handle block's oreGen
             if (o.enableGen) {
@@ -161,6 +162,15 @@ public class GOre extends AGMaterialData<Ore> {
             }
         }
         o.addVariants(oreVariants.toArray(new OreVariant[0]));
+        OreVariant[] vars = o.getVariants();
+        boolean isVar = false;
+        for (OreVariant v : vars) {
+            if (v.block.equals("stone")) {
+                isVar = true;
+                break;
+            }
+        }
+        o.setPartGroups(this.genPartGroups(new String[]{"ore"}), new boolean[]{isVar});
         objects.add(o);
     }
 

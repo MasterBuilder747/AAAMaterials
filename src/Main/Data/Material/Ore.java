@@ -1,6 +1,5 @@
 package Main.Data.Material;
 
-import Main.Data.OreVariant;
 import Main.Data.Registry;
 import Main.Json.JsonObject;
 import Main.Json.Value;
@@ -88,12 +87,15 @@ public class Ore extends AMaterialData {
         this.enableGen = enableGen;
     }
 
+    public OreVariant[] getVariants() {
+        return this.variants;
+    }
+
     @Override
     public String buildMaterial() {
         StringBuilder sb = new StringBuilder();
-        if (this.is("oreStone")) {
-            sb.append(buildPart("ore")); //this only does the stone version
-        }
+        sb.append(this.genPartGroups());
+        //build block's partGroup variants
         for (OreVariant variant : this.variants) {
             sb.append(variant.buildMaterial());
         }

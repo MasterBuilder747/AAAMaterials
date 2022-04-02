@@ -4,15 +4,17 @@ import Main.Data.Material.Material;
 import Main.Data.Material.Wood;
 import Main.Data.Registry;
 import Main.Generators.GMaterial;
+import Main.Generators.GPartGroup;
 import Main.Generators.GRegistry;
+import Main.Generators.Localized.GPart;
 
 import java.util.ArrayList;
 
 public class GWood extends AGMaterialData<Wood> {
     GRegistry registry;
     
-    public GWood(String filename, GMaterial material, GRegistry registry) {
-        super(filename, material);
+    public GWood(String filename, GMaterial material, GPartGroup partGroup, GRegistry registry) {
+        super(filename, material, partGroup);
         this.registry = registry;
     }
 

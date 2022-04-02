@@ -1,9 +1,11 @@
 package Main.Generators.Material;
 
 import Main.Data.Material.Material;
+import Main.Data.Material.PartGroup;
 import Main.Data.Material.Stone;
 import Main.Data.Registry;
 import Main.Generators.GMaterial;
+import Main.Generators.GPartGroup;
 import Main.Generators.GRegistry;
 
 import java.util.ArrayList;
@@ -11,8 +13,8 @@ import java.util.ArrayList;
 public class GStone extends AGMaterialData<Stone> {
     GRegistry registry;
 
-    public GStone(String filename, GMaterial material, GRegistry registry) {
-        super(filename, material);
+    public GStone(String filename, GMaterial material, GPartGroup partGroup, GRegistry registry) {
+        super(filename, material, partGroup);
         this.registry = registry;
     }
 
@@ -55,7 +57,8 @@ public class GStone extends AGMaterialData<Stone> {
         if (s.length != 3) error(3);
         boolean isSedimentary = Boolean.parseBoolean(s[1]);
         boolean noSlab = Boolean.parseBoolean(s[2]);
-        Stone c = new Stone(m, Boolean.parseBoolean(s[0]), isSedimentary, noSlab);
+        Stone c = new Stone(m, isSedimentary, noSlab);
+        c.setPartGroups(new PartGroup[]{this.partGroup.getPart("stone")}, new boolean[]{Boolean.parseBoolean(s[0])});
         ArrayList<Registry> registries = new ArrayList<>();
         if (!isSedimentary) {
             for (int i = 0; i < 25; i++) {

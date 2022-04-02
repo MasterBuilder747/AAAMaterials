@@ -3,14 +3,12 @@ package Main.Data.Material;
 import Main.Data.Registry;
 
 public class Stone extends AMaterialData {
-    boolean addPebble;
     boolean isSedimentary; //does not have cobblestone registered for UB
     boolean noSlab; //only applied to Conglomerate...?
 
-    public Stone(Material m, boolean addPebble, boolean isSedimentary, boolean noSlab) {
+    public Stone(Material m, boolean isSedimentary, boolean noSlab) {
         super(m);
         this.isSedimentary = isSedimentary;
-        this.addPebble = addPebble;
         this.noSlab = noSlab;
     }
 
@@ -122,11 +120,7 @@ public class Stone extends AMaterialData {
         chisel custom designs?
         pebble
         */
-        if (this.addPebble) {
-            return buildPart("stone") ;
-        } else {
-            return null;
-        }
+        return this.genPartGroups();
     }
 
     @Override

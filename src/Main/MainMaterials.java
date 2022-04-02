@@ -82,13 +82,13 @@ public class MainMaterials {
         //GComposition
 
         //6. all other material data (unless there are some other requirements later)
-        GStone stone = new GStone("stone", material, registry);
+        GStone stone = new GStone("stone", material, partGroup, registry);
         bw.write(stone.registerMaterials());
-        GMetal metal = new GMetal("metal", material);
+        GMetal metal = new GMetal("metal", material, partGroup);
         bw.write(metal.registerMaterials());
 
         //7. ore system
-        GOre ore = new GOre("ore", material, registry);
+        GOre ore = new GOre("ore", material, partGroup, registry);
         bw.write(ore.registerMaterials());
 //        CMolecule molecule = new CMolecule("moleculeComposition", element);
 //        bw.write(molecule.register());
