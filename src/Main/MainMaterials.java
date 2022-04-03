@@ -10,8 +10,12 @@ import Main.Generators.Localized.Liquid.GMolten;
 import Main.Generators.Localized.Liquid.GPlasma;
 import Main.Generators.Material.GOre;
 import Main.Generators.Material.GStone;
+import Main.Generators.Material.GWood;
+import Main.Generators.Material.Malleable.GAlloy;
 import Main.Generators.Material.Malleable.GMetal;
 import Main.Generators.Material.GSolid;
+import Main.Generators.Material.Malleable.GPlastic;
+import Main.Generators.Material.Malleable.GRubber;
 
 import java.io.*;
 
@@ -82,10 +86,19 @@ public class MainMaterials {
         //GComposition
 
         //6. all other material data (unless there are some other requirements later)
+        GWood wood = new GWood("wood", material, partGroup, registry);
+        bw.write(wood.registerMaterials());
         GStone stone = new GStone("stone", material, partGroup, registry);
         bw.write(stone.registerMaterials());
+        //malleables
         GMetal metal = new GMetal("metal", material, partGroup);
         bw.write(metal.registerMaterials());
+        GAlloy alloy = new GAlloy("alloy", material, partGroup);
+        bw.write(alloy.registerMaterials());
+        GPlastic plastic = new GPlastic("plastic", material, partGroup);
+        bw.write(plastic.registerMaterials());
+        GRubber rubber = new GRubber("rubber", material, partGroup);
+        bw.write(rubber.registerMaterials());
 
         //7. ore system
         GOre ore = new GOre("ore", material, partGroup, registry);

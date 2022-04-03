@@ -15,7 +15,7 @@ public class G_QGP extends AGLiquid<QGP> {
         //String name, String localName, String color, int density, int luminosity, int temperature, int viscosity, boolean vaporize
         if (s.length != 7) error (7);
         objects.add(new QGP(s[0], s[1], s[2],
-                Integer.parseInt(s[3]), Integer.parseInt(s[4]), Integer.parseInt(s[5]), Integer.parseInt(s[6]),
-                Boolean.parseBoolean(s[7])));
+                parseInt(s[3]), parseInt(s[4]), parseInt(s[5]), parseInt(s[6]),
+                parseBoolean(s[7])));
     }
 }

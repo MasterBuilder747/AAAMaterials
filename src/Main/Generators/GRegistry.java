@@ -23,7 +23,7 @@ public class GRegistry extends AGenerator<Registry> {
             }
             System.arraycopy(s, 6, ss, 6, ss.length - 6);
 
-            Registry r = new Registry(ss[1].substring(0, ss[1].indexOf(":")), ss[1].substring(ss[1].indexOf(":")+1), Integer.parseInt(ss[3]), ss[5]);
+            Registry r = new Registry(ss[1].substring(0, ss[1].indexOf(":")), ss[1].substring(ss[1].indexOf(":")+1), parseInt(ss[3]), ss[5]);
             String[] ores = new String[ss.length - 6];
             System.arraycopy(ss, 6, ores, 0, ores.length);
             String[] oress = new String[ores.length];

@@ -22,16 +22,16 @@ public class GWood extends AGMaterialData<Wood> {
     protected void readMaterialParameters(Material m, String[] s) {
         //boolean isVanilla
         if (s.length != 1) error (1);
-        boolean isVanilla = Boolean.parseBoolean(s[0]);
+        boolean isVanilla = parseBoolean(s[0]);
         Wood w = new Wood(m, isVanilla);
         ArrayList<Registry> registries = new ArrayList<>();
         for (int i = 0; i < 22; i++) {
-            String test = m.LOCALNAME;
+            String test = m.LOCALNAME.replace(" ", "");
             switch (i) {
                 case 0 -> test += "Wood";
                 case 1 -> test += "WoodPlanks";
                 case 2 -> test += "Sapling";
-                case 3 -> test += "Stairs";
+                case 3 -> test += "WoodStairs";
                 case 4 -> test += "WoodSlab";
                 case 5 -> test += "Fence";
                 case 6 -> test += "FenceGate";
@@ -54,7 +54,7 @@ public class GWood extends AGMaterialData<Wood> {
             if (this.registry.is(test)) {
                 registries.add(this.registry.get(test));
             } else {
-                error("stone type " + test + " for material " + m.name + " is not in the registry");
+                error("wood type " + test + " for material " + m.name + " is not in the registry");
             }
         }
         w.addVariants(registries.toArray(new Registry[0]));

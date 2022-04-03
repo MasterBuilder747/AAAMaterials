@@ -22,7 +22,7 @@ public class GMolecule extends AGComposition<ChemicalLabel> {
     protected void readLine(BufferedReader br, String[] s) throws IOException {
         //parse the code like GOre here
         try {
-            objects.add(new ChemicalLabel(material.get(s[0]), true, createMoleculeComp(s[1]), Boolean.getBoolean(s[2]), Boolean.getBoolean(s[3]), Boolean.getBoolean(s[4]), Boolean.getBoolean(s[5])));
+            objects.add(new ChemicalLabel(material.get(s[0]), true, createMoleculeComp(s[1]), parseBoolean(s[2]), parseBoolean(s[3]), parseBoolean(s[4]), parseBoolean(s[5])));
         } catch (IllegalArgumentException e) {
             error("Unknown element " + s1);
         }

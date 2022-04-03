@@ -2,6 +2,7 @@ package Main.Generators;
 
 import Main.Data.AData;
 import Main.MainMaterials;
+import Main.Parameter.ParameterException;
 import Main.Util;
 
 import java.io.BufferedReader;
@@ -131,5 +132,37 @@ public abstract class AGenerator<D extends AData> {
         sb.append(parameters[parameters.length-1]);
         sb.append(" parameters");
         throw new GeneratorException(sb.toString(), this.filename, this.line);
+    }
+
+    //parameter validation
+    private void param(String s, String type) {
+        throw new ParameterException(s, type, this.filename, this.line);
+    }
+    protected boolean parseBoolean(String s) {
+        if (s.equals("true")) {
+            return true;
+        } else if (s.equals("false")) {
+            return false;
+        }
+        this.param(s, "boolean");
+        return false;
+    }
+    protected int parseInt(String s) {
+        int out = 0;
+        try {
+            out = Integer.parseInt(s);
+        } catch (NumberFormatException e) {
+            this.param(s, "int");
+        }
+        return out;
+    }
+    protected double parseDouble(String s) {
+        double out = 0;
+        try {
+            out = Double.parseDouble(s);
+        } catch (NumberFormatException e) {
+            this.param(s, "double");
+        }
+        return out;
     }
 }

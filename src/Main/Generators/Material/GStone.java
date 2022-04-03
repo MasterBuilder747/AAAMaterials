@@ -52,13 +52,11 @@ public class GStone extends AGMaterialData<Stone> {
         23 cobblestone,
         24 brick)
         */
-
-        //TODO: Fix UB .lang file to unify mossy cobblstone/stone naming to: Mossy [materialName] [cobblestone]
         if (s.length != 3) error(3);
-        boolean isSedimentary = Boolean.parseBoolean(s[1]);
-        boolean noSlab = Boolean.parseBoolean(s[2]);
+        boolean isSedimentary = parseBoolean(s[1]);
+        boolean noSlab = parseBoolean(s[2]);
         Stone c = new Stone(m, isSedimentary, noSlab);
-        c.setPartGroups(new PartGroup[]{this.partGroup.getPart("stone")}, new boolean[]{Boolean.parseBoolean(s[0])});
+        c.setPartGroups(new PartGroup[]{this.partGroup.getPart("stone")}, new boolean[]{parseBoolean(s[0])});
         ArrayList<Registry> registries = new ArrayList<>();
         if (!isSedimentary) {
             for (int i = 0; i < 25; i++) {

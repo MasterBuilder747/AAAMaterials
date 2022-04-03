@@ -52,14 +52,14 @@ public class Wood extends AMaterialData {
             this.add("pressure_plate", registries[11]);
             this.add("bark", registries[12]);
             this.add("carved_wood", registries[13]);
-            this.add("bookshelf", registries[15]);
-            this.add("chest", registries[16]);
-            this.add("chest_trap", registries[17]);
-            this.add("leaf_carpet", registries[18]);
-            this.add("vertical_planks", registries[19]);
-            this.add("bark_slab", registries[20]);
-            this.add("bark_stairs", registries[21]);
-            this.add("bark_wall", registries[22]);
+            this.add("bookshelf", registries[14]);
+            this.add("chest", registries[15]);
+            this.add("chest_trap", registries[16]);
+            this.add("leaf_carpet", registries[17]);
+            this.add("vertical_planks", registries[18]);
+            this.add("bark_slab", registries[19]);
+            this.add("bark_stairs", registries[20]);
+            this.add("bark_wall", registries[21]);
         } else {
 
         }
