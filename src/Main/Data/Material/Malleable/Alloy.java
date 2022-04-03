@@ -11,7 +11,7 @@ public class Alloy extends AMalleable {
 
     @Override
     String buildPartMaterials() {
-        return null;
+        return this.genPartGroups();
     }
 
     @Override
