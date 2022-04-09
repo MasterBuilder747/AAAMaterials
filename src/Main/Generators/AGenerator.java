@@ -17,9 +17,11 @@ public abstract class AGenerator<D extends AData> {
     protected int line = 1;
     protected String s1;
     protected String[] s;
+    protected final int PARAMS;
     //protected int numParams
 
-    public AGenerator(String filename) {
+    public AGenerator(int PARAMS, String filename) {
+        this.PARAMS = PARAMS;
         this.filename = filename;
         objects = new ArrayList<>();
     }
@@ -72,9 +74,13 @@ public abstract class AGenerator<D extends AData> {
             if (s1 != null) {
                 if (s1.charAt(0) != '/') { //commented out line, ignored
                     s = Util.split(s1.replace(" ", ""), ",");
-                    //if (s.length == this.numParams) {
+                    if (s.length == this.PARAMS) {
                         readLine(br, s);
-                        //error(s.length + " is the incorrect amount of parameters. Expected " + this.numParams);
+                    } else {
+                        //-1 denotes any amount of parameters, so no checking is needed
+                        if (this.PARAMS != -1) error(s.length + " is the incorrect amount of parameters. Expected " + PARAMS);
+                        readLine(br, s);
+                    }
                 }
             } else {
                 break;
@@ -119,23 +125,9 @@ public abstract class AGenerator<D extends AData> {
     protected void error(String s) throws GeneratorException {
         throw new GeneratorException(s, this.filename, this.line);
     }
-    protected void error(int parameters) throws GeneratorException {
-        throw new GeneratorException("Expected " + parameters + " parameters", this.filename, this.line);
-    }
-    protected void error(int[] parameters) throws GeneratorException {
-        StringBuilder sb = new StringBuilder();
-        sb.append("Expected ");
-        for (int i = 0; i < parameters.length-1; i++) {
-            sb.append(parameters[i]);
-            sb.append(" or ");
-        }
-        sb.append(parameters[parameters.length-1]);
-        sb.append(" parameters");
-        throw new GeneratorException(sb.toString(), this.filename, this.line);
-    }
 
     //parameter validation
-    private void param(String s, String type) {
+    private void paramError(String s, String type) {
         throw new ParameterException(s, type, this.filename, this.line);
     }
     protected boolean parseBoolean(String s) {
@@ -144,7 +136,7 @@ public abstract class AGenerator<D extends AData> {
         } else if (s.equals("false")) {
             return false;
         }
-        this.param(s, "boolean");
+        this.paramError(s, "boolean");
         return false;
     }
     protected int parseInt(String s) {
@@ -152,7 +144,7 @@ public abstract class AGenerator<D extends AData> {
         try {
             out = Integer.parseInt(s);
         } catch (NumberFormatException e) {
-            this.param(s, "int");
+            this.paramError(s, "int");
         }
         return out;
     }
@@ -161,7 +153,7 @@ public abstract class AGenerator<D extends AData> {
         try {
             out = Double.parseDouble(s);
         } catch (NumberFormatException e) {
-            this.param(s, "double");
+            this.paramError(s, "double");
         }
         return out;
     }

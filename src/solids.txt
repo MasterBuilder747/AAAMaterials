@@ -1,34 +1,34 @@
-/material, bool addDust, bool addFineDust, bool addPowder, OPT String customName(for other states)
+/material, bool addDust, bool addFineDust, bool addPowder, String customName(for other states)[use = for no alt name]
 /water, false, false, false, ice /by putting this here, you are adding its parts, not claiming its default state (that is defined in the material)
-lumium, true, true, true
+lumium, true, true, true, =
 /stones:
 /vanilla:
-/stone, true, true, true
-/diorite, true, true, true
-granite, true, true, true
-diabase, true, true, true
-rhyolite, true, true, true
-kimberlite, true, true, true
-komatiite, true, true, true
-dacite, true, true, true
+/stone, true, true, true, =
+/diorite, true, true, true, =
+granite, true, true, true, =
+diabase, true, true, true, =
+rhyolite, true, true, true, =
+kimberlite, true, true, true, =
+komatiite, true, true, true, =
+dacite, true, true, true, =
 /metamorphic:
-gneiss, true, true, true
-eclogite, true, true, true
-marble, true, true, true
-quartzite, true, true, true
-hornfels, true, true, true
-schist, true, true, true
-soapstone, true, true, true
-migmatite, true, true, true
+gneiss, true, true, true, =
+eclogite, true, true, true, =
+marble, true, true, true, =
+quartzite, true, true, true, =
+hornfels, true, true, true, =
+schist, true, true, true, =
+soapstone, true, true, true, =
+migmatite, true, true, true, =
 /sedimentary:
-chalk, true, true, true
-dolomite, true, true, true
-gabbro, true, true, true
-conglomerate, true, true, true
-greywacke, true, true, true
-limestone, true, true, true
-shale, true, true, true
-siltstone, true, true, true
+chalk, true, true, true, =
+dolomite, true, true, true, =
+gabbro, true, true, true, =
+conglomerate, true, true, true, =
+greywacke, true, true, true, =
+limestone, true, true, true, =
+shale, true, true, true, =
+siltstone, true, true, true, =
 /custom:
 /slate, 
 /mica, ???

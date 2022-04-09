@@ -2,34 +2,22 @@ package Main.Generators.Localized;
 
 import Main.Data.Localized.Part;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-
 public class GPart extends AGLocal<Part> {
-
     public GPart(String filename) {
-        super(filename);
+        super(3, filename);
     }
 
     @Override
-    protected void readLine(BufferedReader br, String[] s) throws IOException {
-        if (s.length < 3 || s.length > 4) {
-            error(new int[]{3, 4});
-        }
-        if (s.length == 3) {
-            //String existingPartName, String oreDict, double amount
-            objects.add(new Part(s[0], "", s[1], parseDouble(s[2])));
-        }
-        //String name, String localName, boolean hasOverlay, double amount
-        if (s.length == 4) {
-            String name = s[1].replace("-", " ");
-            if (s[2].matches("true")) {
-                objects.add(new Part(s[0], name, true, parseDouble(s[3])));
-            } else if (s[2].matches("false")) {
-                objects.add(new Part(s[0], name, false, parseDouble(s[3])));
-            } else {
-                error("Neither true or false is used for hasOverlay");
-            }
+    protected void addParameters(String name, String localName, String[] s) {
+        //super: [name/existingPartName, oreDict/localizedName],
+        //bool isExistingPart, bool hasOverlay, double amount
+        if (parseBoolean(s[0])) {
+            //add existing part
+            if (localName.contains("%") || localName.contains(" ")) error("Localization is not allowed for existing parts, this parameter is for the oredict entry");
+            objects.add(new Part(name, "", localName, parseDouble(s[2])));
+        } else {
+            //add custom part
+            objects.add(new Part(name, localName, parseBoolean(s[1]), parseDouble(s[2])));
         }
     }
 }

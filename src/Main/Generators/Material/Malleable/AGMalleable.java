@@ -11,8 +11,8 @@ import Main.Generators.Material.Liquid.GMLiquid;
 public abstract class AGMalleable <M extends AMalleable> extends AGMaterialData<M> {
     GMLiquid liquid;
 
-    public AGMalleable(String filename, GMaterial material, GPartGroup partGroup, GMLiquid liquid) {
-        super(filename, material, partGroup);
+    public AGMalleable(int params, String filename, GMaterial material, GPartGroup partGroup, GMLiquid liquid) {
+        super(params, filename, material, partGroup);
         this.liquid = liquid;
     }
 

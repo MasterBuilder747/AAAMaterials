@@ -13,7 +13,7 @@ public abstract class AGProperty extends AGenerator<Property> {
 
     //filename is also the property type
     public AGProperty(String filename, GElement ele) {
-        super(filename);
+        super(-1, filename);
         this.ele = ele;
     }
 

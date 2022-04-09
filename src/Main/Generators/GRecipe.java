@@ -9,7 +9,7 @@ public class GRecipe extends AGenerator<MachineRecipe> {
 
     //for user-defined custom machine recipes
     public GRecipe(String filename) {
-        super(filename);
+        super(-1, filename);
     }
 
     @Override

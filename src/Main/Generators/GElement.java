@@ -10,7 +10,7 @@ public class GElement extends AGenerator<Element> {
     String pd = null;
 
     public GElement(String name) {
-        super(name);
+        super(1, name);
     }
 
     @Override

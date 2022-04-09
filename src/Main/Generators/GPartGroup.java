@@ -13,7 +13,7 @@ public class GPartGroup extends AGenerator<PartGroup> {
     GPart parts;
 
     public GPartGroup(String filename, GPart parts) {
-        super(filename);
+        super(-1, filename);
         this.parts = parts;
     }
 

@@ -8,18 +8,12 @@ import java.io.IOException;
 public class GBlock extends AGLocal<LBlock> {
 
     public GBlock(String filename) {
-        super(filename);
+        super(5, filename);
     }
 
     @Override
-    protected void readLine(BufferedReader br, String[] s) throws IOException {
-        //String name, String localName, String material, int hardness, int resistance, int miningLevel, String tool
-        String local = s[1].replace("-", " ");
-        if (s.length != 7) error(7);
-        try {
-            objects.add(new LBlock(s[0], local, s[2], parseInt(s[3]), parseInt(s[4]), parseInt(s[5]), s[6]));
-        } catch (NumberFormatException e) {
-            error("Invalid number format");
-        }
+    protected void addParameters(String name, String localName, String[] s) {
+        //String material, int hardness, int resistance, int miningLevel, String tool
+        objects.add(new LBlock(name, localName, s[0], parseInt(s[1]), parseInt(s[2]), parseInt(s[3]), s[4]));
     }
 }

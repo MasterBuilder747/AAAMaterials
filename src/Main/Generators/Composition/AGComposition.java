@@ -15,7 +15,7 @@ public abstract class AGComposition<C extends AMaterialData> extends AGenerator<
     GMaterial material;
 
     public AGComposition(String filename, GElement element, GMaterial material) {
-        super(filename);
+        super(0, filename);
         this.element = element;
         this.material = material;
     }

@@ -2,20 +2,15 @@ package Main.Generators.Localized.Liquid;
 
 import Main.Data.Localized.Liquid.Plasma;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-
 public class GPlasma extends AGLiquid<Plasma> {
     public GPlasma(String filename) {
-        super(filename);
+        super(6, filename);
     }
 
     @Override
-    protected void readLine(BufferedReader br, String[] s) throws IOException {
-        //String name, String localName, String color, int density, int luminosity, int temperature, int viscosity, boolean vaporize
-        if (s.length != 7) error (7);
-        objects.add(new Plasma(s[0], s[1], s[2],
-                parseInt(s[3]), parseInt(s[4]), parseInt(s[5]), parseInt(s[6]),
-                parseBoolean(s[7])));
+    protected void addParameters(String name, String localName, String[] s) {
+        //String color, int density, int luminosity, int temperature, int viscosity, boolean vaporize
+        objects.add(new Plasma(name, localName,
+                s[0], parseInt(s[1]), parseInt(s[2]), parseInt(s[3]), parseInt(s[4]), parseBoolean(s[5])));
     }
 }

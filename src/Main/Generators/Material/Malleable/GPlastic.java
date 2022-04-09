@@ -9,12 +9,11 @@ import Main.Generators.Material.Liquid.GMLiquid;
 
 public class GPlastic extends AGMalleable<Plastic> {
     public GPlastic(String filename, GMaterial material, GPartGroup partGroup, GMLiquid liquid) {
-        super(filename, material, partGroup, liquid);
+        super(0, filename, material, partGroup, liquid);
     }
 
     @Override
     protected void setMalleableParts(Material m, String[] s, MLiquid liquid) {
-        if (s.length != 1) error(1);
         Plastic plastic = new Plastic(m, Double.parseDouble(s[0]), liquid);
         plastic.setPartGroups(this.genPartGroups(new String[]{"plastic"}), new boolean[]{true});
         objects.add(plastic);

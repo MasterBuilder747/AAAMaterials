@@ -16,8 +16,8 @@ public abstract class AGMaterialData<M extends AMaterialData> extends AGenerator
     protected GMaterial material; //required for passing material data through
 
     //material data that is stored to indicate what is registered for a given material
-    public AGMaterialData(String filename, GMaterial material, GPartGroup partGroup) {
-        super(filename);
+    public AGMaterialData(int params, String filename, GMaterial material, GPartGroup partGroup) {
+        super(params+1, filename);
         this.material = material;
         this.partGroup = partGroup;
     }

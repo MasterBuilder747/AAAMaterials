@@ -14,14 +14,13 @@ public class GWood extends AGMaterialData<Wood> {
     GRegistry registry;
     
     public GWood(String filename, GMaterial material, GPartGroup partGroup, GRegistry registry) {
-        super(filename, material, partGroup);
+        super(1, filename, material, partGroup);
         this.registry = registry;
     }
 
     @Override
     protected void readMaterialParameters(Material m, String[] s) {
         //boolean isVanilla
-        if (s.length != 1) error (1);
         boolean isVanilla = parseBoolean(s[0]);
         Wood w = new Wood(m, isVanilla);
         ArrayList<Registry> registries = new ArrayList<>();

@@ -10,12 +10,12 @@ import Main.Generators.Material.Liquid.GMLiquid;
 public class GMetal extends AGMalleable<Metal> {
 
     public GMetal(String filename, GMaterial material, GPartGroup partGroup, GMLiquid liquid) {
-        super(filename, material, partGroup, liquid);
+        super(4, filename, material, partGroup, liquid);
     }
 
     @Override
     protected void setMalleableParts(Material m, String[] s, MLiquid liquid) {
-        if (s.length != 4) error(4);
+        //addSmelt, addMachine, addBlast, addConductive
         Metal metal = new Metal(m, liquid);
         metal.setPartGroups(this.genPartGroups(new String[]{"smelt", "machine", "blast", "conductive"}),
                 new boolean[]{Boolean.parseBoolean(s[0]), Boolean.parseBoolean(s[1]), Boolean.parseBoolean(s[2]), Boolean.parseBoolean(s[3])});

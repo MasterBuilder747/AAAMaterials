@@ -5,7 +5,7 @@ import Main.Generators.Localized.AGLocal;
 
 //these are custom defined liquids
 public abstract class AGLiquid<L extends ALiquid> extends AGLocal<L> {
-    public AGLiquid(String filename) {
-        super(filename);
+    public AGLiquid(int params, String filename) {
+        super(params, filename);
     }
 }

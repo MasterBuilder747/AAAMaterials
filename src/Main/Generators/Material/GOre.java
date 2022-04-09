@@ -20,7 +20,7 @@ public class GOre extends AGMaterialData<Ore> {
     GRegistry registry;
 
     public GOre(String name, GMaterial material, GPartGroup partGroup, GRegistry registry) {
-        super(name, material, partGroup);
+        super(-2, name, material, partGroup);
         this.material = material;
         this.registry = registry;
     }

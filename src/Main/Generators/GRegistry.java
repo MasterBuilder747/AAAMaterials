@@ -8,7 +8,7 @@ import java.io.IOException;
 public class GRegistry extends AGenerator<Registry> {
 
     public GRegistry(String filename) {
-        super(filename);
+        super(-1, filename);
     }
 
     @Override

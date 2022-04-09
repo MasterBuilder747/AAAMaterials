@@ -14,7 +14,7 @@ public class GStone extends AGMaterialData<Stone> {
     GRegistry registry;
 
     public GStone(String filename, GMaterial material, GPartGroup partGroup, GRegistry registry) {
-        super(filename, material, partGroup);
+        super(3, filename, material, partGroup);
         this.registry = registry;
     }
 
@@ -52,7 +52,6 @@ public class GStone extends AGMaterialData<Stone> {
         23 cobblestone,
         24 brick)
         */
-        if (s.length != 3) error(3);
         boolean isSedimentary = parseBoolean(s[1]);
         boolean noSlab = parseBoolean(s[2]);
         Stone c = new Stone(m, isSedimentary, noSlab);
