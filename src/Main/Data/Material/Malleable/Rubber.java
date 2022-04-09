@@ -1,5 +1,6 @@
 package Main.Data.Material.Malleable;
 
+import Main.Data.Material.MLiquid.MLiquid;
 import Main.Data.Material.Material;
 
 //data > material > malleable > rubber
@@ -8,8 +9,8 @@ public class Rubber extends AMalleable {
     //when melting a part:
     //get some back
     //get no material back
-    public Rubber(Material m, double meltingMultiplier) {
-        super(m, meltingMultiplier);
+    public Rubber(Material m, double meltingMultiplier, MLiquid liquid) {
+        super(m, meltingMultiplier, liquid);
     }
 
     @Override

@@ -12,7 +12,7 @@ dark_oak, Dark-Oak, 472104, solid
 /stone, Stone, 363837, solid
 /diorite, Diorite, aba4a2, solid
 /igneous:
-granite, Granite, 785d5c, solid
+granite, Granite, d19d80, solid
 diabase, Diabase, 262321, solid
 rhyolite, Rhyolite, 7b877b, solid
 kimberlite, Kimberlite, 414d4c, solid
@@ -238,8 +238,8 @@ green_sapphire, Green-Sapphire, 47b560, solid
 diamond, Diamond, c9ffff, solid
 emerald, Emerald, 5ebf3b, solid
 cinnabar, Cinnabar, 751d23, solid
-coal, Coal, 26241f, solid
-lignite, Lignite, 66583e, solid
+/coal, Coal, 26241f, solid
+/lignite, Lignite, 66583e, solid
 apatite, Apatite, 4887b8, solid
 monazite, Monazite, 557864, solid
 nether_quartz, Nether-Quartz, fffcfa, solid

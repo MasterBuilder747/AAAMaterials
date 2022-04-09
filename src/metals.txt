@@ -1,11 +1,2 @@
 /material, addSmelt, addMachine, addBlast, addConductive
 iron, true, true, true, true
-tin, true, true, true, true
-copper, true, true, true, true
-lumium, true, true, true, true
-iridium, true, true, true, true
-platinum, true, true, true, true
-osmium, true, true, true, true
-thorium, true, true, true, true
-uranium, true, true, true, true
-zinc, true, true, true, true

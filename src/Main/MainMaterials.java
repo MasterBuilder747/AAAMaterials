@@ -11,9 +11,12 @@ import Main.Generators.Localized.Liquid.GPlasma;
 import Main.Generators.Material.GOre;
 import Main.Generators.Material.GStone;
 import Main.Generators.Material.GWood;
+import Main.Generators.Material.Liquid.GMGas;
+import Main.Generators.Material.Liquid.GMLiquid;
+import Main.Generators.Material.Liquid.GMPlasma;
 import Main.Generators.Material.Malleable.GAlloy;
 import Main.Generators.Material.Malleable.GMetal;
-import Main.Generators.Material.GSolid;
+import Main.Generators.Material.GMSolid;
 import Main.Generators.Material.Malleable.GPlastic;
 import Main.Generators.Material.Malleable.GRubber;
 
@@ -78,26 +81,32 @@ public class MainMaterials {
         bw.write(material.registerMaterials());
 
         //4. material states
-        GSolid solid = new GSolid("solid", material, partGroup);
+        GMSolid solid = new GMSolid("solid", material, partGroup);
         bw.write(solid.registerMaterials());
-        //liquid, gas, plasma, etc states
+        GMLiquid mLiquid = new GMLiquid("liquid", material);
+        bw.write(mLiquid.registerMaterials());
+        GMGas mGas = new GMGas("gase", material);
+        bw.write(mGas.registerMaterials());
+        GMPlasma mPlasma = new GMPlasma("plasma", material);
+        bw.write(mPlasma.registerMaterials());
 
         //5. material compositions, material parts must be added after this!!!
         //GComposition
 
         //6. all other material data (unless there are some other requirements later)
+        //naturals
         GWood wood = new GWood("wood", material, partGroup, registry);
         bw.write(wood.registerMaterials());
         GStone stone = new GStone("stone", material, partGroup, registry);
         bw.write(stone.registerMaterials());
         //malleables
-        GMetal metal = new GMetal("metal", material, partGroup);
+        GMetal metal = new GMetal("metal", material, partGroup, mLiquid);
         bw.write(metal.registerMaterials());
-        GAlloy alloy = new GAlloy("alloy", material, partGroup);
+        GAlloy alloy = new GAlloy("alloy", material, partGroup, mLiquid);
         bw.write(alloy.registerMaterials());
-        GPlastic plastic = new GPlastic("plastic", material, partGroup);
+        GPlastic plastic = new GPlastic("plastic", material, partGroup, mLiquid);
         bw.write(plastic.registerMaterials());
-        GRubber rubber = new GRubber("rubber", material, partGroup);
+        GRubber rubber = new GRubber("rubber", material, partGroup, mLiquid);
         bw.write(rubber.registerMaterials());
 
         //7. ore system

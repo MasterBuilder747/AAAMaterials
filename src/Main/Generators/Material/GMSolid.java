@@ -1,15 +1,14 @@
 package Main.Generators.Material;
 
 import Main.Data.Material.Material;
-import Main.Data.Material.PartGroup;
 import Main.Data.Material.Solid;
 import Main.Generators.GMaterial;
 import Main.Generators.GPartGroup;
 
-public class GSolid extends AGMaterialData<Solid> {
+public class GMSolid extends AGMaterialData<Solid> {
     GPartGroup partGroup;
 
-    public GSolid(String filename, GMaterial material, GPartGroup partGroup) {
+    public GMSolid(String filename, GMaterial material, GPartGroup partGroup) {
         super(filename, material, partGroup);
         this.partGroup = partGroup;
     }
