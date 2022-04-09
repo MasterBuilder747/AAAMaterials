@@ -393,6 +393,9 @@ siltstone.registerParts(dust_parts);
 siltstone.registerParts(fine_parts);
 siltstone.registerParts(powder_parts);
 
+# -liquids
+genFluid("iron_molten", "d9d7d9", 6000, false, 1, 1000, 6000, false, "contenttweaker:fluids/molten", "contenttweaker:fluids/molten_flowing", <blockmaterial:lava>);
+
 # -stones
 granite.registerParts(stone_parts);
 diabase.registerParts(stone_parts);

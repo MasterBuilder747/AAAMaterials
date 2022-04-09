@@ -11,4 +11,9 @@ public abstract class AMLiquid extends AMaterialData {
     public AMLiquid(Material m) {
         super(m);
     }
+
+    @Override
+    public String buildMaterial() {
+        return l.buildMaterial();
+    }
 }

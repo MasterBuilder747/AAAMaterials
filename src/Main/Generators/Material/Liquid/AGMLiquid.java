@@ -8,7 +8,7 @@ import Main.Generators.Material.AGMaterialData;
 public abstract class AGMLiquid <L extends AMLiquid> extends AGMaterialData<L> {
 
     public AGMLiquid(int params, String filename, GMaterial material) {
-        //part groups are onl used with solid material datas
+        //part groups are only used with solid material datas
         super(params, filename, material, null);
     }
 

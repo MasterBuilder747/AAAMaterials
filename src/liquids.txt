@@ -1,2 +1,3 @@
 /material, int density, int luminosity, int temperature, int viscosity, boolean vaporize
-iron, 1, 1, 300, 1, false
+//genFluid("molten_iron", "ff0000", 6000, false, 15, 1000, 6000, false, "contenttweaker:fluids/molten", "contenttweaker:fluids/molten_flowing", <blockmaterial:lava>);
+iron, 6000, 1, 1000, 6000, false
