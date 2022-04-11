@@ -113,7 +113,7 @@ public class GOre extends AGMaterialData<Ore> {
                     tool = "none";
                 }
                 b = new LBlock(block, "rock", tool);
-                b.setAttributes(Integer.parseInt(attributes[1]), Integer.parseInt(attributes[2]), Integer.parseInt(attributes[3]));
+                b.setAttributes(parseInt(attributes[1]), parseInt(attributes[2]), parseInt(attributes[3]));
                 if (block.equals("stone")) {
                     types.add(new OreType(m.name, type_name, b));
                 } else {
@@ -132,7 +132,7 @@ public class GOre extends AGMaterialData<Ore> {
                         Registry ore = this.oreRegistryCheck("ore", block, m.name);
                         Registry poor = this.oreRegistryCheck("poor", block, m.name);
                         Registry dense = this.oreRegistryCheck("dense", block, m.name);
-                        o.addStoneGen(ore, poor, dense, Integer.parseInt(gens[0]), Integer.parseInt(gens[1]), gens[2]);
+                        o.addStoneGen(ore, poor, dense, parseInt(gens[0]), parseInt(gens[1]), gens[2]);
                     }
                     case "nether" -> {
                         if (gens.length != 2)
@@ -140,7 +140,7 @@ public class GOre extends AGMaterialData<Ore> {
                         Registry ore = this.oreRegistryCheck("ore", block, m.name);
                         Registry poor = this.oreRegistryCheck("poor", block, m.name);
                         Registry dense = this.oreRegistryCheck("dense", block, m.name);
-                        o.addNetherGen(ore, poor, dense, Integer.parseInt(gens[0]), Integer.parseInt(gens[1]));
+                        o.addNetherGen(ore, poor, dense, parseInt(gens[0]), parseInt(gens[1]));
                     }
                     case "end" -> {
                         if (gens.length != 2)
@@ -148,13 +148,13 @@ public class GOre extends AGMaterialData<Ore> {
                         Registry ore = this.oreRegistryCheck("ore", block, m.name);
                         Registry poor = this.oreRegistryCheck("poor", block, m.name);
                         Registry dense = this.oreRegistryCheck("dense", block, m.name);
-                        o.addEndGen(ore, poor, dense, Integer.parseInt(gens[0]), Integer.parseInt(gens[1]));
+                        o.addEndGen(ore, poor, dense, parseInt(gens[0]), parseInt(gens[1]));
                     }
                     case "bedrock" -> {
-                        if (gens.length != 1)
-                            error("only one parameter is required for bedrock gen, the chunk chance, for material " + m.name);
+                        if (gens.length != 2)
+                            error("Two parameters are required for bedrock gen: the chunk chance and the dimension to gen in, for material " + m.name);
                         Registry dense = this.oreRegistryCheck("dense", block, m.name);
-                        o.addBedrockGen(dense, Integer.parseInt(gen_props));
+                        o.addBedrockGen(dense, parseInt(gens[0]), parseInt(gens[1]));
                     }
                 }
             } else {

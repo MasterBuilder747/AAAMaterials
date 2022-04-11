@@ -20,6 +20,7 @@ public class Ore extends AMaterialData {
     int netherChunkChance;
     int endChunkChance;
     int bedrockChunkChance;
+    int bedrockDimension;
     int stoneMinHeight;
     int netherMinHeight;
     int endMinHeight;
@@ -133,9 +134,10 @@ public class Ore extends AMaterialData {
         this.endMinHeight = minHeight;
         this.endChunkChance = chunkChance;
     }
-    public void addBedrockGen(Registry denseBedrock, int bedrockChunkChance) {
+    public void addBedrockGen(Registry denseBedrock, int bedrockChunkChance, int bedrockDimension) {
         this.add("denseBedrock", denseBedrock);
         this.bedrockChunkChance = bedrockChunkChance;
+        this.bedrockDimension = bedrockDimension;
     }
 
     //oregen
@@ -224,9 +226,10 @@ public class Ore extends AMaterialData {
     private JsonObject genDimensionGen(String type) {
         int dim;
         switch (type) {
-            case "stone", "bedrock" -> dim = 0;
+            case "stone" -> dim = 0;
             case "nether" -> dim = -1;
             case "end" -> dim = 1;
+            case "bedrock" -> dim = this.bedrockDimension;
             default -> dim = -1000000000;
             //planets?
         }
