@@ -1,6 +1,6 @@
 package Main.Generators;
 
-import Main.Data.Localized.Part;
+import Main.Data.Localized.LPart;
 import Main.Data.Material.PartGroup;
 import Main.Generators.Localized.GPart;
 import Main.Util;
@@ -30,7 +30,7 @@ public class GPartGroup extends AGenerator<PartGroup> {
         if (partNames.length == 0) {
             error("Empty parts");
         }
-        ArrayList<Part> partgroup = new ArrayList<>();
+        ArrayList<LPart> partgroup = new ArrayList<>();
         for (String part : partNames) {
             if (parts.is(part)) {
                 partgroup.add(parts.get(part));
@@ -38,6 +38,6 @@ public class GPartGroup extends AGenerator<PartGroup> {
                 error("Unknown part " + part);
             }
         }
-        objects.add(new PartGroup(name, partgroup.toArray(new Part[0])));
+        objects.add(new PartGroup(name, partgroup.toArray(new LPart[0])));
     }
 }

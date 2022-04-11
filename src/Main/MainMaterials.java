@@ -69,7 +69,7 @@ public class MainMaterials {
         bw.write(plasma.registerMaterials());
 
         //2. any established content needed for the material system
-        GPart part = new GPart("part");
+        GPart part = new GPart("part"); //this is localized
         bw.write(part.registerMaterials());
         GPartGroup partGroup = new GPartGroup("partgroup", part);
         bw.write(partGroup.registerMaterials());
@@ -135,10 +135,21 @@ public class MainMaterials {
         //CoT .lang file
         fw = new FileWriter(HOME + DEPLOY + "resources/contenttweaker/lang/en_us.lang");
         bw = new BufferedWriter(fw);
+        //custom data
         bw.write(block.localize());
         bw.write(item.localize());
-        //bw.write(fluid.localize());
+        bw.write(liquid.localize());
+        bw.write(molten.localize());
+        bw.write(gas.localize());
+        bw.write(plasma.localize());
         bw.write(part.localize());
+
+        //material data
+        bw.write(mLiquid.localize());
+        bw.write(mGas.localize());
+        bw.write(mPlasma.localize());
+
+        //close
         bw.close();
     }
 

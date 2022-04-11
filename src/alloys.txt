@@ -1,1 +1,2 @@
-/
+/material, addSmelt, addMachine, addBlast, addConductive
+lumium, true, true, true, true

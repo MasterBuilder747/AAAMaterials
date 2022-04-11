@@ -1,8 +1,8 @@
 package Main.Generators.Localized;
 
-import Main.Data.Localized.Part;
+import Main.Data.Localized.LPart;
 
-public class GPart extends AGLocal<Part> {
+public class GPart extends AGLocal<LPart> {
     public GPart(String filename) {
         super(3, filename);
     }
@@ -14,10 +14,10 @@ public class GPart extends AGLocal<Part> {
         if (parseBoolean(s[0])) {
             //add existing part
             if (localName.contains("%") || localName.contains(" ")) error("Localization is not allowed for existing parts, this parameter is for the oredict entry");
-            objects.add(new Part(name, "", localName, parseDouble(s[2])));
+            objects.add(new LPart(name, "", localName, parseDouble(s[2])));
         } else {
             //add custom part
-            objects.add(new Part(name, localName, parseBoolean(s[1]), parseDouble(s[2])));
+            objects.add(new LPart(name, localName, parseBoolean(s[1]), parseDouble(s[2])));
         }
     }
 }

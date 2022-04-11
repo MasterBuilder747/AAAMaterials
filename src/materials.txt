@@ -1,5 +1,4 @@
 /name, localName, hexColor, defaultState
-/ex: lumium, Lumium, 12345678, solid
 /woods:
 oak, Oak, 966f35, solid
 spruce, Spruce, 734712, solid
@@ -64,6 +63,10 @@ wool, Wool, f2f4f7, solid
 /ores:
 bauxite, Bauxite, ff9b79, solid
 galena, Galena, af78b6, solid
+/plastics:
+polyethylene, Polyethylene, a8a59d, solid
+/rubbers:
+rubber, Rubber, 4a473f, solid
 /solid:
 lithium, Lithium, b4bc84, solid
 beryllium, Beryllium, 0f2d0f, solid

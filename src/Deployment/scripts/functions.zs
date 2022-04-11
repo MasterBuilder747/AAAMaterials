@@ -3,7 +3,6 @@
 #modloaded tconstruct
 
 #priority 2200
-#no_fix_recipe_book
 
 import crafttweaker.oredict.IOreDictEntry;
 import crafttweaker.item.IItemStack;

@@ -1,2 +1,2 @@
-/String name, String localName, String color, int density, boolean gas, int luminosity, int temperature, int viscosity, boolean vaporize
-/
+/String name, String localName, String color, int density, int luminosity, int temperature, int viscosity, boolean vaporize
+juice, Juice, 00ff00, 6000, 15, 1000, 6000, false

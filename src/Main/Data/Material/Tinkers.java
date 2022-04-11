@@ -51,6 +51,24 @@ public class Tinkers extends AMaterialData {
 
     @Override
     public String buildMaterial() {
+        /*
+        TRAIT ADDING INFO:
+
+        Attach traits to a material using: zentraits.TraitManager.attachTrait(String materialID, String traitID, @Optional String partType)
+            materialID Name of the material
+            traitID Name of the trait
+            partType (Optional) which tool part the trait should be added to. If left empty the trait will be added as a default trait. Adding a trait to a part that had no part traits before will override the default trait. I.E. adding a trait to stone part would result in cheap being replaced by the new trait.
+
+        Detach traits from a material using: zentraits.TraitManager.detachTrait(String materialID, String traitID, @Optional String partType)
+            materialID Name of the material
+            traitID Name of the trait
+            partType (Optional) which tool part the trait should be removed from
+
+        Detach all traits from a material using: zentraits.TraitManager.detachAllTraits(String materialID, @Optional String partType)
+            materialID Name of the material
+            partType (Optional) which tool part the traits should be removed from
+        */
+
         //this will require the material to have:
         //a liquid to cast to
         //an item for repairing

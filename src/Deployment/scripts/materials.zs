@@ -9,6 +9,21 @@ import mods.contenttweaker.Color;
 # -custom-blocks
 genBlock("mica", <blockMaterial:rock>, 5, 6, "pickaxe", 1);
 
+# -custom-items
+genItem("infi_single");
+
+# -custom-liquids
+genFluid("juice", "00ff00", 6000, false, 15, 1000, 6000, false, "contenttweaker:fluids/liquid", "contenttweaker:fluids/liquid_flowing", <blockmaterial:water>);
+
+# -custom-moltens
+genFluid("glowing", "ffff00", 6000, false, 5, 1000, 6000, false, "contenttweaker:fluids/molten", "contenttweaker:fluids/molten_flowing", <blockmaterial:lava>);
+
+# -custom-gases
+genFluid("sky", "0000ff", 6000, true, 5, 1000, 6000, false, "contenttweaker:fluids/gas", "contenttweaker:fluids/gas_flowing", <blockmaterial:water>);
+
+# -custom-plasmas
+genFluid("tesla", "ff00ff", 6000, true, 5, 1000, 6000, false, "contenttweaker:fluids/plasma", "contenttweaker:fluids/plasma_flowing", <blockmaterial:lava>);
+
 # -custom-parts
 var boule = mods.contenttweaker.MaterialSystem.getPartBuilder().setName("boule").setPartType(mods.contenttweaker.MaterialSystem.getPartType("item")).setHasOverlay(false).setOreDictName("boule").build();
 var chain = mods.contenttweaker.MaterialSystem.getPartBuilder().setName("chain").setPartType(mods.contenttweaker.MaterialSystem.getPartType("item")).setHasOverlay(false).setOreDictName("chain").build();
@@ -123,6 +138,8 @@ var charcoal = MaterialSystem.getMaterialBuilder().setName("Charcoal").setColor(
 var wool = MaterialSystem.getMaterialBuilder().setName("Wool").setColor(Color.fromHex("f2f4f7")).build();
 var bauxite = MaterialSystem.getMaterialBuilder().setName("Bauxite").setColor(Color.fromHex("ff9b79")).build();
 var galena = MaterialSystem.getMaterialBuilder().setName("Galena").setColor(Color.fromHex("af78b6")).build();
+var polyethylene = MaterialSystem.getMaterialBuilder().setName("Polyethylene").setColor(Color.fromHex("a8a59d")).build();
+var rubber = MaterialSystem.getMaterialBuilder().setName("Rubber").setColor(Color.fromHex("4a473f")).build();
 var lithium = MaterialSystem.getMaterialBuilder().setName("Lithium").setColor(Color.fromHex("b4bc84")).build();
 var beryllium = MaterialSystem.getMaterialBuilder().setName("Beryllium").setColor(Color.fromHex("0f2d0f")).build();
 var boron = MaterialSystem.getMaterialBuilder().setName("Boron").setColor(Color.fromHex("363d31")).build();
@@ -395,6 +412,9 @@ siltstone.registerParts(powder_parts);
 
 # -liquids
 genFluid("iron_molten", "d9d7d9", 6000, false, 1, 1000, 6000, false, "contenttweaker:fluids/molten", "contenttweaker:fluids/molten_flowing", <blockmaterial:lava>);
+genFluid("lumium_molten", "ffffb6", 6000, false, 1, 1000, 6000, false, "contenttweaker:fluids/molten", "contenttweaker:fluids/molten_flowing", <blockmaterial:lava>);
+genFluid("polyethylene_molten", "a8a59d", 6000, false, 1, 1000, 5000, false, "contenttweaker:fluids/molten", "contenttweaker:fluids/molten_flowing", <blockmaterial:lava>);
+genFluid("rubber_molten", "4a473f", 6000, false, 1, 1000, 4000, false, "contenttweaker:fluids/molten", "contenttweaker:fluids/molten_flowing", <blockmaterial:lava>);
 
 # -stones
 granite.registerParts(stone_parts);
@@ -425,6 +445,18 @@ iron.registerParts(smelt_parts);
 iron.registerParts(machine_parts);
 iron.registerParts(blast_parts);
 iron.registerParts(conductive_parts);
+
+# -alloys
+lumium.registerParts(smelt_parts);
+lumium.registerParts(machine_parts);
+lumium.registerParts(blast_parts);
+lumium.registerParts(conductive_parts);
+
+# -plastics
+polyethylene.registerParts(plastic_parts);
+
+# -rubbers
+rubber.registerParts(rubber_parts);
 
 # -ores
 lumium.registerParts(ore_parts);

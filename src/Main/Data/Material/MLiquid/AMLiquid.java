@@ -16,4 +16,8 @@ public abstract class AMLiquid extends AMaterialData {
     public String buildMaterial() {
         return l.buildMaterial();
     }
+
+    public String localize() {
+        return l.localize();
+    }
 }

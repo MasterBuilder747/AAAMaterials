@@ -1,1 +1,2 @@
-/
+/material, double meltingMultiplier
+rubber, 0.5

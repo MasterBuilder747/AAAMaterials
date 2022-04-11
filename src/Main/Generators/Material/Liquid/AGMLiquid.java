@@ -13,4 +13,12 @@ public abstract class AGMLiquid <L extends AMLiquid> extends AGMaterialData<L> {
     }
 
     protected abstract void readMaterialParameters(Material m, String[] s);
+
+    public String localize() {
+        StringBuilder sb = new StringBuilder();
+        for (L o : objects) {
+            sb.append(o.localize());
+        }
+        return sb.toString();
+    }
 }

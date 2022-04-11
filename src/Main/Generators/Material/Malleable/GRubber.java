@@ -9,7 +9,7 @@ import Main.Generators.Material.Liquid.GMLiquid;
 
 public class GRubber extends AGMalleable<Rubber> {
     public GRubber(String filename, GMaterial material, GPartGroup partGroup, GMLiquid liquid) {
-        super(0, filename, material, partGroup, liquid);
+        super(1, filename, material, partGroup, liquid);
     }
 
     @Override

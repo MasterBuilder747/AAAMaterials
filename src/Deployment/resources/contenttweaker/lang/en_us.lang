@@ -1,5 +1,14 @@
 tile.contenttweaker.mica.name=Mica
 
+item.contenttweaker.infi_single.name=Infinity Singularity
+
+fluid.juice=Juice
+
+fluid.glowing=Glowing
+
+fluid.sky=Sky
+
+fluid.tesla=Tesla
 
 contenttweaker.part.boule=%s Boule
 contenttweaker.part.chain=%s Chain
@@ -62,3 +71,7 @@ contenttweaker.part.wafer=%s Wafer
 contenttweaker.part.wire=%s Wire
 contenttweaker.part.wood_plate=%s Plate
 
+fluid.iron_molten=Molten Iron
+fluid.lumium_molten=Molten Lumium
+fluid.polyethylene_molten=Molten Polyethylene
+fluid.rubber_molten=Molten Rubber

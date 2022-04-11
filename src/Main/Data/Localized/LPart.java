@@ -1,6 +1,6 @@
 package Main.Data.Localized;
 
-public class Part extends ALocalizedData {
+public class LPart extends ALocalizedData {
     //this defines a material part to be used in materials
     String type;
     boolean hasOverlay;
@@ -8,7 +8,7 @@ public class Part extends ALocalizedData {
     boolean exists;
     double amount; //amount of material this has in it; 1 = 1 ingot
 
-    public Part(String name, String localName, boolean hasOverlay, double amount) {
+    public LPart(String name, String localName, boolean hasOverlay, double amount) {
         super(name, localName);
         this.type = "item"; //default
         this.hasOverlay = hasOverlay;
@@ -21,7 +21,7 @@ public class Part extends ALocalizedData {
     }
     //this part already exists in contentTweaker
     //to be used in a PartGroup
-    public Part(String name, String localName, String oreDict, double amount) {
+    public LPart(String name, String localName, String oreDict, double amount) {
         super(name, localName);
         this.exists = true;
         this.oreDict = oreDict;

@@ -15,7 +15,7 @@ public class Rubber extends AMalleable {
 
     @Override
     String buildPartMaterials() {
-        return null;
+        return this.genPartGroups();
     }
 
     @Override
