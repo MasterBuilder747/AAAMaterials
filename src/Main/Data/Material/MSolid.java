@@ -2,10 +2,10 @@ package Main.Data.Material;
 
 import Main.Util;
 
-public class Solid extends AMaterialData {
+public class MSolid extends AMaterialData {
     String altName;
 
-    public Solid(Material m) {
+    public MSolid(Material m) {
         super(m);
     }
     public void addAltName(String altName) {

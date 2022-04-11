@@ -1,4 +1,4 @@
-package Main.Generators.Material;
+package Main.Generators.Material.Solid;
 
 import Main.Data.Material.Material;
 import Main.Data.Material.Wood;
@@ -6,20 +6,19 @@ import Main.Data.Registry;
 import Main.Generators.GMaterial;
 import Main.Generators.GPartGroup;
 import Main.Generators.GRegistry;
-import Main.Generators.Localized.GPart;
 
 import java.util.ArrayList;
 
-public class GWood extends AGMaterialData<Wood> {
+public class GWood extends AGMSolid<Wood> {
     GRegistry registry;
     
-    public GWood(String filename, GMaterial material, GPartGroup partGroup, GRegistry registry) {
-        super(1, filename, material, partGroup);
+    public GWood(String filename, GMaterial material, GPartGroup partGroup, GRegistry registry, GMSolid solid) {
+        super(1, filename, material, partGroup, solid, true, false, false);
         this.registry = registry;
     }
 
     @Override
-    protected void readMaterialParameters(Material m, String[] s) {
+    protected void readSolidParameters(Material m, String[] s) {
         //boolean isVanilla
         boolean isVanilla = parseBoolean(s[0]);
         Wood w = new Wood(m, isVanilla);
@@ -56,6 +55,7 @@ public class GWood extends AGMaterialData<Wood> {
                 error("wood type " + test + " for material " + m.name + " is not in the registry");
             }
         }
+        w.setPartGTrue(genPartGroup("wood"));
         w.addVariants(registries.toArray(new Registry[0]));
         objects.add(w);
     }

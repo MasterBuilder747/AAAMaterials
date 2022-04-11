@@ -2,7 +2,7 @@ package Main.Data.Material;
 
 import Main.Data.Registry;
 
-public class Stone extends AMaterialData {
+public class Stone extends AMSolid {
     boolean isSedimentary; //does not have cobblestone registered for UB
     boolean noSlab; //only applied to Conglomerate...?
 

@@ -7,7 +7,7 @@ import Main.Util;
 
 import java.util.ArrayList;
 
-public class Ore extends AMaterialData {
+public class Ore extends AMSolid {
     //generates ores and its components for a specified material
     //Also handles generation (2 files)
     OreVariant[] variants; //name of the blocks themselves

@@ -1,7 +1,6 @@
-package Main.Generators.Material;
+package Main.Generators.Material.Solid;
 
 import Main.Data.Material.Material;
-import Main.Data.Material.PartGroup;
 import Main.Data.Material.Stone;
 import Main.Data.Registry;
 import Main.Generators.GMaterial;
@@ -10,16 +9,16 @@ import Main.Generators.GRegistry;
 
 import java.util.ArrayList;
 
-public class GStone extends AGMaterialData<Stone> {
+public class GStone extends AGMSolid<Stone> {
     GRegistry registry;
 
-    public GStone(String filename, GMaterial material, GPartGroup partGroup, GRegistry registry) {
-        super(3, filename, material, partGroup);
+    public GStone(String filename, GMaterial material, GPartGroup partGroup, GRegistry registry, GMSolid solid) {
+        super(3, filename, material, partGroup, solid, true, false, false);
         this.registry = registry;
     }
 
     @Override
-    protected void readMaterialParameters(Material m, String[] s) {
+    protected void readSolidParameters(Material m, String[] s) {
         //bool addPebble, bool isSedimentary
         /*
         UB parts, for all 24 stones:
@@ -55,7 +54,7 @@ public class GStone extends AGMaterialData<Stone> {
         boolean isSedimentary = parseBoolean(s[1]);
         boolean noSlab = parseBoolean(s[2]);
         Stone c = new Stone(m, isSedimentary, noSlab);
-        c.setPartGroups(new PartGroup[]{this.partGroup.getPart("stone")}, new boolean[]{parseBoolean(s[0])});
+        c.setPartGroup(genPartGroup("stone"), parseBoolean(s[0]));
         ArrayList<Registry> registries = new ArrayList<>();
         if (!isSedimentary) {
             for (int i = 0; i < 25; i++) {

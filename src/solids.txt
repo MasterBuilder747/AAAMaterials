@@ -29,6 +29,8 @@ greywacke, true, true, true, =
 limestone, true, true, true, =
 shale, true, true, true, =
 siltstone, true, true, true, =
+/gems:
+ruby, true, false, false, =
 /custom:
 /slate, 
 /mica, ???

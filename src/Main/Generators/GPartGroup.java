@@ -40,4 +40,8 @@ public class GPartGroup extends AGenerator<PartGroup> {
         }
         objects.add(new PartGroup(name, partgroup.toArray(new LPart[0])));
     }
+
+    public PartGroup getPart(String s) {
+        return this.get(s+"_parts");
+    }
 }

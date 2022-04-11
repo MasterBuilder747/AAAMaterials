@@ -21,6 +21,20 @@ public abstract class AMaterialData extends AData {
         this.partGroups = partGroups;
         this.enablePartGroups = enablePartGroups;
     }
+    public void setPartGroup(PartGroup partGroup, boolean enablePartGroup) {
+        this.partGroups = new PartGroup[]{partGroup};
+        this.enablePartGroups = new boolean[]{enablePartGroup};
+    }
+    public void setPartGTrue(PartGroup partGroup) {
+        this.partGroups = new PartGroup[]{partGroup};
+        this.enablePartGroups = new boolean[]{true};
+    }
+    public PartGroup[] getPartGroups() {
+        return this.partGroups;
+    }
+    public boolean[] getEnablePartGroups() {
+        return this.enablePartGroups;
+    }
     protected String genPartGroups() {
         StringBuilder sb = new StringBuilder();
         for (int i = 0; i < this.partGroups.length; i++) {

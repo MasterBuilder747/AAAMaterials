@@ -1,4 +1,4 @@
-package Main.Generators.Material;
+package Main.Generators.Material.Solid;
 
 import Main.Data.Localized.LBlock;
 import Main.Data.Material.Material;
@@ -15,18 +15,18 @@ import Main.Util;
 
 import java.util.ArrayList;
 
-public class GOre extends AGMaterialData<Ore> {
+public class GOre extends AGMSolid<Ore> {
 
     GRegistry registry;
 
-    public GOre(String name, GMaterial material, GPartGroup partGroup, GRegistry registry) {
-        super(-2, name, material, partGroup);
+    public GOre(String name, GMaterial material, GPartGroup partGroup, GRegistry registry, GMSolid solid) {
+        super(-2, name, material, partGroup, solid, true, false, false);
         this.material = material;
         this.registry = registry;
     }
 
     @Override
-    protected void readMaterialParameters(Material m, String[] s) {
+    protected void readSolidParameters(Material m, String[] s) {
         //HOW TO HANDLE VARIANTS:
         //make a new material for netherrack, end, and bedrock, default will be stone
         //do separate code blocks for these in the same way
@@ -170,7 +170,7 @@ public class GOre extends AGMaterialData<Ore> {
                 break;
             }
         }
-        o.setPartGroups(this.genPartGroups(new String[]{"ore"}), new boolean[]{isVar});
+        o.setPartGroup(genPartGroup("ore"), isVar);
         objects.add(o);
     }
 

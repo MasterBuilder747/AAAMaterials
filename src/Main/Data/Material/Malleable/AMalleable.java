@@ -1,11 +1,12 @@
 package Main.Data.Material.Malleable;
 
+import Main.Data.Material.AMSolid;
 import Main.Data.Material.AMaterialData;
 import Main.Data.Material.MLiquid.MLiquid;
 import Main.Data.Material.Material;
 
 //data > material > malleable
-public abstract class AMalleable extends AMaterialData {
+public abstract class AMalleable extends AMSolid {
     double meltingMultiplier; //default is 1, but if 0, then recipes won't be generated,
     MLiquid molten;
     //negative numbers indicate the value of this material, but it cannot be melted

@@ -2,7 +2,7 @@ package Main.Data.Material;
 
 import Main.Data.Registry;
 
-public class Wood extends AMaterialData {
+public class Wood extends AMSolid {
     boolean isVanilla; //for quark integration
 
     public Wood(Material m, boolean isVanilla) {
@@ -67,8 +67,7 @@ public class Wood extends AMaterialData {
 
     @Override
     public String buildMaterial() {
-
-        return null;
+        return genPartGroups();
     }
 
     @Override

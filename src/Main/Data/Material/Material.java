@@ -24,7 +24,7 @@ public class Material extends AData {
     ChemicalLabel chemicalLabel; //Chemical tooltip, breaking and forming composition recipes, if it has one
 
     //states
-    Solid solid;
+    MSolid MSolid;
     MLiquid liquid; //standalone liquid (usually chemical), may allow changing of state (if not default state)
     MGas gas; //standalone gas (usually chemical), may allow changing of state (if not default state)
     MPlasma plasma; //standalone gas (usually chemical), may allow changing of state (usually made in fusion)

@@ -1,4 +1,4 @@
-package Main.Generators.Material.Malleable;
+package Main.Generators.Material.Solid.Malleable;
 
 import Main.Data.Material.MLiquid.MLiquid;
 import Main.Data.Material.Malleable.Rubber;
@@ -6,10 +6,11 @@ import Main.Data.Material.Material;
 import Main.Generators.GMaterial;
 import Main.Generators.GPartGroup;
 import Main.Generators.Material.Liquid.GMLiquid;
+import Main.Generators.Material.Solid.GMSolid;
 
 public class GRubber extends AGMalleable<Rubber> {
-    public GRubber(String filename, GMaterial material, GPartGroup partGroup, GMLiquid liquid) {
-        super(1, filename, material, partGroup, liquid);
+    public GRubber(String filename, GMaterial material, GPartGroup partGroup, GMLiquid liquid, GMSolid solid) {
+        super(1, filename, material, partGroup, liquid, solid, true, false, false);
     }
 
     @Override

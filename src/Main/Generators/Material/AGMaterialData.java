@@ -40,4 +40,7 @@ public abstract class AGMaterialData<M extends AMaterialData> extends AGenerator
         }
         return partGroups.toArray(new PartGroup[0]);
     }
+    protected PartGroup genPartGroup(String partGroupName) {
+        return this.partGroup.getPart(partGroupName);
+    }
 }

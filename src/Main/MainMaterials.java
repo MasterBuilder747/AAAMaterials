@@ -8,17 +8,14 @@ import Main.Generators.Localized.Liquid.GGas;
 import Main.Generators.Localized.Liquid.GLiquid;
 import Main.Generators.Localized.Liquid.GMolten;
 import Main.Generators.Localized.Liquid.GPlasma;
-import Main.Generators.Material.GOre;
-import Main.Generators.Material.GStone;
-import Main.Generators.Material.GWood;
 import Main.Generators.Material.Liquid.GMGas;
 import Main.Generators.Material.Liquid.GMLiquid;
 import Main.Generators.Material.Liquid.GMPlasma;
-import Main.Generators.Material.Malleable.GAlloy;
-import Main.Generators.Material.Malleable.GMetal;
-import Main.Generators.Material.GMSolid;
-import Main.Generators.Material.Malleable.GPlastic;
-import Main.Generators.Material.Malleable.GRubber;
+import Main.Generators.Material.Solid.Malleable.GAlloy;
+import Main.Generators.Material.Solid.Malleable.GMetal;
+import Main.Generators.Material.Solid.Malleable.GPlastic;
+import Main.Generators.Material.Solid.Malleable.GRubber;
+import Main.Generators.Material.Solid.*;
 
 import java.io.*;
 
@@ -81,8 +78,8 @@ public class MainMaterials {
         bw.write(material.registerMaterials());
 
         //4. material states
-        GMSolid solid = new GMSolid("solid", material, partGroup);
-        bw.write(solid.registerMaterials());
+        GMSolid mSolid = new GMSolid("solid", material, partGroup);
+        bw.write(mSolid.registerMaterials());
         GMLiquid mLiquid = new GMLiquid("liquid", material);
         bw.write(mLiquid.registerMaterials());
         GMGas mGas = new GMGas("gase", material);
@@ -95,22 +92,24 @@ public class MainMaterials {
 
         //6. all other material data (unless there are some other requirements later)
         //naturals
-        GWood wood = new GWood("wood", material, partGroup, registry);
+        GWood wood = new GWood("wood", material, partGroup, registry, mSolid);
         bw.write(wood.registerMaterials());
-        GStone stone = new GStone("stone", material, partGroup, registry);
+        GStone stone = new GStone("stone", material, partGroup, registry, mSolid);
         bw.write(stone.registerMaterials());
         //malleables
-        GMetal metal = new GMetal("metal", material, partGroup, mLiquid);
+        GMetal metal = new GMetal("metal", material, partGroup, mLiquid, mSolid);
         bw.write(metal.registerMaterials());
-        GAlloy alloy = new GAlloy("alloy", material, partGroup, mLiquid);
+        GAlloy alloy = new GAlloy("alloy", material, partGroup, mLiquid, mSolid);
         bw.write(alloy.registerMaterials());
-        GPlastic plastic = new GPlastic("plastic", material, partGroup, mLiquid);
+        GPlastic plastic = new GPlastic("plastic", material, partGroup, mLiquid, mSolid);
         bw.write(plastic.registerMaterials());
-        GRubber rubber = new GRubber("rubber", material, partGroup, mLiquid);
+        GRubber rubber = new GRubber("rubber", material, partGroup, mLiquid, mSolid);
         bw.write(rubber.registerMaterials());
+        GGem gem = new GGem("gem", material, partGroup, mSolid);
+        bw.write(gem.registerMaterials());
 
         //7. ore system
-        GOre ore = new GOre("ore", material, partGroup, registry);
+        GOre ore = new GOre("ore", material, partGroup, registry, mSolid);
         bw.write(ore.registerMaterials());
 //        CMolecule molecule = new CMolecule("moleculeComposition", element);
 //        bw.write(molecule.register());

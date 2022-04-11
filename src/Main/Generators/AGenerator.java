@@ -99,9 +99,6 @@ public abstract class AGenerator<D extends AData> {
         }
         throw new IllegalArgumentException("Unknown " + filename + ": " + s);
     }
-    public D getPart(String s) {
-        return this.get(s+"_parts");
-    }
     public boolean is(String s) {
         try {
             get(s);
