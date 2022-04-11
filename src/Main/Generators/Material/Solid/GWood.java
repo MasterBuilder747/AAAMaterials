@@ -1,7 +1,7 @@
 package Main.Generators.Material.Solid;
 
 import Main.Data.Material.Material;
-import Main.Data.Material.Wood;
+import Main.Data.Material.Solid.Wood;
 import Main.Data.Registry;
 import Main.Generators.GMaterial;
 import Main.Generators.GPartGroup;

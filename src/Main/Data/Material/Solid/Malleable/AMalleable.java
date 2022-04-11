@@ -1,8 +1,7 @@
-package Main.Data.Material.Malleable;
+package Main.Data.Material.Solid.Malleable;
 
-import Main.Data.Material.AMSolid;
-import Main.Data.Material.AMaterialData;
-import Main.Data.Material.MLiquid.MLiquid;
+import Main.Data.Material.Solid.AMSolid;
+import Main.Data.Material.Liquid.MLiquid;
 import Main.Data.Material.Material;
 
 //data > material > malleable

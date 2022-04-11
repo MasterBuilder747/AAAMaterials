@@ -1,6 +1,6 @@
 package Main.Generators.Material.Solid;
 
-import Main.Data.Material.AMSolid;
+import Main.Data.Material.Solid.AMSolid;
 import Main.Data.Material.Material;
 import Main.Data.Material.MSolid;
 import Main.Generators.GMaterial;

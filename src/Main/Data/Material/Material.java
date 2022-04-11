@@ -2,13 +2,14 @@ package Main.Data.Material;
 
 import Main.Data.AData;
 import Main.Data.Localized.LFood;
-import Main.Data.Material.MLiquid.MLiquid;
-import Main.Data.Material.Malleable.Alloy;
-import Main.Data.Material.Malleable.Metal;
-import Main.Data.Material.Malleable.Plastic;
-import Main.Data.Material.Malleable.Rubber;
-import Main.Data.Material.MLiquid.MGas;
-import Main.Data.Material.MLiquid.MPlasma;
+import Main.Data.Material.Liquid.MLiquid;
+import Main.Data.Material.Solid.*;
+import Main.Data.Material.Solid.Malleable.Alloy;
+import Main.Data.Material.Solid.Malleable.Metal;
+import Main.Data.Material.Solid.Malleable.Plastic;
+import Main.Data.Material.Solid.Malleable.Rubber;
+import Main.Data.Material.Liquid.MGas;
+import Main.Data.Material.Liquid.MPlasma;
 
 //data > material
 public class Material extends AData {

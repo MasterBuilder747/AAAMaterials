@@ -1,12 +1,11 @@
 package Main.Generators.Material.Solid.Malleable;
 
-import Main.Data.Material.MLiquid.MLiquid;
-import Main.Data.Material.Malleable.Alloy;
+import Main.Data.Material.Liquid.MLiquid;
+import Main.Data.Material.Solid.Malleable.Alloy;
 import Main.Data.Material.Material;
 import Main.Generators.GMaterial;
 import Main.Generators.GPartGroup;
 import Main.Generators.Material.Liquid.GMLiquid;
-import Main.Generators.Material.Solid.AGMSolid;
 import Main.Generators.Material.Solid.GMSolid;
 
 public class GAlloy extends AGMalleable<Alloy> {

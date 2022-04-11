@@ -1,6 +1,8 @@
 package Main.Data.Material;
 
-public class Exploration extends AMaterialData {
+import Main.Data.AData;
+
+public class Exploration extends AData {
     /*
     this item serves as an exploration item
     spawns in structure(s)
@@ -9,7 +11,7 @@ public class Exploration extends AMaterialData {
      */
 
     public Exploration(Material m) {
-        super(m);
+        super("exploration");
     }
 
     @Override

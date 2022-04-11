@@ -1,8 +1,7 @@
-package Main.Data.Material.MLiquid;
+package Main.Data.Material.Liquid;
 
 import Main.Data.Localized.Liquid.LGas;
 import Main.Data.Material.Material;
-import Main.Util;
 
 public class MGas extends AMLiquid {
 

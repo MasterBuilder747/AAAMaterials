@@ -1,9 +1,11 @@
-package Main.Data.Material;
+package Main.Data.Material.Solid;
 
-public class Dye extends AMaterialData {
-    String color;
+import Main.Data.Material.Material;
 
-    public Dye(Material m) {
+public class Fuel extends AMSolid {
+    //furnace.setFuel(<minecraft:coal:1>, 800);
+
+    public Fuel(Material m) {
         super(m);
     }
 

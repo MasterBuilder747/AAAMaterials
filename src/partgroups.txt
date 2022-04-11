@@ -3,7 +3,7 @@
 dust_parts: dust, small_dust, tiny_dust
 fine_parts: fine_dust, small_fine_dust, tiny_fine_dust
 powder_parts: powder, small_powder, tiny_powder
-ore_parts: ore_sample, rock, ore_rock, cluster, clump, shard, crushed_ore, small_crushed_ore, purified_ore, small_purified_ore, centrifuged_ore, small_centrifuged_ore, pure_dust, raw_ore, chunk, scrap, large_scrap
+ore_parts: rock, ore_rock, cluster, clump, shard, crushed_ore, small_crushed_ore, purified_ore, small_purified_ore, centrifuged_ore, small_centrifuged_ore, pure_dust, raw_ore, chunk, scrap, large_scrap
 gem_parts: gem, chipped_gem, flawed_gem, crystal, flawless_gem, exquisite_gem, superior_gem, piece, lens
 smelt_parts: ingot, morsel, nugget, casing, plate, curved_plate, tough_plate, dense_plate, small_rod, rod, long_rod, small_spring, large_spring, beam, bolt, screw, round, foil, ring, small_gear, gear, small_plate, spring, chain, rail, large_plate, small_bolt, small_casing, small_screwed_plate
 plastic_parts: ingot, morsel, nugget, casing, plate, curved_plate, tough_plate, dense_plate, small_rod, rod, long_rod, beam, bolt, screw, round, foil, ring, small_plate, spring, chain, large_plate, small_casing, small_screwed_plate

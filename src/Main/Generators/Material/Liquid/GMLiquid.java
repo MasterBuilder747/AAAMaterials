@@ -1,6 +1,6 @@
 package Main.Generators.Material.Liquid;
 
-import Main.Data.Material.MLiquid.MLiquid;
+import Main.Data.Material.Liquid.MLiquid;
 import Main.Data.Material.Material;
 import Main.Generators.GMaterial;
 

@@ -1,15 +1,15 @@
-package Main.Data.Material.Malleable;
+package Main.Data.Material.Solid.Malleable;
 
-import Main.Data.Material.MLiquid.MLiquid;
+import Main.Data.Material.Liquid.MLiquid;
 import Main.Data.Material.Material;
 
-//data > material > malleable > rubber
-public class Rubber extends AMalleable {
+//data > material > malleable > plastic
+public class Plastic extends AMalleable {
     //can never get full amount back when melting again, depends on the material
     //when melting a part:
     //get some back
     //get no material back
-    public Rubber(Material m, double meltingMultiplier, MLiquid liquid) {
+    public Plastic(Material m, double meltingMultiplier, MLiquid liquid) {
         super(m, meltingMultiplier, liquid);
     }
 

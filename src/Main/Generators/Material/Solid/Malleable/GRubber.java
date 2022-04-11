@@ -1,7 +1,7 @@
 package Main.Generators.Material.Solid.Malleable;
 
-import Main.Data.Material.MLiquid.MLiquid;
-import Main.Data.Material.Malleable.Rubber;
+import Main.Data.Material.Liquid.MLiquid;
+import Main.Data.Material.Solid.Malleable.Rubber;
 import Main.Data.Material.Material;
 import Main.Generators.GMaterial;
 import Main.Generators.GPartGroup;

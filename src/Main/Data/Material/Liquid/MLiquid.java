@@ -1,9 +1,8 @@
-package Main.Data.Material.MLiquid;
+package Main.Data.Material.Liquid;
 
 import Main.Data.Localized.Liquid.LLiquid;
 import Main.Data.Localized.Liquid.LMolten;
 import Main.Data.Material.Material;
-import Main.Util;
 
 public class MLiquid extends AMLiquid {
     public MLiquid(Material m, int density, int luminosity, int temperature, int viscosity, boolean vaporize) {

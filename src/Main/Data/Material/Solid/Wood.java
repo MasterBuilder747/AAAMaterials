@@ -1,5 +1,6 @@
-package Main.Data.Material;
+package Main.Data.Material.Solid;
 
+import Main.Data.Material.Material;
 import Main.Data.Registry;
 
 public class Wood extends AMSolid {

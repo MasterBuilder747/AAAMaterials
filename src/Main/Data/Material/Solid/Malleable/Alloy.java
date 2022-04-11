@@ -1,6 +1,6 @@
-package Main.Data.Material.Malleable;
+package Main.Data.Material.Solid.Malleable;
 
-import Main.Data.Material.MLiquid.MLiquid;
+import Main.Data.Material.Liquid.MLiquid;
 import Main.Data.Material.Material;
 
 //data > material > malleable > alloy

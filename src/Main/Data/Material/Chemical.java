@@ -1,6 +1,8 @@
 package Main.Data.Material;
 
-public class Chemical extends AMaterialData {
+import Main.Data.AData;
+
+public class Chemical extends AData {
     /*
 
     every machine mid game and up will require an extra chemical to run
@@ -14,7 +16,7 @@ public class Chemical extends AMaterialData {
      */
 
     public Chemical(Material m) {
-        super(m);
+        super("chemical");
     }
 
     @Override

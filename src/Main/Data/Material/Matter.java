@@ -1,6 +1,8 @@
 package Main.Data.Material;
 
-public class Matter extends AMaterialData {
+import Main.Data.AData;
+
+public class Matter extends AData {
     /*
 
     every machine in the endgame requires matter to run, or produces it
@@ -79,8 +81,8 @@ public class Matter extends AMaterialData {
     */
 
 
-    public Matter(Material m) {
-        super(m);
+    public Matter() {
+        super("matter");
     }
 
     @Override

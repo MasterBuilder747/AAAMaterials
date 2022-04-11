@@ -1,6 +1,6 @@
 package Main.Generators.Material.Solid;
 
-import Main.Data.Material.Gem;
+import Main.Data.Material.Solid.Gem;
 import Main.Data.Material.Material;
 import Main.Generators.GMaterial;
 import Main.Generators.GPartGroup;

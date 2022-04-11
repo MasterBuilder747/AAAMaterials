@@ -1,6 +1,8 @@
 package Main.Data.Material;
 
-public class Data extends AMaterialData {
+import Main.Data.AData;
+
+public class Data extends AData {
     /*
 
     Data: a universal liquid that represents compute power
@@ -14,8 +16,8 @@ public class Data extends AMaterialData {
      */
 
 
-    public Data(Material m) {
-        super(m);
+    public Data() {
+        super("data");
     }
 
     @Override

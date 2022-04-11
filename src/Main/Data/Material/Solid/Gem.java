@@ -1,4 +1,6 @@
-package Main.Data.Material;
+package Main.Data.Material.Solid;
+
+import Main.Data.Material.Material;
 
 public class Gem extends AMSolid {
     //automatically adds gem parts, no parameters for now
