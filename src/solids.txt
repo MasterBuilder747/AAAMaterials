@@ -31,6 +31,19 @@ shale, true, true, true, =
 siltstone, true, true, true, =
 /gems:
 ruby, true, false, false, =
+/woods:
+oak, true, false, false, =
+birch, true, false, false, =
+spruce, true, false, false, =
+jungle, true, false, false, =
+acacia, true, false, false, =
+dark_oak, true, false, false, =
+/metals:
+iron, true, false, false, =
+/plastics:
+polyethylene, true, false, false, =
+/rubbers:
+rubber, true, false, false, =
 /custom:
 /slate, 
 /mica, ???
