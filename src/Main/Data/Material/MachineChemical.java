@@ -2,7 +2,7 @@ package Main.Data.Material;
 
 import Main.Data.AData;
 
-public class Chemical extends AData {
+public class MachineChemical extends AData {
     /*
 
     every machine mid game and up will require an extra chemical to run
@@ -15,7 +15,7 @@ public class Chemical extends AData {
 
      */
 
-    public Chemical(Material m) {
+    public MachineChemical(Material m) {
         super("chemical");
     }
 
