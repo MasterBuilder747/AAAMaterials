@@ -6,6 +6,9 @@ import mods.contenttweaker.VanillaFactory;
 import mods.contenttweaker.Block;
 import mods.contenttweaker.Color;
 
+# MATERIALS FILE
+# ============================================
+
 # -custom-blocks
 genBlock("mica", <blockMaterial:rock>, 5, 6, "pickaxe", 1);
 
@@ -13,16 +16,16 @@ genBlock("mica", <blockMaterial:rock>, 5, 6, "pickaxe", 1);
 genItem("infi_single");
 
 # -custom-liquids
-genFluid("juice", "00ff00", 6000, false, 15, 1000, 6000, false, "contenttweaker:fluids/liquid", "contenttweaker:fluids/liquid_flowing", <blockmaterial:water>);
+genFluid("cotc_juice", "00ff00", 6000, false, 15, 1000, 6000, false, "contenttweaker:fluids/liquid", "contenttweaker:fluids/liquid_flowing", <blockmaterial:water>);
 
 # -custom-moltens
-genFluid("glowing", "ffff00", 6000, false, 5, 1000, 6000, false, "contenttweaker:fluids/molten", "contenttweaker:fluids/molten_flowing", <blockmaterial:lava>);
+genFluid("cotc_glowing", "ffff00", 6000, false, 5, 1000, 6000, false, "contenttweaker:fluids/molten", "contenttweaker:fluids/molten_flowing", <blockmaterial:lava>);
 
 # -custom-gases
-genFluid("sky", "0000ff", 6000, true, 5, 1000, 6000, false, "contenttweaker:fluids/gas", "contenttweaker:fluids/gas_flowing", <blockmaterial:water>);
+genFluid("cotc_sky", "0000ff", 6000, true, 5, 1000, 6000, false, "contenttweaker:fluids/gas", "contenttweaker:fluids/gas_flowing", <blockmaterial:water>);
 
 # -custom-plasmas
-genFluid("tesla", "ff00ff", 6000, true, 5, 1000, 6000, false, "contenttweaker:fluids/plasma", "contenttweaker:fluids/plasma_flowing", <blockmaterial:lava>);
+genFluid("cotc_tesla", "ff00ff", 6000, true, 5, 1000, 6000, false, "contenttweaker:fluids/plasma", "contenttweaker:fluids/plasma_flowing", <blockmaterial:lava>);
 
 # -custom-parts
 var boule = mods.contenttweaker.MaterialSystem.getPartBuilder().setName("boule").setPartType(mods.contenttweaker.MaterialSystem.getPartType("item")).setHasOverlay(false).setOreDictName("boule").build();
@@ -421,10 +424,10 @@ polyethylene.registerParts(dust_parts);
 rubber.registerParts(dust_parts);
 
 # -liquids
-genFluid("iron_molten", "d9d7d9", 6000, false, 1, 1000, 6000, false, "contenttweaker:fluids/molten", "contenttweaker:fluids/molten_flowing", <blockmaterial:lava>);
-genFluid("lumium_molten", "ffffb6", 6000, false, 1, 1000, 6000, false, "contenttweaker:fluids/molten", "contenttweaker:fluids/molten_flowing", <blockmaterial:lava>);
-genFluid("polyethylene_molten", "a8a59d", 6000, false, 1, 1000, 5000, false, "contenttweaker:fluids/molten", "contenttweaker:fluids/molten_flowing", <blockmaterial:lava>);
-genFluid("rubber_molten", "4a473f", 6000, false, 1, 1000, 4000, false, "contenttweaker:fluids/molten", "contenttweaker:fluids/molten_flowing", <blockmaterial:lava>);
+genFluid("cotm_iron_molten", "d9d7d9", 6000, false, 1, 1000, 6000, false, "contenttweaker:fluids/molten", "contenttweaker:fluids/molten_flowing", <blockmaterial:lava>);
+genFluid("cotm_lumium_molten", "ffffb6", 6000, false, 1, 1000, 6000, false, "contenttweaker:fluids/molten", "contenttweaker:fluids/molten_flowing", <blockmaterial:lava>);
+genFluid("cotm_polyethylene_molten", "a8a59d", 6000, false, 1, 1000, 5000, false, "contenttweaker:fluids/molten", "contenttweaker:fluids/molten_flowing", <blockmaterial:lava>);
+genFluid("cotm_rubber_molten", "4a473f", 6000, false, 1, 1000, 4000, false, "contenttweaker:fluids/molten", "contenttweaker:fluids/molten_flowing", <blockmaterial:lava>);
 
 # -woods
 oak.registerParts(wood_parts);

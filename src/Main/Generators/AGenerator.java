@@ -6,6 +6,7 @@ import Main.Parameter.ParameterException;
 import Main.Util;
 
 import java.io.BufferedReader;
+import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -26,19 +27,24 @@ public abstract class AGenerator<D extends AData> {
         objects = new ArrayList<>();
     }
 
-    public String registerMaterials() throws IOException {
+    private void populateObjects() throws IOException {
         //read: populate the ArrayList
         FileReader fr = new FileReader(MainMaterials.HOME + this.filename.toLowerCase() + "s.txt");
         BufferedReader br = new BufferedReader(fr);
         readFile(br);
         fr.close();
+    }
+    private String appendHeader() {
+        return "# -"+this.filename+"s\n";
+    }
 
-        //write: build the zs code if needed
+    public String registerMaterials() throws IOException {
+        populateObjects();
         StringBuilder sb = new StringBuilder();
         if (objects.size() > 0) {
             if (objects.get(0).buildMaterial() != null) { //indicates that the generator doesn't need to build anything
                 //output the zs code for each object
-                sb.append("# -").append(this.filename).append("s\n");
+                sb.append(appendHeader());
                 for (D o : objects) {
                     sb.append(o.buildMaterial());
                 }
@@ -48,18 +54,12 @@ public abstract class AGenerator<D extends AData> {
         return sb.toString();
     }
     public String registerRecipes() throws IOException {
-        //read: populate the ArrayList
-        FileReader fr = new FileReader(MainMaterials.HOME + this.filename.toLowerCase() + "s.txt");
-        BufferedReader br = new BufferedReader(fr);
-        readFile(br);
-        fr.close();
-
-        //write: build the zs code if needed
+        populateObjects();
         StringBuilder sb = new StringBuilder();
         if (objects.size() > 0) {
-            if (!objects.get(0).buildRecipe().matches("NULL")) { //indicates that the generator doesn't need to build anything
+            if (objects.get(0).buildRecipe() != null) { //indicates that the generator doesn't need to build anything
                 //output the zs code for each object
-                sb.append("# -").append(this.filename).append("s\n");
+                sb.append(appendHeader());
                 for (D o : objects) {
                     sb.append(o.buildRecipe());
                 }

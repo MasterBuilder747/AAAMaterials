@@ -4,20 +4,13 @@ import Main.Data.Localized.Liquid.LGas;
 import Main.Data.Material.Material;
 
 public class MGas extends AMLiquid {
-
     public MGas(Material m, int density, int luminosity, int temperature, int viscosity, boolean vaporize) {
         super(m);
-        this.l = new LGas(m.name+"_gas", m.LOCALNAME, m.color, density, luminosity, temperature, viscosity, vaporize);
-        this.l.localName = m.LOCALNAME+" Gas";
+        this.l = new LGas(true, m.name+"_gas", m.LOCALNAME+" Gas", m.color, density, luminosity, temperature, viscosity, vaporize);
     }
 
     @Override
     public void print() {
 
-    }
-
-    @Override
-    public String buildRecipe() {
-        return null;
     }
 }

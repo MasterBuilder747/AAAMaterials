@@ -48,6 +48,9 @@ public class MainMaterials {
                 import mods.contenttweaker.Block;
                 import mods.contenttweaker.Color;
                 
+                # MATERIALS FILE
+                # ============================================
+
                 """);
 
         //LOAD ORDER for .zs:

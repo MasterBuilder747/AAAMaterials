@@ -11,19 +11,26 @@ import java.io.IOException;
 
 public class MainRecipes {
     //files to be generated:
-    //1 the .zs script file (one giant one)
-    //2 the .lang file for localization
+    //1 the .zs recipe script file (one giant one)
     private final static String PC = "C:\\Users\\jaath\\IdeaProjects\\AAAMaterials\\src\\";
     private final static String MAC = "/Users/jaudras/IdeaProjects/AAAMaterials/src/";
-    public final static String HOME = MAC; //home directory, specified at startup
-    public final static String SCRIPT = "recipes";
+    public final static String HOME = Detector.isMac() ? MAC : PC;
+    public final static String DEPLOY = "Deployment/";
 
     public static void main(String[] args) throws IOException {
         //after registering all custom items in game, use /tellme [command params here] to get .csv dump
         //then format the dump file to be more readable
         //every item registry name must be matched in the data
         //text files are still read in the same way, but now they will also have item registry ids associated with them to be used in recipes
-        FileWriter fw = new FileWriter(HOME + SCRIPT + ".zs");
+
+        //the registry
+        GRegistry registry = new GRegistry("registry");
+        registry.registerRecipes();
+        GLiquidRegistry liquidRegistry = new GLiquidRegistry("liquidregistrie");
+        liquidRegistry.registerRecipes();
+
+        //recipes.zs
+        FileWriter fw = new FileWriter(HOME + DEPLOY + "scripts/recipes" + ".zs");
         BufferedWriter bw = new BufferedWriter(fw);
 
         //starting script code
@@ -35,31 +42,33 @@ public class MainRecipes {
                 import mods.contenttweaker.VanillaFactory;
                 import mods.contenttweaker.Block;
                 import mods.contenttweaker.Color;
-                                
+                
+                # RECIPES FILE
+                # ============================================
+
                 """);
 
         //custom content
         GBlock block = new GBlock("block");
-        block.registerMaterials();
+        bw.write(block.registerRecipes());
         GItem item = new GItem("item");
-        item.registerMaterials();
+        bw.write(item.registerRecipes());
         GPart part = new GPart("part");
-        part.registerMaterials();
+        bw.write(part.registerRecipes());
 
         //material system
         GPartGroup partGroup = new GPartGroup("partgroup", part);
-        partGroup.registerMaterials();
+        bw.write(partGroup.registerRecipes());
         GElement element = new GElement("element");
-        element.registerMaterials();
+        bw.write(element.registerRecipes());
 //        CMolecule molecule = new CMolecule("moleculeComposition", element);
 //        bw.write(molecule.register());
 //        GCompound compound = new GCompound("compoundComposition", element);
-//        bw.write(compound.register());
+//        bw.write(compound.register());m
 
         //machine recipes, only used in MainRecipes
         GRecipe recipe = new GRecipe("recipe");
-        bw.write(recipe.registerMaterials());
-
+        bw.write(recipe.registerRecipes());
 
         //finish
         bw.close();

@@ -1,8 +1,8 @@
-package Main.Data.Material;
+package Main.Data.Material.Liquid;
 
-import Main.Data.AData;
+import Main.Data.Localized.Liquid.ALiquid;
 
-public class MachineChemical extends AData {
+public class MachineChemical extends AMMachineResource {
     /*
 
     every machine mid game and up will require an extra chemical to run
@@ -15,22 +15,7 @@ public class MachineChemical extends AData {
 
      */
 
-    public MachineChemical(Material m) {
-        super("chemical");
-    }
-
-    @Override
-    public void print() {
-
-    }
-
-    @Override
-    public String buildMaterial() {
-        return null;
-    }
-
-    @Override
-    public String buildRecipe() {
-        return null;
+    public MachineChemical(ALiquid l) {
+        this.l = l;
     }
 }

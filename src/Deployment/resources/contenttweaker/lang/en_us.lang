@@ -2,13 +2,13 @@ tile.contenttweaker.mica.name=Mica
 
 item.contenttweaker.infi_single.name=Infinity Singularity
 
-fluid.juice=Juice
+fluid.cotc_juice=Juice
 
-fluid.glowing=Glowing
+fluid.cotc_glowing=Glowing
 
-fluid.sky=Sky
+fluid.cotc_sky=Sky
 
-fluid.tesla=Tesla
+fluid.cotc_tesla=Tesla
 
 contenttweaker.part.boule=%s Boule
 contenttweaker.part.chain=%s Chain
@@ -71,7 +71,7 @@ contenttweaker.part.wafer=%s Wafer
 contenttweaker.part.wire=%s Wire
 contenttweaker.part.wood_plate=%s Plate
 
-fluid.iron_molten=Molten Iron
-fluid.lumium_molten=Molten Lumium
-fluid.polyethylene_molten=Molten Polyethylene
-fluid.rubber_molten=Molten Rubber
+fluid.cotm_iron_molten=Molten Iron
+fluid.cotm_lumium_molten=Molten Lumium
+fluid.cotm_polyethylene_molten=Molten Polyethylene
+fluid.cotm_rubber_molten=Molten Rubber

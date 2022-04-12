@@ -55,7 +55,7 @@ public class MachineRecipe extends AData {
     }
 
     @Override
-    public String buildMaterial() {
+    public String buildRecipe() {
         /*
         val reci = mods.modularmachinery.RecipeBuilder.newBuilder("recipeRegistryName", "associatedMachineRegistryName", timeTicks);
         val reci = mods.modularmachinery.RecipeBuilder.newBuilder("recipeRegistryName", "associatedMachineRegistryName", timeTicks, priority);
@@ -109,13 +109,8 @@ public class MachineRecipe extends AData {
             sb.append(buildData());
             sb.append(buildMatter());
         }
-        sb.append(this.realName).append(".build();\n");
+        sb.append(this.realName).append(".build();\n\n");
         return sb.toString();
-    }
-
-    @Override
-    public String buildRecipe() {
-        return null;
     }
 
     private String buildMain(int power) {
@@ -225,5 +220,11 @@ public class MachineRecipe extends AData {
             }
         }
         return sb.toString();
+    }
+
+    @Override
+    public String buildMaterial() {
+        //not needed
+        return null;
     }
 }

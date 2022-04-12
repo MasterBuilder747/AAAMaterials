@@ -14,8 +14,9 @@ public abstract class ALiquid extends ALocalizedData {
     String tex;
     String blockMaterial; //lava, water
 
-    public ALiquid(String name, String localName, String color, int density, boolean gas, int luminosity, int temperature, int viscosity, boolean vaporize, String tex, String blockMaterial) {
-        super(name, localName);
+    public ALiquid(boolean isMaterial, String name, String localName, String color, int density, boolean gas,
+                   int luminosity, int temperature, int viscosity, boolean vaporize, String tex, String blockMaterial) {
+        super("cot"+(isMaterial ? "m" : "c")+"_"+name, localName);
         this.color = color;
         this.density = density;
         this.gas = gas;

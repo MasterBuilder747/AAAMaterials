@@ -1,6 +1,7 @@
 package Main.Generators;
 
 import Main.Recipe.MachineRecipe;
+import Main.Util;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -9,7 +10,7 @@ public class GRecipe extends AGenerator<MachineRecipe> {
 
     //for user-defined custom machine recipes
     public GRecipe(String filename) {
-        super(-1, filename);
+        super(14, filename);
     }
 
     @Override
@@ -20,28 +21,22 @@ public class GRecipe extends AGenerator<MachineRecipe> {
         //5-9: itemIn1; itemIn2; ..., liquidIn[], itemOut[], liquidOut[], chemicalIn[], chemicalOut[],
         //10-11/12: int dataIn, [-/+]matterIn * amount[], [-/+]matterOut * amount[], optional-int priority
         //recipeName follows this format: machineName+ID+machineTier without the +
-/*
+
         //ex: basic, 4, 20, 1.0, ore:ingotIron; minecraft:wool:2 * 5, minecraft:gold_ingot * 2, water, lava, hydrogen, oxygen, 1000, -red*100, +orange*10, 0
-        if (s.length != 13 && s.length != 14) error(new int[]{13, 14});
-        MachineRecipe r = new MachineRecipe(s[0], s[0]+line, Integer.parseInt(s[1]), Integer.parseInt(s[2]), Double.parseDouble(s[3]));
-        Util.split();
-        String[] itemI = s[4].split(";\\s*");
-        String[] liquidI = s[5].split(";\\s*");
-        String[] itemO = s[6].split(";\\s*");
-        String[] liquidO = s[7].split(";\\s*");
-        String[] chemI = s[8].split(";\\s*");
-        String[] chemO = s[9].split(";\\s*");
-        int data = Integer.parseInt(s[10]);
-        String[] matterI = s[11].split(";\\s*");
-        String[] matterO = s[12].split(";\\s*");
+        MachineRecipe r = new MachineRecipe(s[0], s[0]+line, parseInt(s[1]), parseInt(s[2]), parseDouble(s[3]));
+        String[] itemI = Util.split(s[4], ";");
+        String[] liquidI = Util.split(s[5], ";");
+        String[] itemO = Util.split(s[6], ";");
+        String[] liquidO = Util.split(s[7], ";");
+        String[] chemI = Util.split(s[8], ";");
+        String[] chemO = Util.split(s[9], ";");
+        int data = parseInt(s[10]);
+        String[] matterI = Util.split(s[11], ";");
+        String[] matterO = Util.split(s[12], ";");
         r.setInputs(itemI, liquidI);
         r.setOutputs(itemO, liquidO);
         r.setAdditionalRequirements(chemI, chemO, data, matterI, matterO);
-        if (s.length == 14) {
-            r.setPriority(Integer.parseInt(s[13]));
-        }
+        r.setPriority(parseInt(s[13]));
         this.objects.add(r);
-
- */
     }
 }

@@ -2,14 +2,12 @@ package Main.Data.Material;
 
 import Main.Data.AData;
 import Main.Data.Localized.LFood;
-import Main.Data.Material.Liquid.MLiquid;
+import Main.Data.Material.Liquid.*;
 import Main.Data.Material.Solid.*;
 import Main.Data.Material.Solid.Malleable.Alloy;
 import Main.Data.Material.Solid.Malleable.Metal;
 import Main.Data.Material.Solid.Malleable.Plastic;
 import Main.Data.Material.Solid.Malleable.Rubber;
-import Main.Data.Material.Liquid.MGas;
-import Main.Data.Material.Liquid.MPlasma;
 
 //data > material
 public class Material extends AData {
@@ -31,8 +29,8 @@ public class Material extends AData {
     MPlasma plasma; //standalone gas (usually chemical), may allow changing of state (usually made in fusion)
 
     //later game mechanics
-    Matter matter; //a colored matter, positive and negative
-    Data data; //the universal data liquid
+    MachineMatter machineMatter; //a colored matter, positive and negative
+    MachineData machineData; //the universal data liquid
 
     //inherits Malleable
     //partGroups: metal,

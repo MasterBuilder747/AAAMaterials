@@ -1,8 +1,8 @@
-package Main.Data.Material;
+package Main.Data.Material.Liquid;
 
-import Main.Data.AData;
+import Main.Data.Localized.Liquid.LPlasma;
 
-public class Matter extends AData {
+public class MachineMatter extends AMMachineResource {
     /*
 
     every machine in the endgame requires matter to run, or produces it
@@ -80,23 +80,7 @@ public class Matter extends AData {
 
     */
 
-
-    public Matter() {
-        super("matter");
-    }
-
-    @Override
-    public String buildMaterial() {
-        return null;
-    }
-
-    @Override
-    public String buildRecipe() {
-        return null;
-    }
-
-    @Override
-    public void print() {
-
+    public MachineMatter(String colorName, String colorLocalName, String colorValue) {
+        this.l = new LPlasma(true, colorName+"_matter", colorLocalName+" Matter", colorValue, 1000, 15, 15000, 10000, false);
     }
 }

@@ -4,7 +4,7 @@ import Main.Data.AData;
 
 public abstract class ALocalizedData extends AData {
     //defines a data holding object
-    public String localName;
+    public final String localName;
 
     public abstract String localize() throws IllegalArgumentException;
 
@@ -15,6 +15,6 @@ public abstract class ALocalizedData extends AData {
 
     @Override
     public String buildRecipe() {
-        return "";
+        return null;
     }
 }

@@ -1,8 +1,6 @@
-package Main.Data.Material;
+package Main.Data.Material.Liquid;
 
-import Main.Data.AData;
-
-public class Data extends AData {
+public class MachineData extends AMMachineResource {
     /*
 
     Data: a universal liquid that represents compute power
@@ -15,23 +13,7 @@ public class Data extends AData {
 
      */
 
-
-    public Data() {
-        super("data");
-    }
-
-    @Override
-    public String buildMaterial() {
-        return null;
-    }
-
-    @Override
-    public String buildRecipe() {
-        return null;
-    }
-
-    @Override
-    public void print() {
+    public MachineData() {
 
     }
 }

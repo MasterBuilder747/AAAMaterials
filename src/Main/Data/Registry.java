@@ -1,5 +1,7 @@
 package Main.Data;
 
+import Main.Data.Localized.LItem;
+
 import java.util.Arrays;
 
 public class Registry extends AData {
@@ -25,6 +27,10 @@ public class Registry extends AData {
 
     public String getCTItem() { return "<" + this.mod + ":" + this.registry + ":" + this.meta + ">"; }
     public String getUnlocalizedName() { return this.mod + ":" + this.registry; }
+
+    public LItem createItem(String localName) {
+        return new LItem(this.name, localName);
+    }
 
     //no script is needed to be generated and written to, this is an internal data object
     @Override
