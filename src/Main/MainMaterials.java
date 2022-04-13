@@ -1,8 +1,7 @@
 package Main;
 
 import Main.Generators.*;
-import Main.Generators.GameData.GBiomeRegistry;
-import Main.Generators.GameData.GRegistry;
+import Main.Generators.GameData.*;
 import Main.Generators.Localized.GBlock;
 import Main.Generators.Localized.GItem;
 import Main.Generators.Localized.GPart;
@@ -32,9 +31,19 @@ public class MainMaterials {
     public final static String DEPLOY = "Deployment/";
 
     public static void main(String[] args) throws IOException {
-        //this is only reading for data, item registry comes before everything
+        //gamedata registries
         GRegistry registry = new GRegistry("registry");
         registry.registerMaterials();
+        GLiquidRegistry liquids = new GLiquidRegistry("liquidregistrie");
+        liquids.registerMaterials();
+        GEntityRegistry entities = new GEntityRegistry("entityregistry");
+        entities.registerMaterials();
+        GMobRegistry mobs = new GMobRegistry("mobregistry", entities);
+        mobs.registerMaterials();
+        GBiomeRegistry biomes = new GBiomeRegistry("biomeregistry");
+        biomes.registerMaterials();
+        GBiome biome = new GBiome("biome", biomes);
+        biome.registerMaterials();
 
         //materials.zs
         FileWriter fw = new FileWriter(HOME + DEPLOY + "scripts/materials" + ".zs");
@@ -135,11 +144,6 @@ public class MainMaterials {
         bw = new BufferedWriter(fw);
         bw.write(ore.genUBJson());
         bw.close();
-
-        GBiomeRegistry biomes = new GBiomeRegistry("biomeregistry");
-        biomes.registerMaterials();
-        GBiome biome = new GBiome("biome", biomes);
-        biome.registerMaterials();
 
         //serene seasons biomes .json file
         fw = new FileWriter(HOME + DEPLOY + "config/sereneseasons/biome_info.json");

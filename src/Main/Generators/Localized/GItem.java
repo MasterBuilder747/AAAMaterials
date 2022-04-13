@@ -2,9 +2,6 @@ package Main.Generators.Localized;
 
 import Main.Data.Localized.LItem;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-
 public class GItem extends AGLocal<LItem> {
     public GItem(String filename) {
         super(0, filename);
