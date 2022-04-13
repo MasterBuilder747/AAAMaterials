@@ -36,7 +36,7 @@ public class Registry extends AGameData {
     @Override
     public void print() {
         //System.out.println(this.buildMaterial());
-        System.out.println(this.mod + ":" + this.registryName + ":" + this.meta + ", ore(s):" + Arrays.toString(this.ore) + ", \"" + this.name + "\"");
+        System.out.println(this.mod + ":" + this.registryName + ":" + this.meta + ", \"" + this.name + "\", ore(s):" + Arrays.toString(this.ore));
         //System.out.println(this.mod + "\n" + this.registry + "\n" + this.name + "\n" + this.meta + "\n" + Arrays.toString(this.ore));
     }
 }

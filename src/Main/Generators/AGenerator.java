@@ -31,6 +31,7 @@ public abstract class AGenerator<D extends AData> {
         //read: populate the ArrayList
         FileReader fr = new FileReader(MainMaterials.HOME + this.filename.toLowerCase() + "s.txt");
         BufferedReader br = new BufferedReader(fr);
+        System.out.println("Loading " + this.filename + "s.txt");
         readFile(br);
         fr.close();
     }
@@ -100,12 +101,12 @@ public abstract class AGenerator<D extends AData> {
         throw new IllegalArgumentException("Unknown " + filename + ": " + s);
     }
     public boolean is(String s) {
-        try {
-            get(s);
-        } catch (IllegalArgumentException e) {
-            return false;
+        for (D o : objects) {
+            if (o.name.equals(s)) {
+                return true;
+            }
         }
-        return true;
+        return false;
     }
     public void print() {
         System.out.println(this.filename +":");

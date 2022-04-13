@@ -31,9 +31,11 @@ public class MainMaterials {
     public final static String DEPLOY = "Deployment/";
 
     public static void main(String[] args) throws IOException {
+
         //gamedata registries
         GRegistry registry = new GRegistry("registry");
         registry.registerMaterials();
+        //registry.print();
         GLiquidRegistry liquids = new GLiquidRegistry("liquidregistrie");
         liquids.registerMaterials();
         GEntityRegistry entities = new GEntityRegistry("entityregistry");
@@ -44,6 +46,10 @@ public class MainMaterials {
         biomes.registerMaterials();
         GBiome biome = new GBiome("biome", biomes);
         biome.registerMaterials();
+        GFoodRegistry foods = new GFoodRegistry("foodregistry", registry);
+        foods.registerMaterials();
+        GSoundRegistry sounds = new GSoundRegistry("soundregistry");
+        sounds.registerMaterials();
 
         //materials.zs
         FileWriter fw = new FileWriter(HOME + DEPLOY + "scripts/materials" + ".zs");
