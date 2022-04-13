@@ -1,0 +1,12 @@
+{
+"minecraft:plains": {
+	"enable_seasonal_effects": true,
+	"use_tropical_seasons": false,
+	"disable_crops": false
+},
+"minecraft:desert": {
+	"enable_seasonal_effects": false,
+	"use_tropical_seasons": false,
+	"disable_crops": false
+}
+}

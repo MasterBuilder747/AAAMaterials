@@ -1,7 +1,4 @@
-package Main.Data.Material.Solid;
-
-import Main.Data.Material.AMaterialData;
-import Main.Data.Material.Material;
+package Main.Data.Material;
 
 public class Chemical extends AMaterialData {
     String symbol; //the chemical symbol, shown as tooltip for all parts

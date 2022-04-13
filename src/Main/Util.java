@@ -15,7 +15,7 @@ public class Util {
 
     //Strings
     public static String[] split(String s, String regex) {
-        if (s.equals("")) throw new IllegalArgumentException("No string specified to split!");
+        if (s.equals("")) return new String[0];
         return s.split(regex+"\\s*");
     }
 

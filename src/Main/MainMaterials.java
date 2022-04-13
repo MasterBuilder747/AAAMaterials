@@ -1,6 +1,7 @@
 package Main;
 
 import Main.Generators.*;
+import Main.Generators.GameData.GBiomeRegistry;
 import Main.Generators.GameData.GRegistry;
 import Main.Generators.Localized.GBlock;
 import Main.Generators.Localized.GItem;
@@ -133,6 +134,17 @@ public class MainMaterials {
         fw = new FileWriter(HOME + DEPLOY + "config/undergroundbiomes/ores/aaaores.json");
         bw = new BufferedWriter(fw);
         bw.write(ore.genUBJson());
+        bw.close();
+
+        GBiomeRegistry biomes = new GBiomeRegistry("biomeregistry");
+        biomes.registerMaterials();
+        GBiome biome = new GBiome("biome", biomes);
+        biome.registerMaterials();
+
+        //serene seasons biomes .json file
+        fw = new FileWriter(HOME + DEPLOY + "config/sereneseasons/biome_info.json");
+        bw = new BufferedWriter(fw);
+        bw.write(biome.genSeasons());
         bw.close();
 
         //CoT .lang file

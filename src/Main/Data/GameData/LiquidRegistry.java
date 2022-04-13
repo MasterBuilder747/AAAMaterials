@@ -30,7 +30,7 @@ public class LiquidRegistry extends AGameData {
     }
 
     @Override
-    protected String getUnlocalizedName() {
+    public String getUnlocalizedName() {
         return this.name;
     }
 
