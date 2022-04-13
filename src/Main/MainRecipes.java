@@ -1,6 +1,8 @@
 package Main;
 
 import Main.Generators.*;
+import Main.Generators.GameData.GLiquidRegistry;
+import Main.Generators.GameData.GRegistry;
 import Main.Generators.Localized.GBlock;
 import Main.Generators.Localized.GItem;
 import Main.Generators.Localized.GPart;
@@ -64,7 +66,7 @@ public class MainRecipes {
 //        CMolecule molecule = new CMolecule("moleculeComposition", element);
 //        bw.write(molecule.register());
 //        GCompound compound = new GCompound("compoundComposition", element);
-//        bw.write(compound.register());m
+//        bw.write(compound.register());
 
         //machine recipes, only used in MainRecipes
         GRecipe recipe = new GRecipe("recipe");

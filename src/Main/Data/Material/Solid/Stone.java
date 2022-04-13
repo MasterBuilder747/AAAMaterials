@@ -1,7 +1,7 @@
 package Main.Data.Material.Solid;
 
 import Main.Data.Material.Material;
-import Main.Data.Registry;
+import Main.Data.GameData.Registry;
 
 public class Stone extends AMSolid {
     boolean isSedimentary; //does not have cobblestone registered for UB

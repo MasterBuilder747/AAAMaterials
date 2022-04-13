@@ -1,7 +1,7 @@
 package Main.Data.Material;
 
 import Main.Data.Material.Solid.AMSolid;
-import Main.Data.Registry;
+import Main.Data.GameData.Registry;
 import Main.Json.JsonObject;
 import Main.Json.Value;
 import Main.Util;

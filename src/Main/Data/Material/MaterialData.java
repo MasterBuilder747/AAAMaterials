@@ -1,6 +1,6 @@
 package Main.Data.Material;
 
-import Main.Data.Registry;
+import Main.Data.GameData.Registry;
 
 //points a material part name to a registry
 //used primarily for existing items in the registry

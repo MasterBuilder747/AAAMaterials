@@ -2,10 +2,10 @@ package Main.Generators.Material.Solid;
 
 import Main.Data.Material.Material;
 import Main.Data.Material.Solid.Stone;
-import Main.Data.Registry;
+import Main.Data.GameData.Registry;
 import Main.Generators.GMaterial;
 import Main.Generators.GPartGroup;
-import Main.Generators.GRegistry;
+import Main.Generators.GameData.GRegistry;
 
 import java.util.ArrayList;
 

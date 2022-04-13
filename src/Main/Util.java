@@ -13,10 +13,59 @@ public class Util {
         return s.substring(0, 1).toUpperCase(Locale.ROOT) + s.substring(1);
     }
 
-    //split
+    //Strings
     public static String[] split(String s, String regex) {
         if (s.equals("")) throw new IllegalArgumentException("No string specified to split!");
         return s.split(regex+"\\s*");
+    }
+
+    public static boolean isNumberOld(String s) {
+        return (
+            s.contains("0") ||
+            s.contains("1") ||
+            s.contains("2") ||
+            s.contains("3") ||
+            s.contains("4") ||
+            s.contains("5") ||
+            s.contains("6") ||
+            s.contains("7") ||
+            s.contains("8") ||
+            s.contains("9") ||
+            s.contains("-0") ||
+            s.contains("-1") ||
+            s.contains("-2") ||
+            s.contains("-3") ||
+            s.contains("-4") ||
+            s.contains("-5") ||
+            s.contains("-6") ||
+            s.contains("-7") ||
+            s.contains("-8") ||
+            s.contains("-9")
+        );
+    }
+
+    public static boolean isNumber(String s) {
+        try {
+            Double.parseDouble(s);
+        } catch (NumberFormatException e) {
+            return false;
+        }
+        return true;
+    }
+
+
+
+    //chars
+    public static int amountOfChar(String s, char chr) {
+        //returns true if s contains count amount or greater of character chr
+        char[] chars = s.toCharArray();
+        int j = 0;
+        for (char c : chars) {
+            if (c == chr) {
+                j++;
+            }
+        }
+        return j;
     }
 
     //color conversions, alpha is ignored here

@@ -1,9 +1,8 @@
-package Main.Data;
+package Main.Data.GameData;
 
-import Main.Data.Localized.Liquid.ALiquid;
 import Main.Data.Localized.Liquid.LLiquid;
 
-public class LiquidRegistry extends AData {
+public class LiquidRegistry extends AGameData {
     int density;
     int temperature;
     int luminosity;
@@ -16,7 +15,7 @@ public class LiquidRegistry extends AData {
     //boolean isMaterial, String name, String localName, String color, int density, boolean gas,
     //int luminosity, int temperature, int viscosity, boolean vaporize, String tex, String blockMaterial
     public LiquidRegistry(String name, int density, int temperature, int viscosity, int luminosity, boolean isGaseous, String sourceBlock) {
-        super(name);
+        super(name, name);
         this.density = density;
         this.temperature = temperature;
         this.luminosity = luminosity;
@@ -25,10 +24,14 @@ public class LiquidRegistry extends AData {
         this.sourceBlock = sourceBlock;
     }
 
-    public String getCTLiquid() { return "<liquid:" + this.name + ">"; }
+    @Override
+    protected String getBracket() {
+        return "<liquid:" + this.name + ">";
+    }
 
-    public LLiquid createLiquid(String localName, String color) {
-        return new LLiquid(false, this.name, localName, color, this.density, this.luminosity, this.temperature, this.viscosity, this.isGaseous);
+    @Override
+    protected String getUnlocalizedName() {
+        return this.name;
     }
 
     @Override
@@ -36,13 +39,7 @@ public class LiquidRegistry extends AData {
 
     }
 
-    @Override
-    public String buildMaterial() {
-        return null;
-    }
-
-    @Override
-    public String buildRecipe() {
-        return null;
+    public LLiquid createLiquid(String localName, String color) {
+        return new LLiquid(false, this.name, localName, color, this.density, this.luminosity, this.temperature, this.viscosity, this.isGaseous);
     }
 }

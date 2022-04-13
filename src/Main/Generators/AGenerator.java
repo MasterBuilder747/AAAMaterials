@@ -128,9 +128,10 @@ public abstract class AGenerator<D extends AData> {
         throw new ParameterException(s, type, this.filename, this.line);
     }
     protected boolean parseBoolean(String s) {
-        if (s.equals("true")) {
+        String ss = s.toLowerCase();
+        if (ss.equals("true")) {
             return true;
-        } else if (s.equals("false")) {
+        } else if (ss.equals("false")) {
             return false;
         }
         this.paramError(s, "boolean");

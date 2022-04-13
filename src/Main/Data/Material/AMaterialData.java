@@ -1,7 +1,7 @@
 package Main.Data.Material;
 
 import Main.Data.AData;
-import Main.Data.Registry;
+import Main.Data.GameData.Registry;
 
 import java.util.ArrayList;
 

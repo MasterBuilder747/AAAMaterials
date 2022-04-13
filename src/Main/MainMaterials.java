@@ -1,6 +1,7 @@
 package Main;
 
 import Main.Generators.*;
+import Main.Generators.GameData.GRegistry;
 import Main.Generators.Localized.GBlock;
 import Main.Generators.Localized.GItem;
 import Main.Generators.Localized.GPart;
