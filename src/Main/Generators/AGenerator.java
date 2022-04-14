@@ -54,6 +54,7 @@ public abstract class AGenerator<D extends AData> {
                 sb.append("\n");
             }
         }
+        w.stop();
         System.out.println("completed in " + w.getMillis() + " ms");
         return sb.toString();
     }
@@ -73,6 +74,7 @@ public abstract class AGenerator<D extends AData> {
                 sb.append("\n");
             }
         }
+        w.stop();
         System.out.println("completed in " + w.getMillis() + " ms");
         return sb.toString();
     }

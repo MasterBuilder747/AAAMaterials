@@ -5,7 +5,36 @@ public class Tinkers extends AMaterialData {
     //the smelt parts must be registered before using this, so only buildRecipe will be used
     //ex: need to specify the molten liquid when melting parts, ingot used when repairing, etc
 
-    //make sure to add TinkerStages support as well
+    //TinkerStages:
+    /*
+    Prevents a material from being used by the player. Including crafting, part building, and using the tool.
+    // mods.TinkerStages.addMaterialStage(String stage, String material);
+
+    Prevents a specific tool type from being crafted at the tool station. For example, you can restrict the crafting of hammers until a specific stage.
+    // mods.TinkerStages.addToolTypeStage(String stage, String toolId);
+
+    Prevents a specific modifier from being applied to a tool or used.
+    // mods.TinkerStages.addModifierStage(String stage, String modifier);
+    */
+
+    //existing materials:
+    //traits:
+    //MaterialID:Parts:Trait1,Trait2,etc.
+
+    //material stats:
+    //tools:
+    //MaterialID:HeadDurability:MiningSpeed:AttackDamage:HarvestLevel:HandleModifier:HandleDurability:ExtraDurability:DrawSpeed:Range:BonusDamage
+    //fletching:
+    //MaterialID:Accuracy:Modifier
+    //bowstring:
+    //MaterialID:Modifier
+    //arrow shaft:
+    //MaterialID:Modifier:BonusAmmo
+    //armor:
+    //MaterialID:CoreDurability:Defense:Modifier:PlatesDurability:Toughness:ExtraDurability
+
+    //change amount of material required for each tool part:
+    //ModID:ItemID:MaterialCost
 
     //see: https://docs.blamejared.com/1.12/en/Mods/ContentTweaker/Tinkers_Construct/Material
     public Tinkers(Material m) {
