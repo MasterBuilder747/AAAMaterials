@@ -3,17 +3,15 @@ package Main.Generators;
 import Main.Data.AData;
 import Main.MainMaterials;
 import Main.Parameter.ParameterException;
+import Main.Stopwatch;
 import Main.Util;
 
-import javax.swing.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
 
-public abstract class AGenerator<D extends AData> implements ActionListener {
+public abstract class AGenerator<D extends AData> {
     //holds an arraylist and can generate code using it
     protected String filename; //the name of the file
     protected ArrayList<D> objects;
@@ -21,7 +19,6 @@ public abstract class AGenerator<D extends AData> implements ActionListener {
     protected String s1;
     protected String[] s;
     protected final int PARAMS;
-    long time; //time it takes during load
     //protected int numParams
 
     public AGenerator(int PARAMS, String filename) {
@@ -42,10 +39,9 @@ public abstract class AGenerator<D extends AData> implements ActionListener {
     }
 
     public String registerMaterials() throws IOException {
-        Timer t = new Timer(1, this);
-        t.setInitialDelay(0);
-        t.start();
+        Stopwatch w = new Stopwatch();
         System.out.print("Loading " + this.filename + "s.txt... ");
+        w.start();
         populateObjects();
         StringBuilder sb = new StringBuilder();
         if (objects.size() > 0) {
@@ -58,16 +54,13 @@ public abstract class AGenerator<D extends AData> implements ActionListener {
                 sb.append("\n");
             }
         }
-        System.out.println("completed in " + this.time + " ms");
-        this.time = 0;
-        t.stop();
+        System.out.println("completed in " + w.getMillis() + " ms");
         return sb.toString();
     }
     public String registerRecipes() throws IOException {
-        Timer t = new Timer(1, this);
-        t.setInitialDelay(0);
-        t.start();
+        Stopwatch w = new Stopwatch();
         System.out.print("Loading " + this.filename + "s.txt... ");
+        w.start();
         populateObjects();
         StringBuilder sb = new StringBuilder();
         if (objects.size() > 0) {
@@ -80,6 +73,7 @@ public abstract class AGenerator<D extends AData> implements ActionListener {
                 sb.append("\n");
             }
         }
+        System.out.println("completed in " + w.getMillis() + " ms");
         return sb.toString();
     }
     protected void readFile(BufferedReader br) throws IOException {
@@ -168,10 +162,5 @@ public abstract class AGenerator<D extends AData> implements ActionListener {
             this.paramError(s, "double");
         }
         return out;
-    }
-
-    @Override
-    public void actionPerformed(ActionEvent e) {
-        this.time++;
     }
 }
