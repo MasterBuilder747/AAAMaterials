@@ -106,7 +106,7 @@ var semi_conductive_parts = ["boule", "infused_boule", "wafer", "infused_wafer"]
 var wood_parts = ["wood_plate", "stick", "long_stick"] as string[];
 var stone_parts = ["pebble"] as string[];
 
-# -materials
+# -`materials
 var oak = MaterialSystem.getMaterialBuilder().setName("Oak").setColor(Color.fromHex("966f35")).build();
 var spruce = MaterialSystem.getMaterialBuilder().setName("Spruce").setColor(Color.fromHex("734712")).build();
 var birch = MaterialSystem.getMaterialBuilder().setName("Birch").setColor(Color.fromHex("e0d1a4")).build();
@@ -420,14 +420,43 @@ jungle.registerParts(dust_parts);
 acacia.registerParts(dust_parts);
 dark_oak.registerParts(dust_parts);
 iron.registerParts(dust_parts);
+zinc.registerParts(dust_parts);
+tin.registerParts(dust_parts);
+lead.registerParts(dust_parts);
+nickel.registerParts(dust_parts);
+platinum.registerParts(dust_parts);
+tungsten.registerParts(dust_parts);
+iridium.registerParts(dust_parts);
+osmium.registerParts(dust_parts);
+lumium.registerParts(dust_parts);
+signalum.registerParts(dust_parts);
+enderium.registerParts(dust_parts);
+bronze.registerParts(dust_parts);
+brass.registerParts(dust_parts);
+aluminum_brass.registerParts(dust_parts);
+tungstensteel.registerParts(dust_parts);
 polyethylene.registerParts(dust_parts);
 rubber.registerParts(dust_parts);
 
 # -liquids
 genFluid("cotm_iron_molten", "d9d7d9", 6000, false, 1, 1000, 6000, false, "contenttweaker:fluids/molten", "contenttweaker:fluids/molten_flowing", <blockmaterial:lava>);
-genFluid("cotm_lumium_molten", "ffffb6", 6000, false, 1, 1000, 6000, false, "contenttweaker:fluids/molten", "contenttweaker:fluids/molten_flowing", <blockmaterial:lava>);
 genFluid("cotm_polyethylene_molten", "a8a59d", 6000, false, 1, 1000, 5000, false, "contenttweaker:fluids/molten", "contenttweaker:fluids/molten_flowing", <blockmaterial:lava>);
 genFluid("cotm_rubber_molten", "4a473f", 6000, false, 1, 1000, 4000, false, "contenttweaker:fluids/molten", "contenttweaker:fluids/molten_flowing", <blockmaterial:lava>);
+genFluid("cotm_zinc_molten", "dae5e8", 6000, false, 1, 1000, 4000, false, "contenttweaker:fluids/molten", "contenttweaker:fluids/molten_flowing", <blockmaterial:lava>);
+genFluid("cotm_tin_molten", "2d73ff", 6000, false, 1, 1000, 4000, false, "contenttweaker:fluids/molten", "contenttweaker:fluids/molten_flowing", <blockmaterial:lava>);
+genFluid("cotm_lead_molten", "9771ab", 6000, false, 1, 1000, 4000, false, "contenttweaker:fluids/molten", "contenttweaker:fluids/molten_flowing", <blockmaterial:lava>);
+genFluid("cotm_nickel_molten", "e6d6aa", 6000, false, 1, 1000, 4000, false, "contenttweaker:fluids/molten", "contenttweaker:fluids/molten_flowing", <blockmaterial:lava>);
+genFluid("cotm_platinum_molten", "ced7db", 6000, false, 1, 1000, 4000, false, "contenttweaker:fluids/molten", "contenttweaker:fluids/molten_flowing", <blockmaterial:lava>);
+genFluid("cotm_tungsten_molten", "101024", 6000, false, 1, 1000, 4000, false, "contenttweaker:fluids/molten", "contenttweaker:fluids/molten_flowing", <blockmaterial:lava>);
+genFluid("cotm_iridium_molten", "edfffd", 6000, false, 1, 1000, 4000, false, "contenttweaker:fluids/molten", "contenttweaker:fluids/molten_flowing", <blockmaterial:lava>);
+genFluid("cotm_osmium_molten", "0000ff", 6000, false, 1, 1000, 4000, false, "contenttweaker:fluids/molten", "contenttweaker:fluids/molten_flowing", <blockmaterial:lava>);
+genFluid("cotm_lumium_molten", "ffffb6", 6000, false, 1, 1000, 4000, false, "contenttweaker:fluids/molten", "contenttweaker:fluids/molten_flowing", <blockmaterial:lava>);
+genFluid("cotm_signalum_molten", "fe3a01", 6000, false, 1, 1000, 4000, false, "contenttweaker:fluids/molten", "contenttweaker:fluids/molten_flowing", <blockmaterial:lava>);
+genFluid("cotm_enderium_molten", "008839", 6000, false, 1, 1000, 4000, false, "contenttweaker:fluids/molten", "contenttweaker:fluids/molten_flowing", <blockmaterial:lava>);
+genFluid("cotm_bronze_molten", "ff881a", 6000, false, 1, 1000, 4000, false, "contenttweaker:fluids/molten", "contenttweaker:fluids/molten_flowing", <blockmaterial:lava>);
+genFluid("cotm_brass_molten", "f2b600", 6000, false, 1, 1000, 4000, false, "contenttweaker:fluids/molten", "contenttweaker:fluids/molten_flowing", <blockmaterial:lava>);
+genFluid("cotm_aluminum_brass_molten", "f2d048", 6000, false, 1, 1000, 4000, false, "contenttweaker:fluids/molten", "contenttweaker:fluids/molten_flowing", <blockmaterial:lava>);
+genFluid("cotm_tungstensteel_molten", "1b2431", 6000, false, 1, 1000, 4000, false, "contenttweaker:fluids/molten", "contenttweaker:fluids/molten_flowing", <blockmaterial:lava>);
 
 # -woods
 oak.registerParts(wood_parts);
@@ -462,16 +491,76 @@ shale.registerParts(stone_parts);
 siltstone.registerParts(stone_parts);
 
 # -metals
+zinc.registerParts(smelt_parts);
+zinc.registerParts(machine_parts);
+zinc.registerParts(blast_parts);
+zinc.registerParts(conductive_parts);
+tin.registerParts(smelt_parts);
+tin.registerParts(machine_parts);
+tin.registerParts(blast_parts);
+tin.registerParts(conductive_parts);
 iron.registerParts(smelt_parts);
 iron.registerParts(machine_parts);
 iron.registerParts(blast_parts);
 iron.registerParts(conductive_parts);
+lead.registerParts(smelt_parts);
+lead.registerParts(machine_parts);
+lead.registerParts(blast_parts);
+lead.registerParts(conductive_parts);
+nickel.registerParts(smelt_parts);
+nickel.registerParts(machine_parts);
+nickel.registerParts(blast_parts);
+nickel.registerParts(conductive_parts);
+platinum.registerParts(smelt_parts);
+platinum.registerParts(machine_parts);
+platinum.registerParts(blast_parts);
+platinum.registerParts(conductive_parts);
+tungsten.registerParts(smelt_parts);
+tungsten.registerParts(machine_parts);
+tungsten.registerParts(blast_parts);
+tungsten.registerParts(conductive_parts);
+tungsten.registerParts(smelt_parts);
+tungsten.registerParts(machine_parts);
+tungsten.registerParts(blast_parts);
+tungsten.registerParts(conductive_parts);
+iridium.registerParts(smelt_parts);
+iridium.registerParts(machine_parts);
+iridium.registerParts(blast_parts);
+iridium.registerParts(conductive_parts);
+osmium.registerParts(smelt_parts);
+osmium.registerParts(machine_parts);
+osmium.registerParts(blast_parts);
+osmium.registerParts(conductive_parts);
 
 # -alloys
 lumium.registerParts(smelt_parts);
 lumium.registerParts(machine_parts);
 lumium.registerParts(blast_parts);
 lumium.registerParts(conductive_parts);
+signalum.registerParts(smelt_parts);
+signalum.registerParts(machine_parts);
+signalum.registerParts(blast_parts);
+signalum.registerParts(conductive_parts);
+enderium.registerParts(smelt_parts);
+enderium.registerParts(machine_parts);
+enderium.registerParts(blast_parts);
+enderium.registerParts(conductive_parts);
+bronze.registerParts(smelt_parts);
+bronze.registerParts(machine_parts);
+bronze.registerParts(blast_parts);
+bronze.registerParts(conductive_parts);
+brass.registerParts(smelt_parts);
+brass.registerParts(machine_parts);
+brass.registerParts(blast_parts);
+brass.registerParts(conductive_parts);
+aluminum_brass.registerParts(smelt_parts);
+aluminum_brass.registerParts(machine_parts);
+aluminum_brass.registerParts(blast_parts);
+aluminum_brass.registerParts(conductive_parts);
+tungstensteel.registerParts(smelt_parts);
+tungstensteel.registerParts(machine_parts);
+tungstensteel.registerParts(blast_parts);
+tungstensteel.registerParts(conductive_parts);
 
 # -plastics
 polyethylene.registerParts(plastic_parts);

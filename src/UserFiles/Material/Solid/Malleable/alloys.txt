@@ -1,0 +1,8 @@
+/material, addSmelt, addMachine, addBlast, addConductive
+lumium, true, true, true, true
+signalum, true, true, true, true
+enderium, true, true, true, true
+bronze, true, true, true, true
+brass, true, true, true, true
+aluminum_brass, true, true, true, true
+tungstensteel, true, true, true, true

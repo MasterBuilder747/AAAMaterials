@@ -9,6 +9,7 @@ import Main.Data.GameData.Registry;
 import Main.Generators.GMaterial;
 import Main.Generators.GPartGroup;
 import Main.Generators.GameData.GRegistry;
+import Main.Generators.Material.GMSolid;
 import Main.Json.Builder;
 import Main.Json.JsonObject;
 import Main.Util;

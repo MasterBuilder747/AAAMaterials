@@ -6,6 +6,7 @@ import Main.Data.Material.MSolid;
 import Main.Generators.GMaterial;
 import Main.Generators.GPartGroup;
 import Main.Generators.Material.AGMaterialData;
+import Main.Generators.Material.GMSolid;
 
 public abstract class AGMSolid <S extends AMSolid> extends AGMaterialData<S> {
     GMSolid solid;
@@ -14,7 +15,14 @@ public abstract class AGMSolid <S extends AMSolid> extends AGMaterialData<S> {
     boolean isPowder;
 
     public AGMSolid(int params, String filename, GMaterial material, GPartGroup partGroup, GMSolid solid, boolean isDust, boolean isFineDust, boolean isPowder) {
-        super(params, filename, material, partGroup);
+        super(params, filename, material, partGroup, "Solid");
+        this.solid = solid;
+        this.isDust = isDust;
+        this.isFineDust = isFineDust;
+        this.isPowder = isPowder;
+    }
+    public AGMSolid(int params, String filename, GMaterial material, GPartGroup partGroup, GMSolid solid, boolean isDust, boolean isFineDust, boolean isPowder, String solidFolder) {
+        super(params, filename, material, partGroup, "Solid/"+solidFolder);
         this.solid = solid;
         this.isDust = isDust;
         this.isFineDust = isFineDust;

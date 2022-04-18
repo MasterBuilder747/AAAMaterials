@@ -6,7 +6,7 @@ import java.io.IOException;
 
 public class dupeTraits {
     public static void main(String[] args) throws IOException {
-        FileReader fr = new FileReader(MainMaterials.HOME + "traits.txt");
+        FileReader fr = new FileReader(MainMaterials.HOME + "UserFiles/traits.txt");
         BufferedReader br = new BufferedReader(fr);
         String s1 = br.readLine();;
         while(true) {

@@ -3,6 +3,8 @@ package Main.Data.Material;
 import Main.Data.AData;
 import Main.Data.Localized.LFood;
 import Main.Data.Material.Liquid.*;
+import Main.Data.Material.Liquid.MachineResource.MachineData;
+import Main.Data.Material.Liquid.MachineResource.MachineMatter;
 import Main.Data.Material.Solid.*;
 import Main.Data.Material.Solid.Malleable.Alloy;
 import Main.Data.Material.Solid.Malleable.Metal;

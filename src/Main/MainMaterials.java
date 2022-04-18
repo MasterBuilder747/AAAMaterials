@@ -9,6 +9,7 @@ import Main.Generators.Localized.Liquid.GGas;
 import Main.Generators.Localized.Liquid.GLiquid;
 import Main.Generators.Localized.Liquid.GMolten;
 import Main.Generators.Localized.Liquid.GPlasma;
+import Main.Generators.Material.GMSolid;
 import Main.Generators.Material.Liquid.GMGas;
 import Main.Generators.Material.Liquid.GMLiquid;
 import Main.Generators.Material.Liquid.GMPlasma;
@@ -29,6 +30,7 @@ public class MainMaterials {
     private final static String MAC = "/Users/jaudras/IdeaProjects/AAAMaterials/src/";
     public final static String HOME = Detector.isMac() ? MAC : PC;
     public final static String DEPLOY = "Deployment/";
+    public final static String Files = "UserFiles/";
 
     public static void main(String[] args) throws IOException {
 
@@ -94,7 +96,7 @@ public class MainMaterials {
         bw.write(element.registerMaterials());
 
         //3. the materials
-        GMaterial material = new GMaterial("material");
+        GMaterial material = new GMaterial("`material");
         bw.write(material.registerMaterials());
 
         //4. material states

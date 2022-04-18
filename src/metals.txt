@@ -1,2 +1,0 @@
-/material, addSmelt, addMachine, addBlast, addConductive
-iron, true, true, true, true

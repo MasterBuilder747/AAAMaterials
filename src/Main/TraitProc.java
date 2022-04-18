@@ -9,7 +9,7 @@ public class TraitProc {
     public final static String HOME = Detector.isMac() ? MAC : PC;
 
     public static void main(String[] args) throws IOException {
-        FileReader fr = new FileReader(HOME + "TiCtraits.txt");
+        FileReader fr = new FileReader(HOME + "UserFiles/TiCtraits.txt");
         BufferedReader br = new BufferedReader(fr);
         ArrayList<String> tic = new ArrayList<>();
         while (true) {
@@ -20,7 +20,7 @@ public class TraitProc {
                 break;
             }
         }
-        fr = new FileReader(HOME + "traitt.txt");
+        fr = new FileReader(HOME + "UserFiles/traitt.txt");
         br = new BufferedReader(fr);
         while (true) {
             String s = br.readLine();

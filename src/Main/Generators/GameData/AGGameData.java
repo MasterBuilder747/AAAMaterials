@@ -12,7 +12,7 @@ public abstract class AGGameData<G extends AGameData> extends AGenerator<G> {
     final int minParams;
 
     public AGGameData(int PARAMS, String filename, int minParams) {
-        super(PARAMS, filename);
+        super(PARAMS, filename, "Registry");
         this.minParams = minParams;
     }
 

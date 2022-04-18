@@ -1,4 +1,6 @@
-package Main.Data.Material.Liquid;
+package Main.Data.Material.Liquid.MachineResource;
+
+import Main.Data.Localized.Liquid.LLiquid;
 
 public class MachineData extends AMMachineResource {
     /*

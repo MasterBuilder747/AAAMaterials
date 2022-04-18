@@ -6,7 +6,7 @@ import Main.Data.Material.Material;
 import Main.Generators.GMaterial;
 import Main.Generators.GPartGroup;
 import Main.Generators.Material.Liquid.GMLiquid;
-import Main.Generators.Material.Solid.GMSolid;
+import Main.Generators.Material.GMSolid;
 
 public class GPlastic extends AGMalleable<Plastic> {
     public GPlastic(String filename, GMaterial material, GPartGroup partGroup, GMLiquid liquid, GMSolid solid) {

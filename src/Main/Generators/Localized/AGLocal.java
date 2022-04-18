@@ -9,7 +9,10 @@ import java.io.IOException;
 public abstract class AGLocal<L extends ALocalizedData> extends AGenerator<L> {
     //a variant of Generator that implements localized data
     public AGLocal(int params, String filename) {
-        super(params+2, "custom-"+filename);
+        super(params+2, "custom-"+filename, "Custom");
+    }
+    public AGLocal(int params, String filename, String localFolder) {
+        super(params+2, "custom-"+filename, "Custom/"+localFolder);
     }
 
     @Override

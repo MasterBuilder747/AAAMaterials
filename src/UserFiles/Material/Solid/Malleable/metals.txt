@@ -1,0 +1,11 @@
+/material, addSmelt, addMachine, addBlast, addConductive
+zinc, true, true, true, true
+tin, true, true, true, true
+iron, true, true, true, true
+lead, true, true, true, true
+nickel, true, true, true, true
+platinum, true, true, true, true
+tungsten, true, true, true, true
+tungsten, true, true, true, true
+iridium, true, true, true, true
+osmium, true, true, true, true

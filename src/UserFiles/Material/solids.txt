@@ -40,6 +40,22 @@ acacia, true, false, false, =
 dark_oak, true, false, false, =
 /metals:
 iron, true, false, false, =
+zinc, true, false, false, =
+tin, true, false, false, =
+lead, true, false, false, =
+nickel, true, false, false, =
+platinum, true, false, false, =
+tungsten, true, false, false, =
+iridium, true, false, false, =
+osmium, true, false, false, =
+/alloys:
+lumium, true, false, false, =
+signalum, true, false, false, =
+enderium, true, false, false, =
+bronze, true, false, false, =
+brass, true, false, false, =
+aluminum_brass, true, false, false, =
+tungstensteel, true, false, false, =
 /plastics:
 polyethylene, true, false, false, =
 /rubbers:

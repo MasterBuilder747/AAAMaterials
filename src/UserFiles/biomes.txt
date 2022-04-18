@@ -1,0 +1,96 @@
+/localizedName, boolean enableSeasons, boolean tropical, boolean crops
+Ocean, false, false, true
+Plains, true, false, true
+Desert, false, false, true
+River, true, false, true
+Hell, false, false, true
+The End, false, false, false
+FrozenOcean, false, false, true
+FrozenRiver, true, false, true
+Ice Plains, true, false, true
+Ice Mountains, true, false, true
+MushroomIsland, true, false, true
+MushroomIslandShore, true, false, true
+Beach, false, false, true
+DesertHills, false, false, true
+Jungle, true, true, true
+JungleHills, true, true, true
+JungleEdge, true, true, true
+Deep Ocean, false, false, true
+Stone Beach, false, false, true
+Cold Beach, false, false, true
+Mega Taiga, true, false, true
+Mega Taiga Hills, true, false, true
+Savanna, true, false, true
+Savanna Plateau, true, false, true
+Mesa, true, false, true
+Mesa Plateau F, true, false, true
+Mesa Plateau, true, false, true
+Gravel Beach, false, false, true
+White Beach, false, false, true
+Alps, false, false, true
+Bamboo Forest, true, true, true
+Bayou, true, false, true
+Bog, true, false, true
+Boreal Forest, true, false, true
+Brushland, true, false, true
+Chaparral, true, false, true
+Cherry Blossom Grove, true, false, true
+Cold Desert, false, false, true
+Coniferous Forest, true, false, true
+Crag, true, false, true
+Eucalyptus Forest, true, true, true
+Fen, true, false, true
+Flower Field, true, false, true
+Grove, true, false, true
+Highland, true, false, true
+Land of Lakes, true, false, true
+Lavender Fields, true, false, true
+Lush Desert, true, false, true
+Mangrove, true, false, true
+Marsh, true, false, true
+Moor, true, false, true
+Mountain, true, false, true
+Orchard, true, false, true
+Outback, true, false, true
+Overgrown Cliffs, true, true, true
+Prairie, true, false, true
+RedwoodForest, true, false, true
+Seasonal Forest, true, false, true
+Shield, true, false, true
+Snowy Coniferous Forest, true, false, true
+Temperate Rainforest, true, false, true
+Tropical Rainforest, true, true, true
+Tundra, true, false, true
+Wetland, true, false, true
+Woodland, true, false, true
+Xeric Shrubland, true, false, true
+AlpsFoothills, false, false, true
+MountainFoothills, true, false, true
+RedwoodForestEdge, true, false, true
+Pasture, true, false, true
+Glacier, false, false, true
+Oasis, false, false, true
+SnowyTundra, true, false, true
+Coral Reef, false, false, true
+Kelp Forest, true, false, true
+Tropical Island, false, true, true
+Volcanic Island, false, false, true
+Flower Island, false, false, true
+Corrupted Sands, false, false, true
+Phantasmagoric Inferno, false, false, true
+Undergarden, false, false, true
+Visceral Heap, false, false, true
+Sunflower Plains, true, false, true
+Desert M, false, false, true
+Flower Forest, true, false, true
+Ice Plains Spikes, true, false, true
+Jungle M, true, true, true
+JungleEdge M, true, true, true
+Mega Spruce Taiga, true, false, true
+Redwood Taiga Hills M, true, false, true
+Savanna M, true, false, true
+Savanna Plateau M, true, false, true
+Mesa (Bryce), true, false, true
+Mesa Plateau F M, true, false, true
+Mesa Plateau M, true, false, true

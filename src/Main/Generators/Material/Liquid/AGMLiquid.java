@@ -9,7 +9,7 @@ public abstract class AGMLiquid <L extends AMLiquid> extends AGMaterialData<L> {
 
     public AGMLiquid(int params, String filename, GMaterial material) {
         //part groups are only used with solid material datas
-        super(params, filename, material, null);
+        super(params, filename, material, null, "Liquid");
     }
 
     protected abstract void readMaterialParameters(Material m, String[] s);

@@ -6,6 +6,7 @@ import Main.Data.GameData.Registry;
 import Main.Generators.GMaterial;
 import Main.Generators.GPartGroup;
 import Main.Generators.GameData.GRegistry;
+import Main.Generators.Material.GMSolid;
 
 import java.util.ArrayList;
 

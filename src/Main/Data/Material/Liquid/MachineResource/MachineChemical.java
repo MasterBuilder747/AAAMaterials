@@ -1,4 +1,4 @@
-package Main.Data.Material.Liquid;
+package Main.Data.Material.Liquid.MachineResource;
 
 import Main.Data.Localized.Liquid.ALiquid;
 

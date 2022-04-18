@@ -1,3 +1,0 @@
-/localizedName, boolean enableSeasons, boolean tropical, boolean crops
-Plains, true, false, true
-Desert, false, false, true

@@ -1,4 +1,6 @@
-package Main.Data.Material.Liquid;
+package Main.Data.Material.Liquid.MachineResource;
+
+import Main.Data.Material.Liquid.AMLiquid;
 
 public class AMMachineResource extends AMLiquid {
     public AMMachineResource() {

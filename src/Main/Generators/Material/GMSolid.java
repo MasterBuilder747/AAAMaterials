@@ -1,10 +1,9 @@
-package Main.Generators.Material.Solid;
+package Main.Generators.Material;
 
 import Main.Data.Material.Material;
 import Main.Data.Material.MSolid;
 import Main.Generators.GMaterial;
 import Main.Generators.GPartGroup;
-import Main.Generators.Material.AGMaterialData;
 
 public class GMSolid extends AGMaterialData<MSolid> {
     GPartGroup partGroup;

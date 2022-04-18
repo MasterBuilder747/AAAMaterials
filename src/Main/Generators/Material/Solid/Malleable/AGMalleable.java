@@ -7,14 +7,14 @@ import Main.Generators.GMaterial;
 import Main.Generators.GPartGroup;
 import Main.Generators.Material.Liquid.GMLiquid;
 import Main.Generators.Material.Solid.AGMSolid;
-import Main.Generators.Material.Solid.GMSolid;
+import Main.Generators.Material.GMSolid;
 
 public abstract class AGMalleable <M extends AMSolid> extends AGMSolid<M> {
     GMLiquid liquid;
 
     public AGMalleable(int params, String filename, GMaterial material, GPartGroup partGroup, GMLiquid liquid,
                        GMSolid solid, boolean isDust, boolean isFineDust, boolean isPowder) {
-        super(params, filename, material, partGroup, solid, isDust, isFineDust, isPowder);
+        super(params, filename, material, partGroup, solid, isDust, isFineDust, isPowder, "Malleable");
         this.liquid = liquid;
     }
 

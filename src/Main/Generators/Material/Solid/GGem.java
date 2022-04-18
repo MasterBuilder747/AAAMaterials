@@ -4,6 +4,7 @@ import Main.Data.Material.Solid.Gem;
 import Main.Data.Material.Material;
 import Main.Generators.GMaterial;
 import Main.Generators.GPartGroup;
+import Main.Generators.Material.GMSolid;
 
 public class GGem extends AGMSolid<Gem>{
     public GGem(String filename, GMaterial material, GPartGroup partGroup, GMSolid solid) {

@@ -19,17 +19,25 @@ public abstract class AGenerator<D extends AData> {
     protected String s1;
     protected String[] s;
     protected final int PARAMS;
+    protected final String SUBFOLDER; //optional subfolder for user specified files for organization
     //protected int numParams
 
     public AGenerator(int PARAMS, String filename) {
         this.PARAMS = PARAMS;
         this.filename = filename;
+        this.SUBFOLDER = "";
+        objects = new ArrayList<>();
+    }
+    public AGenerator(int PARAMS, String filename, String SUBFOLDER) {
+        this.PARAMS = PARAMS;
+        this.filename = filename;
+        this.SUBFOLDER = SUBFOLDER;
         objects = new ArrayList<>();
     }
 
     private void populateObjects() throws IOException {
         //read: populate the ArrayList
-        FileReader fr = new FileReader(MainMaterials.HOME + this.filename.toLowerCase() + "s.txt");
+        FileReader fr = new FileReader(MainMaterials.HOME + MainMaterials.Files + this.SUBFOLDER + "/" + this.filename.toLowerCase() + "s.txt");
         BufferedReader br = new BufferedReader(fr);
         readFile(br);
         fr.close();
