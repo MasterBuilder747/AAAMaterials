@@ -1,4 +1,4 @@
-package Main.Recipe;
+package Main.Data.Recipe;
 
 import Main.Data.AData;
 
@@ -72,21 +72,20 @@ public class MachineRecipe extends AData {
         reci.addFluidOutput(ILiquidStack stack);
         reci.build();
         */
-        if (this.tier < 1 || this.tier > 15) {
-            throw new IllegalArgumentException("For recipe" + this.name + ": voltage tier must be between 1 and 15");
-        }
         StringBuilder sb = new StringBuilder();
         this.realTier = this.tier;
         if (this.realTier < 5) { //LV-EV
             this.realName = this.name+"_basic";
             sb.append(buildMain((int)((8 * Math.pow(4, this.realTier-1)) * this.powerMultiplier)));
             this.realTier = 5;
+            sb.append(this.realName).append(".build();\n");
         }
         if (this.realTier < 9) { //IV-UV
             this.realName = this.name+"_advanced";
             sb.append(buildMain((int)((8 * Math.pow(4, this.realTier-1)) * this.powerMultiplier)));
             sb.append(buildChemicals());
             this.realTier = 9;
+            sb.append(this.realName).append(".build();\n");
         }
         if (this.realTier < 13) { //UMV-UIV
             this.realName = this.name+"_industrial";
@@ -94,6 +93,7 @@ public class MachineRecipe extends AData {
             sb.append(buildChemicals());
             sb.append(buildData());
             this.realTier = 13;
+            sb.append(this.realName).append(".build();\n");
         }
         if (this.realTier < 15) { //ULV-UZV (2 realTiers)
             this.realName = this.name+"_ultimate";
@@ -101,6 +101,7 @@ public class MachineRecipe extends AData {
             sb.append(buildChemicals());
             sb.append(buildData());
             sb.append(buildMatter());
+            sb.append(this.realName).append(".build();\n\n");
         }
         if (this.realTier == 15) { //final realTier, must be 2 or 1 billion power
             this.realName = this.name+"_ultimate";
@@ -108,8 +109,8 @@ public class MachineRecipe extends AData {
             sb.append(buildChemicals());
             sb.append(buildData());
             sb.append(buildMatter());
+            sb.append(this.realName).append(".build();\n\n");
         }
-        sb.append(this.realName).append(".build();\n\n");
         return sb.toString();
     }
 
@@ -189,8 +190,9 @@ public class MachineRecipe extends AData {
         }
         return sb.toString();
     }
+    //later on, there will be multiple tiers of data (depending on the amount of machine tiers of data generators
     private String buildData() {
-        return this.realName + ".addFluidInput(<liquid:data> * " + this.dataIn + ");\n";
+        return this.realName + ".addFluidInput(<liquid:cotc_data> * " + this.dataIn + ");\n";
     }
     private String buildMatter() {
         StringBuilder sb = new StringBuilder();
@@ -202,9 +204,9 @@ public class MachineRecipe extends AData {
             }
             if (s.charAt(0) == '-') {
                 //<liquid:[polarity][color]matter> * someAmount
-                sb.append(this.realName).append(".addFluidInput(<liquid:neg").append(s, 1, s.indexOf("*")).append("matter> * ").append(s.substring(s.indexOf("*")+1)).append(");\n");
+                sb.append(this.realName).append(".addFluidInput(<liquid:cotc_neg").append(s, 1, s.indexOf("*")).append("_matter> * ").append(s.substring(s.indexOf("*")+1)).append(");\n");
             } else if (s.charAt(0) == '+') {
-                sb.append(this.realName).append(".addFluidInput(<liquid:pos").append(s, 1, s.indexOf("*")).append("matter> * ").append(s.substring(s.indexOf("*")+1)).append(");\n");
+                sb.append(this.realName).append(".addFluidInput(<liquid:cotc_pos").append(s, 1, s.indexOf("*")).append("_matter> * ").append(s.substring(s.indexOf("*")+1)).append(");\n");
             } else {
                 throw new IllegalArgumentException("Matter property must contain polarity denoted by (-/+) as the first character");
             }
@@ -212,9 +214,9 @@ public class MachineRecipe extends AData {
         for (String s : this.matterOut) {
             if (s.charAt(0) == '-') {
                 //<liquid:[polarity][color]matter> * someAmount
-                sb.append(this.realName).append(".addFluidOutput(<liquid:neg").append(s, 1, s.indexOf("*")).append("matter> * ").append(s.substring(s.indexOf("*")+1)).append(");\n");
+                sb.append(this.realName).append(".addFluidOutput(<liquid:cotc_neg").append(s, 1, s.indexOf("*")).append("_matter> * ").append(s.substring(s.indexOf("*")+1)).append(");\n");
             } else if (s.charAt(0) == '+') {
-                sb.append(this.realName).append(".addFluidOutput(<liquid:pos").append(s, 1, s.indexOf("*")).append("matter> * ").append(s.substring(s.indexOf("*")+1)).append(");\n");
+                sb.append(this.realName).append(".addFluidOutput(<liquid:cotc_pos").append(s, 1, s.indexOf("*")).append("_matter> * ").append(s.substring(s.indexOf("*")+1)).append(");\n");
             } else {
                 throw new IllegalArgumentException("Matter property must contain polarity denoted by (-/+) as the first character");
             }

@@ -1,7 +1,6 @@
 /these are custom recipes that the user might add
 /[]means follow the semicolon(;) separated strings
-/machineName, recipeName(see below), int tier, int time, double powerMultiplier(0.5 or 1.0),
+/machineName, int tier, int time, double powerMultiplier(0.5 or 1.0),
 /itemIn1; itemIn2; ..., liquidIn[], itemOut[], liquidOut[], chemicalIn[], chemicalOut[],
 /int dataIn, [-/+]matterIn * amount[], [-/+]matterOut * amount[], optional-int priority
-/recipeName follows this format: machineName+ID+machineTier without the +
-basic, 1, 20, 1.0, ore:ingotIron; minecraft:wool:2 * 5, water, minecraft:gold_ingot * 2, lava, hydrogen, oxygen, 1000, -red*100, +orange*10, 0
+basic, 1, 20, 1.0, ore:ingotIron; minecraft:wool:4 * 5, water, minecraft:gold_ingot * 2, lava, hydrogen, oxygen, 1000, -red*100, +orange*10, 0

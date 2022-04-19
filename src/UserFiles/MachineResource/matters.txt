@@ -1,0 +1,16 @@
+white, ffffff
+pink, ffadc1
+red, ff1500
+orange, ff9000
+yellow, fff600
+lime, 5dff00
+green, 204f20
+cyan, 1dbad6
+lblue, 00d8ff
+blue, 0000ff
+magenta, e900ff
+purple, bb00ff
+brown, 59442f
+lgray, cccccc
+gray, 848383
+black, 000000

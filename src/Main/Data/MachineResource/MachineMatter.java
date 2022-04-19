@@ -1,8 +1,44 @@
-package Main.Data.Material.Liquid.MachineResource;
+package Main.Data.MachineResource;
 
-import Main.Data.Localized.Liquid.LPlasma;
+import Main.Data.Localized.Liquid.ALiquid;
 
-public class MachineMatter extends AMMachineResource {
+public class MachineMatter extends AMachineResource {
+    ALiquid pos;
+    ALiquid neg;
+
+    public MachineMatter(String color, ALiquid pos, ALiquid neg) {
+        super(color);
+        this.pos = pos;
+        this.neg = neg;
+    }
+
+    public String getPos() {
+        return this.pos.getUnlocalizedName();
+    }
+    public String getNegs() {
+        return this.neg.getUnlocalizedName();
+    }
+
+    @Override
+    public String buildMaterial() {
+        return this.pos.buildMaterial() + this.neg.buildMaterial();
+    }
+
+    @Override
+    public String buildRecipe() {
+        return null;
+    }
+
+    @Override
+    public void print() {
+
+    }
+
+    @Override
+    public String localize() {
+        return this.pos.localize() + this.neg.localize();
+    }
+
     /*
 
     every machine in the endgame requires matter to run, or produces it
@@ -79,8 +115,4 @@ public class MachineMatter extends AMMachineResource {
     infinity QGP * 4 > 1s of 2.1B 2147483647
 
     */
-
-    public MachineMatter(String colorName, String colorLocalName, String colorValue) {
-        this.l = new LPlasma(true, colorName+"_matter", colorLocalName+" Matter", colorValue, 1000, 15, 15000, 10000, false);
-    }
 }

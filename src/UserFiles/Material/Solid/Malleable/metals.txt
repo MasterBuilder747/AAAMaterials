@@ -6,6 +6,5 @@ lead, true, true, true, true
 nickel, true, true, true, true
 platinum, true, true, true, true
 tungsten, true, true, true, true
-tungsten, true, true, true, true
 iridium, true, true, true, true
 osmium, true, true, true, true

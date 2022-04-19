@@ -9,6 +9,10 @@ import Main.Generators.Localized.Liquid.GGas;
 import Main.Generators.Localized.Liquid.GLiquid;
 import Main.Generators.Localized.Liquid.GMolten;
 import Main.Generators.Localized.Liquid.GPlasma;
+import Main.Generators.MachineResource.GMachine;
+import Main.Generators.MachineResource.GMachineChemical;
+import Main.Generators.MachineResource.GMachineData;
+import Main.Generators.MachineResource.GMachineMatter;
 import Main.Generators.Material.GMSolid;
 import Main.Generators.Material.Liquid.GMGas;
 import Main.Generators.Material.Liquid.GMLiquid;
@@ -67,12 +71,25 @@ public class MainMaterials {
                 import mods.contenttweaker.Block;
                 import mods.contenttweaker.Color;
                 
+                #priority 900
+                
                 # MATERIALS FILE
                 # ============================================
 
                 """);
 
         //LOAD ORDER for .zs:
+        //0. required machine resources for machine recipes
+        //recipes might be hardcoded due to the nature of when they are loaded
+        GMachine machine = new GMachine("machine");
+        machine.registerMaterials(); //this doesn't write anything, but we will use this data (a lot)
+        GMachineChemical chemical = new GMachineChemical("chemical", machine);
+        chemical.registerMaterials();
+        GMachineData data = new GMachineData("data");
+        bw.write(data.registerMaterials());
+        GMachineMatter matter = new GMachineMatter("matter");
+        bw.write(matter.registerMaterials());
+
         //1. custom content not using the material system
         GBlock block = new GBlock("block");
         bw.write(block.registerMaterials());
@@ -141,6 +158,30 @@ public class MainMaterials {
         //8. finish
         bw.close();
 
+
+        //LOCALIZATION
+        //CoT .lang file
+        fw = new FileWriter(HOME + DEPLOY + "resources/contenttweaker/lang/en_us.lang");
+        bw = new BufferedWriter(fw);
+        //machine resource
+        bw.write(data.localize());
+        bw.write(matter.localize());
+        //custom data
+        bw.write(block.localize());
+        bw.write(item.localize());
+        bw.write(liquid.localize());
+        bw.write(molten.localize());
+        bw.write(gas.localize());
+        bw.write(plasma.localize());
+        bw.write(part.localize());
+        //material data
+        bw.write(mLiquid.localize());
+        bw.write(mGas.localize());
+        bw.write(mPlasma.localize());
+        //close
+        bw.close();
+
+        //CONFIGS
         //cofh world gen .json file
         fw = new FileWriter(HOME + DEPLOY + "config/cofh/world/01_aaaores.json");
         bw = new BufferedWriter(fw);
@@ -157,26 +198,6 @@ public class MainMaterials {
         fw = new FileWriter(HOME + DEPLOY + "config/sereneseasons/biome_info.json");
         bw = new BufferedWriter(fw);
         bw.write(biome.genSeasons());
-        bw.close();
-
-        //CoT .lang file
-        fw = new FileWriter(HOME + DEPLOY + "resources/contenttweaker/lang/en_us.lang");
-        bw = new BufferedWriter(fw);
-        //custom data
-        bw.write(block.localize());
-        bw.write(item.localize());
-        bw.write(liquid.localize());
-        bw.write(molten.localize());
-        bw.write(gas.localize());
-        bw.write(plasma.localize());
-        bw.write(part.localize());
-
-        //material data
-        bw.write(mLiquid.localize());
-        bw.write(mGas.localize());
-        bw.write(mPlasma.localize());
-
-        //close
         bw.close();
     }
 

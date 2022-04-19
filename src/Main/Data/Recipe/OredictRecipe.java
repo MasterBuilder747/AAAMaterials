@@ -1,4 +1,4 @@
-package Main.Recipe;
+package Main.Data.Recipe;
 
 public class OredictRecipe extends MachineRecipe {
 

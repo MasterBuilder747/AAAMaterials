@@ -6,8 +6,47 @@ import mods.contenttweaker.VanillaFactory;
 import mods.contenttweaker.Block;
 import mods.contenttweaker.Color;
 
+#priority 900
+
 # MATERIALS FILE
 # ============================================
+
+# -datas
+genFluid("cotc_data", "165e08", 6000, false, 5, 500, 6000, false, "contenttweaker:fluids/liquid", "contenttweaker:fluids/liquid_flowing", <blockmaterial:water>);
+
+# -matters
+genFluid("cotc_poswhite_matter", "ffffff", 1000, true, 15, 15000, 10000, false, "contenttweaker:fluids/plasma", "contenttweaker:fluids/plasma_flowing", <blockmaterial:lava>);
+genFluid("cotc_negwhite_matter", "ffffff", 1000, true, 15, 15000, 10000, false, "contenttweaker:fluids/plasma", "contenttweaker:fluids/plasma_flowing", <blockmaterial:lava>);
+genFluid("cotc_pospink_matter", "ffadc1", 1000, true, 15, 15000, 10000, false, "contenttweaker:fluids/plasma", "contenttweaker:fluids/plasma_flowing", <blockmaterial:lava>);
+genFluid("cotc_negpink_matter", "ffadc1", 1000, true, 15, 15000, 10000, false, "contenttweaker:fluids/plasma", "contenttweaker:fluids/plasma_flowing", <blockmaterial:lava>);
+genFluid("cotc_posred_matter", "ff1500", 1000, true, 15, 15000, 10000, false, "contenttweaker:fluids/plasma", "contenttweaker:fluids/plasma_flowing", <blockmaterial:lava>);
+genFluid("cotc_negred_matter", "ff1500", 1000, true, 15, 15000, 10000, false, "contenttweaker:fluids/plasma", "contenttweaker:fluids/plasma_flowing", <blockmaterial:lava>);
+genFluid("cotc_posorange_matter", "ff9000", 1000, true, 15, 15000, 10000, false, "contenttweaker:fluids/plasma", "contenttweaker:fluids/plasma_flowing", <blockmaterial:lava>);
+genFluid("cotc_negorange_matter", "ff9000", 1000, true, 15, 15000, 10000, false, "contenttweaker:fluids/plasma", "contenttweaker:fluids/plasma_flowing", <blockmaterial:lava>);
+genFluid("cotc_posyellow_matter", "fff600", 1000, true, 15, 15000, 10000, false, "contenttweaker:fluids/plasma", "contenttweaker:fluids/plasma_flowing", <blockmaterial:lava>);
+genFluid("cotc_negyellow_matter", "fff600", 1000, true, 15, 15000, 10000, false, "contenttweaker:fluids/plasma", "contenttweaker:fluids/plasma_flowing", <blockmaterial:lava>);
+genFluid("cotc_poslime_matter", "5dff00", 1000, true, 15, 15000, 10000, false, "contenttweaker:fluids/plasma", "contenttweaker:fluids/plasma_flowing", <blockmaterial:lava>);
+genFluid("cotc_neglime_matter", "5dff00", 1000, true, 15, 15000, 10000, false, "contenttweaker:fluids/plasma", "contenttweaker:fluids/plasma_flowing", <blockmaterial:lava>);
+genFluid("cotc_posgreen_matter", "204f20", 1000, true, 15, 15000, 10000, false, "contenttweaker:fluids/plasma", "contenttweaker:fluids/plasma_flowing", <blockmaterial:lava>);
+genFluid("cotc_neggreen_matter", "204f20", 1000, true, 15, 15000, 10000, false, "contenttweaker:fluids/plasma", "contenttweaker:fluids/plasma_flowing", <blockmaterial:lava>);
+genFluid("cotc_poscyan_matter", "1dbad6", 1000, true, 15, 15000, 10000, false, "contenttweaker:fluids/plasma", "contenttweaker:fluids/plasma_flowing", <blockmaterial:lava>);
+genFluid("cotc_negcyan_matter", "1dbad6", 1000, true, 15, 15000, 10000, false, "contenttweaker:fluids/plasma", "contenttweaker:fluids/plasma_flowing", <blockmaterial:lava>);
+genFluid("cotc_poslblue_matter", "00d8ff", 1000, true, 15, 15000, 10000, false, "contenttweaker:fluids/plasma", "contenttweaker:fluids/plasma_flowing", <blockmaterial:lava>);
+genFluid("cotc_neglblue_matter", "00d8ff", 1000, true, 15, 15000, 10000, false, "contenttweaker:fluids/plasma", "contenttweaker:fluids/plasma_flowing", <blockmaterial:lava>);
+genFluid("cotc_posblue_matter", "0000ff", 1000, true, 15, 15000, 10000, false, "contenttweaker:fluids/plasma", "contenttweaker:fluids/plasma_flowing", <blockmaterial:lava>);
+genFluid("cotc_negblue_matter", "0000ff", 1000, true, 15, 15000, 10000, false, "contenttweaker:fluids/plasma", "contenttweaker:fluids/plasma_flowing", <blockmaterial:lava>);
+genFluid("cotc_posmagenta_matter", "e900ff", 1000, true, 15, 15000, 10000, false, "contenttweaker:fluids/plasma", "contenttweaker:fluids/plasma_flowing", <blockmaterial:lava>);
+genFluid("cotc_negmagenta_matter", "e900ff", 1000, true, 15, 15000, 10000, false, "contenttweaker:fluids/plasma", "contenttweaker:fluids/plasma_flowing", <blockmaterial:lava>);
+genFluid("cotc_pospurple_matter", "bb00ff", 1000, true, 15, 15000, 10000, false, "contenttweaker:fluids/plasma", "contenttweaker:fluids/plasma_flowing", <blockmaterial:lava>);
+genFluid("cotc_negpurple_matter", "bb00ff", 1000, true, 15, 15000, 10000, false, "contenttweaker:fluids/plasma", "contenttweaker:fluids/plasma_flowing", <blockmaterial:lava>);
+genFluid("cotc_posbrown_matter", "59442f", 1000, true, 15, 15000, 10000, false, "contenttweaker:fluids/plasma", "contenttweaker:fluids/plasma_flowing", <blockmaterial:lava>);
+genFluid("cotc_negbrown_matter", "59442f", 1000, true, 15, 15000, 10000, false, "contenttweaker:fluids/plasma", "contenttweaker:fluids/plasma_flowing", <blockmaterial:lava>);
+genFluid("cotc_poslgray_matter", "cccccc", 1000, true, 15, 15000, 10000, false, "contenttweaker:fluids/plasma", "contenttweaker:fluids/plasma_flowing", <blockmaterial:lava>);
+genFluid("cotc_neglgray_matter", "cccccc", 1000, true, 15, 15000, 10000, false, "contenttweaker:fluids/plasma", "contenttweaker:fluids/plasma_flowing", <blockmaterial:lava>);
+genFluid("cotc_posgray_matter", "848383", 1000, true, 15, 15000, 10000, false, "contenttweaker:fluids/plasma", "contenttweaker:fluids/plasma_flowing", <blockmaterial:lava>);
+genFluid("cotc_neggray_matter", "848383", 1000, true, 15, 15000, 10000, false, "contenttweaker:fluids/plasma", "contenttweaker:fluids/plasma_flowing", <blockmaterial:lava>);
+genFluid("cotc_posblack_matter", "000000", 1000, true, 15, 15000, 10000, false, "contenttweaker:fluids/plasma", "contenttweaker:fluids/plasma_flowing", <blockmaterial:lava>);
+genFluid("cotc_negblack_matter", "000000", 1000, true, 15, 15000, 10000, false, "contenttweaker:fluids/plasma", "contenttweaker:fluids/plasma_flowing", <blockmaterial:lava>);
 
 # -custom-blocks
 genBlock("mica", <blockMaterial:rock>, 5, 6, "pickaxe", 1);
@@ -343,9 +382,6 @@ var yellow_garnet = MaterialSystem.getMaterialBuilder().setName("Yellow Garnet")
 var aquamarine = MaterialSystem.getMaterialBuilder().setName("Aquamarine").setColor(Color.fromHex("229ce2")).build();
 
 # -solids
-lumium.registerParts(dust_parts);
-lumium.registerParts(fine_parts);
-lumium.registerParts(powder_parts);
 granite.registerParts(dust_parts);
 granite.registerParts(fine_parts);
 granite.registerParts(powder_parts);
@@ -515,10 +551,6 @@ platinum.registerParts(smelt_parts);
 platinum.registerParts(machine_parts);
 platinum.registerParts(blast_parts);
 platinum.registerParts(conductive_parts);
-tungsten.registerParts(smelt_parts);
-tungsten.registerParts(machine_parts);
-tungsten.registerParts(blast_parts);
-tungsten.registerParts(conductive_parts);
 tungsten.registerParts(smelt_parts);
 tungsten.registerParts(machine_parts);
 tungsten.registerParts(blast_parts);

@@ -2,7 +2,7 @@
 
 #modloaded tconstruct
 
-#priority 2200
+#priority 1000
 
 import crafttweaker.oredict.IOreDictEntry;
 import crafttweaker.item.IItemStack;

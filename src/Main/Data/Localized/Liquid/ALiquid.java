@@ -33,6 +33,10 @@ public abstract class ALiquid extends ALocalizedData {
         System.out.println(this.name);
     }
 
+    public String getUnlocalizedName() {
+        return "<liquid:"+this.name+">";
+    }
+
     @Override
     public String buildMaterial() {
                 //genFluid(

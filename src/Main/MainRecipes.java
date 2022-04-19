@@ -37,13 +37,7 @@ public class MainRecipes {
 
         //starting script code
         bw.write("""
-                #loader contenttweaker
-                import mods.contenttweaker.Material;
-                import mods.contenttweaker.MaterialSystem;
-                import mods.contenttweaker.PartBuilder;
-                import mods.contenttweaker.VanillaFactory;
-                import mods.contenttweaker.Block;
-                import mods.contenttweaker.Color;
+                #priority 0
                 
                 # RECIPES FILE
                 # ============================================
