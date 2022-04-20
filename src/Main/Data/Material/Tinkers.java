@@ -109,7 +109,7 @@ public class Tinkers extends AMaterialData {
         //need to define material types being supported, otherwise use -100000 to disable support
 
         //string name, string color, bool craftable, bool castable, IItemStack item, IOreDictEntry ore, ILiquidStack liquid
-        sb.append(m.name);
+        sb.append(m.NAME);
         sb.append("\", \"");
         sb.append(m.color); //hex only supported
         sb.append("\", ");
@@ -119,7 +119,7 @@ public class Tinkers extends AMaterialData {
         //check if material is metalPart or not for ore representation:
         sb.append("<ore:ingot????+MATERIALNAME");
         sb.append(">, <liquid:");
-        sb.append(m.name);
+        sb.append(m.NAME);
         sb.append(">, ");
 
         if (isTool) {

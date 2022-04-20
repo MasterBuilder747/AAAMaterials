@@ -13,7 +13,7 @@ public abstract class AMaterialData extends AData {
     protected boolean[] enablePartGroups;
 
     public AMaterialData(Material m) {
-        super(m.name);
+        super(m.NAME);
         this.m = m;
         this.datas = new ArrayList<>();
     }
@@ -64,7 +64,7 @@ public abstract class AMaterialData extends AData {
                 return m;
             }
         }
-        throw new IllegalArgumentException("Unknown key " + key + " for materialData of material " + this.m.name);
+        throw new IllegalArgumentException("Unknown key " + key + " for materialData of material " + this.m.NAME);
     }
     protected Registry get(String key) {
         return this.getData(key).r;
@@ -85,14 +85,14 @@ public abstract class AMaterialData extends AData {
             this.datas.remove(mat);
             this.add(key, r);
         } else {
-            throw new IllegalArgumentException("Unknown key " + key + " for materialData of material " + this.m.name);
+            throw new IllegalArgumentException("Unknown key " + key + " for materialData of material " + this.m.NAME);
         }
     }
 
     protected String buildPart(PartGroup partGroup) {
-        return this.m.name + ".registerParts(" + partGroup.name + ");\n";
+        return this.m.NAME + ".registerParts(" + partGroup.NAME + ");\n";
     }
     protected String buildAltPart(String name, PartGroup partGroup) {
-        return name + ".registerParts(" + partGroup.name + ");\n";
+        return name + ".registerParts(" + partGroup.NAME + ");\n";
     }
 }

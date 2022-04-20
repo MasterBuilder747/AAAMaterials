@@ -31,19 +31,19 @@ public class LBlock extends ALocalizedData {
 
     @Override
     public void print() {
-        System.out.println(this.material + "; " + this.name + ": " + this.hardness + ", " + this.resistance + ", " + this.tool + ", " + this.miningLevel);
+        System.out.println(this.material + "; " + this.NAME + ": " + this.hardness + ", " + this.resistance + ", " + this.tool + ", " + this.miningLevel);
     }
 
     @Override
     public String buildMaterial() {
         //genBlock("mica", "Mica", <blockMaterial:rock>, 5, 6, "pickaxe", 1);
-        return "genBlock(\"" + this.name + "\", <blockMaterial:" + this.material + ">, "
+        return "genBlock(\"" + this.NAME + "\", <blockMaterial:" + this.material + ">, "
                 + this.hardness + ", " + this.resistance + ", \"" + this.tool + "\", " + this.miningLevel + ");\n";
     }
 
     @Override
     //tile.contenttweaker.[name].name=[localName]
     public String localize() {
-        return "tile.contenttweaker." + this.name + ".name=" + this.localName + "\n";
+        return "tile.contenttweaker." + this.NAME + ".name=" + this.localName + "\n";
     }
 }

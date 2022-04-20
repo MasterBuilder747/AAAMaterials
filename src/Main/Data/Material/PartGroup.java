@@ -18,22 +18,22 @@ public class PartGroup extends AData {
 
     @Override
     public void print() {
-        System.out.print(this.name + ": ");
+        System.out.print(this.NAME + ": ");
         for(int i = 0; i < this.LParts.length-1; i++) {
-            System.out.print(this.LParts[i].name);
+            System.out.print(this.LParts[i].NAME);
             System.out.print(", ");
         }
-        System.out.println(this.LParts[this.LParts.length-1].name);
+        System.out.println(this.LParts[this.LParts.length-1].NAME);
     }
 
     @Override
     public String buildMaterial() {
         StringBuilder sb = new StringBuilder();
-        sb.append("var "); sb.append(this.name); sb.append(" = [");
+        sb.append("var "); sb.append(this.NAME); sb.append(" = [");
         for(int i = 0; i < this.LParts.length-1; i++) {
-            sb.append("\""); sb.append(this.LParts[i].name); sb.append("\""); sb.append(", ");
+            sb.append("\""); sb.append(this.LParts[i].NAME); sb.append("\""); sb.append(", ");
         }
-        sb.append("\""); sb.append(this.LParts[this.LParts.length-1].name); sb.append("\""); sb.append("] as string[];\n");
+        sb.append("\""); sb.append(this.LParts[this.LParts.length-1].NAME); sb.append("\""); sb.append("] as string[];\n");
 
         return sb.toString();
     }

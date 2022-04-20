@@ -18,7 +18,7 @@ public class GMachineChemical extends AGMachineResource<MachineChemical> {
     protected void readLine(BufferedReader br, String[] s) throws IOException {
         if (!this.machine.is(s[0])) error("Unknown machine " + s[0]);
         AMachine m = this.machine.get(s[0]);
-        if (m.itemInputs < 1) error("To use the machine \"" + m.name + "\" in higher tiers, it must have at least one liquid input for chemicals.");
+        if (m.itemInputs < 1) error("To use the machine \"" + m.NAME + "\" in higher tiers, it must have at least one liquid input for chemicals.");
         objects.add(new MachineChemical(m, s[1]));
     }
 }

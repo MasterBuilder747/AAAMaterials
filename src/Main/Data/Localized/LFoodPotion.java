@@ -32,7 +32,7 @@ public class LFoodPotion extends ALocalizedData {
             this.potions[i] = "<potion:" + this.potions[i] + ">";
         }
         StringBuilder sb = new StringBuilder();
-        sb.append("var ").append(this.name).append("Potions = [");
+        sb.append("var ").append(this.NAME).append("Potions = [");
         for (int i = 0; i < this.potions.length-1; i++) {
             sb.append(this.potions[i]);
             sb.append(", ");
@@ -40,7 +40,7 @@ public class LFoodPotion extends ALocalizedData {
         sb.append(this.potions[this.potions.length-1]);
         sb.append("] as IPotion[]\n");
         sb.append("genFoodPotion(\"");
-        sb.append(this.name);
+        sb.append(this.NAME);
         sb.append("\", ");
         sb.append(this.heal);
         sb.append(", ");
@@ -48,7 +48,7 @@ public class LFoodPotion extends ALocalizedData {
         sb.append(", ");
         sb.append(this.alwaysEdible);
         sb.append(", ");
-        sb.append(this.name);
+        sb.append(this.NAME);
         sb.append("Potions, ");
         sb.append(this.duration);
         sb.append(", ");
@@ -59,7 +59,7 @@ public class LFoodPotion extends ALocalizedData {
 
     @Override
     public String localize() throws IllegalArgumentException {
-        return "item.contenttweaker." + this.name + ".name=" + this.localName + "\n";
+        return "item.contenttweaker." + this.NAME + ".name=" + this.localName + "\n";
     }
 
     @Override

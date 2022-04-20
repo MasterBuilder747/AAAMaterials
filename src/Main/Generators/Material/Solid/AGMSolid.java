@@ -31,12 +31,12 @@ public abstract class AGMSolid <S extends AMSolid> extends AGMaterialData<S> {
 
     @Override
     protected void readMaterialParameters(Material m, String[] s) {
-        if (!this.solid.is(m.name)) error("Material " + m.name + " must have a solid form");
-        MSolid sol = this.solid.get(m.name);
+        if (!this.solid.is(m.NAME)) error("Material " + m.NAME + " must have a solid form");
+        MSolid sol = this.solid.get(m.NAME);
         boolean[] bools = sol.getEnablePartGroups();
-        if (this.isDust) if (!bools[0]) error("Material " + m.name + "'s solid state must have dust parts");
-        if (this.isFineDust) if(!bools[1]) error("Material " + m.name + "'s solid state must have fine dust parts");
-        if (this.isPowder) if (!bools[2]) error("Material " + m.name + "'s solid state must have powder parts");
+        if (this.isDust) if (!bools[0]) error("Material " + m.NAME + "'s solid state must have dust parts");
+        if (this.isFineDust) if(!bools[1]) error("Material " + m.NAME + "'s solid state must have fine dust parts");
+        if (this.isPowder) if (!bools[2]) error("Material " + m.NAME + "'s solid state must have powder parts");
         readSolidParameters(m, s);
     }
 

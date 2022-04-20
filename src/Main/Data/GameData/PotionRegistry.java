@@ -28,6 +28,6 @@ public class PotionRegistry extends AGameData {
 
     @Override
     public String getUnlocalizedName() {
-        return this.name;
+        return this.NAME;
     }
 }

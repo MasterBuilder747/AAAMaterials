@@ -10,7 +10,7 @@ public class OreDict extends AGameData {
 
     @Override
     public void print() {
-        System.out.println(this.name + ", " + this.registryName);
+        System.out.println(this.NAME + ", " + this.registryName);
     }
 
     @Override

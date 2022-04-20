@@ -4,6 +4,8 @@ import Main.Data.AData;
 import Main.Data.MachineResource.Machine.Machine;
 
 public class MachineRecipe extends AData {
+    //This is a custom machine recipe, non-abstract, but acts as the parent recipe API
+
     Machine machine;
     String data; //get the unlocalized bracket for the data liquid
 
@@ -79,20 +81,20 @@ public class MachineRecipe extends AData {
         StringBuilder sb = new StringBuilder();
         this.realTier = this.tier;
         if (this.realTier < 5) { //LV-EV
-            this.realName = this.name+"_basic";
+            this.realName = this.NAME +"_basic";
             sb.append(buildMain((int)((8 * Math.pow(4, this.realTier-1)) * this.powerMultiplier)));
             this.realTier = 5;
             sb.append(this.realName).append(".build();\n");
         }
         if (this.realTier < 9) { //IV-UV
-            this.realName = this.name+"_advanced";
+            this.realName = this.NAME +"_advanced";
             sb.append(buildMain((int)((8 * Math.pow(4, this.realTier-1)) * this.powerMultiplier)));
             sb.append(buildChemicals());
             this.realTier = 9;
             sb.append(this.realName).append(".build();\n");
         }
         if (this.realTier < 13) { //UMV-UIV
-            this.realName = this.name+"_industrial";
+            this.realName = this.NAME +"_industrial";
             sb.append(buildMain((int)((8 * Math.pow(4, this.realTier-1)) * this.powerMultiplier)));
             sb.append(buildChemicals());
             sb.append(buildData());
@@ -100,7 +102,7 @@ public class MachineRecipe extends AData {
             sb.append(this.realName).append(".build();\n");
         }
         if (this.realTier < 15) { //ULV-UZV (2 realTiers)
-            this.realName = this.name+"_ultimate";
+            this.realName = this.NAME +"_ultimate";
             sb.append(buildMain((int)((8 * Math.pow(4, this.realTier-1)) * this.powerMultiplier)));
             sb.append(buildChemicals());
             sb.append(buildData());
@@ -108,7 +110,7 @@ public class MachineRecipe extends AData {
             sb.append(this.realName).append(".build();\n\n");
         }
         if (this.realTier == 15) { //final realTier, must be 2 or 1 billion power
-            this.realName = this.name+"_ultimate";
+            this.realName = this.NAME +"_ultimate";
             sb.append(buildMain((int)(2_000_000_000 * this.powerMultiplier)));
             sb.append(buildChemicals());
             sb.append(buildData());
@@ -121,7 +123,7 @@ public class MachineRecipe extends AData {
     private String buildMain(int power) {
         StringBuilder sb = new StringBuilder();
         sb.append("var ").append(this.realName).append(" = mods.modularmachinery.RecipeBuilder.newBuilder(\"")
-                .append(this.realName).append("\", \"").append(this.machine.name).append("\", ").append(this.time);
+                .append(this.realName).append("\", \"").append(this.machine.NAME).append("\", ").append(this.time);
         if (this.priority == -1) {
             sb.append(");\n");
         } else {

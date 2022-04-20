@@ -11,7 +11,7 @@ public class Biome extends AData {
     boolean crops;
 
     public Biome(BiomeRegistry biome, boolean enableSeasons, boolean tropical, boolean crops) {
-        super(biome.name);
+        super(biome.NAME);
         this.biome = biome;
         this.enableSeasons = enableSeasons;
         this.tropical = tropical;

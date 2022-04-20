@@ -93,11 +93,11 @@ public class GOre extends AGMSolid<Ore> {
                 ore_props[0] = ores[0]; //dense
                 gen_props = ores[1]; //oregen
             } else {
-                error("invalid or no ore blocks specified for material " + m.name);
+                error("invalid or no ore blocks specified for material " + m.NAME);
             }
             String[] gens = null;
             if (gen_props == null) {
-                error("ore generation not specified for material " + m.name);
+                error("ore generation not specified for material " + m.NAME);
             } else {
                 gens = Util.split(gen_props, ";");
             }
@@ -116,9 +116,9 @@ public class GOre extends AGMSolid<Ore> {
                 b = new LBlock(block, "rock", tool);
                 b.setAttributes(parseInt(attributes[1]), parseInt(attributes[2]), parseInt(attributes[3]));
                 if (block.equals("stone")) {
-                    types.add(new OreType(m.name, type_name, b));
+                    types.add(new OreType(m.NAME, type_name, b));
                 } else {
-                    types.add(new OreType(block+"_"+m.name, type_name, b));
+                    types.add(new OreType(block+"_"+m.NAME, type_name, b));
                 }
             }
             oreVariants.add(new OreVariant(m, block, types.toArray(new OreType[0]), this.partGroup.getPart("ore")));
@@ -129,37 +129,37 @@ public class GOre extends AGMSolid<Ore> {
                 switch (block) {
                     case "stone" -> {
                         if (gens.length != 3)
-                            error("3 stone ore gen attributes required: int chunkChance; int minHeight; String biome for material " + m.name);
-                        Registry ore = this.oreRegistryCheck("ore", block, m.name);
-                        Registry poor = this.oreRegistryCheck("poor", block, m.name);
-                        Registry dense = this.oreRegistryCheck("dense", block, m.name);
+                            error("3 stone ore gen attributes required: int chunkChance; int minHeight; String biome for material " + m.NAME);
+                        Registry ore = this.oreRegistryCheck("ore", block, m.NAME);
+                        Registry poor = this.oreRegistryCheck("poor", block, m.NAME);
+                        Registry dense = this.oreRegistryCheck("dense", block, m.NAME);
                         o.addStoneGen(ore, poor, dense, parseInt(gens[0]), parseInt(gens[1]), gens[2]);
                     }
                     case "nether" -> {
                         if (gens.length != 2)
-                            error("2 nether ore gen attributes required: int chunkChance; int minHeight for material " + m.name);
-                        Registry ore = this.oreRegistryCheck("ore", block, m.name);
-                        Registry poor = this.oreRegistryCheck("poor", block, m.name);
-                        Registry dense = this.oreRegistryCheck("dense", block, m.name);
+                            error("2 nether ore gen attributes required: int chunkChance; int minHeight for material " + m.NAME);
+                        Registry ore = this.oreRegistryCheck("ore", block, m.NAME);
+                        Registry poor = this.oreRegistryCheck("poor", block, m.NAME);
+                        Registry dense = this.oreRegistryCheck("dense", block, m.NAME);
                         o.addNetherGen(ore, poor, dense, parseInt(gens[0]), parseInt(gens[1]));
                     }
                     case "end" -> {
                         if (gens.length != 2)
-                            error("2 end ore gen attributes required: int chunkChance; int minHeight for material " + m.name);
-                        Registry ore = this.oreRegistryCheck("ore", block, m.name);
-                        Registry poor = this.oreRegistryCheck("poor", block, m.name);
-                        Registry dense = this.oreRegistryCheck("dense", block, m.name);
+                            error("2 end ore gen attributes required: int chunkChance; int minHeight for material " + m.NAME);
+                        Registry ore = this.oreRegistryCheck("ore", block, m.NAME);
+                        Registry poor = this.oreRegistryCheck("poor", block, m.NAME);
+                        Registry dense = this.oreRegistryCheck("dense", block, m.NAME);
                         o.addEndGen(ore, poor, dense, parseInt(gens[0]), parseInt(gens[1]));
                     }
                     case "bedrock" -> {
                         if (gens.length != 2)
-                            error("Two parameters are required for bedrock gen: the chunk chance and the dimension to gen in, for material " + m.name);
-                        Registry dense = this.oreRegistryCheck("dense", block, m.name);
+                            error("Two parameters are required for bedrock gen: the chunk chance and the dimension to gen in, for material " + m.NAME);
+                        Registry dense = this.oreRegistryCheck("dense", block, m.NAME);
                         o.addBedrockGen(dense, parseInt(gens[0]), parseInt(gens[1]));
                     }
                 }
             } else {
-                warn("checks are not enabled for oregen of material " + m.name + "'s ore of type " + block + " as specified");
+                warn("checks are not enabled for oregen of material " + m.NAME + "'s ore of type " + block + " as specified");
             }
         }
         o.addVariants(oreVariants.toArray(new OreVariant[0]));

@@ -26,12 +26,12 @@ public class LiquidRegistry extends AGameData {
 
     @Override
     public String getBracket() {
-        return "<liquid:" + this.name + ">";
+        return "<liquid:" + this.NAME + ">";
     }
 
     @Override
     public String getUnlocalizedName() {
-        return this.name;
+        return this.NAME;
     }
 
     @Override
@@ -40,6 +40,6 @@ public class LiquidRegistry extends AGameData {
     }
 
     public LLiquid createLiquid(String localName, String color) {
-        return new LLiquid(false, this.name, localName, color, this.density, this.luminosity, this.temperature, this.viscosity, this.isGaseous);
+        return new LLiquid(false, this.NAME, localName, color, this.density, this.luminosity, this.temperature, this.viscosity, this.isGaseous);
     }
 }

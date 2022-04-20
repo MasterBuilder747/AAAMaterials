@@ -169,7 +169,7 @@ public class Ore extends AMSolid {
                     values.add(new Value("bool", "false"));
                     values.add(new Value("str", "all"));
                     values.add(new Value("json", this.genDimensionGen(block)));
-                sb.append(new JsonObject(keys.toArray(new Value[0]), values.toArray(new Value[0]), this.m.name + "_" + block).print());
+                sb.append(new JsonObject(keys.toArray(new Value[0]), values.toArray(new Value[0]), this.m.NAME + "_" + block).print());
             } else {
                 ArrayList<Value> keys = new ArrayList<>();
                     keys.add(new Value("enabled"));
@@ -216,7 +216,7 @@ public class Ore extends AMSolid {
                     keys.add(new Value("biome"));
                     values.add(new Value("json", this.genBiomeGen()));
                 }
-                sb.append(new JsonObject(keys.toArray(new Value[0]), values.toArray(new Value[0]), this.m.name + "_" + block).print());
+                sb.append(new JsonObject(keys.toArray(new Value[0]), values.toArray(new Value[0]), this.m.NAME + "_" + block).print());
             }
             if (i != this.variants.length-1) {
                 sb.append(",\n");
@@ -362,9 +362,9 @@ public class Ore extends AMSolid {
             Registry poor = this.get("poorStone");
             Registry dense = this.get("denseStone");
             Value[] keys = {new Value("internalOreName"), new Value("meta"), new Value("overlay"), new Value("lightValue"), new Value("alphaOverlay"), new Value("oreDirectories"), new Value("color")};
-            Value[] poors = {new Value(poor.getUnlocalizedName()), new Value("int", Integer.toString(poor.meta)), new Value("base:blocks/poor_ore"), new Value("int", "0"), new Value("bool", "false"), new Value("arr", "str", "poorOre" + Util.toUpper(this.m.name)), new Value("#" + this.m.color)};
-            Value[] ores = {new Value(ore.getUnlocalizedName()), new Value("int", Integer.toString(ore.meta)), new Value("base:blocks/ore"), new Value("int", "0"), new Value("bool", "false"), new Value("arr", "str", "ore" + Util.toUpper(this.m.name)), new Value("#" + this.m.color)};
-            Value[] denses = {new Value(dense.getUnlocalizedName()), new Value("int", Integer.toString(dense.meta)), new Value("base:blocks/dense_ore"), new Value("int", "0"), new Value("bool", "false"), new Value("arr", "str", "denseOre" + Util.toUpper(this.m.name)), new Value("#" + this.m.color)};
+            Value[] poors = {new Value(poor.getUnlocalizedName()), new Value("int", Integer.toString(poor.meta)), new Value("base:blocks/poor_ore"), new Value("int", "0"), new Value("bool", "false"), new Value("arr", "str", "poorOre" + Util.toUpper(this.m.NAME)), new Value("#" + this.m.color)};
+            Value[] ores = {new Value(ore.getUnlocalizedName()), new Value("int", Integer.toString(ore.meta)), new Value("base:blocks/ore"), new Value("int", "0"), new Value("bool", "false"), new Value("arr", "str", "ore" + Util.toUpper(this.m.NAME)), new Value("#" + this.m.color)};
+            Value[] denses = {new Value(dense.getUnlocalizedName()), new Value("int", Integer.toString(dense.meta)), new Value("base:blocks/dense_ore"), new Value("int", "0"), new Value("bool", "false"), new Value("arr", "str", "denseOre" + Util.toUpper(this.m.NAME)), new Value("#" + this.m.color)};
             return new JsonObject[]{new JsonObject(keys, poors), new JsonObject(keys, ores), new JsonObject(keys, denses)};
         } else {
             return null;
@@ -373,6 +373,6 @@ public class Ore extends AMSolid {
 
     @Override
     public void print() {
-        System.out.println(this.name);
+        System.out.println(this.NAME);
     }
 }

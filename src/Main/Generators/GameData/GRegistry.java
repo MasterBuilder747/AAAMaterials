@@ -21,7 +21,7 @@ public class GRegistry extends AGGameData<Registry> {
     //requires meta as well
     public Registry getUnlocalized(String search) {
         for (Registry r : this.objects) {
-            if (r.name.equals(search)) {
+            if (r.NAME.equals(search)) {
                 return r;
             }
         }

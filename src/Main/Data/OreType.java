@@ -28,17 +28,17 @@ public class OreType extends AData {
         lumiumStoneOre.addDataValue("harvestLevel","2");
         lumiumStoneOre.addDataValue("harvestTool","pickaxe");
         */
-        String var = this.name + Util.toUpper(this.b.name) + Util.toUpper(this.type);
-        sb.append("var ").append(var).append(" = ").append(this.name).append(".registerPart(\"").append(this.type);
+        String var = this.NAME + Util.toUpper(this.b.NAME) + Util.toUpper(this.type);
+        sb.append("var ").append(var).append(" = ").append(this.NAME).append(".registerPart(\"").append(this.type);
         if (this.type.equals("ore")) {
             sb.append("\").getData();\n");
         } else {
             sb.append("_ore\").getData();\n");
         }
-        sb.append(var).append(".addDataValue(\"variants\",\"minecraft:").append(this.b.name);
-        if (this.b.name.equals("nether")) {
+        sb.append(var).append(".addDataValue(\"variants\",\"minecraft:").append(this.b.NAME);
+        if (this.b.NAME.equals("nether")) {
             sb.append("rack\");\n");
-        } else if (this.b.name.equals("end")) {
+        } else if (this.b.NAME.equals("end")) {
             sb.append("_stone\");\n");
         } else {
             sb.append("\");\n");

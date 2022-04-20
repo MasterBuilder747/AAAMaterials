@@ -8,7 +8,7 @@ public class FoodRegistry extends AGameData {
     double saturation;
 
     public FoodRegistry(Registry item, int hunger, double saturation) {
-        super(item.name, item.registryName);
+        super(item.NAME, item.registryName);
         this.hunger = hunger;
         this.saturation = saturation;
     }

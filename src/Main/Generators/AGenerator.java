@@ -111,7 +111,7 @@ public abstract class AGenerator<D extends AData> {
     //utilities
     public D get(String s) {
         for (D o : objects) {
-            if (o.name.equals(s)) {
+            if (o.NAME.equals(s)) {
                 return o;
             }
         }
@@ -120,7 +120,7 @@ public abstract class AGenerator<D extends AData> {
     }
     public boolean is(String s) {
         for (D o : objects) {
-            if (o.name.equals(s)) {
+            if (o.NAME.equals(s)) {
                 return true;
             }
         }

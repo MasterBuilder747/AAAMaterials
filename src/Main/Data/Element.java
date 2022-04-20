@@ -42,7 +42,7 @@ public class Element extends AData {
     //1: H, Hydrogen, 1, 1.008
     @Override
     public void print() {
-        System.out.println(this.period + ", " + this.group + ": " + this.symbol + ", " + this.name + ", " + this.number + ", " + this.weight);
+        System.out.println(this.period + ", " + this.group + ": " + this.symbol + ", " + this.NAME + ", " + this.number + ", " + this.weight);
     }
 
     @Override

@@ -53,7 +53,7 @@ public class GWood extends AGMSolid<Wood> {
             if (this.registry.is(test)) {
                 registries.add(this.registry.get(test));
             } else {
-                error("wood type " + test + " for material " + m.name + " is not in the registry");
+                error("wood type " + test + " for material " + m.NAME + " is not in the registry");
             }
         }
         w.setPartGTrue(genPartGroup("wood"));

@@ -7,7 +7,7 @@ public class MachineChemical extends AMachineResource {
     String chemical; //this is a key for the chemical to be used in machineTier recipes of 2 and higher
 
     public MachineChemical(AMachine m, String chemical) {
-        super(m.name);
+        super(m.NAME);
         this.m = m;
         this.chemical = chemical;
     }

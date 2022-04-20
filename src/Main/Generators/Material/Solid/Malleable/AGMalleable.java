@@ -21,8 +21,8 @@ public abstract class AGMalleable <M extends AMSolid> extends AGMSolid<M> {
     @Override
     protected void readSolidParameters(Material m, String[] s) {
         //the second parameter always adds molten liquid
-        if (!this.liquid.is(m.name)) error("Material " + m.name + " must have a liquid form in order to be malleable");
-        setMalleableParts(m, s, this.liquid.get(m.name));
+        if (!this.liquid.is(m.NAME)) error("Material " + m.NAME + " must have a liquid form in order to be malleable");
+        setMalleableParts(m, s, this.liquid.get(m.NAME));
     }
 
     protected abstract void setMalleableParts(Material m, String[] s, MLiquid liquid);

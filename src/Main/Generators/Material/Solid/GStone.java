@@ -90,7 +90,7 @@ public class GStone extends AGMSolid<Stone> {
                 if (this.registry.is(test)) {
                     registries.add(this.registry.get(test));
                 } else {
-                    error("stone type " + test + " for material " + m.name + " is not in the registry");
+                    error("stone type " + test + " for material " + m.NAME + " is not in the registry");
                 }
             }
         } else {
@@ -118,7 +118,7 @@ public class GStone extends AGMSolid<Stone> {
                     if (this.registry.is(test)) {
                         registries.add(this.registry.get(test));
                     } else {
-                        error("stone type " + test + " for material " + m.name + " is not in the registry");
+                        error("stone type " + test + " for material " + m.NAME + " is not in the registry");
                     }
                 }
             } else {
@@ -143,7 +143,7 @@ public class GStone extends AGMSolid<Stone> {
                     if (this.registry.is(test)) {
                         registries.add(this.registry.get(test));
                     } else {
-                        error("stone type " + test + " for material " + m.name + " is not in the registry");
+                        error("stone type " + test + " for material " + m.NAME + " is not in the registry");
                     }
                 }
             }

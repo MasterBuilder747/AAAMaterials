@@ -30,11 +30,11 @@ public abstract class ALiquid extends ALocalizedData {
 
     @Override
     public void print() {
-        System.out.println(this.name);
+        System.out.println(this.NAME);
     }
 
     public String getUnlocalizedName() {
-        return "<liquid:"+this.name+">";
+        return "<liquid:"+this.NAME +">";
     }
 
     @Override
@@ -46,7 +46,7 @@ public abstract class ALiquid extends ALocalizedData {
                 //tex: liquid, molten, gas, plasma, ...
                 //blockMaterial: lava, water
         return "genFluid(\"" +
-                this.name + "\", \"" + this.color + "\", " + this.density + ", " + this.gas + ", " +
+                this.NAME + "\", \"" + this.color + "\", " + this.density + ", " + this.gas + ", " +
                 this.luminosity + ", " + this.temperature + ", " + this.viscosity + ", " + this.vaporize +
                 ", \"contenttweaker:fluids/" + this.tex + "\", \"contenttweaker:fluids/" + this.tex + "_flowing\", <blockmaterial:" + this.blockMaterial + ">);\n";
     }
@@ -54,6 +54,6 @@ public abstract class ALiquid extends ALocalizedData {
     @Override
     //fluid.[name]=[LocalName]
     public String localize() {
-        return "fluid." + this.name + "=" + this.localName + "\n";
+        return "fluid." + this.NAME + "=" + this.localName + "\n";
     }
 }

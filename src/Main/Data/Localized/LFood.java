@@ -19,12 +19,12 @@ public class LFood extends ALocalizedData {
 
     @Override
     public String buildMaterial() {
-        return "genFood(\""+ this.name + "\", " +  this.heal + ", " + this.saturation + ", " + this.alwaysEdible + ");\n";
+        return "genFood(\""+ this.NAME + "\", " +  this.heal + ", " + this.saturation + ", " + this.alwaysEdible + ");\n";
     }
 
     @Override
     public String localize() throws IllegalArgumentException {
-        return "item.contenttweaker." + this.name + ".name=" + this.localName + "\n";
+        return "item.contenttweaker." + this.NAME + ".name=" + this.localName + "\n";
     }
 
     @Override

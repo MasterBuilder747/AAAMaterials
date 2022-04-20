@@ -31,7 +31,7 @@ public class BiomeRegistry extends AGameData {
 
     @Override
     public String getBracket() {
-        return this.name;
+        return this.NAME;
     }
 
     @Override
@@ -41,6 +41,6 @@ public class BiomeRegistry extends AGameData {
 
     @Override
     public void print() {
-        System.out.println(this.name + ", " + this.registryName);
+        System.out.println(this.NAME + ", " + this.registryName);
     }
 }

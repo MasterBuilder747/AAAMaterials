@@ -34,13 +34,13 @@ public class Registry extends AGameData {
     }
 
     public LItem createItem(String localName) {
-        return new LItem(this.name, localName);
+        return new LItem(this.NAME, localName);
     }
 
     @Override
     public void print() {
         //System.out.println(this.buildMaterial());
-        System.out.println(this.mod + ":" + this.registryName + ":" + this.meta + ", \"" + this.name + "\", ore(s):" + Arrays.toString(this.ore));
+        System.out.println(this.mod + ":" + this.registryName + ":" + this.meta + ", \"" + this.NAME + "\", ore(s):" + Arrays.toString(this.ore));
         //System.out.println(this.mod + "\n" + this.registry + "\n" + this.name + "\n" + this.meta + "\n" + Arrays.toString(this.ore));
     }
 }

@@ -12,7 +12,7 @@ public class LPart extends ALocalizedData {
         super(name, localName);
         this.type = "item"; //default
         this.hasOverlay = hasOverlay;
-        this.oreDict = this.name;
+        this.oreDict = this.NAME;
         while (this.oreDict.contains("_")) {
             int s = this.oreDict.indexOf("_");
             this.oreDict = this.oreDict.substring(0, s)+this.oreDict.substring(s+1, s+2).toUpperCase()+this.oreDict.substring(s+2);
@@ -31,7 +31,7 @@ public class LPart extends ALocalizedData {
     @Override
     public void print() {
         if (!this.exists) {
-            System.out.println(this.name + ": " + this.localName + ", " + this.type + ", " + this.hasOverlay + ", " + this.oreDict + ", " + this.amount);
+            System.out.println(this.NAME + ": " + this.localName + ", " + this.type + ", " + this.hasOverlay + ", " + this.oreDict + ", " + this.amount);
         }
     }
 
@@ -40,7 +40,7 @@ public class LPart extends ALocalizedData {
         if (this.exists) {
             return "";
         } else {
-            return "var " + this.name + " = mods.contenttweaker.MaterialSystem.getPartBuilder().setName(\"" + this.name + "\").setPartType(mods.contenttweaker.MaterialSystem.getPartType(\"" + this.type + "\")).setHasOverlay(" + this.hasOverlay + ").setOreDictName(\"" + this.oreDict + "\").build();\n";
+            return "var " + this.NAME + " = mods.contenttweaker.MaterialSystem.getPartBuilder().setName(\"" + this.NAME + "\").setPartType(mods.contenttweaker.MaterialSystem.getPartType(\"" + this.type + "\")).setHasOverlay(" + this.hasOverlay + ").setOreDictName(\"" + this.oreDict + "\").build();\n";
         }
     }
 
@@ -50,9 +50,9 @@ public class LPart extends ALocalizedData {
             //contenttweaker.part.[name]=localName
             //localName must contain "%s" somewhere in it to indicate the material name in the localName
             if (this.localName.contains("%s")) {
-                return "contenttweaker.part." + this.name + "=" + this.localName + "\n";
+                return "contenttweaker.part." + this.NAME + "=" + this.localName + "\n";
             } else {
-                throw new IllegalArgumentException("Part " + this.name + " does not contain a \"%s\" to denote the material name for localization");
+                throw new IllegalArgumentException("Part " + this.NAME + " does not contain a \"%s\" to denote the material name for localization");
             }
         } else return "";
     }
