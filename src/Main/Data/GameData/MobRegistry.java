@@ -22,7 +22,7 @@ public class MobRegistry extends AGameData {
     }
 
     @Override
-    protected String getBracket() {
+    public String getBracket() {
         return null;
     }
 

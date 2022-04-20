@@ -22,7 +22,7 @@ public class PotionRegistry extends AGameData {
     }
 
     @Override
-    protected String getBracket() {
+    public String getBracket() {
         return "<potion:" + this.registryName + ">";
     }
 

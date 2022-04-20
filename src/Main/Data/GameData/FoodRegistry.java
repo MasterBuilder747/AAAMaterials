@@ -19,7 +19,7 @@ public class FoodRegistry extends AGameData {
     }
 
     @Override
-    protected String getBracket() {
+    public String getBracket() {
         return this.item.getBracket();
     }
 

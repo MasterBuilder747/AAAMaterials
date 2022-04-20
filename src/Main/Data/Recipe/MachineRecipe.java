@@ -1,35 +1,44 @@
 package Main.Data.Recipe;
 
 import Main.Data.AData;
+import Main.Data.MachineResource.Machine.Machine;
 
 public class MachineRecipe extends AData {
+    Machine machine;
+    String data; //get the unlocalized bracket for the data liquid
+
+    //required recipe building info
     String realName; //the actual unique name, uses name
-    String machine; //the name of the machine this is for
     int tier; //minimum voltage tier this recipe gets unlocked at
     int time; //base recipe time in ticks
-    int priority; //optional, but here in case
+    int priority;
 
+    //IO: these are all unlocalized bracket handlers
     String[] itemInputs;
     String[] itemOutputs;
     String[] liquidInputs;
     String[] liquidOutputs;
-    String[] chemicalIn; //handled like liquids
-    String[] chemicalOut;
-    int dataIn;
-    String[] matterIn; //[-/+]matter * amount
-    String[] matterOut;
+
+    //higher tier recipe machine resource requirements
+    int chemicalAmount;
+    int dataAmount;
+    String matterIn; //[-/+]matter * amount
+    String matterOut;
     double powerMultiplier; //0.5 or 1.0
+
     int realTier; //the tier that gets changed
 
-    public MachineRecipe(String machine, String name, int tier, int time, double powerMultiplier) {
+    public MachineRecipe(String name, Machine machine, String data, int tier, int time, double powerMultiplier, int priority) {
         super(name);
         this.machine = machine;
+        this.data = data;
         this.tier = tier;
         this.time = time;
-        this.priority = -1;
         this.powerMultiplier = powerMultiplier;
+        this.priority = priority;
     }
 
+    //these are the actual strings being put into the script code
     public void setInputs(String[] itemInputs, String[] liquidInputs) {
         this.itemInputs = itemInputs;
         this.liquidInputs = liquidInputs;
@@ -38,20 +47,15 @@ public class MachineRecipe extends AData {
         this.itemOutputs = itemOutputs;
         this.liquidOutputs = liquidOutputs;
     }
-    public void setAdditionalRequirements(String[] chemicalIn, String[] chemicalOut, int dataIn, String[] matterIn, String[] matterOut) {
-        this.chemicalIn = chemicalIn;
-        this.chemicalOut = chemicalOut;
-        this.dataIn = dataIn;
+    public void setAdditionalRequirements(int chemicalAmount, int dataAmount, String matterIn, String matterOut) {
+        this.chemicalAmount = chemicalAmount;
+        this.dataAmount = dataAmount;
         this.matterIn = matterIn;
         this.matterOut = matterOut;
-    }
-    public void setPriority(int priority) { //optional
-        this.priority = priority;
     }
 
     @Override
     public void print() {
-        System.out.print("");
     }
 
     @Override
@@ -117,7 +121,7 @@ public class MachineRecipe extends AData {
     private String buildMain(int power) {
         StringBuilder sb = new StringBuilder();
         sb.append("var ").append(this.realName).append(" = mods.modularmachinery.RecipeBuilder.newBuilder(\"")
-                .append(this.realName).append("\", \"").append(this.machine).append("\", ").append(this.time);
+                .append(this.realName).append("\", \"").append(this.machine.name).append("\", ").append(this.time);
         if (this.priority == -1) {
             sb.append(");\n");
         } else {
@@ -127,101 +131,64 @@ public class MachineRecipe extends AData {
         for (String s : this.itemInputs) {
             if (s.contains("ore:")) {
                 if (s.contains("*")) {
-                    sb.append(this.realName).append(".addItemInput(<").append(s, 0, s.indexOf("*")).append(">, ").append(s.substring(s.indexOf("*")+1)).append(");\n");
+                    sb.append(this.realName).append(".addItemInput(").append(s, 0, s.indexOf("*")).append(", ").append(s.substring(s.indexOf("*")+1)).append(");\n");
                 } else {
-                    sb.append(this.realName).append(".addItemInput(<").append(s).append(">);\n");
+                    sb.append(this.realName).append(".addItemInput(").append(s).append(");\n");
                 }
             } else {
                 if (s.contains("*")) {
-                    sb.append(this.realName).append(".addItemInput(<").append(s, 0, s.indexOf("*")).append("> * ").append(s.substring(s.indexOf("*")+1)).append(");\n");
+                    sb.append(this.realName).append(".addItemInput(").append(s, 0, s.indexOf("*")).append(" * ").append(s.substring(s.indexOf("*")+1)).append(");\n");
                 } else {
-                    sb.append(this.realName).append(".addItemInput(<").append(s).append(">);\n");
+                    sb.append(this.realName).append(".addItemInput(").append(s).append(");\n");
                 }
             }
         }
         for (String s : this.liquidInputs) {
             if (s.contains("*")) {
-                sb.append(this.realName).append(".addFluidInput(<liquid:").append(s, 0, s.indexOf("*")).append("> * ").append(s.substring(s.indexOf("*")+1)).append(");\n");
+                sb.append(this.realName).append(".addFluidInput(").append(s, 0, s.indexOf("*")).append(" * ").append(s.substring(s.indexOf("*")+1)).append(");\n");
             } else {
-                sb.append(this.realName).append(".addFluidInput(<liquid:").append(s).append(">);\n");
+                sb.append(this.realName).append(".addFluidInput(").append(s).append(");\n");
             }
         }
         for (String s : this.itemOutputs) {
             if (s.contains("ore:")) {
                 if (s.contains("*")) {
-                    sb.append(this.realName).append(".addItemOutput(<").append(s, 0, s.indexOf("*")).append(">, ").append(s.substring(s.indexOf("*")+1)).append(");\n");
+                    sb.append(this.realName).append(".addItemOutput(").append(s, 0, s.indexOf("*")).append(", ").append(s.substring(s.indexOf("*")+1)).append(");\n");
                 } else {
-                    sb.append(this.realName).append(".addItemOutput(<").append(s).append(">);\n");
+                    sb.append(this.realName).append(".addItemOutput(").append(s).append(");\n");
                 }
             } else {
                 if (s.contains("*")) {
-                    sb.append(this.realName).append(".addItemOutput(<").append(s, 0, s.indexOf("*")).append("> * ").append(s.substring(s.indexOf("*")+1)).append(");\n");
+                    sb.append(this.realName).append(".addItemOutput(").append(s, 0, s.indexOf("*")).append(" * ").append(s.substring(s.indexOf("*")+1)).append(");\n");
                 } else {
-                    sb.append(this.realName).append(".addItemOutput(<").append(s).append(">);\n");
+                    sb.append(this.realName).append(".addItemOutput(").append(s).append(");\n");
                 }
             }
         }
         for (String s : this.liquidOutputs) {
             if (s.contains("*")) {
-                sb.append(this.realName).append(".addFluidOutput(<liquid:").append(s, 0, s.indexOf("*")).append("> * ").append(s.substring(s.indexOf("*")+1)).append(");\n");
+                sb.append(this.realName).append(".addFluidOutput(").append(s, 0, s.indexOf("*")).append(" * ").append(s.substring(s.indexOf("*")+1)).append(");\n");
             } else {
-                sb.append(this.realName).append(".addFluidOutput(<liquid:").append(s).append(">);\n");
+                sb.append(this.realName).append(".addFluidOutput(").append(s).append(");\n");
             }
         }
         sb.append(this.realName).append(".addEnergyPerTickInput(").append(power).append(");\n");
         return sb.toString();
     }
+
     private String buildChemicals() {
         //chemicals
-        StringBuilder sb = new StringBuilder();
-        for (String s : this.chemicalIn) {
-            if (s.contains("*")) {
-                sb.append(this.realName).append(".addFluidInput(<liquid:").append(s, 0, s.indexOf("*")).append("> * ").append(s.substring(s.indexOf("*")+1)).append(");\n");
-            } else {
-                sb.append(this.realName).append(".addFluidInput(<liquid:").append(s).append(">);\n");
-            }
-        }
-        for (String s : this.chemicalOut) {
-            if (s.contains("*")) {
-                sb.append(this.realName).append(".addFluidOutput(<liquid:").append(s, 0, s.indexOf("*")).append("> * ").append(s.substring(s.indexOf("*")+1)).append(");\n");
-            } else {
-                sb.append(this.realName).append(".addFluidOutput(<liquid:").append(s).append(">);\n");
-            }
-        }
-        return sb.toString();
+        return this.realName+".addFluidInput(<liquid:"+this.machine.chemical+"> * "+this.chemicalAmount+");\n";
     }
-    //later on, there will be multiple tiers of data (depending on the amount of machine tiers of data generators
+    //later on, there will be multiple tiers of data (depending on the amount of machine tiers of data generators)
     private String buildData() {
-        return this.realName + ".addFluidInput(<liquid:cotc_data> * " + this.dataIn + ");\n";
+        return this.realName + ".addFluidInput(" + this.data + " * " + this.dataAmount + ");\n";
     }
     private String buildMatter() {
-        StringBuilder sb = new StringBuilder();
         //matter
-        // [-/+]matterColorrealName * amount
-        for (String s : this.matterIn) {
-            if (!s.contains("*")) {
-                throw new IllegalArgumentException("Matter must contains some amount denoted with *");
-            }
-            if (s.charAt(0) == '-') {
-                //<liquid:[polarity][color]matter> * someAmount
-                sb.append(this.realName).append(".addFluidInput(<liquid:cotc_neg").append(s, 1, s.indexOf("*")).append("_matter> * ").append(s.substring(s.indexOf("*")+1)).append(");\n");
-            } else if (s.charAt(0) == '+') {
-                sb.append(this.realName).append(".addFluidInput(<liquid:cotc_pos").append(s, 1, s.indexOf("*")).append("_matter> * ").append(s.substring(s.indexOf("*")+1)).append(");\n");
-            } else {
-                throw new IllegalArgumentException("Matter property must contain polarity denoted by (-/+) as the first character");
-            }
-        }
-        for (String s : this.matterOut) {
-            if (s.charAt(0) == '-') {
-                //<liquid:[polarity][color]matter> * someAmount
-                sb.append(this.realName).append(".addFluidOutput(<liquid:cotc_neg").append(s, 1, s.indexOf("*")).append("_matter> * ").append(s.substring(s.indexOf("*")+1)).append(");\n");
-            } else if (s.charAt(0) == '+') {
-                sb.append(this.realName).append(".addFluidOutput(<liquid:cotc_pos").append(s, 1, s.indexOf("*")).append("_matter> * ").append(s.substring(s.indexOf("*")+1)).append(");\n");
-            } else {
-                throw new IllegalArgumentException("Matter property must contain polarity denoted by (-/+) as the first character");
-            }
-        }
-        return sb.toString();
+        // [-/+]unlocalizedMatterName * amount
+        return  this.realName + ".addFluidInput(" + this.matterIn + ");\n" +
+                this.realName + ".addFluidOutput(" + this.matterOut + ");\n";
     }
 
     @Override

@@ -115,7 +115,8 @@ public abstract class AGenerator<D extends AData> {
                 return o;
             }
         }
-        throw new IllegalArgumentException("Unknown " + filename + ": " + s);
+        error("Unknown item from " + filename + "s.txt: " + s, true);
+        return null;
     }
     public boolean is(String s) {
         for (D o : objects) {
@@ -139,6 +140,9 @@ public abstract class AGenerator<D extends AData> {
     }
     protected void error(String s) throws GeneratorException {
         throw new GeneratorException(s, this.filename, this.line);
+    }
+    protected void error(String s, boolean o) throws GeneratorException {
+        throw new GeneratorException(s);
     }
 
     //parameter validation

@@ -10,13 +10,13 @@ public class MachineData extends AMachineResource {
         this.data = new LLiquid(false, "data", "Data", "165e08", 6000, 5, 500, 6000, false);
     }
 
+    public String getData() {
+        return this.data.getUnlocalizedName();
+    }
+
     @Override
     public String localize() {
         return this.data.localize();
-    }
-
-    public String getData() {
-        return this.data.getUnlocalizedName();
     }
 
     @Override
@@ -30,9 +30,7 @@ public class MachineData extends AMachineResource {
     }
 
     @Override
-    public void print() {
-
-    }
+    public void print() {}
     /*
 
     Data: a universal liquid that represents compute power

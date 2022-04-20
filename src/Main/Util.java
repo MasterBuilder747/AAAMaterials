@@ -19,6 +19,16 @@ public class Util {
         return s.split(regex+"\\s*");
     }
 
+    //define a list of characters to replcae and what to replace them with
+    //be aware that this updates per character, so if a replaced character is a replacement later, then it will be affected as well
+    public static String replaces(String s, String[] toReplaces, String[] replacements) {
+        if (toReplaces.length != replacements.length) throw new IllegalArgumentException("toReplaces and replacements must be the same size");
+        for (int i = 0; i < toReplaces.length; i++) {
+            s = s.replace(toReplaces[i], replacements[i]);
+        }
+        return s;
+    }
+
     public static boolean isNumberOld(String s) {
         return (
             s.contains("0") ||
@@ -30,17 +40,7 @@ public class Util {
             s.contains("6") ||
             s.contains("7") ||
             s.contains("8") ||
-            s.contains("9") ||
-            s.contains("-0") ||
-            s.contains("-1") ||
-            s.contains("-2") ||
-            s.contains("-3") ||
-            s.contains("-4") ||
-            s.contains("-5") ||
-            s.contains("-6") ||
-            s.contains("-7") ||
-            s.contains("-8") ||
-            s.contains("-9")
+            s.contains("9")
         );
     }
 
@@ -52,7 +52,6 @@ public class Util {
         }
         return true;
     }
-
 
 
     //chars

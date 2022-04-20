@@ -30,7 +30,7 @@ public class BiomeRegistry extends AGameData {
     }
 
     @Override
-    protected String getBracket() {
+    public String getBracket() {
         return this.name;
     }
 

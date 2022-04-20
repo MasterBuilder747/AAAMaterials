@@ -17,7 +17,7 @@ public class EntityRegistry extends AGameData {
     }
 
     @Override
-    protected String getBracket() {
+    public String getBracket() {
         return null;
     }
 

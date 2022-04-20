@@ -29,6 +29,10 @@ public class Registry extends AGameData {
     @Override
     public String getUnlocalizedName() { return this.mod + ":" + this.registryName; }
 
+    public String getFullUnlocalizedName() {
+        return this.mod + ":" + this.registryName + ":" + this.meta;
+    }
+
     public LItem createItem(String localName) {
         return new LItem(this.name, localName);
     }

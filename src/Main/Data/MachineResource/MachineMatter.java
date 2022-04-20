@@ -15,7 +15,7 @@ public class MachineMatter extends AMachineResource {
     public String getPos() {
         return this.pos.getUnlocalizedName();
     }
-    public String getNegs() {
+    public String getNeg() {
         return this.neg.getUnlocalizedName();
     }
 

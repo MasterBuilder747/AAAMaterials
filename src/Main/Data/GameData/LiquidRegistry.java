@@ -25,7 +25,7 @@ public class LiquidRegistry extends AGameData {
     }
 
     @Override
-    protected String getBracket() {
+    public String getBracket() {
         return "<liquid:" + this.name + ">";
     }
 

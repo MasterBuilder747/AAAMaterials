@@ -17,4 +17,15 @@ public class GRegistry extends AGGameData<Registry> {
         r.setOre(ores);
         objects.add(r);
     }
+
+    //requires meta as well
+    public Registry getUnlocalized(String search) {
+        for (Registry r : this.objects) {
+            if (r.name.equals(search)) {
+                return r;
+            }
+        }
+        error("Unknown item in the registry: " + search);
+        return null;
+    }
 }

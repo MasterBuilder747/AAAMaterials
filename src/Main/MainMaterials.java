@@ -42,6 +42,8 @@ public class MainMaterials {
         GRegistry registry = new GRegistry("registry");
         registry.registerMaterials();
         //registry.print();
+        GOreDictRegistry oreDict = new GOreDictRegistry("oredictregistrie", registry);
+        oreDict.registerMaterials(); //needs a lot of work parsing in order to use
         GLiquidRegistry liquids = new GLiquidRegistry("liquidregistrie");
         liquids.registerMaterials();
         GEntityRegistry entities = new GEntityRegistry("entityregistry");
@@ -81,7 +83,7 @@ public class MainMaterials {
         //LOAD ORDER for .zs:
         //0. required machine resources for machine recipes
         //recipes might be hardcoded due to the nature of when they are loaded
-        GMachine machine = new GMachine("machine");
+        GMachine machine = new GMachine("machine", liquids);
         machine.registerMaterials(); //this doesn't write anything, but we will use this data (a lot)
         GMachineChemical chemical = new GMachineChemical("chemical", machine);
         chemical.registerMaterials();

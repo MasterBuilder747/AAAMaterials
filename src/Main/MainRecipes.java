@@ -2,10 +2,15 @@ package Main;
 
 import Main.Generators.*;
 import Main.Generators.GameData.GLiquidRegistry;
+import Main.Generators.GameData.GOreDictRegistry;
 import Main.Generators.GameData.GRegistry;
 import Main.Generators.Localized.GBlock;
 import Main.Generators.Localized.GItem;
 import Main.Generators.Localized.GPart;
+import Main.Generators.MachineResource.GMachine;
+import Main.Generators.MachineResource.GMachineChemical;
+import Main.Generators.MachineResource.GMachineData;
+import Main.Generators.MachineResource.GMachineMatter;
 
 import java.io.BufferedWriter;
 import java.io.FileWriter;
@@ -28,8 +33,10 @@ public class MainRecipes {
         //the registry
         GRegistry registry = new GRegistry("registry");
         registry.registerRecipes();
-        GLiquidRegistry liquidRegistry = new GLiquidRegistry("liquidregistrie");
-        liquidRegistry.registerRecipes();
+        GOreDictRegistry oreDict = new GOreDictRegistry("oredictregistrie", registry);
+        oreDict.registerRecipes();
+        GLiquidRegistry liquids = new GLiquidRegistry("liquidregistrie");
+        liquids.registerRecipes();
 
         //recipes.zs
         FileWriter fw = new FileWriter(HOME + DEPLOY + "scripts/recipes" + ".zs");
@@ -39,10 +46,22 @@ public class MainRecipes {
         bw.write("""
                 #priority 0
                 
+                #modloaded modularmachinery
+                
                 # RECIPES FILE
                 # ============================================
 
                 """);
+
+        //machine resources
+        GMachine machine = new GMachine("machine", liquids);
+        machine.registerRecipes();
+        GMachineChemical chemical = new GMachineChemical("chemical", machine);
+        chemical.registerRecipes();
+        GMachineData data = new GMachineData("data");
+        data.registerRecipes();
+        GMachineMatter matter = new GMachineMatter("matter");
+        matter.registerRecipes();
 
         //custom content
         GBlock block = new GBlock("block");
@@ -63,7 +82,7 @@ public class MainRecipes {
 //        bw.write(compound.register());
 
         //machine recipes, only used in MainRecipes
-        GRecipe recipe = new GRecipe("recipe");
+        GRecipe recipe = new GRecipe("recipe", registry, liquids, oreDict, machine, data, matter);
         bw.write(recipe.registerRecipes());
 
         //finish

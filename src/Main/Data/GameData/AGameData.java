@@ -20,6 +20,6 @@ public abstract class AGameData extends AData {
         return null;
     }
 
-    protected abstract String getBracket();
+    public abstract String getBracket();
     public abstract String getUnlocalizedName();
 }
