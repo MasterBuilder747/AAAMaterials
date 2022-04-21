@@ -3,6 +3,11 @@ package Main.Data.Recipe;
 public class RMalleable extends AMachineRecipe {
 
     @Override
+    public void print() {
+
+    }
+
+    @Override
     public String buildMaterial() {
         return null;
     }
