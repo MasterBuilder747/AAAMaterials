@@ -1,6 +1,6 @@
 package Main.Generators.Localized.Liquid;
 
-import Main.Data.Localized.Liquid.LQGP;
+import Main.Data.RecipeObject.Localized.Liquid.LQGP;
 
 public class G_QGP extends AGLiquid<LQGP> {
     public G_QGP(String filename) {

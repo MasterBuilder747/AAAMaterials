@@ -1,8 +1,8 @@
 package Main.Generators.Composition;
 
 import Main.Composition;
-import Main.Data.Material.AMaterialData;
-import Main.Data.Material.ChemicalLabel;
+import Main.Data.RecipeObject.Material.AMaterialData;
+import Main.Data.RecipeObject.Material.ChemicalLabel;
 import Main.Generators.AGenerator;
 import Main.Generators.GElement;
 import Main.Generators.GMaterial;

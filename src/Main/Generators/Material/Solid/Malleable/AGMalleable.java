@@ -1,8 +1,8 @@
 package Main.Generators.Material.Solid.Malleable;
 
-import Main.Data.Material.Solid.AMSolid;
-import Main.Data.Material.Liquid.MLiquid;
-import Main.Data.Material.Material;
+import Main.Data.RecipeObject.Material.Solid.AMSolid;
+import Main.Data.RecipeObject.Material.Liquid.MLiquid;
+import Main.Data.RecipeObject.Material.Material;
 import Main.Generators.GMaterial;
 import Main.Generators.GPartGroup;
 import Main.Generators.GRecipeInitializer;

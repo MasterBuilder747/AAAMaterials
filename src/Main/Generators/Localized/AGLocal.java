@@ -1,6 +1,6 @@
 package Main.Generators.Localized;
 
-import Main.Data.Localized.ALocalizedData;
+import Main.Data.RecipeObject.Localized.ALocalizedData;
 import Main.Generators.AGenerator;
 
 import java.io.BufferedReader;

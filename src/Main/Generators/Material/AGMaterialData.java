@@ -1,8 +1,8 @@
 package Main.Generators.Material;
 
-import Main.Data.Material.AMaterialData;
-import Main.Data.Material.Material;
-import Main.Data.Material.PartGroup;
+import Main.Data.RecipeObject.Material.AMaterialData;
+import Main.Data.RecipeObject.Material.Material;
+import Main.Data.RecipeObject.Material.PartGroup;
 import Main.Generators.AGenerator;
 import Main.Generators.GMaterial;
 import Main.Generators.GPartGroup;

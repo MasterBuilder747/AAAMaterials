@@ -1,6 +1,6 @@
 package Main.Generators.Localized;
 
-import Main.Data.Localized.LItem;
+import Main.Data.RecipeObject.Localized.LItem;
 
 public class GItem extends AGLocal<LItem> {
     public GItem(String filename) {

@@ -1,6 +1,6 @@
 package Main.Data.MachineResource;
 
-import Main.Data.Localized.Liquid.ALiquid;
+import Main.Data.RecipeObject.Localized.Liquid.ALiquid;
 
 public class MachineMatter extends AMachineResource {
     ALiquid pos;

@@ -1,6 +1,6 @@
 package Main.Data;
 
-import Main.Data.Localized.LBlock;
+import Main.Data.RecipeObject.Localized.LBlock;
 import Main.Util;
 
 public class OreType extends AData {

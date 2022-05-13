@@ -1,6 +1,6 @@
 package Main.Generators.Localized.Liquid;
 
-import Main.Data.Localized.Liquid.LPlasma;
+import Main.Data.RecipeObject.Localized.Liquid.LPlasma;
 
 public class GPlasma extends AGLiquid<LPlasma> {
     public GPlasma(String filename) {

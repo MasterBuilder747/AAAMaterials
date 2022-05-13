@@ -1,6 +1,6 @@
 package Main.Generators.Localized.Liquid;
 
-import Main.Data.Localized.Liquid.LLiquid;
+import Main.Data.RecipeObject.Localized.Liquid.LLiquid;
 
 public class GLiquid extends AGLiquid<LLiquid> {
     public GLiquid(String filename) {

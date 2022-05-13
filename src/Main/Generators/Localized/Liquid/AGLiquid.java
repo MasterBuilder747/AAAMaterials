@@ -1,6 +1,6 @@
 package Main.Generators.Localized.Liquid;
 
-import Main.Data.Localized.Liquid.ALiquid;
+import Main.Data.RecipeObject.Localized.Liquid.ALiquid;
 import Main.Generators.Localized.AGLocal;
 
 //these are custom defined liquids

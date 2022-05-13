@@ -1,7 +1,7 @@
 package Main.Generators.Material.Liquid;
 
-import Main.Data.Material.Liquid.MGas;
-import Main.Data.Material.Material;
+import Main.Data.RecipeObject.Material.Liquid.MGas;
+import Main.Data.RecipeObject.Material.Material;
 import Main.Generators.GMaterial;
 
 public class GMGas extends AGMLiquid<MGas> {

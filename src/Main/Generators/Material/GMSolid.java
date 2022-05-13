@@ -1,7 +1,7 @@
 package Main.Generators.Material;
 
-import Main.Data.Material.Material;
-import Main.Data.Material.MSolid;
+import Main.Data.RecipeObject.Material.Material;
+import Main.Data.RecipeObject.Material.MSolid;
 import Main.Generators.GMaterial;
 import Main.Generators.GPartGroup;
 

@@ -1,6 +1,6 @@
 package Main.Generators.Localized.Liquid;
 
-import Main.Data.Localized.Liquid.LMolten;
+import Main.Data.RecipeObject.Localized.Liquid.LMolten;
 
 public class GMolten extends AGLiquid<LMolten> {
     public GMolten(String filename) {

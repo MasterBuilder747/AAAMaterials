@@ -1,6 +1,6 @@
 package Main.Generators.Composition;
 
-import Main.Data.Material.ChemicalLabel;
+import Main.Data.RecipeObject.Material.ChemicalLabel;
 import Main.Generators.GElement;
 import Main.Generators.GMaterial;
 

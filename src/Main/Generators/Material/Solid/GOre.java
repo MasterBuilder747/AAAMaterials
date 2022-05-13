@@ -1,9 +1,9 @@
 package Main.Generators.Material.Solid;
 
-import Main.Data.Localized.LBlock;
-import Main.Data.Material.Material;
-import Main.Data.Material.Ore;
-import Main.Data.Material.OreVariant;
+import Main.Data.RecipeObject.Localized.LBlock;
+import Main.Data.RecipeObject.Material.Material;
+import Main.Data.RecipeObject.Material.Ore;
+import Main.Data.RecipeObject.Material.OreVariant;
 import Main.Data.OreType;
 import Main.Data.GameData.Registry;
 import Main.Generators.GMaterial;

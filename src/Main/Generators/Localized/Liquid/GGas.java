@@ -1,6 +1,6 @@
 package Main.Generators.Localized.Liquid;
 
-import Main.Data.Localized.Liquid.LGas;
+import Main.Data.RecipeObject.Localized.Liquid.LGas;
 
 public class GGas extends AGLiquid<LGas> {
     public GGas(String filename) {

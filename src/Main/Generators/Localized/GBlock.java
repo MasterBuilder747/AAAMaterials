@@ -1,6 +1,6 @@
 package Main.Generators.Localized;
 
-import Main.Data.Localized.LBlock;
+import Main.Data.RecipeObject.Localized.LBlock;
 
 public class GBlock extends AGLocal<LBlock> {
 

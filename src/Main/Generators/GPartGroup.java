@@ -1,7 +1,7 @@
 package Main.Generators;
 
-import Main.Data.Localized.LPart;
-import Main.Data.Material.PartGroup;
+import Main.Data.RecipeObject.Localized.LPart;
+import Main.Data.RecipeObject.Material.PartGroup;
 import Main.Generators.Localized.GPart;
 import Main.Util;
 

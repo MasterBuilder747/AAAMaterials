@@ -1,6 +1,6 @@
 package Main.Generators.MachineResource;
 
-import Main.Data.Localized.Liquid.LPlasma;
+import Main.Data.RecipeObject.Localized.Liquid.LPlasma;
 import Main.Data.MachineResource.MachineMatter;
 
 import java.io.BufferedReader;

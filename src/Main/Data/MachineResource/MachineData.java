@@ -1,6 +1,6 @@
 package Main.Data.MachineResource;
 
-import Main.Data.Localized.Liquid.LLiquid;
+import Main.Data.RecipeObject.Localized.Liquid.LLiquid;
 
 public class MachineData extends AMachineResource {
     LLiquid data;

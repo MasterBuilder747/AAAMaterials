@@ -1,6 +1,6 @@
 package Main.Data.GameData;
 
-import Main.Data.Localized.Liquid.LLiquid;
+import Main.Data.RecipeObject.Localized.Liquid.LLiquid;
 
 public class LiquidRegistry extends AGameData {
     int density;

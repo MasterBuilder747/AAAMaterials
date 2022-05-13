@@ -1,6 +1,6 @@
 package Main.Generators.Localized;
 
-import Main.Data.Localized.LPart;
+import Main.Data.RecipeObject.Localized.LPart;
 
 public class GPart extends AGLocal<LPart> {
     public GPart(String filename) {

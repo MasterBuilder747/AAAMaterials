@@ -1,7 +1,7 @@
 package Main.Generators.Material.Solid;
 
-import Main.Data.Material.Solid.Gem;
-import Main.Data.Material.Material;
+import Main.Data.RecipeObject.Material.Solid.Gem;
+import Main.Data.RecipeObject.Material.Material;
 import Main.Generators.GMaterial;
 import Main.Generators.GPartGroup;
 import Main.Generators.Material.GMSolid;
