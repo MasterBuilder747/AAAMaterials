@@ -9,8 +9,8 @@ import Main.Generators.Material.Liquid.GMLiquid;
 import Main.Generators.Material.GMSolid;
 
 public class GPlastic extends AGMalleable<Plastic> {
-    public GPlastic(String filename, GMaterial material, GPartGroup partGroup, GMLiquid liquid, GMSolid solid) {
-        super(1, filename, material, partGroup, liquid, solid, true, false, false);
+    public GPlastic(String filename, GMaterial material, GPartGroup partGroup, GMLiquid liquid, GMSolid solid, boolean isReg) {
+        super(1, filename, material, partGroup, liquid, solid, true, false, false, isReg);
     }
 
     @Override

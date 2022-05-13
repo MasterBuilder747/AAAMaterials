@@ -7,6 +7,7 @@ public class LPart extends ALocalizedData {
     String oreDict;
     boolean exists;
     double amount; //amount of material this has in it; 1 = 1 ingot
+    public String baseRegistryName; //the base part of the key being used to find the item registry
 
     public LPart(String name, String localName, boolean hasOverlay, double amount) {
         super(name, localName);
@@ -18,6 +19,7 @@ public class LPart extends ALocalizedData {
             this.oreDict = this.oreDict.substring(0, s)+this.oreDict.substring(s+1, s+2).toUpperCase()+this.oreDict.substring(s+2);
         }
         this.amount = amount;
+        this.baseRegistryName = localName.replace(" ", "");
     }
     //this part already exists in contentTweaker
     //to be used in a PartGroup
@@ -26,6 +28,7 @@ public class LPart extends ALocalizedData {
         this.exists = true;
         this.oreDict = oreDict;
         this.amount = amount;
+        this.baseRegistryName = localName.replace(" ", "");
     }
 
     @Override

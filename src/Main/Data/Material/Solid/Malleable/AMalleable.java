@@ -4,6 +4,8 @@ import Main.Data.Material.Solid.AMSolid;
 import Main.Data.Material.Liquid.MLiquid;
 import Main.Data.Material.Material;
 
+import java.util.ArrayList;
+
 //data > material > malleable
 public abstract class AMalleable extends AMSolid {
     double meltingMultiplier; //default is 1, but if 0, then recipes won't be generated,

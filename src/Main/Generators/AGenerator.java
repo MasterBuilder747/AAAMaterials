@@ -18,7 +18,7 @@ public abstract class AGenerator<D extends AData> {
     protected int line = 1;
     protected String s1;
     protected String[] s;
-    protected final int PARAMS;
+    protected final int PARAMS; //-1 means ignore
     protected final String SUBFOLDER; //optional subfolder for user specified files for organization
     //protected int numParams
 
@@ -33,6 +33,10 @@ public abstract class AGenerator<D extends AData> {
         this.filename = filename;
         this.SUBFOLDER = SUBFOLDER;
         objects = new ArrayList<>();
+    }
+
+    public ArrayList<D> getObjects() {
+        return this.objects;
     }
 
     private void populateObjects() throws IOException {

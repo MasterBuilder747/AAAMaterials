@@ -9,8 +9,8 @@ import Main.Generators.Material.Liquid.GMLiquid;
 import Main.Generators.Material.GMSolid;
 
 public class GRubber extends AGMalleable<Rubber> {
-    public GRubber(String filename, GMaterial material, GPartGroup partGroup, GMLiquid liquid, GMSolid solid) {
-        super(1, filename, material, partGroup, liquid, solid, true, false, false);
+    public GRubber(String filename, GMaterial material, GPartGroup partGroup, GMLiquid liquid, GMSolid solid, boolean isReg) {
+        super(1, filename, material, partGroup, liquid, solid, true, false, false, isReg);
     }
 
     @Override

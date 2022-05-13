@@ -1,7 +1,12 @@
 package Main.Data.Material.Solid.Malleable;
 
+import Main.Data.MachineResource.Machine.Machine;
 import Main.Data.Material.Liquid.MLiquid;
 import Main.Data.Material.Material;
+import Main.Data.Recipe.CustomRecipe;
+import Main.Data.Recipe.SmeltingRecipe;
+
+import java.util.ArrayList;
 
 //data > material > malleable > metal
 public class Metal extends AMalleable {
@@ -27,7 +32,12 @@ public class Metal extends AMalleable {
         //4. blast furnace to super hot ingot > cryo freezer/chamber etc using cryo fluid/fuel
         //5. blast furnace to gas since there is no liquid form and it is so hot it is gaseous > gas freezer/etc to ingot/gas shape?
         //6. fusion furnace to plasma > ingot through plasma cooling chamber/etc
-        return null;
+        StringBuilder sb = new StringBuilder();
+        //this is a test!
+        Machine m = null;
+
+        SmeltingRecipe r = new SmeltingRecipe()
+        return sb.toString();
     }
 
     @Override

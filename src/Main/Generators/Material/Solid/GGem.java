@@ -14,7 +14,7 @@ public class GGem extends AGMSolid<Gem>{
     @Override
     protected void readSolidParameters(Material m, String[] s) {
         Gem g = new Gem(m);
-        g.setPartGTrue(genPartGroup("gem"));
+        g.setPartGroupTrue(genPartGroup("gem"));
         objects.add(g);
     }
 }

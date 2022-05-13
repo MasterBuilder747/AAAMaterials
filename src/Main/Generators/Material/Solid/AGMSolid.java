@@ -5,6 +5,8 @@ import Main.Data.Material.Material;
 import Main.Data.Material.MSolid;
 import Main.Generators.GMaterial;
 import Main.Generators.GPartGroup;
+import Main.Generators.GRecipeInitializer;
+import Main.Generators.GameData.GRegistry;
 import Main.Generators.Material.AGMaterialData;
 import Main.Generators.Material.GMSolid;
 
@@ -14,15 +16,15 @@ public abstract class AGMSolid <S extends AMSolid> extends AGMaterialData<S> {
     boolean isFineDust;
     boolean isPowder;
 
-    public AGMSolid(int params, String filename, GMaterial material, GPartGroup partGroup, GMSolid solid, boolean isDust, boolean isFineDust, boolean isPowder) {
-        super(params, filename, material, partGroup, "Solid");
+    public AGMSolid(int params, String filename, GRegistry registry, GRecipeInitializer initializer, GMaterial material, GPartGroup partGroup, GMSolid solid, boolean isDust, boolean isFineDust, boolean isPowder, boolean isReg) {
+        super(params, filename, initializer, material, partGroup, "Solid", registry, isReg);
         this.solid = solid;
         this.isDust = isDust;
         this.isFineDust = isFineDust;
         this.isPowder = isPowder;
     }
-    public AGMSolid(int params, String filename, GMaterial material, GPartGroup partGroup, GMSolid solid, boolean isDust, boolean isFineDust, boolean isPowder, String solidFolder) {
-        super(params, filename, material, partGroup, "Solid/"+solidFolder);
+    public AGMSolid(int params, String filename, GRegistry registry, GRecipeInitializer initializer, GMaterial material, GPartGroup partGroup, GMSolid solid, boolean isDust, boolean isFineDust, boolean isPowder, String solidFolder, boolean isReg) {
+        super(params, filename, initializer, material, partGroup, "Solid/"+solidFolder, registry, isReg);
         this.solid = solid;
         this.isDust = isDust;
         this.isFineDust = isFineDust;

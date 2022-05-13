@@ -10,8 +10,8 @@ import Main.Generators.Material.GMSolid;
 
 public class GAlloy extends AGMalleable<Alloy> {
 
-    public GAlloy(String filename, GMaterial material, GPartGroup partGroup, GMLiquid liquid, GMSolid solid) {
-        super(4, filename, material, partGroup, liquid, solid, true, false, false);
+    public GAlloy(String filename, GMaterial material, GPartGroup partGroup, GMLiquid liquid, GMSolid solid, boolean isReg) {
+        super(4, filename, material, partGroup, liquid, solid, true, false, false, isReg);
     }
 
     @Override

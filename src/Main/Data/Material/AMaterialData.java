@@ -2,6 +2,7 @@ package Main.Data.Material;
 
 import Main.Data.AData;
 import Main.Data.GameData.Registry;
+import Main.Data.Localized.LPart;
 
 import java.util.ArrayList;
 
@@ -11,30 +12,52 @@ public abstract class AMaterialData extends AData {
     ArrayList<MaterialData> datas; //the array of registries that are used for adding recipes and other things
     protected PartGroup[] partGroups;
     protected boolean[] enablePartGroups;
+    public ArrayList<String> localizedPartNames;
 
     public AMaterialData(Material m) {
         super(m.NAME);
         this.m = m;
         this.datas = new ArrayList<>();
+        this.localizedPartNames = new ArrayList<>();
+    }
+
+    //call this to get each localized registry name to be used for finding the registries
+    private void setPartGroupsReg() {
+        for (int i = 0; i < partGroups.length; i++) {
+            if (this.enablePartGroups[i]) {
+                for (LPart p : partGroups[i].getParts()) {
+                    this.localizedPartNames.add(p.baseRegistryName.replace("%s", m.NAME));
+                }
+            }
+        }
     }
     public void setPartGroups(PartGroup[] partGroups, boolean[] enablePartGroups) {
         this.partGroups = partGroups;
         this.enablePartGroups = enablePartGroups;
+        this.setPartGroupsReg();
     }
     public void setPartGroup(PartGroup partGroup, boolean enablePartGroup) {
         this.partGroups = new PartGroup[]{partGroup};
         this.enablePartGroups = new boolean[]{enablePartGroup};
+        this.setPartGroupsReg();
     }
-    public void setPartGTrue(PartGroup partGroup) {
+    public void setPartGroupsTrue(PartGroup[] partGroup) {
+        this.partGroups = partGroup;
+        this.enablePartGroups = new boolean[partGroup.length];
+        for (int i = 0; i < partGroups.length; i++) {
+            this.enablePartGroups[i] = true;
+        }
+        this.setPartGroupsReg();
+    }
+    public void setPartGroupTrue(PartGroup partGroup) {
         this.partGroups = new PartGroup[]{partGroup};
         this.enablePartGroups = new boolean[]{true};
-    }
-    public PartGroup[] getPartGroups() {
-        return this.partGroups;
+        this.setPartGroupsReg();
     }
     public boolean[] getEnablePartGroups() {
         return this.enablePartGroups;
     }
+
     protected String genPartGroups() {
         StringBuilder sb = new StringBuilder();
         for (int i = 0; i < this.partGroups.length; i++) {
@@ -54,7 +77,8 @@ public abstract class AMaterialData extends AData {
         return sb.toString();
     }
 
-    protected void add(String key, Registry r) {
+    //uses the localized name externally
+    public void add(String key, Registry r) {
         this.datas.add(new MaterialData(key, r));
     }
 

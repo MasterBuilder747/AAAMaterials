@@ -37,6 +37,7 @@ ring, ring, true, false, 0.25
 small_spring, smallSpring, true, false, 0.25
 large_spring, springLarge, true, false, 1.111111111111111
 round, round, true, false, 0.111111111111111
+/
 /custom parts
 boule, %s-Boule, false, false, 0
 chain, %s-Chain, false, false, 1.5
