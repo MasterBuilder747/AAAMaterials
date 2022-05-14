@@ -1,9 +1,11 @@
 package Main.Data.RecipeObject.Material.Solid.Malleable;
 
+import Main.Data.MachineResource.Machine.Machine;
 import Main.Data.RecipeObject.Material.Solid.AMSolid;
 import Main.Data.RecipeObject.Material.Liquid.MLiquid;
-import Main.Data.RecipeObject.Material.Material;
-import Main.Generators.MachineResource.GMachine;
+import Main.Data.Material;
+
+import java.util.ArrayList;
 
 //data > material > malleable
 public abstract class AMalleable extends AMSolid {
@@ -11,8 +13,8 @@ public abstract class AMalleable extends AMSolid {
     MLiquid molten;
     //negative numbers indicate the value of this material, but it cannot be melted
 
-    public AMalleable(Material m, GMachine machine, double meltingMultiplier, MLiquid molten) {
-        super(m, machine);
+    public AMalleable(Material m, ArrayList<Machine> machines, double meltingMultiplier, MLiquid molten) {
+        super(m, machines);
         this.meltingMultiplier = meltingMultiplier;
         this.molten = molten;
     }

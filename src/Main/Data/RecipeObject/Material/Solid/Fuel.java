@@ -1,13 +1,15 @@
 package Main.Data.RecipeObject.Material.Solid;
 
-import Main.Data.RecipeObject.Material.Material;
-import Main.Generators.MachineResource.GMachine;
+import Main.Data.MachineResource.Machine.Machine;
+import Main.Data.Material;
+
+import java.util.ArrayList;
 
 public class Fuel extends AMSolid {
     //furnace.setFuel(<minecraft:coal:1>, 800);
 
-    public Fuel(Material m, GMachine machine) {
-        super(m, machine);
+    public Fuel(Material m, ArrayList<Machine> machines) {
+        super(m, machines);
     }
 
     @Override

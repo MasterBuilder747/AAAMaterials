@@ -1,8 +1,8 @@
 package Main.Generators;
 
 import Main.Data.RecipeObject.Localized.LPart;
-import Main.Data.RecipeObject.Material.PartGroup;
-import Main.Generators.Localized.GPart;
+import Main.Data.PartGroup;
+import Main.Generators.RecipeObjects.Localized.GPart;
 import Main.Util;
 
 import java.io.BufferedReader;

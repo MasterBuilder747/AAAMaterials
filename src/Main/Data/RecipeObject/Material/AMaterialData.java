@@ -2,6 +2,8 @@ package Main.Data.RecipeObject.Material;
 
 import Main.Data.GameData.Registry;
 import Main.Data.MachineResource.Machine.Machine;
+import Main.Data.Material;
+import Main.Data.PartGroup;
 import Main.Data.RecipeObject.ARecipeObject;
 import Main.Data.RecipeObject.Localized.LPart;
 import Main.MaterialData;

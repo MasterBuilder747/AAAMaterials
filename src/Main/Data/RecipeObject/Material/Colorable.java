@@ -1,6 +1,7 @@
 package Main.Data.RecipeObject.Material;
 
 import Main.Data.MachineResource.Machine.Machine;
+import Main.Data.Material;
 
 import java.util.ArrayList;
 

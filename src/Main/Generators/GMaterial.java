@@ -1,6 +1,6 @@
 package Main.Generators;
 
-import Main.Data.RecipeObject.Material.Material;
+import Main.Data.Material;
 
 import java.io.*;
 

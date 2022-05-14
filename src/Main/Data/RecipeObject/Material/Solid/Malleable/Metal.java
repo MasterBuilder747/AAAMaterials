@@ -2,16 +2,16 @@ package Main.Data.RecipeObject.Material.Solid.Malleable;
 
 import Main.Data.MachineResource.Machine.Machine;
 import Main.Data.RecipeObject.Material.Liquid.MLiquid;
-import Main.Data.RecipeObject.Material.Material;
-import Main.Data.Recipe.SmeltingRecipe;
-import Main.Generators.MachineResource.GMachine;
+import Main.Data.Material;
+
+import java.util.ArrayList;
 
 //data > material > malleable > metal
 public class Metal extends AMalleable {
 
     //this is a malleable metal, which means that it can be molded into different metal parts
-    public Metal(Material m, GMachine machine, MLiquid liquid) {
-        super(m, machine, 1, liquid);
+    public Metal(Material m, MLiquid liquid, ArrayList<Machine> machines) {
+        super(m, machines, 1, liquid);
     }
 
     @Override

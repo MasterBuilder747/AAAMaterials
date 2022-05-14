@@ -1,14 +1,16 @@
 package Main.Data.RecipeObject.Material.Solid.Malleable;
 
+import Main.Data.MachineResource.Machine.Machine;
 import Main.Data.RecipeObject.Material.Liquid.MLiquid;
-import Main.Data.RecipeObject.Material.Material;
-import Main.Generators.MachineResource.GMachine;
+import Main.Data.Material;
+
+import java.util.ArrayList;
 
 //data > material > malleable > alloy
 public class Alloy extends AMalleable {
 
-    public Alloy(Material m, GMachine machine, MLiquid liquid) {
-        super(m, machine, 1, liquid);
+    public Alloy(Material m, MLiquid liquid, ArrayList<Machine> machines) {
+        super(m, machines, 1, liquid);
     }
 
     @Override

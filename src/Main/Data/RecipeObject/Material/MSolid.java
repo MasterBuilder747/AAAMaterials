@@ -1,13 +1,16 @@
 package Main.Data.RecipeObject.Material;
 
-import Main.Generators.MachineResource.GMachine;
+import Main.Data.MachineResource.Machine.Machine;
+import Main.Data.Material;
 import Main.Util;
+
+import java.util.ArrayList;
 
 public class MSolid extends AMaterialData {
     String altName;
 
-    public MSolid(Material m, GMachine machine) {
-        super(m, machine);
+    public MSolid(Material m, ArrayList<Machine> machines) {
+        super(m, machines);
     }
     public void addAltName(String altName) {
         this.altName = altName;

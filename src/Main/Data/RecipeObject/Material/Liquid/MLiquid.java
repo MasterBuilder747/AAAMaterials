@@ -2,7 +2,7 @@ package Main.Data.RecipeObject.Material.Liquid;
 
 import Main.Data.RecipeObject.Localized.Liquid.LLiquid;
 import Main.Data.RecipeObject.Localized.Liquid.LMolten;
-import Main.Data.RecipeObject.Material.Material;
+import Main.Data.Material;
 
 public class MLiquid extends AMLiquid {
     public MLiquid(Material m, int density, int luminosity, int temperature, int viscosity, boolean vaporize) {

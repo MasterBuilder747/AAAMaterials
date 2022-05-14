@@ -1,13 +1,16 @@
 package Main.Data.RecipeObject.Material.Solid;
 
-import Main.Data.RecipeObject.Material.Material;
+import Main.Data.MachineResource.Machine.Machine;
+import Main.Data.Material;
 import Main.Data.GameData.Registry;
+
+import java.util.ArrayList;
 
 public class Wood extends AMSolid {
     boolean isVanilla; //for quark integration
 
-    public Wood(Material m, boolean isVanilla) {
-        super(m);
+    public Wood(Material m, boolean isVanilla, ArrayList<Machine> machines) {
+        super(m, machines);
         this.isVanilla = isVanilla;
     }
 

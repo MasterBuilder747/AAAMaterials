@@ -1,5 +1,10 @@
 package Main.Data.RecipeObject.Material;
 
+import Main.Data.MachineResource.Machine.Machine;
+import Main.Data.Material;
+
+import java.util.ArrayList;
+
 public class Tinkers extends AMaterialData {
     //this requires smelt to be implemented, the parts will be used here
     //the smelt parts must be registered before using this, so only buildRecipe will be used
@@ -37,8 +42,8 @@ public class Tinkers extends AMaterialData {
     //ModID:ItemID:MaterialCost
 
     //see: https://docs.blamejared.com/1.12/en/Mods/ContentTweaker/Tinkers_Construct/Material
-    public Tinkers(Material m) {
-        super(m);
+    public Tinkers(Material m, ArrayList<Machine> machines) {
+        super(m, machines);
     }
 
     boolean isTool;

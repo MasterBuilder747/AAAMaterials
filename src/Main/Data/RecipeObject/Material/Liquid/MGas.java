@@ -1,7 +1,7 @@
 package Main.Data.RecipeObject.Material.Liquid;
 
 import Main.Data.RecipeObject.Localized.Liquid.LGas;
-import Main.Data.RecipeObject.Material.Material;
+import Main.Data.Material;
 
 public class MGas extends AMLiquid {
     public MGas(Material m, int density, int luminosity, int temperature, int viscosity, boolean vaporize) {

@@ -2,7 +2,7 @@ package Main.Data.RecipeObject.Material.Liquid;
 
 import Main.Data.RecipeObject.Localized.Liquid.ALiquid;
 import Main.Data.RecipeObject.Material.AMaterialData;
-import Main.Data.RecipeObject.Material.Material;
+import Main.Data.Material;
 import Main.Generators.MachineResource.GMachine;
 
 public abstract class AMLiquid extends AMaterialData {

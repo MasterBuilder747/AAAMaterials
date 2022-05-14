@@ -1,8 +1,10 @@
 package Main.Data.RecipeObject.Material.Solid.Malleable;
 
+import Main.Data.MachineResource.Machine.Machine;
 import Main.Data.RecipeObject.Material.Liquid.MLiquid;
-import Main.Data.RecipeObject.Material.Material;
-import Main.Generators.MachineResource.GMachine;
+import Main.Data.Material;
+
+import java.util.ArrayList;
 
 //data > material > malleable > plastic
 public class Plastic extends AMalleable {
@@ -10,8 +12,8 @@ public class Plastic extends AMalleable {
     //when melting a part:
     //get some back
     //get no material back
-    public Plastic(Material m, GMachine machine, double meltingMultiplier, MLiquid liquid) {
-        super(m, machine, meltingMultiplier, liquid);
+    public Plastic(Material m, double meltingMultiplier, MLiquid liquid, ArrayList<Machine> machines) {
+        super(m, machines, meltingMultiplier, liquid);
     }
 
     @Override
