@@ -9,4 +9,9 @@ public abstract class AMachineResource extends AData {
     }
 
     public abstract String localize();
+
+    @Override
+    public String buildRecipe() {
+        return null;
+    }
 }

@@ -1,11 +1,13 @@
 package Main.Data.MachineResource;
 
+import Main.Data.RecipeObject.Localized.Liquid.LLiquid;
+
 public class MachineData extends AMachineResource {
-    LMachineLiquid data;
+    LLiquid data;
 
     public MachineData(String name) {
         super(name);
-        this.data = new LMachineLiquid("data", "Data", "165e08", 6000, 5, 500, 6000, false);
+        this.data = new LLiquid(false, null, "data", "Data", "165e08", 6000, 5, 500, 6000, false);
     }
 
     public String getData() {
@@ -23,14 +25,8 @@ public class MachineData extends AMachineResource {
     }
 
     @Override
-    public String buildRecipe() {
-        return null;
-    }
-
-    @Override
     public void print() {}
     /*
-
     Data: a universal liquid that represents compute power
     There are 7 tiers of generation of data, multiple can be built per voltage tier to compensate for each machine that needs it
     every machine in lategame tier and up requires data to run
@@ -38,7 +34,5 @@ public class MachineData extends AMachineResource {
     there might be a variant of data in the endgame machine tier
     data generators are essentially big server racks
     they get very expensive and are really big
-
-     */
-
+    */
 }

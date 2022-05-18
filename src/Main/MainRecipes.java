@@ -6,7 +6,6 @@ import Main.Generators.RecipeObjects.Localized.GBlock;
 import Main.Generators.RecipeObjects.Localized.GItem;
 import Main.Generators.RecipeObjects.Localized.GPart;
 import Main.Generators.MachineResource.GMachine;
-import Main.Generators.MachineResource.GMachineChemical;
 import Main.Generators.MachineResource.GMachineData;
 import Main.Generators.MachineResource.GMachineMatter;
 import Main.Generators.RecipeObjects.Localized.Liquid.GGas;
@@ -47,7 +46,6 @@ public class MainRecipes {
         //gamedata registries: required
         GRegistry registry = new GRegistry("registry");
         registry.registerRecipes();
-        //registry.print();
         GOreDictRegistry oreDict = new GOreDictRegistry("oredictregistrie", registry);
         oreDict.registerRecipes(); //needs a lot of work parsing in order to use
         GLiquidRegistry liquids = new GLiquidRegistry("liquidregistrie");
@@ -78,13 +76,11 @@ public class MainRecipes {
                 # RECIPES FILE
                 # ============================================
 
-                """);
+                """); //HARDCODED MACHINE RESOURCE RECIPES GO HERE
 
         //machine resources
         GMachine machine = new GMachine("machine", liquids);
         machine.registerRecipes();
-        GMachineChemical chemical = new GMachineChemical("chemical", machine);
-        chemical.registerRecipes();
         GMachineData data = new GMachineData("data");
         data.registerRecipes();
         GMachineMatter matter = new GMachineMatter("matter");
@@ -142,7 +138,7 @@ public class MainRecipes {
         bw.write(stone.registerRecipes());
         //malleables: need liquid as well
         GMetal metal = new GMetal("metal", machine, registry, material, partGroup, mSolid, mLiquid, true);
-        bw.write(metal.registerRecipes());
+        //bw.write(metal.registerRecipes());
         GAlloy alloy = new GAlloy("alloy", machine, registry, material, partGroup, mSolid, mLiquid, true);
         bw.write(alloy.registerRecipes());
         GPlastic plastic = new GPlastic("plastic", machine, registry, material, partGroup, mSolid, mLiquid, true);

@@ -25,14 +25,7 @@ public class MachineMatter extends AMachineResource {
     }
 
     @Override
-    public String buildRecipe() {
-        return null;
-    }
-
-    @Override
-    public void print() {
-
-    }
+    public void print() {}
 
     @Override
     public String localize() {

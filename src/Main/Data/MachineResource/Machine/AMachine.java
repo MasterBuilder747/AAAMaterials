@@ -38,11 +38,6 @@ public abstract class AMachine extends AMachineResource {
     }
 
     @Override
-    public String buildRecipe() {
-        return null;
-    }
-
-    @Override
     public String localize() {
         return null;
     }

@@ -10,7 +10,6 @@ import Main.Generators.RecipeObjects.Localized.Liquid.GLiquid;
 import Main.Generators.RecipeObjects.Localized.Liquid.GMolten;
 import Main.Generators.RecipeObjects.Localized.Liquid.GPlasma;
 import Main.Generators.MachineResource.GMachine;
-import Main.Generators.MachineResource.GMachineChemical;
 import Main.Generators.MachineResource.GMachineData;
 import Main.Generators.MachineResource.GMachineMatter;
 import Main.Generators.RecipeObjects.Material.GMSolid;
@@ -40,7 +39,6 @@ public class MainMaterials {
         //gamedata registries: most will not be needed
         GRegistry registry = new GRegistry("registry");
         registry.registerMaterials();
-        //registry.print();
         GOreDictRegistry oreDict = new GOreDictRegistry("oredictregistrie", registry);
         oreDict.registerMaterials(); //needs a lot of work parsing in order to use
         GLiquidRegistry liquids = new GLiquidRegistry("liquidregistrie");
@@ -83,8 +81,6 @@ public class MainMaterials {
         //0. required machine resources for machine recipes
         GMachine machine = new GMachine("machine", liquids);
         machine.registerMaterials(); //this doesn't write anything, but we will use this data (a lot)
-        GMachineChemical chemical = new GMachineChemical("chemical", machine);
-        chemical.registerMaterials();
         GMachineData data = new GMachineData("data");
         bw.write(data.registerMaterials());
         GMachineMatter matter = new GMachineMatter("matter");

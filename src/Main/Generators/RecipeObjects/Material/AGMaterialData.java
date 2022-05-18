@@ -18,7 +18,7 @@ public abstract class AGMaterialData<M extends AMaterialData> extends AGRecipeOb
     protected GMaterial material; //required for passing material data through
     protected GRegistry registry; //required for recipes
 
-    boolean isReg; //enable recipes or no?
+    protected boolean isReg; //enable recipes or no?
 
     //material data that is stored to indicate what is registered for a given material
     public AGMaterialData(int params, String filename, GMachine machine, GMaterial material, GPartGroup partGroup, GRegistry registry, boolean isReg) {

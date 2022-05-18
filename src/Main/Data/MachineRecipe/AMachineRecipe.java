@@ -121,10 +121,11 @@ public abstract class AMachineRecipe extends AData {
         return sb.toString();
     }
 
+    //Handle machine checking here later
     private String buildMain(int power) {
         StringBuilder sb = new StringBuilder();
         sb.append("var ").append(this.realName).append(" = mods.modularmachinery.RecipeBuilder.newBuilder(\"")
-                .append(this.realName).append("\", \"").append(this.machine).append("\", ").append(this.time);
+                .append(this.realName).append("\", \"").append(this.machine.NAME).append("\", ").append(this.time);
         if (this.priority == -1) {
             sb.append(");\n");
         } else {

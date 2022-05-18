@@ -23,7 +23,7 @@ public class Rubber extends AMalleable {
 
     @Override
     String buildPartRecipes() {
-        return null;
+        return "";
     }
 
     @Override

@@ -5,6 +5,14 @@
 # RECIPES FILE
 # ============================================
 
+# -`materials
+
+# -alloys
+
+# -plastics
+
+# -rubbers
+
 # -recipes
 var basic5_basic = mods.modularmachinery.RecipeBuilder.newBuilder("basic5_basic", "basic", 20, 0);
 basic5_basic.addItemInput(<ore:ingotIron>, 10);
