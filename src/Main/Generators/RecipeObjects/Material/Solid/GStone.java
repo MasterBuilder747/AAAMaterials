@@ -14,7 +14,7 @@ import java.util.ArrayList;
 public class GStone extends AGMSolid<Stone> {
     GRegistry registry;
 
-    public GStone(String filename, GMachine machine, GMaterial material, GPartGroup partGroup, GRegistry registry, GMSolid solid, boolean isReg) {
+    public GStone(String filename, GMachine machine, GRegistry registry, GMaterial material, GPartGroup partGroup, GMSolid solid, boolean isReg) {
         //    int params, String filename, GMachine machine, GRegistry registry, GMaterial material, GPartGroup partGroup, GMSolid solid,
         //    boolean isDust, boolean isFineDust, boolean isPowder, boolean isReg) {
         super(3, filename, machine, registry, material, partGroup, solid, true, false, false, isReg);

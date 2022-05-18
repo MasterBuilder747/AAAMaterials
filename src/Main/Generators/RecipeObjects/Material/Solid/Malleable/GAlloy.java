@@ -12,7 +12,7 @@ import Main.Generators.RecipeObjects.Material.GMSolid;
 
 public class GAlloy extends AGMalleable<Alloy> {
 
-    public GAlloy(String filename, GMachine machine, GRegistry registry, GMaterial material, GPartGroup partGroup, GMLiquid liquid, GMSolid solid, boolean isReg) {
+    public GAlloy(String filename, GMachine machine, GRegistry registry, GMaterial material, GPartGroup partGroup, GMSolid solid, GMLiquid liquid, boolean isReg) {
         //int params, String filename, GMachine machine, GRegistry registry, GMaterial material, GPartGroup partGroup, GMLiquid liquid,
         //GMSolid solid, boolean isDust, boolean isFineDust, boolean isPowder, boolean isReg
         super(4, filename, machine, registry, material, partGroup, liquid, solid, true, false, false, isReg);

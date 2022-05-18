@@ -10,14 +10,12 @@ import Main.MainMaterials;
 
 import java.util.ArrayList;
 
-public abstract class AGComposition<C extends AMaterialData> extends AGenerator<ChemicalLabel> {
+public abstract class AGComposition extends AGenerator<ChemicalLabel> {
     GElement element;
-    GMaterial material;
 
-    public AGComposition(String filename, GElement element, GMaterial material) {
+    public AGComposition(String filename, GElement element) {
         super(0, filename);
         this.element = element;
-        this.material = material;
     }
 
     //this creates a new material composition

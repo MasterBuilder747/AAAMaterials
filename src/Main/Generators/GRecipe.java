@@ -3,7 +3,6 @@ package Main.Generators;
 import Main.Data.GameData.OreDict;
 import Main.Data.GameData.Registry;
 import Main.Data.MachineResource.Machine.Machine;
-import Main.Data.MachineRecipe.AMachineRecipe;
 import Main.Data.MachineRecipe.CustomRecipe;
 import Main.Generators.GameData.GLiquidRegistry;
 import Main.Generators.GameData.GOreDictRegistry;
@@ -11,13 +10,14 @@ import Main.Generators.GameData.GRegistry;
 import Main.Generators.MachineResource.GMachine;
 import Main.Generators.MachineResource.GMachineData;
 import Main.Generators.MachineResource.GMachineMatter;
+import Main.Generators.RecipeObjects.AGRecipeObject;
 import Main.Util;
 
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.util.ArrayList;
 
-public class GRecipe extends AGenerator<AMachineRecipe> {
+public class GRecipe extends AGenerator<CustomRecipe> {
 
     GRegistry registry;
     GLiquidRegistry liquid;
@@ -56,7 +56,7 @@ public class GRecipe extends AGenerator<AMachineRecipe> {
         if (time < 1) error("Time must be at least 1 tick");
         double power = parseDouble(s[3]);
         if (power != 0.5 && power != 1.0) error("Power multiplier must be 0.5 or 1.0");
-        AMachineRecipe r = new CustomRecipe(s[0]+line, m, this.data.get("data").getData(), voltage, time, power, parseInt(s[12]));
+        CustomRecipe r = new CustomRecipe(s[0]+line, m, this.data.get("data").getData(), voltage, time, power, parseInt(s[12]));
 
         //IO
         String[] itemI = Util.split(s[4], ";");

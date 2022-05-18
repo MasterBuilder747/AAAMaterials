@@ -1,14 +1,13 @@
 package Main.Data.MachineRecipe;
 
 import Main.Data.AData;
+import Main.Data.MachineResource.Machine.Machine;
 
 public abstract class AMachineRecipe extends AData {
     //parent recipe API
-    String machine;
+    Machine machine;
     String data; //get the unlocalized bracket for the data liquid
-    String chemical; //get the unlocalized bracket for the machine's chemical liquid
-
-    String type;
+    String chemical; //get the unlocalized bracket for the machine's chemical liquid, now obtained from the Machine
 
     //required recipe building info
     String realName; //the actual unique name, uses name
@@ -31,16 +30,15 @@ public abstract class AMachineRecipe extends AData {
 
     int realTier; //the tier that gets changed
 
-    public AMachineRecipe(String name, String type, String machine, String chemical, String data, int tier, int time, double powerMultiplier, int priority) {
+    public AMachineRecipe(String name, Machine machine, String data, int tier, int time, double powerMultiplier, int priority) {
         super(name);
-        this.type = type; //the key of the recipe used by recipe initializer
         this.machine = machine;
-        this.chemical = chemical;
         this.data = data;
         this.tier = tier;
         this.time = time;
         this.powerMultiplier = powerMultiplier;
         this.priority = priority;
+        this.chemical = this.machine.chemical;
     }
 
     //these are the actual strings being put into the script code

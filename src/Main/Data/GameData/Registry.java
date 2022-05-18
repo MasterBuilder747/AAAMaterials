@@ -33,10 +33,6 @@ public class Registry extends AGameData {
         return this.mod + ":" + this.registryName + ":" + this.meta;
     }
 
-    public LItem createItem(String localName) {
-        return new LItem(this.NAME, localName);
-    }
-
     @Override
     public void print() {
         //System.out.println(this.buildMaterial());

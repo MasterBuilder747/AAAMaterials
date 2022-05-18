@@ -1,7 +1,10 @@
 package Main.Data.MachineRecipe;
 
+import Main.Data.MachineResource.Machine.Machine;
+
 public class SmeltingRecipe extends AMachineRecipe {
-    public SmeltingRecipe(String name, String machine, String chemical, String data, int tier, int time, double powerMultiplier, int priority) {
-        super(name, "smelting", machine, chemical, data, tier, time, powerMultiplier, priority);
+    //example class
+    public SmeltingRecipe(String name, Machine machine, String data, int tier, int time, double powerMultiplier, int priority) {
+        super(name, machine, data, tier, time, powerMultiplier, priority);
     }
 }

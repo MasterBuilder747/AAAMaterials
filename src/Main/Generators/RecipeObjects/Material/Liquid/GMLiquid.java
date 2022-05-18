@@ -8,7 +8,7 @@ import Main.Generators.GameData.GRegistry;
 import Main.Generators.MachineResource.GMachine;
 
 public class GMLiquid extends AGMLiquid<MLiquid> {
-    public GMLiquid(String filename, GMachine machine, GRegistry registry, GPartGroup partGroup, GMaterial material, boolean isReg) {
+    public GMLiquid(String filename, GRegistry registry, GMachine machine, GMaterial material, GPartGroup partGroup, boolean isReg) {
         super(5, machine, registry, partGroup, filename, material, isReg);
     }
 

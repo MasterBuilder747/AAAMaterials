@@ -20,10 +20,10 @@ import java.util.ArrayList;
 public class GOre extends AGMSolid<Ore> {
 
 
-    public GOre(String name, GMaterial material, GMachine machine, GPartGroup partGroup, GRegistry registry, GMSolid solid, boolean isReg) {
+    public GOre(String filename, GMachine machine, GRegistry registry, GMaterial material, GPartGroup partGroup, GMSolid solid, boolean isReg) {
         //    int params, String filename, GMachine machine, GRegistry registry, GMaterial material, GPartGroup partGroup, GMSolid solid,
         //    boolean isDust, boolean isFineDust, boolean isPowder, boolean isReg
-        super(-2, name, machine, registry, material, partGroup, solid, true, false, false, isReg);
+        super(-2, filename, machine, registry, material, partGroup, solid, true, false, false, isReg);
         this.material = material;
     }
 

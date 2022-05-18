@@ -38,8 +38,4 @@ public class LiquidRegistry extends AGameData {
     public void print() {
 
     }
-
-    public LLiquid createLiquid(String localName, String color) {
-        return new LLiquid(false, this.NAME, localName, color, this.density, this.luminosity, this.temperature, this.viscosity, this.isGaseous);
-    }
 }

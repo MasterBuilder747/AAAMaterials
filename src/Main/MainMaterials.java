@@ -37,8 +37,7 @@ public class MainMaterials {
     public final static String Files = "UserFiles/";
 
     public static void main(String[] args) throws IOException {
-
-        //gamedata registries
+        //gamedata registries: most will not be needed
         GRegistry registry = new GRegistry("registry");
         registry.registerMaterials();
         //registry.print();
@@ -82,7 +81,6 @@ public class MainMaterials {
 
         //LOAD ORDER for .zs:
         //0. required machine resources for machine recipes
-        //recipes might be hardcoded due to the nature of when they are loaded
         GMachine machine = new GMachine("machine", liquids);
         machine.registerMaterials(); //this doesn't write anything, but we will use this data (a lot)
         GMachineChemical chemical = new GMachineChemical("chemical", machine);
@@ -93,21 +91,21 @@ public class MainMaterials {
         bw.write(matter.registerMaterials());
 
         //1. custom content not using the material system
-        GBlock block = new GBlock("block");
+        GBlock block = new GBlock("block", machine);
         bw.write(block.registerMaterials());
-        GItem item = new GItem("item");
+        GItem item = new GItem("item", machine);
         bw.write(item.registerMaterials());
-        GLiquid liquid = new GLiquid("liquid");
+        GLiquid liquid = new GLiquid("liquid", machine);
         bw.write(liquid.registerMaterials());
-        GMolten molten = new GMolten(("molten"));
+        GMolten molten = new GMolten("molten", machine);
         bw.write(molten.registerMaterials());
-        GGas gas = new GGas("gase");
+        GGas gas = new GGas("gase", machine);
         bw.write(gas.registerMaterials());
-        GPlasma plasma = new GPlasma("plasma");
+        GPlasma plasma = new GPlasma("plasma", machine);
         bw.write(plasma.registerMaterials());
 
         //2. any established content needed for the material system
-        GPart part = new GPart("part"); //this is localized
+        GPart part = new GPart("part", machine); //this is localized
         bw.write(part.registerMaterials());
         GPartGroup partGroup = new GPartGroup("partgroup", part);
         bw.write(partGroup.registerMaterials());
@@ -119,43 +117,45 @@ public class MainMaterials {
         bw.write(material.registerMaterials());
 
         //4. material states
-        GMSolid mSolid = new GMSolid("solid", material, partGroup);
+        GMSolid mSolid = new GMSolid("solid", registry, machine, material, partGroup, false);
         bw.write(mSolid.registerMaterials());
-        GMLiquid mLiquid = new GMLiquid("liquid", material);
+        GMLiquid mLiquid = new GMLiquid("liquid", registry, machine, material, partGroup, false);
         bw.write(mLiquid.registerMaterials());
-        GMGas mGas = new GMGas("gase", material);
+        GMGas mGas = new GMGas("gase", registry, machine, material, partGroup, false);
         bw.write(mGas.registerMaterials());
-        GMPlasma mPlasma = new GMPlasma("plasma", material);
+        GMPlasma mPlasma = new GMPlasma("plasma", registry, machine, material, partGroup, false);
         bw.write(mPlasma.registerMaterials());
 
         //5. material compositions, material parts must be added after this!!!
         //GComposition
+        //        CMolecule molecule = new CMolecule("moleculeComposition", element);
+        //        bw.write(molecule.register());
+        //        GCompound compound = new GCompound("compoundComposition", element);
+        //        bw.write(compound.register());
 
         //6. all other material data (unless there are some other requirements later)
         //naturals
-        GWood wood = new GWood("wood", material, partGroup, registry, mSolid);
+        //String filename, GMachine machine, GRegistry registry, GMaterial material, GPartGroup partGroup, GMSolid solid, boolean isReg
+        GWood wood = new GWood("wood", machine, registry, material, partGroup, mSolid, false);
         bw.write(wood.registerMaterials());
-        GStone stone = new GStone("stone", material, partGroup, registry, mSolid);
+        GStone stone = new GStone("stone", machine, registry, material, partGroup, mSolid, false);
         bw.write(stone.registerMaterials());
-        //malleables
-        GMetal metal = new GMetal("metal", material, partGroup, mLiquid, mSolid);
+        //malleables: need liquid as well
+        GMetal metal = new GMetal("metal", machine, registry, material, partGroup, mSolid, mLiquid, false);
         bw.write(metal.registerMaterials());
-        GAlloy alloy = new GAlloy("alloy", material, partGroup, mLiquid, mSolid);
+        GAlloy alloy = new GAlloy("alloy", machine, registry, material, partGroup, mSolid, mLiquid, false);
         bw.write(alloy.registerMaterials());
-        GPlastic plastic = new GPlastic("plastic", material, partGroup, mLiquid, mSolid);
+        GPlastic plastic = new GPlastic("plastic", machine, registry, material, partGroup, mSolid, mLiquid, false);
         bw.write(plastic.registerMaterials());
-        GRubber rubber = new GRubber("rubber", material, partGroup, mLiquid, mSolid);
+        GRubber rubber = new GRubber("rubber", machine, registry, material, partGroup, mSolid, mLiquid, false);
         bw.write(rubber.registerMaterials());
-        GGem gem = new GGem("gem", material, partGroup, mSolid);
+        //gems: no liquids
+        GGem gem = new GGem("gem", machine, registry, material, partGroup, mSolid, false);
         bw.write(gem.registerMaterials());
 
         //7. ore system
-        GOre ore = new GOre("ore", material, partGroup, registry, mSolid);
+        GOre ore = new GOre("ore", machine, registry, material, partGroup, mSolid, false);
         bw.write(ore.registerMaterials());
-//        CMolecule molecule = new CMolecule("moleculeComposition", element);
-//        bw.write(molecule.register());
-//        GCompound compound = new GCompound("compoundComposition", element);
-//        bw.write(compound.register());
 
         //8. finish
         bw.close();

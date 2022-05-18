@@ -11,7 +11,7 @@ import Main.Generators.RecipeObjects.Material.Liquid.GMLiquid;
 import Main.Generators.RecipeObjects.Material.GMSolid;
 
 public class GMetal extends AGMalleable<Metal> {
-    public GMetal(String filename, GMachine machine, GRegistry registry, GMaterial material, GPartGroup partGroup, GMLiquid liquid, GMSolid solid, boolean isReg) {
+    public GMetal(String filename, GMachine machine, GRegistry registry, GMaterial material, GPartGroup partGroup, GMSolid solid, GMLiquid liquid, boolean isReg) {
         super(4, filename, machine, registry, material, partGroup, liquid, solid, true, false, false, isReg);
     }
 

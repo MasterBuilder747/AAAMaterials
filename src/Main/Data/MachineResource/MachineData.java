@@ -1,13 +1,11 @@
 package Main.Data.MachineResource;
 
-import Main.Data.RecipeObject.Localized.Liquid.LLiquid;
-
 public class MachineData extends AMachineResource {
-    LLiquid data;
+    LMachineLiquid data;
 
     public MachineData(String name) {
         super(name);
-        this.data = new LLiquid(false, "data", "Data", "165e08", 6000, 5, 500, 6000, false);
+        this.data = new LMachineLiquid("data", "Data", "165e08", 6000, 5, 500, 6000, false);
     }
 
     public String getData() {

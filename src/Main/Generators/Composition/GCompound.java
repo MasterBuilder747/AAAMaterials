@@ -7,11 +7,11 @@ import Main.Generators.GMaterial;
 import java.io.BufferedReader;
 import java.io.IOException;
 
-public class GCompound extends AGComposition<ChemicalLabel> {
+public class GCompound extends AGComposition {
     GMolecule molecule;
 
-    public GCompound(String filename, GElement element, GMaterial material, GMolecule molecule) {
-        super(filename, element, material);
+    public GCompound(String filename, GElement element, GMolecule molecule) {
+        super(filename, element);
         this.molecule = molecule;
     }
 
@@ -52,7 +52,7 @@ public class GCompound extends AGComposition<ChemicalLabel> {
     protected void readLine(BufferedReader br, String[] s) throws IOException {
         if (s.length < 2) error("At least 2 parameters is required: Composition and primaryMaterial");
         try {
-            objects.add(new ChemicalLabel(material.get(s[0]), false, createMoleculeComp(s[1]), Boolean.getBoolean(s[2]), Boolean.getBoolean(s[3]), Boolean.getBoolean(s[4]), Boolean.getBoolean(s[5])));
+            objects.add(new ChemicalLabel(false, createMoleculeComp(s[1]), Boolean.getBoolean(s[2]), Boolean.getBoolean(s[3]), Boolean.getBoolean(s[4]), Boolean.getBoolean(s[5])));
         } catch (IllegalArgumentException e) {
             error("Unknown element " + s1);
         }
