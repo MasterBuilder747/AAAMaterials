@@ -154,7 +154,7 @@ public class MainRecipes {
         bw.write(ore.registerRecipes());
 
         //8. machine recipes, only used in MainRecipes
-        GRecipe recipe = new GRecipe("recipe", registry, liquids, oreDict, machine, data, matter);
+        GMachineRecipe recipe = new GMachineRecipe("recipe", registry, liquids, oreDict, machine, data, matter);
         bw.write(recipe.registerRecipes());
 
         //9. finish

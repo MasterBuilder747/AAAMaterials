@@ -2,7 +2,7 @@ package Main.Data.MachineResource.Machine;
 
 import Main.Data.MachineResource.AMachineResource;
 
-public abstract class AMachine extends AMachineResource {
+public abstract class AModularMachine extends AMachineResource {
     public int minVoltage;
     public int itemInputs;
     public int itemOutputs;
@@ -12,10 +12,10 @@ public abstract class AMachine extends AMachineResource {
     public boolean hasEnergyOutput;
 
     //this is a blueprint for the requirements of some machine, used for recipe validation
-    public AMachine(String name, int minVoltage,
-                    int itemInputs, int itemOutputs,
-                    int liquidInputs, int liquidOutputs,
-                    boolean hasEnergyInput, boolean hasEnergyOutput) {
+    public AModularMachine(String name, int minVoltage,
+                           int itemInputs, int itemOutputs,
+                           int liquidInputs, int liquidOutputs,
+                           boolean hasEnergyInput, boolean hasEnergyOutput) {
         super(name);
         this.minVoltage = minVoltage;
         this.itemInputs = itemInputs;

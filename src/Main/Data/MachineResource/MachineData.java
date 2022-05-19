@@ -5,9 +5,9 @@ import Main.Data.RecipeObject.Localized.Liquid.LLiquid;
 public class MachineData extends AMachineResource {
     LLiquid data;
 
-    public MachineData(String name) {
+    public MachineData(String name, String localName, String color, int density, int luminosity, int temperature, int viscosity, boolean vaporize) {
         super(name);
-        this.data = new LLiquid(false, null, "data", "Data", "165e08", 6000, 5, 500, 6000, false);
+        this.data = new LLiquid(false, null, name, localName, color, density, luminosity, temperature, viscosity, vaporize);
     }
 
     public String getData() {

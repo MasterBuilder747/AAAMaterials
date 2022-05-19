@@ -3,21 +3,20 @@ package Main.Generators;
 import Main.Data.GameData.OreDict;
 import Main.Data.GameData.Registry;
 import Main.Data.MachineResource.Machine.Machine;
-import Main.Data.MachineRecipe.CustomRecipe;
+import Main.Data.MachineRecipe.CustomMachineRecipe;
 import Main.Generators.GameData.GLiquidRegistry;
 import Main.Generators.GameData.GOreDictRegistry;
 import Main.Generators.GameData.GRegistry;
 import Main.Generators.MachineResource.GMachine;
 import Main.Generators.MachineResource.GMachineData;
 import Main.Generators.MachineResource.GMachineMatter;
-import Main.Generators.RecipeObjects.AGRecipeObject;
 import Main.Util;
 
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.util.ArrayList;
 
-public class GRecipe extends AGenerator<CustomRecipe> {
+public class GMachineRecipe extends AGenerator<CustomMachineRecipe> {
 
     GRegistry registry;
     GLiquidRegistry liquid;
@@ -27,7 +26,7 @@ public class GRecipe extends AGenerator<CustomRecipe> {
     GMachineData data;
 
     //for user-defined custom machine recipes
-    public GRecipe(String filename, GRegistry registry, GLiquidRegistry liquid, GOreDictRegistry oredict, GMachine machine, GMachineData data, GMachineMatter matter) {
+    public GMachineRecipe(String filename, GRegistry registry, GLiquidRegistry liquid, GOreDictRegistry oredict, GMachine machine, GMachineData data, GMachineMatter matter) {
         super(13, filename);
         this.registry = registry;
         this.liquid = liquid;
@@ -56,7 +55,7 @@ public class GRecipe extends AGenerator<CustomRecipe> {
         if (time < 1) error("Time must be at least 1 tick");
         double power = parseDouble(s[3]);
         if (power != 0.5 && power != 1.0) error("Power multiplier must be 0.5 or 1.0");
-        CustomRecipe r = new CustomRecipe(s[0]+line, m, this.data.get("data").getData(), voltage, time, power, parseInt(s[12]));
+        CustomMachineRecipe r = new CustomMachineRecipe(s[0]+line, m, time, voltage, power, parseInt(s[12]), this.data.get("data").getData());
 
         //IO
         String[] itemI = Util.split(s[4], ";");

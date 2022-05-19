@@ -1,4 +1,5 @@
 /colorName, localizedColorName, hexColor
+/see data object for hardcoded liquid attributes
 white, White, ffffff
 pink, Pink, ffadc1
 red, Red, ff1500

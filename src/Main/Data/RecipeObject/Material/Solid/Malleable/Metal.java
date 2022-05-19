@@ -1,5 +1,6 @@
 package Main.Data.RecipeObject.Material.Solid.Malleable;
 
+import Main.Data.MachineRecipe.SmeltingRecipe;
 import Main.Data.MachineResource.Machine.Machine;
 import Main.Data.RecipeObject.Material.Liquid.MLiquid;
 import Main.Data.Material;
@@ -31,10 +32,9 @@ public class Metal extends AMalleable {
         //5. blast furnace to gas since there is no liquid form and it is so hot it is gaseous > gas freezer/etc to ingot/gas shape?
         //6. fusion furnace to plasma > ingot through plasma cooling chamber/etc
         StringBuilder sb = new StringBuilder();
-        //this is a test!
-        Machine m = null;
 
-        //SmeltingRecipe r = new SmeltingRecipe()
+        //SmeltingRecipe r = new SmeltingRecipe();
+
         return sb.toString();
     }
 
