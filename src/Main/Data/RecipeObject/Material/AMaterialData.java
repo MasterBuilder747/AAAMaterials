@@ -30,7 +30,7 @@ public abstract class AMaterialData extends ARecipeObject {
         for (int i = 0; i < partGroups.length; i++) {
             if (this.enablePartGroups[i]) {
                 for (LPart p : partGroups[i].getParts()) {
-                    this.localizedPartNames.add(p.baseRegistryName.replace("%s", m.NAME));
+                    this.localizedPartNames.add(p.baseRegistryName.replace("%s", m.LOCALNAME));
                 }
             }
         }

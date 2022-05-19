@@ -138,7 +138,7 @@ public class MainRecipes {
         bw.write(stone.registerRecipes());
         //malleables: need liquid as well
         GMetal metal = new GMetal("metal", machine, registry, material, partGroup, mSolid, mLiquid, true);
-        //bw.write(metal.registerRecipes());
+        bw.write(metal.registerRecipes());
         GAlloy alloy = new GAlloy("alloy", machine, registry, material, partGroup, mSolid, mLiquid, true);
         bw.write(alloy.registerRecipes());
         GPlastic plastic = new GPlastic("plastic", machine, registry, material, partGroup, mSolid, mLiquid, true);

@@ -1,9 +1,9 @@
 package Main.Data.RecipeObject.Material.Solid.Malleable;
 
-import Main.Data.MachineRecipe.SmeltingRecipe;
+import Main.Data.MachineRecipe.MaterialRecipe.SmeltingRecipe;
 import Main.Data.MachineResource.Machine.Machine;
-import Main.Data.RecipeObject.Material.Liquid.MLiquid;
 import Main.Data.Material;
+import Main.Data.RecipeObject.Material.Liquid.MLiquid;
 
 import java.util.ArrayList;
 
@@ -33,7 +33,10 @@ public class Metal extends AMalleable {
         //6. fusion furnace to plasma > ingot through plasma cooling chamber/etc
         StringBuilder sb = new StringBuilder();
 
-        //SmeltingRecipe r = new SmeltingRecipe();
+        //TODO: finish this
+        //SmeltingRecipe r = new SmeltingRecipe(this.machines);
+        //r.createRecipe();
+        //sb.append(r.buildRecipe());
 
         return sb.toString();
     }

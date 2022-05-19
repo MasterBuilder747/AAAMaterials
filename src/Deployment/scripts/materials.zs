@@ -12,7 +12,7 @@ import mods.contenttweaker.Color;
 # ============================================
 
 # -datas
-genFluid("cotc_data", "165e08", 6000, false, 5, 500, 6000, false, "contenttweaker:fluids/liquid", "contenttweaker:fluids/liquid_flowing", <blockmaterial:water>);
+genFluid("cotc_data", "165e08", 6000, false, 10, 500, 6000, false, "contenttweaker:fluids/liquid", "contenttweaker:fluids/liquid_flowing", <blockmaterial:water>);
 
 # -matters
 genFluid("cotc_pos_white_matter", "ffffff", 1000, true, 15, 15000, 10000, false, "contenttweaker:fluids/plasma", "contenttweaker:fluids/plasma_flowing", <blockmaterial:lava>);

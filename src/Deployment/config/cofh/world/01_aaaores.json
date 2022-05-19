@@ -6,16 +6,16 @@
 	"generator": {
 	"type": "large-vein",
 	"block": [{
-	"name": "contenttweaker:sub_block_holder_1",
-	"metadata": 5,
+	"name": "contenttweaker:sub_block_holder_0",
+	"metadata": 9,
 	"weight": 60
 }, {
 	"name": "contenttweaker:sub_block_holder_0",
-	"metadata": 13,
+	"metadata": 2,
 	"weight": 30
 }, {
 	"name": "contenttweaker:sub_block_holder_0",
-	"metadata": 15,
+	"metadata": 8,
 	"weight": 10
 }],
 	"material": "minecraft:stone",
@@ -51,15 +51,15 @@
 	"type": "large-vein",
 	"block": [{
 	"name": "contenttweaker:sub_block_holder_0",
-	"metadata": 2,
+	"metadata": 3,
 	"weight": 60
 }, {
 	"name": "contenttweaker:sub_block_holder_0",
-	"metadata": 4,
+	"metadata": 5,
 	"weight": 30
 }, {
 	"name": "contenttweaker:sub_block_holder_0",
-	"metadata": 5,
+	"metadata": 6,
 	"weight": 10
 }],
 	"material": "minecraft:netherrack",
@@ -92,11 +92,11 @@
 	"weight": 60
 }, {
 	"name": "contenttweaker:sub_block_holder_0",
-	"metadata": 6,
+	"metadata": 7,
 	"weight": 30
 }, {
 	"name": "contenttweaker:sub_block_holder_0",
-	"metadata": 3,
+	"metadata": 4,
 	"weight": 10
 }],
 	"material": "minecraft:end_stone",
