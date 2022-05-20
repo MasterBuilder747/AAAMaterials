@@ -27,11 +27,6 @@ public abstract class AModularMachine extends AMachineResource {
     }
 
     @Override
-    public void print() {
-        
-    }
-
-    @Override
     public String buildMaterial() {
         //this is internal data
         return null;

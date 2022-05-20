@@ -11,4 +11,10 @@ public class Machine extends AModularMachine {
         super(name, minVoltage, itemInputs, itemOutputs, liquidInputs, liquidOutputs, true, false);
         this.chemical = chemical;
     }
+
+    @Override
+    public void print() {
+        System.out.println(this.NAME + ";" + this.chemical + ";" + this.minVoltage + ": i: " +
+                this.itemInputs + "," + this.itemOutputs + "  l: " + this.liquidInputs + "," + this.liquidOutputs);
+    }
 }

@@ -33,10 +33,24 @@ public class Metal extends AMalleable {
         //6. fusion furnace to plasma > ingot through plasma cooling chamber/etc
         StringBuilder sb = new StringBuilder();
 
-        //TODO: finish this
-        //SmeltingRecipe r = new SmeltingRecipe(this.machines);
-        //r.createRecipe();
-        //sb.append(r.buildRecipe());
+        SmeltingRecipe r = new SmeltingRecipe(this.machines);
+        r.createRecipe(this.NAME+"Metal", 20, 1, 0.5, 0, "");//this.data);
+        String[] iIns = {
+                "test"
+        };
+        String[] iOuts = {
+                "test"
+        };
+        String[] lIns = {
+                "test"
+        };
+        String[] lOuts = {
+                "test"
+        };
+        r.setInputs(iIns, lIns);
+        r.setOutputs(iOuts, lOuts);
+        r.setAdditionalRequirements(100, 1000, "red", "orange");
+        sb.append(r.buildRecipe());
 
         return sb.toString();
     }

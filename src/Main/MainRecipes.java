@@ -81,6 +81,7 @@ public class MainRecipes {
         //machine resources
         GMachine machine = new GMachine("machine", liquids);
         machine.registerRecipes();
+        //machine.print();
         GMachineData data = new GMachineData("data");
         data.registerRecipes();
         GMachineMatter matter = new GMachineMatter("matter");
