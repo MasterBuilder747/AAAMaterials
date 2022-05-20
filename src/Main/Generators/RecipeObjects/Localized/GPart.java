@@ -1,11 +1,12 @@
 package Main.Generators.RecipeObjects.Localized;
 
 import Main.Data.RecipeObject.Localized.LPart;
+import Main.Generators.GameData.GRegistry;
 import Main.Generators.MachineResource.GMachine;
 
 public class GPart extends AGLocal<LPart> {
-    public GPart(String filename, GMachine machine) {
-        super(3, filename, machine);
+    public GPart(String filename, GMachine machine, GRegistry registry, boolean isReg) {
+        super(3, filename, isReg, registry, machine);
     }
 
     @Override

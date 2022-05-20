@@ -25,7 +25,7 @@ public class AMaterialRecipe extends ARecipeObject {
         this.recipe.setInputs(itemInputs, liquidInputs);
     }
     public void setOutputs(String[] itemOutputs, String[] liquidOutputs) {
-        this.recipe.setInputs(itemOutputs, liquidOutputs);
+        this.recipe.setOutputs(itemOutputs, liquidOutputs);
     }
     public void setAdditionalRequirements(int chemicalAmount, int dataAmount, String matterIn, String matterOut) {
         this.recipe.setAdditionalRequirements(chemicalAmount, dataAmount, matterIn, matterOut);

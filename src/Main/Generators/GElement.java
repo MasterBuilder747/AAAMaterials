@@ -2,6 +2,7 @@ package Main.Generators;
 
 import Main.Data.Element;
 import Main.MainMaterials;
+import Main.Util;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -52,7 +53,7 @@ public class GElement extends AGenerator<Element> {
         //first is always a number
         String s2 = br.readLine(); //atomic number or symbol (use stored row value)
         //System.out.println(s1 + " " + s2);
-        if (MainMaterials.isNumeric(s2)) {
+        if (Util.isNumeric(s2)) {
             //s2 = atomic number; store the row number
             //period, group, number, symbol, name, weight
             pd = s1;

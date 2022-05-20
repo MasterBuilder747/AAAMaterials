@@ -80,4 +80,29 @@ public class Util {
         int b = c & 0xff;
         return String.format("#%02x%02x%02x", r, g, b);
     }
+
+    //Utilities
+    //does the string end here?
+    public static boolean isOut(String s, int x) {
+        try {
+            s.charAt(x);
+        } catch (StringIndexOutOfBoundsException e) {
+            return true;
+        }
+        return false;
+    }
+    public static boolean isUppercase(String s) {
+        return s.matches(s.toUpperCase());
+    }
+    public static boolean isNumeric(String s) {
+        if (s == null) {
+            return false;
+        }
+        try {
+            Double.parseDouble(s);
+        } catch (NumberFormatException nfe) {
+            return false;
+        }
+        return true;
+    }
 }

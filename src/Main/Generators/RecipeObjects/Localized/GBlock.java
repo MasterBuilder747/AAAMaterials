@@ -1,12 +1,13 @@
 package Main.Generators.RecipeObjects.Localized;
 
 import Main.Data.RecipeObject.Localized.LBlock;
+import Main.Generators.GameData.GRegistry;
 import Main.Generators.MachineResource.GMachine;
 
 public class GBlock extends AGLocal<LBlock> {
 
-    public GBlock(String filename, GMachine machine) {
-        super(5, filename, machine);
+    public GBlock(String filename, GMachine machine, GRegistry registry, boolean isReg) {
+        super(5, filename, isReg, registry, machine);
     }
 
     @Override

@@ -1,11 +1,12 @@
 package Main.Generators.RecipeObjects.Localized.Liquid;
 
 import Main.Data.RecipeObject.Localized.Liquid.LQGP;
+import Main.Generators.GameData.GRegistry;
 import Main.Generators.MachineResource.GMachine;
 
 public class G_QGP extends AGLiquid<LQGP> {
-    public G_QGP(String filename, GMachine machine) {
-        super(6, filename, machine);
+    public G_QGP(String filename, GMachine machine, GRegistry registry, boolean isReg) {
+        super(6, filename, isReg, registry, machine);
     }
 
     @Override

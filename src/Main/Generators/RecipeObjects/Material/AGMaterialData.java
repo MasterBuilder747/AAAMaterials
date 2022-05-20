@@ -16,24 +16,17 @@ import java.util.ArrayList;
 public abstract class AGMaterialData<M extends AMaterialData> extends AGRecipeObject<M> {
     protected GPartGroup partGroup; //needed for validating partGroups to be used in recipes
     protected GMaterial material; //required for passing material data through
-    protected GRegistry registry; //required for recipes
-
-    protected boolean isReg; //enable recipes or no?
 
     //material data that is stored to indicate what is registered for a given material
     public AGMaterialData(int params, String filename, GMachine machine, GMaterial material, GPartGroup partGroup, GRegistry registry, boolean isReg) {
-        super(params+1, filename, "Material", machine);
+        super(params+1, filename, "Material", registry, isReg, machine);
         this.material = material;
         this.partGroup = partGroup;
-        this.registry = registry;
-        this.isReg = isReg;
     }
     public AGMaterialData(int params, String filename, GMachine machine, GMaterial material, GPartGroup partGroup, String materialFolder, GRegistry registry, boolean isReg) {
-        super(params+1, filename, "Material/"+materialFolder, machine);
+        super(params+1, filename, "Material/"+materialFolder, registry, isReg, machine);
         this.material = material;
         this.partGroup = partGroup;
-        this.registry = registry;
-        this.isReg = isReg;
     }
 
     @Override

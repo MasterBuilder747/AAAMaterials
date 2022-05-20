@@ -1,11 +1,12 @@
 package Main.Generators.RecipeObjects.Localized.Liquid;
 
 import Main.Data.RecipeObject.Localized.Liquid.LMolten;
+import Main.Generators.GameData.GRegistry;
 import Main.Generators.MachineResource.GMachine;
 
 public class GMolten extends AGLiquid<LMolten> {
-    public GMolten(String filename, GMachine machine) {
-        super(6, filename, machine);
+    public GMolten(String filename, GMachine machine, GRegistry registry, boolean isReg) {
+        super(6, filename, isReg, registry, machine);
     }
 
     @Override

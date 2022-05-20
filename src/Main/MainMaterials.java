@@ -35,6 +35,8 @@ public class MainMaterials {
     public final static String DEPLOY = "Deployment/";
     public final static String Files = "UserFiles/";
 
+    public final static boolean REG = false;
+
     public static void main(String[] args) throws IOException {
         //gamedata registries: most will not be needed
         GRegistry registry = new GRegistry("registry");
@@ -87,21 +89,21 @@ public class MainMaterials {
         bw.write(matter.registerMaterials());
 
         //1. custom content not using the material system
-        GBlock block = new GBlock("block", machine);
+        GBlock block = new GBlock("block", machine, registry, REG);
         bw.write(block.registerMaterials());
-        GItem item = new GItem("item", machine);
+        GItem item = new GItem("item", machine, registry, REG);
         bw.write(item.registerMaterials());
-        GLiquid liquid = new GLiquid("liquid", machine);
+        GLiquid liquid = new GLiquid("liquid", machine, registry, REG);
         bw.write(liquid.registerMaterials());
-        GMolten molten = new GMolten("molten", machine);
+        GMolten molten = new GMolten("molten", machine, registry, REG);
         bw.write(molten.registerMaterials());
-        GGas gas = new GGas("gase", machine);
+        GGas gas = new GGas("gase", machine, registry, REG);
         bw.write(gas.registerMaterials());
-        GPlasma plasma = new GPlasma("plasma", machine);
+        GPlasma plasma = new GPlasma("plasma", machine, registry, REG);
         bw.write(plasma.registerMaterials());
 
         //2. any established content needed for the material system
-        GPart part = new GPart("part", machine); //this is localized
+        GPart part = new GPart("part", machine, registry, REG); //this is localized
         bw.write(part.registerMaterials());
         GPartGroup partGroup = new GPartGroup("partgroup", part);
         bw.write(partGroup.registerMaterials());
@@ -113,13 +115,13 @@ public class MainMaterials {
         bw.write(material.registerMaterials());
 
         //4. material states
-        GMSolid mSolid = new GMSolid("solid", registry, machine, material, partGroup, false);
+        GMSolid mSolid = new GMSolid("solid", registry, machine, material, partGroup, REG);
         bw.write(mSolid.registerMaterials());
-        GMLiquid mLiquid = new GMLiquid("liquid", registry, machine, material, partGroup, false);
+        GMLiquid mLiquid = new GMLiquid("liquid", registry, machine, material, partGroup, REG);
         bw.write(mLiquid.registerMaterials());
-        GMGas mGas = new GMGas("gase", registry, machine, material, partGroup, false);
+        GMGas mGas = new GMGas("gase", registry, machine, material, partGroup, REG);
         bw.write(mGas.registerMaterials());
-        GMPlasma mPlasma = new GMPlasma("plasma", registry, machine, material, partGroup, false);
+        GMPlasma mPlasma = new GMPlasma("plasma", registry, machine, material, partGroup, REG);
         bw.write(mPlasma.registerMaterials());
 
         //5. material compositions, material parts must be added after this!!!
@@ -132,25 +134,25 @@ public class MainMaterials {
         //6. all other material data (unless there are some other requirements later)
         //naturals
         //String filename, GMachine machine, GRegistry registry, GMaterial material, GPartGroup partGroup, GMSolid solid, boolean isReg
-        GWood wood = new GWood("wood", machine, registry, material, partGroup, mSolid, false);
+        GWood wood = new GWood("wood", machine, registry, material, partGroup, mSolid, REG);
         bw.write(wood.registerMaterials());
-        GStone stone = new GStone("stone", machine, registry, material, partGroup, mSolid, false);
+        GStone stone = new GStone("stone", machine, registry, material, partGroup, mSolid, REG);
         bw.write(stone.registerMaterials());
         //malleables: need liquid as well
-        GMetal metal = new GMetal("metal", machine, registry, material, partGroup, mSolid, mLiquid, false);
+        GMetal metal = new GMetal("metal", machine, registry, material, partGroup, mSolid, mLiquid, REG);
         bw.write(metal.registerMaterials());
-        GAlloy alloy = new GAlloy("alloy", machine, registry, material, partGroup, mSolid, mLiquid, false);
+        GAlloy alloy = new GAlloy("alloy", machine, registry, material, partGroup, mSolid, mLiquid, REG);
         bw.write(alloy.registerMaterials());
-        GPlastic plastic = new GPlastic("plastic", machine, registry, material, partGroup, mSolid, mLiquid, false);
+        GPlastic plastic = new GPlastic("plastic", machine, registry, material, partGroup, mSolid, mLiquid, REG);
         bw.write(plastic.registerMaterials());
-        GRubber rubber = new GRubber("rubber", machine, registry, material, partGroup, mSolid, mLiquid, false);
+        GRubber rubber = new GRubber("rubber", machine, registry, material, partGroup, mSolid, mLiquid, REG);
         bw.write(rubber.registerMaterials());
         //gems: no liquids
-        GGem gem = new GGem("gem", machine, registry, material, partGroup, mSolid, false);
+        GGem gem = new GGem("gem", machine, registry, material, partGroup, mSolid, REG);
         bw.write(gem.registerMaterials());
 
         //7. ore system
-        GOre ore = new GOre("ore", machine, registry, material, partGroup, mSolid, false);
+        GOre ore = new GOre("ore", machine, registry, material, partGroup, mSolid, REG);
         bw.write(ore.registerMaterials());
 
         //8. finish
@@ -197,30 +199,5 @@ public class MainMaterials {
         bw = new BufferedWriter(fw);
         bw.write(biome.genSeasons());
         bw.close();
-    }
-
-    //Utilities
-    //does the string end here?
-    public static boolean isOut(String s, int x) {
-        try {
-            s.charAt(x);
-        } catch (StringIndexOutOfBoundsException e) {
-            return true;
-        }
-        return false;
-    }
-    public static boolean isUppercase(String s) {
-        return s.matches(s.toUpperCase());
-    }
-    public static boolean isNumeric(String s) {
-        if (s == null) {
-            return false;
-        }
-        try {
-            Double.parseDouble(s);
-        } catch (NumberFormatException nfe) {
-            return false;
-        }
-        return true;
     }
 }

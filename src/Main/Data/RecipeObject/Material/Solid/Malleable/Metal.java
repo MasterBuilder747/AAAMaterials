@@ -34,20 +34,20 @@ public class Metal extends AMalleable {
         StringBuilder sb = new StringBuilder();
 
         SmeltingRecipe r = new SmeltingRecipe(this.machines);
-        r.createRecipe(this.NAME+"Metal", 20, 1, 0.5, 0, "");//this.data);
+        r.createRecipe(this.NAME+"Metal", 20, 1, 0.5, 0, "data");//this.data);
         String[] iIns = {
                 "test"
         };
-        String[] iOuts = {
-                "test"
-        };
         String[] lIns = {
+                "test" 
+        };
+        r.setInputs(iIns, lIns);
+        String[] iOuts = {
                 "test"
         };
         String[] lOuts = {
                 "test"
         };
-        r.setInputs(iIns, lIns);
         r.setOutputs(iOuts, lOuts);
         r.setAdditionalRequirements(100, 1000, "red", "orange");
         sb.append(r.buildRecipe());

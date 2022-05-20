@@ -2,7 +2,6 @@ package Main.Data.MachineRecipe;
 
 import Main.Data.AData;
 import Main.Data.MachineResource.Machine.Machine;
-import org.jetbrains.annotations.NotNull;
 
 public class CustomMachineRecipe extends AData {
     int tier; //minimum voltage tier this recipe gets unlocked at
@@ -19,8 +18,8 @@ public class CustomMachineRecipe extends AData {
     String data;
 
     String[] itemInputs;
-    String[] itemOutputs;
     String[] liquidInputs;
+    String[] itemOutputs;
     String[] liquidOutputs;
     
     public CustomMachineRecipe(String name, Machine machine, int time, int tier, double powerMultiplier, int priority, String data) {

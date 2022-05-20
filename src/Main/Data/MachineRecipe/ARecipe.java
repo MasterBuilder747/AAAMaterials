@@ -15,8 +15,8 @@ public abstract class ARecipe extends AData {
 
     //IO: these are all unlocalized bracket handlers
     protected String[] itemInputs;
-    protected String[] itemOutputs;
     protected String[] liquidInputs;
+    protected String[] itemOutputs;
     protected String[] liquidOutputs;
 
     public ARecipe(String name, Machine machine, int time, int priority) {

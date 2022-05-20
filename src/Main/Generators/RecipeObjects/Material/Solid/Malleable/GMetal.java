@@ -22,7 +22,7 @@ public class GMetal extends AGMalleable<Metal> {
         metal.setPartGroups(this.genPartGroups(new String[]{"smelt", "machine", "blast", "conductive"}),
                 new boolean[]{Boolean.parseBoolean(s[0]), Boolean.parseBoolean(s[1]), Boolean.parseBoolean(s[2]), Boolean.parseBoolean(s[3])});
 
-        if(isReg) {
+        if (isReg) {
             objects.add(this.validatePartReg(metal));
         } else {
             objects.add(metal);
