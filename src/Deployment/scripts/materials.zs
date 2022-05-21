@@ -527,42 +527,10 @@ shale.registerParts(stone_parts);
 siltstone.registerParts(stone_parts);
 
 # -metals
-zinc.registerParts(smelt_parts);
-zinc.registerParts(machine_parts);
-zinc.registerParts(blast_parts);
-zinc.registerParts(conductive_parts);
-tin.registerParts(smelt_parts);
-tin.registerParts(machine_parts);
-tin.registerParts(blast_parts);
-tin.registerParts(conductive_parts);
 iron.registerParts(smelt_parts);
 iron.registerParts(machine_parts);
 iron.registerParts(blast_parts);
 iron.registerParts(conductive_parts);
-lead.registerParts(smelt_parts);
-lead.registerParts(machine_parts);
-lead.registerParts(blast_parts);
-lead.registerParts(conductive_parts);
-nickel.registerParts(smelt_parts);
-nickel.registerParts(machine_parts);
-nickel.registerParts(blast_parts);
-nickel.registerParts(conductive_parts);
-platinum.registerParts(smelt_parts);
-platinum.registerParts(machine_parts);
-platinum.registerParts(blast_parts);
-platinum.registerParts(conductive_parts);
-tungsten.registerParts(smelt_parts);
-tungsten.registerParts(machine_parts);
-tungsten.registerParts(blast_parts);
-tungsten.registerParts(conductive_parts);
-iridium.registerParts(smelt_parts);
-iridium.registerParts(machine_parts);
-iridium.registerParts(blast_parts);
-iridium.registerParts(conductive_parts);
-osmium.registerParts(smelt_parts);
-osmium.registerParts(machine_parts);
-osmium.registerParts(blast_parts);
-osmium.registerParts(conductive_parts);
 
 # -alloys
 lumium.registerParts(smelt_parts);

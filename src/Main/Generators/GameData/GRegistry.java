@@ -3,9 +3,39 @@ package Main.Generators.GameData;
 import Main.Data.GameData.Registry;
 
 public class GRegistry extends AGGameData<Registry> {
-
     public GRegistry(String filename) {
         super(-1, filename, 7);
+    }
+
+    @Override
+    public Registry get(String s) {
+        for (Registry o : objects) {
+            if (o.NAME.equals(s) && o.mod.equals("contenttweaker")) {
+                return o;
+            }
+        }
+        error("Unknown CoT item from " + filename + "s.txt: " + s, true);
+        return null;
+    }
+
+    public Registry getNonCTRegistry(String s) {
+        for (Registry o : objects) {
+            if (o.NAME.equals(s)) {
+                return o;
+            }
+        }
+        error("Unknown Non-CoT item from " + filename + "s.txt: " + s, true);
+        return null;
+    }
+
+    public Registry getByMod(String s, String mod) {
+        for (Registry o : objects) {
+            if (o.NAME.equals(s) && o.mod.equals(mod)) {
+                return o;
+            }
+        }
+        error("Unknown item from mod " + mod + " from " + filename + "s.txt: " + s, true);
+        return null;
     }
 
     @Override

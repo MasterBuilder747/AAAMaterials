@@ -36,7 +36,7 @@ public class MachineRecipe extends ARecipe {
     }
 
     private String buildChemicals() {
-        //chemicals
+        //chemicals: TODO: get the liquid key to work
         return this.NAME+".addFluidInput(" + this.machine.chemical + " * "+this.chemicalAmount+");\n";
     }
     //later on, there will be multiple tiers of data (depending on the amount of machine tiers of data generators)

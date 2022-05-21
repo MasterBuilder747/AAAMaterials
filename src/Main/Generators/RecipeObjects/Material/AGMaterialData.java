@@ -1,5 +1,6 @@
 package Main.Generators.RecipeObjects.Material;
 
+import Main.Data.GameData.Registry;
 import Main.Data.RecipeObject.Material.AMaterialData;
 import Main.Data.Material;
 import Main.Data.PartGroup;
@@ -51,10 +52,21 @@ public abstract class AGMaterialData<M extends AMaterialData> extends AGRecipeOb
         return this.partGroup.getPart(partGroupName);
     }
 
-    protected M validatePartReg(M t) {
-        for (String s : t.localizedPartNames) {
-            t.add(s, this.registry.get(s));
+    protected Registry[] getRegistries(String[] registries) {
+        ArrayList<Registry> regs = new ArrayList<>();
+        for (String s : registries) {
+            regs.add(registry.get(s));
         }
-        return t;
+        return regs.toArray(new Registry[0]);
+    }
+
+    //this is called after genPartGroups
+    protected M updateRegistryKeys(M r) {
+        if (this.isReg) {
+            String[] regs = r.localizedPartNames.toArray(new String[0]);
+            String[] ores = r.getEnabledOredicts();
+            r.addAll(ores, getRegistries(regs));
+        }
+        return r;
     }
 }

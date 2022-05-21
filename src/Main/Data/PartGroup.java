@@ -1,6 +1,5 @@
 package Main.Data;
 
-import Main.Data.AData;
 import Main.Data.RecipeObject.Localized.LPart;
 
 public class PartGroup extends AData {

@@ -35,19 +35,18 @@ public class Metal extends AMalleable {
 
         SmeltingRecipe r = new SmeltingRecipe(this.machines);
         r.createRecipe(this.NAME+"Metal", 20, 1, 0.5, 0, "data");//this.data);
-        String[] iIns = {
-                "test"
-        };
-        String[] lIns = {
-                "test" 
-        };
+
+        //TODO: Make recipes easier to implement here:
+        //multiple items
+        //blocks and amount
+        //liquids and amount
+        //chance
+        //make a recipe building object or method in ARecipeObject?
+        String[] iIns = {get("ingot")};
+        String[] lIns = {};
+        String[] iOuts = {get("plate")};
+        String[] lOuts = {};
         r.setInputs(iIns, lIns);
-        String[] iOuts = {
-                "test"
-        };
-        String[] lOuts = {
-                "test"
-        };
         r.setOutputs(iOuts, lOuts);
         r.setAdditionalRequirements(100, 1000, "red", "orange");
         sb.append(r.buildRecipe());

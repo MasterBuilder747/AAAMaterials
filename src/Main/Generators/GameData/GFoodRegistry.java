@@ -16,6 +16,6 @@ public class GFoodRegistry extends AGGameData<FoodRegistry> {
 
         //"Mod name","Registry name","Item ID","Meta/dmg","Subtypes","Display name","Hunger","Saturation","Ore Dict keys"
         if(!this.registry.is(s[5])) error("Unknown item " + s[5] + " in the registry"); //special characters do not work here, either ignore them or handle it
-        objects.add(new FoodRegistry(this.registry.get(s[5]), parseInt(s[6]), parseDouble(s[7])));
+        objects.add(new FoodRegistry(this.registry.getNonCTRegistry(s[5]), parseInt(s[6]), parseDouble(s[7])));
     }
 }

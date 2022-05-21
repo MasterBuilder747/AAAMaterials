@@ -21,11 +21,8 @@ public class GMetal extends AGMalleable<Metal> {
         Metal metal = new Metal(m, liquid, getMachineRegistry());
         metal.setPartGroups(this.genPartGroups(new String[]{"smelt", "machine", "blast", "conductive"}),
                 new boolean[]{Boolean.parseBoolean(s[0]), Boolean.parseBoolean(s[1]), Boolean.parseBoolean(s[2]), Boolean.parseBoolean(s[3])});
-
-        if (isReg) {
-            objects.add(this.validatePartReg(metal));
-        } else {
-            objects.add(metal);
-        }
+        metal = updateRegistryKeys(metal);
+        //metal.printNames(); //Call this if you don't know which keys to use for recipes
+        objects.add(metal);
     }
 }

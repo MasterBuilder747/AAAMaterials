@@ -8,20 +8,22 @@ public class LPart extends ALocalizedData {
     //this defines a material part to be used in materials
     String type;
     boolean hasOverlay;
-    String oreDict;
-    boolean exists;
+    public String oreDict;
+    public boolean exists;
     double amount; //amount of material this has in it; 1 = 1 ingot
     public String baseRegistryName; //the base part of the key being used to find the item registry
 
-    public LPart(String name, String localName, ArrayList<Machine> machines, boolean hasOverlay, double amount) {
+    public LPart(String name, String localName, String oreDict, ArrayList<Machine> machines, boolean hasOverlay, double amount) {
         super(name, localName, machines);
         this.type = "item"; //default
         this.hasOverlay = hasOverlay;
-        this.oreDict = this.NAME;
+        this.oreDict = oreDict;
+        /*
         while (this.oreDict.contains("_")) {
             int s = this.oreDict.indexOf("_");
             this.oreDict = this.oreDict.substring(0, s)+this.oreDict.substring(s+1, s+2).toUpperCase()+this.oreDict.substring(s+2);
         }
+        */
         this.amount = amount;
         this.baseRegistryName = localName.replace(" ", "");
     }

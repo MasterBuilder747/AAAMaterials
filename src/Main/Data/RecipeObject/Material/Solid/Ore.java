@@ -301,8 +301,8 @@ public class Ore extends AMSolid {
                 new Value("cluster-size")
         };
         Value[] values = {
-                new Value("str", this.get("denseBedrock").getUnlocalizedName()),
-                new Value("int", String.valueOf(this.get("denseBedrock").meta)),
+                new Value("str", this.getRegistry("denseBedrock").getUnlocalizedName()),
+                new Value("int", String.valueOf(this.getRegistry("denseBedrock").meta)),
                 new Value("int", "1")
         };
         return new JsonObject(keys, values);
@@ -342,7 +342,7 @@ public class Ore extends AMSolid {
             case "poor" -> weight = "30";
             case "dense" -> weight = "10";
         }
-        Registry r = this.get(type+Util.toUpper(block));
+        Registry r = this.getRegistry(type+Util.toUpper(block));
         Value[] keys = {
                 new Value("name"),
                 new Value("metadata"),
@@ -360,9 +360,9 @@ public class Ore extends AMSolid {
     //this only executes for stone ore
     public JsonObject[] genStoneVariants() {
         if (this.is("oreStone")) {
-            Registry ore = this.get("oreStone");
-            Registry poor = this.get("poorStone");
-            Registry dense = this.get("denseStone");
+            Registry ore = this.getRegistry("oreStone");
+            Registry poor = this.getRegistry("poorStone");
+            Registry dense = this.getRegistry("denseStone");
             Value[] keys = {new Value("internalOreName"), new Value("meta"), new Value("overlay"), new Value("lightValue"), new Value("alphaOverlay"), new Value("oreDirectories"), new Value("color")};
             Value[] poors = {new Value(poor.getUnlocalizedName()), new Value("int", Integer.toString(poor.meta)), new Value("base:blocks/poor_ore"), new Value("int", "0"), new Value("bool", "false"), new Value("arr", "str", "poorOre" + Util.toUpper(this.m.NAME)), new Value("#" + this.m.color)};
             Value[] ores = {new Value(ore.getUnlocalizedName()), new Value("int", Integer.toString(ore.meta)), new Value("base:blocks/ore"), new Value("int", "0"), new Value("bool", "false"), new Value("arr", "str", "ore" + Util.toUpper(this.m.NAME)), new Value("#" + this.m.color)};

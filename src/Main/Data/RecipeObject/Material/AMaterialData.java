@@ -7,6 +7,7 @@ import Main.Data.RecipeObject.ARecipeObject;
 import Main.Data.RecipeObject.Localized.LPart;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 
 //data > material
 public abstract class AMaterialData extends ARecipeObject {
@@ -30,6 +31,23 @@ public abstract class AMaterialData extends ARecipeObject {
                 }
             }
         }
+    }
+    public LPart[] getEnabledParts() {
+        ArrayList<LPart> parts = new ArrayList<>();
+        for (int i = 0; i < partGroups.length; i++) {
+            if (this.enablePartGroups[i]) {
+                parts.addAll(Arrays.asList(partGroups[i].getParts()));
+            }
+        }
+        return parts.toArray(new LPart[0]);
+    }
+    public String[] getEnabledOredicts() {
+        ArrayList<String> outs = new ArrayList<>();
+        LPart[] parts = this.getEnabledParts();
+        for (LPart p : parts) {
+            outs.add(p.oreDict);
+        }
+        return outs.toArray(new String[0]);
     }
     public void setPartGroups(PartGroup[] partGroups, boolean[] enablePartGroups) {
         this.partGroups = partGroups;

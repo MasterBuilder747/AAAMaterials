@@ -91,7 +91,7 @@ public class GStone extends AGMSolid<Stone> {
                     case 24 -> test += "BrickStairs";
                 }
                 if (this.registry.is(test)) {
-                    registries.add(this.registry.get(test));
+                    registries.add(this.registry.getNonCTRegistry(test));
                 } else {
                     error("stone type " + test + " for material " + m.NAME + " is not in the registry");
                 }
@@ -119,7 +119,7 @@ public class GStone extends AGMSolid<Stone> {
                         case 15 -> test = "Mossy" + test;
                     }
                     if (this.registry.is(test)) {
-                        registries.add(this.registry.get(test));
+                        registries.add(this.registry.getNonCTRegistry(test));
                     } else {
                         error("stone type " + test + " for material " + m.NAME + " is not in the registry");
                     }
@@ -144,7 +144,7 @@ public class GStone extends AGMSolid<Stone> {
                         case 14 -> test = "Mossy" + test;
                     }
                     if (this.registry.is(test)) {
-                        registries.add(this.registry.get(test));
+                        registries.add(this.registry.getNonCTRegistry(test));
                     } else {
                         error("stone type " + test + " for material " + m.NAME + " is not in the registry");
                     }

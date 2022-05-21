@@ -25,6 +25,13 @@ public abstract class ARecipeObject extends AData {
         throw new IllegalArgumentException("Unknown machine " + s + " in the machine registry");
     }
 
+    public void addAll(String[] keys, Registry[] regs) {
+        if (keys.length != regs.length) throw new IllegalArgumentException("Keys and registries need to be the same for recipeObject named " + this.NAME);
+        for (int i = 0; i < keys.length; i++) {
+            this.add(keys[i], regs[i]);
+        }
+    }
+
     //uses the localized name externally
     public void add(String key, Registry r) {
         this.datas.add(new RegistryData(key, r));
@@ -39,8 +46,37 @@ public abstract class ARecipeObject extends AData {
         throw new IllegalArgumentException("Unknown key " + key + " for recipeObject of name " + this.NAME);
     }
 
-    protected Registry get(String key) {
+    public void printNames() {
+        System.out.println("Keys:");
+        for (RegistryData r : this.datas) {
+            System.out.println(r.name + " = " + r.r.NAME);
+        }
+        System.out.println();
+    }
+    public void printBrackets() {
+        System.out.println("Keys:");
+        for (RegistryData r : this.datas) {
+            System.out.println(r.name + " = " + r.r.getBracket());
+        }
+        System.out.println();
+    }
+    public void printAll() {
+        System.out.println("Keys:");
+        for (RegistryData r : this.datas) {
+            System.out.print(r.name + " = ");
+            r.r.print();
+        }
+        System.out.println();
+    }
+
+    protected String get(String key) {
+        return this.getData(key).r.getBracket();
+    }
+    protected Registry getRegistry(String key) {
         return this.getData(key).r;
+    }
+    protected String getUnlocalizedName(String key) {
+        return this.getData(key).r.getUnlocalizedName();
     }
     protected boolean is(String key) {
         try {
