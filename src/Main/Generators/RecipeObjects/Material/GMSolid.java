@@ -4,14 +4,15 @@ import Main.Data.Material;
 import Main.Data.RecipeObject.Material.MSolid;
 import Main.Generators.GMaterial;
 import Main.Generators.GPartGroup;
+import Main.Generators.GameData.GLiquidRegistry;
 import Main.Generators.GameData.GRegistry;
 import Main.Generators.MachineResource.GMachine;
 
 public class GMSolid extends AGMaterialData<MSolid> {
     GPartGroup partGroup;
 
-    public GMSolid(String filename, GRegistry registry, GMachine machine, GMaterial material, GPartGroup partGroup, boolean isReg) {
-        super(4, filename, machine, material, partGroup, registry, isReg);
+    public GMSolid(String filename, GRegistry registry, GLiquidRegistry liquids, GMachine machine, GMaterial material, GPartGroup partGroup, boolean isReg) {
+        super(4, filename, machine, material, partGroup, registry, liquids, isReg);
         this.partGroup = partGroup;
     }
 

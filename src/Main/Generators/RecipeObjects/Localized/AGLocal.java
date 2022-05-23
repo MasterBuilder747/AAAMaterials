@@ -1,6 +1,7 @@
 package Main.Generators.RecipeObjects.Localized;
 
 import Main.Data.RecipeObject.Localized.ALocalizedData;
+import Main.Generators.GameData.GLiquidRegistry;
 import Main.Generators.GameData.GRegistry;
 import Main.Generators.MachineResource.GMachine;
 import Main.Generators.RecipeObjects.AGRecipeObject;
@@ -10,11 +11,11 @@ import java.io.IOException;
 
 public abstract class AGLocal<L extends ALocalizedData> extends AGRecipeObject<L> {
     //a variant of Generator that implements localized data
-    public AGLocal(int params, String filename, boolean isReg, GRegistry registry, GMachine machine) {
-        super(params+2, "custom-"+filename, "Custom", registry, isReg, machine);
+    public AGLocal(int params, String filename, boolean isReg, GRegistry registry, GLiquidRegistry liquids, GMachine machine) {
+        super(params+2, "custom-"+filename, "Custom", registry, isReg, machine, liquids);
     }
-    public AGLocal(int params, String filename, String localFolder, boolean isReg, GRegistry registry, GMachine machine) {
-        super(params+2, "custom-"+filename, "Custom/"+localFolder, registry, isReg, machine);
+    public AGLocal(int params, String filename, String localFolder, boolean isReg, GRegistry registry, GLiquidRegistry liquids, GMachine machine) {
+        super(params+2, "custom-"+filename, "Custom/"+localFolder, registry, isReg, machine, liquids);
     }
 
     @Override

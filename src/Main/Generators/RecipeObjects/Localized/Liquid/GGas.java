@@ -1,12 +1,13 @@
 package Main.Generators.RecipeObjects.Localized.Liquid;
 
 import Main.Data.RecipeObject.Localized.Liquid.LGas;
+import Main.Generators.GameData.GLiquidRegistry;
 import Main.Generators.GameData.GRegistry;
 import Main.Generators.MachineResource.GMachine;
 
 public class GGas extends AGLiquid<LGas> {
-    public GGas(String filename, GMachine machine, GRegistry registry, boolean isReg) {
-        super(6, filename, isReg, registry, machine);
+    public GGas(String filename, GMachine machine, GRegistry registry, GLiquidRegistry liquids, boolean isReg) {
+        super(6, filename, isReg, registry, liquids, machine);
     }
 
     @Override

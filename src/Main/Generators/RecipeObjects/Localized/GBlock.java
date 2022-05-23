@@ -1,13 +1,13 @@
 package Main.Generators.RecipeObjects.Localized;
 
 import Main.Data.RecipeObject.Localized.LBlock;
+import Main.Generators.GameData.GLiquidRegistry;
 import Main.Generators.GameData.GRegistry;
 import Main.Generators.MachineResource.GMachine;
 
 public class GBlock extends AGLocal<LBlock> {
-
-    public GBlock(String filename, GMachine machine, GRegistry registry, boolean isReg) {
-        super(5, filename, isReg, registry, machine);
+    public GBlock(String filename, GMachine machine, GRegistry registry, GLiquidRegistry liquids, boolean isReg) {
+        super(5, filename, isReg, registry, liquids, machine);
     }
 
     @Override

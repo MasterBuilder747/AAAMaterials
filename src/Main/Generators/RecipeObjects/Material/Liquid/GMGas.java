@@ -4,13 +4,14 @@ import Main.Data.RecipeObject.Material.Liquid.MGas;
 import Main.Data.Material;
 import Main.Generators.GMaterial;
 import Main.Generators.GPartGroup;
+import Main.Generators.GameData.GLiquidRegistry;
 import Main.Generators.GameData.GRegistry;
 import Main.Generators.MachineResource.GMachine;
 
 public class GMGas extends AGMLiquid<MGas> {
-    public GMGas(String filename, GRegistry registry, GMachine machine, GMaterial material, GPartGroup partGroup, boolean isReg) {
+    public GMGas(String filename, GRegistry registry, GLiquidRegistry liquids, GMachine machine, GMaterial material, GPartGroup partGroup, boolean isReg) {
         //int params, GMachine machine, GRegistry registry, GPartGroup partGroup, String filename, GMaterial material, boolean isReg
-        super(5, machine, registry, partGroup, filename, material, isReg);
+        super(5, machine, registry, liquids, partGroup, filename, material, isReg);
     }
 
     @Override

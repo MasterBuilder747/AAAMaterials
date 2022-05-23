@@ -5,6 +5,7 @@ import Main.Data.Material;
 import Main.Data.RecipeObject.Material.MSolid;
 import Main.Generators.GMaterial;
 import Main.Generators.GPartGroup;
+import Main.Generators.GameData.GLiquidRegistry;
 import Main.Generators.GameData.GRegistry;
 import Main.Generators.MachineResource.GMachine;
 import Main.Generators.RecipeObjects.Material.AGMaterialData;
@@ -16,15 +17,15 @@ public abstract class AGMSolid <S extends AMSolid> extends AGMaterialData<S> {
     boolean isFineDust;
     boolean isPowder;
 
-    public AGMSolid(int params, String filename, GMachine machine, GRegistry registry, GMaterial material, GPartGroup partGroup, GMSolid solid, boolean isDust, boolean isFineDust, boolean isPowder, boolean isReg) {
-        super(params, filename, machine, material, partGroup, "Solid", registry, isReg);
+    public AGMSolid(int params, String filename, GMachine machine, GRegistry registry, GLiquidRegistry liquids, GMaterial material, GPartGroup partGroup, GMSolid solid, boolean isDust, boolean isFineDust, boolean isPowder, boolean isReg) {
+        super(params, filename, machine, material, partGroup, "Solid", registry, liquids, isReg);
         this.solid = solid;
         this.isDust = isDust;
         this.isFineDust = isFineDust;
         this.isPowder = isPowder;
     }
-    public AGMSolid(int params, String filename, GMachine machine, GRegistry registry, GMaterial material, GPartGroup partGroup, GMSolid solid, boolean isDust, boolean isFineDust, boolean isPowder, String solidFolder, boolean isReg) {
-        super(params, filename, machine, material, partGroup, "Solid/"+solidFolder, registry, isReg);
+    public AGMSolid(int params, String filename, GMachine machine, GRegistry registry, GLiquidRegistry liquids, GMaterial material, GPartGroup partGroup, GMSolid solid, boolean isDust, boolean isFineDust, boolean isPowder, String solidFolder, boolean isReg) {
+        super(params, filename, machine, material, partGroup, "Solid/"+solidFolder, registry, liquids, isReg);
         this.solid = solid;
         this.isDust = isDust;
         this.isFineDust = isFineDust;

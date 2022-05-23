@@ -58,7 +58,7 @@ public abstract class ARecipe extends AData {
         /*
         buildMain();
         reci.addEnergyPerTickInput(int perTick);
-        setChance(float chance); //called after each event
+        reci.setChance(float chance); //called after each event (does not work on energy)
         reci.addEnergyPerTickOutput(int perTick);
         reci.addItemInput(IItemStack stack);
         reci.addItemInput(IOreDictEntry oreDict);
@@ -72,51 +72,93 @@ public abstract class ARecipe extends AData {
         */
         StringBuilder sb = new StringBuilder();
         for (String s : this.itemInputs) {
+            boolean isChance = false;
+            double chance = -1;
+            if (s.startsWith("chance:")) {
+                chance = Double.parseDouble(s.substring(s.indexOf(":")+1, s.indexOf("$")));
+                s = s.substring(s.indexOf("$")+1);
+                isChance = true;
+            }
             if (s.contains("ore:")) {
-                if (s.contains("*")) {
-                    sb.append(this.NAME).append(".addItemInput(").append(s, 0, s.indexOf("*")).append(", ").append(s.substring(s.indexOf("*")+1)).append(");\n");
-                } else {
-                    sb.append(this.NAME).append(".addItemInput(").append(s).append(");\n");
-                }
+                sb.append(handleOreMultiple(s, "ItemIn"));
             } else {
-                if (s.contains("*")) {
-                    sb.append(this.NAME).append(".addItemInput(").append(s, 0, s.indexOf("*")).append(" * ").append(s.substring(s.indexOf("*")+1)).append(");\n");
-                } else {
-                    sb.append(this.NAME).append(".addItemInput(").append(s).append(");\n");
-                }
+                sb.append(handleMultiple(s, "ItemIn"));
+            }
+            if (isChance) {
+                sb.append(handleChance(chance));
             }
         }
         for (String s : this.liquidInputs) {
-            if (s.contains("*")) {
-                sb.append(this.NAME).append(".addFluidInput(").append(s, 0, s.indexOf("*")).append(" * ").append(s.substring(s.indexOf("*")+1)).append(");\n");
-            } else {
-                sb.append(this.NAME).append(".addFluidInput(").append(s).append(");\n");
+            boolean isChance = false;
+            double chance = -1;
+            if (s.startsWith("chance:")) {
+                chance = Double.parseDouble(s.substring(s.indexOf(":")+1, s.indexOf("$")));
+                s = s.substring(s.indexOf("$")+1);
+                isChance = true;
+            }
+            if (s.contains("ore:")) throw new IllegalArgumentException("Oredicts are not allowed as a liquid for recipe " + this.NAME);
+            sb.append(handleMultiple(s, "FluidIn"));
+            if (isChance) {
+                sb.append(handleChance(chance));
             }
         }
         for (String s : this.itemOutputs) {
+            boolean isChance = false;
+            double chance = -1;
+            if (s.startsWith("chance:")) {
+                chance = Double.parseDouble(s.substring(s.indexOf(":")+1, s.indexOf("$")));
+                s = s.substring(s.indexOf("$")+1);
+                isChance = true;
+            }
             if (s.contains("ore:")) {
-                if (s.contains("*")) {
-                    sb.append(this.NAME).append(".addItemOutput(").append(s, 0, s.indexOf("*")).append(", ").append(s.substring(s.indexOf("*")+1)).append(");\n");
-                } else {
-                    sb.append(this.NAME).append(".addItemOutput(").append(s).append(");\n");
-                }
+                sb.append(handleOreMultiple(s, "ItemOut"));
             } else {
-                if (s.contains("*")) {
-                    sb.append(this.NAME).append(".addItemOutput(").append(s, 0, s.indexOf("*")).append(" * ").append(s.substring(s.indexOf("*")+1)).append(");\n");
-                } else {
-                    sb.append(this.NAME).append(".addItemOutput(").append(s).append(");\n");
-                }
+                sb.append(handleMultiple(s, "ItemOut"));
+            }
+            if (isChance) {
+                sb.append(handleChance(chance));
             }
         }
         for (String s : this.liquidOutputs) {
-            if (s.contains("*")) {
-                sb.append(this.NAME).append(".addFluidOutput(").append(s, 0, s.indexOf("*")).append(" * ").append(s.substring(s.indexOf("*")+1)).append(");\n");
-            } else {
-                sb.append(this.NAME).append(".addFluidOutput(").append(s).append(");\n");
+            boolean isChance = false;
+            double chance = -1;
+            if (s.startsWith("chance:")) {
+                chance = Double.parseDouble(s.substring(s.indexOf(":")+1, s.indexOf("$")));
+                s = s.substring(s.indexOf("$")+1);
+                isChance = true;
+            }
+            if (s.contains("ore:")) throw new IllegalArgumentException("Oredicts are not allowed as a liquid for recipe " + this.NAME);
+            sb.append(handleMultiple(s, "FluidOut"));
+            if (isChance) {
+                sb.append(handleChance(chance));
             }
         }
         return sb.toString();
     }
+    private String handleChance(double c) {
+        return this.NAME+".setChance("+c+");\n";
+    }
+    private String handleMultiple(String s, String r) {
+        StringBuilder sb = new StringBuilder();
+        sb.append(this.NAME).append(".add").append(r).append("put(");
+        if (s.contains("*")) {
+            sb.append(s, 0, s.indexOf("*")).append(" * ").append(s.substring(s.indexOf("*")+1)).append(");\n");
+        } else {
+            sb.append(s).append(");\n");
+        }
+        return sb.toString();
+    }
+    private String handleOreMultiple(String s, String r) {
+        StringBuilder sb = new StringBuilder();
+        sb.append(this.NAME).append(".add").append(r).append("put(<");
+        if (s.contains("*")) {
+            sb.append(s, /*isChance ? s.indexOf(";")+1 :*/ 0, s.indexOf("*")).append(">, ").append(s.substring(s.indexOf("*")+1)).append(");\n");
+        } else {
+            sb.append(s).append(">);\n");
+        }
+        return sb.toString();
+    }
+
     protected abstract String buildAdditionalIO();
     protected abstract String buildEnergy();
     private String buildBuild() {

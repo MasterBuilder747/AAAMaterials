@@ -6,6 +6,7 @@ import Main.Data.Material;
 import Main.Data.PartGroup;
 import Main.Generators.GMaterial;
 import Main.Generators.GPartGroup;
+import Main.Generators.GameData.GLiquidRegistry;
 import Main.Generators.GameData.GRegistry;
 import Main.Generators.MachineResource.GMachine;
 import Main.Generators.RecipeObjects.AGRecipeObject;
@@ -19,13 +20,13 @@ public abstract class AGMaterialData<M extends AMaterialData> extends AGRecipeOb
     protected GMaterial material; //required for passing material data through
 
     //material data that is stored to indicate what is registered for a given material
-    public AGMaterialData(int params, String filename, GMachine machine, GMaterial material, GPartGroup partGroup, GRegistry registry, boolean isReg) {
-        super(params+1, filename, "Material", registry, isReg, machine);
+    public AGMaterialData(int params, String filename, GMachine machine, GMaterial material, GPartGroup partGroup, GRegistry registry, GLiquidRegistry liquids, boolean isReg) {
+        super(params+1, filename, "Material", registry, isReg, machine, liquids);
         this.material = material;
         this.partGroup = partGroup;
     }
-    public AGMaterialData(int params, String filename, GMachine machine, GMaterial material, GPartGroup partGroup, String materialFolder, GRegistry registry, boolean isReg) {
-        super(params+1, filename, "Material/"+materialFolder, registry, isReg, machine);
+    public AGMaterialData(int params, String filename, GMachine machine, GMaterial material, GPartGroup partGroup, String materialFolder, GRegistry registry, GLiquidRegistry liquids, boolean isReg) {
+        super(params+1, filename, "Material/"+materialFolder, registry, isReg, machine, liquids);
         this.material = material;
         this.partGroup = partGroup;
     }

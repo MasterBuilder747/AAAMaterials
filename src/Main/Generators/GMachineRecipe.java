@@ -114,13 +114,24 @@ public class GMachineRecipe extends AGenerator<CustomMachineRecipe> {
 
     private void itemIO(String[] items, ArrayList<String> itemOuts) {
         for (String i : items) {
-            if (i.startsWith("ore:")) {
+            boolean isChance = false;
+            double chance = -1;
+            if (i.startsWith("chance:")) {
+                chance = parseDouble(i.substring(i.indexOf("chance:")+7, i.indexOf("$")));
+                i = i.substring(i.indexOf("$")+1);
+                isChance = true;
+            }
+            if (i.contains("ore:")) {
                 if (i.contains("*")) {
-                    String ore = this.oredict.get(i.substring(i.indexOf(":")+1, i.indexOf("*"))).getBracket();
-                    itemOuts.add(ore+", "+i.substring(i.indexOf("*")+1)); //oredict requires a separate syntax, needing the amount as the second parameter
+                    String ore = this.oredict.get(i.substring(i.indexOf(":")+1, i.indexOf("*"))).getUnlocalizedName();
+                    if (isChance) {
+                        itemOuts.add("chance:"+chance+"$"+ore+"*" + i.substring(i.indexOf("*") + 1));
+                    } else {
+                        itemOuts.add(ore+"*" + i.substring(i.indexOf("*") + 1)); //oredict requires a separate syntax, needing the amount as the second parameter
+                    }
                 } else {
                     OreDict ore = this.oredict.get(i.substring(i.indexOf(":")+1));
-                    itemOuts.add(ore.getBracket());
+                    itemOuts.add(ore.getUnlocalizedName());
                 }
             } else {
                 Registry reg = this.registry.getUnlocalized(i);
@@ -130,6 +141,9 @@ public class GMachineRecipe extends AGenerator<CustomMachineRecipe> {
     }
     private void liquidIO(String[] liquids, ArrayList<String> liquidOuts) {
         for (String l : liquids) {
+            if (l.startsWith("chance:")) {
+                l = l.substring(l.indexOf("$")+1);
+            }
             String liquid = this.liquid.get(l).getBracket();
             liquidOuts.add(liquid);
         }

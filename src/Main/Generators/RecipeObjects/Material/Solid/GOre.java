@@ -8,6 +8,7 @@ import Main.Data.OreType;
 import Main.Data.GameData.Registry;
 import Main.Generators.GMaterial;
 import Main.Generators.GPartGroup;
+import Main.Generators.GameData.GLiquidRegistry;
 import Main.Generators.GameData.GRegistry;
 import Main.Generators.MachineResource.GMachine;
 import Main.Generators.RecipeObjects.Material.GMSolid;
@@ -20,10 +21,10 @@ import java.util.ArrayList;
 public class GOre extends AGMSolid<Ore> {
 
 
-    public GOre(String filename, GMachine machine, GRegistry registry, GMaterial material, GPartGroup partGroup, GMSolid solid, boolean isReg) {
+    public GOre(String filename, GMachine machine, GRegistry registry, GLiquidRegistry liquids, GMaterial material, GPartGroup partGroup, GMSolid solid, boolean isReg) {
         //    int params, String filename, GMachine machine, GRegistry registry, GMaterial material, GPartGroup partGroup, GMSolid solid,
         //    boolean isDust, boolean isFineDust, boolean isPowder, boolean isReg
-        super(-2, filename, machine, registry, material, partGroup, solid, true, false, false, isReg);
+        super(-2, filename, machine, registry, liquids, material, partGroup, solid, true, false, false, isReg);
         this.material = material;
     }
 

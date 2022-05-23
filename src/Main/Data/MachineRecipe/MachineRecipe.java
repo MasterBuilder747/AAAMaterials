@@ -3,6 +3,7 @@ package Main.Data.MachineRecipe;
 import Main.Data.MachineResource.Machine.Machine;
 
 public class MachineRecipe extends ARecipe {
+    //this adds everything that is needed for a machine recipe
     String data; //get the unlocalized bracket for the data liquid
 
     boolean isChemical;

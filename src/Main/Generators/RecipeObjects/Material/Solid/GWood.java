@@ -5,6 +5,7 @@ import Main.Data.RecipeObject.Material.Solid.Wood;
 import Main.Data.GameData.Registry;
 import Main.Generators.GMaterial;
 import Main.Generators.GPartGroup;
+import Main.Generators.GameData.GLiquidRegistry;
 import Main.Generators.GameData.GRegistry;
 import Main.Generators.MachineResource.GMachine;
 import Main.Generators.RecipeObjects.Material.GMSolid;
@@ -12,8 +13,8 @@ import Main.Generators.RecipeObjects.Material.GMSolid;
 import java.util.ArrayList;
 
 public class GWood extends AGMSolid<Wood> {
-    public GWood(String filename, GMachine machine, GRegistry registry, GMaterial material, GPartGroup partGroup, GMSolid solid, boolean isReg) {
-        super(1, filename, machine, registry, material, partGroup, solid, true, false, false, isReg);
+    public GWood(String filename, GMachine machine, GRegistry registry, GLiquidRegistry liquids, GMaterial material, GPartGroup partGroup, GMSolid solid, boolean isReg) {
+        super(1, filename, machine, registry, liquids, material, partGroup, solid, true, false, false, isReg);
     }
 
     @Override

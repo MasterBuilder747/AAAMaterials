@@ -4,6 +4,8 @@ import Main.Data.AData;
 import Main.Data.MachineResource.Machine.Machine;
 
 public class CustomMachineRecipe extends AData {
+    //generates a set of machine recipes for each machine tier
+
     int tier; //minimum voltage tier this recipe gets unlocked at
     Machine machine; //every recipe uses the same machine
     int time; //this will be changed per recipe! But for now, each recipe has the same time per tier

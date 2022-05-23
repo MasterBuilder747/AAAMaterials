@@ -8,6 +8,8 @@ import Main.Util;
 import java.util.ArrayList;
 
 public class AMaterialRecipe extends ARecipeObject {
+    //machine recipe that gets automatically added per recipe object
+
     CustomMachineRecipe recipe;
     String machineName;
 

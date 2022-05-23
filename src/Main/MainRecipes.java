@@ -90,21 +90,21 @@ public class MainRecipes {
         matter.registerRecipes();
 
         //1. custom content not using the material system
-        GBlock block = new GBlock("block", machine, registry, REG);
+        GBlock block = new GBlock("block", machine, registry, liquids, REG);
         bw.write(block.registerRecipes());
-        GItem item = new GItem("item", machine, registry, REG);
+        GItem item = new GItem("item", machine, registry, liquids, REG);
         bw.write(item.registerRecipes());
-        GLiquid liquid = new GLiquid("liquid", machine, registry, REG);
+        GLiquid liquid = new GLiquid("liquid", machine, registry, liquids, REG);
         bw.write(liquid.registerRecipes());
-        GMolten molten = new GMolten("molten", machine, registry, REG);
+        GMolten molten = new GMolten("molten", machine, registry, liquids, REG);
         bw.write(molten.registerRecipes());
-        GGas gas = new GGas("gase", machine, registry, REG);
+        GGas gas = new GGas("gase", machine, registry, liquids, REG);
         bw.write(gas.registerRecipes());
-        GPlasma plasma = new GPlasma("plasma", machine, registry, REG);
+        GPlasma plasma = new GPlasma("plasma", machine, registry, liquids, REG);
         bw.write(plasma.registerRecipes());
 
         //2. any established content needed for the material system
-        GPart part = new GPart("part", machine, registry, REG); //this is localized
+        GPart part = new GPart("part", machine, registry, liquids, REG); //this is localized
         bw.write(part.registerRecipes());
         GPartGroup partGroup = new GPartGroup("partgroup", part);
         bw.write(partGroup.registerRecipes());
@@ -116,13 +116,13 @@ public class MainRecipes {
         bw.write(material.registerRecipes());
 
         //4. material states
-        GMSolid mSolid = new GMSolid("solid", registry, machine, material, partGroup, REG);
+        GMSolid mSolid = new GMSolid("solid", registry, liquids, machine, material, partGroup, REG);
         bw.write(mSolid.registerRecipes());
-        GMLiquid mLiquid = new GMLiquid("liquid", registry, machine, material, partGroup, REG);
+        GMLiquid mLiquid = new GMLiquid("liquid", registry, liquids, machine, material, partGroup, REG);
         bw.write(mLiquid.registerRecipes());
-        GMGas mGas = new GMGas("gase", registry, machine, material, partGroup, REG);
+        GMGas mGas = new GMGas("gase", registry, liquids, machine, material, partGroup, REG);
         bw.write(mGas.registerRecipes());
-        GMPlasma mPlasma = new GMPlasma("plasma", registry, machine, material, partGroup, REG);
+        GMPlasma mPlasma = new GMPlasma("plasma", registry, liquids, machine, material, partGroup, REG);
         bw.write(mPlasma.registerRecipes());
 
         //5. material compositions, material parts must be added after this!!!
@@ -135,25 +135,25 @@ public class MainRecipes {
         //6. all other material data (unless there are some other requirements later)
         //naturals
         //String filename, GMachine machine, GRegistry registry, GMaterial material, GPartGroup partGroup, GMSolid solid, boolean isReg
-        GWood wood = new GWood("wood", machine, registry, material, partGroup, mSolid, REG);
+        GWood wood = new GWood("wood", machine, registry, liquids, material, partGroup, mSolid, REG);
         bw.write(wood.registerRecipes());
-        GStone stone = new GStone("stone", machine, registry, material, partGroup, mSolid, REG);
+        GStone stone = new GStone("stone", machine, registry, liquids, material, partGroup, mSolid, REG);
         bw.write(stone.registerRecipes());
         //malleables: need liquid as well
-        GMetal metal = new GMetal("metal", machine, registry, material, partGroup, mSolid, mLiquid, REG);
+        GMetal metal = new GMetal("metal", machine, registry, liquids, material, partGroup, mSolid, mLiquid, REG);
         bw.write(metal.registerRecipes());
-        GAlloy alloy = new GAlloy("alloy", machine, registry, material, partGroup, mSolid, mLiquid, REG);
+        GAlloy alloy = new GAlloy("alloy", machine, registry, liquids, material, partGroup, mSolid, mLiquid, REG);
         bw.write(alloy.registerRecipes());
-        GPlastic plastic = new GPlastic("plastic", machine, registry, material, partGroup, mSolid, mLiquid, REG);
+        GPlastic plastic = new GPlastic("plastic", machine, registry, liquids, material, partGroup, mSolid, mLiquid, REG);
         bw.write(plastic.registerRecipes());
-        GRubber rubber = new GRubber("rubber", machine, registry, material, partGroup, mSolid, mLiquid, REG);
+        GRubber rubber = new GRubber("rubber", machine, registry, liquids, material, partGroup, mSolid, mLiquid, REG);
         bw.write(rubber.registerRecipes());
         //gems: no liquids
-        GGem gem = new GGem("gem", machine, registry, material, partGroup, mSolid, REG);
+        GGem gem = new GGem("gem", machine, registry, liquids, material, partGroup, mSolid, REG);
         bw.write(gem.registerRecipes());
 
         //7. ore system
-        GOre ore = new GOre("ore", machine, registry, material, partGroup, mSolid, REG);
+        GOre ore = new GOre("ore", machine, registry, liquids, material, partGroup, mSolid, REG);
         bw.write(ore.registerRecipes());
 
         //8. custom machine recipes, only used in MainRecipes

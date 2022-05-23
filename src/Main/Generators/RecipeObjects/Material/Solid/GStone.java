@@ -5,6 +5,7 @@ import Main.Data.RecipeObject.Material.Solid.Stone;
 import Main.Data.GameData.Registry;
 import Main.Generators.GMaterial;
 import Main.Generators.GPartGroup;
+import Main.Generators.GameData.GLiquidRegistry;
 import Main.Generators.GameData.GRegistry;
 import Main.Generators.MachineResource.GMachine;
 import Main.Generators.RecipeObjects.Material.GMSolid;
@@ -14,10 +15,10 @@ import java.util.ArrayList;
 public class GStone extends AGMSolid<Stone> {
     GRegistry registry;
 
-    public GStone(String filename, GMachine machine, GRegistry registry, GMaterial material, GPartGroup partGroup, GMSolid solid, boolean isReg) {
+    public GStone(String filename, GMachine machine, GRegistry registry, GLiquidRegistry liquids, GMaterial material, GPartGroup partGroup, GMSolid solid, boolean isReg) {
         //    int params, String filename, GMachine machine, GRegistry registry, GMaterial material, GPartGroup partGroup, GMSolid solid,
         //    boolean isDust, boolean isFineDust, boolean isPowder, boolean isReg) {
-        super(3, filename, machine, registry, material, partGroup, solid, true, false, false, isReg);
+        super(3, filename, machine, registry, liquids, material, partGroup, solid, true, false, false, isReg);
         this.registry = registry;
     }
 
