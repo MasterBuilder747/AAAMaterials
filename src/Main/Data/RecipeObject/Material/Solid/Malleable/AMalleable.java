@@ -7,6 +7,8 @@ import Main.Data.MachineResource.MachineMatter;
 import Main.Data.RecipeObject.Material.Solid.AMSolid;
 import Main.Data.RecipeObject.Material.Liquid.MLiquid;
 import Main.Data.Material;
+import Main.Data.RecipeObject.MaterialRecipe.MeltingRecipe;
+import Main.Data.RecipeObject.MaterialRecipe.SmeltingRecipe;
 
 import java.util.ArrayList;
 
@@ -25,6 +27,9 @@ public abstract class AMalleable extends AMSolid {
     protected String getMolten() {
         return this.molten.getBracket();
     }
+    protected String getMoltens(int amount) {
+        return this.molten.getBracket()+" * " + amount;
+    }
 
     @Override
     public String buildMaterial() {
@@ -41,16 +46,27 @@ public abstract class AMalleable extends AMSolid {
     @Override
     public String buildRecipe() {
         StringBuilder sb = new StringBuilder();
+        printNames();
+        MeltingRecipe r = new MeltingRecipe(this.machines, this.mData, this.matters, this.registries);
+        r.createRecipe(this.NAME+"Malleable", 20, 1, 0.5, 0, this.getData());
+        String[] iIns = {getPart("dust")};
+        String[] lIns = {};
+        String[] iOuts = {getMoltens((int)(144 * this.meltingMultiplier))};
+        String[] lOuts = {};
+        r.setInputs(iIns, lIns);
+        r.setOutputs(iOuts, lOuts);
+        r.setAdditionalRequirements(100, 100, getMatterIn("-red*100"), getMatterOut("+orange*200"));
+        sb.append(r.buildRecipe());
+
         sb.append(buildPartRecipes());
-        //append any script related to parent here
         return sb.toString();
     }
 
     @Override
     public void print() {
         StringBuilder sb = new StringBuilder();
+
         sb.append(printParts());
-        //append any script related to parent here
         System.out.println(sb.toString());
     }
 

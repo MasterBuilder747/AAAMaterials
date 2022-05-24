@@ -141,7 +141,7 @@ public abstract class ARecipeObject extends AData {
     }
 
     public void printNames() {
-        System.out.println("Keys:");
+        System.out.println("Keys for " + this.NAME + ":");
         for (RegistryData r : this.datas) {
             System.out.println(r.name + " = " + r.r.NAME);
         }

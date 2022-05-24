@@ -38,14 +38,9 @@ public class Metal extends AMalleable {
         SmeltingRecipe r = new SmeltingRecipe(this.machines, this.mData, this.matters, this.registries);
         r.createRecipe(this.NAME+"Metal", 20, 1, 0.5, 0, this.getData());
         String[] iIns = {
-                addChance(0.5)+getParts("ingot", 4),
-                getOredicts("ingotIron", 4),
-                getItemByMod("IronIngot", "contenttweaker")
+                addChance(0.5)+getParts("ingot", 4)
         };
-        String[] lIns = {
-                getLiquids("hydrogen", 100),
-                getMolten()
-        };
+        String[] lIns = {};
         String[] iOuts = {
                 getPart("plateTough")
         };

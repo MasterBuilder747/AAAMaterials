@@ -22,7 +22,10 @@ public class GMSolid extends AGMaterialData<MSolid> {
     protected void readMaterialParameters(Material m, String[] s) {
         //bool addDust, bool addFineDust, bool addPowder, String customName(for other states)[= for none]
         MSolid sol = new MSolid(m, getMachineRegistry(), getDataRegistry(), getMatterRegistry(), getRegistries());
-        sol.setPartGroups(genPartGroups(new String[]{"dust", "fine", "powder"}), new boolean[]{Boolean.parseBoolean(s[0]), Boolean.parseBoolean(s[1]), Boolean.parseBoolean(s[2])});
+        sol.setPartGroups(genPartGroups(new String[]{"dust", "fine", "powder"}),
+                new boolean[]{Boolean.parseBoolean(s[0]), Boolean.parseBoolean(s[1]), Boolean.parseBoolean(s[2])});
+        sol = updateRegistryKeys(sol);
+        sol = updateLiquids(sol);
         if (!s[3].equals("=")) sol.addAltName(s[3]);
         objects.add(sol);
     }

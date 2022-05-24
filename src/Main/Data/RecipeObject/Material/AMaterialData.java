@@ -30,7 +30,8 @@ public abstract class AMaterialData extends ARecipeObject {
         for (int i = 0; i < partGroups.length; i++) {
             if (this.enablePartGroups[i]) {
                 for (LPart p : partGroups[i].getParts()) {
-                    this.localizedPartNames.add(p.baseRegistryName.replace("%s", m.LOCALNAME));
+                    this.localizedPartNames.add(p.baseRegistryName.replace("%s", m.LOCALNAME.replace(" ", "")));
+                    //some materials have space in their localName, remove it to allow the registry to find the item
                 }
             }
         }
