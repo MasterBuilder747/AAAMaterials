@@ -77,8 +77,8 @@ public class GMachineRecipe extends AGenerator<CustomMachineRecipe> {
         r.setOutputs(itemOuts.toArray(new String[0]), liquidOuts.toArray(new String[0]));
 
         //machine resources
-        int chem = parseInt(s[8]);
-        int data = parseInt(s[9]);
+        int chemAmount = parseInt(s[8]);
+        int dataAmount = parseInt(s[9]);
 
         String matterI = s[10];
         if (!matterI.contains("*")) error("Must specify an amount of matter input denoted after a *");
@@ -108,7 +108,7 @@ public class GMachineRecipe extends AGenerator<CustomMachineRecipe> {
         }
         matterOut = matterOut + " * " + outAmount;
 
-        r.setAdditionalRequirements(chem, data, matterIn, matterOut);
+        r.setAdditionalRequirements(chemAmount, dataAmount, matterIn, matterOut);
         this.objects.add(r);
     }
 
@@ -117,11 +117,13 @@ public class GMachineRecipe extends AGenerator<CustomMachineRecipe> {
             boolean isChance = false;
             double chance = -1;
             if (i.startsWith("chance:")) {
+                //add chance
                 chance = parseDouble(i.substring(i.indexOf("chance:")+7, i.indexOf("$")));
                 i = i.substring(i.indexOf("$")+1);
                 isChance = true;
             }
             if (i.contains("ore:")) {
+                //add oredict
                 if (i.contains("*")) {
                     String ore = this.oredict.get(i.substring(i.indexOf(":")+1, i.indexOf("*"))).getUnlocalizedName();
                     if (isChance) {
@@ -134,6 +136,7 @@ public class GMachineRecipe extends AGenerator<CustomMachineRecipe> {
                     itemOuts.add(ore.getUnlocalizedName());
                 }
             } else {
+                //add regular item
                 Registry reg = this.registry.getUnlocalized(i);
                 itemOuts.add(reg.getBracket());
             }
@@ -144,6 +147,7 @@ public class GMachineRecipe extends AGenerator<CustomMachineRecipe> {
             if (l.startsWith("chance:")) {
                 l = l.substring(l.indexOf("$")+1);
             }
+            //requires the localized liquid name!
             String liquid = this.liquid.get(l).getBracket();
             liquidOuts.add(liquid);
         }

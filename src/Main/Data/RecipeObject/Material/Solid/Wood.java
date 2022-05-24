@@ -1,6 +1,8 @@
 package Main.Data.RecipeObject.Material.Solid;
 
 import Main.Data.MachineResource.Machine.Machine;
+import Main.Data.MachineResource.MachineData;
+import Main.Data.MachineResource.MachineMatter;
 import Main.Data.Material;
 import Main.Data.GameData.Registry;
 
@@ -9,8 +11,8 @@ import java.util.ArrayList;
 public class Wood extends AMSolid {
     boolean isVanilla; //for quark integration
 
-    public Wood(Material m, boolean isVanilla, ArrayList<Machine> machines) {
-        super(m, machines);
+    public Wood(Material m, boolean isVanilla, ArrayList<Machine> machines, MachineData data, ArrayList<MachineMatter> matters, ArrayList<Registry> registries) {
+        super(m, machines, data, matters, registries);
         this.isVanilla = isVanilla;
     }
 

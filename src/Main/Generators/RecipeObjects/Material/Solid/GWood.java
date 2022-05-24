@@ -8,20 +8,23 @@ import Main.Generators.GPartGroup;
 import Main.Generators.GameData.GLiquidRegistry;
 import Main.Generators.GameData.GRegistry;
 import Main.Generators.MachineResource.GMachine;
+import Main.Generators.MachineResource.GMachineData;
+import Main.Generators.MachineResource.GMachineMatter;
 import Main.Generators.RecipeObjects.Material.GMSolid;
 
 import java.util.ArrayList;
 
 public class GWood extends AGMSolid<Wood> {
-    public GWood(String filename, GMachine machine, GRegistry registry, GLiquidRegistry liquids, GMaterial material, GPartGroup partGroup, GMSolid solid, boolean isReg) {
-        super(1, filename, machine, registry, liquids, material, partGroup, solid, true, false, false, isReg);
+    public GWood(String filename, GMachine machine, GRegistry registry,
+                 GLiquidRegistry liquids, GMachineData data, GMachineMatter matter, GMaterial material, GPartGroup partGroup, GMSolid solid, boolean isReg) {
+        super(1, filename, machine, registry, liquids, data, matter, material, partGroup, solid, true, false, false, isReg);
     }
 
     @Override
     protected void readSolidParameters(Material m, String[] s) {
         //boolean isVanilla
         boolean isVanilla = parseBoolean(s[0]);
-        Wood w = new Wood(m, isVanilla, getMachineRegistry());
+        Wood w = new Wood(m, isVanilla, getMachineRegistry(), getDataRegistry(), getMatterRegistry(), getRegistries());
         ArrayList<Registry> registries = new ArrayList<>();
         for (int i = 0; i < 22; i++) {
             String test = m.LOCALNAME.replace(" ", "");

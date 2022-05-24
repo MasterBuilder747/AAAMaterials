@@ -1,6 +1,8 @@
 package Main.Data.RecipeObject.Material.Solid;
 
 import Main.Data.MachineResource.Machine.Machine;
+import Main.Data.MachineResource.MachineData;
+import Main.Data.MachineResource.MachineMatter;
 import Main.Data.Material;
 import Main.Data.RecipeObject.Material.OreVariant;
 import Main.Data.GameData.Registry;
@@ -86,8 +88,8 @@ public class Ore extends AMSolid {
     BEACH;
      */
 
-    public Ore(Material m, boolean enableGen, ArrayList<Machine> machines) {
-        super(m, machines);
+    public Ore(Material m, boolean enableGen, ArrayList<Machine> machines, MachineData data, ArrayList<MachineMatter> matters, ArrayList<Registry> registries) {
+        super(m, machines, data, matters, registries);
         this.enableGen = enableGen;
     }
 

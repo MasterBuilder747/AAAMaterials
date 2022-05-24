@@ -1,6 +1,9 @@
 package Main.Data.RecipeObject.Localized;
 
+import Main.Data.GameData.Registry;
 import Main.Data.MachineResource.Machine.Machine;
+import Main.Data.MachineResource.MachineData;
+import Main.Data.MachineResource.MachineMatter;
 
 import java.util.ArrayList;
 
@@ -13,8 +16,9 @@ public class LBlock extends ALocalizedData {
     public String tool;
     String material;
 
-    public LBlock(String name, String localName, ArrayList<Machine> machines, String material, int hardness, int resistance, int miningLevel, String tool) {
-        super(name, localName, machines);
+    public LBlock(String name, String localName, ArrayList<Machine> machines, MachineData data, ArrayList<MachineMatter> matters, ArrayList<Registry> registries,
+                  String material, int hardness, int resistance, int miningLevel, String tool) {
+        super(name, localName, machines, data, matters, registries);
         this.material = material;
         this.hardness = hardness;
         this.resistance = resistance;
@@ -22,8 +26,8 @@ public class LBlock extends ALocalizedData {
         this.tool = tool;
     }
     //for variants
-    public LBlock(String name, ArrayList<Machine> machines, String material, String tool) {
-        super(name, name, machines);
+    public LBlock(String name, ArrayList<Machine> machines, MachineData data, ArrayList<MachineMatter> matters, ArrayList<Registry> registries, String material, String tool) {
+        super(name, name, machines, data, matters, registries);
         this.material = material;
         this.tool = tool;
     }

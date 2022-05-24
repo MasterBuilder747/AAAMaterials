@@ -1,6 +1,9 @@
 package Main.Data.RecipeObject.Material.Solid.Malleable;
 
+import Main.Data.GameData.Registry;
 import Main.Data.MachineResource.Machine.Machine;
+import Main.Data.MachineResource.MachineData;
+import Main.Data.MachineResource.MachineMatter;
 import Main.Data.RecipeObject.Material.Liquid.MLiquid;
 import Main.Data.Material;
 
@@ -12,8 +15,8 @@ public class Rubber extends AMalleable {
     //when melting a part:
     //get some back
     //get no material back
-    public Rubber(Material m, double meltingMultiplier, MLiquid liquid, ArrayList<Machine> machines) {
-        super(m, machines, meltingMultiplier, liquid);
+    public Rubber(Material m, double meltingMultiplier, MLiquid liquid, ArrayList<Machine> machines, MachineData data, ArrayList<MachineMatter> matters, ArrayList<Registry> registries) {
+        super(m, machines, data, matters, registries, meltingMultiplier, liquid);
     }
 
     @Override

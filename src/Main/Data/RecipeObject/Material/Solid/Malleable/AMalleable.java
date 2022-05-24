@@ -1,6 +1,9 @@
 package Main.Data.RecipeObject.Material.Solid.Malleable;
 
+import Main.Data.GameData.Registry;
 import Main.Data.MachineResource.Machine.Machine;
+import Main.Data.MachineResource.MachineData;
+import Main.Data.MachineResource.MachineMatter;
 import Main.Data.RecipeObject.Material.Solid.AMSolid;
 import Main.Data.RecipeObject.Material.Liquid.MLiquid;
 import Main.Data.Material;
@@ -13,8 +16,8 @@ public abstract class AMalleable extends AMSolid {
     MLiquid molten;
     //negative numbers indicate the value of this material, but it cannot be melted
 
-    public AMalleable(Material m, ArrayList<Machine> machines, double meltingMultiplier, MLiquid molten) {
-        super(m, machines);
+    public AMalleable(Material m, ArrayList<Machine> machines, MachineData data, ArrayList<MachineMatter> matters, ArrayList<Registry> registries, double meltingMultiplier, MLiquid molten) {
+        super(m, machines, data, matters, registries);
         this.meltingMultiplier = meltingMultiplier;
         this.molten = molten;
     }

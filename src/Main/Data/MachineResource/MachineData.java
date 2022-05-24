@@ -7,7 +7,8 @@ public class MachineData extends AMachineResource {
 
     public MachineData(String name, String localName, String color, int density, int luminosity, int temperature, int viscosity, boolean vaporize) {
         super(name);
-        this.data = new LLiquid(false, null, name, localName, color, density, luminosity, temperature, viscosity, vaporize);
+        //data liquid will have to have a hardcoded recipe!
+        this.data = new LLiquid(false, null, null, null, null, name, localName, color, density, luminosity, temperature, viscosity, vaporize);
     }
 
     public String getData() {

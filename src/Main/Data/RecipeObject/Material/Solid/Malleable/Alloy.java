@@ -1,6 +1,9 @@
 package Main.Data.RecipeObject.Material.Solid.Malleable;
 
+import Main.Data.GameData.Registry;
 import Main.Data.MachineResource.Machine.Machine;
+import Main.Data.MachineResource.MachineData;
+import Main.Data.MachineResource.MachineMatter;
 import Main.Data.RecipeObject.Material.Liquid.MLiquid;
 import Main.Data.Material;
 
@@ -9,8 +12,8 @@ import java.util.ArrayList;
 //data > material > malleable > alloy
 public class Alloy extends AMalleable {
 
-    public Alloy(Material m, MLiquid liquid, ArrayList<Machine> machines) {
-        super(m, machines, 1, liquid);
+    public Alloy(Material m, MLiquid liquid, ArrayList<Machine> machines, MachineData data, ArrayList<MachineMatter> matters, ArrayList<Registry> registries) {
+        super(m, machines, data, matters, registries, 1, liquid);
     }
 
     @Override

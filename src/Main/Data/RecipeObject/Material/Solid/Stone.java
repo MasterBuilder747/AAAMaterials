@@ -1,6 +1,8 @@
 package Main.Data.RecipeObject.Material.Solid;
 
 import Main.Data.MachineResource.Machine.Machine;
+import Main.Data.MachineResource.MachineData;
+import Main.Data.MachineResource.MachineMatter;
 import Main.Data.Material;
 import Main.Data.GameData.Registry;
 
@@ -10,8 +12,8 @@ public class Stone extends AMSolid {
     boolean isSedimentary; //does not have cobblestone registered for UB
     boolean noSlab; //only applied to Conglomerate...?
 
-    public Stone(Material m, boolean isSedimentary, boolean noSlab, ArrayList<Machine> machines) {
-        super(m, machines);
+    public Stone(Material m, boolean isSedimentary, boolean noSlab, ArrayList<Machine> machines, MachineData data, ArrayList<MachineMatter> matters, ArrayList<Registry> registries) {
+        super(m, machines, data, matters, registries);
         this.isSedimentary = isSedimentary;
         this.noSlab = noSlab;
     }

@@ -1,6 +1,9 @@
 package Main.Data.RecipeObject.Localized;
 
+import Main.Data.GameData.Registry;
 import Main.Data.MachineResource.Machine.Machine;
+import Main.Data.MachineResource.MachineData;
+import Main.Data.MachineResource.MachineMatter;
 import Main.Data.RecipeObject.ARecipeObject;
 
 import java.util.ArrayList;
@@ -11,8 +14,8 @@ public abstract class ALocalizedData extends ARecipeObject {
 
     public abstract String localize() throws IllegalArgumentException;
 
-    public ALocalizedData(String name, String localName, ArrayList<Machine> machines) {
-        super(name, machines);
+    public ALocalizedData(String name, String localName, ArrayList<Machine> machines, MachineData data, ArrayList<MachineMatter> matters, ArrayList<Registry> registries) {
+        super(name, machines, data, matters, registries);
         this.localName = localName;
     }
 

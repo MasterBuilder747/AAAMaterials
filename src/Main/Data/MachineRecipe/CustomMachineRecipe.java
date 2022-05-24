@@ -83,7 +83,7 @@ public class CustomMachineRecipe extends AData {
         MachineRecipe r = new MachineRecipe(this.NAME + "_" + machineTier, this.machine, power, this.time, this.priority, this.data, isChemical, isData, isMatter);
         r.setInputs(this.itemInputs, this.liquidInputs);
         r.setOutputs(this.itemOutputs, this.liquidOutputs);
-        r.setAdditionalRequirements(chemicalAmount, dataAmount, matterIn, matterOut); //TODO: might be different amounts of matter/data per machineTier later on...
+        r.setAdditionalRequirements(chemicalAmount, dataAmount, matterIn, matterOut);
         return r.buildRecipe();
     }
 

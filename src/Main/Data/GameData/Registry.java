@@ -1,7 +1,5 @@
 package Main.Data.GameData;
 
-import Main.Data.RecipeObject.Localized.LItem;
-
 import java.util.Arrays;
 
 public class Registry extends AGameData {

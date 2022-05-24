@@ -1,7 +1,10 @@
-package Main.Data.MachineRecipe.MaterialRecipe;
+package Main.Data.RecipeObject.MaterialRecipe;
 
+import Main.Data.GameData.Registry;
 import Main.Data.MachineRecipe.CustomMachineRecipe;
 import Main.Data.MachineResource.Machine.Machine;
+import Main.Data.MachineResource.MachineData;
+import Main.Data.MachineResource.MachineMatter;
 import Main.Data.RecipeObject.ARecipeObject;
 import Main.Util;
 
@@ -13,8 +16,8 @@ public class AMaterialRecipe extends ARecipeObject {
     CustomMachineRecipe recipe;
     String machineName;
 
-    public AMaterialRecipe(String NAME, String machineName, ArrayList<Machine> machines) {
-        super(NAME, machines);
+    public AMaterialRecipe(String NAME, String machineName, ArrayList<Machine> machines, MachineData data, ArrayList<MachineMatter> matters, ArrayList<Registry> registries) {
+        super(NAME, machines, data, matters, registries);
         this.machineName = machineName;
     }
 

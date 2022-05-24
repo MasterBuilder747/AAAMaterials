@@ -1,7 +1,10 @@
 package Main.Data.RecipeObject.Material.Solid.Malleable;
 
-import Main.Data.MachineRecipe.MaterialRecipe.SmeltingRecipe;
+import Main.Data.GameData.Registry;
+import Main.Data.RecipeObject.MaterialRecipe.SmeltingRecipe;
 import Main.Data.MachineResource.Machine.Machine;
+import Main.Data.MachineResource.MachineData;
+import Main.Data.MachineResource.MachineMatter;
 import Main.Data.Material;
 import Main.Data.RecipeObject.Material.Liquid.MLiquid;
 
@@ -9,10 +12,9 @@ import java.util.ArrayList;
 
 //data > material > malleable > metal
 public class Metal extends AMalleable {
-
     //this is a malleable metal, which means that it can be molded into different metal parts
-    public Metal(Material m, MLiquid liquid, ArrayList<Machine> machines) {
-        super(m, machines, 1, liquid);
+    public Metal(Material m, MLiquid liquid, ArrayList<Machine> machines, MachineData data, ArrayList<MachineMatter> matters, ArrayList<Registry> registries) {
+        super(m, machines, data, matters, registries, 1, liquid);
     }
 
     @Override
@@ -33,17 +35,27 @@ public class Metal extends AMalleable {
         //6. fusion furnace to plasma > ingot through plasma cooling chamber/etc
         StringBuilder sb = new StringBuilder();
 
-        SmeltingRecipe r = new SmeltingRecipe(this.machines);
-        r.createRecipe(this.NAME+"Metal", 20, 1, 0.5, 0, "data");//this.data);
+        SmeltingRecipe r = new SmeltingRecipe(this.machines, this.mData, this.matters, this.registries);
+        r.createRecipe(this.NAME+"Metal", 20, 1, 0.5, 0, this.getData());
 
         //make a recipe building object or method in ARecipeObject?
-        String[] iIns = {addChance(0.5)+getParts("ingot", 4), getOredicts("ingotIron", 4)};
-        String[] lIns = {getLiquids("hydrogen", 100)};
-        String[] iOuts = {getPart("plateTough")};
-        String[] lOuts = {};
+        String[] iIns = {
+                addChance(0.5)+getParts("ingot", 4),
+                getOredicts("ingotIron", 4),
+                getItem("IronShovel")
+        };
+        String[] lIns = {
+                getLiquids("hydrogen", 100)
+        };
+        String[] iOuts = {
+                getPart("plateTough")
+        };
+        String[] lOuts = {
+
+        };
         r.setInputs(iIns, lIns);
         r.setOutputs(iOuts, lOuts);
-        r.setAdditionalRequirements(100, 1000, "red", "orange");
+        r.setAdditionalRequirements(100, 1000, getMatterIn("-red*100"), getMatterOut("+orange*200"));
         sb.append(r.buildRecipe());
 
         return sb.toString();

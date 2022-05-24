@@ -1,6 +1,9 @@
 package Main.Data.RecipeObject.Localized;
 
+import Main.Data.GameData.Registry;
 import Main.Data.MachineResource.Machine.Machine;
+import Main.Data.MachineResource.MachineData;
+import Main.Data.MachineResource.MachineMatter;
 
 import java.util.ArrayList;
 
@@ -14,8 +17,8 @@ public class LFood extends ALocalizedData {
     String foodGroup; //dairy, fruit, vegetable, protein, grain, none
     String type; //milk, meat, nut, cheese, oil, citrus, nonCitrus, vegetable, grain, seed, legume, yogurt, bread, pasta
 
-    public LFood(String name, String localName, ArrayList<Machine> machines, int heal, double saturation, boolean alwaysEdible) {
-        super(name, localName, machines);
+    public LFood(String name, String localName, ArrayList<Machine> machines, MachineData data, ArrayList<MachineMatter> matters, ArrayList<Registry> registries, int heal, double saturation, boolean alwaysEdible) {
+        super(name, localName, machines, data, matters, registries);
         this.heal = heal;
         this.saturation = saturation;
         this.alwaysEdible = alwaysEdible;

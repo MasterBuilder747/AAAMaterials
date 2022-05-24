@@ -1,6 +1,9 @@
 package Main.Data.RecipeObject.Localized.Liquid;
 
+import Main.Data.GameData.Registry;
 import Main.Data.MachineResource.Machine.Machine;
+import Main.Data.MachineResource.MachineData;
+import Main.Data.MachineResource.MachineMatter;
 import Main.Data.RecipeObject.Localized.ALocalizedData;
 
 import java.util.ArrayList;
@@ -18,9 +21,9 @@ public abstract class ALiquid extends ALocalizedData {
     String blockMaterial; //lava, water
 
     //IMPORTANT NOTE: Machine resources always set machines to null, since their recipes are hardcoded!
-    public ALiquid(ArrayList<Machine> machines, boolean isMaterial, String name, String localName, String color, int density, boolean gas,
+    public ALiquid(ArrayList<Machine> machines, MachineData data, ArrayList<MachineMatter> matters, ArrayList<Registry> registries, boolean isMaterial, String name, String localName, String color, int density, boolean gas,
                    int luminosity, int temperature, int viscosity, boolean vaporize, String tex, String blockMaterial) {
-        super("cot"+(isMaterial ? "m" : "c")+"_"+name, localName, machines);
+        super("cot"+(isMaterial ? "m" : "c")+"_"+name, localName, machines, data, matters, registries);
         this.color = color;
         this.density = density;
         this.gas = gas;

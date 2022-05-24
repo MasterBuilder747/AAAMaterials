@@ -8,20 +8,22 @@ import Main.Generators.GPartGroup;
 import Main.Generators.GameData.GLiquidRegistry;
 import Main.Generators.GameData.GRegistry;
 import Main.Generators.MachineResource.GMachine;
+import Main.Generators.MachineResource.GMachineData;
+import Main.Generators.MachineResource.GMachineMatter;
 import Main.Generators.RecipeObjects.Material.Liquid.GMLiquid;
 import Main.Generators.RecipeObjects.Material.GMSolid;
 
 public class GAlloy extends AGMalleable<Alloy> {
-
-    public GAlloy(String filename, GMachine machine, GRegistry registry, GLiquidRegistry liquids, GMaterial material, GPartGroup partGroup, GMSolid solid, GMLiquid liquid, boolean isReg) {
+    public GAlloy(String filename, GMachine machine, GRegistry registry,
+                  GLiquidRegistry liquids, GMachineData data, GMachineMatter matter, GMaterial material, GPartGroup partGroup, GMSolid solid, GMLiquid liquid, boolean isReg) {
         //int params, String filename, GMachine machine, GRegistry registry, GMaterial material, GPartGroup partGroup, GMLiquid liquid,
         //GMSolid solid, boolean isDust, boolean isFineDust, boolean isPowder, boolean isReg
-        super(4, filename, machine, registry, liquids, material, partGroup, liquid, solid, true, false, false, isReg);
+        super(4, filename, machine, registry, liquids, data, matter, material, partGroup, liquid, solid, true, false, false, isReg);
     }
 
     @Override
     protected void setMalleableParts(Material m, String[] s, MLiquid liquid) {
-        Alloy alloy = new Alloy(m, liquid, getMachineRegistry());
+        Alloy alloy = new Alloy(m, liquid, getMachineRegistry(), getDataRegistry(), getMatterRegistry(), getRegistries());
         alloy.setPartGroups(this.genPartGroups(new String[]{"smelt", "machine", "blast", "conductive"}),
                 new boolean[]{Boolean.parseBoolean(s[0]), Boolean.parseBoolean(s[1]), Boolean.parseBoolean(s[2]), Boolean.parseBoolean(s[3])});
         objects.add(alloy);

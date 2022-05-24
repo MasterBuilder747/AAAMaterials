@@ -1,6 +1,9 @@
 package Main.Data.RecipeObject.Material;
 
+import Main.Data.GameData.Registry;
 import Main.Data.MachineResource.Machine.Machine;
+import Main.Data.MachineResource.MachineData;
+import Main.Data.MachineResource.MachineMatter;
 import Main.Data.Material;
 import Main.Data.PartGroup;
 import Main.Data.RecipeObject.ARecipeObject;
@@ -16,8 +19,8 @@ public abstract class AMaterialData extends ARecipeObject {
     protected boolean[] enablePartGroups;
     public ArrayList<String> localizedPartNames;
 
-    public AMaterialData(Material m, ArrayList<Machine> machines) {
-        super(m.NAME, machines);
+    public AMaterialData(Material m, ArrayList<Machine> machines, MachineData data, ArrayList<MachineMatter> matters, ArrayList<Registry> registries) {
+        super(m.NAME, machines, data, matters, registries);
         this.m = m;
         this.localizedPartNames = new ArrayList<>();
     }

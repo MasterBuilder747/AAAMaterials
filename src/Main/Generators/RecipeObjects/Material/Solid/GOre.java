@@ -11,6 +11,8 @@ import Main.Generators.GPartGroup;
 import Main.Generators.GameData.GLiquidRegistry;
 import Main.Generators.GameData.GRegistry;
 import Main.Generators.MachineResource.GMachine;
+import Main.Generators.MachineResource.GMachineData;
+import Main.Generators.MachineResource.GMachineMatter;
 import Main.Generators.RecipeObjects.Material.GMSolid;
 import Main.Json.Builder;
 import Main.Json.JsonObject;
@@ -21,10 +23,11 @@ import java.util.ArrayList;
 public class GOre extends AGMSolid<Ore> {
 
 
-    public GOre(String filename, GMachine machine, GRegistry registry, GLiquidRegistry liquids, GMaterial material, GPartGroup partGroup, GMSolid solid, boolean isReg) {
+    public GOre(String filename, GMachine machine, GRegistry registry,
+                GLiquidRegistry liquids, GMachineData data, GMachineMatter matter, GMaterial material, GPartGroup partGroup, GMSolid solid, boolean isReg) {
         //    int params, String filename, GMachine machine, GRegistry registry, GMaterial material, GPartGroup partGroup, GMSolid solid,
         //    boolean isDust, boolean isFineDust, boolean isPowder, boolean isReg
-        super(-2, filename, machine, registry, liquids, material, partGroup, solid, true, false, false, isReg);
+        super(-2, filename, machine, registry, liquids, data, matter, material, partGroup, solid, true, false, false, isReg);
         this.material = material;
     }
 
@@ -59,7 +62,7 @@ public class GOre extends AGMSolid<Ore> {
         // int bedrockChunkChance
 
         //configure ore gen here
-        Ore o = new Ore(m, Boolean.parseBoolean(s[0]), getMachineRegistry());
+        Ore o = new Ore(m, Boolean.parseBoolean(s[0]), getMachineRegistry(), getDataRegistry(), getMatterRegistry(), getRegistries());
         String[] blocks = new String[s.length-1]; //includes each ore variant
         System.arraycopy(s, 1, blocks, 0, blocks.length);
 //        if (!mol.is(name)) {
@@ -115,7 +118,7 @@ public class GOre extends AGMSolid<Ore> {
                 if (block.equals("bedrock")) {
                     tool = "none";
                 }
-                b = new LBlock(block, getMachineRegistry(), "rock", tool);
+                b = new LBlock(block, getMachineRegistry(), getDataRegistry(), getMatterRegistry(), getRegistries(), "rock", tool);
                 b.setAttributes(parseInt(attributes[1]), parseInt(attributes[2]), parseInt(attributes[3]));
                 if (block.equals("stone")) {
                     types.add(new OreType(m.NAME, type_name, b));
@@ -123,7 +126,7 @@ public class GOre extends AGMSolid<Ore> {
                     types.add(new OreType(block+"_"+m.NAME, type_name, b));
                 }
             }
-            oreVariants.add(new OreVariant(m, getMachineRegistry(), block, types.toArray(new OreType[0]), this.partGroup.getPart("ore")));
+            oreVariants.add(new OreVariant(m, getMachineRegistry(), getDataRegistry(), getMatterRegistry(), getRegistries(), block, types.toArray(new OreType[0]), this.partGroup.getPart("ore")));
 
             //handle block's oreGen
             if (o.enableGen) {

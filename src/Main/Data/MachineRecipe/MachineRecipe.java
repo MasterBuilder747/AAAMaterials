@@ -37,16 +37,13 @@ public class MachineRecipe extends ARecipe {
     }
 
     private String buildChemicals() {
-        //chemicals: TODO: get the liquid key to work
-        return this.NAME+".addFluidInput(" + this.machine.chemical + " * "+this.chemicalAmount+");\n";
+        return this.NAME+".addFluidInput(<liquid:" + this.machine.chemical + "> * "+this.chemicalAmount+");\n";
     }
     //later on, there will be multiple tiers of data (depending on the amount of machine tiers of data generators)
     private String buildData() {
         return this.NAME + ".addFluidInput(" + this.data + " * " + this.dataAmount + ");\n";
     }
     private String buildMatter() {
-        //matter
-        // [-/+]unlocalizedMatterName * amount
         return  this.NAME + ".addFluidInput(" + this.matterIn + ");\n" +
                 this.NAME + ".addFluidOutput(" + this.matterOut + ");\n";
     }

@@ -17,8 +17,9 @@ public class GMachineMatter extends AGMachineResource<MachineMatter> {
         //colorName, colorHex
         String localName = s[1].replace("-", " ");
         MachineMatter m = new MachineMatter(s[0],
-                new LPlasma(false, null, "pos_"+s[0]+"_matter", "Positive "+localName+" Matter", s[2], 1000, 15, 15000, 10000, false),
-                new LPlasma(false, null, "neg_"+s[0]+"_matter", "Negative "+localName+" Matter", s[2], 1000, 15, 15000, 10000, false)
+                //recipes for matter liquids have to be hardcoded!
+                new LPlasma(false, null, null, null, null,"pos_"+s[0]+"_matter", "Positive "+localName+" Matter", s[2], 1000, 15, 15000, 10000, false),
+                new LPlasma(false, null, null, null, null,"neg_"+s[0]+"_matter", "Negative "+localName+" Matter", s[2], 1000, 15, 15000, 10000, false)
         );
         objects.add(m);
     }

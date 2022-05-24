@@ -1,6 +1,9 @@
 package Main.Data.RecipeObject.Localized;
 
+import Main.Data.GameData.Registry;
 import Main.Data.MachineResource.Machine.Machine;
+import Main.Data.MachineResource.MachineData;
+import Main.Data.MachineResource.MachineMatter;
 
 import java.util.ArrayList;
 
@@ -13,8 +16,8 @@ public class LPart extends ALocalizedData {
     double amount; //amount of material this has in it; 1 = 1 ingot
     public String baseRegistryName; //the base part of the key being used to find the item registry
 
-    public LPart(String name, String localName, String oreDict, ArrayList<Machine> machines, boolean hasOverlay, double amount) {
-        super(name, localName, machines);
+    public LPart(String name, String localName, String oreDict, ArrayList<Machine> machines, MachineData data, ArrayList<MachineMatter> matters, ArrayList<Registry> registries, boolean hasOverlay, double amount) {
+        super(name, localName, machines, data, matters, registries);
         this.type = "item"; //default
         this.hasOverlay = hasOverlay;
         this.oreDict = oreDict;
@@ -29,8 +32,8 @@ public class LPart extends ALocalizedData {
     }
     //this part already exists in contentTweaker
     //to be used in a PartGroup
-    public LPart(String name, String localName, ArrayList<Machine> machines, String oreDict, double amount) {
-        super(name, localName, machines);
+    public LPart(String name, String localName, ArrayList<Machine> machines, MachineData data, ArrayList<MachineMatter> matters, ArrayList<Registry> registries, String oreDict, double amount) {
+        super(name, localName, machines, data, matters, registries);
         this.exists = true;
         this.oreDict = oreDict;
         this.amount = amount;

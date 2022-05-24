@@ -8,6 +8,8 @@ import Main.Generators.GPartGroup;
 import Main.Generators.GameData.GLiquidRegistry;
 import Main.Generators.GameData.GRegistry;
 import Main.Generators.MachineResource.GMachine;
+import Main.Generators.MachineResource.GMachineData;
+import Main.Generators.MachineResource.GMachineMatter;
 import Main.Generators.RecipeObjects.Material.GMSolid;
 
 import java.util.ArrayList;
@@ -15,10 +17,11 @@ import java.util.ArrayList;
 public class GStone extends AGMSolid<Stone> {
     GRegistry registry;
 
-    public GStone(String filename, GMachine machine, GRegistry registry, GLiquidRegistry liquids, GMaterial material, GPartGroup partGroup, GMSolid solid, boolean isReg) {
+    public GStone(String filename, GMachine machine, GRegistry registry,
+                  GLiquidRegistry liquids, GMachineData data, GMachineMatter matter, GMaterial material, GPartGroup partGroup, GMSolid solid, boolean isReg) {
         //    int params, String filename, GMachine machine, GRegistry registry, GMaterial material, GPartGroup partGroup, GMSolid solid,
         //    boolean isDust, boolean isFineDust, boolean isPowder, boolean isReg) {
-        super(3, filename, machine, registry, liquids, material, partGroup, solid, true, false, false, isReg);
+        super(3, filename, machine, registry, liquids, data, matter, material, partGroup, solid, true, false, false, isReg);
         this.registry = registry;
     }
 
@@ -58,7 +61,7 @@ public class GStone extends AGMSolid<Stone> {
         */
         boolean isSedimentary = parseBoolean(s[1]);
         boolean noSlab = parseBoolean(s[2]);
-        Stone c = new Stone(m, isSedimentary, noSlab, getMachineRegistry());
+        Stone c = new Stone(m, isSedimentary, noSlab, getMachineRegistry(), getDataRegistry(), getMatterRegistry(), getRegistries());
         c.setPartGroup(genPartGroup("stone"), parseBoolean(s[0]));
         ArrayList<Registry> registries = new ArrayList<>();
         if (!isSedimentary) {
