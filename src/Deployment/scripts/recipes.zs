@@ -8,52 +8,56 @@
 # -`materials
 
 # -metals
-var ironMetalSmelting_basic = mods.modularmachinery.RecipeBuilder.newBuilder("ironMetalSmelting_basic", "basic", 20, 0);
-ironMetalSmelting_basic.addItemInput(<contenttweaker:material_part:391> * 4);
-ironMetalSmelting_basic.setChance(0.5);
-ironMetalSmelting_basic.addItemInput(<ore:ingotIron>, 4);
-ironMetalSmelting_basic.addItemInput(<minecraft:iron_shovel:0>);
-ironMetalSmelting_basic.addFluidInput(<liquid:hydrogen> * 100);
-ironMetalSmelting_basic.addItemOutput(<contenttweaker:material_part:397>);
-ironMetalSmelting_basic.addEnergyPerTickInput(4);
-ironMetalSmelting_basic.build();
+var leadMetalSmelting_basic = mods.modularmachinery.RecipeBuilder.newBuilder("leadMetalSmelting_basic", "basic", 20, 0);
+leadMetalSmelting_basic.addItemInput(<contenttweaker:material_part:430> * 4);
+leadMetalSmelting_basic.setChance(0.5);
+leadMetalSmelting_basic.addItemInput(<ore:ingotIron>, 4);
+leadMetalSmelting_basic.addItemInput(<contenttweaker:material_part:391>);
+leadMetalSmelting_basic.addFluidInput(<liquid:hydrogen> * 100);
+leadMetalSmelting_basic.addFluidInput(<liquid:cotm_lead_molten>);
+leadMetalSmelting_basic.addItemOutput(<contenttweaker:material_part:436>);
+leadMetalSmelting_basic.addEnergyPerTickInput(4);
+leadMetalSmelting_basic.build();
 
-var ironMetalSmelting_advanced = mods.modularmachinery.RecipeBuilder.newBuilder("ironMetalSmelting_advanced", "basic", 20, 0);
-ironMetalSmelting_advanced.addItemInput(<contenttweaker:material_part:391> * 4);
-ironMetalSmelting_advanced.setChance(0.5);
-ironMetalSmelting_advanced.addItemInput(<ore:ingotIron>, 4);
-ironMetalSmelting_advanced.addItemInput(<minecraft:iron_shovel:0>);
-ironMetalSmelting_advanced.addFluidInput(<liquid:hydrogen> * 100);
-ironMetalSmelting_advanced.addItemOutput(<contenttweaker:material_part:397>);
-ironMetalSmelting_advanced.addFluidInput(<liquid:hydrogen> * 100);
-ironMetalSmelting_advanced.addEnergyPerTickInput(1024);
-ironMetalSmelting_advanced.build();
+var leadMetalSmelting_advanced = mods.modularmachinery.RecipeBuilder.newBuilder("leadMetalSmelting_advanced", "basic", 20, 0);
+leadMetalSmelting_advanced.addItemInput(<contenttweaker:material_part:430> * 4);
+leadMetalSmelting_advanced.setChance(0.5);
+leadMetalSmelting_advanced.addItemInput(<ore:ingotIron>, 4);
+leadMetalSmelting_advanced.addItemInput(<contenttweaker:material_part:391>);
+leadMetalSmelting_advanced.addFluidInput(<liquid:hydrogen> * 100);
+leadMetalSmelting_advanced.addFluidInput(<liquid:cotm_lead_molten>);
+leadMetalSmelting_advanced.addItemOutput(<contenttweaker:material_part:436>);
+leadMetalSmelting_advanced.addFluidInput(<liquid:hydrogen> * 100);
+leadMetalSmelting_advanced.addEnergyPerTickInput(1024);
+leadMetalSmelting_advanced.build();
 
-var ironMetalSmelting_industrial = mods.modularmachinery.RecipeBuilder.newBuilder("ironMetalSmelting_industrial", "basic", 20, 0);
-ironMetalSmelting_industrial.addItemInput(<contenttweaker:material_part:391> * 4);
-ironMetalSmelting_industrial.setChance(0.5);
-ironMetalSmelting_industrial.addItemInput(<ore:ingotIron>, 4);
-ironMetalSmelting_industrial.addItemInput(<minecraft:iron_shovel:0>);
-ironMetalSmelting_industrial.addFluidInput(<liquid:hydrogen> * 100);
-ironMetalSmelting_industrial.addItemOutput(<contenttweaker:material_part:397>);
-ironMetalSmelting_industrial.addFluidInput(<liquid:hydrogen> * 100);
-ironMetalSmelting_industrial.addFluidInput(<liquid:cotc_data> * 1000);
-ironMetalSmelting_industrial.addEnergyPerTickInput(262144);
-ironMetalSmelting_industrial.build();
+var leadMetalSmelting_industrial = mods.modularmachinery.RecipeBuilder.newBuilder("leadMetalSmelting_industrial", "basic", 20, 0);
+leadMetalSmelting_industrial.addItemInput(<contenttweaker:material_part:430> * 4);
+leadMetalSmelting_industrial.setChance(0.5);
+leadMetalSmelting_industrial.addItemInput(<ore:ingotIron>, 4);
+leadMetalSmelting_industrial.addItemInput(<contenttweaker:material_part:391>);
+leadMetalSmelting_industrial.addFluidInput(<liquid:hydrogen> * 100);
+leadMetalSmelting_industrial.addFluidInput(<liquid:cotm_lead_molten>);
+leadMetalSmelting_industrial.addItemOutput(<contenttweaker:material_part:436>);
+leadMetalSmelting_industrial.addFluidInput(<liquid:hydrogen> * 100);
+leadMetalSmelting_industrial.addFluidInput(<liquid:cotc_data> * 1000);
+leadMetalSmelting_industrial.addEnergyPerTickInput(262144);
+leadMetalSmelting_industrial.build();
 
-var ironMetalSmelting_ultimate = mods.modularmachinery.RecipeBuilder.newBuilder("ironMetalSmelting_ultimate", "basic", 20, 0);
-ironMetalSmelting_ultimate.addItemInput(<contenttweaker:material_part:391> * 4);
-ironMetalSmelting_ultimate.setChance(0.5);
-ironMetalSmelting_ultimate.addItemInput(<ore:ingotIron>, 4);
-ironMetalSmelting_ultimate.addItemInput(<minecraft:iron_shovel:0>);
-ironMetalSmelting_ultimate.addFluidInput(<liquid:hydrogen> * 100);
-ironMetalSmelting_ultimate.addItemOutput(<contenttweaker:material_part:397>);
-ironMetalSmelting_ultimate.addFluidInput(<liquid:hydrogen> * 100);
-ironMetalSmelting_ultimate.addFluidInput(<liquid:cotc_data> * 1000);
-ironMetalSmelting_ultimate.addFluidInput(<liquid:cotc_neg_red_matter> * 100);
-ironMetalSmelting_ultimate.addFluidOutput(<liquid:cotc_pos_orange_matter> * 200);
-ironMetalSmelting_ultimate.addEnergyPerTickInput(67108864);
-ironMetalSmelting_ultimate.build();
+var leadMetalSmelting_ultimate = mods.modularmachinery.RecipeBuilder.newBuilder("leadMetalSmelting_ultimate", "basic", 20, 0);
+leadMetalSmelting_ultimate.addItemInput(<contenttweaker:material_part:430> * 4);
+leadMetalSmelting_ultimate.setChance(0.5);
+leadMetalSmelting_ultimate.addItemInput(<ore:ingotIron>, 4);
+leadMetalSmelting_ultimate.addItemInput(<contenttweaker:material_part:391>);
+leadMetalSmelting_ultimate.addFluidInput(<liquid:hydrogen> * 100);
+leadMetalSmelting_ultimate.addFluidInput(<liquid:cotm_lead_molten>);
+leadMetalSmelting_ultimate.addItemOutput(<contenttweaker:material_part:436>);
+leadMetalSmelting_ultimate.addFluidInput(<liquid:hydrogen> * 100);
+leadMetalSmelting_ultimate.addFluidInput(<liquid:cotc_data> * 1000);
+leadMetalSmelting_ultimate.addFluidInput(<liquid:cotc_neg_red_matter> * 100);
+leadMetalSmelting_ultimate.addFluidOutput(<liquid:cotc_pos_orange_matter> * 200);
+leadMetalSmelting_ultimate.addEnergyPerTickInput(67108864);
+leadMetalSmelting_ultimate.build();
 
 
 # -alloys

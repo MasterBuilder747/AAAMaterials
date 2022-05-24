@@ -12,41 +12,41 @@ import mods.contenttweaker.Color;
 # ============================================
 
 # -datas
-genFluid("cotc_data", "165e08", 6000, false, 10, 500, 6000, false, "contenttweaker:fluids/liquid", "contenttweaker:fluids/liquid_flowing", <blockmaterial:water>);
+genLiquid("cotc_data", "165e08", 6000, false, 10, 500, 6000, false);
 
 # -matters
-genFluid("cotc_pos_white_matter", "ffffff", 1000, true, 15, 15000, 10000, false, "contenttweaker:fluids/plasma", "contenttweaker:fluids/plasma_flowing", <blockmaterial:lava>);
-genFluid("cotc_neg_white_matter", "ffffff", 1000, true, 15, 15000, 10000, false, "contenttweaker:fluids/plasma", "contenttweaker:fluids/plasma_flowing", <blockmaterial:lava>);
-genFluid("cotc_pos_pink_matter", "ffadc1", 1000, true, 15, 15000, 10000, false, "contenttweaker:fluids/plasma", "contenttweaker:fluids/plasma_flowing", <blockmaterial:lava>);
-genFluid("cotc_neg_pink_matter", "ffadc1", 1000, true, 15, 15000, 10000, false, "contenttweaker:fluids/plasma", "contenttweaker:fluids/plasma_flowing", <blockmaterial:lava>);
-genFluid("cotc_pos_red_matter", "ff1500", 1000, true, 15, 15000, 10000, false, "contenttweaker:fluids/plasma", "contenttweaker:fluids/plasma_flowing", <blockmaterial:lava>);
-genFluid("cotc_neg_red_matter", "ff1500", 1000, true, 15, 15000, 10000, false, "contenttweaker:fluids/plasma", "contenttweaker:fluids/plasma_flowing", <blockmaterial:lava>);
-genFluid("cotc_pos_orange_matter", "ff9000", 1000, true, 15, 15000, 10000, false, "contenttweaker:fluids/plasma", "contenttweaker:fluids/plasma_flowing", <blockmaterial:lava>);
-genFluid("cotc_neg_orange_matter", "ff9000", 1000, true, 15, 15000, 10000, false, "contenttweaker:fluids/plasma", "contenttweaker:fluids/plasma_flowing", <blockmaterial:lava>);
-genFluid("cotc_pos_yellow_matter", "fff600", 1000, true, 15, 15000, 10000, false, "contenttweaker:fluids/plasma", "contenttweaker:fluids/plasma_flowing", <blockmaterial:lava>);
-genFluid("cotc_neg_yellow_matter", "fff600", 1000, true, 15, 15000, 10000, false, "contenttweaker:fluids/plasma", "contenttweaker:fluids/plasma_flowing", <blockmaterial:lava>);
-genFluid("cotc_pos_lime_matter", "5dff00", 1000, true, 15, 15000, 10000, false, "contenttweaker:fluids/plasma", "contenttweaker:fluids/plasma_flowing", <blockmaterial:lava>);
-genFluid("cotc_neg_lime_matter", "5dff00", 1000, true, 15, 15000, 10000, false, "contenttweaker:fluids/plasma", "contenttweaker:fluids/plasma_flowing", <blockmaterial:lava>);
-genFluid("cotc_pos_green_matter", "204f20", 1000, true, 15, 15000, 10000, false, "contenttweaker:fluids/plasma", "contenttweaker:fluids/plasma_flowing", <blockmaterial:lava>);
-genFluid("cotc_neg_green_matter", "204f20", 1000, true, 15, 15000, 10000, false, "contenttweaker:fluids/plasma", "contenttweaker:fluids/plasma_flowing", <blockmaterial:lava>);
-genFluid("cotc_pos_cyan_matter", "1dbad6", 1000, true, 15, 15000, 10000, false, "contenttweaker:fluids/plasma", "contenttweaker:fluids/plasma_flowing", <blockmaterial:lava>);
-genFluid("cotc_neg_cyan_matter", "1dbad6", 1000, true, 15, 15000, 10000, false, "contenttweaker:fluids/plasma", "contenttweaker:fluids/plasma_flowing", <blockmaterial:lava>);
-genFluid("cotc_pos_lblue_matter", "00d8ff", 1000, true, 15, 15000, 10000, false, "contenttweaker:fluids/plasma", "contenttweaker:fluids/plasma_flowing", <blockmaterial:lava>);
-genFluid("cotc_neg_lblue_matter", "00d8ff", 1000, true, 15, 15000, 10000, false, "contenttweaker:fluids/plasma", "contenttweaker:fluids/plasma_flowing", <blockmaterial:lava>);
-genFluid("cotc_pos_blue_matter", "0000ff", 1000, true, 15, 15000, 10000, false, "contenttweaker:fluids/plasma", "contenttweaker:fluids/plasma_flowing", <blockmaterial:lava>);
-genFluid("cotc_neg_blue_matter", "0000ff", 1000, true, 15, 15000, 10000, false, "contenttweaker:fluids/plasma", "contenttweaker:fluids/plasma_flowing", <blockmaterial:lava>);
-genFluid("cotc_pos_magenta_matter", "e900ff", 1000, true, 15, 15000, 10000, false, "contenttweaker:fluids/plasma", "contenttweaker:fluids/plasma_flowing", <blockmaterial:lava>);
-genFluid("cotc_neg_magenta_matter", "e900ff", 1000, true, 15, 15000, 10000, false, "contenttweaker:fluids/plasma", "contenttweaker:fluids/plasma_flowing", <blockmaterial:lava>);
-genFluid("cotc_pos_purple_matter", "bb00ff", 1000, true, 15, 15000, 10000, false, "contenttweaker:fluids/plasma", "contenttweaker:fluids/plasma_flowing", <blockmaterial:lava>);
-genFluid("cotc_neg_purple_matter", "bb00ff", 1000, true, 15, 15000, 10000, false, "contenttweaker:fluids/plasma", "contenttweaker:fluids/plasma_flowing", <blockmaterial:lava>);
-genFluid("cotc_pos_brown_matter", "59442f", 1000, true, 15, 15000, 10000, false, "contenttweaker:fluids/plasma", "contenttweaker:fluids/plasma_flowing", <blockmaterial:lava>);
-genFluid("cotc_neg_brown_matter", "59442f", 1000, true, 15, 15000, 10000, false, "contenttweaker:fluids/plasma", "contenttweaker:fluids/plasma_flowing", <blockmaterial:lava>);
-genFluid("cotc_pos_lgray_matter", "cccccc", 1000, true, 15, 15000, 10000, false, "contenttweaker:fluids/plasma", "contenttweaker:fluids/plasma_flowing", <blockmaterial:lava>);
-genFluid("cotc_neg_lgray_matter", "cccccc", 1000, true, 15, 15000, 10000, false, "contenttweaker:fluids/plasma", "contenttweaker:fluids/plasma_flowing", <blockmaterial:lava>);
-genFluid("cotc_pos_gray_matter", "848383", 1000, true, 15, 15000, 10000, false, "contenttweaker:fluids/plasma", "contenttweaker:fluids/plasma_flowing", <blockmaterial:lava>);
-genFluid("cotc_neg_gray_matter", "848383", 1000, true, 15, 15000, 10000, false, "contenttweaker:fluids/plasma", "contenttweaker:fluids/plasma_flowing", <blockmaterial:lava>);
-genFluid("cotc_pos_black_matter", "000000", 1000, true, 15, 15000, 10000, false, "contenttweaker:fluids/plasma", "contenttweaker:fluids/plasma_flowing", <blockmaterial:lava>);
-genFluid("cotc_neg_black_matter", "000000", 1000, true, 15, 15000, 10000, false, "contenttweaker:fluids/plasma", "contenttweaker:fluids/plasma_flowing", <blockmaterial:lava>);
+genPlasma("cotc_pos_white_matter", "ffffff", 1000, true, 15, 15000, 10000, false);
+genPlasma("cotc_neg_white_matter", "ffffff", 1000, true, 15, 15000, 10000, false);
+genPlasma("cotc_pos_pink_matter", "ffadc1", 1000, true, 15, 15000, 10000, false);
+genPlasma("cotc_neg_pink_matter", "ffadc1", 1000, true, 15, 15000, 10000, false);
+genPlasma("cotc_pos_red_matter", "ff1500", 1000, true, 15, 15000, 10000, false);
+genPlasma("cotc_neg_red_matter", "ff1500", 1000, true, 15, 15000, 10000, false);
+genPlasma("cotc_pos_orange_matter", "ff9000", 1000, true, 15, 15000, 10000, false);
+genPlasma("cotc_neg_orange_matter", "ff9000", 1000, true, 15, 15000, 10000, false);
+genPlasma("cotc_pos_yellow_matter", "fff600", 1000, true, 15, 15000, 10000, false);
+genPlasma("cotc_neg_yellow_matter", "fff600", 1000, true, 15, 15000, 10000, false);
+genPlasma("cotc_pos_lime_matter", "5dff00", 1000, true, 15, 15000, 10000, false);
+genPlasma("cotc_neg_lime_matter", "5dff00", 1000, true, 15, 15000, 10000, false);
+genPlasma("cotc_pos_green_matter", "204f20", 1000, true, 15, 15000, 10000, false);
+genPlasma("cotc_neg_green_matter", "204f20", 1000, true, 15, 15000, 10000, false);
+genPlasma("cotc_pos_cyan_matter", "1dbad6", 1000, true, 15, 15000, 10000, false);
+genPlasma("cotc_neg_cyan_matter", "1dbad6", 1000, true, 15, 15000, 10000, false);
+genPlasma("cotc_pos_lblue_matter", "00d8ff", 1000, true, 15, 15000, 10000, false);
+genPlasma("cotc_neg_lblue_matter", "00d8ff", 1000, true, 15, 15000, 10000, false);
+genPlasma("cotc_pos_blue_matter", "0000ff", 1000, true, 15, 15000, 10000, false);
+genPlasma("cotc_neg_blue_matter", "0000ff", 1000, true, 15, 15000, 10000, false);
+genPlasma("cotc_pos_magenta_matter", "e900ff", 1000, true, 15, 15000, 10000, false);
+genPlasma("cotc_neg_magenta_matter", "e900ff", 1000, true, 15, 15000, 10000, false);
+genPlasma("cotc_pos_purple_matter", "bb00ff", 1000, true, 15, 15000, 10000, false);
+genPlasma("cotc_neg_purple_matter", "bb00ff", 1000, true, 15, 15000, 10000, false);
+genPlasma("cotc_pos_brown_matter", "59442f", 1000, true, 15, 15000, 10000, false);
+genPlasma("cotc_neg_brown_matter", "59442f", 1000, true, 15, 15000, 10000, false);
+genPlasma("cotc_pos_lgray_matter", "cccccc", 1000, true, 15, 15000, 10000, false);
+genPlasma("cotc_neg_lgray_matter", "cccccc", 1000, true, 15, 15000, 10000, false);
+genPlasma("cotc_pos_gray_matter", "848383", 1000, true, 15, 15000, 10000, false);
+genPlasma("cotc_neg_gray_matter", "848383", 1000, true, 15, 15000, 10000, false);
+genPlasma("cotc_pos_black_matter", "000000", 1000, true, 15, 15000, 10000, false);
+genPlasma("cotc_neg_black_matter", "000000", 1000, true, 15, 15000, 10000, false);
 
 # -custom-blocks
 genBlock("mica", <blockMaterial:rock>, 5, 6, "pickaxe", 1);
@@ -55,78 +55,78 @@ genBlock("mica", <blockMaterial:rock>, 5, 6, "pickaxe", 1);
 genItem("infi_single");
 
 # -custom-liquids
-genFluid("cotc_juice", "00ff00", 6000, false, 15, 1000, 6000, false, "contenttweaker:fluids/liquid", "contenttweaker:fluids/liquid_flowing", <blockmaterial:water>);
+genLiquid("cotc_juice", "00ff00", 6000, false, 15, 1000, 6000, false);
 
 # -custom-moltens
-genFluid("cotc_glowing", "ffff00", 6000, false, 5, 1000, 6000, false, "contenttweaker:fluids/molten", "contenttweaker:fluids/molten_flowing", <blockmaterial:lava>);
+genMolten("cotc_glowing", "ffff00", 6000, false, 5, 1000, 6000, false);
 
 # -custom-gases
-genFluid("cotc_sky", "0000ff", 6000, true, 5, 1000, 6000, false, "contenttweaker:fluids/gas", "contenttweaker:fluids/gas_flowing", <blockmaterial:water>);
+genGas("cotc_sky", "0000ff", 6000, true, 5, 1000, 6000, false);
 
 # -custom-plasmas
-genFluid("cotc_tesla", "ff00ff", 6000, true, 5, 1000, 6000, false, "contenttweaker:fluids/plasma", "contenttweaker:fluids/plasma_flowing", <blockmaterial:lava>);
+genPlasma("cotc_tesla", "ff00ff", 6000, true, 5, 1000, 6000, false);
 
 # -custom-parts
 var boule = mods.contenttweaker.MaterialSystem.getPartBuilder().setName("boule").setPartType(mods.contenttweaker.MaterialSystem.getPartType("item")).setHasOverlay(false).setOreDictName("boule").build();
 var chain = mods.contenttweaker.MaterialSystem.getPartBuilder().setName("chain").setPartType(mods.contenttweaker.MaterialSystem.getPartType("item")).setHasOverlay(false).setOreDictName("chain").build();
 var chunk = mods.contenttweaker.MaterialSystem.getPartBuilder().setName("chunk").setPartType(mods.contenttweaker.MaterialSystem.getPartType("item")).setHasOverlay(false).setOreDictName("chunk").build();
 var coil = mods.contenttweaker.MaterialSystem.getPartBuilder().setName("coil").setPartType(mods.contenttweaker.MaterialSystem.getPartType("item")).setHasOverlay(true).setOreDictName("coil").build();
-var concentrated_ore = mods.contenttweaker.MaterialSystem.getPartBuilder().setName("concentrated_ore").setPartType(mods.contenttweaker.MaterialSystem.getPartType("item")).setHasOverlay(false).setOreDictName("concentratedOre").build();
-var curved_plate = mods.contenttweaker.MaterialSystem.getPartBuilder().setName("curved_plate").setPartType(mods.contenttweaker.MaterialSystem.getPartType("item")).setHasOverlay(false).setOreDictName("curvedPlate").build();
-var dense_fibers = mods.contenttweaker.MaterialSystem.getPartBuilder().setName("dense_fibers").setPartType(mods.contenttweaker.MaterialSystem.getPartType("item")).setHasOverlay(false).setOreDictName("denseFibers").build();
-var dense_wire = mods.contenttweaker.MaterialSystem.getPartBuilder().setName("dense_wire").setPartType(mods.contenttweaker.MaterialSystem.getPartType("item")).setHasOverlay(true).setOreDictName("denseWire").build();
-var drill_head = mods.contenttweaker.MaterialSystem.getPartBuilder().setName("drill_head").setPartType(mods.contenttweaker.MaterialSystem.getPartType("item")).setHasOverlay(false).setOreDictName("drillHead").build();
-var exquisite_gem = mods.contenttweaker.MaterialSystem.getPartBuilder().setName("exquisite_gem").setPartType(mods.contenttweaker.MaterialSystem.getPartType("item")).setHasOverlay(false).setOreDictName("exquisiteGem").build();
+var concentrated_ore = mods.contenttweaker.MaterialSystem.getPartBuilder().setName("concentrated_ore").setPartType(mods.contenttweaker.MaterialSystem.getPartType("item")).setHasOverlay(false).setOreDictName("oreConcentrated").build();
+var curved_plate = mods.contenttweaker.MaterialSystem.getPartBuilder().setName("curved_plate").setPartType(mods.contenttweaker.MaterialSystem.getPartType("item")).setHasOverlay(false).setOreDictName("plateCurved").build();
+var dense_fibers = mods.contenttweaker.MaterialSystem.getPartBuilder().setName("dense_fibers").setPartType(mods.contenttweaker.MaterialSystem.getPartType("item")).setHasOverlay(false).setOreDictName("fibersDense").build();
+var dense_wire = mods.contenttweaker.MaterialSystem.getPartBuilder().setName("dense_wire").setPartType(mods.contenttweaker.MaterialSystem.getPartType("item")).setHasOverlay(true).setOreDictName("wireDense").build();
+var drill_head = mods.contenttweaker.MaterialSystem.getPartBuilder().setName("drill_head").setPartType(mods.contenttweaker.MaterialSystem.getPartType("item")).setHasOverlay(false).setOreDictName("drillhead").build();
+var exquisite_gem = mods.contenttweaker.MaterialSystem.getPartBuilder().setName("exquisite_gem").setPartType(mods.contenttweaker.MaterialSystem.getPartType("item")).setHasOverlay(false).setOreDictName("gemExquisite").build();
 var fiber = mods.contenttweaker.MaterialSystem.getPartBuilder().setName("fiber").setPartType(mods.contenttweaker.MaterialSystem.getPartType("item")).setHasOverlay(false).setOreDictName("fiber").build();
 var fibers = mods.contenttweaker.MaterialSystem.getPartBuilder().setName("fibers").setPartType(mods.contenttweaker.MaterialSystem.getPartType("item")).setHasOverlay(false).setOreDictName("fibers").build();
-var fine_dust = mods.contenttweaker.MaterialSystem.getPartBuilder().setName("fine_dust").setPartType(mods.contenttweaker.MaterialSystem.getPartType("item")).setHasOverlay(false).setOreDictName("fineDust").build();
-var fine_wire = mods.contenttweaker.MaterialSystem.getPartBuilder().setName("fine_wire").setPartType(mods.contenttweaker.MaterialSystem.getPartType("item")).setHasOverlay(true).setOreDictName("fineWire").build();
+var fine_dust = mods.contenttweaker.MaterialSystem.getPartBuilder().setName("fine_dust").setPartType(mods.contenttweaker.MaterialSystem.getPartType("item")).setHasOverlay(false).setOreDictName("dustFine").build();
+var fine_wire = mods.contenttweaker.MaterialSystem.getPartBuilder().setName("fine_wire").setPartType(mods.contenttweaker.MaterialSystem.getPartType("item")).setHasOverlay(true).setOreDictName("wireFine").build();
 var foil = mods.contenttweaker.MaterialSystem.getPartBuilder().setName("foil").setPartType(mods.contenttweaker.MaterialSystem.getPartType("item")).setHasOverlay(false).setOreDictName("foil").build();
 var gearbox = mods.contenttweaker.MaterialSystem.getPartBuilder().setName("gearbox").setPartType(mods.contenttweaker.MaterialSystem.getPartType("item")).setHasOverlay(false).setOreDictName("gearbox").build();
 var gem = mods.contenttweaker.MaterialSystem.getPartBuilder().setName("gem").setPartType(mods.contenttweaker.MaterialSystem.getPartType("item")).setHasOverlay(false).setOreDictName("gem").build();
-var hot_ingot = mods.contenttweaker.MaterialSystem.getPartBuilder().setName("hot_ingot").setPartType(mods.contenttweaker.MaterialSystem.getPartType("item")).setHasOverlay(true).setOreDictName("hotIngot").build();
-var infused_wafer = mods.contenttweaker.MaterialSystem.getPartBuilder().setName("infused_wafer").setPartType(mods.contenttweaker.MaterialSystem.getPartType("item")).setHasOverlay(false).setOreDictName("infusedWafer").build();
-var infused_boule = mods.contenttweaker.MaterialSystem.getPartBuilder().setName("infused_boule").setPartType(mods.contenttweaker.MaterialSystem.getPartType("item")).setHasOverlay(false).setOreDictName("infusedBoule").build();
-var large_plate = mods.contenttweaker.MaterialSystem.getPartBuilder().setName("large_plate").setPartType(mods.contenttweaker.MaterialSystem.getPartType("item")).setHasOverlay(false).setOreDictName("largePlate").build();
-var large_scrap = mods.contenttweaker.MaterialSystem.getPartBuilder().setName("large_scrap").setPartType(mods.contenttweaker.MaterialSystem.getPartType("item")).setHasOverlay(false).setOreDictName("largeScrap").build();
+var hot_ingot = mods.contenttweaker.MaterialSystem.getPartBuilder().setName("hot_ingot").setPartType(mods.contenttweaker.MaterialSystem.getPartType("item")).setHasOverlay(true).setOreDictName("ingotHot").build();
+var infused_wafer = mods.contenttweaker.MaterialSystem.getPartBuilder().setName("infused_wafer").setPartType(mods.contenttweaker.MaterialSystem.getPartType("item")).setHasOverlay(false).setOreDictName("waferInfused").build();
+var infused_boule = mods.contenttweaker.MaterialSystem.getPartBuilder().setName("infused_boule").setPartType(mods.contenttweaker.MaterialSystem.getPartType("item")).setHasOverlay(false).setOreDictName("bouleInfused").build();
+var large_plate = mods.contenttweaker.MaterialSystem.getPartBuilder().setName("large_plate").setPartType(mods.contenttweaker.MaterialSystem.getPartType("item")).setHasOverlay(false).setOreDictName("plateLarge").build();
+var large_scrap = mods.contenttweaker.MaterialSystem.getPartBuilder().setName("large_scrap").setPartType(mods.contenttweaker.MaterialSystem.getPartType("item")).setHasOverlay(false).setOreDictName("scrapLarge").build();
 var lens = mods.contenttweaker.MaterialSystem.getPartBuilder().setName("lens").setPartType(mods.contenttweaker.MaterialSystem.getPartType("item")).setHasOverlay(true).setOreDictName("lens").build();
-var long_stick = mods.contenttweaker.MaterialSystem.getPartBuilder().setName("long_stick").setPartType(mods.contenttweaker.MaterialSystem.getPartType("item")).setHasOverlay(false).setOreDictName("longStick").build();
+var long_stick = mods.contenttweaker.MaterialSystem.getPartBuilder().setName("long_stick").setPartType(mods.contenttweaker.MaterialSystem.getPartType("item")).setHasOverlay(false).setOreDictName("stickLong").build();
 var morsel = mods.contenttweaker.MaterialSystem.getPartBuilder().setName("morsel").setPartType(mods.contenttweaker.MaterialSystem.getPartType("item")).setHasOverlay(false).setOreDictName("morsel").build();
 var pebble = mods.contenttweaker.MaterialSystem.getPartBuilder().setName("pebble").setPartType(mods.contenttweaker.MaterialSystem.getPartType("item")).setHasOverlay(true).setOreDictName("pebble").build();
 var piece = mods.contenttweaker.MaterialSystem.getPartBuilder().setName("piece").setPartType(mods.contenttweaker.MaterialSystem.getPartType("item")).setHasOverlay(false).setOreDictName("piece").build();
 var powder = mods.contenttweaker.MaterialSystem.getPartBuilder().setName("powder").setPartType(mods.contenttweaker.MaterialSystem.getPartType("item")).setHasOverlay(false).setOreDictName("powder").build();
-var pure_dust = mods.contenttweaker.MaterialSystem.getPartBuilder().setName("pure_dust").setPartType(mods.contenttweaker.MaterialSystem.getPartType("item")).setHasOverlay(true).setOreDictName("pureDust").build();
+var pure_dust = mods.contenttweaker.MaterialSystem.getPartBuilder().setName("pure_dust").setPartType(mods.contenttweaker.MaterialSystem.getPartType("item")).setHasOverlay(true).setOreDictName("dustPure").build();
 var rail = mods.contenttweaker.MaterialSystem.getPartBuilder().setName("rail").setPartType(mods.contenttweaker.MaterialSystem.getPartType("item")).setHasOverlay(false).setOreDictName("rail").build();
-var raw_ore = mods.contenttweaker.MaterialSystem.getPartBuilder().setName("raw_ore").setPartType(mods.contenttweaker.MaterialSystem.getPartType("item")).setHasOverlay(true).setOreDictName("rawOre").build();
+var raw_ore = mods.contenttweaker.MaterialSystem.getPartBuilder().setName("raw_ore").setPartType(mods.contenttweaker.MaterialSystem.getPartType("item")).setHasOverlay(true).setOreDictName("oreRaw").build();
 var rotor = mods.contenttweaker.MaterialSystem.getPartBuilder().setName("rotor").setPartType(mods.contenttweaker.MaterialSystem.getPartType("item")).setHasOverlay(false).setOreDictName("rotor").build();
-var saw_blade = mods.contenttweaker.MaterialSystem.getPartBuilder().setName("saw_blade").setPartType(mods.contenttweaker.MaterialSystem.getPartType("item")).setHasOverlay(false).setOreDictName("sawBlade").build();
+var saw_blade = mods.contenttweaker.MaterialSystem.getPartBuilder().setName("saw_blade").setPartType(mods.contenttweaker.MaterialSystem.getPartType("item")).setHasOverlay(false).setOreDictName("sawblade").build();
 var scrap = mods.contenttweaker.MaterialSystem.getPartBuilder().setName("scrap").setPartType(mods.contenttweaker.MaterialSystem.getPartType("item")).setHasOverlay(false).setOreDictName("scrap").build();
 var screw = mods.contenttweaker.MaterialSystem.getPartBuilder().setName("screw").setPartType(mods.contenttweaker.MaterialSystem.getPartType("item")).setHasOverlay(false).setOreDictName("screw").build();
-var screwed_plate = mods.contenttweaker.MaterialSystem.getPartBuilder().setName("screwed_plate").setPartType(mods.contenttweaker.MaterialSystem.getPartType("item")).setHasOverlay(false).setOreDictName("screwedPlate").build();
-var small_bolt = mods.contenttweaker.MaterialSystem.getPartBuilder().setName("small_bolt").setPartType(mods.contenttweaker.MaterialSystem.getPartType("item")).setHasOverlay(false).setOreDictName("smallBolt").build();
-var small_casing = mods.contenttweaker.MaterialSystem.getPartBuilder().setName("small_casing").setPartType(mods.contenttweaker.MaterialSystem.getPartType("item")).setHasOverlay(false).setOreDictName("smallCasing").build();
-var small_centrifuged_ore = mods.contenttweaker.MaterialSystem.getPartBuilder().setName("small_centrifuged_ore").setPartType(mods.contenttweaker.MaterialSystem.getPartType("item")).setHasOverlay(false).setOreDictName("smallCentrifugedOre").build();
-var small_crushed_ore = mods.contenttweaker.MaterialSystem.getPartBuilder().setName("small_crushed_ore").setPartType(mods.contenttweaker.MaterialSystem.getPartType("item")).setHasOverlay(true).setOreDictName("smallCrushedOre").build();
-var small_fine_dust = mods.contenttweaker.MaterialSystem.getPartBuilder().setName("small_fine_dust").setPartType(mods.contenttweaker.MaterialSystem.getPartType("item")).setHasOverlay(false).setOreDictName("smallFineDust").build();
-var small_gear = mods.contenttweaker.MaterialSystem.getPartBuilder().setName("small_gear").setPartType(mods.contenttweaker.MaterialSystem.getPartType("item")).setHasOverlay(false).setOreDictName("smallGear").build();
-var small_plate = mods.contenttweaker.MaterialSystem.getPartBuilder().setName("small_plate").setPartType(mods.contenttweaker.MaterialSystem.getPartType("item")).setHasOverlay(false).setOreDictName("smallPlate").build();
-var small_powder = mods.contenttweaker.MaterialSystem.getPartBuilder().setName("small_powder").setPartType(mods.contenttweaker.MaterialSystem.getPartType("item")).setHasOverlay(false).setOreDictName("smallPowder").build();
-var small_purified_ore = mods.contenttweaker.MaterialSystem.getPartBuilder().setName("small_purified_ore").setPartType(mods.contenttweaker.MaterialSystem.getPartType("item")).setHasOverlay(false).setOreDictName("smallPurifiedOre").build();
-var small_rod = mods.contenttweaker.MaterialSystem.getPartBuilder().setName("small_rod").setPartType(mods.contenttweaker.MaterialSystem.getPartType("item")).setHasOverlay(false).setOreDictName("smallRod").build();
-var small_screwed_plate = mods.contenttweaker.MaterialSystem.getPartBuilder().setName("small_screwed_plate").setPartType(mods.contenttweaker.MaterialSystem.getPartType("item")).setHasOverlay(false).setOreDictName("smallScrewedPlate").build();
-var small_spring = mods.contenttweaker.MaterialSystem.getPartBuilder().setName("small_spring").setPartType(mods.contenttweaker.MaterialSystem.getPartType("item")).setHasOverlay(false).setOreDictName("smallSpring").build();
-var solid_metal = mods.contenttweaker.MaterialSystem.getPartBuilder().setName("solid_metal").setPartType(mods.contenttweaker.MaterialSystem.getPartType("item")).setHasOverlay(false).setOreDictName("solidMetal").build();
+var screwed_plate = mods.contenttweaker.MaterialSystem.getPartBuilder().setName("screwed_plate").setPartType(mods.contenttweaker.MaterialSystem.getPartType("item")).setHasOverlay(false).setOreDictName("plateScrewed").build();
+var small_bolt = mods.contenttweaker.MaterialSystem.getPartBuilder().setName("small_bolt").setPartType(mods.contenttweaker.MaterialSystem.getPartType("item")).setHasOverlay(false).setOreDictName("boltSmall").build();
+var small_casing = mods.contenttweaker.MaterialSystem.getPartBuilder().setName("small_casing").setPartType(mods.contenttweaker.MaterialSystem.getPartType("item")).setHasOverlay(false).setOreDictName("casingSmall").build();
+var small_centrifuged_ore = mods.contenttweaker.MaterialSystem.getPartBuilder().setName("small_centrifuged_ore").setPartType(mods.contenttweaker.MaterialSystem.getPartType("item")).setHasOverlay(false).setOreDictName("oreCentrifugedSmall").build();
+var small_crushed_ore = mods.contenttweaker.MaterialSystem.getPartBuilder().setName("small_crushed_ore").setPartType(mods.contenttweaker.MaterialSystem.getPartType("item")).setHasOverlay(true).setOreDictName("oreCrushedSmall").build();
+var small_fine_dust = mods.contenttweaker.MaterialSystem.getPartBuilder().setName("small_fine_dust").setPartType(mods.contenttweaker.MaterialSystem.getPartType("item")).setHasOverlay(false).setOreDictName("dustFineSmall").build();
+var small_gear = mods.contenttweaker.MaterialSystem.getPartBuilder().setName("small_gear").setPartType(mods.contenttweaker.MaterialSystem.getPartType("item")).setHasOverlay(false).setOreDictName("gearSmall").build();
+var small_plate = mods.contenttweaker.MaterialSystem.getPartBuilder().setName("small_plate").setPartType(mods.contenttweaker.MaterialSystem.getPartType("item")).setHasOverlay(false).setOreDictName("plateSmall").build();
+var small_powder = mods.contenttweaker.MaterialSystem.getPartBuilder().setName("small_powder").setPartType(mods.contenttweaker.MaterialSystem.getPartType("item")).setHasOverlay(false).setOreDictName("powderSmall").build();
+var small_purified_ore = mods.contenttweaker.MaterialSystem.getPartBuilder().setName("small_purified_ore").setPartType(mods.contenttweaker.MaterialSystem.getPartType("item")).setHasOverlay(false).setOreDictName("orePurifiedSmall").build();
+var small_rod = mods.contenttweaker.MaterialSystem.getPartBuilder().setName("small_rod").setPartType(mods.contenttweaker.MaterialSystem.getPartType("item")).setHasOverlay(false).setOreDictName("rodSmall").build();
+var small_screwed_plate = mods.contenttweaker.MaterialSystem.getPartBuilder().setName("small_screwed_plate").setPartType(mods.contenttweaker.MaterialSystem.getPartType("item")).setHasOverlay(false).setOreDictName("plateScrewedSmall").build();
+var small_spring = mods.contenttweaker.MaterialSystem.getPartBuilder().setName("small_spring").setPartType(mods.contenttweaker.MaterialSystem.getPartType("item")).setHasOverlay(false).setOreDictName("springSmall").build();
+var solid_metal = mods.contenttweaker.MaterialSystem.getPartBuilder().setName("solid_metal").setPartType(mods.contenttweaker.MaterialSystem.getPartType("item")).setHasOverlay(false).setOreDictName("metalSolid").build();
 var spring = mods.contenttweaker.MaterialSystem.getPartBuilder().setName("spring").setPartType(mods.contenttweaker.MaterialSystem.getPartType("item")).setHasOverlay(false).setOreDictName("spring").build();
 var stick = mods.contenttweaker.MaterialSystem.getPartBuilder().setName("stick").setPartType(mods.contenttweaker.MaterialSystem.getPartType("item")).setHasOverlay(false).setOreDictName("stick").build();
-var stone_plate = mods.contenttweaker.MaterialSystem.getPartBuilder().setName("stone_plate").setPartType(mods.contenttweaker.MaterialSystem.getPartType("item")).setHasOverlay(false).setOreDictName("stonePlate").build();
-var superior_gem = mods.contenttweaker.MaterialSystem.getPartBuilder().setName("superior_gem").setPartType(mods.contenttweaker.MaterialSystem.getPartType("item")).setHasOverlay(false).setOreDictName("superiorGem").build();
-var tiny_fine_dust = mods.contenttweaker.MaterialSystem.getPartBuilder().setName("tiny_fine_dust").setPartType(mods.contenttweaker.MaterialSystem.getPartType("item")).setHasOverlay(false).setOreDictName("tinyFineDust").build();
-var tiny_powder = mods.contenttweaker.MaterialSystem.getPartBuilder().setName("tiny_powder").setPartType(mods.contenttweaker.MaterialSystem.getPartType("item")).setHasOverlay(false).setOreDictName("tinyPowder").build();
-var tough_plate = mods.contenttweaker.MaterialSystem.getPartBuilder().setName("tough_plate").setPartType(mods.contenttweaker.MaterialSystem.getPartType("item")).setHasOverlay(false).setOreDictName("toughPlate").build();
+var stone_plate = mods.contenttweaker.MaterialSystem.getPartBuilder().setName("stone_plate").setPartType(mods.contenttweaker.MaterialSystem.getPartType("item")).setHasOverlay(false).setOreDictName("plateStone").build();
+var superior_gem = mods.contenttweaker.MaterialSystem.getPartBuilder().setName("superior_gem").setPartType(mods.contenttweaker.MaterialSystem.getPartType("item")).setHasOverlay(false).setOreDictName("gemSuperior").build();
+var tiny_fine_dust = mods.contenttweaker.MaterialSystem.getPartBuilder().setName("tiny_fine_dust").setPartType(mods.contenttweaker.MaterialSystem.getPartType("item")).setHasOverlay(false).setOreDictName("dustFineTiny").build();
+var tiny_powder = mods.contenttweaker.MaterialSystem.getPartBuilder().setName("tiny_powder").setPartType(mods.contenttweaker.MaterialSystem.getPartType("item")).setHasOverlay(false).setOreDictName("powderTiny").build();
+var tough_plate = mods.contenttweaker.MaterialSystem.getPartBuilder().setName("tough_plate").setPartType(mods.contenttweaker.MaterialSystem.getPartType("item")).setHasOverlay(false).setOreDictName("plateTough").build();
 var turbine_blade = mods.contenttweaker.MaterialSystem.getPartBuilder().setName("turbine_blade").setPartType(mods.contenttweaker.MaterialSystem.getPartType("item")).setHasOverlay(false).setOreDictName("turbineBlade").build();
 var wafer = mods.contenttweaker.MaterialSystem.getPartBuilder().setName("wafer").setPartType(mods.contenttweaker.MaterialSystem.getPartType("item")).setHasOverlay(false).setOreDictName("wafer").build();
 var wire = mods.contenttweaker.MaterialSystem.getPartBuilder().setName("wire").setPartType(mods.contenttweaker.MaterialSystem.getPartType("item")).setHasOverlay(true).setOreDictName("wire").build();
-var wood_plate = mods.contenttweaker.MaterialSystem.getPartBuilder().setName("wood_plate").setPartType(mods.contenttweaker.MaterialSystem.getPartType("item")).setHasOverlay(false).setOreDictName("woodPlate").build();
+var wood_plate = mods.contenttweaker.MaterialSystem.getPartBuilder().setName("wood_plate").setPartType(mods.contenttweaker.MaterialSystem.getPartType("item")).setHasOverlay(false).setOreDictName("plateWood").build();
 
 # -partgroups
 var dust_parts = ["dust", "small_dust", "tiny_dust"] as string[];
@@ -475,24 +475,24 @@ polyethylene.registerParts(dust_parts);
 rubber.registerParts(dust_parts);
 
 # -liquids
-genFluid("cotm_iron_molten", "d9d7d9", 6000, false, 1, 1000, 6000, false, "contenttweaker:fluids/molten", "contenttweaker:fluids/molten_flowing", <blockmaterial:lava>);
-genFluid("cotm_polyethylene_molten", "a8a59d", 6000, false, 1, 1000, 5000, false, "contenttweaker:fluids/molten", "contenttweaker:fluids/molten_flowing", <blockmaterial:lava>);
-genFluid("cotm_rubber_molten", "4a473f", 6000, false, 1, 1000, 4000, false, "contenttweaker:fluids/molten", "contenttweaker:fluids/molten_flowing", <blockmaterial:lava>);
-genFluid("cotm_zinc_molten", "dae5e8", 6000, false, 1, 1000, 4000, false, "contenttweaker:fluids/molten", "contenttweaker:fluids/molten_flowing", <blockmaterial:lava>);
-genFluid("cotm_tin_molten", "2d73ff", 6000, false, 1, 1000, 4000, false, "contenttweaker:fluids/molten", "contenttweaker:fluids/molten_flowing", <blockmaterial:lava>);
-genFluid("cotm_lead_molten", "9771ab", 6000, false, 1, 1000, 4000, false, "contenttweaker:fluids/molten", "contenttweaker:fluids/molten_flowing", <blockmaterial:lava>);
-genFluid("cotm_nickel_molten", "e6d6aa", 6000, false, 1, 1000, 4000, false, "contenttweaker:fluids/molten", "contenttweaker:fluids/molten_flowing", <blockmaterial:lava>);
-genFluid("cotm_platinum_molten", "ced7db", 6000, false, 1, 1000, 4000, false, "contenttweaker:fluids/molten", "contenttweaker:fluids/molten_flowing", <blockmaterial:lava>);
-genFluid("cotm_tungsten_molten", "101024", 6000, false, 1, 1000, 4000, false, "contenttweaker:fluids/molten", "contenttweaker:fluids/molten_flowing", <blockmaterial:lava>);
-genFluid("cotm_iridium_molten", "edfffd", 6000, false, 1, 1000, 4000, false, "contenttweaker:fluids/molten", "contenttweaker:fluids/molten_flowing", <blockmaterial:lava>);
-genFluid("cotm_osmium_molten", "0000ff", 6000, false, 1, 1000, 4000, false, "contenttweaker:fluids/molten", "contenttweaker:fluids/molten_flowing", <blockmaterial:lava>);
-genFluid("cotm_lumium_molten", "ffffb6", 6000, false, 1, 1000, 4000, false, "contenttweaker:fluids/molten", "contenttweaker:fluids/molten_flowing", <blockmaterial:lava>);
-genFluid("cotm_signalum_molten", "fe3a01", 6000, false, 1, 1000, 4000, false, "contenttweaker:fluids/molten", "contenttweaker:fluids/molten_flowing", <blockmaterial:lava>);
-genFluid("cotm_enderium_molten", "008839", 6000, false, 1, 1000, 4000, false, "contenttweaker:fluids/molten", "contenttweaker:fluids/molten_flowing", <blockmaterial:lava>);
-genFluid("cotm_bronze_molten", "ff881a", 6000, false, 1, 1000, 4000, false, "contenttweaker:fluids/molten", "contenttweaker:fluids/molten_flowing", <blockmaterial:lava>);
-genFluid("cotm_brass_molten", "f2b600", 6000, false, 1, 1000, 4000, false, "contenttweaker:fluids/molten", "contenttweaker:fluids/molten_flowing", <blockmaterial:lava>);
-genFluid("cotm_aluminum_brass_molten", "f2d048", 6000, false, 1, 1000, 4000, false, "contenttweaker:fluids/molten", "contenttweaker:fluids/molten_flowing", <blockmaterial:lava>);
-genFluid("cotm_tungstensteel_molten", "1b2431", 6000, false, 1, 1000, 4000, false, "contenttweaker:fluids/molten", "contenttweaker:fluids/molten_flowing", <blockmaterial:lava>);
+genMolten("cotm_iron_molten", "d9d7d9", 6000, false, 1, 1000, 6000, false);
+genMolten("cotm_polyethylene_molten", "a8a59d", 6000, false, 1, 1000, 5000, false);
+genMolten("cotm_rubber_molten", "4a473f", 6000, false, 1, 1000, 4000, false);
+genMolten("cotm_zinc_molten", "dae5e8", 6000, false, 1, 1000, 4000, false);
+genMolten("cotm_tin_molten", "2d73ff", 6000, false, 1, 1000, 4000, false);
+genMolten("cotm_lead_molten", "9771ab", 6000, false, 1, 1000, 4000, false);
+genMolten("cotm_nickel_molten", "e6d6aa", 6000, false, 1, 1000, 4000, false);
+genMolten("cotm_platinum_molten", "ced7db", 6000, false, 1, 1000, 4000, false);
+genMolten("cotm_tungsten_molten", "101024", 6000, false, 1, 1000, 4000, false);
+genMolten("cotm_iridium_molten", "edfffd", 6000, false, 1, 1000, 4000, false);
+genMolten("cotm_osmium_molten", "0000ff", 6000, false, 1, 1000, 4000, false);
+genMolten("cotm_lumium_molten", "ffffb6", 6000, false, 1, 1000, 4000, false);
+genMolten("cotm_signalum_molten", "fe3a01", 6000, false, 1, 1000, 4000, false);
+genMolten("cotm_enderium_molten", "008839", 6000, false, 1, 1000, 4000, false);
+genMolten("cotm_bronze_molten", "ff881a", 6000, false, 1, 1000, 4000, false);
+genMolten("cotm_brass_molten", "f2b600", 6000, false, 1, 1000, 4000, false);
+genMolten("cotm_aluminum_brass_molten", "f2d048", 6000, false, 1, 1000, 4000, false);
+genMolten("cotm_tungstensteel_molten", "1b2431", 6000, false, 1, 1000, 4000, false);
 
 # -woods
 oak.registerParts(wood_parts);
@@ -527,10 +527,10 @@ shale.registerParts(stone_parts);
 siltstone.registerParts(stone_parts);
 
 # -metals
-iron.registerParts(smelt_parts);
-iron.registerParts(machine_parts);
-iron.registerParts(blast_parts);
-iron.registerParts(conductive_parts);
+lead.registerParts(smelt_parts);
+lead.registerParts(machine_parts);
+lead.registerParts(blast_parts);
+lead.registerParts(conductive_parts);
 
 # -alloys
 lumium.registerParts(smelt_parts);

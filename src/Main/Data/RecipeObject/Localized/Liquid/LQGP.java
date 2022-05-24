@@ -13,6 +13,13 @@ public class LQGP extends ALiquid {
     //genFluid("iron_qgp", "ff3000", 100, true, 0, 100000, 20, true, "contenttweaker:fluids/gas", "contenttweaker:fluids/gas_flowing", <blockmaterial:water>);
     public LQGP(boolean isMaterial, ArrayList<Machine> machines, MachineData data, ArrayList<MachineMatter> matters, ArrayList<Registry> registries,
                 String name, String localName, String color, int density, int luminosity, int temperature, int viscosity, boolean vaporize) {
-        super(machines, data, matters, registries, isMaterial, name, localName, color, density, true, luminosity, temperature, viscosity, vaporize, "gas", "water");
+        super(machines, data, matters, registries, isMaterial, name, localName, color, density, true, luminosity, temperature, viscosity, vaporize);
+    }
+
+    @Override
+    public String buildMaterial() {
+        return "genFluid(\"" +
+                this.NAME + "\", \"" + this.color + "\", " + this.density + ", " + this.gas + ", " +
+                this.luminosity + ", " + this.temperature + ", " + this.viscosity + ", " + this.vaporize + ");\n";
     }
 }

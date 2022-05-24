@@ -12,6 +12,13 @@ public class LPlasma extends ALiquid {
     //genFluid("iron_plasma", "ff2000", 100, true, 0, 10000, 100, true, "contenttweaker:fluids/plasma", "contenttweaker:fluids/plasma_flowing", <blockmaterial:lava>);
     public LPlasma(boolean isMaterial, ArrayList<Machine> machines, MachineData data, ArrayList<MachineMatter> matters, ArrayList<Registry> registries,
                    String name, String localName, String color, int density, int luminosity, int temperature, int viscosity, boolean vaporize) {
-        super(machines, data, matters, registries, isMaterial, name, localName, color, density, true, luminosity, temperature, viscosity, vaporize, "plasma", "lava");
+        super(machines, data, matters, registries, isMaterial, name, localName, color, density, true, luminosity, temperature, viscosity, vaporize);
+    }
+
+    @Override
+    public String buildMaterial() {
+        return "genPlasma(\"" +
+                this.NAME + "\", \"" + this.color + "\", " + this.density + ", " + this.gas + ", " +
+                this.luminosity + ", " + this.temperature + ", " + this.viscosity + ", " + this.vaporize + ");\n";
     }
 }

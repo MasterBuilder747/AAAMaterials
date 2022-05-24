@@ -79,6 +79,7 @@ public abstract class ARecipe extends AData {
                 s = s.substring(s.indexOf("$")+1);
                 isChance = true;
             }
+            if (s.startsWith("<liquid:")) throw new IllegalArgumentException("Liquids are not allowed here for recipe " + this.NAME);
             if (s.contains("ore:")) {
                 sb.append(handleOreMultiple(s, "ItemIn"));
             } else {
@@ -96,7 +97,7 @@ public abstract class ARecipe extends AData {
                 s = s.substring(s.indexOf("$")+1);
                 isChance = true;
             }
-            if (s.contains("ore:")) throw new IllegalArgumentException("Oredicts are not allowed as a liquid for recipe " + this.NAME);
+            if (!s.startsWith("<liquid:")) throw new IllegalArgumentException("Only liquids are allowed here for recipe " + this.NAME);
             sb.append(handleMultiple(s, "FluidIn"));
             if (isChance) {
                 sb.append(handleChance(chance));
@@ -110,6 +111,7 @@ public abstract class ARecipe extends AData {
                 s = s.substring(s.indexOf("$")+1);
                 isChance = true;
             }
+            if (s.startsWith("<liquid:")) throw new IllegalArgumentException("Liquids are not allowed here for recipe " + this.NAME);
             if (s.contains("ore:")) {
                 sb.append(handleOreMultiple(s, "ItemOut"));
             } else {
@@ -127,7 +129,7 @@ public abstract class ARecipe extends AData {
                 s = s.substring(s.indexOf("$")+1);
                 isChance = true;
             }
-            if (s.contains("ore:")) throw new IllegalArgumentException("Oredicts are not allowed as a liquid for recipe " + this.NAME);
+            if (!s.startsWith("<liquid:")) throw new IllegalArgumentException("Only liquids are allowed here for recipe " + this.NAME);
             sb.append(handleMultiple(s, "FluidOut"));
             if (isChance) {
                 sb.append(handleChance(chance));

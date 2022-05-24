@@ -37,22 +37,19 @@ public class Metal extends AMalleable {
 
         SmeltingRecipe r = new SmeltingRecipe(this.machines, this.mData, this.matters, this.registries);
         r.createRecipe(this.NAME+"Metal", 20, 1, 0.5, 0, this.getData());
-
-        //make a recipe building object or method in ARecipeObject?
         String[] iIns = {
                 addChance(0.5)+getParts("ingot", 4),
                 getOredicts("ingotIron", 4),
-                getItem("IronShovel")
+                getItemByMod("IronIngot", "contenttweaker")
         };
         String[] lIns = {
-                getLiquids("hydrogen", 100)
+                getLiquids("hydrogen", 100),
+                getMolten()
         };
         String[] iOuts = {
                 getPart("plateTough")
         };
-        String[] lOuts = {
-
-        };
+        String[] lOuts = {};
         r.setInputs(iIns, lIns);
         r.setOutputs(iOuts, lOuts);
         r.setAdditionalRequirements(100, 1000, getMatterIn("-red*100"), getMatterOut("+orange*200"));

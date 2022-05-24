@@ -17,12 +17,10 @@ public abstract class ALiquid extends ALocalizedData {
     int temperature;
     int viscosity;
     boolean vaporize;
-    String tex;
-    String blockMaterial; //lava, water
 
     //IMPORTANT NOTE: Machine resources always set machines to null, since their recipes are hardcoded!
     public ALiquid(ArrayList<Machine> machines, MachineData data, ArrayList<MachineMatter> matters, ArrayList<Registry> registries, boolean isMaterial, String name, String localName, String color, int density, boolean gas,
-                   int luminosity, int temperature, int viscosity, boolean vaporize, String tex, String blockMaterial) {
+                   int luminosity, int temperature, int viscosity, boolean vaporize) {
         super("cot"+(isMaterial ? "m" : "c")+"_"+name, localName, machines, data, matters, registries);
         this.color = color;
         this.density = density;
@@ -31,8 +29,6 @@ public abstract class ALiquid extends ALocalizedData {
         this.temperature = temperature;
         this.viscosity = viscosity;
         this.vaporize = vaporize;
-        this.tex = tex;
-        this.blockMaterial = blockMaterial;
     }
 
     @Override
@@ -42,20 +38,6 @@ public abstract class ALiquid extends ALocalizedData {
 
     public String getUnlocalizedName() {
         return "<liquid:"+this.NAME +">";
-    }
-
-    @Override
-    public String buildMaterial() {
-                //genFluid(
-                //"molten_iron", "ff0000", 6000, false,
-                //15, 1000, 6000, false,
-                //"contenttweaker:fluids/molten", "contenttweaker:fluids/molten_flowing", <blockmaterial:lava>);
-                //tex: liquid, molten, gas, plasma, ...
-                //blockMaterial: lava, water
-        return "genFluid(\"" +
-                this.NAME + "\", \"" + this.color + "\", " + this.density + ", " + this.gas + ", " +
-                this.luminosity + ", " + this.temperature + ", " + this.viscosity + ", " + this.vaporize +
-                ", \"contenttweaker:fluids/" + this.tex + "\", \"contenttweaker:fluids/" + this.tex + "_flowing\", <blockmaterial:" + this.blockMaterial + ">);\n";
     }
 
     @Override

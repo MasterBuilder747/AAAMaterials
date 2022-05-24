@@ -37,8 +37,9 @@ global genItem as function(string)int = function(name as string) as int {
 	return 0;
 };
 
-//materials: water, lava, air?
-global genFluid as function(string, string, int, bool, int, int, int, bool, string, string, BlockMaterial)int =
+/*
+//base liquid function
+global genLiquid as function(string, string, int, bool, int, int, int, bool, string, string, BlockMaterial)int =
 function(name as string, color as string, density as int, gas as bool, luminosity as int, temperature as int, viscosity as int, vaporize as bool, stillTex as string, flowTex as string, material as BlockMaterial) as int {
 	var fluid = mods.contenttweaker.VanillaFactory.createFluid(name, Color.fromHex(color));
 	fluid.setDensity(density);
@@ -50,6 +51,67 @@ function(name as string, color as string, density as int, gas as bool, luminosit
 	fluid.setStillLocation(stillTex);
 	fluid.setFlowingLocation(flowTex);
 	fluid.setMaterial(material);
+	fluid.register();
+	return 0;
+};
+*/
+global genLiquid as function(string, string, int, bool, int, int, int, bool)int =
+function(name as string, color as string, density as int, gas as bool, luminosity as int, temperature as int, viscosity as int, vaporize as bool) as int {
+	var fluid = mods.contenttweaker.VanillaFactory.createFluid(name, Color.fromHex(color));
+	fluid.setDensity(density);
+	fluid.setGaseous(gas);
+	fluid.setLuminosity(luminosity);
+	fluid.setTemperature(temperature);
+	fluid.setViscosity(viscosity);
+	fluid.setVaporize(vaporize);
+	fluid.setStillLocation("contenttweaker:fluids/liquid");
+	fluid.setFlowingLocation("contenttweaker:fluids/liquid_flowing");
+	fluid.setMaterial(<blockmaterial:water>);
+	fluid.register();
+	return 0;
+};
+global genMolten as function(string, string, int, bool, int, int, int, bool)int =
+function(name as string, color as string, density as int, gas as bool, luminosity as int, temperature as int, viscosity as int, vaporize as bool) as int {
+	var fluid = mods.contenttweaker.VanillaFactory.createFluid(name, Color.fromHex(color));
+	fluid.setDensity(density);
+	fluid.setGaseous(gas);
+	fluid.setLuminosity(luminosity);
+	fluid.setTemperature(temperature);
+	fluid.setViscosity(viscosity);
+	fluid.setVaporize(vaporize);
+	fluid.setStillLocation("contenttweaker:fluids/molten");
+	fluid.setFlowingLocation("contenttweaker:fluids/molten_flowing");
+	fluid.setMaterial(<blockmaterial:lava>);
+	fluid.register();
+	return 0;
+};
+global genGas as function(string, string, int, bool, int, int, int, bool)int =
+function(name as string, color as string, density as int, gas as bool, luminosity as int, temperature as int, viscosity as int, vaporize as bool) as int {
+	var fluid = mods.contenttweaker.VanillaFactory.createFluid(name, Color.fromHex(color));
+	fluid.setDensity(density);
+	fluid.setGaseous(gas);
+	fluid.setLuminosity(luminosity);
+	fluid.setTemperature(temperature);
+	fluid.setViscosity(viscosity);
+	fluid.setVaporize(vaporize);
+	fluid.setStillLocation("contenttweaker:fluids/gas");
+	fluid.setFlowingLocation("contenttweaker:fluids/gas_flowing");
+	fluid.setMaterial(<blockmaterial:water>);
+	fluid.register();
+	return 0;
+};
+global genPlasma as function(string, string, int, bool, int, int, int, bool)int =
+function(name as string, color as string, density as int, gas as bool, luminosity as int, temperature as int, viscosity as int, vaporize as bool) as int {
+	var fluid = mods.contenttweaker.VanillaFactory.createFluid(name, Color.fromHex(color));
+	fluid.setDensity(density);
+	fluid.setGaseous(gas);
+	fluid.setLuminosity(luminosity);
+	fluid.setTemperature(temperature);
+	fluid.setViscosity(viscosity);
+	fluid.setVaporize(vaporize);
+	fluid.setStillLocation("contenttweaker:fluids/plasma");
+	fluid.setFlowingLocation("contenttweaker:fluids/plasma_flowing");
+	fluid.setMaterial(<blockmaterial:lava>);
 	fluid.register();
 	return 0;
 };

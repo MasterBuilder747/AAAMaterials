@@ -12,7 +12,7 @@ import java.util.ArrayList;
 
 public abstract class AMLiquid extends AMaterialData {
     //be aware that you cannot call any methods that are specific to children of ALiquid, only ALiquid itself
-    protected ALiquid l;
+    ALiquid l;
 
     public AMLiquid(Material m, ArrayList<Machine> machine, MachineData data, ArrayList<MachineMatter> matters, ArrayList<Registry> registries) {
         super(m, machine, data, matters, registries);
@@ -26,6 +26,10 @@ public abstract class AMLiquid extends AMaterialData {
     @Override
     public String buildRecipe() {
         return null;
+    }
+
+    public String getBracket() {
+        return this.l.getUnlocalizedName();
     }
 
     public String localize() {

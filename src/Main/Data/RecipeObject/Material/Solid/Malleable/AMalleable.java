@@ -12,7 +12,7 @@ import java.util.ArrayList;
 
 //data > material > malleable
 public abstract class AMalleable extends AMSolid {
-    double meltingMultiplier; //default is 1, but if 0, then recipes won't be generated,
+    double meltingMultiplier; //default is 1, but if 0, then recipes won't be generated
     MLiquid molten;
     //negative numbers indicate the value of this material, but it cannot be melted
 
@@ -20,6 +20,10 @@ public abstract class AMalleable extends AMSolid {
         super(m, machines, data, matters, registries);
         this.meltingMultiplier = meltingMultiplier;
         this.molten = molten;
+    }
+
+    protected String getMolten() {
+        return this.molten.getBracket();
     }
 
     @Override
