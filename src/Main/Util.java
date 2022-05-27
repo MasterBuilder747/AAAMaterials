@@ -1,6 +1,11 @@
 package Main;
 
 import java.awt.*;
+import java.io.BufferedWriter;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Locale;
 
 public class Util {
@@ -11,6 +16,48 @@ public class Util {
             //return s;
         }
         return s.substring(0, 1).toUpperCase(Locale.ROOT) + s.substring(1);
+    }
+
+    public static void splitFiles(String code, String header, String initialCode, String filePath) throws IOException {
+        //Split code into multiple files
+        //recipes[N].zs
+        ArrayList<String> sbs = new ArrayList<>();
+        StringBuilder sb;
+        StringBuilder sb2;
+        String[] prs = split(code, "\n");
+        //System.out.println("Length: " + prs.length);
+
+        sb = new StringBuilder();
+        sb2 = new StringBuilder();
+        int i = 0;
+        while (i < prs.length) {
+            int line = 0;
+            while (line < 500 && i < prs.length) {
+                sb2.append(prs[i]).append("\n");
+                if (prs[i].endsWith(".build();")) {
+                    sb.append(sb2).append("\n");
+                    sb2 = new StringBuilder();
+                    line++;
+                }
+                i++;
+            }
+            sbs.add(sb.toString());
+            sb = new StringBuilder();
+        }
+
+        //write each file
+        FileWriter fw;
+        BufferedWriter bw;
+        for (int j = 0; j < sbs.size(); j++) {
+            fw = new FileWriter(filePath + j + ".zs");
+            bw = new BufferedWriter(fw);
+            bw.write(header);
+            if (j == 0) {
+                bw.write(initialCode);
+            }
+            bw.write(sbs.get(j));
+            bw.close();
+        }
     }
 
     //Strings
