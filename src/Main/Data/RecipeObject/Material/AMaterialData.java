@@ -38,9 +38,9 @@ public abstract class AMaterialData extends ARecipeObject {
     }
     public LPart[] getEnabledParts() {
         ArrayList<LPart> parts = new ArrayList<>();
-        for (int i = 0; i < partGroups.length; i++) {
+        for (int i = 0; i < this.partGroups.length; i++) {
             if (this.enablePartGroups[i]) {
-                parts.addAll(Arrays.asList(partGroups[i].getParts()));
+                parts.addAll(Arrays.asList(this.partGroups[i].getParts()));
             }
         }
         return parts.toArray(new LPart[0]);

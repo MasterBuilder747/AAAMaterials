@@ -81,6 +81,10 @@ public abstract class ARecipeObject extends AData {
         }
         throw new RecipeObjectException(key, "item registry", this.NAME);
     }
+
+    public RegistryData[] getRegistries() {
+        return this.datas.toArray(new RegistryData[0]);
+    }
     protected RegistryData getData(String key) {
         for (RegistryData m : this.datas) {
             if (m.name.equals(key)) {
@@ -100,7 +104,7 @@ public abstract class ARecipeObject extends AData {
     protected String getLiquids(String key, int amount) {
         return getLiquid(key) + "*" + amount;
     }
-    protected String getData() {
+    protected String getDataLiquid() {
         return this.mData.getData();
     }
     private MachineMatter getMatter(String key) {
@@ -167,7 +171,7 @@ public abstract class ARecipeObject extends AData {
         return this.getData(key).r.getBracket();
     }
     protected String getParts(String key, int amount) {
-        return this.getData(key).r.getBracket()+"*"+amount;
+        return this.getPart(key)+"*"+amount;
     }
     protected String getOredict(String ore) {
         return "ore:"+ore;

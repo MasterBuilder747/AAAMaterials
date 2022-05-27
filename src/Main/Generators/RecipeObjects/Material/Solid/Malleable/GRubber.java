@@ -1,6 +1,7 @@
 package Main.Generators.RecipeObjects.Material.Solid.Malleable;
 
 import Main.Data.RecipeObject.Material.Liquid.MLiquid;
+import Main.Data.RecipeObject.Material.MSolid;
 import Main.Data.RecipeObject.Material.Solid.Malleable.Rubber;
 import Main.Data.Material;
 import Main.Generators.GMaterial;
@@ -20,9 +21,12 @@ public class GRubber extends AGMalleable<Rubber> {
     }
 
     @Override
-    protected void setMalleableParts(Material m, String[] s, MLiquid liquid) {
+    protected void setMalleableParts(Material m, String[] s, MLiquid liquid, MSolid solid) {
         Rubber rubber = new Rubber(m, Double.parseDouble(s[0]), liquid, getMachineRegistry(), getDataRegistry(), getMatterRegistry(), getRegistries());
         rubber.setPartGroups(this.genPartGroups(new String[]{"rubber"}), new boolean[]{true});
+        rubber.updateSolids(solid);
+        rubber = updateRegistryKeys(rubber);
+        rubber = updateLiquids(rubber);
         objects.add(rubber);
     }
 }

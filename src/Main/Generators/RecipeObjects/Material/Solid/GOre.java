@@ -2,6 +2,7 @@ package Main.Generators.RecipeObjects.Material.Solid;
 
 import Main.Data.RecipeObject.Localized.LBlock;
 import Main.Data.Material;
+import Main.Data.RecipeObject.Material.MSolid;
 import Main.Data.RecipeObject.Material.Solid.Ore;
 import Main.Data.RecipeObject.Material.OreVariant;
 import Main.Data.OreType;
@@ -32,7 +33,7 @@ public class GOre extends AGMSolid<Ore> {
     }
 
     @Override
-    protected void readSolidParameters(Material m, String[] s) {
+    protected void readSolidParameters(Material m, String[] s, MSolid solid) {
         //HOW TO HANDLE VARIANTS:
         //make a new material for netherrack, end, and bedrock, default will be stone
         //do separate code blocks for these in the same way

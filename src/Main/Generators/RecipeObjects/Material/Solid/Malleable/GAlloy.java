@@ -1,6 +1,7 @@
 package Main.Generators.RecipeObjects.Material.Solid.Malleable;
 
 import Main.Data.RecipeObject.Material.Liquid.MLiquid;
+import Main.Data.RecipeObject.Material.MSolid;
 import Main.Data.RecipeObject.Material.Solid.Malleable.Alloy;
 import Main.Data.Material;
 import Main.Generators.GMaterial;
@@ -22,10 +23,13 @@ public class GAlloy extends AGMalleable<Alloy> {
     }
 
     @Override
-    protected void setMalleableParts(Material m, String[] s, MLiquid liquid) {
+    protected void setMalleableParts(Material m, String[] s, MLiquid liquid, MSolid solid) {
         Alloy alloy = new Alloy(m, liquid, getMachineRegistry(), getDataRegistry(), getMatterRegistry(), getRegistries());
         alloy.setPartGroups(this.genPartGroups(new String[]{"smelt", "machine", "blast", "conductive"}),
                 new boolean[]{Boolean.parseBoolean(s[0]), Boolean.parseBoolean(s[1]), Boolean.parseBoolean(s[2]), Boolean.parseBoolean(s[3])});
+        alloy.updateSolids(solid);
+        alloy = updateRegistryKeys(alloy);
+        alloy = updateLiquids(alloy);
         objects.add(alloy);
     }
 }

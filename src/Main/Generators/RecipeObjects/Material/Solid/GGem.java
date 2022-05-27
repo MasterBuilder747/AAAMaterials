@@ -1,5 +1,6 @@
 package Main.Generators.RecipeObjects.Material.Solid;
 
+import Main.Data.RecipeObject.Material.MSolid;
 import Main.Data.RecipeObject.Material.Solid.Gem;
 import Main.Data.Material;
 import Main.Generators.GMaterial;
@@ -21,7 +22,7 @@ public class GGem extends AGMSolid<Gem>{
     }
 
     @Override
-    protected void readSolidParameters(Material m, String[] s) {
+    protected void readSolidParameters(Material m, String[] s, MSolid solid) {
         Gem g = new Gem(m, getMachineRegistry(), getDataRegistry(), getMatterRegistry(), getRegistries());
         g.setPartGroupTrue(genPartGroup("gem"));
         objects.add(g);

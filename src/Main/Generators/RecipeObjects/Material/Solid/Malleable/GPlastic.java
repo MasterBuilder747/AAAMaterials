@@ -1,6 +1,7 @@
 package Main.Generators.RecipeObjects.Material.Solid.Malleable;
 
 import Main.Data.RecipeObject.Material.Liquid.MLiquid;
+import Main.Data.RecipeObject.Material.MSolid;
 import Main.Data.RecipeObject.Material.Solid.Malleable.Plastic;
 import Main.Data.Material;
 import Main.Generators.GMaterial;
@@ -20,9 +21,12 @@ public class GPlastic extends AGMalleable<Plastic> {
     }
 
     @Override
-    protected void setMalleableParts(Material m, String[] s, MLiquid liquid) {
+    protected void setMalleableParts(Material m, String[] s, MLiquid liquid, MSolid solid) {
         Plastic plastic = new Plastic(m, Double.parseDouble(s[0]), liquid, getMachineRegistry(), getDataRegistry(), getMatterRegistry(), getRegistries());
         plastic.setPartGroups(this.genPartGroups(new String[]{"plastic"}), new boolean[]{true});
+        plastic.updateSolids(solid);
+        plastic = updateRegistryKeys(plastic);
+        plastic = updateLiquids(plastic);
         objects.add(plastic);
     }
 }

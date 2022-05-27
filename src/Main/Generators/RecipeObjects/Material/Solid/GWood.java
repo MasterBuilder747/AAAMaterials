@@ -1,6 +1,7 @@
 package Main.Generators.RecipeObjects.Material.Solid;
 
 import Main.Data.Material;
+import Main.Data.RecipeObject.Material.MSolid;
 import Main.Data.RecipeObject.Material.Solid.Wood;
 import Main.Data.GameData.Registry;
 import Main.Generators.GMaterial;
@@ -21,7 +22,7 @@ public class GWood extends AGMSolid<Wood> {
     }
 
     @Override
-    protected void readSolidParameters(Material m, String[] s) {
+    protected void readSolidParameters(Material m, String[] s, MSolid solid) {
         //boolean isVanilla
         boolean isVanilla = parseBoolean(s[0]);
         Wood w = new Wood(m, isVanilla, getMachineRegistry(), getDataRegistry(), getMatterRegistry(), getRegistries());

@@ -1,6 +1,7 @@
 package Main.Generators.RecipeObjects.Material.Solid.Malleable;
 
 import Main.Data.RecipeObject.Material.Liquid.MLiquid;
+import Main.Data.RecipeObject.Material.MSolid;
 import Main.Data.RecipeObject.Material.Solid.Malleable.Metal;
 import Main.Data.Material;
 import Main.Generators.GMaterial;
@@ -20,13 +21,13 @@ public class GMetal extends AGMalleable<Metal> {
     }
 
     @Override
-    protected void setMalleableParts(Material m, String[] s, MLiquid liquid) {
+    protected void setMalleableParts(Material m, String[] s, MLiquid liquid, MSolid solid) {
         //addSmelt, addMachine, addBlast, addConductive
         Metal metal = new Metal(m, liquid, getMachineRegistry(), getDataRegistry(), getMatterRegistry(), getRegistries());
         metal.setPartGroups(this.genPartGroups(new String[]{"smelt", "machine", "blast", "conductive"}),
                 new boolean[]{Boolean.parseBoolean(s[0]), Boolean.parseBoolean(s[1]), Boolean.parseBoolean(s[2]), Boolean.parseBoolean(s[3])});
+        metal.updateSolids(solid);
         metal = updateRegistryKeys(metal);
-        //metal.printNames(); //Call this if you don't know which keys to use for recipes
         metal = updateLiquids(metal);
         objects.add(metal);
     }

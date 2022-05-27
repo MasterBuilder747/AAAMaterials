@@ -44,8 +44,7 @@ public abstract class AGMSolid <S extends AMSolid> extends AGMaterialData<S> {
         if (this.isDust) if (!bools[0]) error("Material " + m.NAME + "'s solid state must have dust parts");
         if (this.isFineDust) if(!bools[1]) error("Material " + m.NAME + "'s solid state must have fine dust parts");
         if (this.isPowder) if (!bools[2]) error("Material " + m.NAME + "'s solid state must have powder parts");
-        readSolidParameters(m, s);
+        readSolidParameters(m, s, sol);
     }
-
-    protected abstract void readSolidParameters(Material m, String[] s);
+    protected abstract void readSolidParameters(Material m, String[] s, MSolid solid);
 }

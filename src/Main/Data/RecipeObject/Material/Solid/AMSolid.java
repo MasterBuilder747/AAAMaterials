@@ -4,13 +4,22 @@ import Main.Data.GameData.Registry;
 import Main.Data.MachineResource.Machine.Machine;
 import Main.Data.MachineResource.MachineData;
 import Main.Data.MachineResource.MachineMatter;
+import Main.Data.RecipeObject.Localized.LPart;
 import Main.Data.RecipeObject.Material.AMaterialData;
 import Main.Data.Material;
+import Main.Data.RecipeObject.Material.MSolid;
+import Main.Data.RecipeObject.RegistryData;
 
 import java.util.ArrayList;
 
 public abstract class AMSolid extends AMaterialData {
     public AMSolid(Material m, ArrayList<Machine> machines, MachineData data, ArrayList<MachineMatter> matters, ArrayList<Registry> registries) {
         super(m, machines, data, matters, registries);
+    }
+
+    public void updateSolids(MSolid sol) {
+        for (RegistryData r : sol.getRegistries()) {
+            this.add(r.name, r.r);
+        }
     }
 }

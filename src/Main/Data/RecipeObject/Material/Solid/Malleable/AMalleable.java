@@ -8,7 +8,6 @@ import Main.Data.RecipeObject.Material.Solid.AMSolid;
 import Main.Data.RecipeObject.Material.Liquid.MLiquid;
 import Main.Data.Material;
 import Main.Data.RecipeObject.MaterialRecipe.MeltingRecipe;
-import Main.Data.RecipeObject.MaterialRecipe.SmeltingRecipe;
 
 import java.util.ArrayList;
 
@@ -46,13 +45,13 @@ public abstract class AMalleable extends AMSolid {
     @Override
     public String buildRecipe() {
         StringBuilder sb = new StringBuilder();
-        printNames();
+        //printNames();
         MeltingRecipe r = new MeltingRecipe(this.machines, this.mData, this.matters, this.registries);
-        r.createRecipe(this.NAME+"Malleable", 20, 1, 0.5, 0, this.getData());
+        r.createRecipe(this.NAME+"Malleable", 20, 1, 0.5, 0, this.getDataLiquid());
         String[] iIns = {getPart("dust")};
         String[] lIns = {};
-        String[] iOuts = {getMoltens((int)(144 * this.meltingMultiplier))};
-        String[] lOuts = {};
+        String[] iOuts = {};
+        String[] lOuts = {getMoltens((int)(144 * this.meltingMultiplier))};
         r.setInputs(iIns, lIns);
         r.setOutputs(iOuts, lOuts);
         r.setAdditionalRequirements(100, 100, getMatterIn("-red*100"), getMatterOut("+orange*200"));

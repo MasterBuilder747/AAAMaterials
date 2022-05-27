@@ -1,8 +1,10 @@
 package Main.Generators.RecipeObjects.Material.Solid.Malleable;
 
+import Main.Data.RecipeObject.Material.MSolid;
 import Main.Data.RecipeObject.Material.Solid.AMSolid;
 import Main.Data.RecipeObject.Material.Liquid.MLiquid;
 import Main.Data.Material;
+import Main.Data.RecipeObject.Material.Solid.Malleable.AMalleable;
 import Main.Generators.GMaterial;
 import Main.Generators.GPartGroup;
 import Main.Generators.GameData.GLiquidRegistry;
@@ -14,7 +16,7 @@ import Main.Generators.RecipeObjects.Material.Liquid.GMLiquid;
 import Main.Generators.RecipeObjects.Material.Solid.AGMSolid;
 import Main.Generators.RecipeObjects.Material.GMSolid;
 
-public abstract class AGMalleable <M extends AMSolid> extends AGMSolid<M> {
+public abstract class AGMalleable <M extends AMalleable> extends AGMSolid<M> {
     GMLiquid liquid;
 
     public AGMalleable(int params, String filename, GMachine machine, GRegistry registry,
@@ -25,11 +27,11 @@ public abstract class AGMalleable <M extends AMSolid> extends AGMSolid<M> {
     }
 
     @Override
-    protected void readSolidParameters(Material m, String[] s) {
+    protected void readSolidParameters(Material m, String[] s, MSolid solid) {
         //the second parameter always adds molten liquid
         if (!this.liquid.is(m.NAME)) error("Material " + m.NAME + " must have a liquid form in order to be malleable");
-        setMalleableParts(m, s, this.liquid.get(m.NAME));
+        setMalleableParts(m, s, this.liquid.get(m.NAME), solid);
     }
 
-    protected abstract void setMalleableParts(Material m, String[] s, MLiquid liquid);
+    protected abstract void setMalleableParts(Material m, String[] s, MLiquid liquid, MSolid solid);
 }
