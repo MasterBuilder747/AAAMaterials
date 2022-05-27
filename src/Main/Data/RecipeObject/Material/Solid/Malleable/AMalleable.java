@@ -47,7 +47,7 @@ public abstract class AMalleable extends AMSolid {
         StringBuilder sb = new StringBuilder();
         //printNames();
         MeltingRecipe r = new MeltingRecipe(this.machines, this.mData, this.matters, this.registries);
-        r.createRecipe(this.NAME+"Malleable", 20, 1, 0.5, 0, this.getDataLiquid());
+        r.createRecipe(this.NAME+"Malleable", 60, 1, 0.5, 0, this.getDataLiquid());
         String[] iIns = {getPart("dust")};
         String[] lIns = {};
         String[] iOuts = {};
