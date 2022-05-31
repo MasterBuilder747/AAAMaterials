@@ -162,6 +162,6 @@ public class MainRecipes {
         //HARDCODED MACHINE RESOURCE RECIPES GO HERE (don't repeat it)
         String initialCode = "";
 
-        Util.splitFiles(sb.toString(), header, initialCode, HOME+DEPLOY+"scripts/recipes");
+        Util.splitFiles(sb.toString(), header, initialCode, HOME+DEPLOY+"scripts/recipes/recipes");
     }
 }

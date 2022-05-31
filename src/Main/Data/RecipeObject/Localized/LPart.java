@@ -17,7 +17,7 @@ public class LPart extends ALocalizedData {
     public String baseRegistryName; //the base part of the key being used to find the item registry
 
     public LPart(String name, String localName, String oreDict, ArrayList<Machine> machines, MachineData data, ArrayList<MachineMatter> matters, ArrayList<Registry> registries, boolean hasOverlay, double amount) {
-        super(name, localName, machines, data, matters, registries);
+        super(name, localName, "LPart", machines, data, matters, registries);
         this.type = "item"; //default
         this.hasOverlay = hasOverlay;
         this.oreDict = oreDict;
@@ -33,7 +33,7 @@ public class LPart extends ALocalizedData {
     //this part already exists in contentTweaker
     //to be used in a PartGroup
     public LPart(String name, String localName, ArrayList<Machine> machines, MachineData data, ArrayList<MachineMatter> matters, ArrayList<Registry> registries, String oreDict, double amount) {
-        super(name, localName, machines, data, matters, registries);
+        super(name, localName, "LPart", machines, data, matters, registries);
         this.exists = true;
         this.oreDict = oreDict;
         this.amount = amount;

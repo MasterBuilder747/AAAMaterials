@@ -41,7 +41,7 @@ public class CustomMachineRecipe extends AData {
         this.itemOutputs = itemOutputs;
         this.liquidOutputs = liquidOutputs;
     }
-    public void setAdditionalRequirements(int chemicalAmount, int dataAmount, String matterIn, String matterOut) {
+    public void setMachineResources(int chemicalAmount, int dataAmount, String matterIn, String matterOut) {
         this.chemicalAmount = chemicalAmount;
         this.dataAmount = dataAmount;
         this.matterIn = matterIn;

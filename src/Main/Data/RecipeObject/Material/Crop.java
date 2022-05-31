@@ -14,7 +14,7 @@ public class Crop extends AMaterialData {
     String type; //milk, meat, nut, cheese, oil, citrus, nonCitrus, vegetable, grain, seed, legume, yogurt, bread, pasta
 
     public Crop(Material m, ArrayList<Machine> machines, MachineData data, ArrayList<MachineMatter> matters, ArrayList<Registry> registries) {
-        super(m, machines, data, matters, registries);
+        super(m, "Crop", machines, data, matters, registries);
     }
 
     @Override

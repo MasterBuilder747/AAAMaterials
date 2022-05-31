@@ -18,7 +18,7 @@ public class LBlock extends ALocalizedData {
 
     public LBlock(String name, String localName, ArrayList<Machine> machines, MachineData data, ArrayList<MachineMatter> matters, ArrayList<Registry> registries,
                   String material, int hardness, int resistance, int miningLevel, String tool) {
-        super(name, localName, machines, data, matters, registries);
+        super(name, localName, "LBlock", machines, data, matters, registries);
         this.material = material;
         this.hardness = hardness;
         this.resistance = resistance;
@@ -27,7 +27,7 @@ public class LBlock extends ALocalizedData {
     }
     //for variants
     public LBlock(String name, ArrayList<Machine> machines, MachineData data, ArrayList<MachineMatter> matters, ArrayList<Registry> registries, String material, String tool) {
-        super(name, name, machines, data, matters, registries);
+        super(name, name, "LBlock", machines, data, matters, registries);
         this.material = material;
         this.tool = tool;
     }

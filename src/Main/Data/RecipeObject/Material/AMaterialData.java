@@ -19,8 +19,8 @@ public abstract class AMaterialData extends ARecipeObject {
     protected boolean[] enablePartGroups;
     public ArrayList<String> localizedPartNames;
 
-    public AMaterialData(Material m, ArrayList<Machine> machines, MachineData data, ArrayList<MachineMatter> matters, ArrayList<Registry> registries) {
-        super(m.NAME, machines, data, matters, registries);
+    public AMaterialData(Material m, String type, ArrayList<Machine> machines, MachineData data, ArrayList<MachineMatter> matters, ArrayList<Registry> registries) {
+        super(m.NAME, type, machines, data, matters, registries);
         this.m = m;
         this.localizedPartNames = new ArrayList<>();
     }

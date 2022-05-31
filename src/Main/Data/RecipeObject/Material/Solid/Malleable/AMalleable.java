@@ -17,8 +17,8 @@ public abstract class AMalleable extends AMSolid {
     MLiquid molten;
     //negative numbers indicate the value of this material, but it cannot be melted
 
-    public AMalleable(Material m, ArrayList<Machine> machines, MachineData data, ArrayList<MachineMatter> matters, ArrayList<Registry> registries, double meltingMultiplier, MLiquid molten) {
-        super(m, machines, data, matters, registries);
+    public AMalleable(Material m, String type, ArrayList<Machine> machines, MachineData data, ArrayList<MachineMatter> matters, ArrayList<Registry> registries, double meltingMultiplier, MLiquid molten) {
+        super(m, type, machines, data, matters, registries);
         this.meltingMultiplier = meltingMultiplier;
         this.molten = molten;
     }
@@ -26,8 +26,8 @@ public abstract class AMalleable extends AMSolid {
     protected String getMolten() {
         return this.molten.getBracket();
     }
-    protected String getMoltens(int amount) {
-        return this.molten.getBracket()+" * " + amount;
+    protected String getMolten(int amount) {
+        return this.molten.getBracket()+"*" + amount;
     }
 
     @Override
@@ -44,21 +44,27 @@ public abstract class AMalleable extends AMSolid {
 
     @Override
     public String buildRecipe() {
-        StringBuilder sb = new StringBuilder();
-        //printNames();
-        MeltingRecipe r = new MeltingRecipe(this.machines, this.mData, this.matters, this.registries);
-        r.createRecipe(this.NAME+"Malleable", 60, 1, 0.5, 0, this.getDataLiquid());
-        String[] iIns = {getPart("dust")};
-        String[] lIns = {};
-        String[] iOuts = {};
-        String[] lOuts = {getMoltens((int)(144 * this.meltingMultiplier))};
-        r.setInputs(iIns, lIns);
-        r.setOutputs(iOuts, lOuts);
-        r.setAdditionalRequirements(100, 100, getMatterIn("-red*100"), getMatterOut("+orange*200"));
-        sb.append(r.buildRecipe());
+        return  melting("dust", 144) + //ingot
+                melting("dustSmall", 36) + //morsel (1/4)
+                melting("dustTiny", 16) + //nugget (1/9)
+                melting("fineDust", 108) + //3/4
+                melting("fineDustSmall", 27) + //1/4
+                melting("fineDustTiny", 12) + //1/9
+                melting("powder", 32) + //2 nuggets
+                melting("powderSmall", 8) + //1/4
+                melting("powderTiny", 4) + //1/8
+                buildPartRecipes();
+    }
 
-        sb.append(buildPartRecipes());
-        return sb.toString();
+    private String melting(String part, int moltenOutAmount) {
+        if (isPart(part)) {
+            MeltingRecipe r = new MeltingRecipe(this.machines, this.mData, this.matters, this.registries);
+            r.createRecipe(this.NAME + part + "Malleable", 60, 1, 0.5, 0, this.getDataLiquid());
+            r.addIO(getPart(part), getMolten((int)(moltenOutAmount*this.meltingMultiplier)));
+            r.setMachineResources(100, 100, getMatterIn("-red*100"), getMatterOut("+orange*200"));
+            return r.buildRecipe();
+        }
+        return "";
     }
 
     @Override

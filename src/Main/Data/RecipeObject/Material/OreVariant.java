@@ -19,7 +19,7 @@ public class OreVariant extends AMaterialData {
     PartGroup oreParts;
 
     public OreVariant(Material m, ArrayList<Machine> machines, MachineData data, ArrayList<MachineMatter> matters, ArrayList<Registry> registries, String block, OreType[] oreTypes, PartGroup oreParts) {
-        super(m, machines, data, matters, registries); //the material name
+        super(m, "OreVariant", machines, data, matters, registries); //the material name
         this.block = block;
         this.oreTypes = oreTypes;
         this.oreParts = oreParts;

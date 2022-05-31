@@ -11,4 +11,8 @@ public class MeltingRecipe extends AMaterialRecipe {
     public MeltingRecipe(ArrayList<Machine> machines, MachineData data, ArrayList<MachineMatter> matters, ArrayList<Registry> registries) {
         super("melting", "basic", machines, data, matters, registries);
     }
+
+    public void addIO(String meltingItem, String moltenLiquid) {
+        updateIO(r(meltingItem), r(), r(), r(moltenLiquid));
+    }
 }

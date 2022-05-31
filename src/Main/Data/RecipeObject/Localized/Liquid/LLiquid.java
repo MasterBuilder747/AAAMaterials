@@ -11,7 +11,7 @@ import java.util.ArrayList;
 public class LLiquid extends ALiquid {
     public LLiquid(boolean isMaterial, ArrayList<Machine> machines, MachineData data, ArrayList<MachineMatter> matters, ArrayList<Registry> registries,
                    String name, String localName, String color, int density, int luminosity, int temperature, int viscosity, boolean vaporize) {
-        super(machines, data, matters, registries, isMaterial, name, localName, color, density, false, luminosity, temperature, viscosity, vaporize);
+        super("LLiquid", machines, data, matters, registries, isMaterial, name, localName, color, density, false, luminosity, temperature, viscosity, vaporize);
     }
 
     @Override

@@ -108,7 +108,7 @@ public class GMachineRecipe extends AGenerator<CustomMachineRecipe> {
         }
         matterOut = matterOut + " * " + outAmount;
 
-        r.setAdditionalRequirements(chemAmount, dataAmount, matterIn, matterOut);
+        r.setMachineResources(chemAmount, dataAmount, matterIn, matterOut);
         this.objects.add(r);
     }
 

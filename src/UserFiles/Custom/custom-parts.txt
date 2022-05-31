@@ -32,7 +32,7 @@ dense_plate, Dense-%s-Plate, plateDense, true, false, 9
 casing, %s-Casing, casing, true, false, 0.75
 beam, %s-Beam, beam, true, false, 3
 gear, %s-Gear, gear, true, false, 1.25
-rod, %s-Rod, rod, true, false, 0.444444444444444
+rod, %s-Rod, rod, true, false, 0.5
 long_rod, Long-%s-Rod, rodLong, true, false, 1
 bolt, %s-Bolt, bolt, true, false, 0.222222222222222
 ring, %s-Ring, ring, true, false, 0.25
@@ -41,10 +41,12 @@ large_spring, Large-%s-Spring, springLarge, true, false, 1.111111111111111
 round, %s-Round, round, true, false, 0.111111111111111
 /
 /custom parts
+axle, %s-Axle, axle, false, false, 0.666666666666666
 boule, %s-Boule, boule, false, false, 0
 chain, %s-Chain, chain, false, false, 1.5
 chunk, %s-Chunk, chunk, false, false, 0
 coil, %s-Coil, coil, false, true, 0.75
+cone, %s-Cone, cone, false, true, 0.75
 concentrated_ore, Concentrated-%s-Ore, oreConcentrated, false, false, 0
 curved_plate, Curved-%s-Plate, plateCurved, false, false, 1
 dense_fibers, Dense-%s-Fibers, fibersDense, false, false, 0
@@ -55,13 +57,15 @@ fiber, %s-Fiber, fiber, false, false, 0
 fibers, %s-Fibers, fibers, false, false, 0
 fine_dust, Fine-%s-Dust, dustFine, false, false, 1
 fine_wire, Fine-%s-Wire, wireFine, false, true, 0.222222222222222
-foil, %s-Foil, foil, false, false, 0.25
+foil, %s-Foil, foil, false, false, 0.333333333333333
 gearbox, %s-Gearbox, gearbox, false, false, 12.277777777777778
 /gearbox:[2 gears, 4 small gears, 4 screwed plates, 2 plates, 2 axles]
 gem, %s, gem, false, false, 1
 hot_ingot, Hot-%s-Ingot, ingotHot, false, true, -1
+hook, %s-Hook, hook, false, true, 4
 infused_wafer, Infused-%s-Wafer, waferInfused, false, false, 0
 infused_boule, Infused-%s-Boule, bouleInfused, false, false, 0
+large_axle, Large-%s-Axle, axleLarge, false, false, 2
 large_plate, Large-%s-Plate, plateLarge, false, false, 4
 large_scrap, Large-%s-Scrap, scrapLarge, false, false, 0
 lens, %s-Lens, lens, false, true, 1
@@ -82,12 +86,14 @@ screwed_plate, Screwed-%s-Plate, plateScrewed, false, false, 3.777777777777778
 small_bolt, Small-%s-Bolt, boltSmall, false, false, 0.111111111111111
 small_casing, Small-%s-Casing, casingSmall, false, false, 0.444444444444444
 small_centrifuged_ore, Small-Centrifuged-%s-Ore, oreCentrifugedSmall, false, false, -0.25
+small_curved_plate, Small-Curved-%s-Plate, plateCurvedSmall, false, false, -0.25
 small_crushed_ore, Small-Crushed-%s-Ore, oreCrushedSmall, false, true, -0.25
 small_fine_dust, Small-Fine-%s-Dust, dustFineSmall, false, false, -0.25
 small_gear, Small-%s-Gear, gearSmall, false, false, 0.5
 small_plate, Small-%s-Plate, plateSmall, false, false, 0.25
 small_powder, Small-%s-Powder, powderSmall, false, false, 0.25
 small_purified_ore, Small-Purified-%s-Ore, orePurifiedSmall, false, false, -0.25
+small_ring, Small-%s-Ring, ringSmall, false, false, 0.25
 small_rod, Small-%s-Rod, rodSmall, false, false, 0.222222222222222
 small_screwed_plate, Small-Screwed-%s-Plate, plateScrewedSmall, false, false, 1.6944444444444
 /small_screwed_plate:[1 small plate, 4 screws, 4 small bolts]
@@ -97,10 +103,12 @@ spring, %s-Spring, spring, false, false, 0.333333333333333
 stick, %s-Stick, stick, false, false, -0.5
 stone_plate, %s-Plate, plateStone, false, false, -1
 superior_gem, Superior-%s, gemSuperior, false, false, 4
+thick_rod, Thick-%s-Rod, rodThick, false, false, 1.5
 tiny_fine_dust, Tiny-Fine-%s-Dust, dustFineTiny, false, false, 0.111111111111111
 tiny_powder, Tiny-%s-Powder, powderTiny, false, false, 0.111111111111111
 tough_plate, Tough-%s-Plate, plateTough, false, false, 4
 turbine_blade, %s-Turbine-Blade, turbineBlade, false, false, 5.5
+u_ring, %s-URing, ringU, false, false, 2
 wafer, %s-Wafer, wafer, false, false, 0
 wire, %s-Wire, wire, false, true, 0.666666666666666
 wood_plate, %s-Plate, plateWood, false, false, -1

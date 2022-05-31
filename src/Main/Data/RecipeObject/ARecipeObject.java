@@ -5,6 +5,8 @@ import Main.Data.GameData.Registry;
 import Main.Data.MachineResource.Machine.Machine;
 import Main.Data.MachineResource.MachineData;
 import Main.Data.MachineResource.MachineMatter;
+import Main.Data.RecipeObject.MaterialRecipe.AMaterialRecipe;
+import Main.Data.RecipeObject.MaterialRecipe.Singular.*;
 
 import java.util.ArrayList;
 
@@ -15,9 +17,11 @@ public abstract class ARecipeObject extends AData {
     protected ArrayList<Registry> registries; //for custom items (yeah this will use a lot of RAM...)
     protected ArrayList<MachineMatter> matters; //machine resource matter
     protected MachineData mData; //the one machine data
+    String type; //unique type for recipe uniqueness and other identifiers
 
-    public ARecipeObject(String NAME, ArrayList<Machine> machines, MachineData mData, ArrayList<MachineMatter> matters, ArrayList<Registry> registries) {
+    public ARecipeObject(String NAME, String type, ArrayList<Machine> machines, MachineData mData, ArrayList<MachineMatter> matters, ArrayList<Registry> registries) {
         super(NAME);
+        this.type = type;
         this.machines = machines;
         this.datas = new ArrayList<>();
         this.liquids = new ArrayList<>();
@@ -33,6 +37,37 @@ public abstract class ARecipeObject extends AData {
             }
         }
         throw new IllegalArgumentException("Unknown machine " + s + " in the machine registry");
+    }
+
+    protected AMaterialRecipe addRecipe(String recipeType, String input, int amountIn, String output, int amountOut) {
+        AMaterialRecipe r;
+        if (isPart(input) && isPart(output)) {
+            r = constructRecipe(recipeType);
+            if (r == null) {
+                throw new RecipeObjectException("Unknown recipeType: " + recipeType);
+            }
+            r.createRecipe(this.NAME + output + this.type, 40, 1, 0.5, 0, this.getDataLiquid());
+            r.
+            r.setMachineResources(100, 100, getMatterIn("-red*100"), getMatterOut("+orange*200"));
+            return r;
+        }
+        return null;
+    }
+
+    private AMaterialRecipe constructRecipe(String recipeType) {
+        switch (recipeType) {
+            case "coil" -> {return new CoillerRecipe(this.machines, this.mData, this.matters, this.registries);}
+            case "bend" -> {return new HeatedBenderRecipe(this.machines, this.mData, this.matters, this.registries);}
+            case "cut" -> {return new LaserCutterRecipe(this.machines, this.mData, this.matters, this.registries);}
+            case "lathe" -> {return new LatheRecipe(this.machines, this.mData, this.matters, this.registries);}
+            case "mlathe" -> {return new MicroLatheRecipe(this.machines, this.mData, this.matters, this.registries);}
+            case "press" -> {return new PressRecipe(this.machines, this.mData, this.matters, this.registries);}
+            case "pulverize" -> {return new PulverizeRecipe(this.machines, this.mData, this.matters, this.registries);}
+            case "sharpen" -> {return new SharpenRecipe(this.machines, this.mData, this.matters, this.registries);}
+            case "smelt" -> {return new SmeltingRecipe(this.machines, this.mData, this.matters, this.registries);}
+            case "wire" -> {return new WiremillRecipe(this.machines, this.mData, this.matters, this.registries);}
+        }
+        return null;
     }
 
     public void addAll(String[] keys, Registry[] regs) {
@@ -101,7 +136,7 @@ public abstract class ARecipeObject extends AData {
         }
         throw new RecipeObjectException(key, "liquid", this.NAME);
     }
-    protected String getLiquids(String key, int amount) {
+    protected String getLiquid(String key, int amount) {
         return getLiquid(key) + "*" + amount;
     }
     protected String getDataLiquid() {
@@ -170,13 +205,21 @@ public abstract class ARecipeObject extends AData {
     protected String getPart(String key) {
         return this.getData(key).r.getBracket();
     }
-    protected String getParts(String key, int amount) {
+    protected String getPart(String key, int amount) {
         return this.getPart(key)+"*"+amount;
+    }
+    protected boolean isPart(String key) {
+        try {
+            this.getPart(key);
+        } catch (RecipeObjectException e) {
+            return false;
+        }
+        return true;
     }
     protected String getOredict(String ore) {
         return "ore:"+ore;
     }
-    protected String getOredicts(String ore, int amount) {
+    protected String getOredict(String ore, int amount) {
         return "ore:"+ore+"*"+amount;
     }
     protected String addChance(double chance) {

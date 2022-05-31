@@ -27,7 +27,7 @@ public class Gem extends AMSolid {
     */
 
     public Gem(Material m, ArrayList<Machine> machines, MachineData data, ArrayList<MachineMatter> matters, ArrayList<Registry> registries) {
-        super(m, machines, data, matters, registries);
+        super(m, "Gem", machines, data, matters, registries);
     }
 
     @Override

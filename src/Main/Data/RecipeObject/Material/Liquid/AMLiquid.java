@@ -14,8 +14,8 @@ public abstract class AMLiquid extends AMaterialData {
     //be aware that you cannot call any methods that are specific to children of ALiquid, only ALiquid itself
     ALiquid l;
 
-    public AMLiquid(Material m, ArrayList<Machine> machine, MachineData data, ArrayList<MachineMatter> matters, ArrayList<Registry> registries) {
-        super(m, machine, data, matters, registries);
+    public AMLiquid(Material m, String type, ArrayList<Machine> machine, MachineData data, ArrayList<MachineMatter> matters, ArrayList<Registry> registries) {
+        super(m, type, machine, data, matters, registries);
     }
 
     @Override

@@ -5,7 +5,6 @@ import Main.Data.MachineResource.Machine.Machine;
 import Main.Data.MachineResource.MachineData;
 import Main.Data.MachineResource.MachineMatter;
 import Main.Data.Material;
-import Main.Data.RecipeObject.MaterialRecipe.SmeltingRecipe;
 import Main.Util;
 
 import java.util.ArrayList;
@@ -48,16 +47,8 @@ public class MSolid extends AMaterialData {
     @Override
     public String buildRecipe() {
         StringBuilder sb = new StringBuilder();
-        SmeltingRecipe r = new SmeltingRecipe(this.machines, this.mData, this.matters, this.registries);
-        r.createRecipe(this.NAME+this.getClass().getSimpleName(), 20, 1, 0.5, 0, this.getDataLiquid());
-        String[] iIns = {};
-        String[] lIns = {};
-        String[] iOuts = {};
-        String[] lOuts = {};
-        r.setInputs(iIns, lIns);
-        r.setOutputs(iOuts, lOuts);
-        r.setAdditionalRequirements(100, 100, getMatterIn("-red*100"), getMatterOut("+orange*200"));
-        sb.append(r.buildRecipe());
+
+
         return sb.toString();
     }
 }

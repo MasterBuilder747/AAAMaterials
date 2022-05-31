@@ -23,7 +23,7 @@ public class LFoodPotion extends ALocalizedData {
     String type; //milk, meat, nut, cheese, oil, citrus, nonCitrus, vegetable, grain, seed, legume, yogurt, bread, pasta
 
     public LFoodPotion(String name, String localName, ArrayList<Machine> machines, MachineData data, ArrayList<MachineMatter> matters, ArrayList<Registry> registries, int heal, double saturation, boolean alwaysEdible, String[] potions, int duration, int amplifier) {
-        super(name, localName, machines, data, matters, registries);
+        super(name, localName, "LFoodPotion", machines, data, matters, registries);
         this.heal = heal;
         this.saturation = saturation;
         this.alwaysEdible = alwaysEdible;

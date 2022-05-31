@@ -12,7 +12,7 @@ public class Wood extends AMSolid {
     boolean isVanilla; //for quark integration
 
     public Wood(Material m, boolean isVanilla, ArrayList<Machine> machines, MachineData data, ArrayList<MachineMatter> matters, ArrayList<Registry> registries) {
-        super(m, machines, data, matters, registries);
+        super(m, "Wood", machines, data, matters, registries);
         this.isVanilla = isVanilla;
     }
 

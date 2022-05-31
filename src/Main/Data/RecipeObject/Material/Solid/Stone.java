@@ -13,7 +13,7 @@ public class Stone extends AMSolid {
     boolean noSlab; //only applied to Conglomerate...?
 
     public Stone(Material m, boolean isSedimentary, boolean noSlab, ArrayList<Machine> machines, MachineData data, ArrayList<MachineMatter> matters, ArrayList<Registry> registries) {
-        super(m, machines, data, matters, registries);
+        super(m, "Stone", machines, data, matters, registries);
         this.isSedimentary = isSedimentary;
         this.noSlab = noSlab;
     }

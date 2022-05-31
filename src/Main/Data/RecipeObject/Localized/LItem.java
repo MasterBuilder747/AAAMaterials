@@ -10,7 +10,7 @@ import java.util.ArrayList;
 public class LItem extends ALocalizedData {
 
     public LItem(String name, String localName, ArrayList<Machine> machines, MachineData data, ArrayList<MachineMatter> matters, ArrayList<Registry> registries) {
-        super(name, localName, machines, data, matters, registries);
+        super(name, localName, "LItem", machines, data, matters, registries);
     }
 
     @Override

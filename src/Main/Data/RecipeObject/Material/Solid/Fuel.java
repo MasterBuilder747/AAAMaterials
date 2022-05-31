@@ -12,7 +12,7 @@ public class Fuel extends AMSolid {
     //furnace.setFuel(<minecraft:coal:1>, 800);
 
     public Fuel(Material m, ArrayList<Machine> machines, MachineData data, ArrayList<MachineMatter> matters, ArrayList<Registry> registries) {
-        super(m, machines, data, matters, registries);
+        super(m, "Fuel", machines, data, matters, registries);
     }
 
     @Override

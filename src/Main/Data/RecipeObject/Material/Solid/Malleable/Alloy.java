@@ -13,7 +13,7 @@ import java.util.ArrayList;
 public class Alloy extends AMalleable {
 
     public Alloy(Material m, MLiquid liquid, ArrayList<Machine> machines, MachineData data, ArrayList<MachineMatter> matters, ArrayList<Registry> registries) {
-        super(m, machines, data, matters, registries, 1, liquid);
+        super(m, "Alloy", machines, data, matters, registries, 1, liquid);
     }
 
     @Override

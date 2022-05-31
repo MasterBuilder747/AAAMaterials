@@ -13,7 +13,7 @@ public class Chemical extends AMaterialData {
     //this is loaded after all parts have been added so that the tooltip can
 
     public Chemical(Material m, ArrayList<Machine> machines, MachineData data, ArrayList<MachineMatter> matters, ArrayList<Registry> registries) {
-        super(m, machines, data, matters, registries);
+        super(m, "Chemical", machines, data, matters, registries);
     }
 
     @Override

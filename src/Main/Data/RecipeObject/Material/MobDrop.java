@@ -15,7 +15,7 @@ public class MobDrop extends AMaterialData {
     //other conditions?
 
     public MobDrop(Material m, ArrayList<Machine> machines, MachineData data, ArrayList<MachineMatter> matters, ArrayList<Registry> registries) {
-        super(m, machines, data, matters, registries);
+        super(m, "MobDrop", machines, data, matters, registries);
     }
 
     @Override

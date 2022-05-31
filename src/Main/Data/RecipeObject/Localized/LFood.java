@@ -18,7 +18,7 @@ public class LFood extends ALocalizedData {
     String type; //milk, meat, nut, cheese, oil, citrus, nonCitrus, vegetable, grain, seed, legume, yogurt, bread, pasta
 
     public LFood(String name, String localName, ArrayList<Machine> machines, MachineData data, ArrayList<MachineMatter> matters, ArrayList<Registry> registries, int heal, double saturation, boolean alwaysEdible) {
-        super(name, localName, machines, data, matters, registries);
+        super(name, localName, "LFood", machines, data, matters, registries);
         this.heal = heal;
         this.saturation = saturation;
         this.alwaysEdible = alwaysEdible;

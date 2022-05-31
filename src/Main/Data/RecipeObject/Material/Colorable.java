@@ -10,7 +10,7 @@ import java.util.ArrayList;
 
 public class Colorable extends AMaterialData {
     public Colorable(Material m, ArrayList<Machine> machines, MachineData data, ArrayList<MachineMatter> matters, ArrayList<Registry> registries) {
-        super(m, machines, data, matters, registries);
+        super(m, "Colorable", machines, data, matters, registries);
     }
 
     @Override

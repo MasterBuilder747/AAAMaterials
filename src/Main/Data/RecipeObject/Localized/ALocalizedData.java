@@ -14,8 +14,8 @@ public abstract class ALocalizedData extends ARecipeObject {
 
     public abstract String localize() throws IllegalArgumentException;
 
-    public ALocalizedData(String name, String localName, ArrayList<Machine> machines, MachineData data, ArrayList<MachineMatter> matters, ArrayList<Registry> registries) {
-        super(name, machines, data, matters, registries);
+    public ALocalizedData(String name, String localName, String type, ArrayList<Machine> machines, MachineData data, ArrayList<MachineMatter> matters, ArrayList<Registry> registries) {
+        super(name, type, machines, data, matters, registries);
         this.localName = localName;
     }
 
