@@ -5,8 +5,8 @@ import Main.Data.GameData.Registry;
 import Main.Data.MachineResource.Machine.Machine;
 import Main.Data.MachineResource.MachineData;
 import Main.Data.MachineResource.MachineMatter;
-import Main.Data.RecipeObject.MaterialRecipe.AMaterialRecipe;
-import Main.Data.RecipeObject.MaterialRecipe.Singular.*;
+import Main.Data.RecipeObject.MaterialRecipe.*;
+import Main.Util;
 
 import java.util.ArrayList;
 
@@ -39,19 +39,102 @@ public abstract class ARecipeObject extends AData {
         throw new IllegalArgumentException("Unknown machine " + s + " in the machine registry");
     }
 
-    protected AMaterialRecipe addRecipe(String recipeType, String input, int amountIn, String output, int amountOut) {
-        AMaterialRecipe r;
-        if (isPart(input) && isPart(output)) {
-            r = constructRecipe(recipeType);
-            if (r == null) {
-                throw new RecipeObjectException("Unknown recipeType: " + recipeType);
-            }
-            r.createRecipe(this.NAME + output + this.type, 40, 1, 0.5, 0, this.getDataLiquid());
-            r.
-            r.setMachineResources(100, 100, getMatterIn("-red*100"), getMatterOut("+orange*200"));
-            return r;
+    protected String addRecipe(String recipeType, String input, String lInput, String output, String lOutput,
+                               int time, int tier, double powerMultiplier, int chemAmt, int dataAmt, String matterIn, String matterOut) {
+        //Recipe header
+        AMaterialRecipe re;
+        re = constructRecipe(recipeType);
+        if (re == null) {
+            throw new RecipeObjectException("Unknown recipeType: " + recipeType);
         }
-        return null;
+        re.createRecipe(this.NAME + output + this.type, time, tier, powerMultiplier, 0, this.getDataLiquid());
+
+        //IO
+        //@ overrides syntax and uses what is typed directly in the recipe instead (for molten, etc)
+        re.updateIO(parseOverrides(input), parseLOverrides(lInput), parseOverrides(output), parseLOverrides(lOutput));
+        re.setMachineResources(chemAmt, dataAmt, getMatterIn(matterIn), getMatterOut(matterOut));
+        return re.buildRecipe();
+    }
+
+    private String[] parseOverrides(String s) {
+        String[] out;
+        if (s.startsWith("@")) {
+            out = new String[1];
+            out[0] = s.substring(1);
+        } else {
+            out = parseCustomRecipeIO(Util.split(s, ","));
+        }
+        return out;
+    }
+    private String[] parseLOverrides(String s) {
+        String[] out;
+        if (s.startsWith("@")) {
+            out = new String[1];
+            out[0] = s.substring(1);
+        } else {
+            out = parseCustomLiquidRecipeIO(Util.split(s, ","));
+        }
+        return out;
+    }
+
+    private String[] parseCustomRecipeIO(String[] ss) {
+        //chance:partName*amount
+        String[] out = new String[ss.length];
+        for (int i = 0; i < ss.length; i++) {
+            String s = ss[i];
+            double c = -1;
+            int a = -1;
+            if (s.contains(":")) {
+                c = Double.parseDouble(s.substring(0, s.indexOf(":")));
+            }
+            if (s.contains("*")) {
+                a = Integer.parseInt(s.substring(s.indexOf("*")+1));
+            }
+            if (c != -1 && a != -1) { //chance and amount
+                s = addChance(c)+getPart(s.substring(s.indexOf(":")+1, s.indexOf("*")), a);
+            } else if (c != -1) { //chance only
+                s = addChance(c)+getPart(s.substring(s.indexOf(":")+1));
+            } else if (a != -1) { //amount only
+                s = getPart(s.substring(0, s.indexOf("*")), a);
+            } else {
+                s = getPart(s);
+            }
+            out[i] = s;
+        }
+        return out;
+    }
+    private String[] parseCustomLiquidRecipeIO(String[] ss) {
+        //chance:liquidKey*amount
+        String[] out = new String[ss.length];
+        for (int i = 0; i < ss.length; i++) {
+            String s = ss[i];
+            double c = -1;
+            int a = -1;
+            if (s.contains(":")) {
+                c = Double.parseDouble(s.substring(0, s.indexOf(":")));
+            }
+            if (s.contains("*")) {
+                a = Integer.parseInt(s.substring(s.indexOf("*")+1));
+            }
+            if (c != -1 && a != -1) { //chance and amount
+                s = addChance(c)+getLiquid(s.substring(s.indexOf(":")+1, s.indexOf("*")), a);
+            } else if (c != -1) { //chance only
+                s = addChance(c)+getLiquid(s.substring(s.indexOf(":")+1));
+            } else if (a != -1) { //amount only
+                s = getLiquid(s.substring(0, s.indexOf("*")), a);
+            } else {
+                s = getLiquid(s);
+            }
+            out[i] = s;
+        }
+        return out;
+    }
+
+    protected boolean isAllParts(String[] parts) {
+        for(String p : parts) {
+            if (!isPart(p)) return false;
+        }
+        return true;
     }
 
     private AMaterialRecipe constructRecipe(String recipeType) {

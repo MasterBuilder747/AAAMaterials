@@ -27,7 +27,7 @@ public abstract class AMalleable extends AMSolid {
         return this.molten.getBracket();
     }
     protected String getMolten(int amount) {
-        return this.molten.getBracket()+"*" + amount;
+        return getMolten()+"*" + amount;
     }
 
     @Override
@@ -44,7 +44,8 @@ public abstract class AMalleable extends AMSolid {
 
     @Override
     public String buildRecipe() {
-        return  melting("dust", 144) + //ingot
+        return  /*
+                melting("dust", 144) + //ingot
                 melting("dustSmall", 36) + //morsel (1/4)
                 melting("dustTiny", 16) + //nugget (1/9)
                 melting("fineDust", 108) + //3/4
@@ -53,18 +54,8 @@ public abstract class AMalleable extends AMSolid {
                 melting("powder", 32) + //2 nuggets
                 melting("powderSmall", 8) + //1/4
                 melting("powderTiny", 4) + //1/8
+                */
                 buildPartRecipes();
-    }
-
-    private String melting(String part, int moltenOutAmount) {
-        if (isPart(part)) {
-            MeltingRecipe r = new MeltingRecipe(this.machines, this.mData, this.matters, this.registries);
-            r.createRecipe(this.NAME + part + "Malleable", 60, 1, 0.5, 0, this.getDataLiquid());
-            r.addIO(getPart(part), getMolten((int)(moltenOutAmount*this.meltingMultiplier)));
-            r.setMachineResources(100, 100, getMatterIn("-red*100"), getMatterOut("+orange*200"));
-            return r.buildRecipe();
-        }
-        return "";
     }
 
     @Override

@@ -3,4 +3,4 @@
 //4-7: itemIn1; itemIn2; ..., liquidIn[], itemOut[], liquidOut[],
 //8-12: int chemicalAmount, int dataIn, [-/+]matterIn * amount, [-/+]matterOut * amount, int priority
 //chance:0.125$ore:ingotIron*10
-basic, 1, 20, 0.5, chance:0.5$ore:ingotIron * 10; Yellow Wool, water, Gold Ingot, lava, 100, 1000, -red*100, +orange*10, 0
+/basic, 1, 20, 0.5, chance:0.5$ore:ingotIron * 10; Yellow Wool, water, Gold Ingot, lava, 100, 1000, -red*100, +orange*10, 0

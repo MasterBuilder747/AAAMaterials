@@ -13,7 +13,7 @@ public class MSolid extends AMaterialData {
     String altName;
 
     public MSolid(Material m, ArrayList<Machine> machines, MachineData data, ArrayList<MachineMatter> matters, ArrayList<Registry> registries) {
-        super(m, machines, data, matters, registries);
+        super(m, "MSolid", machines, data, matters, registries);
     }
     public void addAltName(String altName) {
         this.altName = altName;

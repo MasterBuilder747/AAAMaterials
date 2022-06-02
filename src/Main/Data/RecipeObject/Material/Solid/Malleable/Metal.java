@@ -7,7 +7,6 @@ import Main.Data.MachineResource.MachineMatter;
 import Main.Data.Material;
 import Main.Data.RecipeObject.Material.Liquid.MLiquid;
 import Main.Data.RecipeObject.MaterialRecipe.*;
-import Main.Data.RecipeObject.MaterialRecipe.Singular.*;
 
 import java.util.ArrayList;
 
@@ -16,11 +15,6 @@ public class Metal extends AMalleable {
     //this is a malleable metal, which means that it can be molded into different metal parts
     public Metal(Material m, MLiquid liquid, ArrayList<Machine> machines, MachineData data, ArrayList<MachineMatter> matters, ArrayList<Registry> registries) {
         super(m, "Metal", machines, data, matters, registries, 1, liquid);
-    }
-
-    @Override
-    String buildPartMaterials() {
-        return this.genPartGroups();
     }
 
     @Override
@@ -36,7 +30,10 @@ public class Metal extends AMalleable {
         //6. fusion furnace to plasma > ingot through plasma cooling chamber/etc
         return
                 //create a chiselable item that can indicate the recipe for the same item inputs
-                pulverize("ingot", "dust") +
+                //String recipeType, String input, String lInput, String output, String lOutput,
+                //int time, int tier, double powerMultiplier, int chemAmt, int dataAmt, String matterIn, String matterOut
+                addRecipe("pulverize", "ingot", "@"+getMolten(100), "dust", "", 100, 1, 0.5, 100, 100, "+red*100", "-orange*100")
+                /*
                 pulverize("morsel", "dustSmall") +
                 pulverize("nugget", "dustTiny") +
                 press(1, "plate") +
@@ -79,103 +76,14 @@ public class Metal extends AMalleable {
                 wiremill("rod", "wire") +
                 wiremill("rodThick", "wireDense") +
                 wiremill("rodSmall", "wireFine")
+                */
                 ;
     }
 
-    private String pulverize(String input, String output) {
-        if (isPart(output)) {
-            PulverizeRecipe r = new PulverizeRecipe(this.machines, this.mData, this.matters, this.registries);
-            r.createRecipe(this.NAME + output + "Metal", 40, 1, 0.5, 0, this.getDataLiquid());
-            r.addIO(getPart(input), getPart(output));
-            r.setMachineResources(100, 100, getMatterIn("-red*100"), getMatterOut("+orange*200"));
-            return r.buildRecipe();
-        }
-        return "";
+    @Override
+    String buildPartMaterials() {
+        return this.genPartGroups();
     }
-    private String press(int amountIn, String output) {
-        PressRecipe r = new PressRecipe(this.machines, this.mData, this.matters, this.registries);
-        r.createRecipe(this.NAME + output + "Metal", 100, 1, 1.0, 0, this.getDataLiquid());
-        r.addIO(getPart("ingot", amountIn), getPart(output));
-        r.setMachineResources(100, 100, getMatterIn("-red*100"), getMatterOut("+orange*200"));
-        return r.buildRecipe();
-    }
-    private String press(String input, int amountIn, String output) {
-        PressRecipe r = new PressRecipe(this.machines, this.mData, this.matters, this.registries);
-        r.createRecipe(this.NAME + output + "Metal", 100, 1, 1.0, 0, this.getDataLiquid());
-        r.addIO(getPart(input, amountIn), getPart(output));
-        r.setMachineResources(100, 100, getMatterIn("-red*100"), getMatterOut("+orange*200"));
-        return r.buildRecipe();
-    }
-    private String lathe(String input, String output, int amountOut) {
-        LatheRecipe r = new LatheRecipe(this.machines, this.mData, this.matters, this.registries);
-        r.createRecipe(this.NAME + output + "Metal", 40, 1, 0.5, 0, this.getDataLiquid());
-        r.addIO(getPart(input), getPart(output, amountOut));
-        r.setMachineResources(100, 100, getMatterIn("-red*100"), getMatterOut("+orange*200"));
-        return r.buildRecipe();
-    }
-    private String laserCutter(String input, String output) {
-        LaserCutterRecipe r = new LaserCutterRecipe(this.machines, this.mData, this.matters, this.registries);
-        r.createRecipe(this.NAME + output + "Metal", 40, 1, 0.5, 0, this.getDataLiquid());
-        r.addIO(getPart(input), getPart(output));
-        r.setMachineResources(100, 100, getMatterIn("-red*100"), getMatterOut("+orange*200"));
-        return r.buildRecipe();
-    }
-    private String welder(String input, int amountIn, String output) {
-        //NOTE: this uses a soldering liquid (tin, solderingAlloy, antimony, etc)
-        WelderRecipe r = new WelderRecipe(this.machines, this.mData, this.matters, this.registries);
-        r.createRecipe(this.NAME + output + "TinMetal", 40, 1, 0.5, 0, this.getDataLiquid());
-        r.addIO(getPart(input, amountIn), getPart(output), getLiquid("cotm_tin_molten", 144));
-        r.setMachineResources(100, 100, getMatterIn("-red*100"), getMatterOut("+orange*200"));
-        return r.buildRecipe();
-    }
-    private String microLathe(String input, int amountIn, String output) {
-        MicroLatheRecipe r = new MicroLatheRecipe(this.machines, this.mData, this.matters, this.registries);
-        r.createRecipe(this.NAME + output + "Metal", 20, 1, 0.5, 0, this.getDataLiquid());
-        r.addIO(getPart(input, amountIn), getPart(output));
-        r.setMachineResources(100, 100, getMatterIn("-red*100"), getMatterOut("+orange*200"));
-        return r.buildRecipe();
-    }
-    private String coiller(String input, String output) {
-        if (isPart(input) && isPart(output)) {
-            CoillerRecipe r = new CoillerRecipe(this.machines, this.mData, this.matters, this.registries);
-            r.createRecipe(this.NAME + output + "Metal", 200, 1, 0.5, 0, this.getDataLiquid());
-            r.addIO(getPart(input), getPart(output));
-            r.setMachineResources(100, 100, getMatterIn("-red*100"), getMatterOut("+orange*200"));
-            return r.buildRecipe();
-        }
-        return "";
-    }
-    private String heatedBender(String input, String output) {
-        if (isPart(input) && isPart(output)) {
-            HeatedBenderRecipe r = new HeatedBenderRecipe(this.machines, this.mData, this.matters, this.registries);
-            r.createRecipe(this.NAME + output + "Metal", 200, 1, 0.5, 0, this.getDataLiquid());
-            r.addIO(getPart(input), getPart(output));
-            r.setMachineResources(100, 100, getMatterIn("-red*100"), getMatterOut("+orange*200"));
-            return r.buildRecipe();
-        }
-        return "";
-    }
-    private String sharpen(String input, String output) {
-        if (isPart(input) && isPart(output)) {
-            SharpenRecipe r = new SharpenRecipe(this.machines, this.mData, this.matters, this.registries);
-            r.createRecipe(this.NAME + output + "Metal", 80, 1, 0.5, 0, this.getDataLiquid());
-            r.addIO(getPart(input), getPart(output));
-            r.setMachineResources(100, 100, getMatterIn("-red*100"), getMatterOut("+orange*200"));
-            return r.buildRecipe();
-        }
-        return "";
-    }
-    private String wiremill(String input, String output) {
-        if (isPart(input) && isPart(output)) {
-            WiremillRecipe r = new WiremillRecipe(this.machines, this.mData, this.matters, this.registries);
-            r.createRecipe(this.NAME + output + "Metal", 120, 1, 0.5, 0, this.getDataLiquid());
-            r.addIO(getPart(input), getPart(output));
-            r.setMachineResources(100, 100, getMatterIn("-red*100"), getMatterOut("+orange*200"));
-            return r.buildRecipe();
-        }
-        return "";
-    }
-
 
     @Override
     String printParts() {

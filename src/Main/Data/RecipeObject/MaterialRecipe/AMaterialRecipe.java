@@ -24,23 +24,12 @@ public abstract class AMaterialRecipe extends ARecipeObject {
     public void createRecipe(String name, int time, int tier, double powerMultiplier, int priority, String data) {
         this.recipe = new CustomMachineRecipe(name+Util.toUpper(this.NAME), getMachine(this.machineName), time, tier, powerMultiplier, priority, data);
     }
-    protected void updateIO(String[] itemInputs, String[] liquidInputs, String[] itemOutputs, String[] liquidOutputs) {
+    public void updateIO(String[] itemInputs, String[] liquidInputs, String[] itemOutputs, String[] liquidOutputs) {
         this.recipe.setInputs(itemInputs, liquidInputs);
         this.recipe.setOutputs(itemOutputs, liquidOutputs);
     }
     public void setMachineResources(int chemicalAmount, int dataAmount, String matterIn, String matterOut) {
         this.recipe.setMachineResources(chemicalAmount, dataAmount, matterIn, matterOut);
-    }
-
-    public abstract void addIO(String input, String output);
-    public abstract void addIO(String input, int amountIn, String output, int amountOut);
-
-    //utility
-    protected String[] r() {
-        return new String[]{};
-    }
-    protected String[] r(String s) {
-        return new String[]{s};
     }
 
     @Override

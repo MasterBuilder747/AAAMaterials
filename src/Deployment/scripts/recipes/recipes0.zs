@@ -8,3926 +8,3468 @@
 # -`materials
 # -solids
 # -metals
-var lithiumdustMalleableMelting_basic = mods.modularmachinery.RecipeBuilder.newBuilder("lithiumdustMalleableMelting_basic", "basic", 60, 0);
-lithiumdustMalleableMelting_basic.addItemInput(<contenttweaker:material_part:1105>);
-lithiumdustMalleableMelting_basic.addFluidOutput(<liquid:cotm_lithium_molten> * 144);
-lithiumdustMalleableMelting_basic.addEnergyPerTickInput(4);
-lithiumdustMalleableMelting_basic.build();
-
-var lithiumdustMalleableMelting_advanced = mods.modularmachinery.RecipeBuilder.newBuilder("lithiumdustMalleableMelting_advanced", "basic", 60, 0);
-lithiumdustMalleableMelting_advanced.addItemInput(<contenttweaker:material_part:1105>);
-lithiumdustMalleableMelting_advanced.addFluidOutput(<liquid:cotm_lithium_molten> * 144);
-lithiumdustMalleableMelting_advanced.addFluidInput(<liquid:hydrogen> * 100);
-lithiumdustMalleableMelting_advanced.addEnergyPerTickInput(1024);
-lithiumdustMalleableMelting_advanced.build();
-
-var lithiumdustMalleableMelting_industrial = mods.modularmachinery.RecipeBuilder.newBuilder("lithiumdustMalleableMelting_industrial", "basic", 60, 0);
-lithiumdustMalleableMelting_industrial.addItemInput(<contenttweaker:material_part:1105>);
-lithiumdustMalleableMelting_industrial.addFluidOutput(<liquid:cotm_lithium_molten> * 144);
-lithiumdustMalleableMelting_industrial.addFluidInput(<liquid:hydrogen> * 100);
-lithiumdustMalleableMelting_industrial.addFluidInput(<liquid:cotc_data> * 100);
-lithiumdustMalleableMelting_industrial.addEnergyPerTickInput(262144);
-lithiumdustMalleableMelting_industrial.build();
-
-var lithiumdustMalleableMelting_ultimate = mods.modularmachinery.RecipeBuilder.newBuilder("lithiumdustMalleableMelting_ultimate", "basic", 60, 0);
-lithiumdustMalleableMelting_ultimate.addItemInput(<contenttweaker:material_part:1105>);
-lithiumdustMalleableMelting_ultimate.addFluidOutput(<liquid:cotm_lithium_molten> * 144);
-lithiumdustMalleableMelting_ultimate.addFluidInput(<liquid:hydrogen> * 100);
-lithiumdustMalleableMelting_ultimate.addFluidInput(<liquid:cotc_data> * 100);
-lithiumdustMalleableMelting_ultimate.addFluidInput(<liquid:cotc_neg_red_matter> * 100);
-lithiumdustMalleableMelting_ultimate.addFluidOutput(<liquid:cotc_pos_orange_matter> * 200);
-lithiumdustMalleableMelting_ultimate.addEnergyPerTickInput(67108864);
-lithiumdustMalleableMelting_ultimate.build();
-
-var lithiumdustSmallMalleableMelting_basic = mods.modularmachinery.RecipeBuilder.newBuilder("lithiumdustSmallMalleableMelting_basic", "basic", 60, 0);
-lithiumdustSmallMalleableMelting_basic.addItemInput(<contenttweaker:material_part:1106>);
-lithiumdustSmallMalleableMelting_basic.addFluidOutput(<liquid:cotm_lithium_molten> * 36);
-lithiumdustSmallMalleableMelting_basic.addEnergyPerTickInput(4);
-lithiumdustSmallMalleableMelting_basic.build();
-
-var lithiumdustSmallMalleableMelting_advanced = mods.modularmachinery.RecipeBuilder.newBuilder("lithiumdustSmallMalleableMelting_advanced", "basic", 60, 0);
-lithiumdustSmallMalleableMelting_advanced.addItemInput(<contenttweaker:material_part:1106>);
-lithiumdustSmallMalleableMelting_advanced.addFluidOutput(<liquid:cotm_lithium_molten> * 36);
-lithiumdustSmallMalleableMelting_advanced.addFluidInput(<liquid:hydrogen> * 100);
-lithiumdustSmallMalleableMelting_advanced.addEnergyPerTickInput(1024);
-lithiumdustSmallMalleableMelting_advanced.build();
-
-var lithiumdustSmallMalleableMelting_industrial = mods.modularmachinery.RecipeBuilder.newBuilder("lithiumdustSmallMalleableMelting_industrial", "basic", 60, 0);
-lithiumdustSmallMalleableMelting_industrial.addItemInput(<contenttweaker:material_part:1106>);
-lithiumdustSmallMalleableMelting_industrial.addFluidOutput(<liquid:cotm_lithium_molten> * 36);
-lithiumdustSmallMalleableMelting_industrial.addFluidInput(<liquid:hydrogen> * 100);
-lithiumdustSmallMalleableMelting_industrial.addFluidInput(<liquid:cotc_data> * 100);
-lithiumdustSmallMalleableMelting_industrial.addEnergyPerTickInput(262144);
-lithiumdustSmallMalleableMelting_industrial.build();
-
-var lithiumdustSmallMalleableMelting_ultimate = mods.modularmachinery.RecipeBuilder.newBuilder("lithiumdustSmallMalleableMelting_ultimate", "basic", 60, 0);
-lithiumdustSmallMalleableMelting_ultimate.addItemInput(<contenttweaker:material_part:1106>);
-lithiumdustSmallMalleableMelting_ultimate.addFluidOutput(<liquid:cotm_lithium_molten> * 36);
-lithiumdustSmallMalleableMelting_ultimate.addFluidInput(<liquid:hydrogen> * 100);
-lithiumdustSmallMalleableMelting_ultimate.addFluidInput(<liquid:cotc_data> * 100);
-lithiumdustSmallMalleableMelting_ultimate.addFluidInput(<liquid:cotc_neg_red_matter> * 100);
-lithiumdustSmallMalleableMelting_ultimate.addFluidOutput(<liquid:cotc_pos_orange_matter> * 200);
-lithiumdustSmallMalleableMelting_ultimate.addEnergyPerTickInput(67108864);
-lithiumdustSmallMalleableMelting_ultimate.build();
-
-var lithiumdustTinyMalleableMelting_basic = mods.modularmachinery.RecipeBuilder.newBuilder("lithiumdustTinyMalleableMelting_basic", "basic", 60, 0);
-lithiumdustTinyMalleableMelting_basic.addItemInput(<contenttweaker:material_part:1107>);
-lithiumdustTinyMalleableMelting_basic.addFluidOutput(<liquid:cotm_lithium_molten> * 16);
-lithiumdustTinyMalleableMelting_basic.addEnergyPerTickInput(4);
-lithiumdustTinyMalleableMelting_basic.build();
-
-var lithiumdustTinyMalleableMelting_advanced = mods.modularmachinery.RecipeBuilder.newBuilder("lithiumdustTinyMalleableMelting_advanced", "basic", 60, 0);
-lithiumdustTinyMalleableMelting_advanced.addItemInput(<contenttweaker:material_part:1107>);
-lithiumdustTinyMalleableMelting_advanced.addFluidOutput(<liquid:cotm_lithium_molten> * 16);
-lithiumdustTinyMalleableMelting_advanced.addFluidInput(<liquid:hydrogen> * 100);
-lithiumdustTinyMalleableMelting_advanced.addEnergyPerTickInput(1024);
-lithiumdustTinyMalleableMelting_advanced.build();
-
-var lithiumdustTinyMalleableMelting_industrial = mods.modularmachinery.RecipeBuilder.newBuilder("lithiumdustTinyMalleableMelting_industrial", "basic", 60, 0);
-lithiumdustTinyMalleableMelting_industrial.addItemInput(<contenttweaker:material_part:1107>);
-lithiumdustTinyMalleableMelting_industrial.addFluidOutput(<liquid:cotm_lithium_molten> * 16);
-lithiumdustTinyMalleableMelting_industrial.addFluidInput(<liquid:hydrogen> * 100);
-lithiumdustTinyMalleableMelting_industrial.addFluidInput(<liquid:cotc_data> * 100);
-lithiumdustTinyMalleableMelting_industrial.addEnergyPerTickInput(262144);
-lithiumdustTinyMalleableMelting_industrial.build();
-
-var lithiumdustTinyMalleableMelting_ultimate = mods.modularmachinery.RecipeBuilder.newBuilder("lithiumdustTinyMalleableMelting_ultimate", "basic", 60, 0);
-lithiumdustTinyMalleableMelting_ultimate.addItemInput(<contenttweaker:material_part:1107>);
-lithiumdustTinyMalleableMelting_ultimate.addFluidOutput(<liquid:cotm_lithium_molten> * 16);
-lithiumdustTinyMalleableMelting_ultimate.addFluidInput(<liquid:hydrogen> * 100);
-lithiumdustTinyMalleableMelting_ultimate.addFluidInput(<liquid:cotc_data> * 100);
-lithiumdustTinyMalleableMelting_ultimate.addFluidInput(<liquid:cotc_neg_red_matter> * 100);
-lithiumdustTinyMalleableMelting_ultimate.addFluidOutput(<liquid:cotc_pos_orange_matter> * 200);
-lithiumdustTinyMalleableMelting_ultimate.addEnergyPerTickInput(67108864);
-lithiumdustTinyMalleableMelting_ultimate.build();
-
-var lithiumdustMetalPulverize_basic = mods.modularmachinery.RecipeBuilder.newBuilder("lithiumdustMetalPulverize_basic", "basic", 40, 0);
+var lithiumdustMetalPulverize_basic = mods.modularmachinery.RecipeBuilder.newBuilder("lithiumdustMetalPulverize_basic", "basic", 100, 0);
 lithiumdustMetalPulverize_basic.addItemInput(<contenttweaker:material_part:1699>);
+lithiumdustMetalPulverize_basic.addFluidInput(<liquid:cotm_lithium_molten> * 100);
 lithiumdustMetalPulverize_basic.addItemOutput(<contenttweaker:material_part:1105>);
 lithiumdustMetalPulverize_basic.addEnergyPerTickInput(4);
 lithiumdustMetalPulverize_basic.build();
 
-var lithiumdustMetalPulverize_advanced = mods.modularmachinery.RecipeBuilder.newBuilder("lithiumdustMetalPulverize_advanced", "basic", 40, 0);
+var lithiumdustMetalPulverize_advanced = mods.modularmachinery.RecipeBuilder.newBuilder("lithiumdustMetalPulverize_advanced", "basic", 100, 0);
 lithiumdustMetalPulverize_advanced.addItemInput(<contenttweaker:material_part:1699>);
+lithiumdustMetalPulverize_advanced.addFluidInput(<liquid:cotm_lithium_molten> * 100);
 lithiumdustMetalPulverize_advanced.addItemOutput(<contenttweaker:material_part:1105>);
 lithiumdustMetalPulverize_advanced.addFluidInput(<liquid:hydrogen> * 100);
 lithiumdustMetalPulverize_advanced.addEnergyPerTickInput(1024);
 lithiumdustMetalPulverize_advanced.build();
 
-var lithiumdustMetalPulverize_industrial = mods.modularmachinery.RecipeBuilder.newBuilder("lithiumdustMetalPulverize_industrial", "basic", 40, 0);
+var lithiumdustMetalPulverize_industrial = mods.modularmachinery.RecipeBuilder.newBuilder("lithiumdustMetalPulverize_industrial", "basic", 100, 0);
 lithiumdustMetalPulverize_industrial.addItemInput(<contenttweaker:material_part:1699>);
+lithiumdustMetalPulverize_industrial.addFluidInput(<liquid:cotm_lithium_molten> * 100);
 lithiumdustMetalPulverize_industrial.addItemOutput(<contenttweaker:material_part:1105>);
 lithiumdustMetalPulverize_industrial.addFluidInput(<liquid:hydrogen> * 100);
 lithiumdustMetalPulverize_industrial.addFluidInput(<liquid:cotc_data> * 100);
 lithiumdustMetalPulverize_industrial.addEnergyPerTickInput(262144);
 lithiumdustMetalPulverize_industrial.build();
 
-var lithiumdustMetalPulverize_ultimate = mods.modularmachinery.RecipeBuilder.newBuilder("lithiumdustMetalPulverize_ultimate", "basic", 40, 0);
+var lithiumdustMetalPulverize_ultimate = mods.modularmachinery.RecipeBuilder.newBuilder("lithiumdustMetalPulverize_ultimate", "basic", 100, 0);
 lithiumdustMetalPulverize_ultimate.addItemInput(<contenttweaker:material_part:1699>);
+lithiumdustMetalPulverize_ultimate.addFluidInput(<liquid:cotm_lithium_molten> * 100);
 lithiumdustMetalPulverize_ultimate.addItemOutput(<contenttweaker:material_part:1105>);
 lithiumdustMetalPulverize_ultimate.addFluidInput(<liquid:hydrogen> * 100);
 lithiumdustMetalPulverize_ultimate.addFluidInput(<liquid:cotc_data> * 100);
-lithiumdustMetalPulverize_ultimate.addFluidInput(<liquid:cotc_neg_red_matter> * 100);
-lithiumdustMetalPulverize_ultimate.addFluidOutput(<liquid:cotc_pos_orange_matter> * 200);
+lithiumdustMetalPulverize_ultimate.addFluidInput(<liquid:cotc_pos_red_matter> * 100);
+lithiumdustMetalPulverize_ultimate.addFluidOutput(<liquid:cotc_neg_orange_matter> * 100);
 lithiumdustMetalPulverize_ultimate.addEnergyPerTickInput(67108864);
 lithiumdustMetalPulverize_ultimate.build();
 
-var lithiumdustSmallMetalPulverize_basic = mods.modularmachinery.RecipeBuilder.newBuilder("lithiumdustSmallMetalPulverize_basic", "basic", 40, 0);
-lithiumdustSmallMetalPulverize_basic.addItemInput(<contenttweaker:material_part:1700>);
-lithiumdustSmallMetalPulverize_basic.addItemOutput(<contenttweaker:material_part:1106>);
-lithiumdustSmallMetalPulverize_basic.addEnergyPerTickInput(4);
-lithiumdustSmallMetalPulverize_basic.build();
-
-var lithiumdustSmallMetalPulverize_advanced = mods.modularmachinery.RecipeBuilder.newBuilder("lithiumdustSmallMetalPulverize_advanced", "basic", 40, 0);
-lithiumdustSmallMetalPulverize_advanced.addItemInput(<contenttweaker:material_part:1700>);
-lithiumdustSmallMetalPulverize_advanced.addItemOutput(<contenttweaker:material_part:1106>);
-lithiumdustSmallMetalPulverize_advanced.addFluidInput(<liquid:hydrogen> * 100);
-lithiumdustSmallMetalPulverize_advanced.addEnergyPerTickInput(1024);
-lithiumdustSmallMetalPulverize_advanced.build();
-
-var lithiumdustSmallMetalPulverize_industrial = mods.modularmachinery.RecipeBuilder.newBuilder("lithiumdustSmallMetalPulverize_industrial", "basic", 40, 0);
-lithiumdustSmallMetalPulverize_industrial.addItemInput(<contenttweaker:material_part:1700>);
-lithiumdustSmallMetalPulverize_industrial.addItemOutput(<contenttweaker:material_part:1106>);
-lithiumdustSmallMetalPulverize_industrial.addFluidInput(<liquid:hydrogen> * 100);
-lithiumdustSmallMetalPulverize_industrial.addFluidInput(<liquid:cotc_data> * 100);
-lithiumdustSmallMetalPulverize_industrial.addEnergyPerTickInput(262144);
-lithiumdustSmallMetalPulverize_industrial.build();
-
-var lithiumdustSmallMetalPulverize_ultimate = mods.modularmachinery.RecipeBuilder.newBuilder("lithiumdustSmallMetalPulverize_ultimate", "basic", 40, 0);
-lithiumdustSmallMetalPulverize_ultimate.addItemInput(<contenttweaker:material_part:1700>);
-lithiumdustSmallMetalPulverize_ultimate.addItemOutput(<contenttweaker:material_part:1106>);
-lithiumdustSmallMetalPulverize_ultimate.addFluidInput(<liquid:hydrogen> * 100);
-lithiumdustSmallMetalPulverize_ultimate.addFluidInput(<liquid:cotc_data> * 100);
-lithiumdustSmallMetalPulverize_ultimate.addFluidInput(<liquid:cotc_neg_red_matter> * 100);
-lithiumdustSmallMetalPulverize_ultimate.addFluidOutput(<liquid:cotc_pos_orange_matter> * 200);
-lithiumdustSmallMetalPulverize_ultimate.addEnergyPerTickInput(67108864);
-lithiumdustSmallMetalPulverize_ultimate.build();
-
-var lithiumdustTinyMetalPulverize_basic = mods.modularmachinery.RecipeBuilder.newBuilder("lithiumdustTinyMetalPulverize_basic", "basic", 40, 0);
-lithiumdustTinyMetalPulverize_basic.addItemInput(<contenttweaker:material_part:1701>);
-lithiumdustTinyMetalPulverize_basic.addItemOutput(<contenttweaker:material_part:1107>);
-lithiumdustTinyMetalPulverize_basic.addEnergyPerTickInput(4);
-lithiumdustTinyMetalPulverize_basic.build();
-
-var lithiumdustTinyMetalPulverize_advanced = mods.modularmachinery.RecipeBuilder.newBuilder("lithiumdustTinyMetalPulverize_advanced", "basic", 40, 0);
-lithiumdustTinyMetalPulverize_advanced.addItemInput(<contenttweaker:material_part:1701>);
-lithiumdustTinyMetalPulverize_advanced.addItemOutput(<contenttweaker:material_part:1107>);
-lithiumdustTinyMetalPulverize_advanced.addFluidInput(<liquid:hydrogen> * 100);
-lithiumdustTinyMetalPulverize_advanced.addEnergyPerTickInput(1024);
-lithiumdustTinyMetalPulverize_advanced.build();
-
-var lithiumdustTinyMetalPulverize_industrial = mods.modularmachinery.RecipeBuilder.newBuilder("lithiumdustTinyMetalPulverize_industrial", "basic", 40, 0);
-lithiumdustTinyMetalPulverize_industrial.addItemInput(<contenttweaker:material_part:1701>);
-lithiumdustTinyMetalPulverize_industrial.addItemOutput(<contenttweaker:material_part:1107>);
-lithiumdustTinyMetalPulverize_industrial.addFluidInput(<liquid:hydrogen> * 100);
-lithiumdustTinyMetalPulverize_industrial.addFluidInput(<liquid:cotc_data> * 100);
-lithiumdustTinyMetalPulverize_industrial.addEnergyPerTickInput(262144);
-lithiumdustTinyMetalPulverize_industrial.build();
-
-var lithiumdustTinyMetalPulverize_ultimate = mods.modularmachinery.RecipeBuilder.newBuilder("lithiumdustTinyMetalPulverize_ultimate", "basic", 40, 0);
-lithiumdustTinyMetalPulverize_ultimate.addItemInput(<contenttweaker:material_part:1701>);
-lithiumdustTinyMetalPulverize_ultimate.addItemOutput(<contenttweaker:material_part:1107>);
-lithiumdustTinyMetalPulverize_ultimate.addFluidInput(<liquid:hydrogen> * 100);
-lithiumdustTinyMetalPulverize_ultimate.addFluidInput(<liquid:cotc_data> * 100);
-lithiumdustTinyMetalPulverize_ultimate.addFluidInput(<liquid:cotc_neg_red_matter> * 100);
-lithiumdustTinyMetalPulverize_ultimate.addFluidOutput(<liquid:cotc_pos_orange_matter> * 200);
-lithiumdustTinyMetalPulverize_ultimate.addEnergyPerTickInput(67108864);
-lithiumdustTinyMetalPulverize_ultimate.build();
-
-var lithiumplateMetalPress_basic = mods.modularmachinery.RecipeBuilder.newBuilder("lithiumplateMetalPress_basic", "basic", 100, 0);
-lithiumplateMetalPress_basic.addItemInput(<contenttweaker:material_part:1699> * 1);
-lithiumplateMetalPress_basic.addItemOutput(<contenttweaker:material_part:1703>);
-lithiumplateMetalPress_basic.addEnergyPerTickInput(8);
-lithiumplateMetalPress_basic.build();
-
-var lithiumplateMetalPress_advanced = mods.modularmachinery.RecipeBuilder.newBuilder("lithiumplateMetalPress_advanced", "basic", 100, 0);
-lithiumplateMetalPress_advanced.addItemInput(<contenttweaker:material_part:1699> * 1);
-lithiumplateMetalPress_advanced.addItemOutput(<contenttweaker:material_part:1703>);
-lithiumplateMetalPress_advanced.addFluidInput(<liquid:hydrogen> * 100);
-lithiumplateMetalPress_advanced.addEnergyPerTickInput(2048);
-lithiumplateMetalPress_advanced.build();
-
-var lithiumplateMetalPress_industrial = mods.modularmachinery.RecipeBuilder.newBuilder("lithiumplateMetalPress_industrial", "basic", 100, 0);
-lithiumplateMetalPress_industrial.addItemInput(<contenttweaker:material_part:1699> * 1);
-lithiumplateMetalPress_industrial.addItemOutput(<contenttweaker:material_part:1703>);
-lithiumplateMetalPress_industrial.addFluidInput(<liquid:hydrogen> * 100);
-lithiumplateMetalPress_industrial.addFluidInput(<liquid:cotc_data> * 100);
-lithiumplateMetalPress_industrial.addEnergyPerTickInput(524288);
-lithiumplateMetalPress_industrial.build();
-
-var lithiumplateMetalPress_ultimate = mods.modularmachinery.RecipeBuilder.newBuilder("lithiumplateMetalPress_ultimate", "basic", 100, 0);
-lithiumplateMetalPress_ultimate.addItemInput(<contenttweaker:material_part:1699> * 1);
-lithiumplateMetalPress_ultimate.addItemOutput(<contenttweaker:material_part:1703>);
-lithiumplateMetalPress_ultimate.addFluidInput(<liquid:hydrogen> * 100);
-lithiumplateMetalPress_ultimate.addFluidInput(<liquid:cotc_data> * 100);
-lithiumplateMetalPress_ultimate.addFluidInput(<liquid:cotc_neg_red_matter> * 100);
-lithiumplateMetalPress_ultimate.addFluidOutput(<liquid:cotc_pos_orange_matter> * 200);
-lithiumplateMetalPress_ultimate.addEnergyPerTickInput(134217728);
-lithiumplateMetalPress_ultimate.build();
-
-var lithiumplateToughMetalPress_basic = mods.modularmachinery.RecipeBuilder.newBuilder("lithiumplateToughMetalPress_basic", "basic", 100, 0);
-lithiumplateToughMetalPress_basic.addItemInput(<contenttweaker:material_part:1699> * 4);
-lithiumplateToughMetalPress_basic.addItemOutput(<contenttweaker:material_part:1705>);
-lithiumplateToughMetalPress_basic.addEnergyPerTickInput(8);
-lithiumplateToughMetalPress_basic.build();
-
-var lithiumplateToughMetalPress_advanced = mods.modularmachinery.RecipeBuilder.newBuilder("lithiumplateToughMetalPress_advanced", "basic", 100, 0);
-lithiumplateToughMetalPress_advanced.addItemInput(<contenttweaker:material_part:1699> * 4);
-lithiumplateToughMetalPress_advanced.addItemOutput(<contenttweaker:material_part:1705>);
-lithiumplateToughMetalPress_advanced.addFluidInput(<liquid:hydrogen> * 100);
-lithiumplateToughMetalPress_advanced.addEnergyPerTickInput(2048);
-lithiumplateToughMetalPress_advanced.build();
-
-var lithiumplateToughMetalPress_industrial = mods.modularmachinery.RecipeBuilder.newBuilder("lithiumplateToughMetalPress_industrial", "basic", 100, 0);
-lithiumplateToughMetalPress_industrial.addItemInput(<contenttweaker:material_part:1699> * 4);
-lithiumplateToughMetalPress_industrial.addItemOutput(<contenttweaker:material_part:1705>);
-lithiumplateToughMetalPress_industrial.addFluidInput(<liquid:hydrogen> * 100);
-lithiumplateToughMetalPress_industrial.addFluidInput(<liquid:cotc_data> * 100);
-lithiumplateToughMetalPress_industrial.addEnergyPerTickInput(524288);
-lithiumplateToughMetalPress_industrial.build();
-
-var lithiumplateToughMetalPress_ultimate = mods.modularmachinery.RecipeBuilder.newBuilder("lithiumplateToughMetalPress_ultimate", "basic", 100, 0);
-lithiumplateToughMetalPress_ultimate.addItemInput(<contenttweaker:material_part:1699> * 4);
-lithiumplateToughMetalPress_ultimate.addItemOutput(<contenttweaker:material_part:1705>);
-lithiumplateToughMetalPress_ultimate.addFluidInput(<liquid:hydrogen> * 100);
-lithiumplateToughMetalPress_ultimate.addFluidInput(<liquid:cotc_data> * 100);
-lithiumplateToughMetalPress_ultimate.addFluidInput(<liquid:cotc_neg_red_matter> * 100);
-lithiumplateToughMetalPress_ultimate.addFluidOutput(<liquid:cotc_pos_orange_matter> * 200);
-lithiumplateToughMetalPress_ultimate.addEnergyPerTickInput(134217728);
-lithiumplateToughMetalPress_ultimate.build();
-
-var lithiumplateDenseMetalPress_basic = mods.modularmachinery.RecipeBuilder.newBuilder("lithiumplateDenseMetalPress_basic", "basic", 100, 0);
-lithiumplateDenseMetalPress_basic.addItemInput(<contenttweaker:material_part:1699> * 9);
-lithiumplateDenseMetalPress_basic.addItemOutput(<contenttweaker:material_part:1706>);
-lithiumplateDenseMetalPress_basic.addEnergyPerTickInput(8);
-lithiumplateDenseMetalPress_basic.build();
-
-var lithiumplateDenseMetalPress_advanced = mods.modularmachinery.RecipeBuilder.newBuilder("lithiumplateDenseMetalPress_advanced", "basic", 100, 0);
-lithiumplateDenseMetalPress_advanced.addItemInput(<contenttweaker:material_part:1699> * 9);
-lithiumplateDenseMetalPress_advanced.addItemOutput(<contenttweaker:material_part:1706>);
-lithiumplateDenseMetalPress_advanced.addFluidInput(<liquid:hydrogen> * 100);
-lithiumplateDenseMetalPress_advanced.addEnergyPerTickInput(2048);
-lithiumplateDenseMetalPress_advanced.build();
-
-var lithiumplateDenseMetalPress_industrial = mods.modularmachinery.RecipeBuilder.newBuilder("lithiumplateDenseMetalPress_industrial", "basic", 100, 0);
-lithiumplateDenseMetalPress_industrial.addItemInput(<contenttweaker:material_part:1699> * 9);
-lithiumplateDenseMetalPress_industrial.addItemOutput(<contenttweaker:material_part:1706>);
-lithiumplateDenseMetalPress_industrial.addFluidInput(<liquid:hydrogen> * 100);
-lithiumplateDenseMetalPress_industrial.addFluidInput(<liquid:cotc_data> * 100);
-lithiumplateDenseMetalPress_industrial.addEnergyPerTickInput(524288);
-lithiumplateDenseMetalPress_industrial.build();
-
-var lithiumplateDenseMetalPress_ultimate = mods.modularmachinery.RecipeBuilder.newBuilder("lithiumplateDenseMetalPress_ultimate", "basic", 100, 0);
-lithiumplateDenseMetalPress_ultimate.addItemInput(<contenttweaker:material_part:1699> * 9);
-lithiumplateDenseMetalPress_ultimate.addItemOutput(<contenttweaker:material_part:1706>);
-lithiumplateDenseMetalPress_ultimate.addFluidInput(<liquid:hydrogen> * 100);
-lithiumplateDenseMetalPress_ultimate.addFluidInput(<liquid:cotc_data> * 100);
-lithiumplateDenseMetalPress_ultimate.addFluidInput(<liquid:cotc_neg_red_matter> * 100);
-lithiumplateDenseMetalPress_ultimate.addFluidOutput(<liquid:cotc_pos_orange_matter> * 200);
-lithiumplateDenseMetalPress_ultimate.addEnergyPerTickInput(134217728);
-lithiumplateDenseMetalPress_ultimate.build();
-
-var lithiumplateSmallMetalPress_basic = mods.modularmachinery.RecipeBuilder.newBuilder("lithiumplateSmallMetalPress_basic", "basic", 100, 0);
-lithiumplateSmallMetalPress_basic.addItemInput(<contenttweaker:material_part:1700> * 1);
-lithiumplateSmallMetalPress_basic.addItemOutput(<contenttweaker:material_part:1720>);
-lithiumplateSmallMetalPress_basic.addEnergyPerTickInput(8);
-lithiumplateSmallMetalPress_basic.build();
-
-var lithiumplateSmallMetalPress_advanced = mods.modularmachinery.RecipeBuilder.newBuilder("lithiumplateSmallMetalPress_advanced", "basic", 100, 0);
-lithiumplateSmallMetalPress_advanced.addItemInput(<contenttweaker:material_part:1700> * 1);
-lithiumplateSmallMetalPress_advanced.addItemOutput(<contenttweaker:material_part:1720>);
-lithiumplateSmallMetalPress_advanced.addFluidInput(<liquid:hydrogen> * 100);
-lithiumplateSmallMetalPress_advanced.addEnergyPerTickInput(2048);
-lithiumplateSmallMetalPress_advanced.build();
-
-var lithiumplateSmallMetalPress_industrial = mods.modularmachinery.RecipeBuilder.newBuilder("lithiumplateSmallMetalPress_industrial", "basic", 100, 0);
-lithiumplateSmallMetalPress_industrial.addItemInput(<contenttweaker:material_part:1700> * 1);
-lithiumplateSmallMetalPress_industrial.addItemOutput(<contenttweaker:material_part:1720>);
-lithiumplateSmallMetalPress_industrial.addFluidInput(<liquid:hydrogen> * 100);
-lithiumplateSmallMetalPress_industrial.addFluidInput(<liquid:cotc_data> * 100);
-lithiumplateSmallMetalPress_industrial.addEnergyPerTickInput(524288);
-lithiumplateSmallMetalPress_industrial.build();
-
-var lithiumplateSmallMetalPress_ultimate = mods.modularmachinery.RecipeBuilder.newBuilder("lithiumplateSmallMetalPress_ultimate", "basic", 100, 0);
-lithiumplateSmallMetalPress_ultimate.addItemInput(<contenttweaker:material_part:1700> * 1);
-lithiumplateSmallMetalPress_ultimate.addItemOutput(<contenttweaker:material_part:1720>);
-lithiumplateSmallMetalPress_ultimate.addFluidInput(<liquid:hydrogen> * 100);
-lithiumplateSmallMetalPress_ultimate.addFluidInput(<liquid:cotc_data> * 100);
-lithiumplateSmallMetalPress_ultimate.addFluidInput(<liquid:cotc_neg_red_matter> * 100);
-lithiumplateSmallMetalPress_ultimate.addFluidOutput(<liquid:cotc_pos_orange_matter> * 200);
-lithiumplateSmallMetalPress_ultimate.addEnergyPerTickInput(134217728);
-lithiumplateSmallMetalPress_ultimate.build();
-
-var lithiumcasingMetalPress_basic = mods.modularmachinery.RecipeBuilder.newBuilder("lithiumcasingMetalPress_basic", "basic", 100, 0);
-lithiumcasingMetalPress_basic.addItemInput(<contenttweaker:material_part:1700> * 3);
-lithiumcasingMetalPress_basic.addItemOutput(<contenttweaker:material_part:1702>);
-lithiumcasingMetalPress_basic.addEnergyPerTickInput(8);
-lithiumcasingMetalPress_basic.build();
-
-var lithiumcasingMetalPress_advanced = mods.modularmachinery.RecipeBuilder.newBuilder("lithiumcasingMetalPress_advanced", "basic", 100, 0);
-lithiumcasingMetalPress_advanced.addItemInput(<contenttweaker:material_part:1700> * 3);
-lithiumcasingMetalPress_advanced.addItemOutput(<contenttweaker:material_part:1702>);
-lithiumcasingMetalPress_advanced.addFluidInput(<liquid:hydrogen> * 100);
-lithiumcasingMetalPress_advanced.addEnergyPerTickInput(2048);
-lithiumcasingMetalPress_advanced.build();
-
-var lithiumcasingMetalPress_industrial = mods.modularmachinery.RecipeBuilder.newBuilder("lithiumcasingMetalPress_industrial", "basic", 100, 0);
-lithiumcasingMetalPress_industrial.addItemInput(<contenttweaker:material_part:1700> * 3);
-lithiumcasingMetalPress_industrial.addItemOutput(<contenttweaker:material_part:1702>);
-lithiumcasingMetalPress_industrial.addFluidInput(<liquid:hydrogen> * 100);
-lithiumcasingMetalPress_industrial.addFluidInput(<liquid:cotc_data> * 100);
-lithiumcasingMetalPress_industrial.addEnergyPerTickInput(524288);
-lithiumcasingMetalPress_industrial.build();
-
-var lithiumcasingMetalPress_ultimate = mods.modularmachinery.RecipeBuilder.newBuilder("lithiumcasingMetalPress_ultimate", "basic", 100, 0);
-lithiumcasingMetalPress_ultimate.addItemInput(<contenttweaker:material_part:1700> * 3);
-lithiumcasingMetalPress_ultimate.addItemOutput(<contenttweaker:material_part:1702>);
-lithiumcasingMetalPress_ultimate.addFluidInput(<liquid:hydrogen> * 100);
-lithiumcasingMetalPress_ultimate.addFluidInput(<liquid:cotc_data> * 100);
-lithiumcasingMetalPress_ultimate.addFluidInput(<liquid:cotc_neg_red_matter> * 100);
-lithiumcasingMetalPress_ultimate.addFluidOutput(<liquid:cotc_pos_orange_matter> * 200);
-lithiumcasingMetalPress_ultimate.addEnergyPerTickInput(134217728);
-lithiumcasingMetalPress_ultimate.build();
-
-var lithiumfoilMetalPress_basic = mods.modularmachinery.RecipeBuilder.newBuilder("lithiumfoilMetalPress_basic", "basic", 100, 0);
-lithiumfoilMetalPress_basic.addItemInput(<contenttweaker:material_part:1701> * 3);
-lithiumfoilMetalPress_basic.addItemOutput(<contenttweaker:material_part:1716>);
-lithiumfoilMetalPress_basic.addEnergyPerTickInput(8);
-lithiumfoilMetalPress_basic.build();
-
-var lithiumfoilMetalPress_advanced = mods.modularmachinery.RecipeBuilder.newBuilder("lithiumfoilMetalPress_advanced", "basic", 100, 0);
-lithiumfoilMetalPress_advanced.addItemInput(<contenttweaker:material_part:1701> * 3);
-lithiumfoilMetalPress_advanced.addItemOutput(<contenttweaker:material_part:1716>);
-lithiumfoilMetalPress_advanced.addFluidInput(<liquid:hydrogen> * 100);
-lithiumfoilMetalPress_advanced.addEnergyPerTickInput(2048);
-lithiumfoilMetalPress_advanced.build();
-
-var lithiumfoilMetalPress_industrial = mods.modularmachinery.RecipeBuilder.newBuilder("lithiumfoilMetalPress_industrial", "basic", 100, 0);
-lithiumfoilMetalPress_industrial.addItemInput(<contenttweaker:material_part:1701> * 3);
-lithiumfoilMetalPress_industrial.addItemOutput(<contenttweaker:material_part:1716>);
-lithiumfoilMetalPress_industrial.addFluidInput(<liquid:hydrogen> * 100);
-lithiumfoilMetalPress_industrial.addFluidInput(<liquid:cotc_data> * 100);
-lithiumfoilMetalPress_industrial.addEnergyPerTickInput(524288);
-lithiumfoilMetalPress_industrial.build();
-
-var lithiumfoilMetalPress_ultimate = mods.modularmachinery.RecipeBuilder.newBuilder("lithiumfoilMetalPress_ultimate", "basic", 100, 0);
-lithiumfoilMetalPress_ultimate.addItemInput(<contenttweaker:material_part:1701> * 3);
-lithiumfoilMetalPress_ultimate.addItemOutput(<contenttweaker:material_part:1716>);
-lithiumfoilMetalPress_ultimate.addFluidInput(<liquid:hydrogen> * 100);
-lithiumfoilMetalPress_ultimate.addFluidInput(<liquid:cotc_data> * 100);
-lithiumfoilMetalPress_ultimate.addFluidInput(<liquid:cotc_neg_red_matter> * 100);
-lithiumfoilMetalPress_ultimate.addFluidOutput(<liquid:cotc_pos_orange_matter> * 200);
-lithiumfoilMetalPress_ultimate.addEnergyPerTickInput(134217728);
-lithiumfoilMetalPress_ultimate.build();
-
-var lithiumcasingSmallMetalPress_basic = mods.modularmachinery.RecipeBuilder.newBuilder("lithiumcasingSmallMetalPress_basic", "basic", 100, 0);
-lithiumcasingSmallMetalPress_basic.addItemInput(<contenttweaker:material_part:1701> * 4);
-lithiumcasingSmallMetalPress_basic.addItemOutput(<contenttweaker:material_part:1726>);
-lithiumcasingSmallMetalPress_basic.addEnergyPerTickInput(8);
-lithiumcasingSmallMetalPress_basic.build();
-
-var lithiumcasingSmallMetalPress_advanced = mods.modularmachinery.RecipeBuilder.newBuilder("lithiumcasingSmallMetalPress_advanced", "basic", 100, 0);
-lithiumcasingSmallMetalPress_advanced.addItemInput(<contenttweaker:material_part:1701> * 4);
-lithiumcasingSmallMetalPress_advanced.addItemOutput(<contenttweaker:material_part:1726>);
-lithiumcasingSmallMetalPress_advanced.addFluidInput(<liquid:hydrogen> * 100);
-lithiumcasingSmallMetalPress_advanced.addEnergyPerTickInput(2048);
-lithiumcasingSmallMetalPress_advanced.build();
-
-var lithiumcasingSmallMetalPress_industrial = mods.modularmachinery.RecipeBuilder.newBuilder("lithiumcasingSmallMetalPress_industrial", "basic", 100, 0);
-lithiumcasingSmallMetalPress_industrial.addItemInput(<contenttweaker:material_part:1701> * 4);
-lithiumcasingSmallMetalPress_industrial.addItemOutput(<contenttweaker:material_part:1726>);
-lithiumcasingSmallMetalPress_industrial.addFluidInput(<liquid:hydrogen> * 100);
-lithiumcasingSmallMetalPress_industrial.addFluidInput(<liquid:cotc_data> * 100);
-lithiumcasingSmallMetalPress_industrial.addEnergyPerTickInput(524288);
-lithiumcasingSmallMetalPress_industrial.build();
-
-var lithiumcasingSmallMetalPress_ultimate = mods.modularmachinery.RecipeBuilder.newBuilder("lithiumcasingSmallMetalPress_ultimate", "basic", 100, 0);
-lithiumcasingSmallMetalPress_ultimate.addItemInput(<contenttweaker:material_part:1701> * 4);
-lithiumcasingSmallMetalPress_ultimate.addItemOutput(<contenttweaker:material_part:1726>);
-lithiumcasingSmallMetalPress_ultimate.addFluidInput(<liquid:hydrogen> * 100);
-lithiumcasingSmallMetalPress_ultimate.addFluidInput(<liquid:cotc_data> * 100);
-lithiumcasingSmallMetalPress_ultimate.addFluidInput(<liquid:cotc_neg_red_matter> * 100);
-lithiumcasingSmallMetalPress_ultimate.addFluidOutput(<liquid:cotc_pos_orange_matter> * 200);
-lithiumcasingSmallMetalPress_ultimate.addEnergyPerTickInput(134217728);
-lithiumcasingSmallMetalPress_ultimate.build();
-
-var lithiumrodMetalLathe_basic = mods.modularmachinery.RecipeBuilder.newBuilder("lithiumrodMetalLathe_basic", "basic", 40, 0);
-lithiumrodMetalLathe_basic.addItemInput(<contenttweaker:material_part:1699>);
-lithiumrodMetalLathe_basic.addItemOutput(<contenttweaker:material_part:1708> * 2);
-lithiumrodMetalLathe_basic.addEnergyPerTickInput(4);
-lithiumrodMetalLathe_basic.build();
-
-var lithiumrodMetalLathe_advanced = mods.modularmachinery.RecipeBuilder.newBuilder("lithiumrodMetalLathe_advanced", "basic", 40, 0);
-lithiumrodMetalLathe_advanced.addItemInput(<contenttweaker:material_part:1699>);
-lithiumrodMetalLathe_advanced.addItemOutput(<contenttweaker:material_part:1708> * 2);
-lithiumrodMetalLathe_advanced.addFluidInput(<liquid:hydrogen> * 100);
-lithiumrodMetalLathe_advanced.addEnergyPerTickInput(1024);
-lithiumrodMetalLathe_advanced.build();
-
-var lithiumrodMetalLathe_industrial = mods.modularmachinery.RecipeBuilder.newBuilder("lithiumrodMetalLathe_industrial", "basic", 40, 0);
-lithiumrodMetalLathe_industrial.addItemInput(<contenttweaker:material_part:1699>);
-lithiumrodMetalLathe_industrial.addItemOutput(<contenttweaker:material_part:1708> * 2);
-lithiumrodMetalLathe_industrial.addFluidInput(<liquid:hydrogen> * 100);
-lithiumrodMetalLathe_industrial.addFluidInput(<liquid:cotc_data> * 100);
-lithiumrodMetalLathe_industrial.addEnergyPerTickInput(262144);
-lithiumrodMetalLathe_industrial.build();
-
-var lithiumrodMetalLathe_ultimate = mods.modularmachinery.RecipeBuilder.newBuilder("lithiumrodMetalLathe_ultimate", "basic", 40, 0);
-lithiumrodMetalLathe_ultimate.addItemInput(<contenttweaker:material_part:1699>);
-lithiumrodMetalLathe_ultimate.addItemOutput(<contenttweaker:material_part:1708> * 2);
-lithiumrodMetalLathe_ultimate.addFluidInput(<liquid:hydrogen> * 100);
-lithiumrodMetalLathe_ultimate.addFluidInput(<liquid:cotc_data> * 100);
-lithiumrodMetalLathe_ultimate.addFluidInput(<liquid:cotc_neg_red_matter> * 100);
-lithiumrodMetalLathe_ultimate.addFluidOutput(<liquid:cotc_pos_orange_matter> * 200);
-lithiumrodMetalLathe_ultimate.addEnergyPerTickInput(67108864);
-lithiumrodMetalLathe_ultimate.build();
-
-var lithiumrodLongMetalLathe_basic = mods.modularmachinery.RecipeBuilder.newBuilder("lithiumrodLongMetalLathe_basic", "basic", 40, 0);
-lithiumrodLongMetalLathe_basic.addItemInput(<contenttweaker:material_part:1699>);
-lithiumrodLongMetalLathe_basic.addItemOutput(<contenttweaker:material_part:1709> * 1);
-lithiumrodLongMetalLathe_basic.addEnergyPerTickInput(4);
-lithiumrodLongMetalLathe_basic.build();
-
-var lithiumrodLongMetalLathe_advanced = mods.modularmachinery.RecipeBuilder.newBuilder("lithiumrodLongMetalLathe_advanced", "basic", 40, 0);
-lithiumrodLongMetalLathe_advanced.addItemInput(<contenttweaker:material_part:1699>);
-lithiumrodLongMetalLathe_advanced.addItemOutput(<contenttweaker:material_part:1709> * 1);
-lithiumrodLongMetalLathe_advanced.addFluidInput(<liquid:hydrogen> * 100);
-lithiumrodLongMetalLathe_advanced.addEnergyPerTickInput(1024);
-lithiumrodLongMetalLathe_advanced.build();
-
-var lithiumrodLongMetalLathe_industrial = mods.modularmachinery.RecipeBuilder.newBuilder("lithiumrodLongMetalLathe_industrial", "basic", 40, 0);
-lithiumrodLongMetalLathe_industrial.addItemInput(<contenttweaker:material_part:1699>);
-lithiumrodLongMetalLathe_industrial.addItemOutput(<contenttweaker:material_part:1709> * 1);
-lithiumrodLongMetalLathe_industrial.addFluidInput(<liquid:hydrogen> * 100);
-lithiumrodLongMetalLathe_industrial.addFluidInput(<liquid:cotc_data> * 100);
-lithiumrodLongMetalLathe_industrial.addEnergyPerTickInput(262144);
-lithiumrodLongMetalLathe_industrial.build();
-
-var lithiumrodLongMetalLathe_ultimate = mods.modularmachinery.RecipeBuilder.newBuilder("lithiumrodLongMetalLathe_ultimate", "basic", 40, 0);
-lithiumrodLongMetalLathe_ultimate.addItemInput(<contenttweaker:material_part:1699>);
-lithiumrodLongMetalLathe_ultimate.addItemOutput(<contenttweaker:material_part:1709> * 1);
-lithiumrodLongMetalLathe_ultimate.addFluidInput(<liquid:hydrogen> * 100);
-lithiumrodLongMetalLathe_ultimate.addFluidInput(<liquid:cotc_data> * 100);
-lithiumrodLongMetalLathe_ultimate.addFluidInput(<liquid:cotc_neg_red_matter> * 100);
-lithiumrodLongMetalLathe_ultimate.addFluidOutput(<liquid:cotc_pos_orange_matter> * 200);
-lithiumrodLongMetalLathe_ultimate.addEnergyPerTickInput(67108864);
-lithiumrodLongMetalLathe_ultimate.build();
-
-var lithiumaxleMetalLathe_basic = mods.modularmachinery.RecipeBuilder.newBuilder("lithiumaxleMetalLathe_basic", "basic", 40, 0);
-lithiumaxleMetalLathe_basic.addItemInput(<contenttweaker:material_part:1701>);
-lithiumaxleMetalLathe_basic.addItemOutput(<contenttweaker:material_part:7949> * 6);
-lithiumaxleMetalLathe_basic.addEnergyPerTickInput(4);
-lithiumaxleMetalLathe_basic.build();
-
-var lithiumaxleMetalLathe_advanced = mods.modularmachinery.RecipeBuilder.newBuilder("lithiumaxleMetalLathe_advanced", "basic", 40, 0);
-lithiumaxleMetalLathe_advanced.addItemInput(<contenttweaker:material_part:1701>);
-lithiumaxleMetalLathe_advanced.addItemOutput(<contenttweaker:material_part:7949> * 6);
-lithiumaxleMetalLathe_advanced.addFluidInput(<liquid:hydrogen> * 100);
-lithiumaxleMetalLathe_advanced.addEnergyPerTickInput(1024);
-lithiumaxleMetalLathe_advanced.build();
-
-var lithiumaxleMetalLathe_industrial = mods.modularmachinery.RecipeBuilder.newBuilder("lithiumaxleMetalLathe_industrial", "basic", 40, 0);
-lithiumaxleMetalLathe_industrial.addItemInput(<contenttweaker:material_part:1701>);
-lithiumaxleMetalLathe_industrial.addItemOutput(<contenttweaker:material_part:7949> * 6);
-lithiumaxleMetalLathe_industrial.addFluidInput(<liquid:hydrogen> * 100);
-lithiumaxleMetalLathe_industrial.addFluidInput(<liquid:cotc_data> * 100);
-lithiumaxleMetalLathe_industrial.addEnergyPerTickInput(262144);
-lithiumaxleMetalLathe_industrial.build();
-
-var lithiumaxleMetalLathe_ultimate = mods.modularmachinery.RecipeBuilder.newBuilder("lithiumaxleMetalLathe_ultimate", "basic", 40, 0);
-lithiumaxleMetalLathe_ultimate.addItemInput(<contenttweaker:material_part:1701>);
-lithiumaxleMetalLathe_ultimate.addItemOutput(<contenttweaker:material_part:7949> * 6);
-lithiumaxleMetalLathe_ultimate.addFluidInput(<liquid:hydrogen> * 100);
-lithiumaxleMetalLathe_ultimate.addFluidInput(<liquid:cotc_data> * 100);
-lithiumaxleMetalLathe_ultimate.addFluidInput(<liquid:cotc_neg_red_matter> * 100);
-lithiumaxleMetalLathe_ultimate.addFluidOutput(<liquid:cotc_pos_orange_matter> * 200);
-lithiumaxleMetalLathe_ultimate.addEnergyPerTickInput(67108864);
-lithiumaxleMetalLathe_ultimate.build();
-
-var lithiumaxleLargeMetalLathe_basic = mods.modularmachinery.RecipeBuilder.newBuilder("lithiumaxleLargeMetalLathe_basic", "basic", 40, 0);
-lithiumaxleLargeMetalLathe_basic.addItemInput(<contenttweaker:material_part:1699>);
-lithiumaxleLargeMetalLathe_basic.addItemOutput(<contenttweaker:material_part:7950> * 2);
-lithiumaxleLargeMetalLathe_basic.addEnergyPerTickInput(4);
-lithiumaxleLargeMetalLathe_basic.build();
-
-var lithiumaxleLargeMetalLathe_advanced = mods.modularmachinery.RecipeBuilder.newBuilder("lithiumaxleLargeMetalLathe_advanced", "basic", 40, 0);
-lithiumaxleLargeMetalLathe_advanced.addItemInput(<contenttweaker:material_part:1699>);
-lithiumaxleLargeMetalLathe_advanced.addItemOutput(<contenttweaker:material_part:7950> * 2);
-lithiumaxleLargeMetalLathe_advanced.addFluidInput(<liquid:hydrogen> * 100);
-lithiumaxleLargeMetalLathe_advanced.addEnergyPerTickInput(1024);
-lithiumaxleLargeMetalLathe_advanced.build();
-
-var lithiumaxleLargeMetalLathe_industrial = mods.modularmachinery.RecipeBuilder.newBuilder("lithiumaxleLargeMetalLathe_industrial", "basic", 40, 0);
-lithiumaxleLargeMetalLathe_industrial.addItemInput(<contenttweaker:material_part:1699>);
-lithiumaxleLargeMetalLathe_industrial.addItemOutput(<contenttweaker:material_part:7950> * 2);
-lithiumaxleLargeMetalLathe_industrial.addFluidInput(<liquid:hydrogen> * 100);
-lithiumaxleLargeMetalLathe_industrial.addFluidInput(<liquid:cotc_data> * 100);
-lithiumaxleLargeMetalLathe_industrial.addEnergyPerTickInput(262144);
-lithiumaxleLargeMetalLathe_industrial.build();
-
-var lithiumaxleLargeMetalLathe_ultimate = mods.modularmachinery.RecipeBuilder.newBuilder("lithiumaxleLargeMetalLathe_ultimate", "basic", 40, 0);
-lithiumaxleLargeMetalLathe_ultimate.addItemInput(<contenttweaker:material_part:1699>);
-lithiumaxleLargeMetalLathe_ultimate.addItemOutput(<contenttweaker:material_part:7950> * 2);
-lithiumaxleLargeMetalLathe_ultimate.addFluidInput(<liquid:hydrogen> * 100);
-lithiumaxleLargeMetalLathe_ultimate.addFluidInput(<liquid:cotc_data> * 100);
-lithiumaxleLargeMetalLathe_ultimate.addFluidInput(<liquid:cotc_neg_red_matter> * 100);
-lithiumaxleLargeMetalLathe_ultimate.addFluidOutput(<liquid:cotc_pos_orange_matter> * 200);
-lithiumaxleLargeMetalLathe_ultimate.addEnergyPerTickInput(67108864);
-lithiumaxleLargeMetalLathe_ultimate.build();
-
-var lithiumconeMetalLathe_basic = mods.modularmachinery.RecipeBuilder.newBuilder("lithiumconeMetalLathe_basic", "basic", 40, 0);
-lithiumconeMetalLathe_basic.addItemInput(<contenttweaker:material_part:8269>);
-lithiumconeMetalLathe_basic.addItemOutput(<contenttweaker:material_part:8271> * 1);
-lithiumconeMetalLathe_basic.addEnergyPerTickInput(4);
-lithiumconeMetalLathe_basic.build();
-
-var lithiumconeMetalLathe_advanced = mods.modularmachinery.RecipeBuilder.newBuilder("lithiumconeMetalLathe_advanced", "basic", 40, 0);
-lithiumconeMetalLathe_advanced.addItemInput(<contenttweaker:material_part:8269>);
-lithiumconeMetalLathe_advanced.addItemOutput(<contenttweaker:material_part:8271> * 1);
-lithiumconeMetalLathe_advanced.addFluidInput(<liquid:hydrogen> * 100);
-lithiumconeMetalLathe_advanced.addEnergyPerTickInput(1024);
-lithiumconeMetalLathe_advanced.build();
-
-var lithiumconeMetalLathe_industrial = mods.modularmachinery.RecipeBuilder.newBuilder("lithiumconeMetalLathe_industrial", "basic", 40, 0);
-lithiumconeMetalLathe_industrial.addItemInput(<contenttweaker:material_part:8269>);
-lithiumconeMetalLathe_industrial.addItemOutput(<contenttweaker:material_part:8271> * 1);
-lithiumconeMetalLathe_industrial.addFluidInput(<liquid:hydrogen> * 100);
-lithiumconeMetalLathe_industrial.addFluidInput(<liquid:cotc_data> * 100);
-lithiumconeMetalLathe_industrial.addEnergyPerTickInput(262144);
-lithiumconeMetalLathe_industrial.build();
-
-var lithiumconeMetalLathe_ultimate = mods.modularmachinery.RecipeBuilder.newBuilder("lithiumconeMetalLathe_ultimate", "basic", 40, 0);
-lithiumconeMetalLathe_ultimate.addItemInput(<contenttweaker:material_part:8269>);
-lithiumconeMetalLathe_ultimate.addItemOutput(<contenttweaker:material_part:8271> * 1);
-lithiumconeMetalLathe_ultimate.addFluidInput(<liquid:hydrogen> * 100);
-lithiumconeMetalLathe_ultimate.addFluidInput(<liquid:cotc_data> * 100);
-lithiumconeMetalLathe_ultimate.addFluidInput(<liquid:cotc_neg_red_matter> * 100);
-lithiumconeMetalLathe_ultimate.addFluidOutput(<liquid:cotc_pos_orange_matter> * 200);
-lithiumconeMetalLathe_ultimate.addEnergyPerTickInput(67108864);
-lithiumconeMetalLathe_ultimate.build();
-
-var lithiumgearMetalLaserCutter_basic = mods.modularmachinery.RecipeBuilder.newBuilder("lithiumgearMetalLaserCutter_basic", "basic", 40, 0);
-lithiumgearMetalLaserCutter_basic.addItemInput(<contenttweaker:material_part:1703>);
-lithiumgearMetalLaserCutter_basic.addItemOutput(<contenttweaker:material_part:1719>);
-lithiumgearMetalLaserCutter_basic.addEnergyPerTickInput(4);
-lithiumgearMetalLaserCutter_basic.build();
-
-var lithiumgearMetalLaserCutter_advanced = mods.modularmachinery.RecipeBuilder.newBuilder("lithiumgearMetalLaserCutter_advanced", "basic", 40, 0);
-lithiumgearMetalLaserCutter_advanced.addItemInput(<contenttweaker:material_part:1703>);
-lithiumgearMetalLaserCutter_advanced.addItemOutput(<contenttweaker:material_part:1719>);
-lithiumgearMetalLaserCutter_advanced.addFluidInput(<liquid:hydrogen> * 100);
-lithiumgearMetalLaserCutter_advanced.addEnergyPerTickInput(1024);
-lithiumgearMetalLaserCutter_advanced.build();
-
-var lithiumgearMetalLaserCutter_industrial = mods.modularmachinery.RecipeBuilder.newBuilder("lithiumgearMetalLaserCutter_industrial", "basic", 40, 0);
-lithiumgearMetalLaserCutter_industrial.addItemInput(<contenttweaker:material_part:1703>);
-lithiumgearMetalLaserCutter_industrial.addItemOutput(<contenttweaker:material_part:1719>);
-lithiumgearMetalLaserCutter_industrial.addFluidInput(<liquid:hydrogen> * 100);
-lithiumgearMetalLaserCutter_industrial.addFluidInput(<liquid:cotc_data> * 100);
-lithiumgearMetalLaserCutter_industrial.addEnergyPerTickInput(262144);
-lithiumgearMetalLaserCutter_industrial.build();
-
-var lithiumgearMetalLaserCutter_ultimate = mods.modularmachinery.RecipeBuilder.newBuilder("lithiumgearMetalLaserCutter_ultimate", "basic", 40, 0);
-lithiumgearMetalLaserCutter_ultimate.addItemInput(<contenttweaker:material_part:1703>);
-lithiumgearMetalLaserCutter_ultimate.addItemOutput(<contenttweaker:material_part:1719>);
-lithiumgearMetalLaserCutter_ultimate.addFluidInput(<liquid:hydrogen> * 100);
-lithiumgearMetalLaserCutter_ultimate.addFluidInput(<liquid:cotc_data> * 100);
-lithiumgearMetalLaserCutter_ultimate.addFluidInput(<liquid:cotc_neg_red_matter> * 100);
-lithiumgearMetalLaserCutter_ultimate.addFluidOutput(<liquid:cotc_pos_orange_matter> * 200);
-lithiumgearMetalLaserCutter_ultimate.addEnergyPerTickInput(67108864);
-lithiumgearMetalLaserCutter_ultimate.build();
-
-var lithiumgearSmallMetalLaserCutter_basic = mods.modularmachinery.RecipeBuilder.newBuilder("lithiumgearSmallMetalLaserCutter_basic", "basic", 40, 0);
-lithiumgearSmallMetalLaserCutter_basic.addItemInput(<contenttweaker:material_part:1720>);
-lithiumgearSmallMetalLaserCutter_basic.addItemOutput(<contenttweaker:material_part:1718>);
-lithiumgearSmallMetalLaserCutter_basic.addEnergyPerTickInput(4);
-lithiumgearSmallMetalLaserCutter_basic.build();
-
-var lithiumgearSmallMetalLaserCutter_advanced = mods.modularmachinery.RecipeBuilder.newBuilder("lithiumgearSmallMetalLaserCutter_advanced", "basic", 40, 0);
-lithiumgearSmallMetalLaserCutter_advanced.addItemInput(<contenttweaker:material_part:1720>);
-lithiumgearSmallMetalLaserCutter_advanced.addItemOutput(<contenttweaker:material_part:1718>);
-lithiumgearSmallMetalLaserCutter_advanced.addFluidInput(<liquid:hydrogen> * 100);
-lithiumgearSmallMetalLaserCutter_advanced.addEnergyPerTickInput(1024);
-lithiumgearSmallMetalLaserCutter_advanced.build();
-
-var lithiumgearSmallMetalLaserCutter_industrial = mods.modularmachinery.RecipeBuilder.newBuilder("lithiumgearSmallMetalLaserCutter_industrial", "basic", 40, 0);
-lithiumgearSmallMetalLaserCutter_industrial.addItemInput(<contenttweaker:material_part:1720>);
-lithiumgearSmallMetalLaserCutter_industrial.addItemOutput(<contenttweaker:material_part:1718>);
-lithiumgearSmallMetalLaserCutter_industrial.addFluidInput(<liquid:hydrogen> * 100);
-lithiumgearSmallMetalLaserCutter_industrial.addFluidInput(<liquid:cotc_data> * 100);
-lithiumgearSmallMetalLaserCutter_industrial.addEnergyPerTickInput(262144);
-lithiumgearSmallMetalLaserCutter_industrial.build();
-
-var lithiumgearSmallMetalLaserCutter_ultimate = mods.modularmachinery.RecipeBuilder.newBuilder("lithiumgearSmallMetalLaserCutter_ultimate", "basic", 40, 0);
-lithiumgearSmallMetalLaserCutter_ultimate.addItemInput(<contenttweaker:material_part:1720>);
-lithiumgearSmallMetalLaserCutter_ultimate.addItemOutput(<contenttweaker:material_part:1718>);
-lithiumgearSmallMetalLaserCutter_ultimate.addFluidInput(<liquid:hydrogen> * 100);
-lithiumgearSmallMetalLaserCutter_ultimate.addFluidInput(<liquid:cotc_data> * 100);
-lithiumgearSmallMetalLaserCutter_ultimate.addFluidInput(<liquid:cotc_neg_red_matter> * 100);
-lithiumgearSmallMetalLaserCutter_ultimate.addFluidOutput(<liquid:cotc_pos_orange_matter> * 200);
-lithiumgearSmallMetalLaserCutter_ultimate.addEnergyPerTickInput(67108864);
-lithiumgearSmallMetalLaserCutter_ultimate.build();
-
-var lithiumrotorMetalLaserCutter_basic = mods.modularmachinery.RecipeBuilder.newBuilder("lithiumrotorMetalLaserCutter_basic", "basic", 40, 0);
-lithiumrotorMetalLaserCutter_basic.addItemInput(<contenttweaker:material_part:1724>);
-lithiumrotorMetalLaserCutter_basic.addItemOutput(<contenttweaker:material_part:1731>);
-lithiumrotorMetalLaserCutter_basic.addEnergyPerTickInput(4);
-lithiumrotorMetalLaserCutter_basic.build();
-
-var lithiumrotorMetalLaserCutter_advanced = mods.modularmachinery.RecipeBuilder.newBuilder("lithiumrotorMetalLaserCutter_advanced", "basic", 40, 0);
-lithiumrotorMetalLaserCutter_advanced.addItemInput(<contenttweaker:material_part:1724>);
-lithiumrotorMetalLaserCutter_advanced.addItemOutput(<contenttweaker:material_part:1731>);
-lithiumrotorMetalLaserCutter_advanced.addFluidInput(<liquid:hydrogen> * 100);
-lithiumrotorMetalLaserCutter_advanced.addEnergyPerTickInput(1024);
-lithiumrotorMetalLaserCutter_advanced.build();
-
-var lithiumrotorMetalLaserCutter_industrial = mods.modularmachinery.RecipeBuilder.newBuilder("lithiumrotorMetalLaserCutter_industrial", "basic", 40, 0);
-lithiumrotorMetalLaserCutter_industrial.addItemInput(<contenttweaker:material_part:1724>);
-lithiumrotorMetalLaserCutter_industrial.addItemOutput(<contenttweaker:material_part:1731>);
-lithiumrotorMetalLaserCutter_industrial.addFluidInput(<liquid:hydrogen> * 100);
-lithiumrotorMetalLaserCutter_industrial.addFluidInput(<liquid:cotc_data> * 100);
-lithiumrotorMetalLaserCutter_industrial.addEnergyPerTickInput(262144);
-lithiumrotorMetalLaserCutter_industrial.build();
-
-var lithiumrotorMetalLaserCutter_ultimate = mods.modularmachinery.RecipeBuilder.newBuilder("lithiumrotorMetalLaserCutter_ultimate", "basic", 40, 0);
-lithiumrotorMetalLaserCutter_ultimate.addItemInput(<contenttweaker:material_part:1724>);
-lithiumrotorMetalLaserCutter_ultimate.addItemOutput(<contenttweaker:material_part:1731>);
-lithiumrotorMetalLaserCutter_ultimate.addFluidInput(<liquid:hydrogen> * 100);
-lithiumrotorMetalLaserCutter_ultimate.addFluidInput(<liquid:cotc_data> * 100);
-lithiumrotorMetalLaserCutter_ultimate.addFluidInput(<liquid:cotc_neg_red_matter> * 100);
-lithiumrotorMetalLaserCutter_ultimate.addFluidOutput(<liquid:cotc_pos_orange_matter> * 200);
-lithiumrotorMetalLaserCutter_ultimate.addEnergyPerTickInput(67108864);
-lithiumrotorMetalLaserCutter_ultimate.build();
-
-var lithiumbeamTinMetalWelder_basic = mods.modularmachinery.RecipeBuilder.newBuilder("lithiumbeamTinMetalWelder_basic", "basic", 40, 0);
-lithiumbeamTinMetalWelder_basic.addItemInput(<contenttweaker:material_part:1703> * 8);
-lithiumbeamTinMetalWelder_basic.addFluidInput(<liquid:cotm_tin_molten> * 144);
-lithiumbeamTinMetalWelder_basic.addItemOutput(<contenttweaker:material_part:1712>);
-lithiumbeamTinMetalWelder_basic.addEnergyPerTickInput(4);
-lithiumbeamTinMetalWelder_basic.build();
-
-var lithiumbeamTinMetalWelder_advanced = mods.modularmachinery.RecipeBuilder.newBuilder("lithiumbeamTinMetalWelder_advanced", "basic", 40, 0);
-lithiumbeamTinMetalWelder_advanced.addItemInput(<contenttweaker:material_part:1703> * 8);
-lithiumbeamTinMetalWelder_advanced.addFluidInput(<liquid:cotm_tin_molten> * 144);
-lithiumbeamTinMetalWelder_advanced.addItemOutput(<contenttweaker:material_part:1712>);
-lithiumbeamTinMetalWelder_advanced.addFluidInput(<liquid:hydrogen> * 100);
-lithiumbeamTinMetalWelder_advanced.addEnergyPerTickInput(1024);
-lithiumbeamTinMetalWelder_advanced.build();
-
-var lithiumbeamTinMetalWelder_industrial = mods.modularmachinery.RecipeBuilder.newBuilder("lithiumbeamTinMetalWelder_industrial", "basic", 40, 0);
-lithiumbeamTinMetalWelder_industrial.addItemInput(<contenttweaker:material_part:1703> * 8);
-lithiumbeamTinMetalWelder_industrial.addFluidInput(<liquid:cotm_tin_molten> * 144);
-lithiumbeamTinMetalWelder_industrial.addItemOutput(<contenttweaker:material_part:1712>);
-lithiumbeamTinMetalWelder_industrial.addFluidInput(<liquid:hydrogen> * 100);
-lithiumbeamTinMetalWelder_industrial.addFluidInput(<liquid:cotc_data> * 100);
-lithiumbeamTinMetalWelder_industrial.addEnergyPerTickInput(262144);
-lithiumbeamTinMetalWelder_industrial.build();
-
-var lithiumbeamTinMetalWelder_ultimate = mods.modularmachinery.RecipeBuilder.newBuilder("lithiumbeamTinMetalWelder_ultimate", "basic", 40, 0);
-lithiumbeamTinMetalWelder_ultimate.addItemInput(<contenttweaker:material_part:1703> * 8);
-lithiumbeamTinMetalWelder_ultimate.addFluidInput(<liquid:cotm_tin_molten> * 144);
-lithiumbeamTinMetalWelder_ultimate.addItemOutput(<contenttweaker:material_part:1712>);
-lithiumbeamTinMetalWelder_ultimate.addFluidInput(<liquid:hydrogen> * 100);
-lithiumbeamTinMetalWelder_ultimate.addFluidInput(<liquid:cotc_data> * 100);
-lithiumbeamTinMetalWelder_ultimate.addFluidInput(<liquid:cotc_neg_red_matter> * 100);
-lithiumbeamTinMetalWelder_ultimate.addFluidOutput(<liquid:cotc_pos_orange_matter> * 200);
-lithiumbeamTinMetalWelder_ultimate.addEnergyPerTickInput(67108864);
-lithiumbeamTinMetalWelder_ultimate.build();
-
-var lithiumrailTinMetalWelder_basic = mods.modularmachinery.RecipeBuilder.newBuilder("lithiumrailTinMetalWelder_basic", "basic", 40, 0);
-lithiumrailTinMetalWelder_basic.addItemInput(<contenttweaker:material_part:1720> * 9);
-lithiumrailTinMetalWelder_basic.addFluidInput(<liquid:cotm_tin_molten> * 144);
-lithiumrailTinMetalWelder_basic.addItemOutput(<contenttweaker:material_part:1723>);
-lithiumrailTinMetalWelder_basic.addEnergyPerTickInput(4);
-lithiumrailTinMetalWelder_basic.build();
-
-var lithiumrailTinMetalWelder_advanced = mods.modularmachinery.RecipeBuilder.newBuilder("lithiumrailTinMetalWelder_advanced", "basic", 40, 0);
-lithiumrailTinMetalWelder_advanced.addItemInput(<contenttweaker:material_part:1720> * 9);
-lithiumrailTinMetalWelder_advanced.addFluidInput(<liquid:cotm_tin_molten> * 144);
-lithiumrailTinMetalWelder_advanced.addItemOutput(<contenttweaker:material_part:1723>);
-lithiumrailTinMetalWelder_advanced.addFluidInput(<liquid:hydrogen> * 100);
-lithiumrailTinMetalWelder_advanced.addEnergyPerTickInput(1024);
-lithiumrailTinMetalWelder_advanced.build();
-
-var lithiumrailTinMetalWelder_industrial = mods.modularmachinery.RecipeBuilder.newBuilder("lithiumrailTinMetalWelder_industrial", "basic", 40, 0);
-lithiumrailTinMetalWelder_industrial.addItemInput(<contenttweaker:material_part:1720> * 9);
-lithiumrailTinMetalWelder_industrial.addFluidInput(<liquid:cotm_tin_molten> * 144);
-lithiumrailTinMetalWelder_industrial.addItemOutput(<contenttweaker:material_part:1723>);
-lithiumrailTinMetalWelder_industrial.addFluidInput(<liquid:hydrogen> * 100);
-lithiumrailTinMetalWelder_industrial.addFluidInput(<liquid:cotc_data> * 100);
-lithiumrailTinMetalWelder_industrial.addEnergyPerTickInput(262144);
-lithiumrailTinMetalWelder_industrial.build();
-
-var lithiumrailTinMetalWelder_ultimate = mods.modularmachinery.RecipeBuilder.newBuilder("lithiumrailTinMetalWelder_ultimate", "basic", 40, 0);
-lithiumrailTinMetalWelder_ultimate.addItemInput(<contenttweaker:material_part:1720> * 9);
-lithiumrailTinMetalWelder_ultimate.addFluidInput(<liquid:cotm_tin_molten> * 144);
-lithiumrailTinMetalWelder_ultimate.addItemOutput(<contenttweaker:material_part:1723>);
-lithiumrailTinMetalWelder_ultimate.addFluidInput(<liquid:hydrogen> * 100);
-lithiumrailTinMetalWelder_ultimate.addFluidInput(<liquid:cotc_data> * 100);
-lithiumrailTinMetalWelder_ultimate.addFluidInput(<liquid:cotc_neg_red_matter> * 100);
-lithiumrailTinMetalWelder_ultimate.addFluidOutput(<liquid:cotc_pos_orange_matter> * 200);
-lithiumrailTinMetalWelder_ultimate.addEnergyPerTickInput(67108864);
-lithiumrailTinMetalWelder_ultimate.build();
-
-var lithiumchainTinMetalWelder_basic = mods.modularmachinery.RecipeBuilder.newBuilder("lithiumchainTinMetalWelder_basic", "basic", 40, 0);
-lithiumchainTinMetalWelder_basic.addItemInput(<contenttweaker:material_part:1717> * 12);
-lithiumchainTinMetalWelder_basic.addFluidInput(<liquid:cotm_tin_molten> * 144);
-lithiumchainTinMetalWelder_basic.addItemOutput(<contenttweaker:material_part:1722>);
-lithiumchainTinMetalWelder_basic.addEnergyPerTickInput(4);
-lithiumchainTinMetalWelder_basic.build();
-
-var lithiumchainTinMetalWelder_advanced = mods.modularmachinery.RecipeBuilder.newBuilder("lithiumchainTinMetalWelder_advanced", "basic", 40, 0);
-lithiumchainTinMetalWelder_advanced.addItemInput(<contenttweaker:material_part:1717> * 12);
-lithiumchainTinMetalWelder_advanced.addFluidInput(<liquid:cotm_tin_molten> * 144);
-lithiumchainTinMetalWelder_advanced.addItemOutput(<contenttweaker:material_part:1722>);
-lithiumchainTinMetalWelder_advanced.addFluidInput(<liquid:hydrogen> * 100);
-lithiumchainTinMetalWelder_advanced.addEnergyPerTickInput(1024);
-lithiumchainTinMetalWelder_advanced.build();
-
-var lithiumchainTinMetalWelder_industrial = mods.modularmachinery.RecipeBuilder.newBuilder("lithiumchainTinMetalWelder_industrial", "basic", 40, 0);
-lithiumchainTinMetalWelder_industrial.addItemInput(<contenttweaker:material_part:1717> * 12);
-lithiumchainTinMetalWelder_industrial.addFluidInput(<liquid:cotm_tin_molten> * 144);
-lithiumchainTinMetalWelder_industrial.addItemOutput(<contenttweaker:material_part:1722>);
-lithiumchainTinMetalWelder_industrial.addFluidInput(<liquid:hydrogen> * 100);
-lithiumchainTinMetalWelder_industrial.addFluidInput(<liquid:cotc_data> * 100);
-lithiumchainTinMetalWelder_industrial.addEnergyPerTickInput(262144);
-lithiumchainTinMetalWelder_industrial.build();
-
-var lithiumchainTinMetalWelder_ultimate = mods.modularmachinery.RecipeBuilder.newBuilder("lithiumchainTinMetalWelder_ultimate", "basic", 40, 0);
-lithiumchainTinMetalWelder_ultimate.addItemInput(<contenttweaker:material_part:1717> * 12);
-lithiumchainTinMetalWelder_ultimate.addFluidInput(<liquid:cotm_tin_molten> * 144);
-lithiumchainTinMetalWelder_ultimate.addItemOutput(<contenttweaker:material_part:1722>);
-lithiumchainTinMetalWelder_ultimate.addFluidInput(<liquid:hydrogen> * 100);
-lithiumchainTinMetalWelder_ultimate.addFluidInput(<liquid:cotc_data> * 100);
-lithiumchainTinMetalWelder_ultimate.addFluidInput(<liquid:cotc_neg_red_matter> * 100);
-lithiumchainTinMetalWelder_ultimate.addFluidOutput(<liquid:cotc_pos_orange_matter> * 200);
-lithiumchainTinMetalWelder_ultimate.addEnergyPerTickInput(67108864);
-lithiumchainTinMetalWelder_ultimate.build();
-
-var lithiumrodThickTinMetalWelder_basic = mods.modularmachinery.RecipeBuilder.newBuilder("lithiumrodThickTinMetalWelder_basic", "basic", 40, 0);
-lithiumrodThickTinMetalWelder_basic.addItemInput(<contenttweaker:material_part:1708> * 4);
-lithiumrodThickTinMetalWelder_basic.addFluidInput(<liquid:cotm_tin_molten> * 144);
-lithiumrodThickTinMetalWelder_basic.addItemOutput(<contenttweaker:material_part:8268>);
-lithiumrodThickTinMetalWelder_basic.addEnergyPerTickInput(4);
-lithiumrodThickTinMetalWelder_basic.build();
-
-var lithiumrodThickTinMetalWelder_advanced = mods.modularmachinery.RecipeBuilder.newBuilder("lithiumrodThickTinMetalWelder_advanced", "basic", 40, 0);
-lithiumrodThickTinMetalWelder_advanced.addItemInput(<contenttweaker:material_part:1708> * 4);
-lithiumrodThickTinMetalWelder_advanced.addFluidInput(<liquid:cotm_tin_molten> * 144);
-lithiumrodThickTinMetalWelder_advanced.addItemOutput(<contenttweaker:material_part:8268>);
-lithiumrodThickTinMetalWelder_advanced.addFluidInput(<liquid:hydrogen> * 100);
-lithiumrodThickTinMetalWelder_advanced.addEnergyPerTickInput(1024);
-lithiumrodThickTinMetalWelder_advanced.build();
-
-var lithiumrodThickTinMetalWelder_industrial = mods.modularmachinery.RecipeBuilder.newBuilder("lithiumrodThickTinMetalWelder_industrial", "basic", 40, 0);
-lithiumrodThickTinMetalWelder_industrial.addItemInput(<contenttweaker:material_part:1708> * 4);
-lithiumrodThickTinMetalWelder_industrial.addFluidInput(<liquid:cotm_tin_molten> * 144);
-lithiumrodThickTinMetalWelder_industrial.addItemOutput(<contenttweaker:material_part:8268>);
-lithiumrodThickTinMetalWelder_industrial.addFluidInput(<liquid:hydrogen> * 100);
-lithiumrodThickTinMetalWelder_industrial.addFluidInput(<liquid:cotc_data> * 100);
-lithiumrodThickTinMetalWelder_industrial.addEnergyPerTickInput(262144);
-lithiumrodThickTinMetalWelder_industrial.build();
-
-var lithiumrodThickTinMetalWelder_ultimate = mods.modularmachinery.RecipeBuilder.newBuilder("lithiumrodThickTinMetalWelder_ultimate", "basic", 40, 0);
-lithiumrodThickTinMetalWelder_ultimate.addItemInput(<contenttweaker:material_part:1708> * 4);
-lithiumrodThickTinMetalWelder_ultimate.addFluidInput(<liquid:cotm_tin_molten> * 144);
-lithiumrodThickTinMetalWelder_ultimate.addItemOutput(<contenttweaker:material_part:8268>);
-lithiumrodThickTinMetalWelder_ultimate.addFluidInput(<liquid:hydrogen> * 100);
-lithiumrodThickTinMetalWelder_ultimate.addFluidInput(<liquid:cotc_data> * 100);
-lithiumrodThickTinMetalWelder_ultimate.addFluidInput(<liquid:cotc_neg_red_matter> * 100);
-lithiumrodThickTinMetalWelder_ultimate.addFluidOutput(<liquid:cotc_pos_orange_matter> * 200);
-lithiumrodThickTinMetalWelder_ultimate.addEnergyPerTickInput(67108864);
-lithiumrodThickTinMetalWelder_ultimate.build();
-
-var lithiumscrewMetalMicroLathe_basic = mods.modularmachinery.RecipeBuilder.newBuilder("lithiumscrewMetalMicroLathe_basic", "basic", 20, 0);
-lithiumscrewMetalMicroLathe_basic.addItemInput(<contenttweaker:material_part:1701> * 3);
-lithiumscrewMetalMicroLathe_basic.addItemOutput(<contenttweaker:material_part:1714>);
-lithiumscrewMetalMicroLathe_basic.addEnergyPerTickInput(4);
-lithiumscrewMetalMicroLathe_basic.build();
-
-var lithiumscrewMetalMicroLathe_advanced = mods.modularmachinery.RecipeBuilder.newBuilder("lithiumscrewMetalMicroLathe_advanced", "basic", 20, 0);
-lithiumscrewMetalMicroLathe_advanced.addItemInput(<contenttweaker:material_part:1701> * 3);
-lithiumscrewMetalMicroLathe_advanced.addItemOutput(<contenttweaker:material_part:1714>);
-lithiumscrewMetalMicroLathe_advanced.addFluidInput(<liquid:hydrogen> * 100);
-lithiumscrewMetalMicroLathe_advanced.addEnergyPerTickInput(1024);
-lithiumscrewMetalMicroLathe_advanced.build();
-
-var lithiumscrewMetalMicroLathe_industrial = mods.modularmachinery.RecipeBuilder.newBuilder("lithiumscrewMetalMicroLathe_industrial", "basic", 20, 0);
-lithiumscrewMetalMicroLathe_industrial.addItemInput(<contenttweaker:material_part:1701> * 3);
-lithiumscrewMetalMicroLathe_industrial.addItemOutput(<contenttweaker:material_part:1714>);
-lithiumscrewMetalMicroLathe_industrial.addFluidInput(<liquid:hydrogen> * 100);
-lithiumscrewMetalMicroLathe_industrial.addFluidInput(<liquid:cotc_data> * 100);
-lithiumscrewMetalMicroLathe_industrial.addEnergyPerTickInput(262144);
-lithiumscrewMetalMicroLathe_industrial.build();
-
-var lithiumscrewMetalMicroLathe_ultimate = mods.modularmachinery.RecipeBuilder.newBuilder("lithiumscrewMetalMicroLathe_ultimate", "basic", 20, 0);
-lithiumscrewMetalMicroLathe_ultimate.addItemInput(<contenttweaker:material_part:1701> * 3);
-lithiumscrewMetalMicroLathe_ultimate.addItemOutput(<contenttweaker:material_part:1714>);
-lithiumscrewMetalMicroLathe_ultimate.addFluidInput(<liquid:hydrogen> * 100);
-lithiumscrewMetalMicroLathe_ultimate.addFluidInput(<liquid:cotc_data> * 100);
-lithiumscrewMetalMicroLathe_ultimate.addFluidInput(<liquid:cotc_neg_red_matter> * 100);
-lithiumscrewMetalMicroLathe_ultimate.addFluidOutput(<liquid:cotc_pos_orange_matter> * 200);
-lithiumscrewMetalMicroLathe_ultimate.addEnergyPerTickInput(67108864);
-lithiumscrewMetalMicroLathe_ultimate.build();
-
-var lithiumboltMetalMicroLathe_basic = mods.modularmachinery.RecipeBuilder.newBuilder("lithiumboltMetalMicroLathe_basic", "basic", 20, 0);
-lithiumboltMetalMicroLathe_basic.addItemInput(<contenttweaker:material_part:1701> * 2);
-lithiumboltMetalMicroLathe_basic.addItemOutput(<contenttweaker:material_part:1713>);
-lithiumboltMetalMicroLathe_basic.addEnergyPerTickInput(4);
-lithiumboltMetalMicroLathe_basic.build();
-
-var lithiumboltMetalMicroLathe_advanced = mods.modularmachinery.RecipeBuilder.newBuilder("lithiumboltMetalMicroLathe_advanced", "basic", 20, 0);
-lithiumboltMetalMicroLathe_advanced.addItemInput(<contenttweaker:material_part:1701> * 2);
-lithiumboltMetalMicroLathe_advanced.addItemOutput(<contenttweaker:material_part:1713>);
-lithiumboltMetalMicroLathe_advanced.addFluidInput(<liquid:hydrogen> * 100);
-lithiumboltMetalMicroLathe_advanced.addEnergyPerTickInput(1024);
-lithiumboltMetalMicroLathe_advanced.build();
-
-var lithiumboltMetalMicroLathe_industrial = mods.modularmachinery.RecipeBuilder.newBuilder("lithiumboltMetalMicroLathe_industrial", "basic", 20, 0);
-lithiumboltMetalMicroLathe_industrial.addItemInput(<contenttweaker:material_part:1701> * 2);
-lithiumboltMetalMicroLathe_industrial.addItemOutput(<contenttweaker:material_part:1713>);
-lithiumboltMetalMicroLathe_industrial.addFluidInput(<liquid:hydrogen> * 100);
-lithiumboltMetalMicroLathe_industrial.addFluidInput(<liquid:cotc_data> * 100);
-lithiumboltMetalMicroLathe_industrial.addEnergyPerTickInput(262144);
-lithiumboltMetalMicroLathe_industrial.build();
-
-var lithiumboltMetalMicroLathe_ultimate = mods.modularmachinery.RecipeBuilder.newBuilder("lithiumboltMetalMicroLathe_ultimate", "basic", 20, 0);
-lithiumboltMetalMicroLathe_ultimate.addItemInput(<contenttweaker:material_part:1701> * 2);
-lithiumboltMetalMicroLathe_ultimate.addItemOutput(<contenttweaker:material_part:1713>);
-lithiumboltMetalMicroLathe_ultimate.addFluidInput(<liquid:hydrogen> * 100);
-lithiumboltMetalMicroLathe_ultimate.addFluidInput(<liquid:cotc_data> * 100);
-lithiumboltMetalMicroLathe_ultimate.addFluidInput(<liquid:cotc_neg_red_matter> * 100);
-lithiumboltMetalMicroLathe_ultimate.addFluidOutput(<liquid:cotc_pos_orange_matter> * 200);
-lithiumboltMetalMicroLathe_ultimate.addEnergyPerTickInput(67108864);
-lithiumboltMetalMicroLathe_ultimate.build();
-
-var lithiumboltSmallMetalMicroLathe_basic = mods.modularmachinery.RecipeBuilder.newBuilder("lithiumboltSmallMetalMicroLathe_basic", "basic", 20, 0);
-lithiumboltSmallMetalMicroLathe_basic.addItemInput(<contenttweaker:material_part:1701> * 1);
-lithiumboltSmallMetalMicroLathe_basic.addItemOutput(<contenttweaker:material_part:1725>);
-lithiumboltSmallMetalMicroLathe_basic.addEnergyPerTickInput(4);
-lithiumboltSmallMetalMicroLathe_basic.build();
-
-var lithiumboltSmallMetalMicroLathe_advanced = mods.modularmachinery.RecipeBuilder.newBuilder("lithiumboltSmallMetalMicroLathe_advanced", "basic", 20, 0);
-lithiumboltSmallMetalMicroLathe_advanced.addItemInput(<contenttweaker:material_part:1701> * 1);
-lithiumboltSmallMetalMicroLathe_advanced.addItemOutput(<contenttweaker:material_part:1725>);
-lithiumboltSmallMetalMicroLathe_advanced.addFluidInput(<liquid:hydrogen> * 100);
-lithiumboltSmallMetalMicroLathe_advanced.addEnergyPerTickInput(1024);
-lithiumboltSmallMetalMicroLathe_advanced.build();
-
-var lithiumboltSmallMetalMicroLathe_industrial = mods.modularmachinery.RecipeBuilder.newBuilder("lithiumboltSmallMetalMicroLathe_industrial", "basic", 20, 0);
-lithiumboltSmallMetalMicroLathe_industrial.addItemInput(<contenttweaker:material_part:1701> * 1);
-lithiumboltSmallMetalMicroLathe_industrial.addItemOutput(<contenttweaker:material_part:1725>);
-lithiumboltSmallMetalMicroLathe_industrial.addFluidInput(<liquid:hydrogen> * 100);
-lithiumboltSmallMetalMicroLathe_industrial.addFluidInput(<liquid:cotc_data> * 100);
-lithiumboltSmallMetalMicroLathe_industrial.addEnergyPerTickInput(262144);
-lithiumboltSmallMetalMicroLathe_industrial.build();
-
-var lithiumboltSmallMetalMicroLathe_ultimate = mods.modularmachinery.RecipeBuilder.newBuilder("lithiumboltSmallMetalMicroLathe_ultimate", "basic", 20, 0);
-lithiumboltSmallMetalMicroLathe_ultimate.addItemInput(<contenttweaker:material_part:1701> * 1);
-lithiumboltSmallMetalMicroLathe_ultimate.addItemOutput(<contenttweaker:material_part:1725>);
-lithiumboltSmallMetalMicroLathe_ultimate.addFluidInput(<liquid:hydrogen> * 100);
-lithiumboltSmallMetalMicroLathe_ultimate.addFluidInput(<liquid:cotc_data> * 100);
-lithiumboltSmallMetalMicroLathe_ultimate.addFluidInput(<liquid:cotc_neg_red_matter> * 100);
-lithiumboltSmallMetalMicroLathe_ultimate.addFluidOutput(<liquid:cotc_pos_orange_matter> * 200);
-lithiumboltSmallMetalMicroLathe_ultimate.addEnergyPerTickInput(67108864);
-lithiumboltSmallMetalMicroLathe_ultimate.build();
-
-var lithiumroundMetalMicroLathe_basic = mods.modularmachinery.RecipeBuilder.newBuilder("lithiumroundMetalMicroLathe_basic", "basic", 20, 0);
-lithiumroundMetalMicroLathe_basic.addItemInput(<contenttweaker:material_part:1701> * 1);
-lithiumroundMetalMicroLathe_basic.addItemOutput(<contenttweaker:material_part:1715>);
-lithiumroundMetalMicroLathe_basic.addEnergyPerTickInput(4);
-lithiumroundMetalMicroLathe_basic.build();
-
-var lithiumroundMetalMicroLathe_advanced = mods.modularmachinery.RecipeBuilder.newBuilder("lithiumroundMetalMicroLathe_advanced", "basic", 20, 0);
-lithiumroundMetalMicroLathe_advanced.addItemInput(<contenttweaker:material_part:1701> * 1);
-lithiumroundMetalMicroLathe_advanced.addItemOutput(<contenttweaker:material_part:1715>);
-lithiumroundMetalMicroLathe_advanced.addFluidInput(<liquid:hydrogen> * 100);
-lithiumroundMetalMicroLathe_advanced.addEnergyPerTickInput(1024);
-lithiumroundMetalMicroLathe_advanced.build();
-
-var lithiumroundMetalMicroLathe_industrial = mods.modularmachinery.RecipeBuilder.newBuilder("lithiumroundMetalMicroLathe_industrial", "basic", 20, 0);
-lithiumroundMetalMicroLathe_industrial.addItemInput(<contenttweaker:material_part:1701> * 1);
-lithiumroundMetalMicroLathe_industrial.addItemOutput(<contenttweaker:material_part:1715>);
-lithiumroundMetalMicroLathe_industrial.addFluidInput(<liquid:hydrogen> * 100);
-lithiumroundMetalMicroLathe_industrial.addFluidInput(<liquid:cotc_data> * 100);
-lithiumroundMetalMicroLathe_industrial.addEnergyPerTickInput(262144);
-lithiumroundMetalMicroLathe_industrial.build();
-
-var lithiumroundMetalMicroLathe_ultimate = mods.modularmachinery.RecipeBuilder.newBuilder("lithiumroundMetalMicroLathe_ultimate", "basic", 20, 0);
-lithiumroundMetalMicroLathe_ultimate.addItemInput(<contenttweaker:material_part:1701> * 1);
-lithiumroundMetalMicroLathe_ultimate.addItemOutput(<contenttweaker:material_part:1715>);
-lithiumroundMetalMicroLathe_ultimate.addFluidInput(<liquid:hydrogen> * 100);
-lithiumroundMetalMicroLathe_ultimate.addFluidInput(<liquid:cotc_data> * 100);
-lithiumroundMetalMicroLathe_ultimate.addFluidInput(<liquid:cotc_neg_red_matter> * 100);
-lithiumroundMetalMicroLathe_ultimate.addFluidOutput(<liquid:cotc_pos_orange_matter> * 200);
-lithiumroundMetalMicroLathe_ultimate.addEnergyPerTickInput(67108864);
-lithiumroundMetalMicroLathe_ultimate.build();
-
-var lithiumrodSmallMetalMicroLathe_basic = mods.modularmachinery.RecipeBuilder.newBuilder("lithiumrodSmallMetalMicroLathe_basic", "basic", 20, 0);
-lithiumrodSmallMetalMicroLathe_basic.addItemInput(<contenttweaker:material_part:1701> * 2);
-lithiumrodSmallMetalMicroLathe_basic.addItemOutput(<contenttweaker:material_part:1707>);
-lithiumrodSmallMetalMicroLathe_basic.addEnergyPerTickInput(4);
-lithiumrodSmallMetalMicroLathe_basic.build();
-
-var lithiumrodSmallMetalMicroLathe_advanced = mods.modularmachinery.RecipeBuilder.newBuilder("lithiumrodSmallMetalMicroLathe_advanced", "basic", 20, 0);
-lithiumrodSmallMetalMicroLathe_advanced.addItemInput(<contenttweaker:material_part:1701> * 2);
-lithiumrodSmallMetalMicroLathe_advanced.addItemOutput(<contenttweaker:material_part:1707>);
-lithiumrodSmallMetalMicroLathe_advanced.addFluidInput(<liquid:hydrogen> * 100);
-lithiumrodSmallMetalMicroLathe_advanced.addEnergyPerTickInput(1024);
-lithiumrodSmallMetalMicroLathe_advanced.build();
-
-var lithiumrodSmallMetalMicroLathe_industrial = mods.modularmachinery.RecipeBuilder.newBuilder("lithiumrodSmallMetalMicroLathe_industrial", "basic", 20, 0);
-lithiumrodSmallMetalMicroLathe_industrial.addItemInput(<contenttweaker:material_part:1701> * 2);
-lithiumrodSmallMetalMicroLathe_industrial.addItemOutput(<contenttweaker:material_part:1707>);
-lithiumrodSmallMetalMicroLathe_industrial.addFluidInput(<liquid:hydrogen> * 100);
-lithiumrodSmallMetalMicroLathe_industrial.addFluidInput(<liquid:cotc_data> * 100);
-lithiumrodSmallMetalMicroLathe_industrial.addEnergyPerTickInput(262144);
-lithiumrodSmallMetalMicroLathe_industrial.build();
-
-var lithiumrodSmallMetalMicroLathe_ultimate = mods.modularmachinery.RecipeBuilder.newBuilder("lithiumrodSmallMetalMicroLathe_ultimate", "basic", 20, 0);
-lithiumrodSmallMetalMicroLathe_ultimate.addItemInput(<contenttweaker:material_part:1701> * 2);
-lithiumrodSmallMetalMicroLathe_ultimate.addItemOutput(<contenttweaker:material_part:1707>);
-lithiumrodSmallMetalMicroLathe_ultimate.addFluidInput(<liquid:hydrogen> * 100);
-lithiumrodSmallMetalMicroLathe_ultimate.addFluidInput(<liquid:cotc_data> * 100);
-lithiumrodSmallMetalMicroLathe_ultimate.addFluidInput(<liquid:cotc_neg_red_matter> * 100);
-lithiumrodSmallMetalMicroLathe_ultimate.addFluidOutput(<liquid:cotc_pos_orange_matter> * 200);
-lithiumrodSmallMetalMicroLathe_ultimate.addEnergyPerTickInput(67108864);
-lithiumrodSmallMetalMicroLathe_ultimate.build();
-
-var lithiumspringMetalCoiller_basic = mods.modularmachinery.RecipeBuilder.newBuilder("lithiumspringMetalCoiller_basic", "basic", 200, 0);
-lithiumspringMetalCoiller_basic.addItemInput(<contenttweaker:material_part:1708>);
-lithiumspringMetalCoiller_basic.addItemOutput(<contenttweaker:material_part:1721>);
-lithiumspringMetalCoiller_basic.addEnergyPerTickInput(4);
-lithiumspringMetalCoiller_basic.build();
-
-var lithiumspringMetalCoiller_advanced = mods.modularmachinery.RecipeBuilder.newBuilder("lithiumspringMetalCoiller_advanced", "basic", 200, 0);
-lithiumspringMetalCoiller_advanced.addItemInput(<contenttweaker:material_part:1708>);
-lithiumspringMetalCoiller_advanced.addItemOutput(<contenttweaker:material_part:1721>);
-lithiumspringMetalCoiller_advanced.addFluidInput(<liquid:hydrogen> * 100);
-lithiumspringMetalCoiller_advanced.addEnergyPerTickInput(1024);
-lithiumspringMetalCoiller_advanced.build();
-
-var lithiumspringMetalCoiller_industrial = mods.modularmachinery.RecipeBuilder.newBuilder("lithiumspringMetalCoiller_industrial", "basic", 200, 0);
-lithiumspringMetalCoiller_industrial.addItemInput(<contenttweaker:material_part:1708>);
-lithiumspringMetalCoiller_industrial.addItemOutput(<contenttweaker:material_part:1721>);
-lithiumspringMetalCoiller_industrial.addFluidInput(<liquid:hydrogen> * 100);
-lithiumspringMetalCoiller_industrial.addFluidInput(<liquid:cotc_data> * 100);
-lithiumspringMetalCoiller_industrial.addEnergyPerTickInput(262144);
-lithiumspringMetalCoiller_industrial.build();
-
-var lithiumspringMetalCoiller_ultimate = mods.modularmachinery.RecipeBuilder.newBuilder("lithiumspringMetalCoiller_ultimate", "basic", 200, 0);
-lithiumspringMetalCoiller_ultimate.addItemInput(<contenttweaker:material_part:1708>);
-lithiumspringMetalCoiller_ultimate.addItemOutput(<contenttweaker:material_part:1721>);
-lithiumspringMetalCoiller_ultimate.addFluidInput(<liquid:hydrogen> * 100);
-lithiumspringMetalCoiller_ultimate.addFluidInput(<liquid:cotc_data> * 100);
-lithiumspringMetalCoiller_ultimate.addFluidInput(<liquid:cotc_neg_red_matter> * 100);
-lithiumspringMetalCoiller_ultimate.addFluidOutput(<liquid:cotc_pos_orange_matter> * 200);
-lithiumspringMetalCoiller_ultimate.addEnergyPerTickInput(67108864);
-lithiumspringMetalCoiller_ultimate.build();
-
-var lithiumspringLargeMetalCoiller_basic = mods.modularmachinery.RecipeBuilder.newBuilder("lithiumspringLargeMetalCoiller_basic", "basic", 200, 0);
-lithiumspringLargeMetalCoiller_basic.addItemInput(<contenttweaker:material_part:1709>);
-lithiumspringLargeMetalCoiller_basic.addItemOutput(<contenttweaker:material_part:1711>);
-lithiumspringLargeMetalCoiller_basic.addEnergyPerTickInput(4);
-lithiumspringLargeMetalCoiller_basic.build();
-
-var lithiumspringLargeMetalCoiller_advanced = mods.modularmachinery.RecipeBuilder.newBuilder("lithiumspringLargeMetalCoiller_advanced", "basic", 200, 0);
-lithiumspringLargeMetalCoiller_advanced.addItemInput(<contenttweaker:material_part:1709>);
-lithiumspringLargeMetalCoiller_advanced.addItemOutput(<contenttweaker:material_part:1711>);
-lithiumspringLargeMetalCoiller_advanced.addFluidInput(<liquid:hydrogen> * 100);
-lithiumspringLargeMetalCoiller_advanced.addEnergyPerTickInput(1024);
-lithiumspringLargeMetalCoiller_advanced.build();
-
-var lithiumspringLargeMetalCoiller_industrial = mods.modularmachinery.RecipeBuilder.newBuilder("lithiumspringLargeMetalCoiller_industrial", "basic", 200, 0);
-lithiumspringLargeMetalCoiller_industrial.addItemInput(<contenttweaker:material_part:1709>);
-lithiumspringLargeMetalCoiller_industrial.addItemOutput(<contenttweaker:material_part:1711>);
-lithiumspringLargeMetalCoiller_industrial.addFluidInput(<liquid:hydrogen> * 100);
-lithiumspringLargeMetalCoiller_industrial.addFluidInput(<liquid:cotc_data> * 100);
-lithiumspringLargeMetalCoiller_industrial.addEnergyPerTickInput(262144);
-lithiumspringLargeMetalCoiller_industrial.build();
-
-var lithiumspringLargeMetalCoiller_ultimate = mods.modularmachinery.RecipeBuilder.newBuilder("lithiumspringLargeMetalCoiller_ultimate", "basic", 200, 0);
-lithiumspringLargeMetalCoiller_ultimate.addItemInput(<contenttweaker:material_part:1709>);
-lithiumspringLargeMetalCoiller_ultimate.addItemOutput(<contenttweaker:material_part:1711>);
-lithiumspringLargeMetalCoiller_ultimate.addFluidInput(<liquid:hydrogen> * 100);
-lithiumspringLargeMetalCoiller_ultimate.addFluidInput(<liquid:cotc_data> * 100);
-lithiumspringLargeMetalCoiller_ultimate.addFluidInput(<liquid:cotc_neg_red_matter> * 100);
-lithiumspringLargeMetalCoiller_ultimate.addFluidOutput(<liquid:cotc_pos_orange_matter> * 200);
-lithiumspringLargeMetalCoiller_ultimate.addEnergyPerTickInput(67108864);
-lithiumspringLargeMetalCoiller_ultimate.build();
-
-var lithiumcoilMetalCoiller_basic = mods.modularmachinery.RecipeBuilder.newBuilder("lithiumcoilMetalCoiller_basic", "basic", 200, 0);
-lithiumcoilMetalCoiller_basic.addItemInput(<contenttweaker:material_part:1733>);
-lithiumcoilMetalCoiller_basic.addItemOutput(<contenttweaker:material_part:1736>);
-lithiumcoilMetalCoiller_basic.addEnergyPerTickInput(4);
-lithiumcoilMetalCoiller_basic.build();
-
-var lithiumcoilMetalCoiller_advanced = mods.modularmachinery.RecipeBuilder.newBuilder("lithiumcoilMetalCoiller_advanced", "basic", 200, 0);
-lithiumcoilMetalCoiller_advanced.addItemInput(<contenttweaker:material_part:1733>);
-lithiumcoilMetalCoiller_advanced.addItemOutput(<contenttweaker:material_part:1736>);
-lithiumcoilMetalCoiller_advanced.addFluidInput(<liquid:hydrogen> * 100);
-lithiumcoilMetalCoiller_advanced.addEnergyPerTickInput(1024);
-lithiumcoilMetalCoiller_advanced.build();
-
-var lithiumcoilMetalCoiller_industrial = mods.modularmachinery.RecipeBuilder.newBuilder("lithiumcoilMetalCoiller_industrial", "basic", 200, 0);
-lithiumcoilMetalCoiller_industrial.addItemInput(<contenttweaker:material_part:1733>);
-lithiumcoilMetalCoiller_industrial.addItemOutput(<contenttweaker:material_part:1736>);
-lithiumcoilMetalCoiller_industrial.addFluidInput(<liquid:hydrogen> * 100);
-lithiumcoilMetalCoiller_industrial.addFluidInput(<liquid:cotc_data> * 100);
-lithiumcoilMetalCoiller_industrial.addEnergyPerTickInput(262144);
-lithiumcoilMetalCoiller_industrial.build();
-
-var lithiumcoilMetalCoiller_ultimate = mods.modularmachinery.RecipeBuilder.newBuilder("lithiumcoilMetalCoiller_ultimate", "basic", 200, 0);
-lithiumcoilMetalCoiller_ultimate.addItemInput(<contenttweaker:material_part:1733>);
-lithiumcoilMetalCoiller_ultimate.addItemOutput(<contenttweaker:material_part:1736>);
-lithiumcoilMetalCoiller_ultimate.addFluidInput(<liquid:hydrogen> * 100);
-lithiumcoilMetalCoiller_ultimate.addFluidInput(<liquid:cotc_data> * 100);
-lithiumcoilMetalCoiller_ultimate.addFluidInput(<liquid:cotc_neg_red_matter> * 100);
-lithiumcoilMetalCoiller_ultimate.addFluidOutput(<liquid:cotc_pos_orange_matter> * 200);
-lithiumcoilMetalCoiller_ultimate.addEnergyPerTickInput(67108864);
-lithiumcoilMetalCoiller_ultimate.build();
-
-var lithiumplateCurvedMetalHeatedBender_basic = mods.modularmachinery.RecipeBuilder.newBuilder("lithiumplateCurvedMetalHeatedBender_basic", "basic", 200, 0);
-lithiumplateCurvedMetalHeatedBender_basic.addItemInput(<contenttweaker:material_part:1703>);
-lithiumplateCurvedMetalHeatedBender_basic.addItemOutput(<contenttweaker:material_part:1704>);
-lithiumplateCurvedMetalHeatedBender_basic.addEnergyPerTickInput(4);
-lithiumplateCurvedMetalHeatedBender_basic.build();
-
-var lithiumplateCurvedMetalHeatedBender_advanced = mods.modularmachinery.RecipeBuilder.newBuilder("lithiumplateCurvedMetalHeatedBender_advanced", "basic", 200, 0);
-lithiumplateCurvedMetalHeatedBender_advanced.addItemInput(<contenttweaker:material_part:1703>);
-lithiumplateCurvedMetalHeatedBender_advanced.addItemOutput(<contenttweaker:material_part:1704>);
-lithiumplateCurvedMetalHeatedBender_advanced.addFluidInput(<liquid:hydrogen> * 100);
-lithiumplateCurvedMetalHeatedBender_advanced.addEnergyPerTickInput(1024);
-lithiumplateCurvedMetalHeatedBender_advanced.build();
-
-var lithiumplateCurvedMetalHeatedBender_industrial = mods.modularmachinery.RecipeBuilder.newBuilder("lithiumplateCurvedMetalHeatedBender_industrial", "basic", 200, 0);
-lithiumplateCurvedMetalHeatedBender_industrial.addItemInput(<contenttweaker:material_part:1703>);
-lithiumplateCurvedMetalHeatedBender_industrial.addItemOutput(<contenttweaker:material_part:1704>);
-lithiumplateCurvedMetalHeatedBender_industrial.addFluidInput(<liquid:hydrogen> * 100);
-lithiumplateCurvedMetalHeatedBender_industrial.addFluidInput(<liquid:cotc_data> * 100);
-lithiumplateCurvedMetalHeatedBender_industrial.addEnergyPerTickInput(262144);
-lithiumplateCurvedMetalHeatedBender_industrial.build();
-
-var lithiumplateCurvedMetalHeatedBender_ultimate = mods.modularmachinery.RecipeBuilder.newBuilder("lithiumplateCurvedMetalHeatedBender_ultimate", "basic", 200, 0);
-lithiumplateCurvedMetalHeatedBender_ultimate.addItemInput(<contenttweaker:material_part:1703>);
-lithiumplateCurvedMetalHeatedBender_ultimate.addItemOutput(<contenttweaker:material_part:1704>);
-lithiumplateCurvedMetalHeatedBender_ultimate.addFluidInput(<liquid:hydrogen> * 100);
-lithiumplateCurvedMetalHeatedBender_ultimate.addFluidInput(<liquid:cotc_data> * 100);
-lithiumplateCurvedMetalHeatedBender_ultimate.addFluidInput(<liquid:cotc_neg_red_matter> * 100);
-lithiumplateCurvedMetalHeatedBender_ultimate.addFluidOutput(<liquid:cotc_pos_orange_matter> * 200);
-lithiumplateCurvedMetalHeatedBender_ultimate.addEnergyPerTickInput(67108864);
-lithiumplateCurvedMetalHeatedBender_ultimate.build();
-
-var lithiumplateCurvedSmallMetalHeatedBender_basic = mods.modularmachinery.RecipeBuilder.newBuilder("lithiumplateCurvedSmallMetalHeatedBender_basic", "basic", 200, 0);
-lithiumplateCurvedSmallMetalHeatedBender_basic.addItemInput(<contenttweaker:material_part:1720>);
-lithiumplateCurvedSmallMetalHeatedBender_basic.addItemOutput(<contenttweaker:material_part:8267>);
-lithiumplateCurvedSmallMetalHeatedBender_basic.addEnergyPerTickInput(4);
-lithiumplateCurvedSmallMetalHeatedBender_basic.build();
-
-var lithiumplateCurvedSmallMetalHeatedBender_advanced = mods.modularmachinery.RecipeBuilder.newBuilder("lithiumplateCurvedSmallMetalHeatedBender_advanced", "basic", 200, 0);
-lithiumplateCurvedSmallMetalHeatedBender_advanced.addItemInput(<contenttweaker:material_part:1720>);
-lithiumplateCurvedSmallMetalHeatedBender_advanced.addItemOutput(<contenttweaker:material_part:8267>);
-lithiumplateCurvedSmallMetalHeatedBender_advanced.addFluidInput(<liquid:hydrogen> * 100);
-lithiumplateCurvedSmallMetalHeatedBender_advanced.addEnergyPerTickInput(1024);
-lithiumplateCurvedSmallMetalHeatedBender_advanced.build();
-
-var lithiumplateCurvedSmallMetalHeatedBender_industrial = mods.modularmachinery.RecipeBuilder.newBuilder("lithiumplateCurvedSmallMetalHeatedBender_industrial", "basic", 200, 0);
-lithiumplateCurvedSmallMetalHeatedBender_industrial.addItemInput(<contenttweaker:material_part:1720>);
-lithiumplateCurvedSmallMetalHeatedBender_industrial.addItemOutput(<contenttweaker:material_part:8267>);
-lithiumplateCurvedSmallMetalHeatedBender_industrial.addFluidInput(<liquid:hydrogen> * 100);
-lithiumplateCurvedSmallMetalHeatedBender_industrial.addFluidInput(<liquid:cotc_data> * 100);
-lithiumplateCurvedSmallMetalHeatedBender_industrial.addEnergyPerTickInput(262144);
-lithiumplateCurvedSmallMetalHeatedBender_industrial.build();
-
-var lithiumplateCurvedSmallMetalHeatedBender_ultimate = mods.modularmachinery.RecipeBuilder.newBuilder("lithiumplateCurvedSmallMetalHeatedBender_ultimate", "basic", 200, 0);
-lithiumplateCurvedSmallMetalHeatedBender_ultimate.addItemInput(<contenttweaker:material_part:1720>);
-lithiumplateCurvedSmallMetalHeatedBender_ultimate.addItemOutput(<contenttweaker:material_part:8267>);
-lithiumplateCurvedSmallMetalHeatedBender_ultimate.addFluidInput(<liquid:hydrogen> * 100);
-lithiumplateCurvedSmallMetalHeatedBender_ultimate.addFluidInput(<liquid:cotc_data> * 100);
-lithiumplateCurvedSmallMetalHeatedBender_ultimate.addFluidInput(<liquid:cotc_neg_red_matter> * 100);
-lithiumplateCurvedSmallMetalHeatedBender_ultimate.addFluidOutput(<liquid:cotc_pos_orange_matter> * 200);
-lithiumplateCurvedSmallMetalHeatedBender_ultimate.addEnergyPerTickInput(67108864);
-lithiumplateCurvedSmallMetalHeatedBender_ultimate.build();
-
-var lithiumringMetalHeatedBender_basic = mods.modularmachinery.RecipeBuilder.newBuilder("lithiumringMetalHeatedBender_basic", "basic", 200, 0);
-lithiumringMetalHeatedBender_basic.addItemInput(<contenttweaker:material_part:1708>);
-lithiumringMetalHeatedBender_basic.addItemOutput(<contenttweaker:material_part:1717>);
-lithiumringMetalHeatedBender_basic.addEnergyPerTickInput(4);
-lithiumringMetalHeatedBender_basic.build();
-
-var lithiumringMetalHeatedBender_advanced = mods.modularmachinery.RecipeBuilder.newBuilder("lithiumringMetalHeatedBender_advanced", "basic", 200, 0);
-lithiumringMetalHeatedBender_advanced.addItemInput(<contenttweaker:material_part:1708>);
-lithiumringMetalHeatedBender_advanced.addItemOutput(<contenttweaker:material_part:1717>);
-lithiumringMetalHeatedBender_advanced.addFluidInput(<liquid:hydrogen> * 100);
-lithiumringMetalHeatedBender_advanced.addEnergyPerTickInput(1024);
-lithiumringMetalHeatedBender_advanced.build();
-
-var lithiumringMetalHeatedBender_industrial = mods.modularmachinery.RecipeBuilder.newBuilder("lithiumringMetalHeatedBender_industrial", "basic", 200, 0);
-lithiumringMetalHeatedBender_industrial.addItemInput(<contenttweaker:material_part:1708>);
-lithiumringMetalHeatedBender_industrial.addItemOutput(<contenttweaker:material_part:1717>);
-lithiumringMetalHeatedBender_industrial.addFluidInput(<liquid:hydrogen> * 100);
-lithiumringMetalHeatedBender_industrial.addFluidInput(<liquid:cotc_data> * 100);
-lithiumringMetalHeatedBender_industrial.addEnergyPerTickInput(262144);
-lithiumringMetalHeatedBender_industrial.build();
-
-var lithiumringMetalHeatedBender_ultimate = mods.modularmachinery.RecipeBuilder.newBuilder("lithiumringMetalHeatedBender_ultimate", "basic", 200, 0);
-lithiumringMetalHeatedBender_ultimate.addItemInput(<contenttweaker:material_part:1708>);
-lithiumringMetalHeatedBender_ultimate.addItemOutput(<contenttweaker:material_part:1717>);
-lithiumringMetalHeatedBender_ultimate.addFluidInput(<liquid:hydrogen> * 100);
-lithiumringMetalHeatedBender_ultimate.addFluidInput(<liquid:cotc_data> * 100);
-lithiumringMetalHeatedBender_ultimate.addFluidInput(<liquid:cotc_neg_red_matter> * 100);
-lithiumringMetalHeatedBender_ultimate.addFluidOutput(<liquid:cotc_pos_orange_matter> * 200);
-lithiumringMetalHeatedBender_ultimate.addEnergyPerTickInput(67108864);
-lithiumringMetalHeatedBender_ultimate.build();
-
-var lithiumringSmallMetalHeatedBender_basic = mods.modularmachinery.RecipeBuilder.newBuilder("lithiumringSmallMetalHeatedBender_basic", "basic", 200, 0);
-lithiumringSmallMetalHeatedBender_basic.addItemInput(<contenttweaker:material_part:1707>);
-lithiumringSmallMetalHeatedBender_basic.addItemOutput(<contenttweaker:material_part:9220>);
-lithiumringSmallMetalHeatedBender_basic.addEnergyPerTickInput(4);
-lithiumringSmallMetalHeatedBender_basic.build();
-
-var lithiumringSmallMetalHeatedBender_advanced = mods.modularmachinery.RecipeBuilder.newBuilder("lithiumringSmallMetalHeatedBender_advanced", "basic", 200, 0);
-lithiumringSmallMetalHeatedBender_advanced.addItemInput(<contenttweaker:material_part:1707>);
-lithiumringSmallMetalHeatedBender_advanced.addItemOutput(<contenttweaker:material_part:9220>);
-lithiumringSmallMetalHeatedBender_advanced.addFluidInput(<liquid:hydrogen> * 100);
-lithiumringSmallMetalHeatedBender_advanced.addEnergyPerTickInput(1024);
-lithiumringSmallMetalHeatedBender_advanced.build();
-
-var lithiumringSmallMetalHeatedBender_industrial = mods.modularmachinery.RecipeBuilder.newBuilder("lithiumringSmallMetalHeatedBender_industrial", "basic", 200, 0);
-lithiumringSmallMetalHeatedBender_industrial.addItemInput(<contenttweaker:material_part:1707>);
-lithiumringSmallMetalHeatedBender_industrial.addItemOutput(<contenttweaker:material_part:9220>);
-lithiumringSmallMetalHeatedBender_industrial.addFluidInput(<liquid:hydrogen> * 100);
-lithiumringSmallMetalHeatedBender_industrial.addFluidInput(<liquid:cotc_data> * 100);
-lithiumringSmallMetalHeatedBender_industrial.addEnergyPerTickInput(262144);
-lithiumringSmallMetalHeatedBender_industrial.build();
-
-var lithiumringSmallMetalHeatedBender_ultimate = mods.modularmachinery.RecipeBuilder.newBuilder("lithiumringSmallMetalHeatedBender_ultimate", "basic", 200, 0);
-lithiumringSmallMetalHeatedBender_ultimate.addItemInput(<contenttweaker:material_part:1707>);
-lithiumringSmallMetalHeatedBender_ultimate.addItemOutput(<contenttweaker:material_part:9220>);
-lithiumringSmallMetalHeatedBender_ultimate.addFluidInput(<liquid:hydrogen> * 100);
-lithiumringSmallMetalHeatedBender_ultimate.addFluidInput(<liquid:cotc_data> * 100);
-lithiumringSmallMetalHeatedBender_ultimate.addFluidInput(<liquid:cotc_neg_red_matter> * 100);
-lithiumringSmallMetalHeatedBender_ultimate.addFluidOutput(<liquid:cotc_pos_orange_matter> * 200);
-lithiumringSmallMetalHeatedBender_ultimate.addEnergyPerTickInput(67108864);
-lithiumringSmallMetalHeatedBender_ultimate.build();
-
-var lithiumdrillheadMetalSharpen_basic = mods.modularmachinery.RecipeBuilder.newBuilder("lithiumdrillheadMetalSharpen_basic", "basic", 80, 0);
-lithiumdrillheadMetalSharpen_basic.addItemInput(<contenttweaker:material_part:8271>);
-lithiumdrillheadMetalSharpen_basic.addItemOutput(<contenttweaker:material_part:1729>);
-lithiumdrillheadMetalSharpen_basic.addEnergyPerTickInput(4);
-lithiumdrillheadMetalSharpen_basic.build();
-
-var lithiumdrillheadMetalSharpen_advanced = mods.modularmachinery.RecipeBuilder.newBuilder("lithiumdrillheadMetalSharpen_advanced", "basic", 80, 0);
-lithiumdrillheadMetalSharpen_advanced.addItemInput(<contenttweaker:material_part:8271>);
-lithiumdrillheadMetalSharpen_advanced.addItemOutput(<contenttweaker:material_part:1729>);
-lithiumdrillheadMetalSharpen_advanced.addFluidInput(<liquid:hydrogen> * 100);
-lithiumdrillheadMetalSharpen_advanced.addEnergyPerTickInput(1024);
-lithiumdrillheadMetalSharpen_advanced.build();
-
-var lithiumdrillheadMetalSharpen_industrial = mods.modularmachinery.RecipeBuilder.newBuilder("lithiumdrillheadMetalSharpen_industrial", "basic", 80, 0);
-lithiumdrillheadMetalSharpen_industrial.addItemInput(<contenttweaker:material_part:8271>);
-lithiumdrillheadMetalSharpen_industrial.addItemOutput(<contenttweaker:material_part:1729>);
-lithiumdrillheadMetalSharpen_industrial.addFluidInput(<liquid:hydrogen> * 100);
-lithiumdrillheadMetalSharpen_industrial.addFluidInput(<liquid:cotc_data> * 100);
-lithiumdrillheadMetalSharpen_industrial.addEnergyPerTickInput(262144);
-lithiumdrillheadMetalSharpen_industrial.build();
-
-var lithiumdrillheadMetalSharpen_ultimate = mods.modularmachinery.RecipeBuilder.newBuilder("lithiumdrillheadMetalSharpen_ultimate", "basic", 80, 0);
-lithiumdrillheadMetalSharpen_ultimate.addItemInput(<contenttweaker:material_part:8271>);
-lithiumdrillheadMetalSharpen_ultimate.addItemOutput(<contenttweaker:material_part:1729>);
-lithiumdrillheadMetalSharpen_ultimate.addFluidInput(<liquid:hydrogen> * 100);
-lithiumdrillheadMetalSharpen_ultimate.addFluidInput(<liquid:cotc_data> * 100);
-lithiumdrillheadMetalSharpen_ultimate.addFluidInput(<liquid:cotc_neg_red_matter> * 100);
-lithiumdrillheadMetalSharpen_ultimate.addFluidOutput(<liquid:cotc_pos_orange_matter> * 200);
-lithiumdrillheadMetalSharpen_ultimate.addEnergyPerTickInput(67108864);
-lithiumdrillheadMetalSharpen_ultimate.build();
-
-var lithiumwireMetalWiremill_basic = mods.modularmachinery.RecipeBuilder.newBuilder("lithiumwireMetalWiremill_basic", "basic", 120, 0);
-lithiumwireMetalWiremill_basic.addItemInput(<contenttweaker:material_part:1708>);
-lithiumwireMetalWiremill_basic.addItemOutput(<contenttweaker:material_part:1733>);
-lithiumwireMetalWiremill_basic.addEnergyPerTickInput(4);
-lithiumwireMetalWiremill_basic.build();
-
-var lithiumwireMetalWiremill_advanced = mods.modularmachinery.RecipeBuilder.newBuilder("lithiumwireMetalWiremill_advanced", "basic", 120, 0);
-lithiumwireMetalWiremill_advanced.addItemInput(<contenttweaker:material_part:1708>);
-lithiumwireMetalWiremill_advanced.addItemOutput(<contenttweaker:material_part:1733>);
-lithiumwireMetalWiremill_advanced.addFluidInput(<liquid:hydrogen> * 100);
-lithiumwireMetalWiremill_advanced.addEnergyPerTickInput(1024);
-lithiumwireMetalWiremill_advanced.build();
-
-var lithiumwireMetalWiremill_industrial = mods.modularmachinery.RecipeBuilder.newBuilder("lithiumwireMetalWiremill_industrial", "basic", 120, 0);
-lithiumwireMetalWiremill_industrial.addItemInput(<contenttweaker:material_part:1708>);
-lithiumwireMetalWiremill_industrial.addItemOutput(<contenttweaker:material_part:1733>);
-lithiumwireMetalWiremill_industrial.addFluidInput(<liquid:hydrogen> * 100);
-lithiumwireMetalWiremill_industrial.addFluidInput(<liquid:cotc_data> * 100);
-lithiumwireMetalWiremill_industrial.addEnergyPerTickInput(262144);
-lithiumwireMetalWiremill_industrial.build();
-
-var lithiumwireMetalWiremill_ultimate = mods.modularmachinery.RecipeBuilder.newBuilder("lithiumwireMetalWiremill_ultimate", "basic", 120, 0);
-lithiumwireMetalWiremill_ultimate.addItemInput(<contenttweaker:material_part:1708>);
-lithiumwireMetalWiremill_ultimate.addItemOutput(<contenttweaker:material_part:1733>);
-lithiumwireMetalWiremill_ultimate.addFluidInput(<liquid:hydrogen> * 100);
-lithiumwireMetalWiremill_ultimate.addFluidInput(<liquid:cotc_data> * 100);
-lithiumwireMetalWiremill_ultimate.addFluidInput(<liquid:cotc_neg_red_matter> * 100);
-lithiumwireMetalWiremill_ultimate.addFluidOutput(<liquid:cotc_pos_orange_matter> * 200);
-lithiumwireMetalWiremill_ultimate.addEnergyPerTickInput(67108864);
-lithiumwireMetalWiremill_ultimate.build();
-
-var lithiumwireDenseMetalWiremill_basic = mods.modularmachinery.RecipeBuilder.newBuilder("lithiumwireDenseMetalWiremill_basic", "basic", 120, 0);
-lithiumwireDenseMetalWiremill_basic.addItemInput(<contenttweaker:material_part:8268>);
-lithiumwireDenseMetalWiremill_basic.addItemOutput(<contenttweaker:material_part:1735>);
-lithiumwireDenseMetalWiremill_basic.addEnergyPerTickInput(4);
-lithiumwireDenseMetalWiremill_basic.build();
-
-var lithiumwireDenseMetalWiremill_advanced = mods.modularmachinery.RecipeBuilder.newBuilder("lithiumwireDenseMetalWiremill_advanced", "basic", 120, 0);
-lithiumwireDenseMetalWiremill_advanced.addItemInput(<contenttweaker:material_part:8268>);
-lithiumwireDenseMetalWiremill_advanced.addItemOutput(<contenttweaker:material_part:1735>);
-lithiumwireDenseMetalWiremill_advanced.addFluidInput(<liquid:hydrogen> * 100);
-lithiumwireDenseMetalWiremill_advanced.addEnergyPerTickInput(1024);
-lithiumwireDenseMetalWiremill_advanced.build();
-
-var lithiumwireDenseMetalWiremill_industrial = mods.modularmachinery.RecipeBuilder.newBuilder("lithiumwireDenseMetalWiremill_industrial", "basic", 120, 0);
-lithiumwireDenseMetalWiremill_industrial.addItemInput(<contenttweaker:material_part:8268>);
-lithiumwireDenseMetalWiremill_industrial.addItemOutput(<contenttweaker:material_part:1735>);
-lithiumwireDenseMetalWiremill_industrial.addFluidInput(<liquid:hydrogen> * 100);
-lithiumwireDenseMetalWiremill_industrial.addFluidInput(<liquid:cotc_data> * 100);
-lithiumwireDenseMetalWiremill_industrial.addEnergyPerTickInput(262144);
-lithiumwireDenseMetalWiremill_industrial.build();
-
-var lithiumwireDenseMetalWiremill_ultimate = mods.modularmachinery.RecipeBuilder.newBuilder("lithiumwireDenseMetalWiremill_ultimate", "basic", 120, 0);
-lithiumwireDenseMetalWiremill_ultimate.addItemInput(<contenttweaker:material_part:8268>);
-lithiumwireDenseMetalWiremill_ultimate.addItemOutput(<contenttweaker:material_part:1735>);
-lithiumwireDenseMetalWiremill_ultimate.addFluidInput(<liquid:hydrogen> * 100);
-lithiumwireDenseMetalWiremill_ultimate.addFluidInput(<liquid:cotc_data> * 100);
-lithiumwireDenseMetalWiremill_ultimate.addFluidInput(<liquid:cotc_neg_red_matter> * 100);
-lithiumwireDenseMetalWiremill_ultimate.addFluidOutput(<liquid:cotc_pos_orange_matter> * 200);
-lithiumwireDenseMetalWiremill_ultimate.addEnergyPerTickInput(67108864);
-lithiumwireDenseMetalWiremill_ultimate.build();
-
-var lithiumwireFineMetalWiremill_basic = mods.modularmachinery.RecipeBuilder.newBuilder("lithiumwireFineMetalWiremill_basic", "basic", 120, 0);
-lithiumwireFineMetalWiremill_basic.addItemInput(<contenttweaker:material_part:1707>);
-lithiumwireFineMetalWiremill_basic.addItemOutput(<contenttweaker:material_part:1734>);
-lithiumwireFineMetalWiremill_basic.addEnergyPerTickInput(4);
-lithiumwireFineMetalWiremill_basic.build();
-
-var lithiumwireFineMetalWiremill_advanced = mods.modularmachinery.RecipeBuilder.newBuilder("lithiumwireFineMetalWiremill_advanced", "basic", 120, 0);
-lithiumwireFineMetalWiremill_advanced.addItemInput(<contenttweaker:material_part:1707>);
-lithiumwireFineMetalWiremill_advanced.addItemOutput(<contenttweaker:material_part:1734>);
-lithiumwireFineMetalWiremill_advanced.addFluidInput(<liquid:hydrogen> * 100);
-lithiumwireFineMetalWiremill_advanced.addEnergyPerTickInput(1024);
-lithiumwireFineMetalWiremill_advanced.build();
-
-var lithiumwireFineMetalWiremill_industrial = mods.modularmachinery.RecipeBuilder.newBuilder("lithiumwireFineMetalWiremill_industrial", "basic", 120, 0);
-lithiumwireFineMetalWiremill_industrial.addItemInput(<contenttweaker:material_part:1707>);
-lithiumwireFineMetalWiremill_industrial.addItemOutput(<contenttweaker:material_part:1734>);
-lithiumwireFineMetalWiremill_industrial.addFluidInput(<liquid:hydrogen> * 100);
-lithiumwireFineMetalWiremill_industrial.addFluidInput(<liquid:cotc_data> * 100);
-lithiumwireFineMetalWiremill_industrial.addEnergyPerTickInput(262144);
-lithiumwireFineMetalWiremill_industrial.build();
-
-var lithiumwireFineMetalWiremill_ultimate = mods.modularmachinery.RecipeBuilder.newBuilder("lithiumwireFineMetalWiremill_ultimate", "basic", 120, 0);
-lithiumwireFineMetalWiremill_ultimate.addItemInput(<contenttweaker:material_part:1707>);
-lithiumwireFineMetalWiremill_ultimate.addItemOutput(<contenttweaker:material_part:1734>);
-lithiumwireFineMetalWiremill_ultimate.addFluidInput(<liquid:hydrogen> * 100);
-lithiumwireFineMetalWiremill_ultimate.addFluidInput(<liquid:cotc_data> * 100);
-lithiumwireFineMetalWiremill_ultimate.addFluidInput(<liquid:cotc_neg_red_matter> * 100);
-lithiumwireFineMetalWiremill_ultimate.addFluidOutput(<liquid:cotc_pos_orange_matter> * 200);
-lithiumwireFineMetalWiremill_ultimate.addEnergyPerTickInput(67108864);
-lithiumwireFineMetalWiremill_ultimate.build();
-
-var berylliumdustMalleableMelting_basic = mods.modularmachinery.RecipeBuilder.newBuilder("berylliumdustMalleableMelting_basic", "basic", 60, 0);
-berylliumdustMalleableMelting_basic.addItemInput(<contenttweaker:material_part:1108>);
-berylliumdustMalleableMelting_basic.addFluidOutput(<liquid:cotm_beryllium_molten> * 144);
-berylliumdustMalleableMelting_basic.addEnergyPerTickInput(4);
-berylliumdustMalleableMelting_basic.build();
-
-var berylliumdustMalleableMelting_advanced = mods.modularmachinery.RecipeBuilder.newBuilder("berylliumdustMalleableMelting_advanced", "basic", 60, 0);
-berylliumdustMalleableMelting_advanced.addItemInput(<contenttweaker:material_part:1108>);
-berylliumdustMalleableMelting_advanced.addFluidOutput(<liquid:cotm_beryllium_molten> * 144);
-berylliumdustMalleableMelting_advanced.addFluidInput(<liquid:hydrogen> * 100);
-berylliumdustMalleableMelting_advanced.addEnergyPerTickInput(1024);
-berylliumdustMalleableMelting_advanced.build();
-
-var berylliumdustMalleableMelting_industrial = mods.modularmachinery.RecipeBuilder.newBuilder("berylliumdustMalleableMelting_industrial", "basic", 60, 0);
-berylliumdustMalleableMelting_industrial.addItemInput(<contenttweaker:material_part:1108>);
-berylliumdustMalleableMelting_industrial.addFluidOutput(<liquid:cotm_beryllium_molten> * 144);
-berylliumdustMalleableMelting_industrial.addFluidInput(<liquid:hydrogen> * 100);
-berylliumdustMalleableMelting_industrial.addFluidInput(<liquid:cotc_data> * 100);
-berylliumdustMalleableMelting_industrial.addEnergyPerTickInput(262144);
-berylliumdustMalleableMelting_industrial.build();
-
-var berylliumdustMalleableMelting_ultimate = mods.modularmachinery.RecipeBuilder.newBuilder("berylliumdustMalleableMelting_ultimate", "basic", 60, 0);
-berylliumdustMalleableMelting_ultimate.addItemInput(<contenttweaker:material_part:1108>);
-berylliumdustMalleableMelting_ultimate.addFluidOutput(<liquid:cotm_beryllium_molten> * 144);
-berylliumdustMalleableMelting_ultimate.addFluidInput(<liquid:hydrogen> * 100);
-berylliumdustMalleableMelting_ultimate.addFluidInput(<liquid:cotc_data> * 100);
-berylliumdustMalleableMelting_ultimate.addFluidInput(<liquid:cotc_neg_red_matter> * 100);
-berylliumdustMalleableMelting_ultimate.addFluidOutput(<liquid:cotc_pos_orange_matter> * 200);
-berylliumdustMalleableMelting_ultimate.addEnergyPerTickInput(67108864);
-berylliumdustMalleableMelting_ultimate.build();
-
-var berylliumdustSmallMalleableMelting_basic = mods.modularmachinery.RecipeBuilder.newBuilder("berylliumdustSmallMalleableMelting_basic", "basic", 60, 0);
-berylliumdustSmallMalleableMelting_basic.addItemInput(<contenttweaker:material_part:1109>);
-berylliumdustSmallMalleableMelting_basic.addFluidOutput(<liquid:cotm_beryllium_molten> * 36);
-berylliumdustSmallMalleableMelting_basic.addEnergyPerTickInput(4);
-berylliumdustSmallMalleableMelting_basic.build();
-
-var berylliumdustSmallMalleableMelting_advanced = mods.modularmachinery.RecipeBuilder.newBuilder("berylliumdustSmallMalleableMelting_advanced", "basic", 60, 0);
-berylliumdustSmallMalleableMelting_advanced.addItemInput(<contenttweaker:material_part:1109>);
-berylliumdustSmallMalleableMelting_advanced.addFluidOutput(<liquid:cotm_beryllium_molten> * 36);
-berylliumdustSmallMalleableMelting_advanced.addFluidInput(<liquid:hydrogen> * 100);
-berylliumdustSmallMalleableMelting_advanced.addEnergyPerTickInput(1024);
-berylliumdustSmallMalleableMelting_advanced.build();
-
-var berylliumdustSmallMalleableMelting_industrial = mods.modularmachinery.RecipeBuilder.newBuilder("berylliumdustSmallMalleableMelting_industrial", "basic", 60, 0);
-berylliumdustSmallMalleableMelting_industrial.addItemInput(<contenttweaker:material_part:1109>);
-berylliumdustSmallMalleableMelting_industrial.addFluidOutput(<liquid:cotm_beryllium_molten> * 36);
-berylliumdustSmallMalleableMelting_industrial.addFluidInput(<liquid:hydrogen> * 100);
-berylliumdustSmallMalleableMelting_industrial.addFluidInput(<liquid:cotc_data> * 100);
-berylliumdustSmallMalleableMelting_industrial.addEnergyPerTickInput(262144);
-berylliumdustSmallMalleableMelting_industrial.build();
-
-var berylliumdustSmallMalleableMelting_ultimate = mods.modularmachinery.RecipeBuilder.newBuilder("berylliumdustSmallMalleableMelting_ultimate", "basic", 60, 0);
-berylliumdustSmallMalleableMelting_ultimate.addItemInput(<contenttweaker:material_part:1109>);
-berylliumdustSmallMalleableMelting_ultimate.addFluidOutput(<liquid:cotm_beryllium_molten> * 36);
-berylliumdustSmallMalleableMelting_ultimate.addFluidInput(<liquid:hydrogen> * 100);
-berylliumdustSmallMalleableMelting_ultimate.addFluidInput(<liquid:cotc_data> * 100);
-berylliumdustSmallMalleableMelting_ultimate.addFluidInput(<liquid:cotc_neg_red_matter> * 100);
-berylliumdustSmallMalleableMelting_ultimate.addFluidOutput(<liquid:cotc_pos_orange_matter> * 200);
-berylliumdustSmallMalleableMelting_ultimate.addEnergyPerTickInput(67108864);
-berylliumdustSmallMalleableMelting_ultimate.build();
-
-var berylliumdustTinyMalleableMelting_basic = mods.modularmachinery.RecipeBuilder.newBuilder("berylliumdustTinyMalleableMelting_basic", "basic", 60, 0);
-berylliumdustTinyMalleableMelting_basic.addItemInput(<contenttweaker:material_part:1110>);
-berylliumdustTinyMalleableMelting_basic.addFluidOutput(<liquid:cotm_beryllium_molten> * 16);
-berylliumdustTinyMalleableMelting_basic.addEnergyPerTickInput(4);
-berylliumdustTinyMalleableMelting_basic.build();
-
-var berylliumdustTinyMalleableMelting_advanced = mods.modularmachinery.RecipeBuilder.newBuilder("berylliumdustTinyMalleableMelting_advanced", "basic", 60, 0);
-berylliumdustTinyMalleableMelting_advanced.addItemInput(<contenttweaker:material_part:1110>);
-berylliumdustTinyMalleableMelting_advanced.addFluidOutput(<liquid:cotm_beryllium_molten> * 16);
-berylliumdustTinyMalleableMelting_advanced.addFluidInput(<liquid:hydrogen> * 100);
-berylliumdustTinyMalleableMelting_advanced.addEnergyPerTickInput(1024);
-berylliumdustTinyMalleableMelting_advanced.build();
-
-var berylliumdustTinyMalleableMelting_industrial = mods.modularmachinery.RecipeBuilder.newBuilder("berylliumdustTinyMalleableMelting_industrial", "basic", 60, 0);
-berylliumdustTinyMalleableMelting_industrial.addItemInput(<contenttweaker:material_part:1110>);
-berylliumdustTinyMalleableMelting_industrial.addFluidOutput(<liquid:cotm_beryllium_molten> * 16);
-berylliumdustTinyMalleableMelting_industrial.addFluidInput(<liquid:hydrogen> * 100);
-berylliumdustTinyMalleableMelting_industrial.addFluidInput(<liquid:cotc_data> * 100);
-berylliumdustTinyMalleableMelting_industrial.addEnergyPerTickInput(262144);
-berylliumdustTinyMalleableMelting_industrial.build();
-
-var berylliumdustTinyMalleableMelting_ultimate = mods.modularmachinery.RecipeBuilder.newBuilder("berylliumdustTinyMalleableMelting_ultimate", "basic", 60, 0);
-berylliumdustTinyMalleableMelting_ultimate.addItemInput(<contenttweaker:material_part:1110>);
-berylliumdustTinyMalleableMelting_ultimate.addFluidOutput(<liquid:cotm_beryllium_molten> * 16);
-berylliumdustTinyMalleableMelting_ultimate.addFluidInput(<liquid:hydrogen> * 100);
-berylliumdustTinyMalleableMelting_ultimate.addFluidInput(<liquid:cotc_data> * 100);
-berylliumdustTinyMalleableMelting_ultimate.addFluidInput(<liquid:cotc_neg_red_matter> * 100);
-berylliumdustTinyMalleableMelting_ultimate.addFluidOutput(<liquid:cotc_pos_orange_matter> * 200);
-berylliumdustTinyMalleableMelting_ultimate.addEnergyPerTickInput(67108864);
-berylliumdustTinyMalleableMelting_ultimate.build();
-
-var berylliumdustMetalPulverize_basic = mods.modularmachinery.RecipeBuilder.newBuilder("berylliumdustMetalPulverize_basic", "basic", 40, 0);
+var berylliumdustMetalPulverize_basic = mods.modularmachinery.RecipeBuilder.newBuilder("berylliumdustMetalPulverize_basic", "basic", 100, 0);
 berylliumdustMetalPulverize_basic.addItemInput(<contenttweaker:material_part:1737>);
+berylliumdustMetalPulverize_basic.addFluidInput(<liquid:cotm_beryllium_molten> * 100);
 berylliumdustMetalPulverize_basic.addItemOutput(<contenttweaker:material_part:1108>);
 berylliumdustMetalPulverize_basic.addEnergyPerTickInput(4);
 berylliumdustMetalPulverize_basic.build();
 
-var berylliumdustMetalPulverize_advanced = mods.modularmachinery.RecipeBuilder.newBuilder("berylliumdustMetalPulverize_advanced", "basic", 40, 0);
+var berylliumdustMetalPulverize_advanced = mods.modularmachinery.RecipeBuilder.newBuilder("berylliumdustMetalPulverize_advanced", "basic", 100, 0);
 berylliumdustMetalPulverize_advanced.addItemInput(<contenttweaker:material_part:1737>);
+berylliumdustMetalPulverize_advanced.addFluidInput(<liquid:cotm_beryllium_molten> * 100);
 berylliumdustMetalPulverize_advanced.addItemOutput(<contenttweaker:material_part:1108>);
 berylliumdustMetalPulverize_advanced.addFluidInput(<liquid:hydrogen> * 100);
 berylliumdustMetalPulverize_advanced.addEnergyPerTickInput(1024);
 berylliumdustMetalPulverize_advanced.build();
 
-var berylliumdustMetalPulverize_industrial = mods.modularmachinery.RecipeBuilder.newBuilder("berylliumdustMetalPulverize_industrial", "basic", 40, 0);
+var berylliumdustMetalPulverize_industrial = mods.modularmachinery.RecipeBuilder.newBuilder("berylliumdustMetalPulverize_industrial", "basic", 100, 0);
 berylliumdustMetalPulverize_industrial.addItemInput(<contenttweaker:material_part:1737>);
+berylliumdustMetalPulverize_industrial.addFluidInput(<liquid:cotm_beryllium_molten> * 100);
 berylliumdustMetalPulverize_industrial.addItemOutput(<contenttweaker:material_part:1108>);
 berylliumdustMetalPulverize_industrial.addFluidInput(<liquid:hydrogen> * 100);
 berylliumdustMetalPulverize_industrial.addFluidInput(<liquid:cotc_data> * 100);
 berylliumdustMetalPulverize_industrial.addEnergyPerTickInput(262144);
 berylliumdustMetalPulverize_industrial.build();
 
-var berylliumdustMetalPulverize_ultimate = mods.modularmachinery.RecipeBuilder.newBuilder("berylliumdustMetalPulverize_ultimate", "basic", 40, 0);
+var berylliumdustMetalPulverize_ultimate = mods.modularmachinery.RecipeBuilder.newBuilder("berylliumdustMetalPulverize_ultimate", "basic", 100, 0);
 berylliumdustMetalPulverize_ultimate.addItemInput(<contenttweaker:material_part:1737>);
+berylliumdustMetalPulverize_ultimate.addFluidInput(<liquid:cotm_beryllium_molten> * 100);
 berylliumdustMetalPulverize_ultimate.addItemOutput(<contenttweaker:material_part:1108>);
 berylliumdustMetalPulverize_ultimate.addFluidInput(<liquid:hydrogen> * 100);
 berylliumdustMetalPulverize_ultimate.addFluidInput(<liquid:cotc_data> * 100);
-berylliumdustMetalPulverize_ultimate.addFluidInput(<liquid:cotc_neg_red_matter> * 100);
-berylliumdustMetalPulverize_ultimate.addFluidOutput(<liquid:cotc_pos_orange_matter> * 200);
+berylliumdustMetalPulverize_ultimate.addFluidInput(<liquid:cotc_pos_red_matter> * 100);
+berylliumdustMetalPulverize_ultimate.addFluidOutput(<liquid:cotc_neg_orange_matter> * 100);
 berylliumdustMetalPulverize_ultimate.addEnergyPerTickInput(67108864);
 berylliumdustMetalPulverize_ultimate.build();
 
-var berylliumdustSmallMetalPulverize_basic = mods.modularmachinery.RecipeBuilder.newBuilder("berylliumdustSmallMetalPulverize_basic", "basic", 40, 0);
-berylliumdustSmallMetalPulverize_basic.addItemInput(<contenttweaker:material_part:1738>);
-berylliumdustSmallMetalPulverize_basic.addItemOutput(<contenttweaker:material_part:1109>);
-berylliumdustSmallMetalPulverize_basic.addEnergyPerTickInput(4);
-berylliumdustSmallMetalPulverize_basic.build();
-
-var berylliumdustSmallMetalPulverize_advanced = mods.modularmachinery.RecipeBuilder.newBuilder("berylliumdustSmallMetalPulverize_advanced", "basic", 40, 0);
-berylliumdustSmallMetalPulverize_advanced.addItemInput(<contenttweaker:material_part:1738>);
-berylliumdustSmallMetalPulverize_advanced.addItemOutput(<contenttweaker:material_part:1109>);
-berylliumdustSmallMetalPulverize_advanced.addFluidInput(<liquid:hydrogen> * 100);
-berylliumdustSmallMetalPulverize_advanced.addEnergyPerTickInput(1024);
-berylliumdustSmallMetalPulverize_advanced.build();
-
-var berylliumdustSmallMetalPulverize_industrial = mods.modularmachinery.RecipeBuilder.newBuilder("berylliumdustSmallMetalPulverize_industrial", "basic", 40, 0);
-berylliumdustSmallMetalPulverize_industrial.addItemInput(<contenttweaker:material_part:1738>);
-berylliumdustSmallMetalPulverize_industrial.addItemOutput(<contenttweaker:material_part:1109>);
-berylliumdustSmallMetalPulverize_industrial.addFluidInput(<liquid:hydrogen> * 100);
-berylliumdustSmallMetalPulverize_industrial.addFluidInput(<liquid:cotc_data> * 100);
-berylliumdustSmallMetalPulverize_industrial.addEnergyPerTickInput(262144);
-berylliumdustSmallMetalPulverize_industrial.build();
-
-var berylliumdustSmallMetalPulverize_ultimate = mods.modularmachinery.RecipeBuilder.newBuilder("berylliumdustSmallMetalPulverize_ultimate", "basic", 40, 0);
-berylliumdustSmallMetalPulverize_ultimate.addItemInput(<contenttweaker:material_part:1738>);
-berylliumdustSmallMetalPulverize_ultimate.addItemOutput(<contenttweaker:material_part:1109>);
-berylliumdustSmallMetalPulverize_ultimate.addFluidInput(<liquid:hydrogen> * 100);
-berylliumdustSmallMetalPulverize_ultimate.addFluidInput(<liquid:cotc_data> * 100);
-berylliumdustSmallMetalPulverize_ultimate.addFluidInput(<liquid:cotc_neg_red_matter> * 100);
-berylliumdustSmallMetalPulverize_ultimate.addFluidOutput(<liquid:cotc_pos_orange_matter> * 200);
-berylliumdustSmallMetalPulverize_ultimate.addEnergyPerTickInput(67108864);
-berylliumdustSmallMetalPulverize_ultimate.build();
-
-var berylliumdustTinyMetalPulverize_basic = mods.modularmachinery.RecipeBuilder.newBuilder("berylliumdustTinyMetalPulverize_basic", "basic", 40, 0);
-berylliumdustTinyMetalPulverize_basic.addItemInput(<contenttweaker:material_part:1739>);
-berylliumdustTinyMetalPulverize_basic.addItemOutput(<contenttweaker:material_part:1110>);
-berylliumdustTinyMetalPulverize_basic.addEnergyPerTickInput(4);
-berylliumdustTinyMetalPulverize_basic.build();
-
-var berylliumdustTinyMetalPulverize_advanced = mods.modularmachinery.RecipeBuilder.newBuilder("berylliumdustTinyMetalPulverize_advanced", "basic", 40, 0);
-berylliumdustTinyMetalPulverize_advanced.addItemInput(<contenttweaker:material_part:1739>);
-berylliumdustTinyMetalPulverize_advanced.addItemOutput(<contenttweaker:material_part:1110>);
-berylliumdustTinyMetalPulverize_advanced.addFluidInput(<liquid:hydrogen> * 100);
-berylliumdustTinyMetalPulverize_advanced.addEnergyPerTickInput(1024);
-berylliumdustTinyMetalPulverize_advanced.build();
-
-var berylliumdustTinyMetalPulverize_industrial = mods.modularmachinery.RecipeBuilder.newBuilder("berylliumdustTinyMetalPulverize_industrial", "basic", 40, 0);
-berylliumdustTinyMetalPulverize_industrial.addItemInput(<contenttweaker:material_part:1739>);
-berylliumdustTinyMetalPulverize_industrial.addItemOutput(<contenttweaker:material_part:1110>);
-berylliumdustTinyMetalPulverize_industrial.addFluidInput(<liquid:hydrogen> * 100);
-berylliumdustTinyMetalPulverize_industrial.addFluidInput(<liquid:cotc_data> * 100);
-berylliumdustTinyMetalPulverize_industrial.addEnergyPerTickInput(262144);
-berylliumdustTinyMetalPulverize_industrial.build();
-
-var berylliumdustTinyMetalPulverize_ultimate = mods.modularmachinery.RecipeBuilder.newBuilder("berylliumdustTinyMetalPulverize_ultimate", "basic", 40, 0);
-berylliumdustTinyMetalPulverize_ultimate.addItemInput(<contenttweaker:material_part:1739>);
-berylliumdustTinyMetalPulverize_ultimate.addItemOutput(<contenttweaker:material_part:1110>);
-berylliumdustTinyMetalPulverize_ultimate.addFluidInput(<liquid:hydrogen> * 100);
-berylliumdustTinyMetalPulverize_ultimate.addFluidInput(<liquid:cotc_data> * 100);
-berylliumdustTinyMetalPulverize_ultimate.addFluidInput(<liquid:cotc_neg_red_matter> * 100);
-berylliumdustTinyMetalPulverize_ultimate.addFluidOutput(<liquid:cotc_pos_orange_matter> * 200);
-berylliumdustTinyMetalPulverize_ultimate.addEnergyPerTickInput(67108864);
-berylliumdustTinyMetalPulverize_ultimate.build();
-
-var berylliumplateMetalPress_basic = mods.modularmachinery.RecipeBuilder.newBuilder("berylliumplateMetalPress_basic", "basic", 100, 0);
-berylliumplateMetalPress_basic.addItemInput(<contenttweaker:material_part:1737> * 1);
-berylliumplateMetalPress_basic.addItemOutput(<contenttweaker:material_part:1741>);
-berylliumplateMetalPress_basic.addEnergyPerTickInput(8);
-berylliumplateMetalPress_basic.build();
-
-var berylliumplateMetalPress_advanced = mods.modularmachinery.RecipeBuilder.newBuilder("berylliumplateMetalPress_advanced", "basic", 100, 0);
-berylliumplateMetalPress_advanced.addItemInput(<contenttweaker:material_part:1737> * 1);
-berylliumplateMetalPress_advanced.addItemOutput(<contenttweaker:material_part:1741>);
-berylliumplateMetalPress_advanced.addFluidInput(<liquid:hydrogen> * 100);
-berylliumplateMetalPress_advanced.addEnergyPerTickInput(2048);
-berylliumplateMetalPress_advanced.build();
-
-var berylliumplateMetalPress_industrial = mods.modularmachinery.RecipeBuilder.newBuilder("berylliumplateMetalPress_industrial", "basic", 100, 0);
-berylliumplateMetalPress_industrial.addItemInput(<contenttweaker:material_part:1737> * 1);
-berylliumplateMetalPress_industrial.addItemOutput(<contenttweaker:material_part:1741>);
-berylliumplateMetalPress_industrial.addFluidInput(<liquid:hydrogen> * 100);
-berylliumplateMetalPress_industrial.addFluidInput(<liquid:cotc_data> * 100);
-berylliumplateMetalPress_industrial.addEnergyPerTickInput(524288);
-berylliumplateMetalPress_industrial.build();
-
-var berylliumplateMetalPress_ultimate = mods.modularmachinery.RecipeBuilder.newBuilder("berylliumplateMetalPress_ultimate", "basic", 100, 0);
-berylliumplateMetalPress_ultimate.addItemInput(<contenttweaker:material_part:1737> * 1);
-berylliumplateMetalPress_ultimate.addItemOutput(<contenttweaker:material_part:1741>);
-berylliumplateMetalPress_ultimate.addFluidInput(<liquid:hydrogen> * 100);
-berylliumplateMetalPress_ultimate.addFluidInput(<liquid:cotc_data> * 100);
-berylliumplateMetalPress_ultimate.addFluidInput(<liquid:cotc_neg_red_matter> * 100);
-berylliumplateMetalPress_ultimate.addFluidOutput(<liquid:cotc_pos_orange_matter> * 200);
-berylliumplateMetalPress_ultimate.addEnergyPerTickInput(134217728);
-berylliumplateMetalPress_ultimate.build();
-
-var berylliumplateToughMetalPress_basic = mods.modularmachinery.RecipeBuilder.newBuilder("berylliumplateToughMetalPress_basic", "basic", 100, 0);
-berylliumplateToughMetalPress_basic.addItemInput(<contenttweaker:material_part:1737> * 4);
-berylliumplateToughMetalPress_basic.addItemOutput(<contenttweaker:material_part:1743>);
-berylliumplateToughMetalPress_basic.addEnergyPerTickInput(8);
-berylliumplateToughMetalPress_basic.build();
-
-var berylliumplateToughMetalPress_advanced = mods.modularmachinery.RecipeBuilder.newBuilder("berylliumplateToughMetalPress_advanced", "basic", 100, 0);
-berylliumplateToughMetalPress_advanced.addItemInput(<contenttweaker:material_part:1737> * 4);
-berylliumplateToughMetalPress_advanced.addItemOutput(<contenttweaker:material_part:1743>);
-berylliumplateToughMetalPress_advanced.addFluidInput(<liquid:hydrogen> * 100);
-berylliumplateToughMetalPress_advanced.addEnergyPerTickInput(2048);
-berylliumplateToughMetalPress_advanced.build();
-
-var berylliumplateToughMetalPress_industrial = mods.modularmachinery.RecipeBuilder.newBuilder("berylliumplateToughMetalPress_industrial", "basic", 100, 0);
-berylliumplateToughMetalPress_industrial.addItemInput(<contenttweaker:material_part:1737> * 4);
-berylliumplateToughMetalPress_industrial.addItemOutput(<contenttweaker:material_part:1743>);
-berylliumplateToughMetalPress_industrial.addFluidInput(<liquid:hydrogen> * 100);
-berylliumplateToughMetalPress_industrial.addFluidInput(<liquid:cotc_data> * 100);
-berylliumplateToughMetalPress_industrial.addEnergyPerTickInput(524288);
-berylliumplateToughMetalPress_industrial.build();
-
-var berylliumplateToughMetalPress_ultimate = mods.modularmachinery.RecipeBuilder.newBuilder("berylliumplateToughMetalPress_ultimate", "basic", 100, 0);
-berylliumplateToughMetalPress_ultimate.addItemInput(<contenttweaker:material_part:1737> * 4);
-berylliumplateToughMetalPress_ultimate.addItemOutput(<contenttweaker:material_part:1743>);
-berylliumplateToughMetalPress_ultimate.addFluidInput(<liquid:hydrogen> * 100);
-berylliumplateToughMetalPress_ultimate.addFluidInput(<liquid:cotc_data> * 100);
-berylliumplateToughMetalPress_ultimate.addFluidInput(<liquid:cotc_neg_red_matter> * 100);
-berylliumplateToughMetalPress_ultimate.addFluidOutput(<liquid:cotc_pos_orange_matter> * 200);
-berylliumplateToughMetalPress_ultimate.addEnergyPerTickInput(134217728);
-berylliumplateToughMetalPress_ultimate.build();
-
-var berylliumplateDenseMetalPress_basic = mods.modularmachinery.RecipeBuilder.newBuilder("berylliumplateDenseMetalPress_basic", "basic", 100, 0);
-berylliumplateDenseMetalPress_basic.addItemInput(<contenttweaker:material_part:1737> * 9);
-berylliumplateDenseMetalPress_basic.addItemOutput(<contenttweaker:material_part:1744>);
-berylliumplateDenseMetalPress_basic.addEnergyPerTickInput(8);
-berylliumplateDenseMetalPress_basic.build();
-
-var berylliumplateDenseMetalPress_advanced = mods.modularmachinery.RecipeBuilder.newBuilder("berylliumplateDenseMetalPress_advanced", "basic", 100, 0);
-berylliumplateDenseMetalPress_advanced.addItemInput(<contenttweaker:material_part:1737> * 9);
-berylliumplateDenseMetalPress_advanced.addItemOutput(<contenttweaker:material_part:1744>);
-berylliumplateDenseMetalPress_advanced.addFluidInput(<liquid:hydrogen> * 100);
-berylliumplateDenseMetalPress_advanced.addEnergyPerTickInput(2048);
-berylliumplateDenseMetalPress_advanced.build();
-
-var berylliumplateDenseMetalPress_industrial = mods.modularmachinery.RecipeBuilder.newBuilder("berylliumplateDenseMetalPress_industrial", "basic", 100, 0);
-berylliumplateDenseMetalPress_industrial.addItemInput(<contenttweaker:material_part:1737> * 9);
-berylliumplateDenseMetalPress_industrial.addItemOutput(<contenttweaker:material_part:1744>);
-berylliumplateDenseMetalPress_industrial.addFluidInput(<liquid:hydrogen> * 100);
-berylliumplateDenseMetalPress_industrial.addFluidInput(<liquid:cotc_data> * 100);
-berylliumplateDenseMetalPress_industrial.addEnergyPerTickInput(524288);
-berylliumplateDenseMetalPress_industrial.build();
-
-var berylliumplateDenseMetalPress_ultimate = mods.modularmachinery.RecipeBuilder.newBuilder("berylliumplateDenseMetalPress_ultimate", "basic", 100, 0);
-berylliumplateDenseMetalPress_ultimate.addItemInput(<contenttweaker:material_part:1737> * 9);
-berylliumplateDenseMetalPress_ultimate.addItemOutput(<contenttweaker:material_part:1744>);
-berylliumplateDenseMetalPress_ultimate.addFluidInput(<liquid:hydrogen> * 100);
-berylliumplateDenseMetalPress_ultimate.addFluidInput(<liquid:cotc_data> * 100);
-berylliumplateDenseMetalPress_ultimate.addFluidInput(<liquid:cotc_neg_red_matter> * 100);
-berylliumplateDenseMetalPress_ultimate.addFluidOutput(<liquid:cotc_pos_orange_matter> * 200);
-berylliumplateDenseMetalPress_ultimate.addEnergyPerTickInput(134217728);
-berylliumplateDenseMetalPress_ultimate.build();
-
-var berylliumplateSmallMetalPress_basic = mods.modularmachinery.RecipeBuilder.newBuilder("berylliumplateSmallMetalPress_basic", "basic", 100, 0);
-berylliumplateSmallMetalPress_basic.addItemInput(<contenttweaker:material_part:1738> * 1);
-berylliumplateSmallMetalPress_basic.addItemOutput(<contenttweaker:material_part:1758>);
-berylliumplateSmallMetalPress_basic.addEnergyPerTickInput(8);
-berylliumplateSmallMetalPress_basic.build();
-
-var berylliumplateSmallMetalPress_advanced = mods.modularmachinery.RecipeBuilder.newBuilder("berylliumplateSmallMetalPress_advanced", "basic", 100, 0);
-berylliumplateSmallMetalPress_advanced.addItemInput(<contenttweaker:material_part:1738> * 1);
-berylliumplateSmallMetalPress_advanced.addItemOutput(<contenttweaker:material_part:1758>);
-berylliumplateSmallMetalPress_advanced.addFluidInput(<liquid:hydrogen> * 100);
-berylliumplateSmallMetalPress_advanced.addEnergyPerTickInput(2048);
-berylliumplateSmallMetalPress_advanced.build();
-
-var berylliumplateSmallMetalPress_industrial = mods.modularmachinery.RecipeBuilder.newBuilder("berylliumplateSmallMetalPress_industrial", "basic", 100, 0);
-berylliumplateSmallMetalPress_industrial.addItemInput(<contenttweaker:material_part:1738> * 1);
-berylliumplateSmallMetalPress_industrial.addItemOutput(<contenttweaker:material_part:1758>);
-berylliumplateSmallMetalPress_industrial.addFluidInput(<liquid:hydrogen> * 100);
-berylliumplateSmallMetalPress_industrial.addFluidInput(<liquid:cotc_data> * 100);
-berylliumplateSmallMetalPress_industrial.addEnergyPerTickInput(524288);
-berylliumplateSmallMetalPress_industrial.build();
-
-var berylliumplateSmallMetalPress_ultimate = mods.modularmachinery.RecipeBuilder.newBuilder("berylliumplateSmallMetalPress_ultimate", "basic", 100, 0);
-berylliumplateSmallMetalPress_ultimate.addItemInput(<contenttweaker:material_part:1738> * 1);
-berylliumplateSmallMetalPress_ultimate.addItemOutput(<contenttweaker:material_part:1758>);
-berylliumplateSmallMetalPress_ultimate.addFluidInput(<liquid:hydrogen> * 100);
-berylliumplateSmallMetalPress_ultimate.addFluidInput(<liquid:cotc_data> * 100);
-berylliumplateSmallMetalPress_ultimate.addFluidInput(<liquid:cotc_neg_red_matter> * 100);
-berylliumplateSmallMetalPress_ultimate.addFluidOutput(<liquid:cotc_pos_orange_matter> * 200);
-berylliumplateSmallMetalPress_ultimate.addEnergyPerTickInput(134217728);
-berylliumplateSmallMetalPress_ultimate.build();
-
-var berylliumcasingMetalPress_basic = mods.modularmachinery.RecipeBuilder.newBuilder("berylliumcasingMetalPress_basic", "basic", 100, 0);
-berylliumcasingMetalPress_basic.addItemInput(<contenttweaker:material_part:1738> * 3);
-berylliumcasingMetalPress_basic.addItemOutput(<contenttweaker:material_part:1740>);
-berylliumcasingMetalPress_basic.addEnergyPerTickInput(8);
-berylliumcasingMetalPress_basic.build();
-
-var berylliumcasingMetalPress_advanced = mods.modularmachinery.RecipeBuilder.newBuilder("berylliumcasingMetalPress_advanced", "basic", 100, 0);
-berylliumcasingMetalPress_advanced.addItemInput(<contenttweaker:material_part:1738> * 3);
-berylliumcasingMetalPress_advanced.addItemOutput(<contenttweaker:material_part:1740>);
-berylliumcasingMetalPress_advanced.addFluidInput(<liquid:hydrogen> * 100);
-berylliumcasingMetalPress_advanced.addEnergyPerTickInput(2048);
-berylliumcasingMetalPress_advanced.build();
-
-var berylliumcasingMetalPress_industrial = mods.modularmachinery.RecipeBuilder.newBuilder("berylliumcasingMetalPress_industrial", "basic", 100, 0);
-berylliumcasingMetalPress_industrial.addItemInput(<contenttweaker:material_part:1738> * 3);
-berylliumcasingMetalPress_industrial.addItemOutput(<contenttweaker:material_part:1740>);
-berylliumcasingMetalPress_industrial.addFluidInput(<liquid:hydrogen> * 100);
-berylliumcasingMetalPress_industrial.addFluidInput(<liquid:cotc_data> * 100);
-berylliumcasingMetalPress_industrial.addEnergyPerTickInput(524288);
-berylliumcasingMetalPress_industrial.build();
-
-var berylliumcasingMetalPress_ultimate = mods.modularmachinery.RecipeBuilder.newBuilder("berylliumcasingMetalPress_ultimate", "basic", 100, 0);
-berylliumcasingMetalPress_ultimate.addItemInput(<contenttweaker:material_part:1738> * 3);
-berylliumcasingMetalPress_ultimate.addItemOutput(<contenttweaker:material_part:1740>);
-berylliumcasingMetalPress_ultimate.addFluidInput(<liquid:hydrogen> * 100);
-berylliumcasingMetalPress_ultimate.addFluidInput(<liquid:cotc_data> * 100);
-berylliumcasingMetalPress_ultimate.addFluidInput(<liquid:cotc_neg_red_matter> * 100);
-berylliumcasingMetalPress_ultimate.addFluidOutput(<liquid:cotc_pos_orange_matter> * 200);
-berylliumcasingMetalPress_ultimate.addEnergyPerTickInput(134217728);
-berylliumcasingMetalPress_ultimate.build();
-
-var berylliumfoilMetalPress_basic = mods.modularmachinery.RecipeBuilder.newBuilder("berylliumfoilMetalPress_basic", "basic", 100, 0);
-berylliumfoilMetalPress_basic.addItemInput(<contenttweaker:material_part:1739> * 3);
-berylliumfoilMetalPress_basic.addItemOutput(<contenttweaker:material_part:1754>);
-berylliumfoilMetalPress_basic.addEnergyPerTickInput(8);
-berylliumfoilMetalPress_basic.build();
-
-var berylliumfoilMetalPress_advanced = mods.modularmachinery.RecipeBuilder.newBuilder("berylliumfoilMetalPress_advanced", "basic", 100, 0);
-berylliumfoilMetalPress_advanced.addItemInput(<contenttweaker:material_part:1739> * 3);
-berylliumfoilMetalPress_advanced.addItemOutput(<contenttweaker:material_part:1754>);
-berylliumfoilMetalPress_advanced.addFluidInput(<liquid:hydrogen> * 100);
-berylliumfoilMetalPress_advanced.addEnergyPerTickInput(2048);
-berylliumfoilMetalPress_advanced.build();
-
-var berylliumfoilMetalPress_industrial = mods.modularmachinery.RecipeBuilder.newBuilder("berylliumfoilMetalPress_industrial", "basic", 100, 0);
-berylliumfoilMetalPress_industrial.addItemInput(<contenttweaker:material_part:1739> * 3);
-berylliumfoilMetalPress_industrial.addItemOutput(<contenttweaker:material_part:1754>);
-berylliumfoilMetalPress_industrial.addFluidInput(<liquid:hydrogen> * 100);
-berylliumfoilMetalPress_industrial.addFluidInput(<liquid:cotc_data> * 100);
-berylliumfoilMetalPress_industrial.addEnergyPerTickInput(524288);
-berylliumfoilMetalPress_industrial.build();
-
-var berylliumfoilMetalPress_ultimate = mods.modularmachinery.RecipeBuilder.newBuilder("berylliumfoilMetalPress_ultimate", "basic", 100, 0);
-berylliumfoilMetalPress_ultimate.addItemInput(<contenttweaker:material_part:1739> * 3);
-berylliumfoilMetalPress_ultimate.addItemOutput(<contenttweaker:material_part:1754>);
-berylliumfoilMetalPress_ultimate.addFluidInput(<liquid:hydrogen> * 100);
-berylliumfoilMetalPress_ultimate.addFluidInput(<liquid:cotc_data> * 100);
-berylliumfoilMetalPress_ultimate.addFluidInput(<liquid:cotc_neg_red_matter> * 100);
-berylliumfoilMetalPress_ultimate.addFluidOutput(<liquid:cotc_pos_orange_matter> * 200);
-berylliumfoilMetalPress_ultimate.addEnergyPerTickInput(134217728);
-berylliumfoilMetalPress_ultimate.build();
-
-var berylliumcasingSmallMetalPress_basic = mods.modularmachinery.RecipeBuilder.newBuilder("berylliumcasingSmallMetalPress_basic", "basic", 100, 0);
-berylliumcasingSmallMetalPress_basic.addItemInput(<contenttweaker:material_part:1739> * 4);
-berylliumcasingSmallMetalPress_basic.addItemOutput(<contenttweaker:material_part:1764>);
-berylliumcasingSmallMetalPress_basic.addEnergyPerTickInput(8);
-berylliumcasingSmallMetalPress_basic.build();
-
-var berylliumcasingSmallMetalPress_advanced = mods.modularmachinery.RecipeBuilder.newBuilder("berylliumcasingSmallMetalPress_advanced", "basic", 100, 0);
-berylliumcasingSmallMetalPress_advanced.addItemInput(<contenttweaker:material_part:1739> * 4);
-berylliumcasingSmallMetalPress_advanced.addItemOutput(<contenttweaker:material_part:1764>);
-berylliumcasingSmallMetalPress_advanced.addFluidInput(<liquid:hydrogen> * 100);
-berylliumcasingSmallMetalPress_advanced.addEnergyPerTickInput(2048);
-berylliumcasingSmallMetalPress_advanced.build();
-
-var berylliumcasingSmallMetalPress_industrial = mods.modularmachinery.RecipeBuilder.newBuilder("berylliumcasingSmallMetalPress_industrial", "basic", 100, 0);
-berylliumcasingSmallMetalPress_industrial.addItemInput(<contenttweaker:material_part:1739> * 4);
-berylliumcasingSmallMetalPress_industrial.addItemOutput(<contenttweaker:material_part:1764>);
-berylliumcasingSmallMetalPress_industrial.addFluidInput(<liquid:hydrogen> * 100);
-berylliumcasingSmallMetalPress_industrial.addFluidInput(<liquid:cotc_data> * 100);
-berylliumcasingSmallMetalPress_industrial.addEnergyPerTickInput(524288);
-berylliumcasingSmallMetalPress_industrial.build();
-
-var berylliumcasingSmallMetalPress_ultimate = mods.modularmachinery.RecipeBuilder.newBuilder("berylliumcasingSmallMetalPress_ultimate", "basic", 100, 0);
-berylliumcasingSmallMetalPress_ultimate.addItemInput(<contenttweaker:material_part:1739> * 4);
-berylliumcasingSmallMetalPress_ultimate.addItemOutput(<contenttweaker:material_part:1764>);
-berylliumcasingSmallMetalPress_ultimate.addFluidInput(<liquid:hydrogen> * 100);
-berylliumcasingSmallMetalPress_ultimate.addFluidInput(<liquid:cotc_data> * 100);
-berylliumcasingSmallMetalPress_ultimate.addFluidInput(<liquid:cotc_neg_red_matter> * 100);
-berylliumcasingSmallMetalPress_ultimate.addFluidOutput(<liquid:cotc_pos_orange_matter> * 200);
-berylliumcasingSmallMetalPress_ultimate.addEnergyPerTickInput(134217728);
-berylliumcasingSmallMetalPress_ultimate.build();
-
-var berylliumrodMetalLathe_basic = mods.modularmachinery.RecipeBuilder.newBuilder("berylliumrodMetalLathe_basic", "basic", 40, 0);
-berylliumrodMetalLathe_basic.addItemInput(<contenttweaker:material_part:1737>);
-berylliumrodMetalLathe_basic.addItemOutput(<contenttweaker:material_part:1746> * 2);
-berylliumrodMetalLathe_basic.addEnergyPerTickInput(4);
-berylliumrodMetalLathe_basic.build();
-
-var berylliumrodMetalLathe_advanced = mods.modularmachinery.RecipeBuilder.newBuilder("berylliumrodMetalLathe_advanced", "basic", 40, 0);
-berylliumrodMetalLathe_advanced.addItemInput(<contenttweaker:material_part:1737>);
-berylliumrodMetalLathe_advanced.addItemOutput(<contenttweaker:material_part:1746> * 2);
-berylliumrodMetalLathe_advanced.addFluidInput(<liquid:hydrogen> * 100);
-berylliumrodMetalLathe_advanced.addEnergyPerTickInput(1024);
-berylliumrodMetalLathe_advanced.build();
-
-var berylliumrodMetalLathe_industrial = mods.modularmachinery.RecipeBuilder.newBuilder("berylliumrodMetalLathe_industrial", "basic", 40, 0);
-berylliumrodMetalLathe_industrial.addItemInput(<contenttweaker:material_part:1737>);
-berylliumrodMetalLathe_industrial.addItemOutput(<contenttweaker:material_part:1746> * 2);
-berylliumrodMetalLathe_industrial.addFluidInput(<liquid:hydrogen> * 100);
-berylliumrodMetalLathe_industrial.addFluidInput(<liquid:cotc_data> * 100);
-berylliumrodMetalLathe_industrial.addEnergyPerTickInput(262144);
-berylliumrodMetalLathe_industrial.build();
-
-var berylliumrodMetalLathe_ultimate = mods.modularmachinery.RecipeBuilder.newBuilder("berylliumrodMetalLathe_ultimate", "basic", 40, 0);
-berylliumrodMetalLathe_ultimate.addItemInput(<contenttweaker:material_part:1737>);
-berylliumrodMetalLathe_ultimate.addItemOutput(<contenttweaker:material_part:1746> * 2);
-berylliumrodMetalLathe_ultimate.addFluidInput(<liquid:hydrogen> * 100);
-berylliumrodMetalLathe_ultimate.addFluidInput(<liquid:cotc_data> * 100);
-berylliumrodMetalLathe_ultimate.addFluidInput(<liquid:cotc_neg_red_matter> * 100);
-berylliumrodMetalLathe_ultimate.addFluidOutput(<liquid:cotc_pos_orange_matter> * 200);
-berylliumrodMetalLathe_ultimate.addEnergyPerTickInput(67108864);
-berylliumrodMetalLathe_ultimate.build();
-
-var berylliumrodLongMetalLathe_basic = mods.modularmachinery.RecipeBuilder.newBuilder("berylliumrodLongMetalLathe_basic", "basic", 40, 0);
-berylliumrodLongMetalLathe_basic.addItemInput(<contenttweaker:material_part:1737>);
-berylliumrodLongMetalLathe_basic.addItemOutput(<contenttweaker:material_part:1747> * 1);
-berylliumrodLongMetalLathe_basic.addEnergyPerTickInput(4);
-berylliumrodLongMetalLathe_basic.build();
-
-var berylliumrodLongMetalLathe_advanced = mods.modularmachinery.RecipeBuilder.newBuilder("berylliumrodLongMetalLathe_advanced", "basic", 40, 0);
-berylliumrodLongMetalLathe_advanced.addItemInput(<contenttweaker:material_part:1737>);
-berylliumrodLongMetalLathe_advanced.addItemOutput(<contenttweaker:material_part:1747> * 1);
-berylliumrodLongMetalLathe_advanced.addFluidInput(<liquid:hydrogen> * 100);
-berylliumrodLongMetalLathe_advanced.addEnergyPerTickInput(1024);
-berylliumrodLongMetalLathe_advanced.build();
-
-var berylliumrodLongMetalLathe_industrial = mods.modularmachinery.RecipeBuilder.newBuilder("berylliumrodLongMetalLathe_industrial", "basic", 40, 0);
-berylliumrodLongMetalLathe_industrial.addItemInput(<contenttweaker:material_part:1737>);
-berylliumrodLongMetalLathe_industrial.addItemOutput(<contenttweaker:material_part:1747> * 1);
-berylliumrodLongMetalLathe_industrial.addFluidInput(<liquid:hydrogen> * 100);
-berylliumrodLongMetalLathe_industrial.addFluidInput(<liquid:cotc_data> * 100);
-berylliumrodLongMetalLathe_industrial.addEnergyPerTickInput(262144);
-berylliumrodLongMetalLathe_industrial.build();
-
-var berylliumrodLongMetalLathe_ultimate = mods.modularmachinery.RecipeBuilder.newBuilder("berylliumrodLongMetalLathe_ultimate", "basic", 40, 0);
-berylliumrodLongMetalLathe_ultimate.addItemInput(<contenttweaker:material_part:1737>);
-berylliumrodLongMetalLathe_ultimate.addItemOutput(<contenttweaker:material_part:1747> * 1);
-berylliumrodLongMetalLathe_ultimate.addFluidInput(<liquid:hydrogen> * 100);
-berylliumrodLongMetalLathe_ultimate.addFluidInput(<liquid:cotc_data> * 100);
-berylliumrodLongMetalLathe_ultimate.addFluidInput(<liquid:cotc_neg_red_matter> * 100);
-berylliumrodLongMetalLathe_ultimate.addFluidOutput(<liquid:cotc_pos_orange_matter> * 200);
-berylliumrodLongMetalLathe_ultimate.addEnergyPerTickInput(67108864);
-berylliumrodLongMetalLathe_ultimate.build();
-
-var berylliumaxleMetalLathe_basic = mods.modularmachinery.RecipeBuilder.newBuilder("berylliumaxleMetalLathe_basic", "basic", 40, 0);
-berylliumaxleMetalLathe_basic.addItemInput(<contenttweaker:material_part:1739>);
-berylliumaxleMetalLathe_basic.addItemOutput(<contenttweaker:material_part:7951> * 6);
-berylliumaxleMetalLathe_basic.addEnergyPerTickInput(4);
-berylliumaxleMetalLathe_basic.build();
-
-var berylliumaxleMetalLathe_advanced = mods.modularmachinery.RecipeBuilder.newBuilder("berylliumaxleMetalLathe_advanced", "basic", 40, 0);
-berylliumaxleMetalLathe_advanced.addItemInput(<contenttweaker:material_part:1739>);
-berylliumaxleMetalLathe_advanced.addItemOutput(<contenttweaker:material_part:7951> * 6);
-berylliumaxleMetalLathe_advanced.addFluidInput(<liquid:hydrogen> * 100);
-berylliumaxleMetalLathe_advanced.addEnergyPerTickInput(1024);
-berylliumaxleMetalLathe_advanced.build();
-
-var berylliumaxleMetalLathe_industrial = mods.modularmachinery.RecipeBuilder.newBuilder("berylliumaxleMetalLathe_industrial", "basic", 40, 0);
-berylliumaxleMetalLathe_industrial.addItemInput(<contenttweaker:material_part:1739>);
-berylliumaxleMetalLathe_industrial.addItemOutput(<contenttweaker:material_part:7951> * 6);
-berylliumaxleMetalLathe_industrial.addFluidInput(<liquid:hydrogen> * 100);
-berylliumaxleMetalLathe_industrial.addFluidInput(<liquid:cotc_data> * 100);
-berylliumaxleMetalLathe_industrial.addEnergyPerTickInput(262144);
-berylliumaxleMetalLathe_industrial.build();
-
-var berylliumaxleMetalLathe_ultimate = mods.modularmachinery.RecipeBuilder.newBuilder("berylliumaxleMetalLathe_ultimate", "basic", 40, 0);
-berylliumaxleMetalLathe_ultimate.addItemInput(<contenttweaker:material_part:1739>);
-berylliumaxleMetalLathe_ultimate.addItemOutput(<contenttweaker:material_part:7951> * 6);
-berylliumaxleMetalLathe_ultimate.addFluidInput(<liquid:hydrogen> * 100);
-berylliumaxleMetalLathe_ultimate.addFluidInput(<liquid:cotc_data> * 100);
-berylliumaxleMetalLathe_ultimate.addFluidInput(<liquid:cotc_neg_red_matter> * 100);
-berylliumaxleMetalLathe_ultimate.addFluidOutput(<liquid:cotc_pos_orange_matter> * 200);
-berylliumaxleMetalLathe_ultimate.addEnergyPerTickInput(67108864);
-berylliumaxleMetalLathe_ultimate.build();
-
-var berylliumaxleLargeMetalLathe_basic = mods.modularmachinery.RecipeBuilder.newBuilder("berylliumaxleLargeMetalLathe_basic", "basic", 40, 0);
-berylliumaxleLargeMetalLathe_basic.addItemInput(<contenttweaker:material_part:1737>);
-berylliumaxleLargeMetalLathe_basic.addItemOutput(<contenttweaker:material_part:7952> * 2);
-berylliumaxleLargeMetalLathe_basic.addEnergyPerTickInput(4);
-berylliumaxleLargeMetalLathe_basic.build();
-
-var berylliumaxleLargeMetalLathe_advanced = mods.modularmachinery.RecipeBuilder.newBuilder("berylliumaxleLargeMetalLathe_advanced", "basic", 40, 0);
-berylliumaxleLargeMetalLathe_advanced.addItemInput(<contenttweaker:material_part:1737>);
-berylliumaxleLargeMetalLathe_advanced.addItemOutput(<contenttweaker:material_part:7952> * 2);
-berylliumaxleLargeMetalLathe_advanced.addFluidInput(<liquid:hydrogen> * 100);
-berylliumaxleLargeMetalLathe_advanced.addEnergyPerTickInput(1024);
-berylliumaxleLargeMetalLathe_advanced.build();
-
-var berylliumaxleLargeMetalLathe_industrial = mods.modularmachinery.RecipeBuilder.newBuilder("berylliumaxleLargeMetalLathe_industrial", "basic", 40, 0);
-berylliumaxleLargeMetalLathe_industrial.addItemInput(<contenttweaker:material_part:1737>);
-berylliumaxleLargeMetalLathe_industrial.addItemOutput(<contenttweaker:material_part:7952> * 2);
-berylliumaxleLargeMetalLathe_industrial.addFluidInput(<liquid:hydrogen> * 100);
-berylliumaxleLargeMetalLathe_industrial.addFluidInput(<liquid:cotc_data> * 100);
-berylliumaxleLargeMetalLathe_industrial.addEnergyPerTickInput(262144);
-berylliumaxleLargeMetalLathe_industrial.build();
-
-var berylliumaxleLargeMetalLathe_ultimate = mods.modularmachinery.RecipeBuilder.newBuilder("berylliumaxleLargeMetalLathe_ultimate", "basic", 40, 0);
-berylliumaxleLargeMetalLathe_ultimate.addItemInput(<contenttweaker:material_part:1737>);
-berylliumaxleLargeMetalLathe_ultimate.addItemOutput(<contenttweaker:material_part:7952> * 2);
-berylliumaxleLargeMetalLathe_ultimate.addFluidInput(<liquid:hydrogen> * 100);
-berylliumaxleLargeMetalLathe_ultimate.addFluidInput(<liquid:cotc_data> * 100);
-berylliumaxleLargeMetalLathe_ultimate.addFluidInput(<liquid:cotc_neg_red_matter> * 100);
-berylliumaxleLargeMetalLathe_ultimate.addFluidOutput(<liquid:cotc_pos_orange_matter> * 200);
-berylliumaxleLargeMetalLathe_ultimate.addEnergyPerTickInput(67108864);
-berylliumaxleLargeMetalLathe_ultimate.build();
-
-var berylliumconeMetalLathe_basic = mods.modularmachinery.RecipeBuilder.newBuilder("berylliumconeMetalLathe_basic", "basic", 40, 0);
-berylliumconeMetalLathe_basic.addItemInput(<contenttweaker:material_part:8275>);
-berylliumconeMetalLathe_basic.addItemOutput(<contenttweaker:material_part:8277> * 1);
-berylliumconeMetalLathe_basic.addEnergyPerTickInput(4);
-berylliumconeMetalLathe_basic.build();
-
-var berylliumconeMetalLathe_advanced = mods.modularmachinery.RecipeBuilder.newBuilder("berylliumconeMetalLathe_advanced", "basic", 40, 0);
-berylliumconeMetalLathe_advanced.addItemInput(<contenttweaker:material_part:8275>);
-berylliumconeMetalLathe_advanced.addItemOutput(<contenttweaker:material_part:8277> * 1);
-berylliumconeMetalLathe_advanced.addFluidInput(<liquid:hydrogen> * 100);
-berylliumconeMetalLathe_advanced.addEnergyPerTickInput(1024);
-berylliumconeMetalLathe_advanced.build();
-
-var berylliumconeMetalLathe_industrial = mods.modularmachinery.RecipeBuilder.newBuilder("berylliumconeMetalLathe_industrial", "basic", 40, 0);
-berylliumconeMetalLathe_industrial.addItemInput(<contenttweaker:material_part:8275>);
-berylliumconeMetalLathe_industrial.addItemOutput(<contenttweaker:material_part:8277> * 1);
-berylliumconeMetalLathe_industrial.addFluidInput(<liquid:hydrogen> * 100);
-berylliumconeMetalLathe_industrial.addFluidInput(<liquid:cotc_data> * 100);
-berylliumconeMetalLathe_industrial.addEnergyPerTickInput(262144);
-berylliumconeMetalLathe_industrial.build();
-
-var berylliumconeMetalLathe_ultimate = mods.modularmachinery.RecipeBuilder.newBuilder("berylliumconeMetalLathe_ultimate", "basic", 40, 0);
-berylliumconeMetalLathe_ultimate.addItemInput(<contenttweaker:material_part:8275>);
-berylliumconeMetalLathe_ultimate.addItemOutput(<contenttweaker:material_part:8277> * 1);
-berylliumconeMetalLathe_ultimate.addFluidInput(<liquid:hydrogen> * 100);
-berylliumconeMetalLathe_ultimate.addFluidInput(<liquid:cotc_data> * 100);
-berylliumconeMetalLathe_ultimate.addFluidInput(<liquid:cotc_neg_red_matter> * 100);
-berylliumconeMetalLathe_ultimate.addFluidOutput(<liquid:cotc_pos_orange_matter> * 200);
-berylliumconeMetalLathe_ultimate.addEnergyPerTickInput(67108864);
-berylliumconeMetalLathe_ultimate.build();
-
-var berylliumgearMetalLaserCutter_basic = mods.modularmachinery.RecipeBuilder.newBuilder("berylliumgearMetalLaserCutter_basic", "basic", 40, 0);
-berylliumgearMetalLaserCutter_basic.addItemInput(<contenttweaker:material_part:1741>);
-berylliumgearMetalLaserCutter_basic.addItemOutput(<contenttweaker:material_part:1757>);
-berylliumgearMetalLaserCutter_basic.addEnergyPerTickInput(4);
-berylliumgearMetalLaserCutter_basic.build();
-
-var berylliumgearMetalLaserCutter_advanced = mods.modularmachinery.RecipeBuilder.newBuilder("berylliumgearMetalLaserCutter_advanced", "basic", 40, 0);
-berylliumgearMetalLaserCutter_advanced.addItemInput(<contenttweaker:material_part:1741>);
-berylliumgearMetalLaserCutter_advanced.addItemOutput(<contenttweaker:material_part:1757>);
-berylliumgearMetalLaserCutter_advanced.addFluidInput(<liquid:hydrogen> * 100);
-berylliumgearMetalLaserCutter_advanced.addEnergyPerTickInput(1024);
-berylliumgearMetalLaserCutter_advanced.build();
-
-var berylliumgearMetalLaserCutter_industrial = mods.modularmachinery.RecipeBuilder.newBuilder("berylliumgearMetalLaserCutter_industrial", "basic", 40, 0);
-berylliumgearMetalLaserCutter_industrial.addItemInput(<contenttweaker:material_part:1741>);
-berylliumgearMetalLaserCutter_industrial.addItemOutput(<contenttweaker:material_part:1757>);
-berylliumgearMetalLaserCutter_industrial.addFluidInput(<liquid:hydrogen> * 100);
-berylliumgearMetalLaserCutter_industrial.addFluidInput(<liquid:cotc_data> * 100);
-berylliumgearMetalLaserCutter_industrial.addEnergyPerTickInput(262144);
-berylliumgearMetalLaserCutter_industrial.build();
-
-var berylliumgearMetalLaserCutter_ultimate = mods.modularmachinery.RecipeBuilder.newBuilder("berylliumgearMetalLaserCutter_ultimate", "basic", 40, 0);
-berylliumgearMetalLaserCutter_ultimate.addItemInput(<contenttweaker:material_part:1741>);
-berylliumgearMetalLaserCutter_ultimate.addItemOutput(<contenttweaker:material_part:1757>);
-berylliumgearMetalLaserCutter_ultimate.addFluidInput(<liquid:hydrogen> * 100);
-berylliumgearMetalLaserCutter_ultimate.addFluidInput(<liquid:cotc_data> * 100);
-berylliumgearMetalLaserCutter_ultimate.addFluidInput(<liquid:cotc_neg_red_matter> * 100);
-berylliumgearMetalLaserCutter_ultimate.addFluidOutput(<liquid:cotc_pos_orange_matter> * 200);
-berylliumgearMetalLaserCutter_ultimate.addEnergyPerTickInput(67108864);
-berylliumgearMetalLaserCutter_ultimate.build();
-
-var berylliumgearSmallMetalLaserCutter_basic = mods.modularmachinery.RecipeBuilder.newBuilder("berylliumgearSmallMetalLaserCutter_basic", "basic", 40, 0);
-berylliumgearSmallMetalLaserCutter_basic.addItemInput(<contenttweaker:material_part:1758>);
-berylliumgearSmallMetalLaserCutter_basic.addItemOutput(<contenttweaker:material_part:1756>);
-berylliumgearSmallMetalLaserCutter_basic.addEnergyPerTickInput(4);
-berylliumgearSmallMetalLaserCutter_basic.build();
-
-var berylliumgearSmallMetalLaserCutter_advanced = mods.modularmachinery.RecipeBuilder.newBuilder("berylliumgearSmallMetalLaserCutter_advanced", "basic", 40, 0);
-berylliumgearSmallMetalLaserCutter_advanced.addItemInput(<contenttweaker:material_part:1758>);
-berylliumgearSmallMetalLaserCutter_advanced.addItemOutput(<contenttweaker:material_part:1756>);
-berylliumgearSmallMetalLaserCutter_advanced.addFluidInput(<liquid:hydrogen> * 100);
-berylliumgearSmallMetalLaserCutter_advanced.addEnergyPerTickInput(1024);
-berylliumgearSmallMetalLaserCutter_advanced.build();
-
-var berylliumgearSmallMetalLaserCutter_industrial = mods.modularmachinery.RecipeBuilder.newBuilder("berylliumgearSmallMetalLaserCutter_industrial", "basic", 40, 0);
-berylliumgearSmallMetalLaserCutter_industrial.addItemInput(<contenttweaker:material_part:1758>);
-berylliumgearSmallMetalLaserCutter_industrial.addItemOutput(<contenttweaker:material_part:1756>);
-berylliumgearSmallMetalLaserCutter_industrial.addFluidInput(<liquid:hydrogen> * 100);
-berylliumgearSmallMetalLaserCutter_industrial.addFluidInput(<liquid:cotc_data> * 100);
-berylliumgearSmallMetalLaserCutter_industrial.addEnergyPerTickInput(262144);
-berylliumgearSmallMetalLaserCutter_industrial.build();
-
-var berylliumgearSmallMetalLaserCutter_ultimate = mods.modularmachinery.RecipeBuilder.newBuilder("berylliumgearSmallMetalLaserCutter_ultimate", "basic", 40, 0);
-berylliumgearSmallMetalLaserCutter_ultimate.addItemInput(<contenttweaker:material_part:1758>);
-berylliumgearSmallMetalLaserCutter_ultimate.addItemOutput(<contenttweaker:material_part:1756>);
-berylliumgearSmallMetalLaserCutter_ultimate.addFluidInput(<liquid:hydrogen> * 100);
-berylliumgearSmallMetalLaserCutter_ultimate.addFluidInput(<liquid:cotc_data> * 100);
-berylliumgearSmallMetalLaserCutter_ultimate.addFluidInput(<liquid:cotc_neg_red_matter> * 100);
-berylliumgearSmallMetalLaserCutter_ultimate.addFluidOutput(<liquid:cotc_pos_orange_matter> * 200);
-berylliumgearSmallMetalLaserCutter_ultimate.addEnergyPerTickInput(67108864);
-berylliumgearSmallMetalLaserCutter_ultimate.build();
-
-var berylliumrotorMetalLaserCutter_basic = mods.modularmachinery.RecipeBuilder.newBuilder("berylliumrotorMetalLaserCutter_basic", "basic", 40, 0);
-berylliumrotorMetalLaserCutter_basic.addItemInput(<contenttweaker:material_part:1762>);
-berylliumrotorMetalLaserCutter_basic.addItemOutput(<contenttweaker:material_part:1769>);
-berylliumrotorMetalLaserCutter_basic.addEnergyPerTickInput(4);
-berylliumrotorMetalLaserCutter_basic.build();
-
-var berylliumrotorMetalLaserCutter_advanced = mods.modularmachinery.RecipeBuilder.newBuilder("berylliumrotorMetalLaserCutter_advanced", "basic", 40, 0);
-berylliumrotorMetalLaserCutter_advanced.addItemInput(<contenttweaker:material_part:1762>);
-berylliumrotorMetalLaserCutter_advanced.addItemOutput(<contenttweaker:material_part:1769>);
-berylliumrotorMetalLaserCutter_advanced.addFluidInput(<liquid:hydrogen> * 100);
-berylliumrotorMetalLaserCutter_advanced.addEnergyPerTickInput(1024);
-berylliumrotorMetalLaserCutter_advanced.build();
-
-var berylliumrotorMetalLaserCutter_industrial = mods.modularmachinery.RecipeBuilder.newBuilder("berylliumrotorMetalLaserCutter_industrial", "basic", 40, 0);
-berylliumrotorMetalLaserCutter_industrial.addItemInput(<contenttweaker:material_part:1762>);
-berylliumrotorMetalLaserCutter_industrial.addItemOutput(<contenttweaker:material_part:1769>);
-berylliumrotorMetalLaserCutter_industrial.addFluidInput(<liquid:hydrogen> * 100);
-berylliumrotorMetalLaserCutter_industrial.addFluidInput(<liquid:cotc_data> * 100);
-berylliumrotorMetalLaserCutter_industrial.addEnergyPerTickInput(262144);
-berylliumrotorMetalLaserCutter_industrial.build();
-
-var berylliumrotorMetalLaserCutter_ultimate = mods.modularmachinery.RecipeBuilder.newBuilder("berylliumrotorMetalLaserCutter_ultimate", "basic", 40, 0);
-berylliumrotorMetalLaserCutter_ultimate.addItemInput(<contenttweaker:material_part:1762>);
-berylliumrotorMetalLaserCutter_ultimate.addItemOutput(<contenttweaker:material_part:1769>);
-berylliumrotorMetalLaserCutter_ultimate.addFluidInput(<liquid:hydrogen> * 100);
-berylliumrotorMetalLaserCutter_ultimate.addFluidInput(<liquid:cotc_data> * 100);
-berylliumrotorMetalLaserCutter_ultimate.addFluidInput(<liquid:cotc_neg_red_matter> * 100);
-berylliumrotorMetalLaserCutter_ultimate.addFluidOutput(<liquid:cotc_pos_orange_matter> * 200);
-berylliumrotorMetalLaserCutter_ultimate.addEnergyPerTickInput(67108864);
-berylliumrotorMetalLaserCutter_ultimate.build();
-
-var berylliumbeamTinMetalWelder_basic = mods.modularmachinery.RecipeBuilder.newBuilder("berylliumbeamTinMetalWelder_basic", "basic", 40, 0);
-berylliumbeamTinMetalWelder_basic.addItemInput(<contenttweaker:material_part:1741> * 8);
-berylliumbeamTinMetalWelder_basic.addFluidInput(<liquid:cotm_tin_molten> * 144);
-berylliumbeamTinMetalWelder_basic.addItemOutput(<contenttweaker:material_part:1750>);
-berylliumbeamTinMetalWelder_basic.addEnergyPerTickInput(4);
-berylliumbeamTinMetalWelder_basic.build();
-
-var berylliumbeamTinMetalWelder_advanced = mods.modularmachinery.RecipeBuilder.newBuilder("berylliumbeamTinMetalWelder_advanced", "basic", 40, 0);
-berylliumbeamTinMetalWelder_advanced.addItemInput(<contenttweaker:material_part:1741> * 8);
-berylliumbeamTinMetalWelder_advanced.addFluidInput(<liquid:cotm_tin_molten> * 144);
-berylliumbeamTinMetalWelder_advanced.addItemOutput(<contenttweaker:material_part:1750>);
-berylliumbeamTinMetalWelder_advanced.addFluidInput(<liquid:hydrogen> * 100);
-berylliumbeamTinMetalWelder_advanced.addEnergyPerTickInput(1024);
-berylliumbeamTinMetalWelder_advanced.build();
-
-var berylliumbeamTinMetalWelder_industrial = mods.modularmachinery.RecipeBuilder.newBuilder("berylliumbeamTinMetalWelder_industrial", "basic", 40, 0);
-berylliumbeamTinMetalWelder_industrial.addItemInput(<contenttweaker:material_part:1741> * 8);
-berylliumbeamTinMetalWelder_industrial.addFluidInput(<liquid:cotm_tin_molten> * 144);
-berylliumbeamTinMetalWelder_industrial.addItemOutput(<contenttweaker:material_part:1750>);
-berylliumbeamTinMetalWelder_industrial.addFluidInput(<liquid:hydrogen> * 100);
-berylliumbeamTinMetalWelder_industrial.addFluidInput(<liquid:cotc_data> * 100);
-berylliumbeamTinMetalWelder_industrial.addEnergyPerTickInput(262144);
-berylliumbeamTinMetalWelder_industrial.build();
-
-var berylliumbeamTinMetalWelder_ultimate = mods.modularmachinery.RecipeBuilder.newBuilder("berylliumbeamTinMetalWelder_ultimate", "basic", 40, 0);
-berylliumbeamTinMetalWelder_ultimate.addItemInput(<contenttweaker:material_part:1741> * 8);
-berylliumbeamTinMetalWelder_ultimate.addFluidInput(<liquid:cotm_tin_molten> * 144);
-berylliumbeamTinMetalWelder_ultimate.addItemOutput(<contenttweaker:material_part:1750>);
-berylliumbeamTinMetalWelder_ultimate.addFluidInput(<liquid:hydrogen> * 100);
-berylliumbeamTinMetalWelder_ultimate.addFluidInput(<liquid:cotc_data> * 100);
-berylliumbeamTinMetalWelder_ultimate.addFluidInput(<liquid:cotc_neg_red_matter> * 100);
-berylliumbeamTinMetalWelder_ultimate.addFluidOutput(<liquid:cotc_pos_orange_matter> * 200);
-berylliumbeamTinMetalWelder_ultimate.addEnergyPerTickInput(67108864);
-berylliumbeamTinMetalWelder_ultimate.build();
-
-var berylliumrailTinMetalWelder_basic = mods.modularmachinery.RecipeBuilder.newBuilder("berylliumrailTinMetalWelder_basic", "basic", 40, 0);
-berylliumrailTinMetalWelder_basic.addItemInput(<contenttweaker:material_part:1758> * 9);
-berylliumrailTinMetalWelder_basic.addFluidInput(<liquid:cotm_tin_molten> * 144);
-berylliumrailTinMetalWelder_basic.addItemOutput(<contenttweaker:material_part:1761>);
-berylliumrailTinMetalWelder_basic.addEnergyPerTickInput(4);
-berylliumrailTinMetalWelder_basic.build();
-
-var berylliumrailTinMetalWelder_advanced = mods.modularmachinery.RecipeBuilder.newBuilder("berylliumrailTinMetalWelder_advanced", "basic", 40, 0);
-berylliumrailTinMetalWelder_advanced.addItemInput(<contenttweaker:material_part:1758> * 9);
-berylliumrailTinMetalWelder_advanced.addFluidInput(<liquid:cotm_tin_molten> * 144);
-berylliumrailTinMetalWelder_advanced.addItemOutput(<contenttweaker:material_part:1761>);
-berylliumrailTinMetalWelder_advanced.addFluidInput(<liquid:hydrogen> * 100);
-berylliumrailTinMetalWelder_advanced.addEnergyPerTickInput(1024);
-berylliumrailTinMetalWelder_advanced.build();
-
-var berylliumrailTinMetalWelder_industrial = mods.modularmachinery.RecipeBuilder.newBuilder("berylliumrailTinMetalWelder_industrial", "basic", 40, 0);
-berylliumrailTinMetalWelder_industrial.addItemInput(<contenttweaker:material_part:1758> * 9);
-berylliumrailTinMetalWelder_industrial.addFluidInput(<liquid:cotm_tin_molten> * 144);
-berylliumrailTinMetalWelder_industrial.addItemOutput(<contenttweaker:material_part:1761>);
-berylliumrailTinMetalWelder_industrial.addFluidInput(<liquid:hydrogen> * 100);
-berylliumrailTinMetalWelder_industrial.addFluidInput(<liquid:cotc_data> * 100);
-berylliumrailTinMetalWelder_industrial.addEnergyPerTickInput(262144);
-berylliumrailTinMetalWelder_industrial.build();
-
-var berylliumrailTinMetalWelder_ultimate = mods.modularmachinery.RecipeBuilder.newBuilder("berylliumrailTinMetalWelder_ultimate", "basic", 40, 0);
-berylliumrailTinMetalWelder_ultimate.addItemInput(<contenttweaker:material_part:1758> * 9);
-berylliumrailTinMetalWelder_ultimate.addFluidInput(<liquid:cotm_tin_molten> * 144);
-berylliumrailTinMetalWelder_ultimate.addItemOutput(<contenttweaker:material_part:1761>);
-berylliumrailTinMetalWelder_ultimate.addFluidInput(<liquid:hydrogen> * 100);
-berylliumrailTinMetalWelder_ultimate.addFluidInput(<liquid:cotc_data> * 100);
-berylliumrailTinMetalWelder_ultimate.addFluidInput(<liquid:cotc_neg_red_matter> * 100);
-berylliumrailTinMetalWelder_ultimate.addFluidOutput(<liquid:cotc_pos_orange_matter> * 200);
-berylliumrailTinMetalWelder_ultimate.addEnergyPerTickInput(67108864);
-berylliumrailTinMetalWelder_ultimate.build();
-
-var berylliumchainTinMetalWelder_basic = mods.modularmachinery.RecipeBuilder.newBuilder("berylliumchainTinMetalWelder_basic", "basic", 40, 0);
-berylliumchainTinMetalWelder_basic.addItemInput(<contenttweaker:material_part:1755> * 12);
-berylliumchainTinMetalWelder_basic.addFluidInput(<liquid:cotm_tin_molten> * 144);
-berylliumchainTinMetalWelder_basic.addItemOutput(<contenttweaker:material_part:1760>);
-berylliumchainTinMetalWelder_basic.addEnergyPerTickInput(4);
-berylliumchainTinMetalWelder_basic.build();
-
-var berylliumchainTinMetalWelder_advanced = mods.modularmachinery.RecipeBuilder.newBuilder("berylliumchainTinMetalWelder_advanced", "basic", 40, 0);
-berylliumchainTinMetalWelder_advanced.addItemInput(<contenttweaker:material_part:1755> * 12);
-berylliumchainTinMetalWelder_advanced.addFluidInput(<liquid:cotm_tin_molten> * 144);
-berylliumchainTinMetalWelder_advanced.addItemOutput(<contenttweaker:material_part:1760>);
-berylliumchainTinMetalWelder_advanced.addFluidInput(<liquid:hydrogen> * 100);
-berylliumchainTinMetalWelder_advanced.addEnergyPerTickInput(1024);
-berylliumchainTinMetalWelder_advanced.build();
-
-var berylliumchainTinMetalWelder_industrial = mods.modularmachinery.RecipeBuilder.newBuilder("berylliumchainTinMetalWelder_industrial", "basic", 40, 0);
-berylliumchainTinMetalWelder_industrial.addItemInput(<contenttweaker:material_part:1755> * 12);
-berylliumchainTinMetalWelder_industrial.addFluidInput(<liquid:cotm_tin_molten> * 144);
-berylliumchainTinMetalWelder_industrial.addItemOutput(<contenttweaker:material_part:1760>);
-berylliumchainTinMetalWelder_industrial.addFluidInput(<liquid:hydrogen> * 100);
-berylliumchainTinMetalWelder_industrial.addFluidInput(<liquid:cotc_data> * 100);
-berylliumchainTinMetalWelder_industrial.addEnergyPerTickInput(262144);
-berylliumchainTinMetalWelder_industrial.build();
-
-var berylliumchainTinMetalWelder_ultimate = mods.modularmachinery.RecipeBuilder.newBuilder("berylliumchainTinMetalWelder_ultimate", "basic", 40, 0);
-berylliumchainTinMetalWelder_ultimate.addItemInput(<contenttweaker:material_part:1755> * 12);
-berylliumchainTinMetalWelder_ultimate.addFluidInput(<liquid:cotm_tin_molten> * 144);
-berylliumchainTinMetalWelder_ultimate.addItemOutput(<contenttweaker:material_part:1760>);
-berylliumchainTinMetalWelder_ultimate.addFluidInput(<liquid:hydrogen> * 100);
-berylliumchainTinMetalWelder_ultimate.addFluidInput(<liquid:cotc_data> * 100);
-berylliumchainTinMetalWelder_ultimate.addFluidInput(<liquid:cotc_neg_red_matter> * 100);
-berylliumchainTinMetalWelder_ultimate.addFluidOutput(<liquid:cotc_pos_orange_matter> * 200);
-berylliumchainTinMetalWelder_ultimate.addEnergyPerTickInput(67108864);
-berylliumchainTinMetalWelder_ultimate.build();
-
-var berylliumrodThickTinMetalWelder_basic = mods.modularmachinery.RecipeBuilder.newBuilder("berylliumrodThickTinMetalWelder_basic", "basic", 40, 0);
-berylliumrodThickTinMetalWelder_basic.addItemInput(<contenttweaker:material_part:1746> * 4);
-berylliumrodThickTinMetalWelder_basic.addFluidInput(<liquid:cotm_tin_molten> * 144);
-berylliumrodThickTinMetalWelder_basic.addItemOutput(<contenttweaker:material_part:8274>);
-berylliumrodThickTinMetalWelder_basic.addEnergyPerTickInput(4);
-berylliumrodThickTinMetalWelder_basic.build();
-
-var berylliumrodThickTinMetalWelder_advanced = mods.modularmachinery.RecipeBuilder.newBuilder("berylliumrodThickTinMetalWelder_advanced", "basic", 40, 0);
-berylliumrodThickTinMetalWelder_advanced.addItemInput(<contenttweaker:material_part:1746> * 4);
-berylliumrodThickTinMetalWelder_advanced.addFluidInput(<liquid:cotm_tin_molten> * 144);
-berylliumrodThickTinMetalWelder_advanced.addItemOutput(<contenttweaker:material_part:8274>);
-berylliumrodThickTinMetalWelder_advanced.addFluidInput(<liquid:hydrogen> * 100);
-berylliumrodThickTinMetalWelder_advanced.addEnergyPerTickInput(1024);
-berylliumrodThickTinMetalWelder_advanced.build();
-
-var berylliumrodThickTinMetalWelder_industrial = mods.modularmachinery.RecipeBuilder.newBuilder("berylliumrodThickTinMetalWelder_industrial", "basic", 40, 0);
-berylliumrodThickTinMetalWelder_industrial.addItemInput(<contenttweaker:material_part:1746> * 4);
-berylliumrodThickTinMetalWelder_industrial.addFluidInput(<liquid:cotm_tin_molten> * 144);
-berylliumrodThickTinMetalWelder_industrial.addItemOutput(<contenttweaker:material_part:8274>);
-berylliumrodThickTinMetalWelder_industrial.addFluidInput(<liquid:hydrogen> * 100);
-berylliumrodThickTinMetalWelder_industrial.addFluidInput(<liquid:cotc_data> * 100);
-berylliumrodThickTinMetalWelder_industrial.addEnergyPerTickInput(262144);
-berylliumrodThickTinMetalWelder_industrial.build();
-
-var berylliumrodThickTinMetalWelder_ultimate = mods.modularmachinery.RecipeBuilder.newBuilder("berylliumrodThickTinMetalWelder_ultimate", "basic", 40, 0);
-berylliumrodThickTinMetalWelder_ultimate.addItemInput(<contenttweaker:material_part:1746> * 4);
-berylliumrodThickTinMetalWelder_ultimate.addFluidInput(<liquid:cotm_tin_molten> * 144);
-berylliumrodThickTinMetalWelder_ultimate.addItemOutput(<contenttweaker:material_part:8274>);
-berylliumrodThickTinMetalWelder_ultimate.addFluidInput(<liquid:hydrogen> * 100);
-berylliumrodThickTinMetalWelder_ultimate.addFluidInput(<liquid:cotc_data> * 100);
-berylliumrodThickTinMetalWelder_ultimate.addFluidInput(<liquid:cotc_neg_red_matter> * 100);
-berylliumrodThickTinMetalWelder_ultimate.addFluidOutput(<liquid:cotc_pos_orange_matter> * 200);
-berylliumrodThickTinMetalWelder_ultimate.addEnergyPerTickInput(67108864);
-berylliumrodThickTinMetalWelder_ultimate.build();
-
-var berylliumscrewMetalMicroLathe_basic = mods.modularmachinery.RecipeBuilder.newBuilder("berylliumscrewMetalMicroLathe_basic", "basic", 20, 0);
-berylliumscrewMetalMicroLathe_basic.addItemInput(<contenttweaker:material_part:1739> * 3);
-berylliumscrewMetalMicroLathe_basic.addItemOutput(<contenttweaker:material_part:1752>);
-berylliumscrewMetalMicroLathe_basic.addEnergyPerTickInput(4);
-berylliumscrewMetalMicroLathe_basic.build();
-
-var berylliumscrewMetalMicroLathe_advanced = mods.modularmachinery.RecipeBuilder.newBuilder("berylliumscrewMetalMicroLathe_advanced", "basic", 20, 0);
-berylliumscrewMetalMicroLathe_advanced.addItemInput(<contenttweaker:material_part:1739> * 3);
-berylliumscrewMetalMicroLathe_advanced.addItemOutput(<contenttweaker:material_part:1752>);
-berylliumscrewMetalMicroLathe_advanced.addFluidInput(<liquid:hydrogen> * 100);
-berylliumscrewMetalMicroLathe_advanced.addEnergyPerTickInput(1024);
-berylliumscrewMetalMicroLathe_advanced.build();
-
-var berylliumscrewMetalMicroLathe_industrial = mods.modularmachinery.RecipeBuilder.newBuilder("berylliumscrewMetalMicroLathe_industrial", "basic", 20, 0);
-berylliumscrewMetalMicroLathe_industrial.addItemInput(<contenttweaker:material_part:1739> * 3);
-berylliumscrewMetalMicroLathe_industrial.addItemOutput(<contenttweaker:material_part:1752>);
-berylliumscrewMetalMicroLathe_industrial.addFluidInput(<liquid:hydrogen> * 100);
-berylliumscrewMetalMicroLathe_industrial.addFluidInput(<liquid:cotc_data> * 100);
-berylliumscrewMetalMicroLathe_industrial.addEnergyPerTickInput(262144);
-berylliumscrewMetalMicroLathe_industrial.build();
-
-var berylliumscrewMetalMicroLathe_ultimate = mods.modularmachinery.RecipeBuilder.newBuilder("berylliumscrewMetalMicroLathe_ultimate", "basic", 20, 0);
-berylliumscrewMetalMicroLathe_ultimate.addItemInput(<contenttweaker:material_part:1739> * 3);
-berylliumscrewMetalMicroLathe_ultimate.addItemOutput(<contenttweaker:material_part:1752>);
-berylliumscrewMetalMicroLathe_ultimate.addFluidInput(<liquid:hydrogen> * 100);
-berylliumscrewMetalMicroLathe_ultimate.addFluidInput(<liquid:cotc_data> * 100);
-berylliumscrewMetalMicroLathe_ultimate.addFluidInput(<liquid:cotc_neg_red_matter> * 100);
-berylliumscrewMetalMicroLathe_ultimate.addFluidOutput(<liquid:cotc_pos_orange_matter> * 200);
-berylliumscrewMetalMicroLathe_ultimate.addEnergyPerTickInput(67108864);
-berylliumscrewMetalMicroLathe_ultimate.build();
-
-var berylliumboltMetalMicroLathe_basic = mods.modularmachinery.RecipeBuilder.newBuilder("berylliumboltMetalMicroLathe_basic", "basic", 20, 0);
-berylliumboltMetalMicroLathe_basic.addItemInput(<contenttweaker:material_part:1739> * 2);
-berylliumboltMetalMicroLathe_basic.addItemOutput(<contenttweaker:material_part:1751>);
-berylliumboltMetalMicroLathe_basic.addEnergyPerTickInput(4);
-berylliumboltMetalMicroLathe_basic.build();
-
-var berylliumboltMetalMicroLathe_advanced = mods.modularmachinery.RecipeBuilder.newBuilder("berylliumboltMetalMicroLathe_advanced", "basic", 20, 0);
-berylliumboltMetalMicroLathe_advanced.addItemInput(<contenttweaker:material_part:1739> * 2);
-berylliumboltMetalMicroLathe_advanced.addItemOutput(<contenttweaker:material_part:1751>);
-berylliumboltMetalMicroLathe_advanced.addFluidInput(<liquid:hydrogen> * 100);
-berylliumboltMetalMicroLathe_advanced.addEnergyPerTickInput(1024);
-berylliumboltMetalMicroLathe_advanced.build();
-
-var berylliumboltMetalMicroLathe_industrial = mods.modularmachinery.RecipeBuilder.newBuilder("berylliumboltMetalMicroLathe_industrial", "basic", 20, 0);
-berylliumboltMetalMicroLathe_industrial.addItemInput(<contenttweaker:material_part:1739> * 2);
-berylliumboltMetalMicroLathe_industrial.addItemOutput(<contenttweaker:material_part:1751>);
-berylliumboltMetalMicroLathe_industrial.addFluidInput(<liquid:hydrogen> * 100);
-berylliumboltMetalMicroLathe_industrial.addFluidInput(<liquid:cotc_data> * 100);
-berylliumboltMetalMicroLathe_industrial.addEnergyPerTickInput(262144);
-berylliumboltMetalMicroLathe_industrial.build();
-
-var berylliumboltMetalMicroLathe_ultimate = mods.modularmachinery.RecipeBuilder.newBuilder("berylliumboltMetalMicroLathe_ultimate", "basic", 20, 0);
-berylliumboltMetalMicroLathe_ultimate.addItemInput(<contenttweaker:material_part:1739> * 2);
-berylliumboltMetalMicroLathe_ultimate.addItemOutput(<contenttweaker:material_part:1751>);
-berylliumboltMetalMicroLathe_ultimate.addFluidInput(<liquid:hydrogen> * 100);
-berylliumboltMetalMicroLathe_ultimate.addFluidInput(<liquid:cotc_data> * 100);
-berylliumboltMetalMicroLathe_ultimate.addFluidInput(<liquid:cotc_neg_red_matter> * 100);
-berylliumboltMetalMicroLathe_ultimate.addFluidOutput(<liquid:cotc_pos_orange_matter> * 200);
-berylliumboltMetalMicroLathe_ultimate.addEnergyPerTickInput(67108864);
-berylliumboltMetalMicroLathe_ultimate.build();
-
-var berylliumboltSmallMetalMicroLathe_basic = mods.modularmachinery.RecipeBuilder.newBuilder("berylliumboltSmallMetalMicroLathe_basic", "basic", 20, 0);
-berylliumboltSmallMetalMicroLathe_basic.addItemInput(<contenttweaker:material_part:1739> * 1);
-berylliumboltSmallMetalMicroLathe_basic.addItemOutput(<contenttweaker:material_part:1763>);
-berylliumboltSmallMetalMicroLathe_basic.addEnergyPerTickInput(4);
-berylliumboltSmallMetalMicroLathe_basic.build();
-
-var berylliumboltSmallMetalMicroLathe_advanced = mods.modularmachinery.RecipeBuilder.newBuilder("berylliumboltSmallMetalMicroLathe_advanced", "basic", 20, 0);
-berylliumboltSmallMetalMicroLathe_advanced.addItemInput(<contenttweaker:material_part:1739> * 1);
-berylliumboltSmallMetalMicroLathe_advanced.addItemOutput(<contenttweaker:material_part:1763>);
-berylliumboltSmallMetalMicroLathe_advanced.addFluidInput(<liquid:hydrogen> * 100);
-berylliumboltSmallMetalMicroLathe_advanced.addEnergyPerTickInput(1024);
-berylliumboltSmallMetalMicroLathe_advanced.build();
-
-var berylliumboltSmallMetalMicroLathe_industrial = mods.modularmachinery.RecipeBuilder.newBuilder("berylliumboltSmallMetalMicroLathe_industrial", "basic", 20, 0);
-berylliumboltSmallMetalMicroLathe_industrial.addItemInput(<contenttweaker:material_part:1739> * 1);
-berylliumboltSmallMetalMicroLathe_industrial.addItemOutput(<contenttweaker:material_part:1763>);
-berylliumboltSmallMetalMicroLathe_industrial.addFluidInput(<liquid:hydrogen> * 100);
-berylliumboltSmallMetalMicroLathe_industrial.addFluidInput(<liquid:cotc_data> * 100);
-berylliumboltSmallMetalMicroLathe_industrial.addEnergyPerTickInput(262144);
-berylliumboltSmallMetalMicroLathe_industrial.build();
-
-var berylliumboltSmallMetalMicroLathe_ultimate = mods.modularmachinery.RecipeBuilder.newBuilder("berylliumboltSmallMetalMicroLathe_ultimate", "basic", 20, 0);
-berylliumboltSmallMetalMicroLathe_ultimate.addItemInput(<contenttweaker:material_part:1739> * 1);
-berylliumboltSmallMetalMicroLathe_ultimate.addItemOutput(<contenttweaker:material_part:1763>);
-berylliumboltSmallMetalMicroLathe_ultimate.addFluidInput(<liquid:hydrogen> * 100);
-berylliumboltSmallMetalMicroLathe_ultimate.addFluidInput(<liquid:cotc_data> * 100);
-berylliumboltSmallMetalMicroLathe_ultimate.addFluidInput(<liquid:cotc_neg_red_matter> * 100);
-berylliumboltSmallMetalMicroLathe_ultimate.addFluidOutput(<liquid:cotc_pos_orange_matter> * 200);
-berylliumboltSmallMetalMicroLathe_ultimate.addEnergyPerTickInput(67108864);
-berylliumboltSmallMetalMicroLathe_ultimate.build();
-
-var berylliumroundMetalMicroLathe_basic = mods.modularmachinery.RecipeBuilder.newBuilder("berylliumroundMetalMicroLathe_basic", "basic", 20, 0);
-berylliumroundMetalMicroLathe_basic.addItemInput(<contenttweaker:material_part:1739> * 1);
-berylliumroundMetalMicroLathe_basic.addItemOutput(<contenttweaker:material_part:1753>);
-berylliumroundMetalMicroLathe_basic.addEnergyPerTickInput(4);
-berylliumroundMetalMicroLathe_basic.build();
-
-var berylliumroundMetalMicroLathe_advanced = mods.modularmachinery.RecipeBuilder.newBuilder("berylliumroundMetalMicroLathe_advanced", "basic", 20, 0);
-berylliumroundMetalMicroLathe_advanced.addItemInput(<contenttweaker:material_part:1739> * 1);
-berylliumroundMetalMicroLathe_advanced.addItemOutput(<contenttweaker:material_part:1753>);
-berylliumroundMetalMicroLathe_advanced.addFluidInput(<liquid:hydrogen> * 100);
-berylliumroundMetalMicroLathe_advanced.addEnergyPerTickInput(1024);
-berylliumroundMetalMicroLathe_advanced.build();
-
-var berylliumroundMetalMicroLathe_industrial = mods.modularmachinery.RecipeBuilder.newBuilder("berylliumroundMetalMicroLathe_industrial", "basic", 20, 0);
-berylliumroundMetalMicroLathe_industrial.addItemInput(<contenttweaker:material_part:1739> * 1);
-berylliumroundMetalMicroLathe_industrial.addItemOutput(<contenttweaker:material_part:1753>);
-berylliumroundMetalMicroLathe_industrial.addFluidInput(<liquid:hydrogen> * 100);
-berylliumroundMetalMicroLathe_industrial.addFluidInput(<liquid:cotc_data> * 100);
-berylliumroundMetalMicroLathe_industrial.addEnergyPerTickInput(262144);
-berylliumroundMetalMicroLathe_industrial.build();
-
-var berylliumroundMetalMicroLathe_ultimate = mods.modularmachinery.RecipeBuilder.newBuilder("berylliumroundMetalMicroLathe_ultimate", "basic", 20, 0);
-berylliumroundMetalMicroLathe_ultimate.addItemInput(<contenttweaker:material_part:1739> * 1);
-berylliumroundMetalMicroLathe_ultimate.addItemOutput(<contenttweaker:material_part:1753>);
-berylliumroundMetalMicroLathe_ultimate.addFluidInput(<liquid:hydrogen> * 100);
-berylliumroundMetalMicroLathe_ultimate.addFluidInput(<liquid:cotc_data> * 100);
-berylliumroundMetalMicroLathe_ultimate.addFluidInput(<liquid:cotc_neg_red_matter> * 100);
-berylliumroundMetalMicroLathe_ultimate.addFluidOutput(<liquid:cotc_pos_orange_matter> * 200);
-berylliumroundMetalMicroLathe_ultimate.addEnergyPerTickInput(67108864);
-berylliumroundMetalMicroLathe_ultimate.build();
-
-var berylliumrodSmallMetalMicroLathe_basic = mods.modularmachinery.RecipeBuilder.newBuilder("berylliumrodSmallMetalMicroLathe_basic", "basic", 20, 0);
-berylliumrodSmallMetalMicroLathe_basic.addItemInput(<contenttweaker:material_part:1739> * 2);
-berylliumrodSmallMetalMicroLathe_basic.addItemOutput(<contenttweaker:material_part:1745>);
-berylliumrodSmallMetalMicroLathe_basic.addEnergyPerTickInput(4);
-berylliumrodSmallMetalMicroLathe_basic.build();
-
-var berylliumrodSmallMetalMicroLathe_advanced = mods.modularmachinery.RecipeBuilder.newBuilder("berylliumrodSmallMetalMicroLathe_advanced", "basic", 20, 0);
-berylliumrodSmallMetalMicroLathe_advanced.addItemInput(<contenttweaker:material_part:1739> * 2);
-berylliumrodSmallMetalMicroLathe_advanced.addItemOutput(<contenttweaker:material_part:1745>);
-berylliumrodSmallMetalMicroLathe_advanced.addFluidInput(<liquid:hydrogen> * 100);
-berylliumrodSmallMetalMicroLathe_advanced.addEnergyPerTickInput(1024);
-berylliumrodSmallMetalMicroLathe_advanced.build();
-
-var berylliumrodSmallMetalMicroLathe_industrial = mods.modularmachinery.RecipeBuilder.newBuilder("berylliumrodSmallMetalMicroLathe_industrial", "basic", 20, 0);
-berylliumrodSmallMetalMicroLathe_industrial.addItemInput(<contenttweaker:material_part:1739> * 2);
-berylliumrodSmallMetalMicroLathe_industrial.addItemOutput(<contenttweaker:material_part:1745>);
-berylliumrodSmallMetalMicroLathe_industrial.addFluidInput(<liquid:hydrogen> * 100);
-berylliumrodSmallMetalMicroLathe_industrial.addFluidInput(<liquid:cotc_data> * 100);
-berylliumrodSmallMetalMicroLathe_industrial.addEnergyPerTickInput(262144);
-berylliumrodSmallMetalMicroLathe_industrial.build();
-
-var berylliumrodSmallMetalMicroLathe_ultimate = mods.modularmachinery.RecipeBuilder.newBuilder("berylliumrodSmallMetalMicroLathe_ultimate", "basic", 20, 0);
-berylliumrodSmallMetalMicroLathe_ultimate.addItemInput(<contenttweaker:material_part:1739> * 2);
-berylliumrodSmallMetalMicroLathe_ultimate.addItemOutput(<contenttweaker:material_part:1745>);
-berylliumrodSmallMetalMicroLathe_ultimate.addFluidInput(<liquid:hydrogen> * 100);
-berylliumrodSmallMetalMicroLathe_ultimate.addFluidInput(<liquid:cotc_data> * 100);
-berylliumrodSmallMetalMicroLathe_ultimate.addFluidInput(<liquid:cotc_neg_red_matter> * 100);
-berylliumrodSmallMetalMicroLathe_ultimate.addFluidOutput(<liquid:cotc_pos_orange_matter> * 200);
-berylliumrodSmallMetalMicroLathe_ultimate.addEnergyPerTickInput(67108864);
-berylliumrodSmallMetalMicroLathe_ultimate.build();
-
-var berylliumspringMetalCoiller_basic = mods.modularmachinery.RecipeBuilder.newBuilder("berylliumspringMetalCoiller_basic", "basic", 200, 0);
-berylliumspringMetalCoiller_basic.addItemInput(<contenttweaker:material_part:1746>);
-berylliumspringMetalCoiller_basic.addItemOutput(<contenttweaker:material_part:1759>);
-berylliumspringMetalCoiller_basic.addEnergyPerTickInput(4);
-berylliumspringMetalCoiller_basic.build();
-
-var berylliumspringMetalCoiller_advanced = mods.modularmachinery.RecipeBuilder.newBuilder("berylliumspringMetalCoiller_advanced", "basic", 200, 0);
-berylliumspringMetalCoiller_advanced.addItemInput(<contenttweaker:material_part:1746>);
-berylliumspringMetalCoiller_advanced.addItemOutput(<contenttweaker:material_part:1759>);
-berylliumspringMetalCoiller_advanced.addFluidInput(<liquid:hydrogen> * 100);
-berylliumspringMetalCoiller_advanced.addEnergyPerTickInput(1024);
-berylliumspringMetalCoiller_advanced.build();
-
-var berylliumspringMetalCoiller_industrial = mods.modularmachinery.RecipeBuilder.newBuilder("berylliumspringMetalCoiller_industrial", "basic", 200, 0);
-berylliumspringMetalCoiller_industrial.addItemInput(<contenttweaker:material_part:1746>);
-berylliumspringMetalCoiller_industrial.addItemOutput(<contenttweaker:material_part:1759>);
-berylliumspringMetalCoiller_industrial.addFluidInput(<liquid:hydrogen> * 100);
-berylliumspringMetalCoiller_industrial.addFluidInput(<liquid:cotc_data> * 100);
-berylliumspringMetalCoiller_industrial.addEnergyPerTickInput(262144);
-berylliumspringMetalCoiller_industrial.build();
-
-var berylliumspringMetalCoiller_ultimate = mods.modularmachinery.RecipeBuilder.newBuilder("berylliumspringMetalCoiller_ultimate", "basic", 200, 0);
-berylliumspringMetalCoiller_ultimate.addItemInput(<contenttweaker:material_part:1746>);
-berylliumspringMetalCoiller_ultimate.addItemOutput(<contenttweaker:material_part:1759>);
-berylliumspringMetalCoiller_ultimate.addFluidInput(<liquid:hydrogen> * 100);
-berylliumspringMetalCoiller_ultimate.addFluidInput(<liquid:cotc_data> * 100);
-berylliumspringMetalCoiller_ultimate.addFluidInput(<liquid:cotc_neg_red_matter> * 100);
-berylliumspringMetalCoiller_ultimate.addFluidOutput(<liquid:cotc_pos_orange_matter> * 200);
-berylliumspringMetalCoiller_ultimate.addEnergyPerTickInput(67108864);
-berylliumspringMetalCoiller_ultimate.build();
-
-var berylliumspringLargeMetalCoiller_basic = mods.modularmachinery.RecipeBuilder.newBuilder("berylliumspringLargeMetalCoiller_basic", "basic", 200, 0);
-berylliumspringLargeMetalCoiller_basic.addItemInput(<contenttweaker:material_part:1747>);
-berylliumspringLargeMetalCoiller_basic.addItemOutput(<contenttweaker:material_part:1749>);
-berylliumspringLargeMetalCoiller_basic.addEnergyPerTickInput(4);
-berylliumspringLargeMetalCoiller_basic.build();
-
-var berylliumspringLargeMetalCoiller_advanced = mods.modularmachinery.RecipeBuilder.newBuilder("berylliumspringLargeMetalCoiller_advanced", "basic", 200, 0);
-berylliumspringLargeMetalCoiller_advanced.addItemInput(<contenttweaker:material_part:1747>);
-berylliumspringLargeMetalCoiller_advanced.addItemOutput(<contenttweaker:material_part:1749>);
-berylliumspringLargeMetalCoiller_advanced.addFluidInput(<liquid:hydrogen> * 100);
-berylliumspringLargeMetalCoiller_advanced.addEnergyPerTickInput(1024);
-berylliumspringLargeMetalCoiller_advanced.build();
-
-var berylliumspringLargeMetalCoiller_industrial = mods.modularmachinery.RecipeBuilder.newBuilder("berylliumspringLargeMetalCoiller_industrial", "basic", 200, 0);
-berylliumspringLargeMetalCoiller_industrial.addItemInput(<contenttweaker:material_part:1747>);
-berylliumspringLargeMetalCoiller_industrial.addItemOutput(<contenttweaker:material_part:1749>);
-berylliumspringLargeMetalCoiller_industrial.addFluidInput(<liquid:hydrogen> * 100);
-berylliumspringLargeMetalCoiller_industrial.addFluidInput(<liquid:cotc_data> * 100);
-berylliumspringLargeMetalCoiller_industrial.addEnergyPerTickInput(262144);
-berylliumspringLargeMetalCoiller_industrial.build();
-
-var berylliumspringLargeMetalCoiller_ultimate = mods.modularmachinery.RecipeBuilder.newBuilder("berylliumspringLargeMetalCoiller_ultimate", "basic", 200, 0);
-berylliumspringLargeMetalCoiller_ultimate.addItemInput(<contenttweaker:material_part:1747>);
-berylliumspringLargeMetalCoiller_ultimate.addItemOutput(<contenttweaker:material_part:1749>);
-berylliumspringLargeMetalCoiller_ultimate.addFluidInput(<liquid:hydrogen> * 100);
-berylliumspringLargeMetalCoiller_ultimate.addFluidInput(<liquid:cotc_data> * 100);
-berylliumspringLargeMetalCoiller_ultimate.addFluidInput(<liquid:cotc_neg_red_matter> * 100);
-berylliumspringLargeMetalCoiller_ultimate.addFluidOutput(<liquid:cotc_pos_orange_matter> * 200);
-berylliumspringLargeMetalCoiller_ultimate.addEnergyPerTickInput(67108864);
-berylliumspringLargeMetalCoiller_ultimate.build();
-
-var berylliumcoilMetalCoiller_basic = mods.modularmachinery.RecipeBuilder.newBuilder("berylliumcoilMetalCoiller_basic", "basic", 200, 0);
-berylliumcoilMetalCoiller_basic.addItemInput(<contenttweaker:material_part:1771>);
-berylliumcoilMetalCoiller_basic.addItemOutput(<contenttweaker:material_part:1774>);
-berylliumcoilMetalCoiller_basic.addEnergyPerTickInput(4);
-berylliumcoilMetalCoiller_basic.build();
-
-var berylliumcoilMetalCoiller_advanced = mods.modularmachinery.RecipeBuilder.newBuilder("berylliumcoilMetalCoiller_advanced", "basic", 200, 0);
-berylliumcoilMetalCoiller_advanced.addItemInput(<contenttweaker:material_part:1771>);
-berylliumcoilMetalCoiller_advanced.addItemOutput(<contenttweaker:material_part:1774>);
-berylliumcoilMetalCoiller_advanced.addFluidInput(<liquid:hydrogen> * 100);
-berylliumcoilMetalCoiller_advanced.addEnergyPerTickInput(1024);
-berylliumcoilMetalCoiller_advanced.build();
-
-var berylliumcoilMetalCoiller_industrial = mods.modularmachinery.RecipeBuilder.newBuilder("berylliumcoilMetalCoiller_industrial", "basic", 200, 0);
-berylliumcoilMetalCoiller_industrial.addItemInput(<contenttweaker:material_part:1771>);
-berylliumcoilMetalCoiller_industrial.addItemOutput(<contenttweaker:material_part:1774>);
-berylliumcoilMetalCoiller_industrial.addFluidInput(<liquid:hydrogen> * 100);
-berylliumcoilMetalCoiller_industrial.addFluidInput(<liquid:cotc_data> * 100);
-berylliumcoilMetalCoiller_industrial.addEnergyPerTickInput(262144);
-berylliumcoilMetalCoiller_industrial.build();
-
-var berylliumcoilMetalCoiller_ultimate = mods.modularmachinery.RecipeBuilder.newBuilder("berylliumcoilMetalCoiller_ultimate", "basic", 200, 0);
-berylliumcoilMetalCoiller_ultimate.addItemInput(<contenttweaker:material_part:1771>);
-berylliumcoilMetalCoiller_ultimate.addItemOutput(<contenttweaker:material_part:1774>);
-berylliumcoilMetalCoiller_ultimate.addFluidInput(<liquid:hydrogen> * 100);
-berylliumcoilMetalCoiller_ultimate.addFluidInput(<liquid:cotc_data> * 100);
-berylliumcoilMetalCoiller_ultimate.addFluidInput(<liquid:cotc_neg_red_matter> * 100);
-berylliumcoilMetalCoiller_ultimate.addFluidOutput(<liquid:cotc_pos_orange_matter> * 200);
-berylliumcoilMetalCoiller_ultimate.addEnergyPerTickInput(67108864);
-berylliumcoilMetalCoiller_ultimate.build();
-
-var berylliumplateCurvedMetalHeatedBender_basic = mods.modularmachinery.RecipeBuilder.newBuilder("berylliumplateCurvedMetalHeatedBender_basic", "basic", 200, 0);
-berylliumplateCurvedMetalHeatedBender_basic.addItemInput(<contenttweaker:material_part:1741>);
-berylliumplateCurvedMetalHeatedBender_basic.addItemOutput(<contenttweaker:material_part:1742>);
-berylliumplateCurvedMetalHeatedBender_basic.addEnergyPerTickInput(4);
-berylliumplateCurvedMetalHeatedBender_basic.build();
-
-var berylliumplateCurvedMetalHeatedBender_advanced = mods.modularmachinery.RecipeBuilder.newBuilder("berylliumplateCurvedMetalHeatedBender_advanced", "basic", 200, 0);
-berylliumplateCurvedMetalHeatedBender_advanced.addItemInput(<contenttweaker:material_part:1741>);
-berylliumplateCurvedMetalHeatedBender_advanced.addItemOutput(<contenttweaker:material_part:1742>);
-berylliumplateCurvedMetalHeatedBender_advanced.addFluidInput(<liquid:hydrogen> * 100);
-berylliumplateCurvedMetalHeatedBender_advanced.addEnergyPerTickInput(1024);
-berylliumplateCurvedMetalHeatedBender_advanced.build();
-
-var berylliumplateCurvedMetalHeatedBender_industrial = mods.modularmachinery.RecipeBuilder.newBuilder("berylliumplateCurvedMetalHeatedBender_industrial", "basic", 200, 0);
-berylliumplateCurvedMetalHeatedBender_industrial.addItemInput(<contenttweaker:material_part:1741>);
-berylliumplateCurvedMetalHeatedBender_industrial.addItemOutput(<contenttweaker:material_part:1742>);
-berylliumplateCurvedMetalHeatedBender_industrial.addFluidInput(<liquid:hydrogen> * 100);
-berylliumplateCurvedMetalHeatedBender_industrial.addFluidInput(<liquid:cotc_data> * 100);
-berylliumplateCurvedMetalHeatedBender_industrial.addEnergyPerTickInput(262144);
-berylliumplateCurvedMetalHeatedBender_industrial.build();
-
-var berylliumplateCurvedMetalHeatedBender_ultimate = mods.modularmachinery.RecipeBuilder.newBuilder("berylliumplateCurvedMetalHeatedBender_ultimate", "basic", 200, 0);
-berylliumplateCurvedMetalHeatedBender_ultimate.addItemInput(<contenttweaker:material_part:1741>);
-berylliumplateCurvedMetalHeatedBender_ultimate.addItemOutput(<contenttweaker:material_part:1742>);
-berylliumplateCurvedMetalHeatedBender_ultimate.addFluidInput(<liquid:hydrogen> * 100);
-berylliumplateCurvedMetalHeatedBender_ultimate.addFluidInput(<liquid:cotc_data> * 100);
-berylliumplateCurvedMetalHeatedBender_ultimate.addFluidInput(<liquid:cotc_neg_red_matter> * 100);
-berylliumplateCurvedMetalHeatedBender_ultimate.addFluidOutput(<liquid:cotc_pos_orange_matter> * 200);
-berylliumplateCurvedMetalHeatedBender_ultimate.addEnergyPerTickInput(67108864);
-berylliumplateCurvedMetalHeatedBender_ultimate.build();
-
-var berylliumplateCurvedSmallMetalHeatedBender_basic = mods.modularmachinery.RecipeBuilder.newBuilder("berylliumplateCurvedSmallMetalHeatedBender_basic", "basic", 200, 0);
-berylliumplateCurvedSmallMetalHeatedBender_basic.addItemInput(<contenttweaker:material_part:1758>);
-berylliumplateCurvedSmallMetalHeatedBender_basic.addItemOutput(<contenttweaker:material_part:8273>);
-berylliumplateCurvedSmallMetalHeatedBender_basic.addEnergyPerTickInput(4);
-berylliumplateCurvedSmallMetalHeatedBender_basic.build();
-
-var berylliumplateCurvedSmallMetalHeatedBender_advanced = mods.modularmachinery.RecipeBuilder.newBuilder("berylliumplateCurvedSmallMetalHeatedBender_advanced", "basic", 200, 0);
-berylliumplateCurvedSmallMetalHeatedBender_advanced.addItemInput(<contenttweaker:material_part:1758>);
-berylliumplateCurvedSmallMetalHeatedBender_advanced.addItemOutput(<contenttweaker:material_part:8273>);
-berylliumplateCurvedSmallMetalHeatedBender_advanced.addFluidInput(<liquid:hydrogen> * 100);
-berylliumplateCurvedSmallMetalHeatedBender_advanced.addEnergyPerTickInput(1024);
-berylliumplateCurvedSmallMetalHeatedBender_advanced.build();
-
-var berylliumplateCurvedSmallMetalHeatedBender_industrial = mods.modularmachinery.RecipeBuilder.newBuilder("berylliumplateCurvedSmallMetalHeatedBender_industrial", "basic", 200, 0);
-berylliumplateCurvedSmallMetalHeatedBender_industrial.addItemInput(<contenttweaker:material_part:1758>);
-berylliumplateCurvedSmallMetalHeatedBender_industrial.addItemOutput(<contenttweaker:material_part:8273>);
-berylliumplateCurvedSmallMetalHeatedBender_industrial.addFluidInput(<liquid:hydrogen> * 100);
-berylliumplateCurvedSmallMetalHeatedBender_industrial.addFluidInput(<liquid:cotc_data> * 100);
-berylliumplateCurvedSmallMetalHeatedBender_industrial.addEnergyPerTickInput(262144);
-berylliumplateCurvedSmallMetalHeatedBender_industrial.build();
-
-var berylliumplateCurvedSmallMetalHeatedBender_ultimate = mods.modularmachinery.RecipeBuilder.newBuilder("berylliumplateCurvedSmallMetalHeatedBender_ultimate", "basic", 200, 0);
-berylliumplateCurvedSmallMetalHeatedBender_ultimate.addItemInput(<contenttweaker:material_part:1758>);
-berylliumplateCurvedSmallMetalHeatedBender_ultimate.addItemOutput(<contenttweaker:material_part:8273>);
-berylliumplateCurvedSmallMetalHeatedBender_ultimate.addFluidInput(<liquid:hydrogen> * 100);
-berylliumplateCurvedSmallMetalHeatedBender_ultimate.addFluidInput(<liquid:cotc_data> * 100);
-berylliumplateCurvedSmallMetalHeatedBender_ultimate.addFluidInput(<liquid:cotc_neg_red_matter> * 100);
-berylliumplateCurvedSmallMetalHeatedBender_ultimate.addFluidOutput(<liquid:cotc_pos_orange_matter> * 200);
-berylliumplateCurvedSmallMetalHeatedBender_ultimate.addEnergyPerTickInput(67108864);
-berylliumplateCurvedSmallMetalHeatedBender_ultimate.build();
-
-var berylliumringMetalHeatedBender_basic = mods.modularmachinery.RecipeBuilder.newBuilder("berylliumringMetalHeatedBender_basic", "basic", 200, 0);
-berylliumringMetalHeatedBender_basic.addItemInput(<contenttweaker:material_part:1746>);
-berylliumringMetalHeatedBender_basic.addItemOutput(<contenttweaker:material_part:1755>);
-berylliumringMetalHeatedBender_basic.addEnergyPerTickInput(4);
-berylliumringMetalHeatedBender_basic.build();
-
-var berylliumringMetalHeatedBender_advanced = mods.modularmachinery.RecipeBuilder.newBuilder("berylliumringMetalHeatedBender_advanced", "basic", 200, 0);
-berylliumringMetalHeatedBender_advanced.addItemInput(<contenttweaker:material_part:1746>);
-berylliumringMetalHeatedBender_advanced.addItemOutput(<contenttweaker:material_part:1755>);
-berylliumringMetalHeatedBender_advanced.addFluidInput(<liquid:hydrogen> * 100);
-berylliumringMetalHeatedBender_advanced.addEnergyPerTickInput(1024);
-berylliumringMetalHeatedBender_advanced.build();
-
-var berylliumringMetalHeatedBender_industrial = mods.modularmachinery.RecipeBuilder.newBuilder("berylliumringMetalHeatedBender_industrial", "basic", 200, 0);
-berylliumringMetalHeatedBender_industrial.addItemInput(<contenttweaker:material_part:1746>);
-berylliumringMetalHeatedBender_industrial.addItemOutput(<contenttweaker:material_part:1755>);
-berylliumringMetalHeatedBender_industrial.addFluidInput(<liquid:hydrogen> * 100);
-berylliumringMetalHeatedBender_industrial.addFluidInput(<liquid:cotc_data> * 100);
-berylliumringMetalHeatedBender_industrial.addEnergyPerTickInput(262144);
-berylliumringMetalHeatedBender_industrial.build();
-
-var berylliumringMetalHeatedBender_ultimate = mods.modularmachinery.RecipeBuilder.newBuilder("berylliumringMetalHeatedBender_ultimate", "basic", 200, 0);
-berylliumringMetalHeatedBender_ultimate.addItemInput(<contenttweaker:material_part:1746>);
-berylliumringMetalHeatedBender_ultimate.addItemOutput(<contenttweaker:material_part:1755>);
-berylliumringMetalHeatedBender_ultimate.addFluidInput(<liquid:hydrogen> * 100);
-berylliumringMetalHeatedBender_ultimate.addFluidInput(<liquid:cotc_data> * 100);
-berylliumringMetalHeatedBender_ultimate.addFluidInput(<liquid:cotc_neg_red_matter> * 100);
-berylliumringMetalHeatedBender_ultimate.addFluidOutput(<liquid:cotc_pos_orange_matter> * 200);
-berylliumringMetalHeatedBender_ultimate.addEnergyPerTickInput(67108864);
-berylliumringMetalHeatedBender_ultimate.build();
-
-var berylliumringSmallMetalHeatedBender_basic = mods.modularmachinery.RecipeBuilder.newBuilder("berylliumringSmallMetalHeatedBender_basic", "basic", 200, 0);
-berylliumringSmallMetalHeatedBender_basic.addItemInput(<contenttweaker:material_part:1745>);
-berylliumringSmallMetalHeatedBender_basic.addItemOutput(<contenttweaker:material_part:8272>);
-berylliumringSmallMetalHeatedBender_basic.addEnergyPerTickInput(4);
-berylliumringSmallMetalHeatedBender_basic.build();
-
-var berylliumringSmallMetalHeatedBender_advanced = mods.modularmachinery.RecipeBuilder.newBuilder("berylliumringSmallMetalHeatedBender_advanced", "basic", 200, 0);
-berylliumringSmallMetalHeatedBender_advanced.addItemInput(<contenttweaker:material_part:1745>);
-berylliumringSmallMetalHeatedBender_advanced.addItemOutput(<contenttweaker:material_part:8272>);
-berylliumringSmallMetalHeatedBender_advanced.addFluidInput(<liquid:hydrogen> * 100);
-berylliumringSmallMetalHeatedBender_advanced.addEnergyPerTickInput(1024);
-berylliumringSmallMetalHeatedBender_advanced.build();
-
-var berylliumringSmallMetalHeatedBender_industrial = mods.modularmachinery.RecipeBuilder.newBuilder("berylliumringSmallMetalHeatedBender_industrial", "basic", 200, 0);
-berylliumringSmallMetalHeatedBender_industrial.addItemInput(<contenttweaker:material_part:1745>);
-berylliumringSmallMetalHeatedBender_industrial.addItemOutput(<contenttweaker:material_part:8272>);
-berylliumringSmallMetalHeatedBender_industrial.addFluidInput(<liquid:hydrogen> * 100);
-berylliumringSmallMetalHeatedBender_industrial.addFluidInput(<liquid:cotc_data> * 100);
-berylliumringSmallMetalHeatedBender_industrial.addEnergyPerTickInput(262144);
-berylliumringSmallMetalHeatedBender_industrial.build();
-
-var berylliumringSmallMetalHeatedBender_ultimate = mods.modularmachinery.RecipeBuilder.newBuilder("berylliumringSmallMetalHeatedBender_ultimate", "basic", 200, 0);
-berylliumringSmallMetalHeatedBender_ultimate.addItemInput(<contenttweaker:material_part:1745>);
-berylliumringSmallMetalHeatedBender_ultimate.addItemOutput(<contenttweaker:material_part:8272>);
-berylliumringSmallMetalHeatedBender_ultimate.addFluidInput(<liquid:hydrogen> * 100);
-berylliumringSmallMetalHeatedBender_ultimate.addFluidInput(<liquid:cotc_data> * 100);
-berylliumringSmallMetalHeatedBender_ultimate.addFluidInput(<liquid:cotc_neg_red_matter> * 100);
-berylliumringSmallMetalHeatedBender_ultimate.addFluidOutput(<liquid:cotc_pos_orange_matter> * 200);
-berylliumringSmallMetalHeatedBender_ultimate.addEnergyPerTickInput(67108864);
-berylliumringSmallMetalHeatedBender_ultimate.build();
-
-var berylliumdrillheadMetalSharpen_basic = mods.modularmachinery.RecipeBuilder.newBuilder("berylliumdrillheadMetalSharpen_basic", "basic", 80, 0);
-berylliumdrillheadMetalSharpen_basic.addItemInput(<contenttweaker:material_part:8277>);
-berylliumdrillheadMetalSharpen_basic.addItemOutput(<contenttweaker:material_part:1767>);
-berylliumdrillheadMetalSharpen_basic.addEnergyPerTickInput(4);
-berylliumdrillheadMetalSharpen_basic.build();
-
-var berylliumdrillheadMetalSharpen_advanced = mods.modularmachinery.RecipeBuilder.newBuilder("berylliumdrillheadMetalSharpen_advanced", "basic", 80, 0);
-berylliumdrillheadMetalSharpen_advanced.addItemInput(<contenttweaker:material_part:8277>);
-berylliumdrillheadMetalSharpen_advanced.addItemOutput(<contenttweaker:material_part:1767>);
-berylliumdrillheadMetalSharpen_advanced.addFluidInput(<liquid:hydrogen> * 100);
-berylliumdrillheadMetalSharpen_advanced.addEnergyPerTickInput(1024);
-berylliumdrillheadMetalSharpen_advanced.build();
-
-var berylliumdrillheadMetalSharpen_industrial = mods.modularmachinery.RecipeBuilder.newBuilder("berylliumdrillheadMetalSharpen_industrial", "basic", 80, 0);
-berylliumdrillheadMetalSharpen_industrial.addItemInput(<contenttweaker:material_part:8277>);
-berylliumdrillheadMetalSharpen_industrial.addItemOutput(<contenttweaker:material_part:1767>);
-berylliumdrillheadMetalSharpen_industrial.addFluidInput(<liquid:hydrogen> * 100);
-berylliumdrillheadMetalSharpen_industrial.addFluidInput(<liquid:cotc_data> * 100);
-berylliumdrillheadMetalSharpen_industrial.addEnergyPerTickInput(262144);
-berylliumdrillheadMetalSharpen_industrial.build();
-
-var berylliumdrillheadMetalSharpen_ultimate = mods.modularmachinery.RecipeBuilder.newBuilder("berylliumdrillheadMetalSharpen_ultimate", "basic", 80, 0);
-berylliumdrillheadMetalSharpen_ultimate.addItemInput(<contenttweaker:material_part:8277>);
-berylliumdrillheadMetalSharpen_ultimate.addItemOutput(<contenttweaker:material_part:1767>);
-berylliumdrillheadMetalSharpen_ultimate.addFluidInput(<liquid:hydrogen> * 100);
-berylliumdrillheadMetalSharpen_ultimate.addFluidInput(<liquid:cotc_data> * 100);
-berylliumdrillheadMetalSharpen_ultimate.addFluidInput(<liquid:cotc_neg_red_matter> * 100);
-berylliumdrillheadMetalSharpen_ultimate.addFluidOutput(<liquid:cotc_pos_orange_matter> * 200);
-berylliumdrillheadMetalSharpen_ultimate.addEnergyPerTickInput(67108864);
-berylliumdrillheadMetalSharpen_ultimate.build();
-
-var berylliumwireMetalWiremill_basic = mods.modularmachinery.RecipeBuilder.newBuilder("berylliumwireMetalWiremill_basic", "basic", 120, 0);
-berylliumwireMetalWiremill_basic.addItemInput(<contenttweaker:material_part:1746>);
-berylliumwireMetalWiremill_basic.addItemOutput(<contenttweaker:material_part:1771>);
-berylliumwireMetalWiremill_basic.addEnergyPerTickInput(4);
-berylliumwireMetalWiremill_basic.build();
-
-var berylliumwireMetalWiremill_advanced = mods.modularmachinery.RecipeBuilder.newBuilder("berylliumwireMetalWiremill_advanced", "basic", 120, 0);
-berylliumwireMetalWiremill_advanced.addItemInput(<contenttweaker:material_part:1746>);
-berylliumwireMetalWiremill_advanced.addItemOutput(<contenttweaker:material_part:1771>);
-berylliumwireMetalWiremill_advanced.addFluidInput(<liquid:hydrogen> * 100);
-berylliumwireMetalWiremill_advanced.addEnergyPerTickInput(1024);
-berylliumwireMetalWiremill_advanced.build();
-
-var berylliumwireMetalWiremill_industrial = mods.modularmachinery.RecipeBuilder.newBuilder("berylliumwireMetalWiremill_industrial", "basic", 120, 0);
-berylliumwireMetalWiremill_industrial.addItemInput(<contenttweaker:material_part:1746>);
-berylliumwireMetalWiremill_industrial.addItemOutput(<contenttweaker:material_part:1771>);
-berylliumwireMetalWiremill_industrial.addFluidInput(<liquid:hydrogen> * 100);
-berylliumwireMetalWiremill_industrial.addFluidInput(<liquid:cotc_data> * 100);
-berylliumwireMetalWiremill_industrial.addEnergyPerTickInput(262144);
-berylliumwireMetalWiremill_industrial.build();
-
-var berylliumwireMetalWiremill_ultimate = mods.modularmachinery.RecipeBuilder.newBuilder("berylliumwireMetalWiremill_ultimate", "basic", 120, 0);
-berylliumwireMetalWiremill_ultimate.addItemInput(<contenttweaker:material_part:1746>);
-berylliumwireMetalWiremill_ultimate.addItemOutput(<contenttweaker:material_part:1771>);
-berylliumwireMetalWiremill_ultimate.addFluidInput(<liquid:hydrogen> * 100);
-berylliumwireMetalWiremill_ultimate.addFluidInput(<liquid:cotc_data> * 100);
-berylliumwireMetalWiremill_ultimate.addFluidInput(<liquid:cotc_neg_red_matter> * 100);
-berylliumwireMetalWiremill_ultimate.addFluidOutput(<liquid:cotc_pos_orange_matter> * 200);
-berylliumwireMetalWiremill_ultimate.addEnergyPerTickInput(67108864);
-berylliumwireMetalWiremill_ultimate.build();
-
-var berylliumwireDenseMetalWiremill_basic = mods.modularmachinery.RecipeBuilder.newBuilder("berylliumwireDenseMetalWiremill_basic", "basic", 120, 0);
-berylliumwireDenseMetalWiremill_basic.addItemInput(<contenttweaker:material_part:8274>);
-berylliumwireDenseMetalWiremill_basic.addItemOutput(<contenttweaker:material_part:1773>);
-berylliumwireDenseMetalWiremill_basic.addEnergyPerTickInput(4);
-berylliumwireDenseMetalWiremill_basic.build();
-
-var berylliumwireDenseMetalWiremill_advanced = mods.modularmachinery.RecipeBuilder.newBuilder("berylliumwireDenseMetalWiremill_advanced", "basic", 120, 0);
-berylliumwireDenseMetalWiremill_advanced.addItemInput(<contenttweaker:material_part:8274>);
-berylliumwireDenseMetalWiremill_advanced.addItemOutput(<contenttweaker:material_part:1773>);
-berylliumwireDenseMetalWiremill_advanced.addFluidInput(<liquid:hydrogen> * 100);
-berylliumwireDenseMetalWiremill_advanced.addEnergyPerTickInput(1024);
-berylliumwireDenseMetalWiremill_advanced.build();
-
-var berylliumwireDenseMetalWiremill_industrial = mods.modularmachinery.RecipeBuilder.newBuilder("berylliumwireDenseMetalWiremill_industrial", "basic", 120, 0);
-berylliumwireDenseMetalWiremill_industrial.addItemInput(<contenttweaker:material_part:8274>);
-berylliumwireDenseMetalWiremill_industrial.addItemOutput(<contenttweaker:material_part:1773>);
-berylliumwireDenseMetalWiremill_industrial.addFluidInput(<liquid:hydrogen> * 100);
-berylliumwireDenseMetalWiremill_industrial.addFluidInput(<liquid:cotc_data> * 100);
-berylliumwireDenseMetalWiremill_industrial.addEnergyPerTickInput(262144);
-berylliumwireDenseMetalWiremill_industrial.build();
-
-var berylliumwireDenseMetalWiremill_ultimate = mods.modularmachinery.RecipeBuilder.newBuilder("berylliumwireDenseMetalWiremill_ultimate", "basic", 120, 0);
-berylliumwireDenseMetalWiremill_ultimate.addItemInput(<contenttweaker:material_part:8274>);
-berylliumwireDenseMetalWiremill_ultimate.addItemOutput(<contenttweaker:material_part:1773>);
-berylliumwireDenseMetalWiremill_ultimate.addFluidInput(<liquid:hydrogen> * 100);
-berylliumwireDenseMetalWiremill_ultimate.addFluidInput(<liquid:cotc_data> * 100);
-berylliumwireDenseMetalWiremill_ultimate.addFluidInput(<liquid:cotc_neg_red_matter> * 100);
-berylliumwireDenseMetalWiremill_ultimate.addFluidOutput(<liquid:cotc_pos_orange_matter> * 200);
-berylliumwireDenseMetalWiremill_ultimate.addEnergyPerTickInput(67108864);
-berylliumwireDenseMetalWiremill_ultimate.build();
-
-var berylliumwireFineMetalWiremill_basic = mods.modularmachinery.RecipeBuilder.newBuilder("berylliumwireFineMetalWiremill_basic", "basic", 120, 0);
-berylliumwireFineMetalWiremill_basic.addItemInput(<contenttweaker:material_part:1745>);
-berylliumwireFineMetalWiremill_basic.addItemOutput(<contenttweaker:material_part:1772>);
-berylliumwireFineMetalWiremill_basic.addEnergyPerTickInput(4);
-berylliumwireFineMetalWiremill_basic.build();
-
-var berylliumwireFineMetalWiremill_advanced = mods.modularmachinery.RecipeBuilder.newBuilder("berylliumwireFineMetalWiremill_advanced", "basic", 120, 0);
-berylliumwireFineMetalWiremill_advanced.addItemInput(<contenttweaker:material_part:1745>);
-berylliumwireFineMetalWiremill_advanced.addItemOutput(<contenttweaker:material_part:1772>);
-berylliumwireFineMetalWiremill_advanced.addFluidInput(<liquid:hydrogen> * 100);
-berylliumwireFineMetalWiremill_advanced.addEnergyPerTickInput(1024);
-berylliumwireFineMetalWiremill_advanced.build();
-
-var berylliumwireFineMetalWiremill_industrial = mods.modularmachinery.RecipeBuilder.newBuilder("berylliumwireFineMetalWiremill_industrial", "basic", 120, 0);
-berylliumwireFineMetalWiremill_industrial.addItemInput(<contenttweaker:material_part:1745>);
-berylliumwireFineMetalWiremill_industrial.addItemOutput(<contenttweaker:material_part:1772>);
-berylliumwireFineMetalWiremill_industrial.addFluidInput(<liquid:hydrogen> * 100);
-berylliumwireFineMetalWiremill_industrial.addFluidInput(<liquid:cotc_data> * 100);
-berylliumwireFineMetalWiremill_industrial.addEnergyPerTickInput(262144);
-berylliumwireFineMetalWiremill_industrial.build();
-
-var berylliumwireFineMetalWiremill_ultimate = mods.modularmachinery.RecipeBuilder.newBuilder("berylliumwireFineMetalWiremill_ultimate", "basic", 120, 0);
-berylliumwireFineMetalWiremill_ultimate.addItemInput(<contenttweaker:material_part:1745>);
-berylliumwireFineMetalWiremill_ultimate.addItemOutput(<contenttweaker:material_part:1772>);
-berylliumwireFineMetalWiremill_ultimate.addFluidInput(<liquid:hydrogen> * 100);
-berylliumwireFineMetalWiremill_ultimate.addFluidInput(<liquid:cotc_data> * 100);
-berylliumwireFineMetalWiremill_ultimate.addFluidInput(<liquid:cotc_neg_red_matter> * 100);
-berylliumwireFineMetalWiremill_ultimate.addFluidOutput(<liquid:cotc_pos_orange_matter> * 200);
-berylliumwireFineMetalWiremill_ultimate.addEnergyPerTickInput(67108864);
-berylliumwireFineMetalWiremill_ultimate.build();
-
-var borondustMalleableMelting_basic = mods.modularmachinery.RecipeBuilder.newBuilder("borondustMalleableMelting_basic", "basic", 60, 0);
-borondustMalleableMelting_basic.addItemInput(<contenttweaker:material_part:1111>);
-borondustMalleableMelting_basic.addFluidOutput(<liquid:cotm_boron_molten> * 144);
-borondustMalleableMelting_basic.addEnergyPerTickInput(4);
-borondustMalleableMelting_basic.build();
-
-var borondustMalleableMelting_advanced = mods.modularmachinery.RecipeBuilder.newBuilder("borondustMalleableMelting_advanced", "basic", 60, 0);
-borondustMalleableMelting_advanced.addItemInput(<contenttweaker:material_part:1111>);
-borondustMalleableMelting_advanced.addFluidOutput(<liquid:cotm_boron_molten> * 144);
-borondustMalleableMelting_advanced.addFluidInput(<liquid:hydrogen> * 100);
-borondustMalleableMelting_advanced.addEnergyPerTickInput(1024);
-borondustMalleableMelting_advanced.build();
-
-var borondustMalleableMelting_industrial = mods.modularmachinery.RecipeBuilder.newBuilder("borondustMalleableMelting_industrial", "basic", 60, 0);
-borondustMalleableMelting_industrial.addItemInput(<contenttweaker:material_part:1111>);
-borondustMalleableMelting_industrial.addFluidOutput(<liquid:cotm_boron_molten> * 144);
-borondustMalleableMelting_industrial.addFluidInput(<liquid:hydrogen> * 100);
-borondustMalleableMelting_industrial.addFluidInput(<liquid:cotc_data> * 100);
-borondustMalleableMelting_industrial.addEnergyPerTickInput(262144);
-borondustMalleableMelting_industrial.build();
-
-var borondustMalleableMelting_ultimate = mods.modularmachinery.RecipeBuilder.newBuilder("borondustMalleableMelting_ultimate", "basic", 60, 0);
-borondustMalleableMelting_ultimate.addItemInput(<contenttweaker:material_part:1111>);
-borondustMalleableMelting_ultimate.addFluidOutput(<liquid:cotm_boron_molten> * 144);
-borondustMalleableMelting_ultimate.addFluidInput(<liquid:hydrogen> * 100);
-borondustMalleableMelting_ultimate.addFluidInput(<liquid:cotc_data> * 100);
-borondustMalleableMelting_ultimate.addFluidInput(<liquid:cotc_neg_red_matter> * 100);
-borondustMalleableMelting_ultimate.addFluidOutput(<liquid:cotc_pos_orange_matter> * 200);
-borondustMalleableMelting_ultimate.addEnergyPerTickInput(67108864);
-borondustMalleableMelting_ultimate.build();
-
-var borondustSmallMalleableMelting_basic = mods.modularmachinery.RecipeBuilder.newBuilder("borondustSmallMalleableMelting_basic", "basic", 60, 0);
-borondustSmallMalleableMelting_basic.addItemInput(<contenttweaker:material_part:1112>);
-borondustSmallMalleableMelting_basic.addFluidOutput(<liquid:cotm_boron_molten> * 36);
-borondustSmallMalleableMelting_basic.addEnergyPerTickInput(4);
-borondustSmallMalleableMelting_basic.build();
-
-var borondustSmallMalleableMelting_advanced = mods.modularmachinery.RecipeBuilder.newBuilder("borondustSmallMalleableMelting_advanced", "basic", 60, 0);
-borondustSmallMalleableMelting_advanced.addItemInput(<contenttweaker:material_part:1112>);
-borondustSmallMalleableMelting_advanced.addFluidOutput(<liquid:cotm_boron_molten> * 36);
-borondustSmallMalleableMelting_advanced.addFluidInput(<liquid:hydrogen> * 100);
-borondustSmallMalleableMelting_advanced.addEnergyPerTickInput(1024);
-borondustSmallMalleableMelting_advanced.build();
-
-var borondustSmallMalleableMelting_industrial = mods.modularmachinery.RecipeBuilder.newBuilder("borondustSmallMalleableMelting_industrial", "basic", 60, 0);
-borondustSmallMalleableMelting_industrial.addItemInput(<contenttweaker:material_part:1112>);
-borondustSmallMalleableMelting_industrial.addFluidOutput(<liquid:cotm_boron_molten> * 36);
-borondustSmallMalleableMelting_industrial.addFluidInput(<liquid:hydrogen> * 100);
-borondustSmallMalleableMelting_industrial.addFluidInput(<liquid:cotc_data> * 100);
-borondustSmallMalleableMelting_industrial.addEnergyPerTickInput(262144);
-borondustSmallMalleableMelting_industrial.build();
-
-var borondustSmallMalleableMelting_ultimate = mods.modularmachinery.RecipeBuilder.newBuilder("borondustSmallMalleableMelting_ultimate", "basic", 60, 0);
-borondustSmallMalleableMelting_ultimate.addItemInput(<contenttweaker:material_part:1112>);
-borondustSmallMalleableMelting_ultimate.addFluidOutput(<liquid:cotm_boron_molten> * 36);
-borondustSmallMalleableMelting_ultimate.addFluidInput(<liquid:hydrogen> * 100);
-borondustSmallMalleableMelting_ultimate.addFluidInput(<liquid:cotc_data> * 100);
-borondustSmallMalleableMelting_ultimate.addFluidInput(<liquid:cotc_neg_red_matter> * 100);
-borondustSmallMalleableMelting_ultimate.addFluidOutput(<liquid:cotc_pos_orange_matter> * 200);
-borondustSmallMalleableMelting_ultimate.addEnergyPerTickInput(67108864);
-borondustSmallMalleableMelting_ultimate.build();
-
-var borondustTinyMalleableMelting_basic = mods.modularmachinery.RecipeBuilder.newBuilder("borondustTinyMalleableMelting_basic", "basic", 60, 0);
-borondustTinyMalleableMelting_basic.addItemInput(<contenttweaker:material_part:1113>);
-borondustTinyMalleableMelting_basic.addFluidOutput(<liquid:cotm_boron_molten> * 16);
-borondustTinyMalleableMelting_basic.addEnergyPerTickInput(4);
-borondustTinyMalleableMelting_basic.build();
-
-var borondustTinyMalleableMelting_advanced = mods.modularmachinery.RecipeBuilder.newBuilder("borondustTinyMalleableMelting_advanced", "basic", 60, 0);
-borondustTinyMalleableMelting_advanced.addItemInput(<contenttweaker:material_part:1113>);
-borondustTinyMalleableMelting_advanced.addFluidOutput(<liquid:cotm_boron_molten> * 16);
-borondustTinyMalleableMelting_advanced.addFluidInput(<liquid:hydrogen> * 100);
-borondustTinyMalleableMelting_advanced.addEnergyPerTickInput(1024);
-borondustTinyMalleableMelting_advanced.build();
-
-var borondustTinyMalleableMelting_industrial = mods.modularmachinery.RecipeBuilder.newBuilder("borondustTinyMalleableMelting_industrial", "basic", 60, 0);
-borondustTinyMalleableMelting_industrial.addItemInput(<contenttweaker:material_part:1113>);
-borondustTinyMalleableMelting_industrial.addFluidOutput(<liquid:cotm_boron_molten> * 16);
-borondustTinyMalleableMelting_industrial.addFluidInput(<liquid:hydrogen> * 100);
-borondustTinyMalleableMelting_industrial.addFluidInput(<liquid:cotc_data> * 100);
-borondustTinyMalleableMelting_industrial.addEnergyPerTickInput(262144);
-borondustTinyMalleableMelting_industrial.build();
-
-var borondustTinyMalleableMelting_ultimate = mods.modularmachinery.RecipeBuilder.newBuilder("borondustTinyMalleableMelting_ultimate", "basic", 60, 0);
-borondustTinyMalleableMelting_ultimate.addItemInput(<contenttweaker:material_part:1113>);
-borondustTinyMalleableMelting_ultimate.addFluidOutput(<liquid:cotm_boron_molten> * 16);
-borondustTinyMalleableMelting_ultimate.addFluidInput(<liquid:hydrogen> * 100);
-borondustTinyMalleableMelting_ultimate.addFluidInput(<liquid:cotc_data> * 100);
-borondustTinyMalleableMelting_ultimate.addFluidInput(<liquid:cotc_neg_red_matter> * 100);
-borondustTinyMalleableMelting_ultimate.addFluidOutput(<liquid:cotc_pos_orange_matter> * 200);
-borondustTinyMalleableMelting_ultimate.addEnergyPerTickInput(67108864);
-borondustTinyMalleableMelting_ultimate.build();
-
-var borondustMetalPulverize_basic = mods.modularmachinery.RecipeBuilder.newBuilder("borondustMetalPulverize_basic", "basic", 40, 0);
+var borondustMetalPulverize_basic = mods.modularmachinery.RecipeBuilder.newBuilder("borondustMetalPulverize_basic", "basic", 100, 0);
 borondustMetalPulverize_basic.addItemInput(<contenttweaker:material_part:1775>);
+borondustMetalPulverize_basic.addFluidInput(<liquid:cotm_boron_molten> * 100);
 borondustMetalPulverize_basic.addItemOutput(<contenttweaker:material_part:1111>);
 borondustMetalPulverize_basic.addEnergyPerTickInput(4);
 borondustMetalPulverize_basic.build();
 
-var borondustMetalPulverize_advanced = mods.modularmachinery.RecipeBuilder.newBuilder("borondustMetalPulverize_advanced", "basic", 40, 0);
+var borondustMetalPulverize_advanced = mods.modularmachinery.RecipeBuilder.newBuilder("borondustMetalPulverize_advanced", "basic", 100, 0);
 borondustMetalPulverize_advanced.addItemInput(<contenttweaker:material_part:1775>);
+borondustMetalPulverize_advanced.addFluidInput(<liquid:cotm_boron_molten> * 100);
 borondustMetalPulverize_advanced.addItemOutput(<contenttweaker:material_part:1111>);
 borondustMetalPulverize_advanced.addFluidInput(<liquid:hydrogen> * 100);
 borondustMetalPulverize_advanced.addEnergyPerTickInput(1024);
 borondustMetalPulverize_advanced.build();
 
-var borondustMetalPulverize_industrial = mods.modularmachinery.RecipeBuilder.newBuilder("borondustMetalPulverize_industrial", "basic", 40, 0);
+var borondustMetalPulverize_industrial = mods.modularmachinery.RecipeBuilder.newBuilder("borondustMetalPulverize_industrial", "basic", 100, 0);
 borondustMetalPulverize_industrial.addItemInput(<contenttweaker:material_part:1775>);
+borondustMetalPulverize_industrial.addFluidInput(<liquid:cotm_boron_molten> * 100);
 borondustMetalPulverize_industrial.addItemOutput(<contenttweaker:material_part:1111>);
 borondustMetalPulverize_industrial.addFluidInput(<liquid:hydrogen> * 100);
 borondustMetalPulverize_industrial.addFluidInput(<liquid:cotc_data> * 100);
 borondustMetalPulverize_industrial.addEnergyPerTickInput(262144);
 borondustMetalPulverize_industrial.build();
 
-var borondustMetalPulverize_ultimate = mods.modularmachinery.RecipeBuilder.newBuilder("borondustMetalPulverize_ultimate", "basic", 40, 0);
+var borondustMetalPulverize_ultimate = mods.modularmachinery.RecipeBuilder.newBuilder("borondustMetalPulverize_ultimate", "basic", 100, 0);
 borondustMetalPulverize_ultimate.addItemInput(<contenttweaker:material_part:1775>);
+borondustMetalPulverize_ultimate.addFluidInput(<liquid:cotm_boron_molten> * 100);
 borondustMetalPulverize_ultimate.addItemOutput(<contenttweaker:material_part:1111>);
 borondustMetalPulverize_ultimate.addFluidInput(<liquid:hydrogen> * 100);
 borondustMetalPulverize_ultimate.addFluidInput(<liquid:cotc_data> * 100);
-borondustMetalPulverize_ultimate.addFluidInput(<liquid:cotc_neg_red_matter> * 100);
-borondustMetalPulverize_ultimate.addFluidOutput(<liquid:cotc_pos_orange_matter> * 200);
+borondustMetalPulverize_ultimate.addFluidInput(<liquid:cotc_pos_red_matter> * 100);
+borondustMetalPulverize_ultimate.addFluidOutput(<liquid:cotc_neg_orange_matter> * 100);
 borondustMetalPulverize_ultimate.addEnergyPerTickInput(67108864);
 borondustMetalPulverize_ultimate.build();
 
-var borondustSmallMetalPulverize_basic = mods.modularmachinery.RecipeBuilder.newBuilder("borondustSmallMetalPulverize_basic", "basic", 40, 0);
-borondustSmallMetalPulverize_basic.addItemInput(<contenttweaker:material_part:1776>);
-borondustSmallMetalPulverize_basic.addItemOutput(<contenttweaker:material_part:1112>);
-borondustSmallMetalPulverize_basic.addEnergyPerTickInput(4);
-borondustSmallMetalPulverize_basic.build();
-
-var borondustSmallMetalPulverize_advanced = mods.modularmachinery.RecipeBuilder.newBuilder("borondustSmallMetalPulverize_advanced", "basic", 40, 0);
-borondustSmallMetalPulverize_advanced.addItemInput(<contenttweaker:material_part:1776>);
-borondustSmallMetalPulverize_advanced.addItemOutput(<contenttweaker:material_part:1112>);
-borondustSmallMetalPulverize_advanced.addFluidInput(<liquid:hydrogen> * 100);
-borondustSmallMetalPulverize_advanced.addEnergyPerTickInput(1024);
-borondustSmallMetalPulverize_advanced.build();
-
-var borondustSmallMetalPulverize_industrial = mods.modularmachinery.RecipeBuilder.newBuilder("borondustSmallMetalPulverize_industrial", "basic", 40, 0);
-borondustSmallMetalPulverize_industrial.addItemInput(<contenttweaker:material_part:1776>);
-borondustSmallMetalPulverize_industrial.addItemOutput(<contenttweaker:material_part:1112>);
-borondustSmallMetalPulverize_industrial.addFluidInput(<liquid:hydrogen> * 100);
-borondustSmallMetalPulverize_industrial.addFluidInput(<liquid:cotc_data> * 100);
-borondustSmallMetalPulverize_industrial.addEnergyPerTickInput(262144);
-borondustSmallMetalPulverize_industrial.build();
-
-var borondustSmallMetalPulverize_ultimate = mods.modularmachinery.RecipeBuilder.newBuilder("borondustSmallMetalPulverize_ultimate", "basic", 40, 0);
-borondustSmallMetalPulverize_ultimate.addItemInput(<contenttweaker:material_part:1776>);
-borondustSmallMetalPulverize_ultimate.addItemOutput(<contenttweaker:material_part:1112>);
-borondustSmallMetalPulverize_ultimate.addFluidInput(<liquid:hydrogen> * 100);
-borondustSmallMetalPulverize_ultimate.addFluidInput(<liquid:cotc_data> * 100);
-borondustSmallMetalPulverize_ultimate.addFluidInput(<liquid:cotc_neg_red_matter> * 100);
-borondustSmallMetalPulverize_ultimate.addFluidOutput(<liquid:cotc_pos_orange_matter> * 200);
-borondustSmallMetalPulverize_ultimate.addEnergyPerTickInput(67108864);
-borondustSmallMetalPulverize_ultimate.build();
-
-var borondustTinyMetalPulverize_basic = mods.modularmachinery.RecipeBuilder.newBuilder("borondustTinyMetalPulverize_basic", "basic", 40, 0);
-borondustTinyMetalPulverize_basic.addItemInput(<contenttweaker:material_part:1777>);
-borondustTinyMetalPulverize_basic.addItemOutput(<contenttweaker:material_part:1113>);
-borondustTinyMetalPulverize_basic.addEnergyPerTickInput(4);
-borondustTinyMetalPulverize_basic.build();
-
-var borondustTinyMetalPulverize_advanced = mods.modularmachinery.RecipeBuilder.newBuilder("borondustTinyMetalPulverize_advanced", "basic", 40, 0);
-borondustTinyMetalPulverize_advanced.addItemInput(<contenttweaker:material_part:1777>);
-borondustTinyMetalPulverize_advanced.addItemOutput(<contenttweaker:material_part:1113>);
-borondustTinyMetalPulverize_advanced.addFluidInput(<liquid:hydrogen> * 100);
-borondustTinyMetalPulverize_advanced.addEnergyPerTickInput(1024);
-borondustTinyMetalPulverize_advanced.build();
-
-var borondustTinyMetalPulverize_industrial = mods.modularmachinery.RecipeBuilder.newBuilder("borondustTinyMetalPulverize_industrial", "basic", 40, 0);
-borondustTinyMetalPulverize_industrial.addItemInput(<contenttweaker:material_part:1777>);
-borondustTinyMetalPulverize_industrial.addItemOutput(<contenttweaker:material_part:1113>);
-borondustTinyMetalPulverize_industrial.addFluidInput(<liquid:hydrogen> * 100);
-borondustTinyMetalPulverize_industrial.addFluidInput(<liquid:cotc_data> * 100);
-borondustTinyMetalPulverize_industrial.addEnergyPerTickInput(262144);
-borondustTinyMetalPulverize_industrial.build();
-
-var borondustTinyMetalPulverize_ultimate = mods.modularmachinery.RecipeBuilder.newBuilder("borondustTinyMetalPulverize_ultimate", "basic", 40, 0);
-borondustTinyMetalPulverize_ultimate.addItemInput(<contenttweaker:material_part:1777>);
-borondustTinyMetalPulverize_ultimate.addItemOutput(<contenttweaker:material_part:1113>);
-borondustTinyMetalPulverize_ultimate.addFluidInput(<liquid:hydrogen> * 100);
-borondustTinyMetalPulverize_ultimate.addFluidInput(<liquid:cotc_data> * 100);
-borondustTinyMetalPulverize_ultimate.addFluidInput(<liquid:cotc_neg_red_matter> * 100);
-borondustTinyMetalPulverize_ultimate.addFluidOutput(<liquid:cotc_pos_orange_matter> * 200);
-borondustTinyMetalPulverize_ultimate.addEnergyPerTickInput(67108864);
-borondustTinyMetalPulverize_ultimate.build();
-
-var boronplateMetalPress_basic = mods.modularmachinery.RecipeBuilder.newBuilder("boronplateMetalPress_basic", "basic", 100, 0);
-boronplateMetalPress_basic.addItemInput(<contenttweaker:material_part:1775> * 1);
-boronplateMetalPress_basic.addItemOutput(<contenttweaker:material_part:1779>);
-boronplateMetalPress_basic.addEnergyPerTickInput(8);
-boronplateMetalPress_basic.build();
-
-var boronplateMetalPress_advanced = mods.modularmachinery.RecipeBuilder.newBuilder("boronplateMetalPress_advanced", "basic", 100, 0);
-boronplateMetalPress_advanced.addItemInput(<contenttweaker:material_part:1775> * 1);
-boronplateMetalPress_advanced.addItemOutput(<contenttweaker:material_part:1779>);
-boronplateMetalPress_advanced.addFluidInput(<liquid:hydrogen> * 100);
-boronplateMetalPress_advanced.addEnergyPerTickInput(2048);
-boronplateMetalPress_advanced.build();
-
-var boronplateMetalPress_industrial = mods.modularmachinery.RecipeBuilder.newBuilder("boronplateMetalPress_industrial", "basic", 100, 0);
-boronplateMetalPress_industrial.addItemInput(<contenttweaker:material_part:1775> * 1);
-boronplateMetalPress_industrial.addItemOutput(<contenttweaker:material_part:1779>);
-boronplateMetalPress_industrial.addFluidInput(<liquid:hydrogen> * 100);
-boronplateMetalPress_industrial.addFluidInput(<liquid:cotc_data> * 100);
-boronplateMetalPress_industrial.addEnergyPerTickInput(524288);
-boronplateMetalPress_industrial.build();
-
-var boronplateMetalPress_ultimate = mods.modularmachinery.RecipeBuilder.newBuilder("boronplateMetalPress_ultimate", "basic", 100, 0);
-boronplateMetalPress_ultimate.addItemInput(<contenttweaker:material_part:1775> * 1);
-boronplateMetalPress_ultimate.addItemOutput(<contenttweaker:material_part:1779>);
-boronplateMetalPress_ultimate.addFluidInput(<liquid:hydrogen> * 100);
-boronplateMetalPress_ultimate.addFluidInput(<liquid:cotc_data> * 100);
-boronplateMetalPress_ultimate.addFluidInput(<liquid:cotc_neg_red_matter> * 100);
-boronplateMetalPress_ultimate.addFluidOutput(<liquid:cotc_pos_orange_matter> * 200);
-boronplateMetalPress_ultimate.addEnergyPerTickInput(134217728);
-boronplateMetalPress_ultimate.build();
-
-var boronplateToughMetalPress_basic = mods.modularmachinery.RecipeBuilder.newBuilder("boronplateToughMetalPress_basic", "basic", 100, 0);
-boronplateToughMetalPress_basic.addItemInput(<contenttweaker:material_part:1775> * 4);
-boronplateToughMetalPress_basic.addItemOutput(<contenttweaker:material_part:1781>);
-boronplateToughMetalPress_basic.addEnergyPerTickInput(8);
-boronplateToughMetalPress_basic.build();
-
-var boronplateToughMetalPress_advanced = mods.modularmachinery.RecipeBuilder.newBuilder("boronplateToughMetalPress_advanced", "basic", 100, 0);
-boronplateToughMetalPress_advanced.addItemInput(<contenttweaker:material_part:1775> * 4);
-boronplateToughMetalPress_advanced.addItemOutput(<contenttweaker:material_part:1781>);
-boronplateToughMetalPress_advanced.addFluidInput(<liquid:hydrogen> * 100);
-boronplateToughMetalPress_advanced.addEnergyPerTickInput(2048);
-boronplateToughMetalPress_advanced.build();
-
-var boronplateToughMetalPress_industrial = mods.modularmachinery.RecipeBuilder.newBuilder("boronplateToughMetalPress_industrial", "basic", 100, 0);
-boronplateToughMetalPress_industrial.addItemInput(<contenttweaker:material_part:1775> * 4);
-boronplateToughMetalPress_industrial.addItemOutput(<contenttweaker:material_part:1781>);
-boronplateToughMetalPress_industrial.addFluidInput(<liquid:hydrogen> * 100);
-boronplateToughMetalPress_industrial.addFluidInput(<liquid:cotc_data> * 100);
-boronplateToughMetalPress_industrial.addEnergyPerTickInput(524288);
-boronplateToughMetalPress_industrial.build();
-
-var boronplateToughMetalPress_ultimate = mods.modularmachinery.RecipeBuilder.newBuilder("boronplateToughMetalPress_ultimate", "basic", 100, 0);
-boronplateToughMetalPress_ultimate.addItemInput(<contenttweaker:material_part:1775> * 4);
-boronplateToughMetalPress_ultimate.addItemOutput(<contenttweaker:material_part:1781>);
-boronplateToughMetalPress_ultimate.addFluidInput(<liquid:hydrogen> * 100);
-boronplateToughMetalPress_ultimate.addFluidInput(<liquid:cotc_data> * 100);
-boronplateToughMetalPress_ultimate.addFluidInput(<liquid:cotc_neg_red_matter> * 100);
-boronplateToughMetalPress_ultimate.addFluidOutput(<liquid:cotc_pos_orange_matter> * 200);
-boronplateToughMetalPress_ultimate.addEnergyPerTickInput(134217728);
-boronplateToughMetalPress_ultimate.build();
-
-var boronplateDenseMetalPress_basic = mods.modularmachinery.RecipeBuilder.newBuilder("boronplateDenseMetalPress_basic", "basic", 100, 0);
-boronplateDenseMetalPress_basic.addItemInput(<contenttweaker:material_part:1775> * 9);
-boronplateDenseMetalPress_basic.addItemOutput(<contenttweaker:material_part:1782>);
-boronplateDenseMetalPress_basic.addEnergyPerTickInput(8);
-boronplateDenseMetalPress_basic.build();
-
-var boronplateDenseMetalPress_advanced = mods.modularmachinery.RecipeBuilder.newBuilder("boronplateDenseMetalPress_advanced", "basic", 100, 0);
-boronplateDenseMetalPress_advanced.addItemInput(<contenttweaker:material_part:1775> * 9);
-boronplateDenseMetalPress_advanced.addItemOutput(<contenttweaker:material_part:1782>);
-boronplateDenseMetalPress_advanced.addFluidInput(<liquid:hydrogen> * 100);
-boronplateDenseMetalPress_advanced.addEnergyPerTickInput(2048);
-boronplateDenseMetalPress_advanced.build();
-
-var boronplateDenseMetalPress_industrial = mods.modularmachinery.RecipeBuilder.newBuilder("boronplateDenseMetalPress_industrial", "basic", 100, 0);
-boronplateDenseMetalPress_industrial.addItemInput(<contenttweaker:material_part:1775> * 9);
-boronplateDenseMetalPress_industrial.addItemOutput(<contenttweaker:material_part:1782>);
-boronplateDenseMetalPress_industrial.addFluidInput(<liquid:hydrogen> * 100);
-boronplateDenseMetalPress_industrial.addFluidInput(<liquid:cotc_data> * 100);
-boronplateDenseMetalPress_industrial.addEnergyPerTickInput(524288);
-boronplateDenseMetalPress_industrial.build();
-
-var boronplateDenseMetalPress_ultimate = mods.modularmachinery.RecipeBuilder.newBuilder("boronplateDenseMetalPress_ultimate", "basic", 100, 0);
-boronplateDenseMetalPress_ultimate.addItemInput(<contenttweaker:material_part:1775> * 9);
-boronplateDenseMetalPress_ultimate.addItemOutput(<contenttweaker:material_part:1782>);
-boronplateDenseMetalPress_ultimate.addFluidInput(<liquid:hydrogen> * 100);
-boronplateDenseMetalPress_ultimate.addFluidInput(<liquid:cotc_data> * 100);
-boronplateDenseMetalPress_ultimate.addFluidInput(<liquid:cotc_neg_red_matter> * 100);
-boronplateDenseMetalPress_ultimate.addFluidOutput(<liquid:cotc_pos_orange_matter> * 200);
-boronplateDenseMetalPress_ultimate.addEnergyPerTickInput(134217728);
-boronplateDenseMetalPress_ultimate.build();
-
-var boronplateSmallMetalPress_basic = mods.modularmachinery.RecipeBuilder.newBuilder("boronplateSmallMetalPress_basic", "basic", 100, 0);
-boronplateSmallMetalPress_basic.addItemInput(<contenttweaker:material_part:1776> * 1);
-boronplateSmallMetalPress_basic.addItemOutput(<contenttweaker:material_part:1796>);
-boronplateSmallMetalPress_basic.addEnergyPerTickInput(8);
-boronplateSmallMetalPress_basic.build();
-
-var boronplateSmallMetalPress_advanced = mods.modularmachinery.RecipeBuilder.newBuilder("boronplateSmallMetalPress_advanced", "basic", 100, 0);
-boronplateSmallMetalPress_advanced.addItemInput(<contenttweaker:material_part:1776> * 1);
-boronplateSmallMetalPress_advanced.addItemOutput(<contenttweaker:material_part:1796>);
-boronplateSmallMetalPress_advanced.addFluidInput(<liquid:hydrogen> * 100);
-boronplateSmallMetalPress_advanced.addEnergyPerTickInput(2048);
-boronplateSmallMetalPress_advanced.build();
-
-var boronplateSmallMetalPress_industrial = mods.modularmachinery.RecipeBuilder.newBuilder("boronplateSmallMetalPress_industrial", "basic", 100, 0);
-boronplateSmallMetalPress_industrial.addItemInput(<contenttweaker:material_part:1776> * 1);
-boronplateSmallMetalPress_industrial.addItemOutput(<contenttweaker:material_part:1796>);
-boronplateSmallMetalPress_industrial.addFluidInput(<liquid:hydrogen> * 100);
-boronplateSmallMetalPress_industrial.addFluidInput(<liquid:cotc_data> * 100);
-boronplateSmallMetalPress_industrial.addEnergyPerTickInput(524288);
-boronplateSmallMetalPress_industrial.build();
-
-var boronplateSmallMetalPress_ultimate = mods.modularmachinery.RecipeBuilder.newBuilder("boronplateSmallMetalPress_ultimate", "basic", 100, 0);
-boronplateSmallMetalPress_ultimate.addItemInput(<contenttweaker:material_part:1776> * 1);
-boronplateSmallMetalPress_ultimate.addItemOutput(<contenttweaker:material_part:1796>);
-boronplateSmallMetalPress_ultimate.addFluidInput(<liquid:hydrogen> * 100);
-boronplateSmallMetalPress_ultimate.addFluidInput(<liquid:cotc_data> * 100);
-boronplateSmallMetalPress_ultimate.addFluidInput(<liquid:cotc_neg_red_matter> * 100);
-boronplateSmallMetalPress_ultimate.addFluidOutput(<liquid:cotc_pos_orange_matter> * 200);
-boronplateSmallMetalPress_ultimate.addEnergyPerTickInput(134217728);
-boronplateSmallMetalPress_ultimate.build();
-
-var boroncasingMetalPress_basic = mods.modularmachinery.RecipeBuilder.newBuilder("boroncasingMetalPress_basic", "basic", 100, 0);
-boroncasingMetalPress_basic.addItemInput(<contenttweaker:material_part:1776> * 3);
-boroncasingMetalPress_basic.addItemOutput(<contenttweaker:material_part:1778>);
-boroncasingMetalPress_basic.addEnergyPerTickInput(8);
-boroncasingMetalPress_basic.build();
-
-var boroncasingMetalPress_advanced = mods.modularmachinery.RecipeBuilder.newBuilder("boroncasingMetalPress_advanced", "basic", 100, 0);
-boroncasingMetalPress_advanced.addItemInput(<contenttweaker:material_part:1776> * 3);
-boroncasingMetalPress_advanced.addItemOutput(<contenttweaker:material_part:1778>);
-boroncasingMetalPress_advanced.addFluidInput(<liquid:hydrogen> * 100);
-boroncasingMetalPress_advanced.addEnergyPerTickInput(2048);
-boroncasingMetalPress_advanced.build();
-
-var boroncasingMetalPress_industrial = mods.modularmachinery.RecipeBuilder.newBuilder("boroncasingMetalPress_industrial", "basic", 100, 0);
-boroncasingMetalPress_industrial.addItemInput(<contenttweaker:material_part:1776> * 3);
-boroncasingMetalPress_industrial.addItemOutput(<contenttweaker:material_part:1778>);
-boroncasingMetalPress_industrial.addFluidInput(<liquid:hydrogen> * 100);
-boroncasingMetalPress_industrial.addFluidInput(<liquid:cotc_data> * 100);
-boroncasingMetalPress_industrial.addEnergyPerTickInput(524288);
-boroncasingMetalPress_industrial.build();
-
-var boroncasingMetalPress_ultimate = mods.modularmachinery.RecipeBuilder.newBuilder("boroncasingMetalPress_ultimate", "basic", 100, 0);
-boroncasingMetalPress_ultimate.addItemInput(<contenttweaker:material_part:1776> * 3);
-boroncasingMetalPress_ultimate.addItemOutput(<contenttweaker:material_part:1778>);
-boroncasingMetalPress_ultimate.addFluidInput(<liquid:hydrogen> * 100);
-boroncasingMetalPress_ultimate.addFluidInput(<liquid:cotc_data> * 100);
-boroncasingMetalPress_ultimate.addFluidInput(<liquid:cotc_neg_red_matter> * 100);
-boroncasingMetalPress_ultimate.addFluidOutput(<liquid:cotc_pos_orange_matter> * 200);
-boroncasingMetalPress_ultimate.addEnergyPerTickInput(134217728);
-boroncasingMetalPress_ultimate.build();
-
-var boronfoilMetalPress_basic = mods.modularmachinery.RecipeBuilder.newBuilder("boronfoilMetalPress_basic", "basic", 100, 0);
-boronfoilMetalPress_basic.addItemInput(<contenttweaker:material_part:1777> * 3);
-boronfoilMetalPress_basic.addItemOutput(<contenttweaker:material_part:1792>);
-boronfoilMetalPress_basic.addEnergyPerTickInput(8);
-boronfoilMetalPress_basic.build();
-
-var boronfoilMetalPress_advanced = mods.modularmachinery.RecipeBuilder.newBuilder("boronfoilMetalPress_advanced", "basic", 100, 0);
-boronfoilMetalPress_advanced.addItemInput(<contenttweaker:material_part:1777> * 3);
-boronfoilMetalPress_advanced.addItemOutput(<contenttweaker:material_part:1792>);
-boronfoilMetalPress_advanced.addFluidInput(<liquid:hydrogen> * 100);
-boronfoilMetalPress_advanced.addEnergyPerTickInput(2048);
-boronfoilMetalPress_advanced.build();
-
-var boronfoilMetalPress_industrial = mods.modularmachinery.RecipeBuilder.newBuilder("boronfoilMetalPress_industrial", "basic", 100, 0);
-boronfoilMetalPress_industrial.addItemInput(<contenttweaker:material_part:1777> * 3);
-boronfoilMetalPress_industrial.addItemOutput(<contenttweaker:material_part:1792>);
-boronfoilMetalPress_industrial.addFluidInput(<liquid:hydrogen> * 100);
-boronfoilMetalPress_industrial.addFluidInput(<liquid:cotc_data> * 100);
-boronfoilMetalPress_industrial.addEnergyPerTickInput(524288);
-boronfoilMetalPress_industrial.build();
-
-var boronfoilMetalPress_ultimate = mods.modularmachinery.RecipeBuilder.newBuilder("boronfoilMetalPress_ultimate", "basic", 100, 0);
-boronfoilMetalPress_ultimate.addItemInput(<contenttweaker:material_part:1777> * 3);
-boronfoilMetalPress_ultimate.addItemOutput(<contenttweaker:material_part:1792>);
-boronfoilMetalPress_ultimate.addFluidInput(<liquid:hydrogen> * 100);
-boronfoilMetalPress_ultimate.addFluidInput(<liquid:cotc_data> * 100);
-boronfoilMetalPress_ultimate.addFluidInput(<liquid:cotc_neg_red_matter> * 100);
-boronfoilMetalPress_ultimate.addFluidOutput(<liquid:cotc_pos_orange_matter> * 200);
-boronfoilMetalPress_ultimate.addEnergyPerTickInput(134217728);
-boronfoilMetalPress_ultimate.build();
-
-var boroncasingSmallMetalPress_basic = mods.modularmachinery.RecipeBuilder.newBuilder("boroncasingSmallMetalPress_basic", "basic", 100, 0);
-boroncasingSmallMetalPress_basic.addItemInput(<contenttweaker:material_part:1777> * 4);
-boroncasingSmallMetalPress_basic.addItemOutput(<contenttweaker:material_part:1802>);
-boroncasingSmallMetalPress_basic.addEnergyPerTickInput(8);
-boroncasingSmallMetalPress_basic.build();
-
-var boroncasingSmallMetalPress_advanced = mods.modularmachinery.RecipeBuilder.newBuilder("boroncasingSmallMetalPress_advanced", "basic", 100, 0);
-boroncasingSmallMetalPress_advanced.addItemInput(<contenttweaker:material_part:1777> * 4);
-boroncasingSmallMetalPress_advanced.addItemOutput(<contenttweaker:material_part:1802>);
-boroncasingSmallMetalPress_advanced.addFluidInput(<liquid:hydrogen> * 100);
-boroncasingSmallMetalPress_advanced.addEnergyPerTickInput(2048);
-boroncasingSmallMetalPress_advanced.build();
-
-var boroncasingSmallMetalPress_industrial = mods.modularmachinery.RecipeBuilder.newBuilder("boroncasingSmallMetalPress_industrial", "basic", 100, 0);
-boroncasingSmallMetalPress_industrial.addItemInput(<contenttweaker:material_part:1777> * 4);
-boroncasingSmallMetalPress_industrial.addItemOutput(<contenttweaker:material_part:1802>);
-boroncasingSmallMetalPress_industrial.addFluidInput(<liquid:hydrogen> * 100);
-boroncasingSmallMetalPress_industrial.addFluidInput(<liquid:cotc_data> * 100);
-boroncasingSmallMetalPress_industrial.addEnergyPerTickInput(524288);
-boroncasingSmallMetalPress_industrial.build();
-
-var boroncasingSmallMetalPress_ultimate = mods.modularmachinery.RecipeBuilder.newBuilder("boroncasingSmallMetalPress_ultimate", "basic", 100, 0);
-boroncasingSmallMetalPress_ultimate.addItemInput(<contenttweaker:material_part:1777> * 4);
-boroncasingSmallMetalPress_ultimate.addItemOutput(<contenttweaker:material_part:1802>);
-boroncasingSmallMetalPress_ultimate.addFluidInput(<liquid:hydrogen> * 100);
-boroncasingSmallMetalPress_ultimate.addFluidInput(<liquid:cotc_data> * 100);
-boroncasingSmallMetalPress_ultimate.addFluidInput(<liquid:cotc_neg_red_matter> * 100);
-boroncasingSmallMetalPress_ultimate.addFluidOutput(<liquid:cotc_pos_orange_matter> * 200);
-boroncasingSmallMetalPress_ultimate.addEnergyPerTickInput(134217728);
-boroncasingSmallMetalPress_ultimate.build();
-
-var boronrodMetalLathe_basic = mods.modularmachinery.RecipeBuilder.newBuilder("boronrodMetalLathe_basic", "basic", 40, 0);
-boronrodMetalLathe_basic.addItemInput(<contenttweaker:material_part:1775>);
-boronrodMetalLathe_basic.addItemOutput(<contenttweaker:material_part:1784> * 2);
-boronrodMetalLathe_basic.addEnergyPerTickInput(4);
-boronrodMetalLathe_basic.build();
-
-var boronrodMetalLathe_advanced = mods.modularmachinery.RecipeBuilder.newBuilder("boronrodMetalLathe_advanced", "basic", 40, 0);
-boronrodMetalLathe_advanced.addItemInput(<contenttweaker:material_part:1775>);
-boronrodMetalLathe_advanced.addItemOutput(<contenttweaker:material_part:1784> * 2);
-boronrodMetalLathe_advanced.addFluidInput(<liquid:hydrogen> * 100);
-boronrodMetalLathe_advanced.addEnergyPerTickInput(1024);
-boronrodMetalLathe_advanced.build();
-
-var boronrodMetalLathe_industrial = mods.modularmachinery.RecipeBuilder.newBuilder("boronrodMetalLathe_industrial", "basic", 40, 0);
-boronrodMetalLathe_industrial.addItemInput(<contenttweaker:material_part:1775>);
-boronrodMetalLathe_industrial.addItemOutput(<contenttweaker:material_part:1784> * 2);
-boronrodMetalLathe_industrial.addFluidInput(<liquid:hydrogen> * 100);
-boronrodMetalLathe_industrial.addFluidInput(<liquid:cotc_data> * 100);
-boronrodMetalLathe_industrial.addEnergyPerTickInput(262144);
-boronrodMetalLathe_industrial.build();
-
-var boronrodMetalLathe_ultimate = mods.modularmachinery.RecipeBuilder.newBuilder("boronrodMetalLathe_ultimate", "basic", 40, 0);
-boronrodMetalLathe_ultimate.addItemInput(<contenttweaker:material_part:1775>);
-boronrodMetalLathe_ultimate.addItemOutput(<contenttweaker:material_part:1784> * 2);
-boronrodMetalLathe_ultimate.addFluidInput(<liquid:hydrogen> * 100);
-boronrodMetalLathe_ultimate.addFluidInput(<liquid:cotc_data> * 100);
-boronrodMetalLathe_ultimate.addFluidInput(<liquid:cotc_neg_red_matter> * 100);
-boronrodMetalLathe_ultimate.addFluidOutput(<liquid:cotc_pos_orange_matter> * 200);
-boronrodMetalLathe_ultimate.addEnergyPerTickInput(67108864);
-boronrodMetalLathe_ultimate.build();
-
-var boronrodLongMetalLathe_basic = mods.modularmachinery.RecipeBuilder.newBuilder("boronrodLongMetalLathe_basic", "basic", 40, 0);
-boronrodLongMetalLathe_basic.addItemInput(<contenttweaker:material_part:1775>);
-boronrodLongMetalLathe_basic.addItemOutput(<contenttweaker:material_part:1785> * 1);
-boronrodLongMetalLathe_basic.addEnergyPerTickInput(4);
-boronrodLongMetalLathe_basic.build();
-
-var boronrodLongMetalLathe_advanced = mods.modularmachinery.RecipeBuilder.newBuilder("boronrodLongMetalLathe_advanced", "basic", 40, 0);
-boronrodLongMetalLathe_advanced.addItemInput(<contenttweaker:material_part:1775>);
-boronrodLongMetalLathe_advanced.addItemOutput(<contenttweaker:material_part:1785> * 1);
-boronrodLongMetalLathe_advanced.addFluidInput(<liquid:hydrogen> * 100);
-boronrodLongMetalLathe_advanced.addEnergyPerTickInput(1024);
-boronrodLongMetalLathe_advanced.build();
-
-var boronrodLongMetalLathe_industrial = mods.modularmachinery.RecipeBuilder.newBuilder("boronrodLongMetalLathe_industrial", "basic", 40, 0);
-boronrodLongMetalLathe_industrial.addItemInput(<contenttweaker:material_part:1775>);
-boronrodLongMetalLathe_industrial.addItemOutput(<contenttweaker:material_part:1785> * 1);
-boronrodLongMetalLathe_industrial.addFluidInput(<liquid:hydrogen> * 100);
-boronrodLongMetalLathe_industrial.addFluidInput(<liquid:cotc_data> * 100);
-boronrodLongMetalLathe_industrial.addEnergyPerTickInput(262144);
-boronrodLongMetalLathe_industrial.build();
-
-var boronrodLongMetalLathe_ultimate = mods.modularmachinery.RecipeBuilder.newBuilder("boronrodLongMetalLathe_ultimate", "basic", 40, 0);
-boronrodLongMetalLathe_ultimate.addItemInput(<contenttweaker:material_part:1775>);
-boronrodLongMetalLathe_ultimate.addItemOutput(<contenttweaker:material_part:1785> * 1);
-boronrodLongMetalLathe_ultimate.addFluidInput(<liquid:hydrogen> * 100);
-boronrodLongMetalLathe_ultimate.addFluidInput(<liquid:cotc_data> * 100);
-boronrodLongMetalLathe_ultimate.addFluidInput(<liquid:cotc_neg_red_matter> * 100);
-boronrodLongMetalLathe_ultimate.addFluidOutput(<liquid:cotc_pos_orange_matter> * 200);
-boronrodLongMetalLathe_ultimate.addEnergyPerTickInput(67108864);
-boronrodLongMetalLathe_ultimate.build();
-
-var boronaxleMetalLathe_basic = mods.modularmachinery.RecipeBuilder.newBuilder("boronaxleMetalLathe_basic", "basic", 40, 0);
-boronaxleMetalLathe_basic.addItemInput(<contenttweaker:material_part:1777>);
-boronaxleMetalLathe_basic.addItemOutput(<contenttweaker:material_part:7953> * 6);
-boronaxleMetalLathe_basic.addEnergyPerTickInput(4);
-boronaxleMetalLathe_basic.build();
-
-var boronaxleMetalLathe_advanced = mods.modularmachinery.RecipeBuilder.newBuilder("boronaxleMetalLathe_advanced", "basic", 40, 0);
-boronaxleMetalLathe_advanced.addItemInput(<contenttweaker:material_part:1777>);
-boronaxleMetalLathe_advanced.addItemOutput(<contenttweaker:material_part:7953> * 6);
-boronaxleMetalLathe_advanced.addFluidInput(<liquid:hydrogen> * 100);
-boronaxleMetalLathe_advanced.addEnergyPerTickInput(1024);
-boronaxleMetalLathe_advanced.build();
-
-var boronaxleMetalLathe_industrial = mods.modularmachinery.RecipeBuilder.newBuilder("boronaxleMetalLathe_industrial", "basic", 40, 0);
-boronaxleMetalLathe_industrial.addItemInput(<contenttweaker:material_part:1777>);
-boronaxleMetalLathe_industrial.addItemOutput(<contenttweaker:material_part:7953> * 6);
-boronaxleMetalLathe_industrial.addFluidInput(<liquid:hydrogen> * 100);
-boronaxleMetalLathe_industrial.addFluidInput(<liquid:cotc_data> * 100);
-boronaxleMetalLathe_industrial.addEnergyPerTickInput(262144);
-boronaxleMetalLathe_industrial.build();
-
-var boronaxleMetalLathe_ultimate = mods.modularmachinery.RecipeBuilder.newBuilder("boronaxleMetalLathe_ultimate", "basic", 40, 0);
-boronaxleMetalLathe_ultimate.addItemInput(<contenttweaker:material_part:1777>);
-boronaxleMetalLathe_ultimate.addItemOutput(<contenttweaker:material_part:7953> * 6);
-boronaxleMetalLathe_ultimate.addFluidInput(<liquid:hydrogen> * 100);
-boronaxleMetalLathe_ultimate.addFluidInput(<liquid:cotc_data> * 100);
-boronaxleMetalLathe_ultimate.addFluidInput(<liquid:cotc_neg_red_matter> * 100);
-boronaxleMetalLathe_ultimate.addFluidOutput(<liquid:cotc_pos_orange_matter> * 200);
-boronaxleMetalLathe_ultimate.addEnergyPerTickInput(67108864);
-boronaxleMetalLathe_ultimate.build();
-
-var boronaxleLargeMetalLathe_basic = mods.modularmachinery.RecipeBuilder.newBuilder("boronaxleLargeMetalLathe_basic", "basic", 40, 0);
-boronaxleLargeMetalLathe_basic.addItemInput(<contenttweaker:material_part:1775>);
-boronaxleLargeMetalLathe_basic.addItemOutput(<contenttweaker:material_part:7954> * 2);
-boronaxleLargeMetalLathe_basic.addEnergyPerTickInput(4);
-boronaxleLargeMetalLathe_basic.build();
-
-var boronaxleLargeMetalLathe_advanced = mods.modularmachinery.RecipeBuilder.newBuilder("boronaxleLargeMetalLathe_advanced", "basic", 40, 0);
-boronaxleLargeMetalLathe_advanced.addItemInput(<contenttweaker:material_part:1775>);
-boronaxleLargeMetalLathe_advanced.addItemOutput(<contenttweaker:material_part:7954> * 2);
-boronaxleLargeMetalLathe_advanced.addFluidInput(<liquid:hydrogen> * 100);
-boronaxleLargeMetalLathe_advanced.addEnergyPerTickInput(1024);
-boronaxleLargeMetalLathe_advanced.build();
-
-var boronaxleLargeMetalLathe_industrial = mods.modularmachinery.RecipeBuilder.newBuilder("boronaxleLargeMetalLathe_industrial", "basic", 40, 0);
-boronaxleLargeMetalLathe_industrial.addItemInput(<contenttweaker:material_part:1775>);
-boronaxleLargeMetalLathe_industrial.addItemOutput(<contenttweaker:material_part:7954> * 2);
-boronaxleLargeMetalLathe_industrial.addFluidInput(<liquid:hydrogen> * 100);
-boronaxleLargeMetalLathe_industrial.addFluidInput(<liquid:cotc_data> * 100);
-boronaxleLargeMetalLathe_industrial.addEnergyPerTickInput(262144);
-boronaxleLargeMetalLathe_industrial.build();
-
-var boronaxleLargeMetalLathe_ultimate = mods.modularmachinery.RecipeBuilder.newBuilder("boronaxleLargeMetalLathe_ultimate", "basic", 40, 0);
-boronaxleLargeMetalLathe_ultimate.addItemInput(<contenttweaker:material_part:1775>);
-boronaxleLargeMetalLathe_ultimate.addItemOutput(<contenttweaker:material_part:7954> * 2);
-boronaxleLargeMetalLathe_ultimate.addFluidInput(<liquid:hydrogen> * 100);
-boronaxleLargeMetalLathe_ultimate.addFluidInput(<liquid:cotc_data> * 100);
-boronaxleLargeMetalLathe_ultimate.addFluidInput(<liquid:cotc_neg_red_matter> * 100);
-boronaxleLargeMetalLathe_ultimate.addFluidOutput(<liquid:cotc_pos_orange_matter> * 200);
-boronaxleLargeMetalLathe_ultimate.addEnergyPerTickInput(67108864);
-boronaxleLargeMetalLathe_ultimate.build();
-
-var boronconeMetalLathe_basic = mods.modularmachinery.RecipeBuilder.newBuilder("boronconeMetalLathe_basic", "basic", 40, 0);
-boronconeMetalLathe_basic.addItemInput(<contenttweaker:material_part:8281>);
-boronconeMetalLathe_basic.addItemOutput(<contenttweaker:material_part:8283> * 1);
-boronconeMetalLathe_basic.addEnergyPerTickInput(4);
-boronconeMetalLathe_basic.build();
-
-var boronconeMetalLathe_advanced = mods.modularmachinery.RecipeBuilder.newBuilder("boronconeMetalLathe_advanced", "basic", 40, 0);
-boronconeMetalLathe_advanced.addItemInput(<contenttweaker:material_part:8281>);
-boronconeMetalLathe_advanced.addItemOutput(<contenttweaker:material_part:8283> * 1);
-boronconeMetalLathe_advanced.addFluidInput(<liquid:hydrogen> * 100);
-boronconeMetalLathe_advanced.addEnergyPerTickInput(1024);
-boronconeMetalLathe_advanced.build();
-
-var boronconeMetalLathe_industrial = mods.modularmachinery.RecipeBuilder.newBuilder("boronconeMetalLathe_industrial", "basic", 40, 0);
-boronconeMetalLathe_industrial.addItemInput(<contenttweaker:material_part:8281>);
-boronconeMetalLathe_industrial.addItemOutput(<contenttweaker:material_part:8283> * 1);
-boronconeMetalLathe_industrial.addFluidInput(<liquid:hydrogen> * 100);
-boronconeMetalLathe_industrial.addFluidInput(<liquid:cotc_data> * 100);
-boronconeMetalLathe_industrial.addEnergyPerTickInput(262144);
-boronconeMetalLathe_industrial.build();
-
-var boronconeMetalLathe_ultimate = mods.modularmachinery.RecipeBuilder.newBuilder("boronconeMetalLathe_ultimate", "basic", 40, 0);
-boronconeMetalLathe_ultimate.addItemInput(<contenttweaker:material_part:8281>);
-boronconeMetalLathe_ultimate.addItemOutput(<contenttweaker:material_part:8283> * 1);
-boronconeMetalLathe_ultimate.addFluidInput(<liquid:hydrogen> * 100);
-boronconeMetalLathe_ultimate.addFluidInput(<liquid:cotc_data> * 100);
-boronconeMetalLathe_ultimate.addFluidInput(<liquid:cotc_neg_red_matter> * 100);
-boronconeMetalLathe_ultimate.addFluidOutput(<liquid:cotc_pos_orange_matter> * 200);
-boronconeMetalLathe_ultimate.addEnergyPerTickInput(67108864);
-boronconeMetalLathe_ultimate.build();
-
-var borongearMetalLaserCutter_basic = mods.modularmachinery.RecipeBuilder.newBuilder("borongearMetalLaserCutter_basic", "basic", 40, 0);
-borongearMetalLaserCutter_basic.addItemInput(<contenttweaker:material_part:1779>);
-borongearMetalLaserCutter_basic.addItemOutput(<contenttweaker:material_part:1795>);
-borongearMetalLaserCutter_basic.addEnergyPerTickInput(4);
-borongearMetalLaserCutter_basic.build();
-
-var borongearMetalLaserCutter_advanced = mods.modularmachinery.RecipeBuilder.newBuilder("borongearMetalLaserCutter_advanced", "basic", 40, 0);
-borongearMetalLaserCutter_advanced.addItemInput(<contenttweaker:material_part:1779>);
-borongearMetalLaserCutter_advanced.addItemOutput(<contenttweaker:material_part:1795>);
-borongearMetalLaserCutter_advanced.addFluidInput(<liquid:hydrogen> * 100);
-borongearMetalLaserCutter_advanced.addEnergyPerTickInput(1024);
-borongearMetalLaserCutter_advanced.build();
-
-var borongearMetalLaserCutter_industrial = mods.modularmachinery.RecipeBuilder.newBuilder("borongearMetalLaserCutter_industrial", "basic", 40, 0);
-borongearMetalLaserCutter_industrial.addItemInput(<contenttweaker:material_part:1779>);
-borongearMetalLaserCutter_industrial.addItemOutput(<contenttweaker:material_part:1795>);
-borongearMetalLaserCutter_industrial.addFluidInput(<liquid:hydrogen> * 100);
-borongearMetalLaserCutter_industrial.addFluidInput(<liquid:cotc_data> * 100);
-borongearMetalLaserCutter_industrial.addEnergyPerTickInput(262144);
-borongearMetalLaserCutter_industrial.build();
-
-var borongearMetalLaserCutter_ultimate = mods.modularmachinery.RecipeBuilder.newBuilder("borongearMetalLaserCutter_ultimate", "basic", 40, 0);
-borongearMetalLaserCutter_ultimate.addItemInput(<contenttweaker:material_part:1779>);
-borongearMetalLaserCutter_ultimate.addItemOutput(<contenttweaker:material_part:1795>);
-borongearMetalLaserCutter_ultimate.addFluidInput(<liquid:hydrogen> * 100);
-borongearMetalLaserCutter_ultimate.addFluidInput(<liquid:cotc_data> * 100);
-borongearMetalLaserCutter_ultimate.addFluidInput(<liquid:cotc_neg_red_matter> * 100);
-borongearMetalLaserCutter_ultimate.addFluidOutput(<liquid:cotc_pos_orange_matter> * 200);
-borongearMetalLaserCutter_ultimate.addEnergyPerTickInput(67108864);
-borongearMetalLaserCutter_ultimate.build();
-
-var borongearSmallMetalLaserCutter_basic = mods.modularmachinery.RecipeBuilder.newBuilder("borongearSmallMetalLaserCutter_basic", "basic", 40, 0);
-borongearSmallMetalLaserCutter_basic.addItemInput(<contenttweaker:material_part:1796>);
-borongearSmallMetalLaserCutter_basic.addItemOutput(<contenttweaker:material_part:1794>);
-borongearSmallMetalLaserCutter_basic.addEnergyPerTickInput(4);
-borongearSmallMetalLaserCutter_basic.build();
-
-var borongearSmallMetalLaserCutter_advanced = mods.modularmachinery.RecipeBuilder.newBuilder("borongearSmallMetalLaserCutter_advanced", "basic", 40, 0);
-borongearSmallMetalLaserCutter_advanced.addItemInput(<contenttweaker:material_part:1796>);
-borongearSmallMetalLaserCutter_advanced.addItemOutput(<contenttweaker:material_part:1794>);
-borongearSmallMetalLaserCutter_advanced.addFluidInput(<liquid:hydrogen> * 100);
-borongearSmallMetalLaserCutter_advanced.addEnergyPerTickInput(1024);
-borongearSmallMetalLaserCutter_advanced.build();
-
-var borongearSmallMetalLaserCutter_industrial = mods.modularmachinery.RecipeBuilder.newBuilder("borongearSmallMetalLaserCutter_industrial", "basic", 40, 0);
-borongearSmallMetalLaserCutter_industrial.addItemInput(<contenttweaker:material_part:1796>);
-borongearSmallMetalLaserCutter_industrial.addItemOutput(<contenttweaker:material_part:1794>);
-borongearSmallMetalLaserCutter_industrial.addFluidInput(<liquid:hydrogen> * 100);
-borongearSmallMetalLaserCutter_industrial.addFluidInput(<liquid:cotc_data> * 100);
-borongearSmallMetalLaserCutter_industrial.addEnergyPerTickInput(262144);
-borongearSmallMetalLaserCutter_industrial.build();
-
-var borongearSmallMetalLaserCutter_ultimate = mods.modularmachinery.RecipeBuilder.newBuilder("borongearSmallMetalLaserCutter_ultimate", "basic", 40, 0);
-borongearSmallMetalLaserCutter_ultimate.addItemInput(<contenttweaker:material_part:1796>);
-borongearSmallMetalLaserCutter_ultimate.addItemOutput(<contenttweaker:material_part:1794>);
-borongearSmallMetalLaserCutter_ultimate.addFluidInput(<liquid:hydrogen> * 100);
-borongearSmallMetalLaserCutter_ultimate.addFluidInput(<liquid:cotc_data> * 100);
-borongearSmallMetalLaserCutter_ultimate.addFluidInput(<liquid:cotc_neg_red_matter> * 100);
-borongearSmallMetalLaserCutter_ultimate.addFluidOutput(<liquid:cotc_pos_orange_matter> * 200);
-borongearSmallMetalLaserCutter_ultimate.addEnergyPerTickInput(67108864);
-borongearSmallMetalLaserCutter_ultimate.build();
-
-var boronrotorMetalLaserCutter_basic = mods.modularmachinery.RecipeBuilder.newBuilder("boronrotorMetalLaserCutter_basic", "basic", 40, 0);
-boronrotorMetalLaserCutter_basic.addItemInput(<contenttweaker:material_part:1800>);
-boronrotorMetalLaserCutter_basic.addItemOutput(<contenttweaker:material_part:1807>);
-boronrotorMetalLaserCutter_basic.addEnergyPerTickInput(4);
-boronrotorMetalLaserCutter_basic.build();
-
-var boronrotorMetalLaserCutter_advanced = mods.modularmachinery.RecipeBuilder.newBuilder("boronrotorMetalLaserCutter_advanced", "basic", 40, 0);
-boronrotorMetalLaserCutter_advanced.addItemInput(<contenttweaker:material_part:1800>);
-boronrotorMetalLaserCutter_advanced.addItemOutput(<contenttweaker:material_part:1807>);
-boronrotorMetalLaserCutter_advanced.addFluidInput(<liquid:hydrogen> * 100);
-boronrotorMetalLaserCutter_advanced.addEnergyPerTickInput(1024);
-boronrotorMetalLaserCutter_advanced.build();
-
-var boronrotorMetalLaserCutter_industrial = mods.modularmachinery.RecipeBuilder.newBuilder("boronrotorMetalLaserCutter_industrial", "basic", 40, 0);
-boronrotorMetalLaserCutter_industrial.addItemInput(<contenttweaker:material_part:1800>);
-boronrotorMetalLaserCutter_industrial.addItemOutput(<contenttweaker:material_part:1807>);
-boronrotorMetalLaserCutter_industrial.addFluidInput(<liquid:hydrogen> * 100);
-boronrotorMetalLaserCutter_industrial.addFluidInput(<liquid:cotc_data> * 100);
-boronrotorMetalLaserCutter_industrial.addEnergyPerTickInput(262144);
-boronrotorMetalLaserCutter_industrial.build();
-
-var boronrotorMetalLaserCutter_ultimate = mods.modularmachinery.RecipeBuilder.newBuilder("boronrotorMetalLaserCutter_ultimate", "basic", 40, 0);
-boronrotorMetalLaserCutter_ultimate.addItemInput(<contenttweaker:material_part:1800>);
-boronrotorMetalLaserCutter_ultimate.addItemOutput(<contenttweaker:material_part:1807>);
-boronrotorMetalLaserCutter_ultimate.addFluidInput(<liquid:hydrogen> * 100);
-boronrotorMetalLaserCutter_ultimate.addFluidInput(<liquid:cotc_data> * 100);
-boronrotorMetalLaserCutter_ultimate.addFluidInput(<liquid:cotc_neg_red_matter> * 100);
-boronrotorMetalLaserCutter_ultimate.addFluidOutput(<liquid:cotc_pos_orange_matter> * 200);
-boronrotorMetalLaserCutter_ultimate.addEnergyPerTickInput(67108864);
-boronrotorMetalLaserCutter_ultimate.build();
-
-var boronbeamTinMetalWelder_basic = mods.modularmachinery.RecipeBuilder.newBuilder("boronbeamTinMetalWelder_basic", "basic", 40, 0);
-boronbeamTinMetalWelder_basic.addItemInput(<contenttweaker:material_part:1779> * 8);
-boronbeamTinMetalWelder_basic.addFluidInput(<liquid:cotm_tin_molten> * 144);
-boronbeamTinMetalWelder_basic.addItemOutput(<contenttweaker:material_part:1788>);
-boronbeamTinMetalWelder_basic.addEnergyPerTickInput(4);
-boronbeamTinMetalWelder_basic.build();
-
-var boronbeamTinMetalWelder_advanced = mods.modularmachinery.RecipeBuilder.newBuilder("boronbeamTinMetalWelder_advanced", "basic", 40, 0);
-boronbeamTinMetalWelder_advanced.addItemInput(<contenttweaker:material_part:1779> * 8);
-boronbeamTinMetalWelder_advanced.addFluidInput(<liquid:cotm_tin_molten> * 144);
-boronbeamTinMetalWelder_advanced.addItemOutput(<contenttweaker:material_part:1788>);
-boronbeamTinMetalWelder_advanced.addFluidInput(<liquid:hydrogen> * 100);
-boronbeamTinMetalWelder_advanced.addEnergyPerTickInput(1024);
-boronbeamTinMetalWelder_advanced.build();
-
-var boronbeamTinMetalWelder_industrial = mods.modularmachinery.RecipeBuilder.newBuilder("boronbeamTinMetalWelder_industrial", "basic", 40, 0);
-boronbeamTinMetalWelder_industrial.addItemInput(<contenttweaker:material_part:1779> * 8);
-boronbeamTinMetalWelder_industrial.addFluidInput(<liquid:cotm_tin_molten> * 144);
-boronbeamTinMetalWelder_industrial.addItemOutput(<contenttweaker:material_part:1788>);
-boronbeamTinMetalWelder_industrial.addFluidInput(<liquid:hydrogen> * 100);
-boronbeamTinMetalWelder_industrial.addFluidInput(<liquid:cotc_data> * 100);
-boronbeamTinMetalWelder_industrial.addEnergyPerTickInput(262144);
-boronbeamTinMetalWelder_industrial.build();
-
-var boronbeamTinMetalWelder_ultimate = mods.modularmachinery.RecipeBuilder.newBuilder("boronbeamTinMetalWelder_ultimate", "basic", 40, 0);
-boronbeamTinMetalWelder_ultimate.addItemInput(<contenttweaker:material_part:1779> * 8);
-boronbeamTinMetalWelder_ultimate.addFluidInput(<liquid:cotm_tin_molten> * 144);
-boronbeamTinMetalWelder_ultimate.addItemOutput(<contenttweaker:material_part:1788>);
-boronbeamTinMetalWelder_ultimate.addFluidInput(<liquid:hydrogen> * 100);
-boronbeamTinMetalWelder_ultimate.addFluidInput(<liquid:cotc_data> * 100);
-boronbeamTinMetalWelder_ultimate.addFluidInput(<liquid:cotc_neg_red_matter> * 100);
-boronbeamTinMetalWelder_ultimate.addFluidOutput(<liquid:cotc_pos_orange_matter> * 200);
-boronbeamTinMetalWelder_ultimate.addEnergyPerTickInput(67108864);
-boronbeamTinMetalWelder_ultimate.build();
-
-var boronrailTinMetalWelder_basic = mods.modularmachinery.RecipeBuilder.newBuilder("boronrailTinMetalWelder_basic", "basic", 40, 0);
-boronrailTinMetalWelder_basic.addItemInput(<contenttweaker:material_part:1796> * 9);
-boronrailTinMetalWelder_basic.addFluidInput(<liquid:cotm_tin_molten> * 144);
-boronrailTinMetalWelder_basic.addItemOutput(<contenttweaker:material_part:1799>);
-boronrailTinMetalWelder_basic.addEnergyPerTickInput(4);
-boronrailTinMetalWelder_basic.build();
-
-var boronrailTinMetalWelder_advanced = mods.modularmachinery.RecipeBuilder.newBuilder("boronrailTinMetalWelder_advanced", "basic", 40, 0);
-boronrailTinMetalWelder_advanced.addItemInput(<contenttweaker:material_part:1796> * 9);
-boronrailTinMetalWelder_advanced.addFluidInput(<liquid:cotm_tin_molten> * 144);
-boronrailTinMetalWelder_advanced.addItemOutput(<contenttweaker:material_part:1799>);
-boronrailTinMetalWelder_advanced.addFluidInput(<liquid:hydrogen> * 100);
-boronrailTinMetalWelder_advanced.addEnergyPerTickInput(1024);
-boronrailTinMetalWelder_advanced.build();
-
-var boronrailTinMetalWelder_industrial = mods.modularmachinery.RecipeBuilder.newBuilder("boronrailTinMetalWelder_industrial", "basic", 40, 0);
-boronrailTinMetalWelder_industrial.addItemInput(<contenttweaker:material_part:1796> * 9);
-boronrailTinMetalWelder_industrial.addFluidInput(<liquid:cotm_tin_molten> * 144);
-boronrailTinMetalWelder_industrial.addItemOutput(<contenttweaker:material_part:1799>);
-boronrailTinMetalWelder_industrial.addFluidInput(<liquid:hydrogen> * 100);
-boronrailTinMetalWelder_industrial.addFluidInput(<liquid:cotc_data> * 100);
-boronrailTinMetalWelder_industrial.addEnergyPerTickInput(262144);
-boronrailTinMetalWelder_industrial.build();
-
-var boronrailTinMetalWelder_ultimate = mods.modularmachinery.RecipeBuilder.newBuilder("boronrailTinMetalWelder_ultimate", "basic", 40, 0);
-boronrailTinMetalWelder_ultimate.addItemInput(<contenttweaker:material_part:1796> * 9);
-boronrailTinMetalWelder_ultimate.addFluidInput(<liquid:cotm_tin_molten> * 144);
-boronrailTinMetalWelder_ultimate.addItemOutput(<contenttweaker:material_part:1799>);
-boronrailTinMetalWelder_ultimate.addFluidInput(<liquid:hydrogen> * 100);
-boronrailTinMetalWelder_ultimate.addFluidInput(<liquid:cotc_data> * 100);
-boronrailTinMetalWelder_ultimate.addFluidInput(<liquid:cotc_neg_red_matter> * 100);
-boronrailTinMetalWelder_ultimate.addFluidOutput(<liquid:cotc_pos_orange_matter> * 200);
-boronrailTinMetalWelder_ultimate.addEnergyPerTickInput(67108864);
-boronrailTinMetalWelder_ultimate.build();
-
-var boronchainTinMetalWelder_basic = mods.modularmachinery.RecipeBuilder.newBuilder("boronchainTinMetalWelder_basic", "basic", 40, 0);
-boronchainTinMetalWelder_basic.addItemInput(<contenttweaker:material_part:1793> * 12);
-boronchainTinMetalWelder_basic.addFluidInput(<liquid:cotm_tin_molten> * 144);
-boronchainTinMetalWelder_basic.addItemOutput(<contenttweaker:material_part:1798>);
-boronchainTinMetalWelder_basic.addEnergyPerTickInput(4);
-boronchainTinMetalWelder_basic.build();
-
-var boronchainTinMetalWelder_advanced = mods.modularmachinery.RecipeBuilder.newBuilder("boronchainTinMetalWelder_advanced", "basic", 40, 0);
-boronchainTinMetalWelder_advanced.addItemInput(<contenttweaker:material_part:1793> * 12);
-boronchainTinMetalWelder_advanced.addFluidInput(<liquid:cotm_tin_molten> * 144);
-boronchainTinMetalWelder_advanced.addItemOutput(<contenttweaker:material_part:1798>);
-boronchainTinMetalWelder_advanced.addFluidInput(<liquid:hydrogen> * 100);
-boronchainTinMetalWelder_advanced.addEnergyPerTickInput(1024);
-boronchainTinMetalWelder_advanced.build();
-
-var boronchainTinMetalWelder_industrial = mods.modularmachinery.RecipeBuilder.newBuilder("boronchainTinMetalWelder_industrial", "basic", 40, 0);
-boronchainTinMetalWelder_industrial.addItemInput(<contenttweaker:material_part:1793> * 12);
-boronchainTinMetalWelder_industrial.addFluidInput(<liquid:cotm_tin_molten> * 144);
-boronchainTinMetalWelder_industrial.addItemOutput(<contenttweaker:material_part:1798>);
-boronchainTinMetalWelder_industrial.addFluidInput(<liquid:hydrogen> * 100);
-boronchainTinMetalWelder_industrial.addFluidInput(<liquid:cotc_data> * 100);
-boronchainTinMetalWelder_industrial.addEnergyPerTickInput(262144);
-boronchainTinMetalWelder_industrial.build();
-
-var boronchainTinMetalWelder_ultimate = mods.modularmachinery.RecipeBuilder.newBuilder("boronchainTinMetalWelder_ultimate", "basic", 40, 0);
-boronchainTinMetalWelder_ultimate.addItemInput(<contenttweaker:material_part:1793> * 12);
-boronchainTinMetalWelder_ultimate.addFluidInput(<liquid:cotm_tin_molten> * 144);
-boronchainTinMetalWelder_ultimate.addItemOutput(<contenttweaker:material_part:1798>);
-boronchainTinMetalWelder_ultimate.addFluidInput(<liquid:hydrogen> * 100);
-boronchainTinMetalWelder_ultimate.addFluidInput(<liquid:cotc_data> * 100);
-boronchainTinMetalWelder_ultimate.addFluidInput(<liquid:cotc_neg_red_matter> * 100);
-boronchainTinMetalWelder_ultimate.addFluidOutput(<liquid:cotc_pos_orange_matter> * 200);
-boronchainTinMetalWelder_ultimate.addEnergyPerTickInput(67108864);
-boronchainTinMetalWelder_ultimate.build();
-
-var boronrodThickTinMetalWelder_basic = mods.modularmachinery.RecipeBuilder.newBuilder("boronrodThickTinMetalWelder_basic", "basic", 40, 0);
-boronrodThickTinMetalWelder_basic.addItemInput(<contenttweaker:material_part:1784> * 4);
-boronrodThickTinMetalWelder_basic.addFluidInput(<liquid:cotm_tin_molten> * 144);
-boronrodThickTinMetalWelder_basic.addItemOutput(<contenttweaker:material_part:8280>);
-boronrodThickTinMetalWelder_basic.addEnergyPerTickInput(4);
-boronrodThickTinMetalWelder_basic.build();
-
-var boronrodThickTinMetalWelder_advanced = mods.modularmachinery.RecipeBuilder.newBuilder("boronrodThickTinMetalWelder_advanced", "basic", 40, 0);
-boronrodThickTinMetalWelder_advanced.addItemInput(<contenttweaker:material_part:1784> * 4);
-boronrodThickTinMetalWelder_advanced.addFluidInput(<liquid:cotm_tin_molten> * 144);
-boronrodThickTinMetalWelder_advanced.addItemOutput(<contenttweaker:material_part:8280>);
-boronrodThickTinMetalWelder_advanced.addFluidInput(<liquid:hydrogen> * 100);
-boronrodThickTinMetalWelder_advanced.addEnergyPerTickInput(1024);
-boronrodThickTinMetalWelder_advanced.build();
-
-var boronrodThickTinMetalWelder_industrial = mods.modularmachinery.RecipeBuilder.newBuilder("boronrodThickTinMetalWelder_industrial", "basic", 40, 0);
-boronrodThickTinMetalWelder_industrial.addItemInput(<contenttweaker:material_part:1784> * 4);
-boronrodThickTinMetalWelder_industrial.addFluidInput(<liquid:cotm_tin_molten> * 144);
-boronrodThickTinMetalWelder_industrial.addItemOutput(<contenttweaker:material_part:8280>);
-boronrodThickTinMetalWelder_industrial.addFluidInput(<liquid:hydrogen> * 100);
-boronrodThickTinMetalWelder_industrial.addFluidInput(<liquid:cotc_data> * 100);
-boronrodThickTinMetalWelder_industrial.addEnergyPerTickInput(262144);
-boronrodThickTinMetalWelder_industrial.build();
-
-var boronrodThickTinMetalWelder_ultimate = mods.modularmachinery.RecipeBuilder.newBuilder("boronrodThickTinMetalWelder_ultimate", "basic", 40, 0);
-boronrodThickTinMetalWelder_ultimate.addItemInput(<contenttweaker:material_part:1784> * 4);
-boronrodThickTinMetalWelder_ultimate.addFluidInput(<liquid:cotm_tin_molten> * 144);
-boronrodThickTinMetalWelder_ultimate.addItemOutput(<contenttweaker:material_part:8280>);
-boronrodThickTinMetalWelder_ultimate.addFluidInput(<liquid:hydrogen> * 100);
-boronrodThickTinMetalWelder_ultimate.addFluidInput(<liquid:cotc_data> * 100);
-boronrodThickTinMetalWelder_ultimate.addFluidInput(<liquid:cotc_neg_red_matter> * 100);
-boronrodThickTinMetalWelder_ultimate.addFluidOutput(<liquid:cotc_pos_orange_matter> * 200);
-boronrodThickTinMetalWelder_ultimate.addEnergyPerTickInput(67108864);
-boronrodThickTinMetalWelder_ultimate.build();
-
-var boronscrewMetalMicroLathe_basic = mods.modularmachinery.RecipeBuilder.newBuilder("boronscrewMetalMicroLathe_basic", "basic", 20, 0);
-boronscrewMetalMicroLathe_basic.addItemInput(<contenttweaker:material_part:1777> * 3);
-boronscrewMetalMicroLathe_basic.addItemOutput(<contenttweaker:material_part:1790>);
-boronscrewMetalMicroLathe_basic.addEnergyPerTickInput(4);
-boronscrewMetalMicroLathe_basic.build();
-
-var boronscrewMetalMicroLathe_advanced = mods.modularmachinery.RecipeBuilder.newBuilder("boronscrewMetalMicroLathe_advanced", "basic", 20, 0);
-boronscrewMetalMicroLathe_advanced.addItemInput(<contenttweaker:material_part:1777> * 3);
-boronscrewMetalMicroLathe_advanced.addItemOutput(<contenttweaker:material_part:1790>);
-boronscrewMetalMicroLathe_advanced.addFluidInput(<liquid:hydrogen> * 100);
-boronscrewMetalMicroLathe_advanced.addEnergyPerTickInput(1024);
-boronscrewMetalMicroLathe_advanced.build();
-
-var boronscrewMetalMicroLathe_industrial = mods.modularmachinery.RecipeBuilder.newBuilder("boronscrewMetalMicroLathe_industrial", "basic", 20, 0);
-boronscrewMetalMicroLathe_industrial.addItemInput(<contenttweaker:material_part:1777> * 3);
-boronscrewMetalMicroLathe_industrial.addItemOutput(<contenttweaker:material_part:1790>);
-boronscrewMetalMicroLathe_industrial.addFluidInput(<liquid:hydrogen> * 100);
-boronscrewMetalMicroLathe_industrial.addFluidInput(<liquid:cotc_data> * 100);
-boronscrewMetalMicroLathe_industrial.addEnergyPerTickInput(262144);
-boronscrewMetalMicroLathe_industrial.build();
-
-var boronscrewMetalMicroLathe_ultimate = mods.modularmachinery.RecipeBuilder.newBuilder("boronscrewMetalMicroLathe_ultimate", "basic", 20, 0);
-boronscrewMetalMicroLathe_ultimate.addItemInput(<contenttweaker:material_part:1777> * 3);
-boronscrewMetalMicroLathe_ultimate.addItemOutput(<contenttweaker:material_part:1790>);
-boronscrewMetalMicroLathe_ultimate.addFluidInput(<liquid:hydrogen> * 100);
-boronscrewMetalMicroLathe_ultimate.addFluidInput(<liquid:cotc_data> * 100);
-boronscrewMetalMicroLathe_ultimate.addFluidInput(<liquid:cotc_neg_red_matter> * 100);
-boronscrewMetalMicroLathe_ultimate.addFluidOutput(<liquid:cotc_pos_orange_matter> * 200);
-boronscrewMetalMicroLathe_ultimate.addEnergyPerTickInput(67108864);
-boronscrewMetalMicroLathe_ultimate.build();
-
-var boronboltMetalMicroLathe_basic = mods.modularmachinery.RecipeBuilder.newBuilder("boronboltMetalMicroLathe_basic", "basic", 20, 0);
-boronboltMetalMicroLathe_basic.addItemInput(<contenttweaker:material_part:1777> * 2);
-boronboltMetalMicroLathe_basic.addItemOutput(<contenttweaker:material_part:1789>);
-boronboltMetalMicroLathe_basic.addEnergyPerTickInput(4);
-boronboltMetalMicroLathe_basic.build();
-
-var boronboltMetalMicroLathe_advanced = mods.modularmachinery.RecipeBuilder.newBuilder("boronboltMetalMicroLathe_advanced", "basic", 20, 0);
-boronboltMetalMicroLathe_advanced.addItemInput(<contenttweaker:material_part:1777> * 2);
-boronboltMetalMicroLathe_advanced.addItemOutput(<contenttweaker:material_part:1789>);
-boronboltMetalMicroLathe_advanced.addFluidInput(<liquid:hydrogen> * 100);
-boronboltMetalMicroLathe_advanced.addEnergyPerTickInput(1024);
-boronboltMetalMicroLathe_advanced.build();
-
-var boronboltMetalMicroLathe_industrial = mods.modularmachinery.RecipeBuilder.newBuilder("boronboltMetalMicroLathe_industrial", "basic", 20, 0);
-boronboltMetalMicroLathe_industrial.addItemInput(<contenttweaker:material_part:1777> * 2);
-boronboltMetalMicroLathe_industrial.addItemOutput(<contenttweaker:material_part:1789>);
-boronboltMetalMicroLathe_industrial.addFluidInput(<liquid:hydrogen> * 100);
-boronboltMetalMicroLathe_industrial.addFluidInput(<liquid:cotc_data> * 100);
-boronboltMetalMicroLathe_industrial.addEnergyPerTickInput(262144);
-boronboltMetalMicroLathe_industrial.build();
-
-var boronboltMetalMicroLathe_ultimate = mods.modularmachinery.RecipeBuilder.newBuilder("boronboltMetalMicroLathe_ultimate", "basic", 20, 0);
-boronboltMetalMicroLathe_ultimate.addItemInput(<contenttweaker:material_part:1777> * 2);
-boronboltMetalMicroLathe_ultimate.addItemOutput(<contenttweaker:material_part:1789>);
-boronboltMetalMicroLathe_ultimate.addFluidInput(<liquid:hydrogen> * 100);
-boronboltMetalMicroLathe_ultimate.addFluidInput(<liquid:cotc_data> * 100);
-boronboltMetalMicroLathe_ultimate.addFluidInput(<liquid:cotc_neg_red_matter> * 100);
-boronboltMetalMicroLathe_ultimate.addFluidOutput(<liquid:cotc_pos_orange_matter> * 200);
-boronboltMetalMicroLathe_ultimate.addEnergyPerTickInput(67108864);
-boronboltMetalMicroLathe_ultimate.build();
-
-var boronboltSmallMetalMicroLathe_basic = mods.modularmachinery.RecipeBuilder.newBuilder("boronboltSmallMetalMicroLathe_basic", "basic", 20, 0);
-boronboltSmallMetalMicroLathe_basic.addItemInput(<contenttweaker:material_part:1777> * 1);
-boronboltSmallMetalMicroLathe_basic.addItemOutput(<contenttweaker:material_part:1801>);
-boronboltSmallMetalMicroLathe_basic.addEnergyPerTickInput(4);
-boronboltSmallMetalMicroLathe_basic.build();
-
-var boronboltSmallMetalMicroLathe_advanced = mods.modularmachinery.RecipeBuilder.newBuilder("boronboltSmallMetalMicroLathe_advanced", "basic", 20, 0);
-boronboltSmallMetalMicroLathe_advanced.addItemInput(<contenttweaker:material_part:1777> * 1);
-boronboltSmallMetalMicroLathe_advanced.addItemOutput(<contenttweaker:material_part:1801>);
-boronboltSmallMetalMicroLathe_advanced.addFluidInput(<liquid:hydrogen> * 100);
-boronboltSmallMetalMicroLathe_advanced.addEnergyPerTickInput(1024);
-boronboltSmallMetalMicroLathe_advanced.build();
-
-var boronboltSmallMetalMicroLathe_industrial = mods.modularmachinery.RecipeBuilder.newBuilder("boronboltSmallMetalMicroLathe_industrial", "basic", 20, 0);
-boronboltSmallMetalMicroLathe_industrial.addItemInput(<contenttweaker:material_part:1777> * 1);
-boronboltSmallMetalMicroLathe_industrial.addItemOutput(<contenttweaker:material_part:1801>);
-boronboltSmallMetalMicroLathe_industrial.addFluidInput(<liquid:hydrogen> * 100);
-boronboltSmallMetalMicroLathe_industrial.addFluidInput(<liquid:cotc_data> * 100);
-boronboltSmallMetalMicroLathe_industrial.addEnergyPerTickInput(262144);
-boronboltSmallMetalMicroLathe_industrial.build();
-
-var boronboltSmallMetalMicroLathe_ultimate = mods.modularmachinery.RecipeBuilder.newBuilder("boronboltSmallMetalMicroLathe_ultimate", "basic", 20, 0);
-boronboltSmallMetalMicroLathe_ultimate.addItemInput(<contenttweaker:material_part:1777> * 1);
-boronboltSmallMetalMicroLathe_ultimate.addItemOutput(<contenttweaker:material_part:1801>);
-boronboltSmallMetalMicroLathe_ultimate.addFluidInput(<liquid:hydrogen> * 100);
-boronboltSmallMetalMicroLathe_ultimate.addFluidInput(<liquid:cotc_data> * 100);
-boronboltSmallMetalMicroLathe_ultimate.addFluidInput(<liquid:cotc_neg_red_matter> * 100);
-boronboltSmallMetalMicroLathe_ultimate.addFluidOutput(<liquid:cotc_pos_orange_matter> * 200);
-boronboltSmallMetalMicroLathe_ultimate.addEnergyPerTickInput(67108864);
-boronboltSmallMetalMicroLathe_ultimate.build();
-
-var boronroundMetalMicroLathe_basic = mods.modularmachinery.RecipeBuilder.newBuilder("boronroundMetalMicroLathe_basic", "basic", 20, 0);
-boronroundMetalMicroLathe_basic.addItemInput(<contenttweaker:material_part:1777> * 1);
-boronroundMetalMicroLathe_basic.addItemOutput(<contenttweaker:material_part:1791>);
-boronroundMetalMicroLathe_basic.addEnergyPerTickInput(4);
-boronroundMetalMicroLathe_basic.build();
-
-var boronroundMetalMicroLathe_advanced = mods.modularmachinery.RecipeBuilder.newBuilder("boronroundMetalMicroLathe_advanced", "basic", 20, 0);
-boronroundMetalMicroLathe_advanced.addItemInput(<contenttweaker:material_part:1777> * 1);
-boronroundMetalMicroLathe_advanced.addItemOutput(<contenttweaker:material_part:1791>);
-boronroundMetalMicroLathe_advanced.addFluidInput(<liquid:hydrogen> * 100);
-boronroundMetalMicroLathe_advanced.addEnergyPerTickInput(1024);
-boronroundMetalMicroLathe_advanced.build();
-
-var boronroundMetalMicroLathe_industrial = mods.modularmachinery.RecipeBuilder.newBuilder("boronroundMetalMicroLathe_industrial", "basic", 20, 0);
-boronroundMetalMicroLathe_industrial.addItemInput(<contenttweaker:material_part:1777> * 1);
-boronroundMetalMicroLathe_industrial.addItemOutput(<contenttweaker:material_part:1791>);
-boronroundMetalMicroLathe_industrial.addFluidInput(<liquid:hydrogen> * 100);
-boronroundMetalMicroLathe_industrial.addFluidInput(<liquid:cotc_data> * 100);
-boronroundMetalMicroLathe_industrial.addEnergyPerTickInput(262144);
-boronroundMetalMicroLathe_industrial.build();
-
-var boronroundMetalMicroLathe_ultimate = mods.modularmachinery.RecipeBuilder.newBuilder("boronroundMetalMicroLathe_ultimate", "basic", 20, 0);
-boronroundMetalMicroLathe_ultimate.addItemInput(<contenttweaker:material_part:1777> * 1);
-boronroundMetalMicroLathe_ultimate.addItemOutput(<contenttweaker:material_part:1791>);
-boronroundMetalMicroLathe_ultimate.addFluidInput(<liquid:hydrogen> * 100);
-boronroundMetalMicroLathe_ultimate.addFluidInput(<liquid:cotc_data> * 100);
-boronroundMetalMicroLathe_ultimate.addFluidInput(<liquid:cotc_neg_red_matter> * 100);
-boronroundMetalMicroLathe_ultimate.addFluidOutput(<liquid:cotc_pos_orange_matter> * 200);
-boronroundMetalMicroLathe_ultimate.addEnergyPerTickInput(67108864);
-boronroundMetalMicroLathe_ultimate.build();
-
-var boronrodSmallMetalMicroLathe_basic = mods.modularmachinery.RecipeBuilder.newBuilder("boronrodSmallMetalMicroLathe_basic", "basic", 20, 0);
-boronrodSmallMetalMicroLathe_basic.addItemInput(<contenttweaker:material_part:1777> * 2);
-boronrodSmallMetalMicroLathe_basic.addItemOutput(<contenttweaker:material_part:1783>);
-boronrodSmallMetalMicroLathe_basic.addEnergyPerTickInput(4);
-boronrodSmallMetalMicroLathe_basic.build();
-
-var boronrodSmallMetalMicroLathe_advanced = mods.modularmachinery.RecipeBuilder.newBuilder("boronrodSmallMetalMicroLathe_advanced", "basic", 20, 0);
-boronrodSmallMetalMicroLathe_advanced.addItemInput(<contenttweaker:material_part:1777> * 2);
-boronrodSmallMetalMicroLathe_advanced.addItemOutput(<contenttweaker:material_part:1783>);
-boronrodSmallMetalMicroLathe_advanced.addFluidInput(<liquid:hydrogen> * 100);
-boronrodSmallMetalMicroLathe_advanced.addEnergyPerTickInput(1024);
-boronrodSmallMetalMicroLathe_advanced.build();
-
-var boronrodSmallMetalMicroLathe_industrial = mods.modularmachinery.RecipeBuilder.newBuilder("boronrodSmallMetalMicroLathe_industrial", "basic", 20, 0);
-boronrodSmallMetalMicroLathe_industrial.addItemInput(<contenttweaker:material_part:1777> * 2);
-boronrodSmallMetalMicroLathe_industrial.addItemOutput(<contenttweaker:material_part:1783>);
-boronrodSmallMetalMicroLathe_industrial.addFluidInput(<liquid:hydrogen> * 100);
-boronrodSmallMetalMicroLathe_industrial.addFluidInput(<liquid:cotc_data> * 100);
-boronrodSmallMetalMicroLathe_industrial.addEnergyPerTickInput(262144);
-boronrodSmallMetalMicroLathe_industrial.build();
-
-var boronrodSmallMetalMicroLathe_ultimate = mods.modularmachinery.RecipeBuilder.newBuilder("boronrodSmallMetalMicroLathe_ultimate", "basic", 20, 0);
-boronrodSmallMetalMicroLathe_ultimate.addItemInput(<contenttweaker:material_part:1777> * 2);
-boronrodSmallMetalMicroLathe_ultimate.addItemOutput(<contenttweaker:material_part:1783>);
-boronrodSmallMetalMicroLathe_ultimate.addFluidInput(<liquid:hydrogen> * 100);
-boronrodSmallMetalMicroLathe_ultimate.addFluidInput(<liquid:cotc_data> * 100);
-boronrodSmallMetalMicroLathe_ultimate.addFluidInput(<liquid:cotc_neg_red_matter> * 100);
-boronrodSmallMetalMicroLathe_ultimate.addFluidOutput(<liquid:cotc_pos_orange_matter> * 200);
-boronrodSmallMetalMicroLathe_ultimate.addEnergyPerTickInput(67108864);
-boronrodSmallMetalMicroLathe_ultimate.build();
-
-var boronspringMetalCoiller_basic = mods.modularmachinery.RecipeBuilder.newBuilder("boronspringMetalCoiller_basic", "basic", 200, 0);
-boronspringMetalCoiller_basic.addItemInput(<contenttweaker:material_part:1784>);
-boronspringMetalCoiller_basic.addItemOutput(<contenttweaker:material_part:1797>);
-boronspringMetalCoiller_basic.addEnergyPerTickInput(4);
-boronspringMetalCoiller_basic.build();
-
-var boronspringMetalCoiller_advanced = mods.modularmachinery.RecipeBuilder.newBuilder("boronspringMetalCoiller_advanced", "basic", 200, 0);
-boronspringMetalCoiller_advanced.addItemInput(<contenttweaker:material_part:1784>);
-boronspringMetalCoiller_advanced.addItemOutput(<contenttweaker:material_part:1797>);
-boronspringMetalCoiller_advanced.addFluidInput(<liquid:hydrogen> * 100);
-boronspringMetalCoiller_advanced.addEnergyPerTickInput(1024);
-boronspringMetalCoiller_advanced.build();
-
-var boronspringMetalCoiller_industrial = mods.modularmachinery.RecipeBuilder.newBuilder("boronspringMetalCoiller_industrial", "basic", 200, 0);
-boronspringMetalCoiller_industrial.addItemInput(<contenttweaker:material_part:1784>);
-boronspringMetalCoiller_industrial.addItemOutput(<contenttweaker:material_part:1797>);
-boronspringMetalCoiller_industrial.addFluidInput(<liquid:hydrogen> * 100);
-boronspringMetalCoiller_industrial.addFluidInput(<liquid:cotc_data> * 100);
-boronspringMetalCoiller_industrial.addEnergyPerTickInput(262144);
-boronspringMetalCoiller_industrial.build();
-
-var boronspringMetalCoiller_ultimate = mods.modularmachinery.RecipeBuilder.newBuilder("boronspringMetalCoiller_ultimate", "basic", 200, 0);
-boronspringMetalCoiller_ultimate.addItemInput(<contenttweaker:material_part:1784>);
-boronspringMetalCoiller_ultimate.addItemOutput(<contenttweaker:material_part:1797>);
-boronspringMetalCoiller_ultimate.addFluidInput(<liquid:hydrogen> * 100);
-boronspringMetalCoiller_ultimate.addFluidInput(<liquid:cotc_data> * 100);
-boronspringMetalCoiller_ultimate.addFluidInput(<liquid:cotc_neg_red_matter> * 100);
-boronspringMetalCoiller_ultimate.addFluidOutput(<liquid:cotc_pos_orange_matter> * 200);
-boronspringMetalCoiller_ultimate.addEnergyPerTickInput(67108864);
-boronspringMetalCoiller_ultimate.build();
-
-var boronspringLargeMetalCoiller_basic = mods.modularmachinery.RecipeBuilder.newBuilder("boronspringLargeMetalCoiller_basic", "basic", 200, 0);
-boronspringLargeMetalCoiller_basic.addItemInput(<contenttweaker:material_part:1785>);
-boronspringLargeMetalCoiller_basic.addItemOutput(<contenttweaker:material_part:1787>);
-boronspringLargeMetalCoiller_basic.addEnergyPerTickInput(4);
-boronspringLargeMetalCoiller_basic.build();
-
-var boronspringLargeMetalCoiller_advanced = mods.modularmachinery.RecipeBuilder.newBuilder("boronspringLargeMetalCoiller_advanced", "basic", 200, 0);
-boronspringLargeMetalCoiller_advanced.addItemInput(<contenttweaker:material_part:1785>);
-boronspringLargeMetalCoiller_advanced.addItemOutput(<contenttweaker:material_part:1787>);
-boronspringLargeMetalCoiller_advanced.addFluidInput(<liquid:hydrogen> * 100);
-boronspringLargeMetalCoiller_advanced.addEnergyPerTickInput(1024);
-boronspringLargeMetalCoiller_advanced.build();
-
-var boronspringLargeMetalCoiller_industrial = mods.modularmachinery.RecipeBuilder.newBuilder("boronspringLargeMetalCoiller_industrial", "basic", 200, 0);
-boronspringLargeMetalCoiller_industrial.addItemInput(<contenttweaker:material_part:1785>);
-boronspringLargeMetalCoiller_industrial.addItemOutput(<contenttweaker:material_part:1787>);
-boronspringLargeMetalCoiller_industrial.addFluidInput(<liquid:hydrogen> * 100);
-boronspringLargeMetalCoiller_industrial.addFluidInput(<liquid:cotc_data> * 100);
-boronspringLargeMetalCoiller_industrial.addEnergyPerTickInput(262144);
-boronspringLargeMetalCoiller_industrial.build();
-
-var boronspringLargeMetalCoiller_ultimate = mods.modularmachinery.RecipeBuilder.newBuilder("boronspringLargeMetalCoiller_ultimate", "basic", 200, 0);
-boronspringLargeMetalCoiller_ultimate.addItemInput(<contenttweaker:material_part:1785>);
-boronspringLargeMetalCoiller_ultimate.addItemOutput(<contenttweaker:material_part:1787>);
-boronspringLargeMetalCoiller_ultimate.addFluidInput(<liquid:hydrogen> * 100);
-boronspringLargeMetalCoiller_ultimate.addFluidInput(<liquid:cotc_data> * 100);
-boronspringLargeMetalCoiller_ultimate.addFluidInput(<liquid:cotc_neg_red_matter> * 100);
-boronspringLargeMetalCoiller_ultimate.addFluidOutput(<liquid:cotc_pos_orange_matter> * 200);
-boronspringLargeMetalCoiller_ultimate.addEnergyPerTickInput(67108864);
-boronspringLargeMetalCoiller_ultimate.build();
-
-var boroncoilMetalCoiller_basic = mods.modularmachinery.RecipeBuilder.newBuilder("boroncoilMetalCoiller_basic", "basic", 200, 0);
-boroncoilMetalCoiller_basic.addItemInput(<contenttweaker:material_part:1809>);
-boroncoilMetalCoiller_basic.addItemOutput(<contenttweaker:material_part:1812>);
-boroncoilMetalCoiller_basic.addEnergyPerTickInput(4);
-boroncoilMetalCoiller_basic.build();
-
-var boroncoilMetalCoiller_advanced = mods.modularmachinery.RecipeBuilder.newBuilder("boroncoilMetalCoiller_advanced", "basic", 200, 0);
-boroncoilMetalCoiller_advanced.addItemInput(<contenttweaker:material_part:1809>);
-boroncoilMetalCoiller_advanced.addItemOutput(<contenttweaker:material_part:1812>);
-boroncoilMetalCoiller_advanced.addFluidInput(<liquid:hydrogen> * 100);
-boroncoilMetalCoiller_advanced.addEnergyPerTickInput(1024);
-boroncoilMetalCoiller_advanced.build();
-
-var boroncoilMetalCoiller_industrial = mods.modularmachinery.RecipeBuilder.newBuilder("boroncoilMetalCoiller_industrial", "basic", 200, 0);
-boroncoilMetalCoiller_industrial.addItemInput(<contenttweaker:material_part:1809>);
-boroncoilMetalCoiller_industrial.addItemOutput(<contenttweaker:material_part:1812>);
-boroncoilMetalCoiller_industrial.addFluidInput(<liquid:hydrogen> * 100);
-boroncoilMetalCoiller_industrial.addFluidInput(<liquid:cotc_data> * 100);
-boroncoilMetalCoiller_industrial.addEnergyPerTickInput(262144);
-boroncoilMetalCoiller_industrial.build();
-
-var boroncoilMetalCoiller_ultimate = mods.modularmachinery.RecipeBuilder.newBuilder("boroncoilMetalCoiller_ultimate", "basic", 200, 0);
-boroncoilMetalCoiller_ultimate.addItemInput(<contenttweaker:material_part:1809>);
-boroncoilMetalCoiller_ultimate.addItemOutput(<contenttweaker:material_part:1812>);
-boroncoilMetalCoiller_ultimate.addFluidInput(<liquid:hydrogen> * 100);
-boroncoilMetalCoiller_ultimate.addFluidInput(<liquid:cotc_data> * 100);
-boroncoilMetalCoiller_ultimate.addFluidInput(<liquid:cotc_neg_red_matter> * 100);
-boroncoilMetalCoiller_ultimate.addFluidOutput(<liquid:cotc_pos_orange_matter> * 200);
-boroncoilMetalCoiller_ultimate.addEnergyPerTickInput(67108864);
-boroncoilMetalCoiller_ultimate.build();
-
-var boronplateCurvedMetalHeatedBender_basic = mods.modularmachinery.RecipeBuilder.newBuilder("boronplateCurvedMetalHeatedBender_basic", "basic", 200, 0);
-boronplateCurvedMetalHeatedBender_basic.addItemInput(<contenttweaker:material_part:1779>);
-boronplateCurvedMetalHeatedBender_basic.addItemOutput(<contenttweaker:material_part:1780>);
-boronplateCurvedMetalHeatedBender_basic.addEnergyPerTickInput(4);
-boronplateCurvedMetalHeatedBender_basic.build();
-
-var boronplateCurvedMetalHeatedBender_advanced = mods.modularmachinery.RecipeBuilder.newBuilder("boronplateCurvedMetalHeatedBender_advanced", "basic", 200, 0);
-boronplateCurvedMetalHeatedBender_advanced.addItemInput(<contenttweaker:material_part:1779>);
-boronplateCurvedMetalHeatedBender_advanced.addItemOutput(<contenttweaker:material_part:1780>);
-boronplateCurvedMetalHeatedBender_advanced.addFluidInput(<liquid:hydrogen> * 100);
-boronplateCurvedMetalHeatedBender_advanced.addEnergyPerTickInput(1024);
-boronplateCurvedMetalHeatedBender_advanced.build();
-
-var boronplateCurvedMetalHeatedBender_industrial = mods.modularmachinery.RecipeBuilder.newBuilder("boronplateCurvedMetalHeatedBender_industrial", "basic", 200, 0);
-boronplateCurvedMetalHeatedBender_industrial.addItemInput(<contenttweaker:material_part:1779>);
-boronplateCurvedMetalHeatedBender_industrial.addItemOutput(<contenttweaker:material_part:1780>);
-boronplateCurvedMetalHeatedBender_industrial.addFluidInput(<liquid:hydrogen> * 100);
-boronplateCurvedMetalHeatedBender_industrial.addFluidInput(<liquid:cotc_data> * 100);
-boronplateCurvedMetalHeatedBender_industrial.addEnergyPerTickInput(262144);
-boronplateCurvedMetalHeatedBender_industrial.build();
-
-var boronplateCurvedMetalHeatedBender_ultimate = mods.modularmachinery.RecipeBuilder.newBuilder("boronplateCurvedMetalHeatedBender_ultimate", "basic", 200, 0);
-boronplateCurvedMetalHeatedBender_ultimate.addItemInput(<contenttweaker:material_part:1779>);
-boronplateCurvedMetalHeatedBender_ultimate.addItemOutput(<contenttweaker:material_part:1780>);
-boronplateCurvedMetalHeatedBender_ultimate.addFluidInput(<liquid:hydrogen> * 100);
-boronplateCurvedMetalHeatedBender_ultimate.addFluidInput(<liquid:cotc_data> * 100);
-boronplateCurvedMetalHeatedBender_ultimate.addFluidInput(<liquid:cotc_neg_red_matter> * 100);
-boronplateCurvedMetalHeatedBender_ultimate.addFluidOutput(<liquid:cotc_pos_orange_matter> * 200);
-boronplateCurvedMetalHeatedBender_ultimate.addEnergyPerTickInput(67108864);
-boronplateCurvedMetalHeatedBender_ultimate.build();
-
-var boronplateCurvedSmallMetalHeatedBender_basic = mods.modularmachinery.RecipeBuilder.newBuilder("boronplateCurvedSmallMetalHeatedBender_basic", "basic", 200, 0);
-boronplateCurvedSmallMetalHeatedBender_basic.addItemInput(<contenttweaker:material_part:1796>);
-boronplateCurvedSmallMetalHeatedBender_basic.addItemOutput(<contenttweaker:material_part:8279>);
-boronplateCurvedSmallMetalHeatedBender_basic.addEnergyPerTickInput(4);
-boronplateCurvedSmallMetalHeatedBender_basic.build();
-
-var boronplateCurvedSmallMetalHeatedBender_advanced = mods.modularmachinery.RecipeBuilder.newBuilder("boronplateCurvedSmallMetalHeatedBender_advanced", "basic", 200, 0);
-boronplateCurvedSmallMetalHeatedBender_advanced.addItemInput(<contenttweaker:material_part:1796>);
-boronplateCurvedSmallMetalHeatedBender_advanced.addItemOutput(<contenttweaker:material_part:8279>);
-boronplateCurvedSmallMetalHeatedBender_advanced.addFluidInput(<liquid:hydrogen> * 100);
-boronplateCurvedSmallMetalHeatedBender_advanced.addEnergyPerTickInput(1024);
-boronplateCurvedSmallMetalHeatedBender_advanced.build();
-
-var boronplateCurvedSmallMetalHeatedBender_industrial = mods.modularmachinery.RecipeBuilder.newBuilder("boronplateCurvedSmallMetalHeatedBender_industrial", "basic", 200, 0);
-boronplateCurvedSmallMetalHeatedBender_industrial.addItemInput(<contenttweaker:material_part:1796>);
-boronplateCurvedSmallMetalHeatedBender_industrial.addItemOutput(<contenttweaker:material_part:8279>);
-boronplateCurvedSmallMetalHeatedBender_industrial.addFluidInput(<liquid:hydrogen> * 100);
-boronplateCurvedSmallMetalHeatedBender_industrial.addFluidInput(<liquid:cotc_data> * 100);
-boronplateCurvedSmallMetalHeatedBender_industrial.addEnergyPerTickInput(262144);
-boronplateCurvedSmallMetalHeatedBender_industrial.build();
-
-var boronplateCurvedSmallMetalHeatedBender_ultimate = mods.modularmachinery.RecipeBuilder.newBuilder("boronplateCurvedSmallMetalHeatedBender_ultimate", "basic", 200, 0);
-boronplateCurvedSmallMetalHeatedBender_ultimate.addItemInput(<contenttweaker:material_part:1796>);
-boronplateCurvedSmallMetalHeatedBender_ultimate.addItemOutput(<contenttweaker:material_part:8279>);
-boronplateCurvedSmallMetalHeatedBender_ultimate.addFluidInput(<liquid:hydrogen> * 100);
-boronplateCurvedSmallMetalHeatedBender_ultimate.addFluidInput(<liquid:cotc_data> * 100);
-boronplateCurvedSmallMetalHeatedBender_ultimate.addFluidInput(<liquid:cotc_neg_red_matter> * 100);
-boronplateCurvedSmallMetalHeatedBender_ultimate.addFluidOutput(<liquid:cotc_pos_orange_matter> * 200);
-boronplateCurvedSmallMetalHeatedBender_ultimate.addEnergyPerTickInput(67108864);
-boronplateCurvedSmallMetalHeatedBender_ultimate.build();
-
-var boronringMetalHeatedBender_basic = mods.modularmachinery.RecipeBuilder.newBuilder("boronringMetalHeatedBender_basic", "basic", 200, 0);
-boronringMetalHeatedBender_basic.addItemInput(<contenttweaker:material_part:1784>);
-boronringMetalHeatedBender_basic.addItemOutput(<contenttweaker:material_part:1793>);
-boronringMetalHeatedBender_basic.addEnergyPerTickInput(4);
-boronringMetalHeatedBender_basic.build();
-
-var boronringMetalHeatedBender_advanced = mods.modularmachinery.RecipeBuilder.newBuilder("boronringMetalHeatedBender_advanced", "basic", 200, 0);
-boronringMetalHeatedBender_advanced.addItemInput(<contenttweaker:material_part:1784>);
-boronringMetalHeatedBender_advanced.addItemOutput(<contenttweaker:material_part:1793>);
-boronringMetalHeatedBender_advanced.addFluidInput(<liquid:hydrogen> * 100);
-boronringMetalHeatedBender_advanced.addEnergyPerTickInput(1024);
-boronringMetalHeatedBender_advanced.build();
-
-var boronringMetalHeatedBender_industrial = mods.modularmachinery.RecipeBuilder.newBuilder("boronringMetalHeatedBender_industrial", "basic", 200, 0);
-boronringMetalHeatedBender_industrial.addItemInput(<contenttweaker:material_part:1784>);
-boronringMetalHeatedBender_industrial.addItemOutput(<contenttweaker:material_part:1793>);
-boronringMetalHeatedBender_industrial.addFluidInput(<liquid:hydrogen> * 100);
-boronringMetalHeatedBender_industrial.addFluidInput(<liquid:cotc_data> * 100);
-boronringMetalHeatedBender_industrial.addEnergyPerTickInput(262144);
-boronringMetalHeatedBender_industrial.build();
-
-var boronringMetalHeatedBender_ultimate = mods.modularmachinery.RecipeBuilder.newBuilder("boronringMetalHeatedBender_ultimate", "basic", 200, 0);
-boronringMetalHeatedBender_ultimate.addItemInput(<contenttweaker:material_part:1784>);
-boronringMetalHeatedBender_ultimate.addItemOutput(<contenttweaker:material_part:1793>);
-boronringMetalHeatedBender_ultimate.addFluidInput(<liquid:hydrogen> * 100);
-boronringMetalHeatedBender_ultimate.addFluidInput(<liquid:cotc_data> * 100);
-boronringMetalHeatedBender_ultimate.addFluidInput(<liquid:cotc_neg_red_matter> * 100);
-boronringMetalHeatedBender_ultimate.addFluidOutput(<liquid:cotc_pos_orange_matter> * 200);
-boronringMetalHeatedBender_ultimate.addEnergyPerTickInput(67108864);
-boronringMetalHeatedBender_ultimate.build();
-
-var boronringSmallMetalHeatedBender_basic = mods.modularmachinery.RecipeBuilder.newBuilder("boronringSmallMetalHeatedBender_basic", "basic", 200, 0);
-boronringSmallMetalHeatedBender_basic.addItemInput(<contenttweaker:material_part:1783>);
-boronringSmallMetalHeatedBender_basic.addItemOutput(<contenttweaker:material_part:8278>);
-boronringSmallMetalHeatedBender_basic.addEnergyPerTickInput(4);
-boronringSmallMetalHeatedBender_basic.build();
-
-var boronringSmallMetalHeatedBender_advanced = mods.modularmachinery.RecipeBuilder.newBuilder("boronringSmallMetalHeatedBender_advanced", "basic", 200, 0);
-boronringSmallMetalHeatedBender_advanced.addItemInput(<contenttweaker:material_part:1783>);
-boronringSmallMetalHeatedBender_advanced.addItemOutput(<contenttweaker:material_part:8278>);
-boronringSmallMetalHeatedBender_advanced.addFluidInput(<liquid:hydrogen> * 100);
-boronringSmallMetalHeatedBender_advanced.addEnergyPerTickInput(1024);
-boronringSmallMetalHeatedBender_advanced.build();
-
-var boronringSmallMetalHeatedBender_industrial = mods.modularmachinery.RecipeBuilder.newBuilder("boronringSmallMetalHeatedBender_industrial", "basic", 200, 0);
-boronringSmallMetalHeatedBender_industrial.addItemInput(<contenttweaker:material_part:1783>);
-boronringSmallMetalHeatedBender_industrial.addItemOutput(<contenttweaker:material_part:8278>);
-boronringSmallMetalHeatedBender_industrial.addFluidInput(<liquid:hydrogen> * 100);
-boronringSmallMetalHeatedBender_industrial.addFluidInput(<liquid:cotc_data> * 100);
-boronringSmallMetalHeatedBender_industrial.addEnergyPerTickInput(262144);
-boronringSmallMetalHeatedBender_industrial.build();
-
-var boronringSmallMetalHeatedBender_ultimate = mods.modularmachinery.RecipeBuilder.newBuilder("boronringSmallMetalHeatedBender_ultimate", "basic", 200, 0);
-boronringSmallMetalHeatedBender_ultimate.addItemInput(<contenttweaker:material_part:1783>);
-boronringSmallMetalHeatedBender_ultimate.addItemOutput(<contenttweaker:material_part:8278>);
-boronringSmallMetalHeatedBender_ultimate.addFluidInput(<liquid:hydrogen> * 100);
-boronringSmallMetalHeatedBender_ultimate.addFluidInput(<liquid:cotc_data> * 100);
-boronringSmallMetalHeatedBender_ultimate.addFluidInput(<liquid:cotc_neg_red_matter> * 100);
-boronringSmallMetalHeatedBender_ultimate.addFluidOutput(<liquid:cotc_pos_orange_matter> * 200);
-boronringSmallMetalHeatedBender_ultimate.addEnergyPerTickInput(67108864);
-boronringSmallMetalHeatedBender_ultimate.build();
-
-var borondrillheadMetalSharpen_basic = mods.modularmachinery.RecipeBuilder.newBuilder("borondrillheadMetalSharpen_basic", "basic", 80, 0);
-borondrillheadMetalSharpen_basic.addItemInput(<contenttweaker:material_part:8283>);
-borondrillheadMetalSharpen_basic.addItemOutput(<contenttweaker:material_part:1805>);
-borondrillheadMetalSharpen_basic.addEnergyPerTickInput(4);
-borondrillheadMetalSharpen_basic.build();
-
-var borondrillheadMetalSharpen_advanced = mods.modularmachinery.RecipeBuilder.newBuilder("borondrillheadMetalSharpen_advanced", "basic", 80, 0);
-borondrillheadMetalSharpen_advanced.addItemInput(<contenttweaker:material_part:8283>);
-borondrillheadMetalSharpen_advanced.addItemOutput(<contenttweaker:material_part:1805>);
-borondrillheadMetalSharpen_advanced.addFluidInput(<liquid:hydrogen> * 100);
-borondrillheadMetalSharpen_advanced.addEnergyPerTickInput(1024);
-borondrillheadMetalSharpen_advanced.build();
-
-var borondrillheadMetalSharpen_industrial = mods.modularmachinery.RecipeBuilder.newBuilder("borondrillheadMetalSharpen_industrial", "basic", 80, 0);
-borondrillheadMetalSharpen_industrial.addItemInput(<contenttweaker:material_part:8283>);
-borondrillheadMetalSharpen_industrial.addItemOutput(<contenttweaker:material_part:1805>);
-borondrillheadMetalSharpen_industrial.addFluidInput(<liquid:hydrogen> * 100);
-borondrillheadMetalSharpen_industrial.addFluidInput(<liquid:cotc_data> * 100);
-borondrillheadMetalSharpen_industrial.addEnergyPerTickInput(262144);
-borondrillheadMetalSharpen_industrial.build();
-
-var borondrillheadMetalSharpen_ultimate = mods.modularmachinery.RecipeBuilder.newBuilder("borondrillheadMetalSharpen_ultimate", "basic", 80, 0);
-borondrillheadMetalSharpen_ultimate.addItemInput(<contenttweaker:material_part:8283>);
-borondrillheadMetalSharpen_ultimate.addItemOutput(<contenttweaker:material_part:1805>);
-borondrillheadMetalSharpen_ultimate.addFluidInput(<liquid:hydrogen> * 100);
-borondrillheadMetalSharpen_ultimate.addFluidInput(<liquid:cotc_data> * 100);
-borondrillheadMetalSharpen_ultimate.addFluidInput(<liquid:cotc_neg_red_matter> * 100);
-borondrillheadMetalSharpen_ultimate.addFluidOutput(<liquid:cotc_pos_orange_matter> * 200);
-borondrillheadMetalSharpen_ultimate.addEnergyPerTickInput(67108864);
-borondrillheadMetalSharpen_ultimate.build();
-
-var boronwireMetalWiremill_basic = mods.modularmachinery.RecipeBuilder.newBuilder("boronwireMetalWiremill_basic", "basic", 120, 0);
-boronwireMetalWiremill_basic.addItemInput(<contenttweaker:material_part:1784>);
-boronwireMetalWiremill_basic.addItemOutput(<contenttweaker:material_part:1809>);
-boronwireMetalWiremill_basic.addEnergyPerTickInput(4);
-boronwireMetalWiremill_basic.build();
-
-var boronwireMetalWiremill_advanced = mods.modularmachinery.RecipeBuilder.newBuilder("boronwireMetalWiremill_advanced", "basic", 120, 0);
-boronwireMetalWiremill_advanced.addItemInput(<contenttweaker:material_part:1784>);
-boronwireMetalWiremill_advanced.addItemOutput(<contenttweaker:material_part:1809>);
-boronwireMetalWiremill_advanced.addFluidInput(<liquid:hydrogen> * 100);
-boronwireMetalWiremill_advanced.addEnergyPerTickInput(1024);
-boronwireMetalWiremill_advanced.build();
-
-var boronwireMetalWiremill_industrial = mods.modularmachinery.RecipeBuilder.newBuilder("boronwireMetalWiremill_industrial", "basic", 120, 0);
-boronwireMetalWiremill_industrial.addItemInput(<contenttweaker:material_part:1784>);
-boronwireMetalWiremill_industrial.addItemOutput(<contenttweaker:material_part:1809>);
-boronwireMetalWiremill_industrial.addFluidInput(<liquid:hydrogen> * 100);
-boronwireMetalWiremill_industrial.addFluidInput(<liquid:cotc_data> * 100);
-boronwireMetalWiremill_industrial.addEnergyPerTickInput(262144);
-boronwireMetalWiremill_industrial.build();
-
-var boronwireMetalWiremill_ultimate = mods.modularmachinery.RecipeBuilder.newBuilder("boronwireMetalWiremill_ultimate", "basic", 120, 0);
-boronwireMetalWiremill_ultimate.addItemInput(<contenttweaker:material_part:1784>);
-boronwireMetalWiremill_ultimate.addItemOutput(<contenttweaker:material_part:1809>);
-boronwireMetalWiremill_ultimate.addFluidInput(<liquid:hydrogen> * 100);
-boronwireMetalWiremill_ultimate.addFluidInput(<liquid:cotc_data> * 100);
-boronwireMetalWiremill_ultimate.addFluidInput(<liquid:cotc_neg_red_matter> * 100);
-boronwireMetalWiremill_ultimate.addFluidOutput(<liquid:cotc_pos_orange_matter> * 200);
-boronwireMetalWiremill_ultimate.addEnergyPerTickInput(67108864);
-boronwireMetalWiremill_ultimate.build();
-
-var boronwireDenseMetalWiremill_basic = mods.modularmachinery.RecipeBuilder.newBuilder("boronwireDenseMetalWiremill_basic", "basic", 120, 0);
-boronwireDenseMetalWiremill_basic.addItemInput(<contenttweaker:material_part:8280>);
-boronwireDenseMetalWiremill_basic.addItemOutput(<contenttweaker:material_part:1811>);
-boronwireDenseMetalWiremill_basic.addEnergyPerTickInput(4);
-boronwireDenseMetalWiremill_basic.build();
-
-var boronwireDenseMetalWiremill_advanced = mods.modularmachinery.RecipeBuilder.newBuilder("boronwireDenseMetalWiremill_advanced", "basic", 120, 0);
-boronwireDenseMetalWiremill_advanced.addItemInput(<contenttweaker:material_part:8280>);
-boronwireDenseMetalWiremill_advanced.addItemOutput(<contenttweaker:material_part:1811>);
-boronwireDenseMetalWiremill_advanced.addFluidInput(<liquid:hydrogen> * 100);
-boronwireDenseMetalWiremill_advanced.addEnergyPerTickInput(1024);
-boronwireDenseMetalWiremill_advanced.build();
-
-var boronwireDenseMetalWiremill_industrial = mods.modularmachinery.RecipeBuilder.newBuilder("boronwireDenseMetalWiremill_industrial", "basic", 120, 0);
-boronwireDenseMetalWiremill_industrial.addItemInput(<contenttweaker:material_part:8280>);
-boronwireDenseMetalWiremill_industrial.addItemOutput(<contenttweaker:material_part:1811>);
-boronwireDenseMetalWiremill_industrial.addFluidInput(<liquid:hydrogen> * 100);
-boronwireDenseMetalWiremill_industrial.addFluidInput(<liquid:cotc_data> * 100);
-boronwireDenseMetalWiremill_industrial.addEnergyPerTickInput(262144);
-boronwireDenseMetalWiremill_industrial.build();
-
-var boronwireDenseMetalWiremill_ultimate = mods.modularmachinery.RecipeBuilder.newBuilder("boronwireDenseMetalWiremill_ultimate", "basic", 120, 0);
-boronwireDenseMetalWiremill_ultimate.addItemInput(<contenttweaker:material_part:8280>);
-boronwireDenseMetalWiremill_ultimate.addItemOutput(<contenttweaker:material_part:1811>);
-boronwireDenseMetalWiremill_ultimate.addFluidInput(<liquid:hydrogen> * 100);
-boronwireDenseMetalWiremill_ultimate.addFluidInput(<liquid:cotc_data> * 100);
-boronwireDenseMetalWiremill_ultimate.addFluidInput(<liquid:cotc_neg_red_matter> * 100);
-boronwireDenseMetalWiremill_ultimate.addFluidOutput(<liquid:cotc_pos_orange_matter> * 200);
-boronwireDenseMetalWiremill_ultimate.addEnergyPerTickInput(67108864);
-boronwireDenseMetalWiremill_ultimate.build();
-
-var boronwireFineMetalWiremill_basic = mods.modularmachinery.RecipeBuilder.newBuilder("boronwireFineMetalWiremill_basic", "basic", 120, 0);
-boronwireFineMetalWiremill_basic.addItemInput(<contenttweaker:material_part:1783>);
-boronwireFineMetalWiremill_basic.addItemOutput(<contenttweaker:material_part:1810>);
-boronwireFineMetalWiremill_basic.addEnergyPerTickInput(4);
-boronwireFineMetalWiremill_basic.build();
-
-var boronwireFineMetalWiremill_advanced = mods.modularmachinery.RecipeBuilder.newBuilder("boronwireFineMetalWiremill_advanced", "basic", 120, 0);
-boronwireFineMetalWiremill_advanced.addItemInput(<contenttweaker:material_part:1783>);
-boronwireFineMetalWiremill_advanced.addItemOutput(<contenttweaker:material_part:1810>);
-boronwireFineMetalWiremill_advanced.addFluidInput(<liquid:hydrogen> * 100);
-boronwireFineMetalWiremill_advanced.addEnergyPerTickInput(1024);
-boronwireFineMetalWiremill_advanced.build();
-
-var boronwireFineMetalWiremill_industrial = mods.modularmachinery.RecipeBuilder.newBuilder("boronwireFineMetalWiremill_industrial", "basic", 120, 0);
-boronwireFineMetalWiremill_industrial.addItemInput(<contenttweaker:material_part:1783>);
-boronwireFineMetalWiremill_industrial.addItemOutput(<contenttweaker:material_part:1810>);
-boronwireFineMetalWiremill_industrial.addFluidInput(<liquid:hydrogen> * 100);
-boronwireFineMetalWiremill_industrial.addFluidInput(<liquid:cotc_data> * 100);
-boronwireFineMetalWiremill_industrial.addEnergyPerTickInput(262144);
-boronwireFineMetalWiremill_industrial.build();
-
-var boronwireFineMetalWiremill_ultimate = mods.modularmachinery.RecipeBuilder.newBuilder("boronwireFineMetalWiremill_ultimate", "basic", 120, 0);
-boronwireFineMetalWiremill_ultimate.addItemInput(<contenttweaker:material_part:1783>);
-boronwireFineMetalWiremill_ultimate.addItemOutput(<contenttweaker:material_part:1810>);
-boronwireFineMetalWiremill_ultimate.addFluidInput(<liquid:hydrogen> * 100);
-boronwireFineMetalWiremill_ultimate.addFluidInput(<liquid:cotc_data> * 100);
-boronwireFineMetalWiremill_ultimate.addFluidInput(<liquid:cotc_neg_red_matter> * 100);
-boronwireFineMetalWiremill_ultimate.addFluidOutput(<liquid:cotc_pos_orange_matter> * 200);
-boronwireFineMetalWiremill_ultimate.addEnergyPerTickInput(67108864);
-boronwireFineMetalWiremill_ultimate.build();
-
-var sodiumdustMalleableMelting_basic = mods.modularmachinery.RecipeBuilder.newBuilder("sodiumdustMalleableMelting_basic", "basic", 60, 0);
-sodiumdustMalleableMelting_basic.addItemInput(<contenttweaker:material_part:1117>);
-sodiumdustMalleableMelting_basic.addFluidOutput(<liquid:cotm_sodium_molten> * 144);
-sodiumdustMalleableMelting_basic.addEnergyPerTickInput(4);
-sodiumdustMalleableMelting_basic.build();
-
-var sodiumdustMalleableMelting_advanced = mods.modularmachinery.RecipeBuilder.newBuilder("sodiumdustMalleableMelting_advanced", "basic", 60, 0);
-sodiumdustMalleableMelting_advanced.addItemInput(<contenttweaker:material_part:1117>);
-sodiumdustMalleableMelting_advanced.addFluidOutput(<liquid:cotm_sodium_molten> * 144);
-sodiumdustMalleableMelting_advanced.addFluidInput(<liquid:hydrogen> * 100);
-sodiumdustMalleableMelting_advanced.addEnergyPerTickInput(1024);
-sodiumdustMalleableMelting_advanced.build();
-
-var sodiumdustMalleableMelting_industrial = mods.modularmachinery.RecipeBuilder.newBuilder("sodiumdustMalleableMelting_industrial", "basic", 60, 0);
-sodiumdustMalleableMelting_industrial.addItemInput(<contenttweaker:material_part:1117>);
-sodiumdustMalleableMelting_industrial.addFluidOutput(<liquid:cotm_sodium_molten> * 144);
-sodiumdustMalleableMelting_industrial.addFluidInput(<liquid:hydrogen> * 100);
-sodiumdustMalleableMelting_industrial.addFluidInput(<liquid:cotc_data> * 100);
-sodiumdustMalleableMelting_industrial.addEnergyPerTickInput(262144);
-sodiumdustMalleableMelting_industrial.build();
-
-var sodiumdustMalleableMelting_ultimate = mods.modularmachinery.RecipeBuilder.newBuilder("sodiumdustMalleableMelting_ultimate", "basic", 60, 0);
-sodiumdustMalleableMelting_ultimate.addItemInput(<contenttweaker:material_part:1117>);
-sodiumdustMalleableMelting_ultimate.addFluidOutput(<liquid:cotm_sodium_molten> * 144);
-sodiumdustMalleableMelting_ultimate.addFluidInput(<liquid:hydrogen> * 100);
-sodiumdustMalleableMelting_ultimate.addFluidInput(<liquid:cotc_data> * 100);
-sodiumdustMalleableMelting_ultimate.addFluidInput(<liquid:cotc_neg_red_matter> * 100);
-sodiumdustMalleableMelting_ultimate.addFluidOutput(<liquid:cotc_pos_orange_matter> * 200);
-sodiumdustMalleableMelting_ultimate.addEnergyPerTickInput(67108864);
-sodiumdustMalleableMelting_ultimate.build();
-
-var sodiumdustSmallMalleableMelting_basic = mods.modularmachinery.RecipeBuilder.newBuilder("sodiumdustSmallMalleableMelting_basic", "basic", 60, 0);
-sodiumdustSmallMalleableMelting_basic.addItemInput(<contenttweaker:material_part:1118>);
-sodiumdustSmallMalleableMelting_basic.addFluidOutput(<liquid:cotm_sodium_molten> * 36);
-sodiumdustSmallMalleableMelting_basic.addEnergyPerTickInput(4);
-sodiumdustSmallMalleableMelting_basic.build();
-
-var sodiumdustSmallMalleableMelting_advanced = mods.modularmachinery.RecipeBuilder.newBuilder("sodiumdustSmallMalleableMelting_advanced", "basic", 60, 0);
-sodiumdustSmallMalleableMelting_advanced.addItemInput(<contenttweaker:material_part:1118>);
-sodiumdustSmallMalleableMelting_advanced.addFluidOutput(<liquid:cotm_sodium_molten> * 36);
-sodiumdustSmallMalleableMelting_advanced.addFluidInput(<liquid:hydrogen> * 100);
-sodiumdustSmallMalleableMelting_advanced.addEnergyPerTickInput(1024);
-sodiumdustSmallMalleableMelting_advanced.build();
-
-var sodiumdustSmallMalleableMelting_industrial = mods.modularmachinery.RecipeBuilder.newBuilder("sodiumdustSmallMalleableMelting_industrial", "basic", 60, 0);
-sodiumdustSmallMalleableMelting_industrial.addItemInput(<contenttweaker:material_part:1118>);
-sodiumdustSmallMalleableMelting_industrial.addFluidOutput(<liquid:cotm_sodium_molten> * 36);
-sodiumdustSmallMalleableMelting_industrial.addFluidInput(<liquid:hydrogen> * 100);
-sodiumdustSmallMalleableMelting_industrial.addFluidInput(<liquid:cotc_data> * 100);
-sodiumdustSmallMalleableMelting_industrial.addEnergyPerTickInput(262144);
-sodiumdustSmallMalleableMelting_industrial.build();
-
-var sodiumdustSmallMalleableMelting_ultimate = mods.modularmachinery.RecipeBuilder.newBuilder("sodiumdustSmallMalleableMelting_ultimate", "basic", 60, 0);
-sodiumdustSmallMalleableMelting_ultimate.addItemInput(<contenttweaker:material_part:1118>);
-sodiumdustSmallMalleableMelting_ultimate.addFluidOutput(<liquid:cotm_sodium_molten> * 36);
-sodiumdustSmallMalleableMelting_ultimate.addFluidInput(<liquid:hydrogen> * 100);
-sodiumdustSmallMalleableMelting_ultimate.addFluidInput(<liquid:cotc_data> * 100);
-sodiumdustSmallMalleableMelting_ultimate.addFluidInput(<liquid:cotc_neg_red_matter> * 100);
-sodiumdustSmallMalleableMelting_ultimate.addFluidOutput(<liquid:cotc_pos_orange_matter> * 200);
-sodiumdustSmallMalleableMelting_ultimate.addEnergyPerTickInput(67108864);
-sodiumdustSmallMalleableMelting_ultimate.build();
+var sodiumdustMetalPulverize_basic = mods.modularmachinery.RecipeBuilder.newBuilder("sodiumdustMetalPulverize_basic", "basic", 100, 0);
+sodiumdustMetalPulverize_basic.addItemInput(<contenttweaker:material_part:1813>);
+sodiumdustMetalPulverize_basic.addFluidInput(<liquid:cotm_sodium_molten> * 100);
+sodiumdustMetalPulverize_basic.addItemOutput(<contenttweaker:material_part:1117>);
+sodiumdustMetalPulverize_basic.addEnergyPerTickInput(4);
+sodiumdustMetalPulverize_basic.build();
+
+var sodiumdustMetalPulverize_advanced = mods.modularmachinery.RecipeBuilder.newBuilder("sodiumdustMetalPulverize_advanced", "basic", 100, 0);
+sodiumdustMetalPulverize_advanced.addItemInput(<contenttweaker:material_part:1813>);
+sodiumdustMetalPulverize_advanced.addFluidInput(<liquid:cotm_sodium_molten> * 100);
+sodiumdustMetalPulverize_advanced.addItemOutput(<contenttweaker:material_part:1117>);
+sodiumdustMetalPulverize_advanced.addFluidInput(<liquid:hydrogen> * 100);
+sodiumdustMetalPulverize_advanced.addEnergyPerTickInput(1024);
+sodiumdustMetalPulverize_advanced.build();
+
+var sodiumdustMetalPulverize_industrial = mods.modularmachinery.RecipeBuilder.newBuilder("sodiumdustMetalPulverize_industrial", "basic", 100, 0);
+sodiumdustMetalPulverize_industrial.addItemInput(<contenttweaker:material_part:1813>);
+sodiumdustMetalPulverize_industrial.addFluidInput(<liquid:cotm_sodium_molten> * 100);
+sodiumdustMetalPulverize_industrial.addItemOutput(<contenttweaker:material_part:1117>);
+sodiumdustMetalPulverize_industrial.addFluidInput(<liquid:hydrogen> * 100);
+sodiumdustMetalPulverize_industrial.addFluidInput(<liquid:cotc_data> * 100);
+sodiumdustMetalPulverize_industrial.addEnergyPerTickInput(262144);
+sodiumdustMetalPulverize_industrial.build();
+
+var sodiumdustMetalPulverize_ultimate = mods.modularmachinery.RecipeBuilder.newBuilder("sodiumdustMetalPulverize_ultimate", "basic", 100, 0);
+sodiumdustMetalPulverize_ultimate.addItemInput(<contenttweaker:material_part:1813>);
+sodiumdustMetalPulverize_ultimate.addFluidInput(<liquid:cotm_sodium_molten> * 100);
+sodiumdustMetalPulverize_ultimate.addItemOutput(<contenttweaker:material_part:1117>);
+sodiumdustMetalPulverize_ultimate.addFluidInput(<liquid:hydrogen> * 100);
+sodiumdustMetalPulverize_ultimate.addFluidInput(<liquid:cotc_data> * 100);
+sodiumdustMetalPulverize_ultimate.addFluidInput(<liquid:cotc_pos_red_matter> * 100);
+sodiumdustMetalPulverize_ultimate.addFluidOutput(<liquid:cotc_neg_orange_matter> * 100);
+sodiumdustMetalPulverize_ultimate.addEnergyPerTickInput(67108864);
+sodiumdustMetalPulverize_ultimate.build();
+
+var magnesiumdustMetalPulverize_basic = mods.modularmachinery.RecipeBuilder.newBuilder("magnesiumdustMetalPulverize_basic", "basic", 100, 0);
+magnesiumdustMetalPulverize_basic.addItemInput(<contenttweaker:material_part:1851>);
+magnesiumdustMetalPulverize_basic.addFluidInput(<liquid:cotm_magnesium_molten> * 100);
+magnesiumdustMetalPulverize_basic.addItemOutput(<contenttweaker:material_part:1120>);
+magnesiumdustMetalPulverize_basic.addEnergyPerTickInput(4);
+magnesiumdustMetalPulverize_basic.build();
+
+var magnesiumdustMetalPulverize_advanced = mods.modularmachinery.RecipeBuilder.newBuilder("magnesiumdustMetalPulverize_advanced", "basic", 100, 0);
+magnesiumdustMetalPulverize_advanced.addItemInput(<contenttweaker:material_part:1851>);
+magnesiumdustMetalPulverize_advanced.addFluidInput(<liquid:cotm_magnesium_molten> * 100);
+magnesiumdustMetalPulverize_advanced.addItemOutput(<contenttweaker:material_part:1120>);
+magnesiumdustMetalPulverize_advanced.addFluidInput(<liquid:hydrogen> * 100);
+magnesiumdustMetalPulverize_advanced.addEnergyPerTickInput(1024);
+magnesiumdustMetalPulverize_advanced.build();
+
+var magnesiumdustMetalPulverize_industrial = mods.modularmachinery.RecipeBuilder.newBuilder("magnesiumdustMetalPulverize_industrial", "basic", 100, 0);
+magnesiumdustMetalPulverize_industrial.addItemInput(<contenttweaker:material_part:1851>);
+magnesiumdustMetalPulverize_industrial.addFluidInput(<liquid:cotm_magnesium_molten> * 100);
+magnesiumdustMetalPulverize_industrial.addItemOutput(<contenttweaker:material_part:1120>);
+magnesiumdustMetalPulverize_industrial.addFluidInput(<liquid:hydrogen> * 100);
+magnesiumdustMetalPulverize_industrial.addFluidInput(<liquid:cotc_data> * 100);
+magnesiumdustMetalPulverize_industrial.addEnergyPerTickInput(262144);
+magnesiumdustMetalPulverize_industrial.build();
+
+var magnesiumdustMetalPulverize_ultimate = mods.modularmachinery.RecipeBuilder.newBuilder("magnesiumdustMetalPulverize_ultimate", "basic", 100, 0);
+magnesiumdustMetalPulverize_ultimate.addItemInput(<contenttweaker:material_part:1851>);
+magnesiumdustMetalPulverize_ultimate.addFluidInput(<liquid:cotm_magnesium_molten> * 100);
+magnesiumdustMetalPulverize_ultimate.addItemOutput(<contenttweaker:material_part:1120>);
+magnesiumdustMetalPulverize_ultimate.addFluidInput(<liquid:hydrogen> * 100);
+magnesiumdustMetalPulverize_ultimate.addFluidInput(<liquid:cotc_data> * 100);
+magnesiumdustMetalPulverize_ultimate.addFluidInput(<liquid:cotc_pos_red_matter> * 100);
+magnesiumdustMetalPulverize_ultimate.addFluidOutput(<liquid:cotc_neg_orange_matter> * 100);
+magnesiumdustMetalPulverize_ultimate.addEnergyPerTickInput(67108864);
+magnesiumdustMetalPulverize_ultimate.build();
+
+var aluminumdustMetalPulverize_basic = mods.modularmachinery.RecipeBuilder.newBuilder("aluminumdustMetalPulverize_basic", "basic", 100, 0);
+aluminumdustMetalPulverize_basic.addItemInput(<contenttweaker:material_part:1889>);
+aluminumdustMetalPulverize_basic.addFluidInput(<liquid:cotm_aluminum_molten> * 100);
+aluminumdustMetalPulverize_basic.addItemOutput(<contenttweaker:material_part:1510>);
+aluminumdustMetalPulverize_basic.addEnergyPerTickInput(4);
+aluminumdustMetalPulverize_basic.build();
+
+var aluminumdustMetalPulverize_advanced = mods.modularmachinery.RecipeBuilder.newBuilder("aluminumdustMetalPulverize_advanced", "basic", 100, 0);
+aluminumdustMetalPulverize_advanced.addItemInput(<contenttweaker:material_part:1889>);
+aluminumdustMetalPulverize_advanced.addFluidInput(<liquid:cotm_aluminum_molten> * 100);
+aluminumdustMetalPulverize_advanced.addItemOutput(<contenttweaker:material_part:1510>);
+aluminumdustMetalPulverize_advanced.addFluidInput(<liquid:hydrogen> * 100);
+aluminumdustMetalPulverize_advanced.addEnergyPerTickInput(1024);
+aluminumdustMetalPulverize_advanced.build();
+
+var aluminumdustMetalPulverize_industrial = mods.modularmachinery.RecipeBuilder.newBuilder("aluminumdustMetalPulverize_industrial", "basic", 100, 0);
+aluminumdustMetalPulverize_industrial.addItemInput(<contenttweaker:material_part:1889>);
+aluminumdustMetalPulverize_industrial.addFluidInput(<liquid:cotm_aluminum_molten> * 100);
+aluminumdustMetalPulverize_industrial.addItemOutput(<contenttweaker:material_part:1510>);
+aluminumdustMetalPulverize_industrial.addFluidInput(<liquid:hydrogen> * 100);
+aluminumdustMetalPulverize_industrial.addFluidInput(<liquid:cotc_data> * 100);
+aluminumdustMetalPulverize_industrial.addEnergyPerTickInput(262144);
+aluminumdustMetalPulverize_industrial.build();
+
+var aluminumdustMetalPulverize_ultimate = mods.modularmachinery.RecipeBuilder.newBuilder("aluminumdustMetalPulverize_ultimate", "basic", 100, 0);
+aluminumdustMetalPulverize_ultimate.addItemInput(<contenttweaker:material_part:1889>);
+aluminumdustMetalPulverize_ultimate.addFluidInput(<liquid:cotm_aluminum_molten> * 100);
+aluminumdustMetalPulverize_ultimate.addItemOutput(<contenttweaker:material_part:1510>);
+aluminumdustMetalPulverize_ultimate.addFluidInput(<liquid:hydrogen> * 100);
+aluminumdustMetalPulverize_ultimate.addFluidInput(<liquid:cotc_data> * 100);
+aluminumdustMetalPulverize_ultimate.addFluidInput(<liquid:cotc_pos_red_matter> * 100);
+aluminumdustMetalPulverize_ultimate.addFluidOutput(<liquid:cotc_neg_orange_matter> * 100);
+aluminumdustMetalPulverize_ultimate.addEnergyPerTickInput(67108864);
+aluminumdustMetalPulverize_ultimate.build();
+
+var potassiumdustMetalPulverize_basic = mods.modularmachinery.RecipeBuilder.newBuilder("potassiumdustMetalPulverize_basic", "basic", 100, 0);
+potassiumdustMetalPulverize_basic.addItemInput(<contenttweaker:material_part:1928>);
+potassiumdustMetalPulverize_basic.addFluidInput(<liquid:cotm_potassium_molten> * 100);
+potassiumdustMetalPulverize_basic.addItemOutput(<contenttweaker:material_part:1135>);
+potassiumdustMetalPulverize_basic.addEnergyPerTickInput(4);
+potassiumdustMetalPulverize_basic.build();
+
+var potassiumdustMetalPulverize_advanced = mods.modularmachinery.RecipeBuilder.newBuilder("potassiumdustMetalPulverize_advanced", "basic", 100, 0);
+potassiumdustMetalPulverize_advanced.addItemInput(<contenttweaker:material_part:1928>);
+potassiumdustMetalPulverize_advanced.addFluidInput(<liquid:cotm_potassium_molten> * 100);
+potassiumdustMetalPulverize_advanced.addItemOutput(<contenttweaker:material_part:1135>);
+potassiumdustMetalPulverize_advanced.addFluidInput(<liquid:hydrogen> * 100);
+potassiumdustMetalPulverize_advanced.addEnergyPerTickInput(1024);
+potassiumdustMetalPulverize_advanced.build();
+
+var potassiumdustMetalPulverize_industrial = mods.modularmachinery.RecipeBuilder.newBuilder("potassiumdustMetalPulverize_industrial", "basic", 100, 0);
+potassiumdustMetalPulverize_industrial.addItemInput(<contenttweaker:material_part:1928>);
+potassiumdustMetalPulverize_industrial.addFluidInput(<liquid:cotm_potassium_molten> * 100);
+potassiumdustMetalPulverize_industrial.addItemOutput(<contenttweaker:material_part:1135>);
+potassiumdustMetalPulverize_industrial.addFluidInput(<liquid:hydrogen> * 100);
+potassiumdustMetalPulverize_industrial.addFluidInput(<liquid:cotc_data> * 100);
+potassiumdustMetalPulverize_industrial.addEnergyPerTickInput(262144);
+potassiumdustMetalPulverize_industrial.build();
+
+var potassiumdustMetalPulverize_ultimate = mods.modularmachinery.RecipeBuilder.newBuilder("potassiumdustMetalPulverize_ultimate", "basic", 100, 0);
+potassiumdustMetalPulverize_ultimate.addItemInput(<contenttweaker:material_part:1928>);
+potassiumdustMetalPulverize_ultimate.addFluidInput(<liquid:cotm_potassium_molten> * 100);
+potassiumdustMetalPulverize_ultimate.addItemOutput(<contenttweaker:material_part:1135>);
+potassiumdustMetalPulverize_ultimate.addFluidInput(<liquid:hydrogen> * 100);
+potassiumdustMetalPulverize_ultimate.addFluidInput(<liquid:cotc_data> * 100);
+potassiumdustMetalPulverize_ultimate.addFluidInput(<liquid:cotc_pos_red_matter> * 100);
+potassiumdustMetalPulverize_ultimate.addFluidOutput(<liquid:cotc_neg_orange_matter> * 100);
+potassiumdustMetalPulverize_ultimate.addEnergyPerTickInput(67108864);
+potassiumdustMetalPulverize_ultimate.build();
+
+var calciumdustMetalPulverize_basic = mods.modularmachinery.RecipeBuilder.newBuilder("calciumdustMetalPulverize_basic", "basic", 100, 0);
+calciumdustMetalPulverize_basic.addItemInput(<contenttweaker:material_part:1966>);
+calciumdustMetalPulverize_basic.addFluidInput(<liquid:cotm_calcium_molten> * 100);
+calciumdustMetalPulverize_basic.addItemOutput(<contenttweaker:material_part:1138>);
+calciumdustMetalPulverize_basic.addEnergyPerTickInput(4);
+calciumdustMetalPulverize_basic.build();
+
+var calciumdustMetalPulverize_advanced = mods.modularmachinery.RecipeBuilder.newBuilder("calciumdustMetalPulverize_advanced", "basic", 100, 0);
+calciumdustMetalPulverize_advanced.addItemInput(<contenttweaker:material_part:1966>);
+calciumdustMetalPulverize_advanced.addFluidInput(<liquid:cotm_calcium_molten> * 100);
+calciumdustMetalPulverize_advanced.addItemOutput(<contenttweaker:material_part:1138>);
+calciumdustMetalPulverize_advanced.addFluidInput(<liquid:hydrogen> * 100);
+calciumdustMetalPulverize_advanced.addEnergyPerTickInput(1024);
+calciumdustMetalPulverize_advanced.build();
+
+var calciumdustMetalPulverize_industrial = mods.modularmachinery.RecipeBuilder.newBuilder("calciumdustMetalPulverize_industrial", "basic", 100, 0);
+calciumdustMetalPulverize_industrial.addItemInput(<contenttweaker:material_part:1966>);
+calciumdustMetalPulverize_industrial.addFluidInput(<liquid:cotm_calcium_molten> * 100);
+calciumdustMetalPulverize_industrial.addItemOutput(<contenttweaker:material_part:1138>);
+calciumdustMetalPulverize_industrial.addFluidInput(<liquid:hydrogen> * 100);
+calciumdustMetalPulverize_industrial.addFluidInput(<liquid:cotc_data> * 100);
+calciumdustMetalPulverize_industrial.addEnergyPerTickInput(262144);
+calciumdustMetalPulverize_industrial.build();
+
+var calciumdustMetalPulverize_ultimate = mods.modularmachinery.RecipeBuilder.newBuilder("calciumdustMetalPulverize_ultimate", "basic", 100, 0);
+calciumdustMetalPulverize_ultimate.addItemInput(<contenttweaker:material_part:1966>);
+calciumdustMetalPulverize_ultimate.addFluidInput(<liquid:cotm_calcium_molten> * 100);
+calciumdustMetalPulverize_ultimate.addItemOutput(<contenttweaker:material_part:1138>);
+calciumdustMetalPulverize_ultimate.addFluidInput(<liquid:hydrogen> * 100);
+calciumdustMetalPulverize_ultimate.addFluidInput(<liquid:cotc_data> * 100);
+calciumdustMetalPulverize_ultimate.addFluidInput(<liquid:cotc_pos_red_matter> * 100);
+calciumdustMetalPulverize_ultimate.addFluidOutput(<liquid:cotc_neg_orange_matter> * 100);
+calciumdustMetalPulverize_ultimate.addEnergyPerTickInput(67108864);
+calciumdustMetalPulverize_ultimate.build();
+
+var scandiumdustMetalPulverize_basic = mods.modularmachinery.RecipeBuilder.newBuilder("scandiumdustMetalPulverize_basic", "basic", 100, 0);
+scandiumdustMetalPulverize_basic.addItemInput(<contenttweaker:material_part:2004>);
+scandiumdustMetalPulverize_basic.addFluidInput(<liquid:cotm_scandium_molten> * 100);
+scandiumdustMetalPulverize_basic.addItemOutput(<contenttweaker:material_part:1141>);
+scandiumdustMetalPulverize_basic.addEnergyPerTickInput(4);
+scandiumdustMetalPulverize_basic.build();
+
+var scandiumdustMetalPulverize_advanced = mods.modularmachinery.RecipeBuilder.newBuilder("scandiumdustMetalPulverize_advanced", "basic", 100, 0);
+scandiumdustMetalPulverize_advanced.addItemInput(<contenttweaker:material_part:2004>);
+scandiumdustMetalPulverize_advanced.addFluidInput(<liquid:cotm_scandium_molten> * 100);
+scandiumdustMetalPulverize_advanced.addItemOutput(<contenttweaker:material_part:1141>);
+scandiumdustMetalPulverize_advanced.addFluidInput(<liquid:hydrogen> * 100);
+scandiumdustMetalPulverize_advanced.addEnergyPerTickInput(1024);
+scandiumdustMetalPulverize_advanced.build();
+
+var scandiumdustMetalPulverize_industrial = mods.modularmachinery.RecipeBuilder.newBuilder("scandiumdustMetalPulverize_industrial", "basic", 100, 0);
+scandiumdustMetalPulverize_industrial.addItemInput(<contenttweaker:material_part:2004>);
+scandiumdustMetalPulverize_industrial.addFluidInput(<liquid:cotm_scandium_molten> * 100);
+scandiumdustMetalPulverize_industrial.addItemOutput(<contenttweaker:material_part:1141>);
+scandiumdustMetalPulverize_industrial.addFluidInput(<liquid:hydrogen> * 100);
+scandiumdustMetalPulverize_industrial.addFluidInput(<liquid:cotc_data> * 100);
+scandiumdustMetalPulverize_industrial.addEnergyPerTickInput(262144);
+scandiumdustMetalPulverize_industrial.build();
+
+var scandiumdustMetalPulverize_ultimate = mods.modularmachinery.RecipeBuilder.newBuilder("scandiumdustMetalPulverize_ultimate", "basic", 100, 0);
+scandiumdustMetalPulverize_ultimate.addItemInput(<contenttweaker:material_part:2004>);
+scandiumdustMetalPulverize_ultimate.addFluidInput(<liquid:cotm_scandium_molten> * 100);
+scandiumdustMetalPulverize_ultimate.addItemOutput(<contenttweaker:material_part:1141>);
+scandiumdustMetalPulverize_ultimate.addFluidInput(<liquid:hydrogen> * 100);
+scandiumdustMetalPulverize_ultimate.addFluidInput(<liquid:cotc_data> * 100);
+scandiumdustMetalPulverize_ultimate.addFluidInput(<liquid:cotc_pos_red_matter> * 100);
+scandiumdustMetalPulverize_ultimate.addFluidOutput(<liquid:cotc_neg_orange_matter> * 100);
+scandiumdustMetalPulverize_ultimate.addEnergyPerTickInput(67108864);
+scandiumdustMetalPulverize_ultimate.build();
+
+var titaniumdustMetalPulverize_basic = mods.modularmachinery.RecipeBuilder.newBuilder("titaniumdustMetalPulverize_basic", "basic", 100, 0);
+titaniumdustMetalPulverize_basic.addItemInput(<contenttweaker:material_part:2043>);
+titaniumdustMetalPulverize_basic.addFluidInput(<liquid:cotm_titanium_molten> * 100);
+titaniumdustMetalPulverize_basic.addItemOutput(<contenttweaker:material_part:1144>);
+titaniumdustMetalPulverize_basic.addEnergyPerTickInput(4);
+titaniumdustMetalPulverize_basic.build();
+
+var titaniumdustMetalPulverize_advanced = mods.modularmachinery.RecipeBuilder.newBuilder("titaniumdustMetalPulverize_advanced", "basic", 100, 0);
+titaniumdustMetalPulverize_advanced.addItemInput(<contenttweaker:material_part:2043>);
+titaniumdustMetalPulverize_advanced.addFluidInput(<liquid:cotm_titanium_molten> * 100);
+titaniumdustMetalPulverize_advanced.addItemOutput(<contenttweaker:material_part:1144>);
+titaniumdustMetalPulverize_advanced.addFluidInput(<liquid:hydrogen> * 100);
+titaniumdustMetalPulverize_advanced.addEnergyPerTickInput(1024);
+titaniumdustMetalPulverize_advanced.build();
+
+var titaniumdustMetalPulverize_industrial = mods.modularmachinery.RecipeBuilder.newBuilder("titaniumdustMetalPulverize_industrial", "basic", 100, 0);
+titaniumdustMetalPulverize_industrial.addItemInput(<contenttweaker:material_part:2043>);
+titaniumdustMetalPulverize_industrial.addFluidInput(<liquid:cotm_titanium_molten> * 100);
+titaniumdustMetalPulverize_industrial.addItemOutput(<contenttweaker:material_part:1144>);
+titaniumdustMetalPulverize_industrial.addFluidInput(<liquid:hydrogen> * 100);
+titaniumdustMetalPulverize_industrial.addFluidInput(<liquid:cotc_data> * 100);
+titaniumdustMetalPulverize_industrial.addEnergyPerTickInput(262144);
+titaniumdustMetalPulverize_industrial.build();
+
+var titaniumdustMetalPulverize_ultimate = mods.modularmachinery.RecipeBuilder.newBuilder("titaniumdustMetalPulverize_ultimate", "basic", 100, 0);
+titaniumdustMetalPulverize_ultimate.addItemInput(<contenttweaker:material_part:2043>);
+titaniumdustMetalPulverize_ultimate.addFluidInput(<liquid:cotm_titanium_molten> * 100);
+titaniumdustMetalPulverize_ultimate.addItemOutput(<contenttweaker:material_part:1144>);
+titaniumdustMetalPulverize_ultimate.addFluidInput(<liquid:hydrogen> * 100);
+titaniumdustMetalPulverize_ultimate.addFluidInput(<liquid:cotc_data> * 100);
+titaniumdustMetalPulverize_ultimate.addFluidInput(<liquid:cotc_pos_red_matter> * 100);
+titaniumdustMetalPulverize_ultimate.addFluidOutput(<liquid:cotc_neg_orange_matter> * 100);
+titaniumdustMetalPulverize_ultimate.addEnergyPerTickInput(67108864);
+titaniumdustMetalPulverize_ultimate.build();
+
+var vanadiumdustMetalPulverize_basic = mods.modularmachinery.RecipeBuilder.newBuilder("vanadiumdustMetalPulverize_basic", "basic", 100, 0);
+vanadiumdustMetalPulverize_basic.addItemInput(<contenttweaker:material_part:2082>);
+vanadiumdustMetalPulverize_basic.addFluidInput(<liquid:cotm_vanadium_molten> * 100);
+vanadiumdustMetalPulverize_basic.addItemOutput(<contenttweaker:material_part:1147>);
+vanadiumdustMetalPulverize_basic.addEnergyPerTickInput(4);
+vanadiumdustMetalPulverize_basic.build();
+
+var vanadiumdustMetalPulverize_advanced = mods.modularmachinery.RecipeBuilder.newBuilder("vanadiumdustMetalPulverize_advanced", "basic", 100, 0);
+vanadiumdustMetalPulverize_advanced.addItemInput(<contenttweaker:material_part:2082>);
+vanadiumdustMetalPulverize_advanced.addFluidInput(<liquid:cotm_vanadium_molten> * 100);
+vanadiumdustMetalPulverize_advanced.addItemOutput(<contenttweaker:material_part:1147>);
+vanadiumdustMetalPulverize_advanced.addFluidInput(<liquid:hydrogen> * 100);
+vanadiumdustMetalPulverize_advanced.addEnergyPerTickInput(1024);
+vanadiumdustMetalPulverize_advanced.build();
+
+var vanadiumdustMetalPulverize_industrial = mods.modularmachinery.RecipeBuilder.newBuilder("vanadiumdustMetalPulverize_industrial", "basic", 100, 0);
+vanadiumdustMetalPulverize_industrial.addItemInput(<contenttweaker:material_part:2082>);
+vanadiumdustMetalPulverize_industrial.addFluidInput(<liquid:cotm_vanadium_molten> * 100);
+vanadiumdustMetalPulverize_industrial.addItemOutput(<contenttweaker:material_part:1147>);
+vanadiumdustMetalPulverize_industrial.addFluidInput(<liquid:hydrogen> * 100);
+vanadiumdustMetalPulverize_industrial.addFluidInput(<liquid:cotc_data> * 100);
+vanadiumdustMetalPulverize_industrial.addEnergyPerTickInput(262144);
+vanadiumdustMetalPulverize_industrial.build();
+
+var vanadiumdustMetalPulverize_ultimate = mods.modularmachinery.RecipeBuilder.newBuilder("vanadiumdustMetalPulverize_ultimate", "basic", 100, 0);
+vanadiumdustMetalPulverize_ultimate.addItemInput(<contenttweaker:material_part:2082>);
+vanadiumdustMetalPulverize_ultimate.addFluidInput(<liquid:cotm_vanadium_molten> * 100);
+vanadiumdustMetalPulverize_ultimate.addItemOutput(<contenttweaker:material_part:1147>);
+vanadiumdustMetalPulverize_ultimate.addFluidInput(<liquid:hydrogen> * 100);
+vanadiumdustMetalPulverize_ultimate.addFluidInput(<liquid:cotc_data> * 100);
+vanadiumdustMetalPulverize_ultimate.addFluidInput(<liquid:cotc_pos_red_matter> * 100);
+vanadiumdustMetalPulverize_ultimate.addFluidOutput(<liquid:cotc_neg_orange_matter> * 100);
+vanadiumdustMetalPulverize_ultimate.addEnergyPerTickInput(67108864);
+vanadiumdustMetalPulverize_ultimate.build();
+
+var chromedustMetalPulverize_basic = mods.modularmachinery.RecipeBuilder.newBuilder("chromedustMetalPulverize_basic", "basic", 100, 0);
+chromedustMetalPulverize_basic.addItemInput(<contenttweaker:material_part:2121>);
+chromedustMetalPulverize_basic.addFluidInput(<liquid:cotm_chrome_molten> * 100);
+chromedustMetalPulverize_basic.addItemOutput(<contenttweaker:material_part:1150>);
+chromedustMetalPulverize_basic.addEnergyPerTickInput(4);
+chromedustMetalPulverize_basic.build();
+
+var chromedustMetalPulverize_advanced = mods.modularmachinery.RecipeBuilder.newBuilder("chromedustMetalPulverize_advanced", "basic", 100, 0);
+chromedustMetalPulverize_advanced.addItemInput(<contenttweaker:material_part:2121>);
+chromedustMetalPulverize_advanced.addFluidInput(<liquid:cotm_chrome_molten> * 100);
+chromedustMetalPulverize_advanced.addItemOutput(<contenttweaker:material_part:1150>);
+chromedustMetalPulverize_advanced.addFluidInput(<liquid:hydrogen> * 100);
+chromedustMetalPulverize_advanced.addEnergyPerTickInput(1024);
+chromedustMetalPulverize_advanced.build();
+
+var chromedustMetalPulverize_industrial = mods.modularmachinery.RecipeBuilder.newBuilder("chromedustMetalPulverize_industrial", "basic", 100, 0);
+chromedustMetalPulverize_industrial.addItemInput(<contenttweaker:material_part:2121>);
+chromedustMetalPulverize_industrial.addFluidInput(<liquid:cotm_chrome_molten> * 100);
+chromedustMetalPulverize_industrial.addItemOutput(<contenttweaker:material_part:1150>);
+chromedustMetalPulverize_industrial.addFluidInput(<liquid:hydrogen> * 100);
+chromedustMetalPulverize_industrial.addFluidInput(<liquid:cotc_data> * 100);
+chromedustMetalPulverize_industrial.addEnergyPerTickInput(262144);
+chromedustMetalPulverize_industrial.build();
+
+var chromedustMetalPulverize_ultimate = mods.modularmachinery.RecipeBuilder.newBuilder("chromedustMetalPulverize_ultimate", "basic", 100, 0);
+chromedustMetalPulverize_ultimate.addItemInput(<contenttweaker:material_part:2121>);
+chromedustMetalPulverize_ultimate.addFluidInput(<liquid:cotm_chrome_molten> * 100);
+chromedustMetalPulverize_ultimate.addItemOutput(<contenttweaker:material_part:1150>);
+chromedustMetalPulverize_ultimate.addFluidInput(<liquid:hydrogen> * 100);
+chromedustMetalPulverize_ultimate.addFluidInput(<liquid:cotc_data> * 100);
+chromedustMetalPulverize_ultimate.addFluidInput(<liquid:cotc_pos_red_matter> * 100);
+chromedustMetalPulverize_ultimate.addFluidOutput(<liquid:cotc_neg_orange_matter> * 100);
+chromedustMetalPulverize_ultimate.addEnergyPerTickInput(67108864);
+chromedustMetalPulverize_ultimate.build();
+
+var manganesedustMetalPulverize_basic = mods.modularmachinery.RecipeBuilder.newBuilder("manganesedustMetalPulverize_basic", "basic", 100, 0);
+manganesedustMetalPulverize_basic.addItemInput(<contenttweaker:material_part:2160>);
+manganesedustMetalPulverize_basic.addFluidInput(<liquid:cotm_manganese_molten> * 100);
+manganesedustMetalPulverize_basic.addItemOutput(<contenttweaker:material_part:1153>);
+manganesedustMetalPulverize_basic.addEnergyPerTickInput(4);
+manganesedustMetalPulverize_basic.build();
+
+var manganesedustMetalPulverize_advanced = mods.modularmachinery.RecipeBuilder.newBuilder("manganesedustMetalPulverize_advanced", "basic", 100, 0);
+manganesedustMetalPulverize_advanced.addItemInput(<contenttweaker:material_part:2160>);
+manganesedustMetalPulverize_advanced.addFluidInput(<liquid:cotm_manganese_molten> * 100);
+manganesedustMetalPulverize_advanced.addItemOutput(<contenttweaker:material_part:1153>);
+manganesedustMetalPulverize_advanced.addFluidInput(<liquid:hydrogen> * 100);
+manganesedustMetalPulverize_advanced.addEnergyPerTickInput(1024);
+manganesedustMetalPulverize_advanced.build();
+
+var manganesedustMetalPulverize_industrial = mods.modularmachinery.RecipeBuilder.newBuilder("manganesedustMetalPulverize_industrial", "basic", 100, 0);
+manganesedustMetalPulverize_industrial.addItemInput(<contenttweaker:material_part:2160>);
+manganesedustMetalPulverize_industrial.addFluidInput(<liquid:cotm_manganese_molten> * 100);
+manganesedustMetalPulverize_industrial.addItemOutput(<contenttweaker:material_part:1153>);
+manganesedustMetalPulverize_industrial.addFluidInput(<liquid:hydrogen> * 100);
+manganesedustMetalPulverize_industrial.addFluidInput(<liquid:cotc_data> * 100);
+manganesedustMetalPulverize_industrial.addEnergyPerTickInput(262144);
+manganesedustMetalPulverize_industrial.build();
+
+var manganesedustMetalPulverize_ultimate = mods.modularmachinery.RecipeBuilder.newBuilder("manganesedustMetalPulverize_ultimate", "basic", 100, 0);
+manganesedustMetalPulverize_ultimate.addItemInput(<contenttweaker:material_part:2160>);
+manganesedustMetalPulverize_ultimate.addFluidInput(<liquid:cotm_manganese_molten> * 100);
+manganesedustMetalPulverize_ultimate.addItemOutput(<contenttweaker:material_part:1153>);
+manganesedustMetalPulverize_ultimate.addFluidInput(<liquid:hydrogen> * 100);
+manganesedustMetalPulverize_ultimate.addFluidInput(<liquid:cotc_data> * 100);
+manganesedustMetalPulverize_ultimate.addFluidInput(<liquid:cotc_pos_red_matter> * 100);
+manganesedustMetalPulverize_ultimate.addFluidOutput(<liquid:cotc_neg_orange_matter> * 100);
+manganesedustMetalPulverize_ultimate.addEnergyPerTickInput(67108864);
+manganesedustMetalPulverize_ultimate.build();
+
+var irondustMetalPulverize_basic = mods.modularmachinery.RecipeBuilder.newBuilder("irondustMetalPulverize_basic", "basic", 100, 0);
+irondustMetalPulverize_basic.addItemInput(<contenttweaker:material_part:2199>);
+irondustMetalPulverize_basic.addFluidInput(<liquid:cotm_iron_molten> * 100);
+irondustMetalPulverize_basic.addItemOutput(<contenttweaker:material_part:219>);
+irondustMetalPulverize_basic.addEnergyPerTickInput(4);
+irondustMetalPulverize_basic.build();
+
+var irondustMetalPulverize_advanced = mods.modularmachinery.RecipeBuilder.newBuilder("irondustMetalPulverize_advanced", "basic", 100, 0);
+irondustMetalPulverize_advanced.addItemInput(<contenttweaker:material_part:2199>);
+irondustMetalPulverize_advanced.addFluidInput(<liquid:cotm_iron_molten> * 100);
+irondustMetalPulverize_advanced.addItemOutput(<contenttweaker:material_part:219>);
+irondustMetalPulverize_advanced.addFluidInput(<liquid:hydrogen> * 100);
+irondustMetalPulverize_advanced.addEnergyPerTickInput(1024);
+irondustMetalPulverize_advanced.build();
+
+var irondustMetalPulverize_industrial = mods.modularmachinery.RecipeBuilder.newBuilder("irondustMetalPulverize_industrial", "basic", 100, 0);
+irondustMetalPulverize_industrial.addItemInput(<contenttweaker:material_part:2199>);
+irondustMetalPulverize_industrial.addFluidInput(<liquid:cotm_iron_molten> * 100);
+irondustMetalPulverize_industrial.addItemOutput(<contenttweaker:material_part:219>);
+irondustMetalPulverize_industrial.addFluidInput(<liquid:hydrogen> * 100);
+irondustMetalPulverize_industrial.addFluidInput(<liquid:cotc_data> * 100);
+irondustMetalPulverize_industrial.addEnergyPerTickInput(262144);
+irondustMetalPulverize_industrial.build();
+
+var irondustMetalPulverize_ultimate = mods.modularmachinery.RecipeBuilder.newBuilder("irondustMetalPulverize_ultimate", "basic", 100, 0);
+irondustMetalPulverize_ultimate.addItemInput(<contenttweaker:material_part:2199>);
+irondustMetalPulverize_ultimate.addFluidInput(<liquid:cotm_iron_molten> * 100);
+irondustMetalPulverize_ultimate.addItemOutput(<contenttweaker:material_part:219>);
+irondustMetalPulverize_ultimate.addFluidInput(<liquid:hydrogen> * 100);
+irondustMetalPulverize_ultimate.addFluidInput(<liquid:cotc_data> * 100);
+irondustMetalPulverize_ultimate.addFluidInput(<liquid:cotc_pos_red_matter> * 100);
+irondustMetalPulverize_ultimate.addFluidOutput(<liquid:cotc_neg_orange_matter> * 100);
+irondustMetalPulverize_ultimate.addEnergyPerTickInput(67108864);
+irondustMetalPulverize_ultimate.build();
+
+var cobaltdustMetalPulverize_basic = mods.modularmachinery.RecipeBuilder.newBuilder("cobaltdustMetalPulverize_basic", "basic", 100, 0);
+cobaltdustMetalPulverize_basic.addItemInput(<contenttweaker:material_part:2237>);
+cobaltdustMetalPulverize_basic.addFluidInput(<liquid:cotm_cobalt_molten> * 100);
+cobaltdustMetalPulverize_basic.addItemOutput(<contenttweaker:material_part:1156>);
+cobaltdustMetalPulverize_basic.addEnergyPerTickInput(4);
+cobaltdustMetalPulverize_basic.build();
+
+var cobaltdustMetalPulverize_advanced = mods.modularmachinery.RecipeBuilder.newBuilder("cobaltdustMetalPulverize_advanced", "basic", 100, 0);
+cobaltdustMetalPulverize_advanced.addItemInput(<contenttweaker:material_part:2237>);
+cobaltdustMetalPulverize_advanced.addFluidInput(<liquid:cotm_cobalt_molten> * 100);
+cobaltdustMetalPulverize_advanced.addItemOutput(<contenttweaker:material_part:1156>);
+cobaltdustMetalPulverize_advanced.addFluidInput(<liquid:hydrogen> * 100);
+cobaltdustMetalPulverize_advanced.addEnergyPerTickInput(1024);
+cobaltdustMetalPulverize_advanced.build();
+
+var cobaltdustMetalPulverize_industrial = mods.modularmachinery.RecipeBuilder.newBuilder("cobaltdustMetalPulverize_industrial", "basic", 100, 0);
+cobaltdustMetalPulverize_industrial.addItemInput(<contenttweaker:material_part:2237>);
+cobaltdustMetalPulverize_industrial.addFluidInput(<liquid:cotm_cobalt_molten> * 100);
+cobaltdustMetalPulverize_industrial.addItemOutput(<contenttweaker:material_part:1156>);
+cobaltdustMetalPulverize_industrial.addFluidInput(<liquid:hydrogen> * 100);
+cobaltdustMetalPulverize_industrial.addFluidInput(<liquid:cotc_data> * 100);
+cobaltdustMetalPulverize_industrial.addEnergyPerTickInput(262144);
+cobaltdustMetalPulverize_industrial.build();
+
+var cobaltdustMetalPulverize_ultimate = mods.modularmachinery.RecipeBuilder.newBuilder("cobaltdustMetalPulverize_ultimate", "basic", 100, 0);
+cobaltdustMetalPulverize_ultimate.addItemInput(<contenttweaker:material_part:2237>);
+cobaltdustMetalPulverize_ultimate.addFluidInput(<liquid:cotm_cobalt_molten> * 100);
+cobaltdustMetalPulverize_ultimate.addItemOutput(<contenttweaker:material_part:1156>);
+cobaltdustMetalPulverize_ultimate.addFluidInput(<liquid:hydrogen> * 100);
+cobaltdustMetalPulverize_ultimate.addFluidInput(<liquid:cotc_data> * 100);
+cobaltdustMetalPulverize_ultimate.addFluidInput(<liquid:cotc_pos_red_matter> * 100);
+cobaltdustMetalPulverize_ultimate.addFluidOutput(<liquid:cotc_neg_orange_matter> * 100);
+cobaltdustMetalPulverize_ultimate.addEnergyPerTickInput(67108864);
+cobaltdustMetalPulverize_ultimate.build();
+
+var nickeldustMetalPulverize_basic = mods.modularmachinery.RecipeBuilder.newBuilder("nickeldustMetalPulverize_basic", "basic", 100, 0);
+nickeldustMetalPulverize_basic.addItemInput(<contenttweaker:material_part:2275>);
+nickeldustMetalPulverize_basic.addFluidInput(<liquid:cotm_nickel_molten> * 100);
+nickeldustMetalPulverize_basic.addItemOutput(<contenttweaker:material_part:231>);
+nickeldustMetalPulverize_basic.addEnergyPerTickInput(4);
+nickeldustMetalPulverize_basic.build();
+
+var nickeldustMetalPulverize_advanced = mods.modularmachinery.RecipeBuilder.newBuilder("nickeldustMetalPulverize_advanced", "basic", 100, 0);
+nickeldustMetalPulverize_advanced.addItemInput(<contenttweaker:material_part:2275>);
+nickeldustMetalPulverize_advanced.addFluidInput(<liquid:cotm_nickel_molten> * 100);
+nickeldustMetalPulverize_advanced.addItemOutput(<contenttweaker:material_part:231>);
+nickeldustMetalPulverize_advanced.addFluidInput(<liquid:hydrogen> * 100);
+nickeldustMetalPulverize_advanced.addEnergyPerTickInput(1024);
+nickeldustMetalPulverize_advanced.build();
+
+var nickeldustMetalPulverize_industrial = mods.modularmachinery.RecipeBuilder.newBuilder("nickeldustMetalPulverize_industrial", "basic", 100, 0);
+nickeldustMetalPulverize_industrial.addItemInput(<contenttweaker:material_part:2275>);
+nickeldustMetalPulverize_industrial.addFluidInput(<liquid:cotm_nickel_molten> * 100);
+nickeldustMetalPulverize_industrial.addItemOutput(<contenttweaker:material_part:231>);
+nickeldustMetalPulverize_industrial.addFluidInput(<liquid:hydrogen> * 100);
+nickeldustMetalPulverize_industrial.addFluidInput(<liquid:cotc_data> * 100);
+nickeldustMetalPulverize_industrial.addEnergyPerTickInput(262144);
+nickeldustMetalPulverize_industrial.build();
+
+var nickeldustMetalPulverize_ultimate = mods.modularmachinery.RecipeBuilder.newBuilder("nickeldustMetalPulverize_ultimate", "basic", 100, 0);
+nickeldustMetalPulverize_ultimate.addItemInput(<contenttweaker:material_part:2275>);
+nickeldustMetalPulverize_ultimate.addFluidInput(<liquid:cotm_nickel_molten> * 100);
+nickeldustMetalPulverize_ultimate.addItemOutput(<contenttweaker:material_part:231>);
+nickeldustMetalPulverize_ultimate.addFluidInput(<liquid:hydrogen> * 100);
+nickeldustMetalPulverize_ultimate.addFluidInput(<liquid:cotc_data> * 100);
+nickeldustMetalPulverize_ultimate.addFluidInput(<liquid:cotc_pos_red_matter> * 100);
+nickeldustMetalPulverize_ultimate.addFluidOutput(<liquid:cotc_neg_orange_matter> * 100);
+nickeldustMetalPulverize_ultimate.addEnergyPerTickInput(67108864);
+nickeldustMetalPulverize_ultimate.build();
+
+var copperdustMetalPulverize_basic = mods.modularmachinery.RecipeBuilder.newBuilder("copperdustMetalPulverize_basic", "basic", 100, 0);
+copperdustMetalPulverize_basic.addItemInput(<contenttweaker:material_part:2313>);
+copperdustMetalPulverize_basic.addFluidInput(<liquid:cotm_copper_molten> * 100);
+copperdustMetalPulverize_basic.addItemOutput(<contenttweaker:material_part:1159>);
+copperdustMetalPulverize_basic.addEnergyPerTickInput(4);
+copperdustMetalPulverize_basic.build();
+
+var copperdustMetalPulverize_advanced = mods.modularmachinery.RecipeBuilder.newBuilder("copperdustMetalPulverize_advanced", "basic", 100, 0);
+copperdustMetalPulverize_advanced.addItemInput(<contenttweaker:material_part:2313>);
+copperdustMetalPulverize_advanced.addFluidInput(<liquid:cotm_copper_molten> * 100);
+copperdustMetalPulverize_advanced.addItemOutput(<contenttweaker:material_part:1159>);
+copperdustMetalPulverize_advanced.addFluidInput(<liquid:hydrogen> * 100);
+copperdustMetalPulverize_advanced.addEnergyPerTickInput(1024);
+copperdustMetalPulverize_advanced.build();
+
+var copperdustMetalPulverize_industrial = mods.modularmachinery.RecipeBuilder.newBuilder("copperdustMetalPulverize_industrial", "basic", 100, 0);
+copperdustMetalPulverize_industrial.addItemInput(<contenttweaker:material_part:2313>);
+copperdustMetalPulverize_industrial.addFluidInput(<liquid:cotm_copper_molten> * 100);
+copperdustMetalPulverize_industrial.addItemOutput(<contenttweaker:material_part:1159>);
+copperdustMetalPulverize_industrial.addFluidInput(<liquid:hydrogen> * 100);
+copperdustMetalPulverize_industrial.addFluidInput(<liquid:cotc_data> * 100);
+copperdustMetalPulverize_industrial.addEnergyPerTickInput(262144);
+copperdustMetalPulverize_industrial.build();
+
+var copperdustMetalPulverize_ultimate = mods.modularmachinery.RecipeBuilder.newBuilder("copperdustMetalPulverize_ultimate", "basic", 100, 0);
+copperdustMetalPulverize_ultimate.addItemInput(<contenttweaker:material_part:2313>);
+copperdustMetalPulverize_ultimate.addFluidInput(<liquid:cotm_copper_molten> * 100);
+copperdustMetalPulverize_ultimate.addItemOutput(<contenttweaker:material_part:1159>);
+copperdustMetalPulverize_ultimate.addFluidInput(<liquid:hydrogen> * 100);
+copperdustMetalPulverize_ultimate.addFluidInput(<liquid:cotc_data> * 100);
+copperdustMetalPulverize_ultimate.addFluidInput(<liquid:cotc_pos_red_matter> * 100);
+copperdustMetalPulverize_ultimate.addFluidOutput(<liquid:cotc_neg_orange_matter> * 100);
+copperdustMetalPulverize_ultimate.addEnergyPerTickInput(67108864);
+copperdustMetalPulverize_ultimate.build();
+
+var zincdustMetalPulverize_basic = mods.modularmachinery.RecipeBuilder.newBuilder("zincdustMetalPulverize_basic", "basic", 100, 0);
+zincdustMetalPulverize_basic.addItemInput(<contenttweaker:material_part:2351>);
+zincdustMetalPulverize_basic.addFluidInput(<liquid:cotm_zinc_molten> * 100);
+zincdustMetalPulverize_basic.addItemOutput(<contenttweaker:material_part:222>);
+zincdustMetalPulverize_basic.addEnergyPerTickInput(4);
+zincdustMetalPulverize_basic.build();
+
+var zincdustMetalPulverize_advanced = mods.modularmachinery.RecipeBuilder.newBuilder("zincdustMetalPulverize_advanced", "basic", 100, 0);
+zincdustMetalPulverize_advanced.addItemInput(<contenttweaker:material_part:2351>);
+zincdustMetalPulverize_advanced.addFluidInput(<liquid:cotm_zinc_molten> * 100);
+zincdustMetalPulverize_advanced.addItemOutput(<contenttweaker:material_part:222>);
+zincdustMetalPulverize_advanced.addFluidInput(<liquid:hydrogen> * 100);
+zincdustMetalPulverize_advanced.addEnergyPerTickInput(1024);
+zincdustMetalPulverize_advanced.build();
+
+var zincdustMetalPulverize_industrial = mods.modularmachinery.RecipeBuilder.newBuilder("zincdustMetalPulverize_industrial", "basic", 100, 0);
+zincdustMetalPulverize_industrial.addItemInput(<contenttweaker:material_part:2351>);
+zincdustMetalPulverize_industrial.addFluidInput(<liquid:cotm_zinc_molten> * 100);
+zincdustMetalPulverize_industrial.addItemOutput(<contenttweaker:material_part:222>);
+zincdustMetalPulverize_industrial.addFluidInput(<liquid:hydrogen> * 100);
+zincdustMetalPulverize_industrial.addFluidInput(<liquid:cotc_data> * 100);
+zincdustMetalPulverize_industrial.addEnergyPerTickInput(262144);
+zincdustMetalPulverize_industrial.build();
+
+var zincdustMetalPulverize_ultimate = mods.modularmachinery.RecipeBuilder.newBuilder("zincdustMetalPulverize_ultimate", "basic", 100, 0);
+zincdustMetalPulverize_ultimate.addItemInput(<contenttweaker:material_part:2351>);
+zincdustMetalPulverize_ultimate.addFluidInput(<liquid:cotm_zinc_molten> * 100);
+zincdustMetalPulverize_ultimate.addItemOutput(<contenttweaker:material_part:222>);
+zincdustMetalPulverize_ultimate.addFluidInput(<liquid:hydrogen> * 100);
+zincdustMetalPulverize_ultimate.addFluidInput(<liquid:cotc_data> * 100);
+zincdustMetalPulverize_ultimate.addFluidInput(<liquid:cotc_pos_red_matter> * 100);
+zincdustMetalPulverize_ultimate.addFluidOutput(<liquid:cotc_neg_orange_matter> * 100);
+zincdustMetalPulverize_ultimate.addEnergyPerTickInput(67108864);
+zincdustMetalPulverize_ultimate.build();
+
+var galliumdustMetalPulverize_basic = mods.modularmachinery.RecipeBuilder.newBuilder("galliumdustMetalPulverize_basic", "basic", 100, 0);
+galliumdustMetalPulverize_basic.addItemInput(<contenttweaker:material_part:2389>);
+galliumdustMetalPulverize_basic.addFluidInput(<liquid:cotm_gallium_molten> * 100);
+galliumdustMetalPulverize_basic.addItemOutput(<contenttweaker:material_part:1162>);
+galliumdustMetalPulverize_basic.addEnergyPerTickInput(4);
+galliumdustMetalPulverize_basic.build();
+
+var galliumdustMetalPulverize_advanced = mods.modularmachinery.RecipeBuilder.newBuilder("galliumdustMetalPulverize_advanced", "basic", 100, 0);
+galliumdustMetalPulverize_advanced.addItemInput(<contenttweaker:material_part:2389>);
+galliumdustMetalPulverize_advanced.addFluidInput(<liquid:cotm_gallium_molten> * 100);
+galliumdustMetalPulverize_advanced.addItemOutput(<contenttweaker:material_part:1162>);
+galliumdustMetalPulverize_advanced.addFluidInput(<liquid:hydrogen> * 100);
+galliumdustMetalPulverize_advanced.addEnergyPerTickInput(1024);
+galliumdustMetalPulverize_advanced.build();
+
+var galliumdustMetalPulverize_industrial = mods.modularmachinery.RecipeBuilder.newBuilder("galliumdustMetalPulverize_industrial", "basic", 100, 0);
+galliumdustMetalPulverize_industrial.addItemInput(<contenttweaker:material_part:2389>);
+galliumdustMetalPulverize_industrial.addFluidInput(<liquid:cotm_gallium_molten> * 100);
+galliumdustMetalPulverize_industrial.addItemOutput(<contenttweaker:material_part:1162>);
+galliumdustMetalPulverize_industrial.addFluidInput(<liquid:hydrogen> * 100);
+galliumdustMetalPulverize_industrial.addFluidInput(<liquid:cotc_data> * 100);
+galliumdustMetalPulverize_industrial.addEnergyPerTickInput(262144);
+galliumdustMetalPulverize_industrial.build();
+
+var galliumdustMetalPulverize_ultimate = mods.modularmachinery.RecipeBuilder.newBuilder("galliumdustMetalPulverize_ultimate", "basic", 100, 0);
+galliumdustMetalPulverize_ultimate.addItemInput(<contenttweaker:material_part:2389>);
+galliumdustMetalPulverize_ultimate.addFluidInput(<liquid:cotm_gallium_molten> * 100);
+galliumdustMetalPulverize_ultimate.addItemOutput(<contenttweaker:material_part:1162>);
+galliumdustMetalPulverize_ultimate.addFluidInput(<liquid:hydrogen> * 100);
+galliumdustMetalPulverize_ultimate.addFluidInput(<liquid:cotc_data> * 100);
+galliumdustMetalPulverize_ultimate.addFluidInput(<liquid:cotc_pos_red_matter> * 100);
+galliumdustMetalPulverize_ultimate.addFluidOutput(<liquid:cotc_neg_orange_matter> * 100);
+galliumdustMetalPulverize_ultimate.addEnergyPerTickInput(67108864);
+galliumdustMetalPulverize_ultimate.build();
+
+var germaniumdustMetalPulverize_basic = mods.modularmachinery.RecipeBuilder.newBuilder("germaniumdustMetalPulverize_basic", "basic", 100, 0);
+germaniumdustMetalPulverize_basic.addItemInput(<contenttweaker:material_part:2427>);
+germaniumdustMetalPulverize_basic.addFluidInput(<liquid:cotm_germanium_molten> * 100);
+germaniumdustMetalPulverize_basic.addItemOutput(<contenttweaker:material_part:1165>);
+germaniumdustMetalPulverize_basic.addEnergyPerTickInput(4);
+germaniumdustMetalPulverize_basic.build();
+
+var germaniumdustMetalPulverize_advanced = mods.modularmachinery.RecipeBuilder.newBuilder("germaniumdustMetalPulverize_advanced", "basic", 100, 0);
+germaniumdustMetalPulverize_advanced.addItemInput(<contenttweaker:material_part:2427>);
+germaniumdustMetalPulverize_advanced.addFluidInput(<liquid:cotm_germanium_molten> * 100);
+germaniumdustMetalPulverize_advanced.addItemOutput(<contenttweaker:material_part:1165>);
+germaniumdustMetalPulverize_advanced.addFluidInput(<liquid:hydrogen> * 100);
+germaniumdustMetalPulverize_advanced.addEnergyPerTickInput(1024);
+germaniumdustMetalPulverize_advanced.build();
+
+var germaniumdustMetalPulverize_industrial = mods.modularmachinery.RecipeBuilder.newBuilder("germaniumdustMetalPulverize_industrial", "basic", 100, 0);
+germaniumdustMetalPulverize_industrial.addItemInput(<contenttweaker:material_part:2427>);
+germaniumdustMetalPulverize_industrial.addFluidInput(<liquid:cotm_germanium_molten> * 100);
+germaniumdustMetalPulverize_industrial.addItemOutput(<contenttweaker:material_part:1165>);
+germaniumdustMetalPulverize_industrial.addFluidInput(<liquid:hydrogen> * 100);
+germaniumdustMetalPulverize_industrial.addFluidInput(<liquid:cotc_data> * 100);
+germaniumdustMetalPulverize_industrial.addEnergyPerTickInput(262144);
+germaniumdustMetalPulverize_industrial.build();
+
+var germaniumdustMetalPulverize_ultimate = mods.modularmachinery.RecipeBuilder.newBuilder("germaniumdustMetalPulverize_ultimate", "basic", 100, 0);
+germaniumdustMetalPulverize_ultimate.addItemInput(<contenttweaker:material_part:2427>);
+germaniumdustMetalPulverize_ultimate.addFluidInput(<liquid:cotm_germanium_molten> * 100);
+germaniumdustMetalPulverize_ultimate.addItemOutput(<contenttweaker:material_part:1165>);
+germaniumdustMetalPulverize_ultimate.addFluidInput(<liquid:hydrogen> * 100);
+germaniumdustMetalPulverize_ultimate.addFluidInput(<liquid:cotc_data> * 100);
+germaniumdustMetalPulverize_ultimate.addFluidInput(<liquid:cotc_pos_red_matter> * 100);
+germaniumdustMetalPulverize_ultimate.addFluidOutput(<liquid:cotc_neg_orange_matter> * 100);
+germaniumdustMetalPulverize_ultimate.addEnergyPerTickInput(67108864);
+germaniumdustMetalPulverize_ultimate.build();
+
+var arsenicdustMetalPulverize_basic = mods.modularmachinery.RecipeBuilder.newBuilder("arsenicdustMetalPulverize_basic", "basic", 100, 0);
+arsenicdustMetalPulverize_basic.addItemInput(<contenttweaker:material_part:2465>);
+arsenicdustMetalPulverize_basic.addFluidInput(<liquid:cotm_arsenic_molten> * 100);
+arsenicdustMetalPulverize_basic.addItemOutput(<contenttweaker:material_part:1168>);
+arsenicdustMetalPulverize_basic.addEnergyPerTickInput(4);
+arsenicdustMetalPulverize_basic.build();
+
+var arsenicdustMetalPulverize_advanced = mods.modularmachinery.RecipeBuilder.newBuilder("arsenicdustMetalPulverize_advanced", "basic", 100, 0);
+arsenicdustMetalPulverize_advanced.addItemInput(<contenttweaker:material_part:2465>);
+arsenicdustMetalPulverize_advanced.addFluidInput(<liquid:cotm_arsenic_molten> * 100);
+arsenicdustMetalPulverize_advanced.addItemOutput(<contenttweaker:material_part:1168>);
+arsenicdustMetalPulverize_advanced.addFluidInput(<liquid:hydrogen> * 100);
+arsenicdustMetalPulverize_advanced.addEnergyPerTickInput(1024);
+arsenicdustMetalPulverize_advanced.build();
+
+var arsenicdustMetalPulverize_industrial = mods.modularmachinery.RecipeBuilder.newBuilder("arsenicdustMetalPulverize_industrial", "basic", 100, 0);
+arsenicdustMetalPulverize_industrial.addItemInput(<contenttweaker:material_part:2465>);
+arsenicdustMetalPulverize_industrial.addFluidInput(<liquid:cotm_arsenic_molten> * 100);
+arsenicdustMetalPulverize_industrial.addItemOutput(<contenttweaker:material_part:1168>);
+arsenicdustMetalPulverize_industrial.addFluidInput(<liquid:hydrogen> * 100);
+arsenicdustMetalPulverize_industrial.addFluidInput(<liquid:cotc_data> * 100);
+arsenicdustMetalPulverize_industrial.addEnergyPerTickInput(262144);
+arsenicdustMetalPulverize_industrial.build();
+
+var arsenicdustMetalPulverize_ultimate = mods.modularmachinery.RecipeBuilder.newBuilder("arsenicdustMetalPulverize_ultimate", "basic", 100, 0);
+arsenicdustMetalPulverize_ultimate.addItemInput(<contenttweaker:material_part:2465>);
+arsenicdustMetalPulverize_ultimate.addFluidInput(<liquid:cotm_arsenic_molten> * 100);
+arsenicdustMetalPulverize_ultimate.addItemOutput(<contenttweaker:material_part:1168>);
+arsenicdustMetalPulverize_ultimate.addFluidInput(<liquid:hydrogen> * 100);
+arsenicdustMetalPulverize_ultimate.addFluidInput(<liquid:cotc_data> * 100);
+arsenicdustMetalPulverize_ultimate.addFluidInput(<liquid:cotc_pos_red_matter> * 100);
+arsenicdustMetalPulverize_ultimate.addFluidOutput(<liquid:cotc_neg_orange_matter> * 100);
+arsenicdustMetalPulverize_ultimate.addEnergyPerTickInput(67108864);
+arsenicdustMetalPulverize_ultimate.build();
+
+var seleniumdustMetalPulverize_basic = mods.modularmachinery.RecipeBuilder.newBuilder("seleniumdustMetalPulverize_basic", "basic", 100, 0);
+seleniumdustMetalPulverize_basic.addItemInput(<contenttweaker:material_part:2503>);
+seleniumdustMetalPulverize_basic.addFluidInput(<liquid:cotm_selenium_molten> * 100);
+seleniumdustMetalPulverize_basic.addItemOutput(<contenttweaker:material_part:1171>);
+seleniumdustMetalPulverize_basic.addEnergyPerTickInput(4);
+seleniumdustMetalPulverize_basic.build();
+
+var seleniumdustMetalPulverize_advanced = mods.modularmachinery.RecipeBuilder.newBuilder("seleniumdustMetalPulverize_advanced", "basic", 100, 0);
+seleniumdustMetalPulverize_advanced.addItemInput(<contenttweaker:material_part:2503>);
+seleniumdustMetalPulverize_advanced.addFluidInput(<liquid:cotm_selenium_molten> * 100);
+seleniumdustMetalPulverize_advanced.addItemOutput(<contenttweaker:material_part:1171>);
+seleniumdustMetalPulverize_advanced.addFluidInput(<liquid:hydrogen> * 100);
+seleniumdustMetalPulverize_advanced.addEnergyPerTickInput(1024);
+seleniumdustMetalPulverize_advanced.build();
+
+var seleniumdustMetalPulverize_industrial = mods.modularmachinery.RecipeBuilder.newBuilder("seleniumdustMetalPulverize_industrial", "basic", 100, 0);
+seleniumdustMetalPulverize_industrial.addItemInput(<contenttweaker:material_part:2503>);
+seleniumdustMetalPulverize_industrial.addFluidInput(<liquid:cotm_selenium_molten> * 100);
+seleniumdustMetalPulverize_industrial.addItemOutput(<contenttweaker:material_part:1171>);
+seleniumdustMetalPulverize_industrial.addFluidInput(<liquid:hydrogen> * 100);
+seleniumdustMetalPulverize_industrial.addFluidInput(<liquid:cotc_data> * 100);
+seleniumdustMetalPulverize_industrial.addEnergyPerTickInput(262144);
+seleniumdustMetalPulverize_industrial.build();
+
+var seleniumdustMetalPulverize_ultimate = mods.modularmachinery.RecipeBuilder.newBuilder("seleniumdustMetalPulverize_ultimate", "basic", 100, 0);
+seleniumdustMetalPulverize_ultimate.addItemInput(<contenttweaker:material_part:2503>);
+seleniumdustMetalPulverize_ultimate.addFluidInput(<liquid:cotm_selenium_molten> * 100);
+seleniumdustMetalPulverize_ultimate.addItemOutput(<contenttweaker:material_part:1171>);
+seleniumdustMetalPulverize_ultimate.addFluidInput(<liquid:hydrogen> * 100);
+seleniumdustMetalPulverize_ultimate.addFluidInput(<liquid:cotc_data> * 100);
+seleniumdustMetalPulverize_ultimate.addFluidInput(<liquid:cotc_pos_red_matter> * 100);
+seleniumdustMetalPulverize_ultimate.addFluidOutput(<liquid:cotc_neg_orange_matter> * 100);
+seleniumdustMetalPulverize_ultimate.addEnergyPerTickInput(67108864);
+seleniumdustMetalPulverize_ultimate.build();
+
+var rubidiumdustMetalPulverize_basic = mods.modularmachinery.RecipeBuilder.newBuilder("rubidiumdustMetalPulverize_basic", "basic", 100, 0);
+rubidiumdustMetalPulverize_basic.addItemInput(<contenttweaker:material_part:2541>);
+rubidiumdustMetalPulverize_basic.addFluidInput(<liquid:cotm_rubidium_molten> * 100);
+rubidiumdustMetalPulverize_basic.addItemOutput(<contenttweaker:material_part:1174>);
+rubidiumdustMetalPulverize_basic.addEnergyPerTickInput(4);
+rubidiumdustMetalPulverize_basic.build();
+
+var rubidiumdustMetalPulverize_advanced = mods.modularmachinery.RecipeBuilder.newBuilder("rubidiumdustMetalPulverize_advanced", "basic", 100, 0);
+rubidiumdustMetalPulverize_advanced.addItemInput(<contenttweaker:material_part:2541>);
+rubidiumdustMetalPulverize_advanced.addFluidInput(<liquid:cotm_rubidium_molten> * 100);
+rubidiumdustMetalPulverize_advanced.addItemOutput(<contenttweaker:material_part:1174>);
+rubidiumdustMetalPulverize_advanced.addFluidInput(<liquid:hydrogen> * 100);
+rubidiumdustMetalPulverize_advanced.addEnergyPerTickInput(1024);
+rubidiumdustMetalPulverize_advanced.build();
+
+var rubidiumdustMetalPulverize_industrial = mods.modularmachinery.RecipeBuilder.newBuilder("rubidiumdustMetalPulverize_industrial", "basic", 100, 0);
+rubidiumdustMetalPulverize_industrial.addItemInput(<contenttweaker:material_part:2541>);
+rubidiumdustMetalPulverize_industrial.addFluidInput(<liquid:cotm_rubidium_molten> * 100);
+rubidiumdustMetalPulverize_industrial.addItemOutput(<contenttweaker:material_part:1174>);
+rubidiumdustMetalPulverize_industrial.addFluidInput(<liquid:hydrogen> * 100);
+rubidiumdustMetalPulverize_industrial.addFluidInput(<liquid:cotc_data> * 100);
+rubidiumdustMetalPulverize_industrial.addEnergyPerTickInput(262144);
+rubidiumdustMetalPulverize_industrial.build();
+
+var rubidiumdustMetalPulverize_ultimate = mods.modularmachinery.RecipeBuilder.newBuilder("rubidiumdustMetalPulverize_ultimate", "basic", 100, 0);
+rubidiumdustMetalPulverize_ultimate.addItemInput(<contenttweaker:material_part:2541>);
+rubidiumdustMetalPulverize_ultimate.addFluidInput(<liquid:cotm_rubidium_molten> * 100);
+rubidiumdustMetalPulverize_ultimate.addItemOutput(<contenttweaker:material_part:1174>);
+rubidiumdustMetalPulverize_ultimate.addFluidInput(<liquid:hydrogen> * 100);
+rubidiumdustMetalPulverize_ultimate.addFluidInput(<liquid:cotc_data> * 100);
+rubidiumdustMetalPulverize_ultimate.addFluidInput(<liquid:cotc_pos_red_matter> * 100);
+rubidiumdustMetalPulverize_ultimate.addFluidOutput(<liquid:cotc_neg_orange_matter> * 100);
+rubidiumdustMetalPulverize_ultimate.addEnergyPerTickInput(67108864);
+rubidiumdustMetalPulverize_ultimate.build();
+
+var strontiumdustMetalPulverize_basic = mods.modularmachinery.RecipeBuilder.newBuilder("strontiumdustMetalPulverize_basic", "basic", 100, 0);
+strontiumdustMetalPulverize_basic.addItemInput(<contenttweaker:material_part:2580>);
+strontiumdustMetalPulverize_basic.addFluidInput(<liquid:cotm_strontium_molten> * 100);
+strontiumdustMetalPulverize_basic.addItemOutput(<contenttweaker:material_part:1177>);
+strontiumdustMetalPulverize_basic.addEnergyPerTickInput(4);
+strontiumdustMetalPulverize_basic.build();
+
+var strontiumdustMetalPulverize_advanced = mods.modularmachinery.RecipeBuilder.newBuilder("strontiumdustMetalPulverize_advanced", "basic", 100, 0);
+strontiumdustMetalPulverize_advanced.addItemInput(<contenttweaker:material_part:2580>);
+strontiumdustMetalPulverize_advanced.addFluidInput(<liquid:cotm_strontium_molten> * 100);
+strontiumdustMetalPulverize_advanced.addItemOutput(<contenttweaker:material_part:1177>);
+strontiumdustMetalPulverize_advanced.addFluidInput(<liquid:hydrogen> * 100);
+strontiumdustMetalPulverize_advanced.addEnergyPerTickInput(1024);
+strontiumdustMetalPulverize_advanced.build();
+
+var strontiumdustMetalPulverize_industrial = mods.modularmachinery.RecipeBuilder.newBuilder("strontiumdustMetalPulverize_industrial", "basic", 100, 0);
+strontiumdustMetalPulverize_industrial.addItemInput(<contenttweaker:material_part:2580>);
+strontiumdustMetalPulverize_industrial.addFluidInput(<liquid:cotm_strontium_molten> * 100);
+strontiumdustMetalPulverize_industrial.addItemOutput(<contenttweaker:material_part:1177>);
+strontiumdustMetalPulverize_industrial.addFluidInput(<liquid:hydrogen> * 100);
+strontiumdustMetalPulverize_industrial.addFluidInput(<liquid:cotc_data> * 100);
+strontiumdustMetalPulverize_industrial.addEnergyPerTickInput(262144);
+strontiumdustMetalPulverize_industrial.build();
+
+var strontiumdustMetalPulverize_ultimate = mods.modularmachinery.RecipeBuilder.newBuilder("strontiumdustMetalPulverize_ultimate", "basic", 100, 0);
+strontiumdustMetalPulverize_ultimate.addItemInput(<contenttweaker:material_part:2580>);
+strontiumdustMetalPulverize_ultimate.addFluidInput(<liquid:cotm_strontium_molten> * 100);
+strontiumdustMetalPulverize_ultimate.addItemOutput(<contenttweaker:material_part:1177>);
+strontiumdustMetalPulverize_ultimate.addFluidInput(<liquid:hydrogen> * 100);
+strontiumdustMetalPulverize_ultimate.addFluidInput(<liquid:cotc_data> * 100);
+strontiumdustMetalPulverize_ultimate.addFluidInput(<liquid:cotc_pos_red_matter> * 100);
+strontiumdustMetalPulverize_ultimate.addFluidOutput(<liquid:cotc_neg_orange_matter> * 100);
+strontiumdustMetalPulverize_ultimate.addEnergyPerTickInput(67108864);
+strontiumdustMetalPulverize_ultimate.build();
+
+var yttriumdustMetalPulverize_basic = mods.modularmachinery.RecipeBuilder.newBuilder("yttriumdustMetalPulverize_basic", "basic", 100, 0);
+yttriumdustMetalPulverize_basic.addItemInput(<contenttweaker:material_part:2619>);
+yttriumdustMetalPulverize_basic.addFluidInput(<liquid:cotm_yttrium_molten> * 100);
+yttriumdustMetalPulverize_basic.addItemOutput(<contenttweaker:material_part:1180>);
+yttriumdustMetalPulverize_basic.addEnergyPerTickInput(4);
+yttriumdustMetalPulverize_basic.build();
+
+var yttriumdustMetalPulverize_advanced = mods.modularmachinery.RecipeBuilder.newBuilder("yttriumdustMetalPulverize_advanced", "basic", 100, 0);
+yttriumdustMetalPulverize_advanced.addItemInput(<contenttweaker:material_part:2619>);
+yttriumdustMetalPulverize_advanced.addFluidInput(<liquid:cotm_yttrium_molten> * 100);
+yttriumdustMetalPulverize_advanced.addItemOutput(<contenttweaker:material_part:1180>);
+yttriumdustMetalPulverize_advanced.addFluidInput(<liquid:hydrogen> * 100);
+yttriumdustMetalPulverize_advanced.addEnergyPerTickInput(1024);
+yttriumdustMetalPulverize_advanced.build();
+
+var yttriumdustMetalPulverize_industrial = mods.modularmachinery.RecipeBuilder.newBuilder("yttriumdustMetalPulverize_industrial", "basic", 100, 0);
+yttriumdustMetalPulverize_industrial.addItemInput(<contenttweaker:material_part:2619>);
+yttriumdustMetalPulverize_industrial.addFluidInput(<liquid:cotm_yttrium_molten> * 100);
+yttriumdustMetalPulverize_industrial.addItemOutput(<contenttweaker:material_part:1180>);
+yttriumdustMetalPulverize_industrial.addFluidInput(<liquid:hydrogen> * 100);
+yttriumdustMetalPulverize_industrial.addFluidInput(<liquid:cotc_data> * 100);
+yttriumdustMetalPulverize_industrial.addEnergyPerTickInput(262144);
+yttriumdustMetalPulverize_industrial.build();
+
+var yttriumdustMetalPulverize_ultimate = mods.modularmachinery.RecipeBuilder.newBuilder("yttriumdustMetalPulverize_ultimate", "basic", 100, 0);
+yttriumdustMetalPulverize_ultimate.addItemInput(<contenttweaker:material_part:2619>);
+yttriumdustMetalPulverize_ultimate.addFluidInput(<liquid:cotm_yttrium_molten> * 100);
+yttriumdustMetalPulverize_ultimate.addItemOutput(<contenttweaker:material_part:1180>);
+yttriumdustMetalPulverize_ultimate.addFluidInput(<liquid:hydrogen> * 100);
+yttriumdustMetalPulverize_ultimate.addFluidInput(<liquid:cotc_data> * 100);
+yttriumdustMetalPulverize_ultimate.addFluidInput(<liquid:cotc_pos_red_matter> * 100);
+yttriumdustMetalPulverize_ultimate.addFluidOutput(<liquid:cotc_neg_orange_matter> * 100);
+yttriumdustMetalPulverize_ultimate.addEnergyPerTickInput(67108864);
+yttriumdustMetalPulverize_ultimate.build();
+
+var zirconiumdustMetalPulverize_basic = mods.modularmachinery.RecipeBuilder.newBuilder("zirconiumdustMetalPulverize_basic", "basic", 100, 0);
+zirconiumdustMetalPulverize_basic.addItemInput(<contenttweaker:material_part:2658>);
+zirconiumdustMetalPulverize_basic.addFluidInput(<liquid:cotm_zirconium_molten> * 100);
+zirconiumdustMetalPulverize_basic.addItemOutput(<contenttweaker:material_part:1183>);
+zirconiumdustMetalPulverize_basic.addEnergyPerTickInput(4);
+zirconiumdustMetalPulverize_basic.build();
+
+var zirconiumdustMetalPulverize_advanced = mods.modularmachinery.RecipeBuilder.newBuilder("zirconiumdustMetalPulverize_advanced", "basic", 100, 0);
+zirconiumdustMetalPulverize_advanced.addItemInput(<contenttweaker:material_part:2658>);
+zirconiumdustMetalPulverize_advanced.addFluidInput(<liquid:cotm_zirconium_molten> * 100);
+zirconiumdustMetalPulverize_advanced.addItemOutput(<contenttweaker:material_part:1183>);
+zirconiumdustMetalPulverize_advanced.addFluidInput(<liquid:hydrogen> * 100);
+zirconiumdustMetalPulverize_advanced.addEnergyPerTickInput(1024);
+zirconiumdustMetalPulverize_advanced.build();
+
+var zirconiumdustMetalPulverize_industrial = mods.modularmachinery.RecipeBuilder.newBuilder("zirconiumdustMetalPulverize_industrial", "basic", 100, 0);
+zirconiumdustMetalPulverize_industrial.addItemInput(<contenttweaker:material_part:2658>);
+zirconiumdustMetalPulverize_industrial.addFluidInput(<liquid:cotm_zirconium_molten> * 100);
+zirconiumdustMetalPulverize_industrial.addItemOutput(<contenttweaker:material_part:1183>);
+zirconiumdustMetalPulverize_industrial.addFluidInput(<liquid:hydrogen> * 100);
+zirconiumdustMetalPulverize_industrial.addFluidInput(<liquid:cotc_data> * 100);
+zirconiumdustMetalPulverize_industrial.addEnergyPerTickInput(262144);
+zirconiumdustMetalPulverize_industrial.build();
+
+var zirconiumdustMetalPulverize_ultimate = mods.modularmachinery.RecipeBuilder.newBuilder("zirconiumdustMetalPulverize_ultimate", "basic", 100, 0);
+zirconiumdustMetalPulverize_ultimate.addItemInput(<contenttweaker:material_part:2658>);
+zirconiumdustMetalPulverize_ultimate.addFluidInput(<liquid:cotm_zirconium_molten> * 100);
+zirconiumdustMetalPulverize_ultimate.addItemOutput(<contenttweaker:material_part:1183>);
+zirconiumdustMetalPulverize_ultimate.addFluidInput(<liquid:hydrogen> * 100);
+zirconiumdustMetalPulverize_ultimate.addFluidInput(<liquid:cotc_data> * 100);
+zirconiumdustMetalPulverize_ultimate.addFluidInput(<liquid:cotc_pos_red_matter> * 100);
+zirconiumdustMetalPulverize_ultimate.addFluidOutput(<liquid:cotc_neg_orange_matter> * 100);
+zirconiumdustMetalPulverize_ultimate.addEnergyPerTickInput(67108864);
+zirconiumdustMetalPulverize_ultimate.build();
+
+var niobiumdustMetalPulverize_basic = mods.modularmachinery.RecipeBuilder.newBuilder("niobiumdustMetalPulverize_basic", "basic", 100, 0);
+niobiumdustMetalPulverize_basic.addItemInput(<contenttweaker:material_part:2697>);
+niobiumdustMetalPulverize_basic.addFluidInput(<liquid:cotm_niobium_molten> * 100);
+niobiumdustMetalPulverize_basic.addItemOutput(<contenttweaker:material_part:1186>);
+niobiumdustMetalPulverize_basic.addEnergyPerTickInput(4);
+niobiumdustMetalPulverize_basic.build();
+
+var niobiumdustMetalPulverize_advanced = mods.modularmachinery.RecipeBuilder.newBuilder("niobiumdustMetalPulverize_advanced", "basic", 100, 0);
+niobiumdustMetalPulverize_advanced.addItemInput(<contenttweaker:material_part:2697>);
+niobiumdustMetalPulverize_advanced.addFluidInput(<liquid:cotm_niobium_molten> * 100);
+niobiumdustMetalPulverize_advanced.addItemOutput(<contenttweaker:material_part:1186>);
+niobiumdustMetalPulverize_advanced.addFluidInput(<liquid:hydrogen> * 100);
+niobiumdustMetalPulverize_advanced.addEnergyPerTickInput(1024);
+niobiumdustMetalPulverize_advanced.build();
+
+var niobiumdustMetalPulverize_industrial = mods.modularmachinery.RecipeBuilder.newBuilder("niobiumdustMetalPulverize_industrial", "basic", 100, 0);
+niobiumdustMetalPulverize_industrial.addItemInput(<contenttweaker:material_part:2697>);
+niobiumdustMetalPulverize_industrial.addFluidInput(<liquid:cotm_niobium_molten> * 100);
+niobiumdustMetalPulverize_industrial.addItemOutput(<contenttweaker:material_part:1186>);
+niobiumdustMetalPulverize_industrial.addFluidInput(<liquid:hydrogen> * 100);
+niobiumdustMetalPulverize_industrial.addFluidInput(<liquid:cotc_data> * 100);
+niobiumdustMetalPulverize_industrial.addEnergyPerTickInput(262144);
+niobiumdustMetalPulverize_industrial.build();
+
+var niobiumdustMetalPulverize_ultimate = mods.modularmachinery.RecipeBuilder.newBuilder("niobiumdustMetalPulverize_ultimate", "basic", 100, 0);
+niobiumdustMetalPulverize_ultimate.addItemInput(<contenttweaker:material_part:2697>);
+niobiumdustMetalPulverize_ultimate.addFluidInput(<liquid:cotm_niobium_molten> * 100);
+niobiumdustMetalPulverize_ultimate.addItemOutput(<contenttweaker:material_part:1186>);
+niobiumdustMetalPulverize_ultimate.addFluidInput(<liquid:hydrogen> * 100);
+niobiumdustMetalPulverize_ultimate.addFluidInput(<liquid:cotc_data> * 100);
+niobiumdustMetalPulverize_ultimate.addFluidInput(<liquid:cotc_pos_red_matter> * 100);
+niobiumdustMetalPulverize_ultimate.addFluidOutput(<liquid:cotc_neg_orange_matter> * 100);
+niobiumdustMetalPulverize_ultimate.addEnergyPerTickInput(67108864);
+niobiumdustMetalPulverize_ultimate.build();
+
+var molybdenumdustMetalPulverize_basic = mods.modularmachinery.RecipeBuilder.newBuilder("molybdenumdustMetalPulverize_basic", "basic", 100, 0);
+molybdenumdustMetalPulverize_basic.addItemInput(<contenttweaker:material_part:2736>);
+molybdenumdustMetalPulverize_basic.addFluidInput(<liquid:cotm_molybdenum_molten> * 100);
+molybdenumdustMetalPulverize_basic.addItemOutput(<contenttweaker:material_part:1189>);
+molybdenumdustMetalPulverize_basic.addEnergyPerTickInput(4);
+molybdenumdustMetalPulverize_basic.build();
+
+var molybdenumdustMetalPulverize_advanced = mods.modularmachinery.RecipeBuilder.newBuilder("molybdenumdustMetalPulverize_advanced", "basic", 100, 0);
+molybdenumdustMetalPulverize_advanced.addItemInput(<contenttweaker:material_part:2736>);
+molybdenumdustMetalPulverize_advanced.addFluidInput(<liquid:cotm_molybdenum_molten> * 100);
+molybdenumdustMetalPulverize_advanced.addItemOutput(<contenttweaker:material_part:1189>);
+molybdenumdustMetalPulverize_advanced.addFluidInput(<liquid:hydrogen> * 100);
+molybdenumdustMetalPulverize_advanced.addEnergyPerTickInput(1024);
+molybdenumdustMetalPulverize_advanced.build();
+
+var molybdenumdustMetalPulverize_industrial = mods.modularmachinery.RecipeBuilder.newBuilder("molybdenumdustMetalPulverize_industrial", "basic", 100, 0);
+molybdenumdustMetalPulverize_industrial.addItemInput(<contenttweaker:material_part:2736>);
+molybdenumdustMetalPulverize_industrial.addFluidInput(<liquid:cotm_molybdenum_molten> * 100);
+molybdenumdustMetalPulverize_industrial.addItemOutput(<contenttweaker:material_part:1189>);
+molybdenumdustMetalPulverize_industrial.addFluidInput(<liquid:hydrogen> * 100);
+molybdenumdustMetalPulverize_industrial.addFluidInput(<liquid:cotc_data> * 100);
+molybdenumdustMetalPulverize_industrial.addEnergyPerTickInput(262144);
+molybdenumdustMetalPulverize_industrial.build();
+
+var molybdenumdustMetalPulverize_ultimate = mods.modularmachinery.RecipeBuilder.newBuilder("molybdenumdustMetalPulverize_ultimate", "basic", 100, 0);
+molybdenumdustMetalPulverize_ultimate.addItemInput(<contenttweaker:material_part:2736>);
+molybdenumdustMetalPulverize_ultimate.addFluidInput(<liquid:cotm_molybdenum_molten> * 100);
+molybdenumdustMetalPulverize_ultimate.addItemOutput(<contenttweaker:material_part:1189>);
+molybdenumdustMetalPulverize_ultimate.addFluidInput(<liquid:hydrogen> * 100);
+molybdenumdustMetalPulverize_ultimate.addFluidInput(<liquid:cotc_data> * 100);
+molybdenumdustMetalPulverize_ultimate.addFluidInput(<liquid:cotc_pos_red_matter> * 100);
+molybdenumdustMetalPulverize_ultimate.addFluidOutput(<liquid:cotc_neg_orange_matter> * 100);
+molybdenumdustMetalPulverize_ultimate.addEnergyPerTickInput(67108864);
+molybdenumdustMetalPulverize_ultimate.build();
+
+var rutheniumdustMetalPulverize_basic = mods.modularmachinery.RecipeBuilder.newBuilder("rutheniumdustMetalPulverize_basic", "basic", 100, 0);
+rutheniumdustMetalPulverize_basic.addItemInput(<contenttweaker:material_part:2775>);
+rutheniumdustMetalPulverize_basic.addFluidInput(<liquid:cotm_ruthenium_molten> * 100);
+rutheniumdustMetalPulverize_basic.addItemOutput(<contenttweaker:material_part:1195>);
+rutheniumdustMetalPulverize_basic.addEnergyPerTickInput(4);
+rutheniumdustMetalPulverize_basic.build();
+
+var rutheniumdustMetalPulverize_advanced = mods.modularmachinery.RecipeBuilder.newBuilder("rutheniumdustMetalPulverize_advanced", "basic", 100, 0);
+rutheniumdustMetalPulverize_advanced.addItemInput(<contenttweaker:material_part:2775>);
+rutheniumdustMetalPulverize_advanced.addFluidInput(<liquid:cotm_ruthenium_molten> * 100);
+rutheniumdustMetalPulverize_advanced.addItemOutput(<contenttweaker:material_part:1195>);
+rutheniumdustMetalPulverize_advanced.addFluidInput(<liquid:hydrogen> * 100);
+rutheniumdustMetalPulverize_advanced.addEnergyPerTickInput(1024);
+rutheniumdustMetalPulverize_advanced.build();
+
+var rutheniumdustMetalPulverize_industrial = mods.modularmachinery.RecipeBuilder.newBuilder("rutheniumdustMetalPulverize_industrial", "basic", 100, 0);
+rutheniumdustMetalPulverize_industrial.addItemInput(<contenttweaker:material_part:2775>);
+rutheniumdustMetalPulverize_industrial.addFluidInput(<liquid:cotm_ruthenium_molten> * 100);
+rutheniumdustMetalPulverize_industrial.addItemOutput(<contenttweaker:material_part:1195>);
+rutheniumdustMetalPulverize_industrial.addFluidInput(<liquid:hydrogen> * 100);
+rutheniumdustMetalPulverize_industrial.addFluidInput(<liquid:cotc_data> * 100);
+rutheniumdustMetalPulverize_industrial.addEnergyPerTickInput(262144);
+rutheniumdustMetalPulverize_industrial.build();
+
+var rutheniumdustMetalPulverize_ultimate = mods.modularmachinery.RecipeBuilder.newBuilder("rutheniumdustMetalPulverize_ultimate", "basic", 100, 0);
+rutheniumdustMetalPulverize_ultimate.addItemInput(<contenttweaker:material_part:2775>);
+rutheniumdustMetalPulverize_ultimate.addFluidInput(<liquid:cotm_ruthenium_molten> * 100);
+rutheniumdustMetalPulverize_ultimate.addItemOutput(<contenttweaker:material_part:1195>);
+rutheniumdustMetalPulverize_ultimate.addFluidInput(<liquid:hydrogen> * 100);
+rutheniumdustMetalPulverize_ultimate.addFluidInput(<liquid:cotc_data> * 100);
+rutheniumdustMetalPulverize_ultimate.addFluidInput(<liquid:cotc_pos_red_matter> * 100);
+rutheniumdustMetalPulverize_ultimate.addFluidOutput(<liquid:cotc_neg_orange_matter> * 100);
+rutheniumdustMetalPulverize_ultimate.addEnergyPerTickInput(67108864);
+rutheniumdustMetalPulverize_ultimate.build();
+
+var rhodiumdustMetalPulverize_basic = mods.modularmachinery.RecipeBuilder.newBuilder("rhodiumdustMetalPulverize_basic", "basic", 100, 0);
+rhodiumdustMetalPulverize_basic.addItemInput(<contenttweaker:material_part:2814>);
+rhodiumdustMetalPulverize_basic.addFluidInput(<liquid:cotm_rhodium_molten> * 100);
+rhodiumdustMetalPulverize_basic.addItemOutput(<contenttweaker:material_part:1198>);
+rhodiumdustMetalPulverize_basic.addEnergyPerTickInput(4);
+rhodiumdustMetalPulverize_basic.build();
+
+var rhodiumdustMetalPulverize_advanced = mods.modularmachinery.RecipeBuilder.newBuilder("rhodiumdustMetalPulverize_advanced", "basic", 100, 0);
+rhodiumdustMetalPulverize_advanced.addItemInput(<contenttweaker:material_part:2814>);
+rhodiumdustMetalPulverize_advanced.addFluidInput(<liquid:cotm_rhodium_molten> * 100);
+rhodiumdustMetalPulverize_advanced.addItemOutput(<contenttweaker:material_part:1198>);
+rhodiumdustMetalPulverize_advanced.addFluidInput(<liquid:hydrogen> * 100);
+rhodiumdustMetalPulverize_advanced.addEnergyPerTickInput(1024);
+rhodiumdustMetalPulverize_advanced.build();
+
+var rhodiumdustMetalPulverize_industrial = mods.modularmachinery.RecipeBuilder.newBuilder("rhodiumdustMetalPulverize_industrial", "basic", 100, 0);
+rhodiumdustMetalPulverize_industrial.addItemInput(<contenttweaker:material_part:2814>);
+rhodiumdustMetalPulverize_industrial.addFluidInput(<liquid:cotm_rhodium_molten> * 100);
+rhodiumdustMetalPulverize_industrial.addItemOutput(<contenttweaker:material_part:1198>);
+rhodiumdustMetalPulverize_industrial.addFluidInput(<liquid:hydrogen> * 100);
+rhodiumdustMetalPulverize_industrial.addFluidInput(<liquid:cotc_data> * 100);
+rhodiumdustMetalPulverize_industrial.addEnergyPerTickInput(262144);
+rhodiumdustMetalPulverize_industrial.build();
+
+var rhodiumdustMetalPulverize_ultimate = mods.modularmachinery.RecipeBuilder.newBuilder("rhodiumdustMetalPulverize_ultimate", "basic", 100, 0);
+rhodiumdustMetalPulverize_ultimate.addItemInput(<contenttweaker:material_part:2814>);
+rhodiumdustMetalPulverize_ultimate.addFluidInput(<liquid:cotm_rhodium_molten> * 100);
+rhodiumdustMetalPulverize_ultimate.addItemOutput(<contenttweaker:material_part:1198>);
+rhodiumdustMetalPulverize_ultimate.addFluidInput(<liquid:hydrogen> * 100);
+rhodiumdustMetalPulverize_ultimate.addFluidInput(<liquid:cotc_data> * 100);
+rhodiumdustMetalPulverize_ultimate.addFluidInput(<liquid:cotc_pos_red_matter> * 100);
+rhodiumdustMetalPulverize_ultimate.addFluidOutput(<liquid:cotc_neg_orange_matter> * 100);
+rhodiumdustMetalPulverize_ultimate.addEnergyPerTickInput(67108864);
+rhodiumdustMetalPulverize_ultimate.build();
+
+var palladiumdustMetalPulverize_basic = mods.modularmachinery.RecipeBuilder.newBuilder("palladiumdustMetalPulverize_basic", "basic", 100, 0);
+palladiumdustMetalPulverize_basic.addItemInput(<contenttweaker:material_part:2853>);
+palladiumdustMetalPulverize_basic.addFluidInput(<liquid:cotm_palladium_molten> * 100);
+palladiumdustMetalPulverize_basic.addItemOutput(<contenttweaker:material_part:1201>);
+palladiumdustMetalPulverize_basic.addEnergyPerTickInput(4);
+palladiumdustMetalPulverize_basic.build();
+
+var palladiumdustMetalPulverize_advanced = mods.modularmachinery.RecipeBuilder.newBuilder("palladiumdustMetalPulverize_advanced", "basic", 100, 0);
+palladiumdustMetalPulverize_advanced.addItemInput(<contenttweaker:material_part:2853>);
+palladiumdustMetalPulverize_advanced.addFluidInput(<liquid:cotm_palladium_molten> * 100);
+palladiumdustMetalPulverize_advanced.addItemOutput(<contenttweaker:material_part:1201>);
+palladiumdustMetalPulverize_advanced.addFluidInput(<liquid:hydrogen> * 100);
+palladiumdustMetalPulverize_advanced.addEnergyPerTickInput(1024);
+palladiumdustMetalPulverize_advanced.build();
+
+var palladiumdustMetalPulverize_industrial = mods.modularmachinery.RecipeBuilder.newBuilder("palladiumdustMetalPulverize_industrial", "basic", 100, 0);
+palladiumdustMetalPulverize_industrial.addItemInput(<contenttweaker:material_part:2853>);
+palladiumdustMetalPulverize_industrial.addFluidInput(<liquid:cotm_palladium_molten> * 100);
+palladiumdustMetalPulverize_industrial.addItemOutput(<contenttweaker:material_part:1201>);
+palladiumdustMetalPulverize_industrial.addFluidInput(<liquid:hydrogen> * 100);
+palladiumdustMetalPulverize_industrial.addFluidInput(<liquid:cotc_data> * 100);
+palladiumdustMetalPulverize_industrial.addEnergyPerTickInput(262144);
+palladiumdustMetalPulverize_industrial.build();
+
+var palladiumdustMetalPulverize_ultimate = mods.modularmachinery.RecipeBuilder.newBuilder("palladiumdustMetalPulverize_ultimate", "basic", 100, 0);
+palladiumdustMetalPulverize_ultimate.addItemInput(<contenttweaker:material_part:2853>);
+palladiumdustMetalPulverize_ultimate.addFluidInput(<liquid:cotm_palladium_molten> * 100);
+palladiumdustMetalPulverize_ultimate.addItemOutput(<contenttweaker:material_part:1201>);
+palladiumdustMetalPulverize_ultimate.addFluidInput(<liquid:hydrogen> * 100);
+palladiumdustMetalPulverize_ultimate.addFluidInput(<liquid:cotc_data> * 100);
+palladiumdustMetalPulverize_ultimate.addFluidInput(<liquid:cotc_pos_red_matter> * 100);
+palladiumdustMetalPulverize_ultimate.addFluidOutput(<liquid:cotc_neg_orange_matter> * 100);
+palladiumdustMetalPulverize_ultimate.addEnergyPerTickInput(67108864);
+palladiumdustMetalPulverize_ultimate.build();
+
+var silverdustMetalPulverize_basic = mods.modularmachinery.RecipeBuilder.newBuilder("silverdustMetalPulverize_basic", "basic", 100, 0);
+silverdustMetalPulverize_basic.addItemInput(<contenttweaker:material_part:2892>);
+silverdustMetalPulverize_basic.addFluidInput(<liquid:cotm_silver_molten> * 100);
+silverdustMetalPulverize_basic.addItemOutput(<contenttweaker:material_part:1204>);
+silverdustMetalPulverize_basic.addEnergyPerTickInput(4);
+silverdustMetalPulverize_basic.build();
+
+var silverdustMetalPulverize_advanced = mods.modularmachinery.RecipeBuilder.newBuilder("silverdustMetalPulverize_advanced", "basic", 100, 0);
+silverdustMetalPulverize_advanced.addItemInput(<contenttweaker:material_part:2892>);
+silverdustMetalPulverize_advanced.addFluidInput(<liquid:cotm_silver_molten> * 100);
+silverdustMetalPulverize_advanced.addItemOutput(<contenttweaker:material_part:1204>);
+silverdustMetalPulverize_advanced.addFluidInput(<liquid:hydrogen> * 100);
+silverdustMetalPulverize_advanced.addEnergyPerTickInput(1024);
+silverdustMetalPulverize_advanced.build();
+
+var silverdustMetalPulverize_industrial = mods.modularmachinery.RecipeBuilder.newBuilder("silverdustMetalPulverize_industrial", "basic", 100, 0);
+silverdustMetalPulverize_industrial.addItemInput(<contenttweaker:material_part:2892>);
+silverdustMetalPulverize_industrial.addFluidInput(<liquid:cotm_silver_molten> * 100);
+silverdustMetalPulverize_industrial.addItemOutput(<contenttweaker:material_part:1204>);
+silverdustMetalPulverize_industrial.addFluidInput(<liquid:hydrogen> * 100);
+silverdustMetalPulverize_industrial.addFluidInput(<liquid:cotc_data> * 100);
+silverdustMetalPulverize_industrial.addEnergyPerTickInput(262144);
+silverdustMetalPulverize_industrial.build();
+
+var silverdustMetalPulverize_ultimate = mods.modularmachinery.RecipeBuilder.newBuilder("silverdustMetalPulverize_ultimate", "basic", 100, 0);
+silverdustMetalPulverize_ultimate.addItemInput(<contenttweaker:material_part:2892>);
+silverdustMetalPulverize_ultimate.addFluidInput(<liquid:cotm_silver_molten> * 100);
+silverdustMetalPulverize_ultimate.addItemOutput(<contenttweaker:material_part:1204>);
+silverdustMetalPulverize_ultimate.addFluidInput(<liquid:hydrogen> * 100);
+silverdustMetalPulverize_ultimate.addFluidInput(<liquid:cotc_data> * 100);
+silverdustMetalPulverize_ultimate.addFluidInput(<liquid:cotc_pos_red_matter> * 100);
+silverdustMetalPulverize_ultimate.addFluidOutput(<liquid:cotc_neg_orange_matter> * 100);
+silverdustMetalPulverize_ultimate.addEnergyPerTickInput(67108864);
+silverdustMetalPulverize_ultimate.build();
+
+var cadmiumdustMetalPulverize_basic = mods.modularmachinery.RecipeBuilder.newBuilder("cadmiumdustMetalPulverize_basic", "basic", 100, 0);
+cadmiumdustMetalPulverize_basic.addItemInput(<contenttweaker:material_part:2931>);
+cadmiumdustMetalPulverize_basic.addFluidInput(<liquid:cotm_cadmium_molten> * 100);
+cadmiumdustMetalPulverize_basic.addItemOutput(<contenttweaker:material_part:1207>);
+cadmiumdustMetalPulverize_basic.addEnergyPerTickInput(4);
+cadmiumdustMetalPulverize_basic.build();
+
+var cadmiumdustMetalPulverize_advanced = mods.modularmachinery.RecipeBuilder.newBuilder("cadmiumdustMetalPulverize_advanced", "basic", 100, 0);
+cadmiumdustMetalPulverize_advanced.addItemInput(<contenttweaker:material_part:2931>);
+cadmiumdustMetalPulverize_advanced.addFluidInput(<liquid:cotm_cadmium_molten> * 100);
+cadmiumdustMetalPulverize_advanced.addItemOutput(<contenttweaker:material_part:1207>);
+cadmiumdustMetalPulverize_advanced.addFluidInput(<liquid:hydrogen> * 100);
+cadmiumdustMetalPulverize_advanced.addEnergyPerTickInput(1024);
+cadmiumdustMetalPulverize_advanced.build();
+
+var cadmiumdustMetalPulverize_industrial = mods.modularmachinery.RecipeBuilder.newBuilder("cadmiumdustMetalPulverize_industrial", "basic", 100, 0);
+cadmiumdustMetalPulverize_industrial.addItemInput(<contenttweaker:material_part:2931>);
+cadmiumdustMetalPulverize_industrial.addFluidInput(<liquid:cotm_cadmium_molten> * 100);
+cadmiumdustMetalPulverize_industrial.addItemOutput(<contenttweaker:material_part:1207>);
+cadmiumdustMetalPulverize_industrial.addFluidInput(<liquid:hydrogen> * 100);
+cadmiumdustMetalPulverize_industrial.addFluidInput(<liquid:cotc_data> * 100);
+cadmiumdustMetalPulverize_industrial.addEnergyPerTickInput(262144);
+cadmiumdustMetalPulverize_industrial.build();
+
+var cadmiumdustMetalPulverize_ultimate = mods.modularmachinery.RecipeBuilder.newBuilder("cadmiumdustMetalPulverize_ultimate", "basic", 100, 0);
+cadmiumdustMetalPulverize_ultimate.addItemInput(<contenttweaker:material_part:2931>);
+cadmiumdustMetalPulverize_ultimate.addFluidInput(<liquid:cotm_cadmium_molten> * 100);
+cadmiumdustMetalPulverize_ultimate.addItemOutput(<contenttweaker:material_part:1207>);
+cadmiumdustMetalPulverize_ultimate.addFluidInput(<liquid:hydrogen> * 100);
+cadmiumdustMetalPulverize_ultimate.addFluidInput(<liquid:cotc_data> * 100);
+cadmiumdustMetalPulverize_ultimate.addFluidInput(<liquid:cotc_pos_red_matter> * 100);
+cadmiumdustMetalPulverize_ultimate.addFluidOutput(<liquid:cotc_neg_orange_matter> * 100);
+cadmiumdustMetalPulverize_ultimate.addEnergyPerTickInput(67108864);
+cadmiumdustMetalPulverize_ultimate.build();
+
+var indiumdustMetalPulverize_basic = mods.modularmachinery.RecipeBuilder.newBuilder("indiumdustMetalPulverize_basic", "basic", 100, 0);
+indiumdustMetalPulverize_basic.addItemInput(<contenttweaker:material_part:2969>);
+indiumdustMetalPulverize_basic.addFluidInput(<liquid:cotm_indium_molten> * 100);
+indiumdustMetalPulverize_basic.addItemOutput(<contenttweaker:material_part:1210>);
+indiumdustMetalPulverize_basic.addEnergyPerTickInput(4);
+indiumdustMetalPulverize_basic.build();
+
+var indiumdustMetalPulverize_advanced = mods.modularmachinery.RecipeBuilder.newBuilder("indiumdustMetalPulverize_advanced", "basic", 100, 0);
+indiumdustMetalPulverize_advanced.addItemInput(<contenttweaker:material_part:2969>);
+indiumdustMetalPulverize_advanced.addFluidInput(<liquid:cotm_indium_molten> * 100);
+indiumdustMetalPulverize_advanced.addItemOutput(<contenttweaker:material_part:1210>);
+indiumdustMetalPulverize_advanced.addFluidInput(<liquid:hydrogen> * 100);
+indiumdustMetalPulverize_advanced.addEnergyPerTickInput(1024);
+indiumdustMetalPulverize_advanced.build();
+
+var indiumdustMetalPulverize_industrial = mods.modularmachinery.RecipeBuilder.newBuilder("indiumdustMetalPulverize_industrial", "basic", 100, 0);
+indiumdustMetalPulverize_industrial.addItemInput(<contenttweaker:material_part:2969>);
+indiumdustMetalPulverize_industrial.addFluidInput(<liquid:cotm_indium_molten> * 100);
+indiumdustMetalPulverize_industrial.addItemOutput(<contenttweaker:material_part:1210>);
+indiumdustMetalPulverize_industrial.addFluidInput(<liquid:hydrogen> * 100);
+indiumdustMetalPulverize_industrial.addFluidInput(<liquid:cotc_data> * 100);
+indiumdustMetalPulverize_industrial.addEnergyPerTickInput(262144);
+indiumdustMetalPulverize_industrial.build();
+
+var indiumdustMetalPulverize_ultimate = mods.modularmachinery.RecipeBuilder.newBuilder("indiumdustMetalPulverize_ultimate", "basic", 100, 0);
+indiumdustMetalPulverize_ultimate.addItemInput(<contenttweaker:material_part:2969>);
+indiumdustMetalPulverize_ultimate.addFluidInput(<liquid:cotm_indium_molten> * 100);
+indiumdustMetalPulverize_ultimate.addItemOutput(<contenttweaker:material_part:1210>);
+indiumdustMetalPulverize_ultimate.addFluidInput(<liquid:hydrogen> * 100);
+indiumdustMetalPulverize_ultimate.addFluidInput(<liquid:cotc_data> * 100);
+indiumdustMetalPulverize_ultimate.addFluidInput(<liquid:cotc_pos_red_matter> * 100);
+indiumdustMetalPulverize_ultimate.addFluidOutput(<liquid:cotc_neg_orange_matter> * 100);
+indiumdustMetalPulverize_ultimate.addEnergyPerTickInput(67108864);
+indiumdustMetalPulverize_ultimate.build();
+
+var tindustMetalPulverize_basic = mods.modularmachinery.RecipeBuilder.newBuilder("tindustMetalPulverize_basic", "basic", 100, 0);
+tindustMetalPulverize_basic.addItemInput(<contenttweaker:material_part:3008>);
+tindustMetalPulverize_basic.addFluidInput(<liquid:cotm_tin_molten> * 100);
+tindustMetalPulverize_basic.addItemOutput(<contenttweaker:material_part:225>);
+tindustMetalPulverize_basic.addEnergyPerTickInput(4);
+tindustMetalPulverize_basic.build();
+
+var tindustMetalPulverize_advanced = mods.modularmachinery.RecipeBuilder.newBuilder("tindustMetalPulverize_advanced", "basic", 100, 0);
+tindustMetalPulverize_advanced.addItemInput(<contenttweaker:material_part:3008>);
+tindustMetalPulverize_advanced.addFluidInput(<liquid:cotm_tin_molten> * 100);
+tindustMetalPulverize_advanced.addItemOutput(<contenttweaker:material_part:225>);
+tindustMetalPulverize_advanced.addFluidInput(<liquid:hydrogen> * 100);
+tindustMetalPulverize_advanced.addEnergyPerTickInput(1024);
+tindustMetalPulverize_advanced.build();
+
+var tindustMetalPulverize_industrial = mods.modularmachinery.RecipeBuilder.newBuilder("tindustMetalPulverize_industrial", "basic", 100, 0);
+tindustMetalPulverize_industrial.addItemInput(<contenttweaker:material_part:3008>);
+tindustMetalPulverize_industrial.addFluidInput(<liquid:cotm_tin_molten> * 100);
+tindustMetalPulverize_industrial.addItemOutput(<contenttweaker:material_part:225>);
+tindustMetalPulverize_industrial.addFluidInput(<liquid:hydrogen> * 100);
+tindustMetalPulverize_industrial.addFluidInput(<liquid:cotc_data> * 100);
+tindustMetalPulverize_industrial.addEnergyPerTickInput(262144);
+tindustMetalPulverize_industrial.build();
+
+var tindustMetalPulverize_ultimate = mods.modularmachinery.RecipeBuilder.newBuilder("tindustMetalPulverize_ultimate", "basic", 100, 0);
+tindustMetalPulverize_ultimate.addItemInput(<contenttweaker:material_part:3008>);
+tindustMetalPulverize_ultimate.addFluidInput(<liquid:cotm_tin_molten> * 100);
+tindustMetalPulverize_ultimate.addItemOutput(<contenttweaker:material_part:225>);
+tindustMetalPulverize_ultimate.addFluidInput(<liquid:hydrogen> * 100);
+tindustMetalPulverize_ultimate.addFluidInput(<liquid:cotc_data> * 100);
+tindustMetalPulverize_ultimate.addFluidInput(<liquid:cotc_pos_red_matter> * 100);
+tindustMetalPulverize_ultimate.addFluidOutput(<liquid:cotc_neg_orange_matter> * 100);
+tindustMetalPulverize_ultimate.addEnergyPerTickInput(67108864);
+tindustMetalPulverize_ultimate.build();
+
+var antimonydustMetalPulverize_basic = mods.modularmachinery.RecipeBuilder.newBuilder("antimonydustMetalPulverize_basic", "basic", 100, 0);
+antimonydustMetalPulverize_basic.addItemInput(<contenttweaker:material_part:3046>);
+antimonydustMetalPulverize_basic.addFluidInput(<liquid:cotm_antimony_molten> * 100);
+antimonydustMetalPulverize_basic.addItemOutput(<contenttweaker:material_part:1213>);
+antimonydustMetalPulverize_basic.addEnergyPerTickInput(4);
+antimonydustMetalPulverize_basic.build();
+
+var antimonydustMetalPulverize_advanced = mods.modularmachinery.RecipeBuilder.newBuilder("antimonydustMetalPulverize_advanced", "basic", 100, 0);
+antimonydustMetalPulverize_advanced.addItemInput(<contenttweaker:material_part:3046>);
+antimonydustMetalPulverize_advanced.addFluidInput(<liquid:cotm_antimony_molten> * 100);
+antimonydustMetalPulverize_advanced.addItemOutput(<contenttweaker:material_part:1213>);
+antimonydustMetalPulverize_advanced.addFluidInput(<liquid:hydrogen> * 100);
+antimonydustMetalPulverize_advanced.addEnergyPerTickInput(1024);
+antimonydustMetalPulverize_advanced.build();
+
+var antimonydustMetalPulverize_industrial = mods.modularmachinery.RecipeBuilder.newBuilder("antimonydustMetalPulverize_industrial", "basic", 100, 0);
+antimonydustMetalPulverize_industrial.addItemInput(<contenttweaker:material_part:3046>);
+antimonydustMetalPulverize_industrial.addFluidInput(<liquid:cotm_antimony_molten> * 100);
+antimonydustMetalPulverize_industrial.addItemOutput(<contenttweaker:material_part:1213>);
+antimonydustMetalPulverize_industrial.addFluidInput(<liquid:hydrogen> * 100);
+antimonydustMetalPulverize_industrial.addFluidInput(<liquid:cotc_data> * 100);
+antimonydustMetalPulverize_industrial.addEnergyPerTickInput(262144);
+antimonydustMetalPulverize_industrial.build();
+
+var antimonydustMetalPulverize_ultimate = mods.modularmachinery.RecipeBuilder.newBuilder("antimonydustMetalPulverize_ultimate", "basic", 100, 0);
+antimonydustMetalPulverize_ultimate.addItemInput(<contenttweaker:material_part:3046>);
+antimonydustMetalPulverize_ultimate.addFluidInput(<liquid:cotm_antimony_molten> * 100);
+antimonydustMetalPulverize_ultimate.addItemOutput(<contenttweaker:material_part:1213>);
+antimonydustMetalPulverize_ultimate.addFluidInput(<liquid:hydrogen> * 100);
+antimonydustMetalPulverize_ultimate.addFluidInput(<liquid:cotc_data> * 100);
+antimonydustMetalPulverize_ultimate.addFluidInput(<liquid:cotc_pos_red_matter> * 100);
+antimonydustMetalPulverize_ultimate.addFluidOutput(<liquid:cotc_neg_orange_matter> * 100);
+antimonydustMetalPulverize_ultimate.addEnergyPerTickInput(67108864);
+antimonydustMetalPulverize_ultimate.build();
+
+var telluriumdustMetalPulverize_basic = mods.modularmachinery.RecipeBuilder.newBuilder("telluriumdustMetalPulverize_basic", "basic", 100, 0);
+telluriumdustMetalPulverize_basic.addItemInput(<contenttweaker:material_part:3084>);
+telluriumdustMetalPulverize_basic.addFluidInput(<liquid:cotm_tellurium_molten> * 100);
+telluriumdustMetalPulverize_basic.addItemOutput(<contenttweaker:material_part:1216>);
+telluriumdustMetalPulverize_basic.addEnergyPerTickInput(4);
+telluriumdustMetalPulverize_basic.build();
+
+var telluriumdustMetalPulverize_advanced = mods.modularmachinery.RecipeBuilder.newBuilder("telluriumdustMetalPulverize_advanced", "basic", 100, 0);
+telluriumdustMetalPulverize_advanced.addItemInput(<contenttweaker:material_part:3084>);
+telluriumdustMetalPulverize_advanced.addFluidInput(<liquid:cotm_tellurium_molten> * 100);
+telluriumdustMetalPulverize_advanced.addItemOutput(<contenttweaker:material_part:1216>);
+telluriumdustMetalPulverize_advanced.addFluidInput(<liquid:hydrogen> * 100);
+telluriumdustMetalPulverize_advanced.addEnergyPerTickInput(1024);
+telluriumdustMetalPulverize_advanced.build();
+
+var telluriumdustMetalPulverize_industrial = mods.modularmachinery.RecipeBuilder.newBuilder("telluriumdustMetalPulverize_industrial", "basic", 100, 0);
+telluriumdustMetalPulverize_industrial.addItemInput(<contenttweaker:material_part:3084>);
+telluriumdustMetalPulverize_industrial.addFluidInput(<liquid:cotm_tellurium_molten> * 100);
+telluriumdustMetalPulverize_industrial.addItemOutput(<contenttweaker:material_part:1216>);
+telluriumdustMetalPulverize_industrial.addFluidInput(<liquid:hydrogen> * 100);
+telluriumdustMetalPulverize_industrial.addFluidInput(<liquid:cotc_data> * 100);
+telluriumdustMetalPulverize_industrial.addEnergyPerTickInput(262144);
+telluriumdustMetalPulverize_industrial.build();
+
+var telluriumdustMetalPulverize_ultimate = mods.modularmachinery.RecipeBuilder.newBuilder("telluriumdustMetalPulverize_ultimate", "basic", 100, 0);
+telluriumdustMetalPulverize_ultimate.addItemInput(<contenttweaker:material_part:3084>);
+telluriumdustMetalPulverize_ultimate.addFluidInput(<liquid:cotm_tellurium_molten> * 100);
+telluriumdustMetalPulverize_ultimate.addItemOutput(<contenttweaker:material_part:1216>);
+telluriumdustMetalPulverize_ultimate.addFluidInput(<liquid:hydrogen> * 100);
+telluriumdustMetalPulverize_ultimate.addFluidInput(<liquid:cotc_data> * 100);
+telluriumdustMetalPulverize_ultimate.addFluidInput(<liquid:cotc_pos_red_matter> * 100);
+telluriumdustMetalPulverize_ultimate.addFluidOutput(<liquid:cotc_neg_orange_matter> * 100);
+telluriumdustMetalPulverize_ultimate.addEnergyPerTickInput(67108864);
+telluriumdustMetalPulverize_ultimate.build();
+
+var caesiumdustMetalPulverize_basic = mods.modularmachinery.RecipeBuilder.newBuilder("caesiumdustMetalPulverize_basic", "basic", 100, 0);
+caesiumdustMetalPulverize_basic.addItemInput(<contenttweaker:material_part:3122>);
+caesiumdustMetalPulverize_basic.addFluidInput(<liquid:cotm_caesium_molten> * 100);
+caesiumdustMetalPulverize_basic.addItemOutput(<contenttweaker:material_part:1222>);
+caesiumdustMetalPulverize_basic.addEnergyPerTickInput(4);
+caesiumdustMetalPulverize_basic.build();
+
+var caesiumdustMetalPulverize_advanced = mods.modularmachinery.RecipeBuilder.newBuilder("caesiumdustMetalPulverize_advanced", "basic", 100, 0);
+caesiumdustMetalPulverize_advanced.addItemInput(<contenttweaker:material_part:3122>);
+caesiumdustMetalPulverize_advanced.addFluidInput(<liquid:cotm_caesium_molten> * 100);
+caesiumdustMetalPulverize_advanced.addItemOutput(<contenttweaker:material_part:1222>);
+caesiumdustMetalPulverize_advanced.addFluidInput(<liquid:hydrogen> * 100);
+caesiumdustMetalPulverize_advanced.addEnergyPerTickInput(1024);
+caesiumdustMetalPulverize_advanced.build();
+
+var caesiumdustMetalPulverize_industrial = mods.modularmachinery.RecipeBuilder.newBuilder("caesiumdustMetalPulverize_industrial", "basic", 100, 0);
+caesiumdustMetalPulverize_industrial.addItemInput(<contenttweaker:material_part:3122>);
+caesiumdustMetalPulverize_industrial.addFluidInput(<liquid:cotm_caesium_molten> * 100);
+caesiumdustMetalPulverize_industrial.addItemOutput(<contenttweaker:material_part:1222>);
+caesiumdustMetalPulverize_industrial.addFluidInput(<liquid:hydrogen> * 100);
+caesiumdustMetalPulverize_industrial.addFluidInput(<liquid:cotc_data> * 100);
+caesiumdustMetalPulverize_industrial.addEnergyPerTickInput(262144);
+caesiumdustMetalPulverize_industrial.build();
+
+var caesiumdustMetalPulverize_ultimate = mods.modularmachinery.RecipeBuilder.newBuilder("caesiumdustMetalPulverize_ultimate", "basic", 100, 0);
+caesiumdustMetalPulverize_ultimate.addItemInput(<contenttweaker:material_part:3122>);
+caesiumdustMetalPulverize_ultimate.addFluidInput(<liquid:cotm_caesium_molten> * 100);
+caesiumdustMetalPulverize_ultimate.addItemOutput(<contenttweaker:material_part:1222>);
+caesiumdustMetalPulverize_ultimate.addFluidInput(<liquid:hydrogen> * 100);
+caesiumdustMetalPulverize_ultimate.addFluidInput(<liquid:cotc_data> * 100);
+caesiumdustMetalPulverize_ultimate.addFluidInput(<liquid:cotc_pos_red_matter> * 100);
+caesiumdustMetalPulverize_ultimate.addFluidOutput(<liquid:cotc_neg_orange_matter> * 100);
+caesiumdustMetalPulverize_ultimate.addEnergyPerTickInput(67108864);
+caesiumdustMetalPulverize_ultimate.build();
+
+var bariumdustMetalPulverize_basic = mods.modularmachinery.RecipeBuilder.newBuilder("bariumdustMetalPulverize_basic", "basic", 100, 0);
+bariumdustMetalPulverize_basic.addItemInput(<contenttweaker:material_part:3160>);
+bariumdustMetalPulverize_basic.addFluidInput(<liquid:cotm_barium_molten> * 100);
+bariumdustMetalPulverize_basic.addItemOutput(<contenttweaker:material_part:1225>);
+bariumdustMetalPulverize_basic.addEnergyPerTickInput(4);
+bariumdustMetalPulverize_basic.build();
+
+var bariumdustMetalPulverize_advanced = mods.modularmachinery.RecipeBuilder.newBuilder("bariumdustMetalPulverize_advanced", "basic", 100, 0);
+bariumdustMetalPulverize_advanced.addItemInput(<contenttweaker:material_part:3160>);
+bariumdustMetalPulverize_advanced.addFluidInput(<liquid:cotm_barium_molten> * 100);
+bariumdustMetalPulverize_advanced.addItemOutput(<contenttweaker:material_part:1225>);
+bariumdustMetalPulverize_advanced.addFluidInput(<liquid:hydrogen> * 100);
+bariumdustMetalPulverize_advanced.addEnergyPerTickInput(1024);
+bariumdustMetalPulverize_advanced.build();
+
+var bariumdustMetalPulverize_industrial = mods.modularmachinery.RecipeBuilder.newBuilder("bariumdustMetalPulverize_industrial", "basic", 100, 0);
+bariumdustMetalPulverize_industrial.addItemInput(<contenttweaker:material_part:3160>);
+bariumdustMetalPulverize_industrial.addFluidInput(<liquid:cotm_barium_molten> * 100);
+bariumdustMetalPulverize_industrial.addItemOutput(<contenttweaker:material_part:1225>);
+bariumdustMetalPulverize_industrial.addFluidInput(<liquid:hydrogen> * 100);
+bariumdustMetalPulverize_industrial.addFluidInput(<liquid:cotc_data> * 100);
+bariumdustMetalPulverize_industrial.addEnergyPerTickInput(262144);
+bariumdustMetalPulverize_industrial.build();
+
+var bariumdustMetalPulverize_ultimate = mods.modularmachinery.RecipeBuilder.newBuilder("bariumdustMetalPulverize_ultimate", "basic", 100, 0);
+bariumdustMetalPulverize_ultimate.addItemInput(<contenttweaker:material_part:3160>);
+bariumdustMetalPulverize_ultimate.addFluidInput(<liquid:cotm_barium_molten> * 100);
+bariumdustMetalPulverize_ultimate.addItemOutput(<contenttweaker:material_part:1225>);
+bariumdustMetalPulverize_ultimate.addFluidInput(<liquid:hydrogen> * 100);
+bariumdustMetalPulverize_ultimate.addFluidInput(<liquid:cotc_data> * 100);
+bariumdustMetalPulverize_ultimate.addFluidInput(<liquid:cotc_pos_red_matter> * 100);
+bariumdustMetalPulverize_ultimate.addFluidOutput(<liquid:cotc_neg_orange_matter> * 100);
+bariumdustMetalPulverize_ultimate.addEnergyPerTickInput(67108864);
+bariumdustMetalPulverize_ultimate.build();
+
+var lanthanumdustMetalPulverize_basic = mods.modularmachinery.RecipeBuilder.newBuilder("lanthanumdustMetalPulverize_basic", "basic", 100, 0);
+lanthanumdustMetalPulverize_basic.addItemInput(<contenttweaker:material_part:3198>);
+lanthanumdustMetalPulverize_basic.addFluidInput(<liquid:cotm_lanthanum_molten> * 100);
+lanthanumdustMetalPulverize_basic.addItemOutput(<contenttweaker:material_part:1228>);
+lanthanumdustMetalPulverize_basic.addEnergyPerTickInput(4);
+lanthanumdustMetalPulverize_basic.build();
+
+var lanthanumdustMetalPulverize_advanced = mods.modularmachinery.RecipeBuilder.newBuilder("lanthanumdustMetalPulverize_advanced", "basic", 100, 0);
+lanthanumdustMetalPulverize_advanced.addItemInput(<contenttweaker:material_part:3198>);
+lanthanumdustMetalPulverize_advanced.addFluidInput(<liquid:cotm_lanthanum_molten> * 100);
+lanthanumdustMetalPulverize_advanced.addItemOutput(<contenttweaker:material_part:1228>);
+lanthanumdustMetalPulverize_advanced.addFluidInput(<liquid:hydrogen> * 100);
+lanthanumdustMetalPulverize_advanced.addEnergyPerTickInput(1024);
+lanthanumdustMetalPulverize_advanced.build();
+
+var lanthanumdustMetalPulverize_industrial = mods.modularmachinery.RecipeBuilder.newBuilder("lanthanumdustMetalPulverize_industrial", "basic", 100, 0);
+lanthanumdustMetalPulverize_industrial.addItemInput(<contenttweaker:material_part:3198>);
+lanthanumdustMetalPulverize_industrial.addFluidInput(<liquid:cotm_lanthanum_molten> * 100);
+lanthanumdustMetalPulverize_industrial.addItemOutput(<contenttweaker:material_part:1228>);
+lanthanumdustMetalPulverize_industrial.addFluidInput(<liquid:hydrogen> * 100);
+lanthanumdustMetalPulverize_industrial.addFluidInput(<liquid:cotc_data> * 100);
+lanthanumdustMetalPulverize_industrial.addEnergyPerTickInput(262144);
+lanthanumdustMetalPulverize_industrial.build();
+
+var lanthanumdustMetalPulverize_ultimate = mods.modularmachinery.RecipeBuilder.newBuilder("lanthanumdustMetalPulverize_ultimate", "basic", 100, 0);
+lanthanumdustMetalPulverize_ultimate.addItemInput(<contenttweaker:material_part:3198>);
+lanthanumdustMetalPulverize_ultimate.addFluidInput(<liquid:cotm_lanthanum_molten> * 100);
+lanthanumdustMetalPulverize_ultimate.addItemOutput(<contenttweaker:material_part:1228>);
+lanthanumdustMetalPulverize_ultimate.addFluidInput(<liquid:hydrogen> * 100);
+lanthanumdustMetalPulverize_ultimate.addFluidInput(<liquid:cotc_data> * 100);
+lanthanumdustMetalPulverize_ultimate.addFluidInput(<liquid:cotc_pos_red_matter> * 100);
+lanthanumdustMetalPulverize_ultimate.addFluidOutput(<liquid:cotc_neg_orange_matter> * 100);
+lanthanumdustMetalPulverize_ultimate.addEnergyPerTickInput(67108864);
+lanthanumdustMetalPulverize_ultimate.build();
+
+var ceriumdustMetalPulverize_basic = mods.modularmachinery.RecipeBuilder.newBuilder("ceriumdustMetalPulverize_basic", "basic", 100, 0);
+ceriumdustMetalPulverize_basic.addItemInput(<contenttweaker:material_part:3237>);
+ceriumdustMetalPulverize_basic.addFluidInput(<liquid:cotm_cerium_molten> * 100);
+ceriumdustMetalPulverize_basic.addItemOutput(<contenttweaker:material_part:1231>);
+ceriumdustMetalPulverize_basic.addEnergyPerTickInput(4);
+ceriumdustMetalPulverize_basic.build();
+
+var ceriumdustMetalPulverize_advanced = mods.modularmachinery.RecipeBuilder.newBuilder("ceriumdustMetalPulverize_advanced", "basic", 100, 0);
+ceriumdustMetalPulverize_advanced.addItemInput(<contenttweaker:material_part:3237>);
+ceriumdustMetalPulverize_advanced.addFluidInput(<liquid:cotm_cerium_molten> * 100);
+ceriumdustMetalPulverize_advanced.addItemOutput(<contenttweaker:material_part:1231>);
+ceriumdustMetalPulverize_advanced.addFluidInput(<liquid:hydrogen> * 100);
+ceriumdustMetalPulverize_advanced.addEnergyPerTickInput(1024);
+ceriumdustMetalPulverize_advanced.build();
+
+var ceriumdustMetalPulverize_industrial = mods.modularmachinery.RecipeBuilder.newBuilder("ceriumdustMetalPulverize_industrial", "basic", 100, 0);
+ceriumdustMetalPulverize_industrial.addItemInput(<contenttweaker:material_part:3237>);
+ceriumdustMetalPulverize_industrial.addFluidInput(<liquid:cotm_cerium_molten> * 100);
+ceriumdustMetalPulverize_industrial.addItemOutput(<contenttweaker:material_part:1231>);
+ceriumdustMetalPulverize_industrial.addFluidInput(<liquid:hydrogen> * 100);
+ceriumdustMetalPulverize_industrial.addFluidInput(<liquid:cotc_data> * 100);
+ceriumdustMetalPulverize_industrial.addEnergyPerTickInput(262144);
+ceriumdustMetalPulverize_industrial.build();
+
+var ceriumdustMetalPulverize_ultimate = mods.modularmachinery.RecipeBuilder.newBuilder("ceriumdustMetalPulverize_ultimate", "basic", 100, 0);
+ceriumdustMetalPulverize_ultimate.addItemInput(<contenttweaker:material_part:3237>);
+ceriumdustMetalPulverize_ultimate.addFluidInput(<liquid:cotm_cerium_molten> * 100);
+ceriumdustMetalPulverize_ultimate.addItemOutput(<contenttweaker:material_part:1231>);
+ceriumdustMetalPulverize_ultimate.addFluidInput(<liquid:hydrogen> * 100);
+ceriumdustMetalPulverize_ultimate.addFluidInput(<liquid:cotc_data> * 100);
+ceriumdustMetalPulverize_ultimate.addFluidInput(<liquid:cotc_pos_red_matter> * 100);
+ceriumdustMetalPulverize_ultimate.addFluidOutput(<liquid:cotc_neg_orange_matter> * 100);
+ceriumdustMetalPulverize_ultimate.addEnergyPerTickInput(67108864);
+ceriumdustMetalPulverize_ultimate.build();
+
+var praseodymiumdustMetalPulverize_basic = mods.modularmachinery.RecipeBuilder.newBuilder("praseodymiumdustMetalPulverize_basic", "basic", 100, 0);
+praseodymiumdustMetalPulverize_basic.addItemInput(<contenttweaker:material_part:3276>);
+praseodymiumdustMetalPulverize_basic.addFluidInput(<liquid:cotm_praseodymium_molten> * 100);
+praseodymiumdustMetalPulverize_basic.addItemOutput(<contenttweaker:material_part:1234>);
+praseodymiumdustMetalPulverize_basic.addEnergyPerTickInput(4);
+praseodymiumdustMetalPulverize_basic.build();
+
+var praseodymiumdustMetalPulverize_advanced = mods.modularmachinery.RecipeBuilder.newBuilder("praseodymiumdustMetalPulverize_advanced", "basic", 100, 0);
+praseodymiumdustMetalPulverize_advanced.addItemInput(<contenttweaker:material_part:3276>);
+praseodymiumdustMetalPulverize_advanced.addFluidInput(<liquid:cotm_praseodymium_molten> * 100);
+praseodymiumdustMetalPulverize_advanced.addItemOutput(<contenttweaker:material_part:1234>);
+praseodymiumdustMetalPulverize_advanced.addFluidInput(<liquid:hydrogen> * 100);
+praseodymiumdustMetalPulverize_advanced.addEnergyPerTickInput(1024);
+praseodymiumdustMetalPulverize_advanced.build();
+
+var praseodymiumdustMetalPulverize_industrial = mods.modularmachinery.RecipeBuilder.newBuilder("praseodymiumdustMetalPulverize_industrial", "basic", 100, 0);
+praseodymiumdustMetalPulverize_industrial.addItemInput(<contenttweaker:material_part:3276>);
+praseodymiumdustMetalPulverize_industrial.addFluidInput(<liquid:cotm_praseodymium_molten> * 100);
+praseodymiumdustMetalPulverize_industrial.addItemOutput(<contenttweaker:material_part:1234>);
+praseodymiumdustMetalPulverize_industrial.addFluidInput(<liquid:hydrogen> * 100);
+praseodymiumdustMetalPulverize_industrial.addFluidInput(<liquid:cotc_data> * 100);
+praseodymiumdustMetalPulverize_industrial.addEnergyPerTickInput(262144);
+praseodymiumdustMetalPulverize_industrial.build();
+
+var praseodymiumdustMetalPulverize_ultimate = mods.modularmachinery.RecipeBuilder.newBuilder("praseodymiumdustMetalPulverize_ultimate", "basic", 100, 0);
+praseodymiumdustMetalPulverize_ultimate.addItemInput(<contenttweaker:material_part:3276>);
+praseodymiumdustMetalPulverize_ultimate.addFluidInput(<liquid:cotm_praseodymium_molten> * 100);
+praseodymiumdustMetalPulverize_ultimate.addItemOutput(<contenttweaker:material_part:1234>);
+praseodymiumdustMetalPulverize_ultimate.addFluidInput(<liquid:hydrogen> * 100);
+praseodymiumdustMetalPulverize_ultimate.addFluidInput(<liquid:cotc_data> * 100);
+praseodymiumdustMetalPulverize_ultimate.addFluidInput(<liquid:cotc_pos_red_matter> * 100);
+praseodymiumdustMetalPulverize_ultimate.addFluidOutput(<liquid:cotc_neg_orange_matter> * 100);
+praseodymiumdustMetalPulverize_ultimate.addEnergyPerTickInput(67108864);
+praseodymiumdustMetalPulverize_ultimate.build();
+
+var neodymiumdustMetalPulverize_basic = mods.modularmachinery.RecipeBuilder.newBuilder("neodymiumdustMetalPulverize_basic", "basic", 100, 0);
+neodymiumdustMetalPulverize_basic.addItemInput(<contenttweaker:material_part:3315>);
+neodymiumdustMetalPulverize_basic.addFluidInput(<liquid:cotm_neodymium_molten> * 100);
+neodymiumdustMetalPulverize_basic.addItemOutput(<contenttweaker:material_part:1237>);
+neodymiumdustMetalPulverize_basic.addEnergyPerTickInput(4);
+neodymiumdustMetalPulverize_basic.build();
+
+var neodymiumdustMetalPulverize_advanced = mods.modularmachinery.RecipeBuilder.newBuilder("neodymiumdustMetalPulverize_advanced", "basic", 100, 0);
+neodymiumdustMetalPulverize_advanced.addItemInput(<contenttweaker:material_part:3315>);
+neodymiumdustMetalPulverize_advanced.addFluidInput(<liquid:cotm_neodymium_molten> * 100);
+neodymiumdustMetalPulverize_advanced.addItemOutput(<contenttweaker:material_part:1237>);
+neodymiumdustMetalPulverize_advanced.addFluidInput(<liquid:hydrogen> * 100);
+neodymiumdustMetalPulverize_advanced.addEnergyPerTickInput(1024);
+neodymiumdustMetalPulverize_advanced.build();
+
+var neodymiumdustMetalPulverize_industrial = mods.modularmachinery.RecipeBuilder.newBuilder("neodymiumdustMetalPulverize_industrial", "basic", 100, 0);
+neodymiumdustMetalPulverize_industrial.addItemInput(<contenttweaker:material_part:3315>);
+neodymiumdustMetalPulverize_industrial.addFluidInput(<liquid:cotm_neodymium_molten> * 100);
+neodymiumdustMetalPulverize_industrial.addItemOutput(<contenttweaker:material_part:1237>);
+neodymiumdustMetalPulverize_industrial.addFluidInput(<liquid:hydrogen> * 100);
+neodymiumdustMetalPulverize_industrial.addFluidInput(<liquid:cotc_data> * 100);
+neodymiumdustMetalPulverize_industrial.addEnergyPerTickInput(262144);
+neodymiumdustMetalPulverize_industrial.build();
+
+var neodymiumdustMetalPulverize_ultimate = mods.modularmachinery.RecipeBuilder.newBuilder("neodymiumdustMetalPulverize_ultimate", "basic", 100, 0);
+neodymiumdustMetalPulverize_ultimate.addItemInput(<contenttweaker:material_part:3315>);
+neodymiumdustMetalPulverize_ultimate.addFluidInput(<liquid:cotm_neodymium_molten> * 100);
+neodymiumdustMetalPulverize_ultimate.addItemOutput(<contenttweaker:material_part:1237>);
+neodymiumdustMetalPulverize_ultimate.addFluidInput(<liquid:hydrogen> * 100);
+neodymiumdustMetalPulverize_ultimate.addFluidInput(<liquid:cotc_data> * 100);
+neodymiumdustMetalPulverize_ultimate.addFluidInput(<liquid:cotc_pos_red_matter> * 100);
+neodymiumdustMetalPulverize_ultimate.addFluidOutput(<liquid:cotc_neg_orange_matter> * 100);
+neodymiumdustMetalPulverize_ultimate.addEnergyPerTickInput(67108864);
+neodymiumdustMetalPulverize_ultimate.build();
+
+var promethiumdustMetalPulverize_basic = mods.modularmachinery.RecipeBuilder.newBuilder("promethiumdustMetalPulverize_basic", "basic", 100, 0);
+promethiumdustMetalPulverize_basic.addItemInput(<contenttweaker:material_part:3354>);
+promethiumdustMetalPulverize_basic.addFluidInput(<liquid:cotm_promethium_molten> * 100);
+promethiumdustMetalPulverize_basic.addItemOutput(<contenttweaker:material_part:1240>);
+promethiumdustMetalPulverize_basic.addEnergyPerTickInput(4);
+promethiumdustMetalPulverize_basic.build();
+
+var promethiumdustMetalPulverize_advanced = mods.modularmachinery.RecipeBuilder.newBuilder("promethiumdustMetalPulverize_advanced", "basic", 100, 0);
+promethiumdustMetalPulverize_advanced.addItemInput(<contenttweaker:material_part:3354>);
+promethiumdustMetalPulverize_advanced.addFluidInput(<liquid:cotm_promethium_molten> * 100);
+promethiumdustMetalPulverize_advanced.addItemOutput(<contenttweaker:material_part:1240>);
+promethiumdustMetalPulverize_advanced.addFluidInput(<liquid:hydrogen> * 100);
+promethiumdustMetalPulverize_advanced.addEnergyPerTickInput(1024);
+promethiumdustMetalPulverize_advanced.build();
+
+var promethiumdustMetalPulverize_industrial = mods.modularmachinery.RecipeBuilder.newBuilder("promethiumdustMetalPulverize_industrial", "basic", 100, 0);
+promethiumdustMetalPulverize_industrial.addItemInput(<contenttweaker:material_part:3354>);
+promethiumdustMetalPulverize_industrial.addFluidInput(<liquid:cotm_promethium_molten> * 100);
+promethiumdustMetalPulverize_industrial.addItemOutput(<contenttweaker:material_part:1240>);
+promethiumdustMetalPulverize_industrial.addFluidInput(<liquid:hydrogen> * 100);
+promethiumdustMetalPulverize_industrial.addFluidInput(<liquid:cotc_data> * 100);
+promethiumdustMetalPulverize_industrial.addEnergyPerTickInput(262144);
+promethiumdustMetalPulverize_industrial.build();
+
+var promethiumdustMetalPulverize_ultimate = mods.modularmachinery.RecipeBuilder.newBuilder("promethiumdustMetalPulverize_ultimate", "basic", 100, 0);
+promethiumdustMetalPulverize_ultimate.addItemInput(<contenttweaker:material_part:3354>);
+promethiumdustMetalPulverize_ultimate.addFluidInput(<liquid:cotm_promethium_molten> * 100);
+promethiumdustMetalPulverize_ultimate.addItemOutput(<contenttweaker:material_part:1240>);
+promethiumdustMetalPulverize_ultimate.addFluidInput(<liquid:hydrogen> * 100);
+promethiumdustMetalPulverize_ultimate.addFluidInput(<liquid:cotc_data> * 100);
+promethiumdustMetalPulverize_ultimate.addFluidInput(<liquid:cotc_pos_red_matter> * 100);
+promethiumdustMetalPulverize_ultimate.addFluidOutput(<liquid:cotc_neg_orange_matter> * 100);
+promethiumdustMetalPulverize_ultimate.addEnergyPerTickInput(67108864);
+promethiumdustMetalPulverize_ultimate.build();
+
+var samariumdustMetalPulverize_basic = mods.modularmachinery.RecipeBuilder.newBuilder("samariumdustMetalPulverize_basic", "basic", 100, 0);
+samariumdustMetalPulverize_basic.addItemInput(<contenttweaker:material_part:3393>);
+samariumdustMetalPulverize_basic.addFluidInput(<liquid:cotm_samarium_molten> * 100);
+samariumdustMetalPulverize_basic.addItemOutput(<contenttweaker:material_part:1243>);
+samariumdustMetalPulverize_basic.addEnergyPerTickInput(4);
+samariumdustMetalPulverize_basic.build();
+
+var samariumdustMetalPulverize_advanced = mods.modularmachinery.RecipeBuilder.newBuilder("samariumdustMetalPulverize_advanced", "basic", 100, 0);
+samariumdustMetalPulverize_advanced.addItemInput(<contenttweaker:material_part:3393>);
+samariumdustMetalPulverize_advanced.addFluidInput(<liquid:cotm_samarium_molten> * 100);
+samariumdustMetalPulverize_advanced.addItemOutput(<contenttweaker:material_part:1243>);
+samariumdustMetalPulverize_advanced.addFluidInput(<liquid:hydrogen> * 100);
+samariumdustMetalPulverize_advanced.addEnergyPerTickInput(1024);
+samariumdustMetalPulverize_advanced.build();
+
+var samariumdustMetalPulverize_industrial = mods.modularmachinery.RecipeBuilder.newBuilder("samariumdustMetalPulverize_industrial", "basic", 100, 0);
+samariumdustMetalPulverize_industrial.addItemInput(<contenttweaker:material_part:3393>);
+samariumdustMetalPulverize_industrial.addFluidInput(<liquid:cotm_samarium_molten> * 100);
+samariumdustMetalPulverize_industrial.addItemOutput(<contenttweaker:material_part:1243>);
+samariumdustMetalPulverize_industrial.addFluidInput(<liquid:hydrogen> * 100);
+samariumdustMetalPulverize_industrial.addFluidInput(<liquid:cotc_data> * 100);
+samariumdustMetalPulverize_industrial.addEnergyPerTickInput(262144);
+samariumdustMetalPulverize_industrial.build();
+
+var samariumdustMetalPulverize_ultimate = mods.modularmachinery.RecipeBuilder.newBuilder("samariumdustMetalPulverize_ultimate", "basic", 100, 0);
+samariumdustMetalPulverize_ultimate.addItemInput(<contenttweaker:material_part:3393>);
+samariumdustMetalPulverize_ultimate.addFluidInput(<liquid:cotm_samarium_molten> * 100);
+samariumdustMetalPulverize_ultimate.addItemOutput(<contenttweaker:material_part:1243>);
+samariumdustMetalPulverize_ultimate.addFluidInput(<liquid:hydrogen> * 100);
+samariumdustMetalPulverize_ultimate.addFluidInput(<liquid:cotc_data> * 100);
+samariumdustMetalPulverize_ultimate.addFluidInput(<liquid:cotc_pos_red_matter> * 100);
+samariumdustMetalPulverize_ultimate.addFluidOutput(<liquid:cotc_neg_orange_matter> * 100);
+samariumdustMetalPulverize_ultimate.addEnergyPerTickInput(67108864);
+samariumdustMetalPulverize_ultimate.build();
+
+var europiumdustMetalPulverize_basic = mods.modularmachinery.RecipeBuilder.newBuilder("europiumdustMetalPulverize_basic", "basic", 100, 0);
+europiumdustMetalPulverize_basic.addItemInput(<contenttweaker:material_part:3432>);
+europiumdustMetalPulverize_basic.addFluidInput(<liquid:cotm_europium_molten> * 100);
+europiumdustMetalPulverize_basic.addItemOutput(<contenttweaker:material_part:1246>);
+europiumdustMetalPulverize_basic.addEnergyPerTickInput(4);
+europiumdustMetalPulverize_basic.build();
+
+var europiumdustMetalPulverize_advanced = mods.modularmachinery.RecipeBuilder.newBuilder("europiumdustMetalPulverize_advanced", "basic", 100, 0);
+europiumdustMetalPulverize_advanced.addItemInput(<contenttweaker:material_part:3432>);
+europiumdustMetalPulverize_advanced.addFluidInput(<liquid:cotm_europium_molten> * 100);
+europiumdustMetalPulverize_advanced.addItemOutput(<contenttweaker:material_part:1246>);
+europiumdustMetalPulverize_advanced.addFluidInput(<liquid:hydrogen> * 100);
+europiumdustMetalPulverize_advanced.addEnergyPerTickInput(1024);
+europiumdustMetalPulverize_advanced.build();
+
+var europiumdustMetalPulverize_industrial = mods.modularmachinery.RecipeBuilder.newBuilder("europiumdustMetalPulverize_industrial", "basic", 100, 0);
+europiumdustMetalPulverize_industrial.addItemInput(<contenttweaker:material_part:3432>);
+europiumdustMetalPulverize_industrial.addFluidInput(<liquid:cotm_europium_molten> * 100);
+europiumdustMetalPulverize_industrial.addItemOutput(<contenttweaker:material_part:1246>);
+europiumdustMetalPulverize_industrial.addFluidInput(<liquid:hydrogen> * 100);
+europiumdustMetalPulverize_industrial.addFluidInput(<liquid:cotc_data> * 100);
+europiumdustMetalPulverize_industrial.addEnergyPerTickInput(262144);
+europiumdustMetalPulverize_industrial.build();
+
+var europiumdustMetalPulverize_ultimate = mods.modularmachinery.RecipeBuilder.newBuilder("europiumdustMetalPulverize_ultimate", "basic", 100, 0);
+europiumdustMetalPulverize_ultimate.addItemInput(<contenttweaker:material_part:3432>);
+europiumdustMetalPulverize_ultimate.addFluidInput(<liquid:cotm_europium_molten> * 100);
+europiumdustMetalPulverize_ultimate.addItemOutput(<contenttweaker:material_part:1246>);
+europiumdustMetalPulverize_ultimate.addFluidInput(<liquid:hydrogen> * 100);
+europiumdustMetalPulverize_ultimate.addFluidInput(<liquid:cotc_data> * 100);
+europiumdustMetalPulverize_ultimate.addFluidInput(<liquid:cotc_pos_red_matter> * 100);
+europiumdustMetalPulverize_ultimate.addFluidOutput(<liquid:cotc_neg_orange_matter> * 100);
+europiumdustMetalPulverize_ultimate.addEnergyPerTickInput(67108864);
+europiumdustMetalPulverize_ultimate.build();
+
+var gadoliniumdustMetalPulverize_basic = mods.modularmachinery.RecipeBuilder.newBuilder("gadoliniumdustMetalPulverize_basic", "basic", 100, 0);
+gadoliniumdustMetalPulverize_basic.addItemInput(<contenttweaker:material_part:3471>);
+gadoliniumdustMetalPulverize_basic.addFluidInput(<liquid:cotm_gadolinium_molten> * 100);
+gadoliniumdustMetalPulverize_basic.addItemOutput(<contenttweaker:material_part:1249>);
+gadoliniumdustMetalPulverize_basic.addEnergyPerTickInput(4);
+gadoliniumdustMetalPulverize_basic.build();
+
+var gadoliniumdustMetalPulverize_advanced = mods.modularmachinery.RecipeBuilder.newBuilder("gadoliniumdustMetalPulverize_advanced", "basic", 100, 0);
+gadoliniumdustMetalPulverize_advanced.addItemInput(<contenttweaker:material_part:3471>);
+gadoliniumdustMetalPulverize_advanced.addFluidInput(<liquid:cotm_gadolinium_molten> * 100);
+gadoliniumdustMetalPulverize_advanced.addItemOutput(<contenttweaker:material_part:1249>);
+gadoliniumdustMetalPulverize_advanced.addFluidInput(<liquid:hydrogen> * 100);
+gadoliniumdustMetalPulverize_advanced.addEnergyPerTickInput(1024);
+gadoliniumdustMetalPulverize_advanced.build();
+
+var gadoliniumdustMetalPulverize_industrial = mods.modularmachinery.RecipeBuilder.newBuilder("gadoliniumdustMetalPulverize_industrial", "basic", 100, 0);
+gadoliniumdustMetalPulverize_industrial.addItemInput(<contenttweaker:material_part:3471>);
+gadoliniumdustMetalPulverize_industrial.addFluidInput(<liquid:cotm_gadolinium_molten> * 100);
+gadoliniumdustMetalPulverize_industrial.addItemOutput(<contenttweaker:material_part:1249>);
+gadoliniumdustMetalPulverize_industrial.addFluidInput(<liquid:hydrogen> * 100);
+gadoliniumdustMetalPulverize_industrial.addFluidInput(<liquid:cotc_data> * 100);
+gadoliniumdustMetalPulverize_industrial.addEnergyPerTickInput(262144);
+gadoliniumdustMetalPulverize_industrial.build();
+
+var gadoliniumdustMetalPulverize_ultimate = mods.modularmachinery.RecipeBuilder.newBuilder("gadoliniumdustMetalPulverize_ultimate", "basic", 100, 0);
+gadoliniumdustMetalPulverize_ultimate.addItemInput(<contenttweaker:material_part:3471>);
+gadoliniumdustMetalPulverize_ultimate.addFluidInput(<liquid:cotm_gadolinium_molten> * 100);
+gadoliniumdustMetalPulverize_ultimate.addItemOutput(<contenttweaker:material_part:1249>);
+gadoliniumdustMetalPulverize_ultimate.addFluidInput(<liquid:hydrogen> * 100);
+gadoliniumdustMetalPulverize_ultimate.addFluidInput(<liquid:cotc_data> * 100);
+gadoliniumdustMetalPulverize_ultimate.addFluidInput(<liquid:cotc_pos_red_matter> * 100);
+gadoliniumdustMetalPulverize_ultimate.addFluidOutput(<liquid:cotc_neg_orange_matter> * 100);
+gadoliniumdustMetalPulverize_ultimate.addEnergyPerTickInput(67108864);
+gadoliniumdustMetalPulverize_ultimate.build();
+
+var terbiumdustMetalPulverize_basic = mods.modularmachinery.RecipeBuilder.newBuilder("terbiumdustMetalPulverize_basic", "basic", 100, 0);
+terbiumdustMetalPulverize_basic.addItemInput(<contenttweaker:material_part:3510>);
+terbiumdustMetalPulverize_basic.addFluidInput(<liquid:cotm_terbium_molten> * 100);
+terbiumdustMetalPulverize_basic.addItemOutput(<contenttweaker:material_part:1252>);
+terbiumdustMetalPulverize_basic.addEnergyPerTickInput(4);
+terbiumdustMetalPulverize_basic.build();
+
+var terbiumdustMetalPulverize_advanced = mods.modularmachinery.RecipeBuilder.newBuilder("terbiumdustMetalPulverize_advanced", "basic", 100, 0);
+terbiumdustMetalPulverize_advanced.addItemInput(<contenttweaker:material_part:3510>);
+terbiumdustMetalPulverize_advanced.addFluidInput(<liquid:cotm_terbium_molten> * 100);
+terbiumdustMetalPulverize_advanced.addItemOutput(<contenttweaker:material_part:1252>);
+terbiumdustMetalPulverize_advanced.addFluidInput(<liquid:hydrogen> * 100);
+terbiumdustMetalPulverize_advanced.addEnergyPerTickInput(1024);
+terbiumdustMetalPulverize_advanced.build();
+
+var terbiumdustMetalPulverize_industrial = mods.modularmachinery.RecipeBuilder.newBuilder("terbiumdustMetalPulverize_industrial", "basic", 100, 0);
+terbiumdustMetalPulverize_industrial.addItemInput(<contenttweaker:material_part:3510>);
+terbiumdustMetalPulverize_industrial.addFluidInput(<liquid:cotm_terbium_molten> * 100);
+terbiumdustMetalPulverize_industrial.addItemOutput(<contenttweaker:material_part:1252>);
+terbiumdustMetalPulverize_industrial.addFluidInput(<liquid:hydrogen> * 100);
+terbiumdustMetalPulverize_industrial.addFluidInput(<liquid:cotc_data> * 100);
+terbiumdustMetalPulverize_industrial.addEnergyPerTickInput(262144);
+terbiumdustMetalPulverize_industrial.build();
+
+var terbiumdustMetalPulverize_ultimate = mods.modularmachinery.RecipeBuilder.newBuilder("terbiumdustMetalPulverize_ultimate", "basic", 100, 0);
+terbiumdustMetalPulverize_ultimate.addItemInput(<contenttweaker:material_part:3510>);
+terbiumdustMetalPulverize_ultimate.addFluidInput(<liquid:cotm_terbium_molten> * 100);
+terbiumdustMetalPulverize_ultimate.addItemOutput(<contenttweaker:material_part:1252>);
+terbiumdustMetalPulverize_ultimate.addFluidInput(<liquid:hydrogen> * 100);
+terbiumdustMetalPulverize_ultimate.addFluidInput(<liquid:cotc_data> * 100);
+terbiumdustMetalPulverize_ultimate.addFluidInput(<liquid:cotc_pos_red_matter> * 100);
+terbiumdustMetalPulverize_ultimate.addFluidOutput(<liquid:cotc_neg_orange_matter> * 100);
+terbiumdustMetalPulverize_ultimate.addEnergyPerTickInput(67108864);
+terbiumdustMetalPulverize_ultimate.build();
+
+var dysprosiumdustMetalPulverize_basic = mods.modularmachinery.RecipeBuilder.newBuilder("dysprosiumdustMetalPulverize_basic", "basic", 100, 0);
+dysprosiumdustMetalPulverize_basic.addItemInput(<contenttweaker:material_part:3549>);
+dysprosiumdustMetalPulverize_basic.addFluidInput(<liquid:cotm_dysprosium_molten> * 100);
+dysprosiumdustMetalPulverize_basic.addItemOutput(<contenttweaker:material_part:1255>);
+dysprosiumdustMetalPulverize_basic.addEnergyPerTickInput(4);
+dysprosiumdustMetalPulverize_basic.build();
+
+var dysprosiumdustMetalPulverize_advanced = mods.modularmachinery.RecipeBuilder.newBuilder("dysprosiumdustMetalPulverize_advanced", "basic", 100, 0);
+dysprosiumdustMetalPulverize_advanced.addItemInput(<contenttweaker:material_part:3549>);
+dysprosiumdustMetalPulverize_advanced.addFluidInput(<liquid:cotm_dysprosium_molten> * 100);
+dysprosiumdustMetalPulverize_advanced.addItemOutput(<contenttweaker:material_part:1255>);
+dysprosiumdustMetalPulverize_advanced.addFluidInput(<liquid:hydrogen> * 100);
+dysprosiumdustMetalPulverize_advanced.addEnergyPerTickInput(1024);
+dysprosiumdustMetalPulverize_advanced.build();
+
+var dysprosiumdustMetalPulverize_industrial = mods.modularmachinery.RecipeBuilder.newBuilder("dysprosiumdustMetalPulverize_industrial", "basic", 100, 0);
+dysprosiumdustMetalPulverize_industrial.addItemInput(<contenttweaker:material_part:3549>);
+dysprosiumdustMetalPulverize_industrial.addFluidInput(<liquid:cotm_dysprosium_molten> * 100);
+dysprosiumdustMetalPulverize_industrial.addItemOutput(<contenttweaker:material_part:1255>);
+dysprosiumdustMetalPulverize_industrial.addFluidInput(<liquid:hydrogen> * 100);
+dysprosiumdustMetalPulverize_industrial.addFluidInput(<liquid:cotc_data> * 100);
+dysprosiumdustMetalPulverize_industrial.addEnergyPerTickInput(262144);
+dysprosiumdustMetalPulverize_industrial.build();
+
+var dysprosiumdustMetalPulverize_ultimate = mods.modularmachinery.RecipeBuilder.newBuilder("dysprosiumdustMetalPulverize_ultimate", "basic", 100, 0);
+dysprosiumdustMetalPulverize_ultimate.addItemInput(<contenttweaker:material_part:3549>);
+dysprosiumdustMetalPulverize_ultimate.addFluidInput(<liquid:cotm_dysprosium_molten> * 100);
+dysprosiumdustMetalPulverize_ultimate.addItemOutput(<contenttweaker:material_part:1255>);
+dysprosiumdustMetalPulverize_ultimate.addFluidInput(<liquid:hydrogen> * 100);
+dysprosiumdustMetalPulverize_ultimate.addFluidInput(<liquid:cotc_data> * 100);
+dysprosiumdustMetalPulverize_ultimate.addFluidInput(<liquid:cotc_pos_red_matter> * 100);
+dysprosiumdustMetalPulverize_ultimate.addFluidOutput(<liquid:cotc_neg_orange_matter> * 100);
+dysprosiumdustMetalPulverize_ultimate.addEnergyPerTickInput(67108864);
+dysprosiumdustMetalPulverize_ultimate.build();
+
+var holmiumdustMetalPulverize_basic = mods.modularmachinery.RecipeBuilder.newBuilder("holmiumdustMetalPulverize_basic", "basic", 100, 0);
+holmiumdustMetalPulverize_basic.addItemInput(<contenttweaker:material_part:3588>);
+holmiumdustMetalPulverize_basic.addFluidInput(<liquid:cotm_holmium_molten> * 100);
+holmiumdustMetalPulverize_basic.addItemOutput(<contenttweaker:material_part:1258>);
+holmiumdustMetalPulverize_basic.addEnergyPerTickInput(4);
+holmiumdustMetalPulverize_basic.build();
+
+var holmiumdustMetalPulverize_advanced = mods.modularmachinery.RecipeBuilder.newBuilder("holmiumdustMetalPulverize_advanced", "basic", 100, 0);
+holmiumdustMetalPulverize_advanced.addItemInput(<contenttweaker:material_part:3588>);
+holmiumdustMetalPulverize_advanced.addFluidInput(<liquid:cotm_holmium_molten> * 100);
+holmiumdustMetalPulverize_advanced.addItemOutput(<contenttweaker:material_part:1258>);
+holmiumdustMetalPulverize_advanced.addFluidInput(<liquid:hydrogen> * 100);
+holmiumdustMetalPulverize_advanced.addEnergyPerTickInput(1024);
+holmiumdustMetalPulverize_advanced.build();
+
+var holmiumdustMetalPulverize_industrial = mods.modularmachinery.RecipeBuilder.newBuilder("holmiumdustMetalPulverize_industrial", "basic", 100, 0);
+holmiumdustMetalPulverize_industrial.addItemInput(<contenttweaker:material_part:3588>);
+holmiumdustMetalPulverize_industrial.addFluidInput(<liquid:cotm_holmium_molten> * 100);
+holmiumdustMetalPulverize_industrial.addItemOutput(<contenttweaker:material_part:1258>);
+holmiumdustMetalPulverize_industrial.addFluidInput(<liquid:hydrogen> * 100);
+holmiumdustMetalPulverize_industrial.addFluidInput(<liquid:cotc_data> * 100);
+holmiumdustMetalPulverize_industrial.addEnergyPerTickInput(262144);
+holmiumdustMetalPulverize_industrial.build();
+
+var holmiumdustMetalPulverize_ultimate = mods.modularmachinery.RecipeBuilder.newBuilder("holmiumdustMetalPulverize_ultimate", "basic", 100, 0);
+holmiumdustMetalPulverize_ultimate.addItemInput(<contenttweaker:material_part:3588>);
+holmiumdustMetalPulverize_ultimate.addFluidInput(<liquid:cotm_holmium_molten> * 100);
+holmiumdustMetalPulverize_ultimate.addItemOutput(<contenttweaker:material_part:1258>);
+holmiumdustMetalPulverize_ultimate.addFluidInput(<liquid:hydrogen> * 100);
+holmiumdustMetalPulverize_ultimate.addFluidInput(<liquid:cotc_data> * 100);
+holmiumdustMetalPulverize_ultimate.addFluidInput(<liquid:cotc_pos_red_matter> * 100);
+holmiumdustMetalPulverize_ultimate.addFluidOutput(<liquid:cotc_neg_orange_matter> * 100);
+holmiumdustMetalPulverize_ultimate.addEnergyPerTickInput(67108864);
+holmiumdustMetalPulverize_ultimate.build();
+
+var erbiumdustMetalPulverize_basic = mods.modularmachinery.RecipeBuilder.newBuilder("erbiumdustMetalPulverize_basic", "basic", 100, 0);
+erbiumdustMetalPulverize_basic.addItemInput(<contenttweaker:material_part:3627>);
+erbiumdustMetalPulverize_basic.addFluidInput(<liquid:cotm_erbium_molten> * 100);
+erbiumdustMetalPulverize_basic.addItemOutput(<contenttweaker:material_part:1261>);
+erbiumdustMetalPulverize_basic.addEnergyPerTickInput(4);
+erbiumdustMetalPulverize_basic.build();
+
+var erbiumdustMetalPulverize_advanced = mods.modularmachinery.RecipeBuilder.newBuilder("erbiumdustMetalPulverize_advanced", "basic", 100, 0);
+erbiumdustMetalPulverize_advanced.addItemInput(<contenttweaker:material_part:3627>);
+erbiumdustMetalPulverize_advanced.addFluidInput(<liquid:cotm_erbium_molten> * 100);
+erbiumdustMetalPulverize_advanced.addItemOutput(<contenttweaker:material_part:1261>);
+erbiumdustMetalPulverize_advanced.addFluidInput(<liquid:hydrogen> * 100);
+erbiumdustMetalPulverize_advanced.addEnergyPerTickInput(1024);
+erbiumdustMetalPulverize_advanced.build();
+
+var erbiumdustMetalPulverize_industrial = mods.modularmachinery.RecipeBuilder.newBuilder("erbiumdustMetalPulverize_industrial", "basic", 100, 0);
+erbiumdustMetalPulverize_industrial.addItemInput(<contenttweaker:material_part:3627>);
+erbiumdustMetalPulverize_industrial.addFluidInput(<liquid:cotm_erbium_molten> * 100);
+erbiumdustMetalPulverize_industrial.addItemOutput(<contenttweaker:material_part:1261>);
+erbiumdustMetalPulverize_industrial.addFluidInput(<liquid:hydrogen> * 100);
+erbiumdustMetalPulverize_industrial.addFluidInput(<liquid:cotc_data> * 100);
+erbiumdustMetalPulverize_industrial.addEnergyPerTickInput(262144);
+erbiumdustMetalPulverize_industrial.build();
+
+var erbiumdustMetalPulverize_ultimate = mods.modularmachinery.RecipeBuilder.newBuilder("erbiumdustMetalPulverize_ultimate", "basic", 100, 0);
+erbiumdustMetalPulverize_ultimate.addItemInput(<contenttweaker:material_part:3627>);
+erbiumdustMetalPulverize_ultimate.addFluidInput(<liquid:cotm_erbium_molten> * 100);
+erbiumdustMetalPulverize_ultimate.addItemOutput(<contenttweaker:material_part:1261>);
+erbiumdustMetalPulverize_ultimate.addFluidInput(<liquid:hydrogen> * 100);
+erbiumdustMetalPulverize_ultimate.addFluidInput(<liquid:cotc_data> * 100);
+erbiumdustMetalPulverize_ultimate.addFluidInput(<liquid:cotc_pos_red_matter> * 100);
+erbiumdustMetalPulverize_ultimate.addFluidOutput(<liquid:cotc_neg_orange_matter> * 100);
+erbiumdustMetalPulverize_ultimate.addEnergyPerTickInput(67108864);
+erbiumdustMetalPulverize_ultimate.build();
+
+var thuliumdustMetalPulverize_basic = mods.modularmachinery.RecipeBuilder.newBuilder("thuliumdustMetalPulverize_basic", "basic", 100, 0);
+thuliumdustMetalPulverize_basic.addItemInput(<contenttweaker:material_part:3666>);
+thuliumdustMetalPulverize_basic.addFluidInput(<liquid:cotm_thulium_molten> * 100);
+thuliumdustMetalPulverize_basic.addItemOutput(<contenttweaker:material_part:1264>);
+thuliumdustMetalPulverize_basic.addEnergyPerTickInput(4);
+thuliumdustMetalPulverize_basic.build();
+
+var thuliumdustMetalPulverize_advanced = mods.modularmachinery.RecipeBuilder.newBuilder("thuliumdustMetalPulverize_advanced", "basic", 100, 0);
+thuliumdustMetalPulverize_advanced.addItemInput(<contenttweaker:material_part:3666>);
+thuliumdustMetalPulverize_advanced.addFluidInput(<liquid:cotm_thulium_molten> * 100);
+thuliumdustMetalPulverize_advanced.addItemOutput(<contenttweaker:material_part:1264>);
+thuliumdustMetalPulverize_advanced.addFluidInput(<liquid:hydrogen> * 100);
+thuliumdustMetalPulverize_advanced.addEnergyPerTickInput(1024);
+thuliumdustMetalPulverize_advanced.build();
+
+var thuliumdustMetalPulverize_industrial = mods.modularmachinery.RecipeBuilder.newBuilder("thuliumdustMetalPulverize_industrial", "basic", 100, 0);
+thuliumdustMetalPulverize_industrial.addItemInput(<contenttweaker:material_part:3666>);
+thuliumdustMetalPulverize_industrial.addFluidInput(<liquid:cotm_thulium_molten> * 100);
+thuliumdustMetalPulverize_industrial.addItemOutput(<contenttweaker:material_part:1264>);
+thuliumdustMetalPulverize_industrial.addFluidInput(<liquid:hydrogen> * 100);
+thuliumdustMetalPulverize_industrial.addFluidInput(<liquid:cotc_data> * 100);
+thuliumdustMetalPulverize_industrial.addEnergyPerTickInput(262144);
+thuliumdustMetalPulverize_industrial.build();
+
+var thuliumdustMetalPulverize_ultimate = mods.modularmachinery.RecipeBuilder.newBuilder("thuliumdustMetalPulverize_ultimate", "basic", 100, 0);
+thuliumdustMetalPulverize_ultimate.addItemInput(<contenttweaker:material_part:3666>);
+thuliumdustMetalPulverize_ultimate.addFluidInput(<liquid:cotm_thulium_molten> * 100);
+thuliumdustMetalPulverize_ultimate.addItemOutput(<contenttweaker:material_part:1264>);
+thuliumdustMetalPulverize_ultimate.addFluidInput(<liquid:hydrogen> * 100);
+thuliumdustMetalPulverize_ultimate.addFluidInput(<liquid:cotc_data> * 100);
+thuliumdustMetalPulverize_ultimate.addFluidInput(<liquid:cotc_pos_red_matter> * 100);
+thuliumdustMetalPulverize_ultimate.addFluidOutput(<liquid:cotc_neg_orange_matter> * 100);
+thuliumdustMetalPulverize_ultimate.addEnergyPerTickInput(67108864);
+thuliumdustMetalPulverize_ultimate.build();
+
+var ytterbiumdustMetalPulverize_basic = mods.modularmachinery.RecipeBuilder.newBuilder("ytterbiumdustMetalPulverize_basic", "basic", 100, 0);
+ytterbiumdustMetalPulverize_basic.addItemInput(<contenttweaker:material_part:3705>);
+ytterbiumdustMetalPulverize_basic.addFluidInput(<liquid:cotm_ytterbium_molten> * 100);
+ytterbiumdustMetalPulverize_basic.addItemOutput(<contenttweaker:material_part:1267>);
+ytterbiumdustMetalPulverize_basic.addEnergyPerTickInput(4);
+ytterbiumdustMetalPulverize_basic.build();
+
+var ytterbiumdustMetalPulverize_advanced = mods.modularmachinery.RecipeBuilder.newBuilder("ytterbiumdustMetalPulverize_advanced", "basic", 100, 0);
+ytterbiumdustMetalPulverize_advanced.addItemInput(<contenttweaker:material_part:3705>);
+ytterbiumdustMetalPulverize_advanced.addFluidInput(<liquid:cotm_ytterbium_molten> * 100);
+ytterbiumdustMetalPulverize_advanced.addItemOutput(<contenttweaker:material_part:1267>);
+ytterbiumdustMetalPulverize_advanced.addFluidInput(<liquid:hydrogen> * 100);
+ytterbiumdustMetalPulverize_advanced.addEnergyPerTickInput(1024);
+ytterbiumdustMetalPulverize_advanced.build();
+
+var ytterbiumdustMetalPulverize_industrial = mods.modularmachinery.RecipeBuilder.newBuilder("ytterbiumdustMetalPulverize_industrial", "basic", 100, 0);
+ytterbiumdustMetalPulverize_industrial.addItemInput(<contenttweaker:material_part:3705>);
+ytterbiumdustMetalPulverize_industrial.addFluidInput(<liquid:cotm_ytterbium_molten> * 100);
+ytterbiumdustMetalPulverize_industrial.addItemOutput(<contenttweaker:material_part:1267>);
+ytterbiumdustMetalPulverize_industrial.addFluidInput(<liquid:hydrogen> * 100);
+ytterbiumdustMetalPulverize_industrial.addFluidInput(<liquid:cotc_data> * 100);
+ytterbiumdustMetalPulverize_industrial.addEnergyPerTickInput(262144);
+ytterbiumdustMetalPulverize_industrial.build();
+
+var ytterbiumdustMetalPulverize_ultimate = mods.modularmachinery.RecipeBuilder.newBuilder("ytterbiumdustMetalPulverize_ultimate", "basic", 100, 0);
+ytterbiumdustMetalPulverize_ultimate.addItemInput(<contenttweaker:material_part:3705>);
+ytterbiumdustMetalPulverize_ultimate.addFluidInput(<liquid:cotm_ytterbium_molten> * 100);
+ytterbiumdustMetalPulverize_ultimate.addItemOutput(<contenttweaker:material_part:1267>);
+ytterbiumdustMetalPulverize_ultimate.addFluidInput(<liquid:hydrogen> * 100);
+ytterbiumdustMetalPulverize_ultimate.addFluidInput(<liquid:cotc_data> * 100);
+ytterbiumdustMetalPulverize_ultimate.addFluidInput(<liquid:cotc_pos_red_matter> * 100);
+ytterbiumdustMetalPulverize_ultimate.addFluidOutput(<liquid:cotc_neg_orange_matter> * 100);
+ytterbiumdustMetalPulverize_ultimate.addEnergyPerTickInput(67108864);
+ytterbiumdustMetalPulverize_ultimate.build();
+
+var lutetiumdustMetalPulverize_basic = mods.modularmachinery.RecipeBuilder.newBuilder("lutetiumdustMetalPulverize_basic", "basic", 100, 0);
+lutetiumdustMetalPulverize_basic.addItemInput(<contenttweaker:material_part:3744>);
+lutetiumdustMetalPulverize_basic.addFluidInput(<liquid:cotm_lutetium_molten> * 100);
+lutetiumdustMetalPulverize_basic.addItemOutput(<contenttweaker:material_part:1270>);
+lutetiumdustMetalPulverize_basic.addEnergyPerTickInput(4);
+lutetiumdustMetalPulverize_basic.build();
+
+var lutetiumdustMetalPulverize_advanced = mods.modularmachinery.RecipeBuilder.newBuilder("lutetiumdustMetalPulverize_advanced", "basic", 100, 0);
+lutetiumdustMetalPulverize_advanced.addItemInput(<contenttweaker:material_part:3744>);
+lutetiumdustMetalPulverize_advanced.addFluidInput(<liquid:cotm_lutetium_molten> * 100);
+lutetiumdustMetalPulverize_advanced.addItemOutput(<contenttweaker:material_part:1270>);
+lutetiumdustMetalPulverize_advanced.addFluidInput(<liquid:hydrogen> * 100);
+lutetiumdustMetalPulverize_advanced.addEnergyPerTickInput(1024);
+lutetiumdustMetalPulverize_advanced.build();
+
+var lutetiumdustMetalPulverize_industrial = mods.modularmachinery.RecipeBuilder.newBuilder("lutetiumdustMetalPulverize_industrial", "basic", 100, 0);
+lutetiumdustMetalPulverize_industrial.addItemInput(<contenttweaker:material_part:3744>);
+lutetiumdustMetalPulverize_industrial.addFluidInput(<liquid:cotm_lutetium_molten> * 100);
+lutetiumdustMetalPulverize_industrial.addItemOutput(<contenttweaker:material_part:1270>);
+lutetiumdustMetalPulverize_industrial.addFluidInput(<liquid:hydrogen> * 100);
+lutetiumdustMetalPulverize_industrial.addFluidInput(<liquid:cotc_data> * 100);
+lutetiumdustMetalPulverize_industrial.addEnergyPerTickInput(262144);
+lutetiumdustMetalPulverize_industrial.build();
+
+var lutetiumdustMetalPulverize_ultimate = mods.modularmachinery.RecipeBuilder.newBuilder("lutetiumdustMetalPulverize_ultimate", "basic", 100, 0);
+lutetiumdustMetalPulverize_ultimate.addItemInput(<contenttweaker:material_part:3744>);
+lutetiumdustMetalPulverize_ultimate.addFluidInput(<liquid:cotm_lutetium_molten> * 100);
+lutetiumdustMetalPulverize_ultimate.addItemOutput(<contenttweaker:material_part:1270>);
+lutetiumdustMetalPulverize_ultimate.addFluidInput(<liquid:hydrogen> * 100);
+lutetiumdustMetalPulverize_ultimate.addFluidInput(<liquid:cotc_data> * 100);
+lutetiumdustMetalPulverize_ultimate.addFluidInput(<liquid:cotc_pos_red_matter> * 100);
+lutetiumdustMetalPulverize_ultimate.addFluidOutput(<liquid:cotc_neg_orange_matter> * 100);
+lutetiumdustMetalPulverize_ultimate.addEnergyPerTickInput(67108864);
+lutetiumdustMetalPulverize_ultimate.build();
+
+var hafniumdustMetalPulverize_basic = mods.modularmachinery.RecipeBuilder.newBuilder("hafniumdustMetalPulverize_basic", "basic", 100, 0);
+hafniumdustMetalPulverize_basic.addItemInput(<contenttweaker:material_part:3783>);
+hafniumdustMetalPulverize_basic.addFluidInput(<liquid:cotm_hafnium_molten> * 100);
+hafniumdustMetalPulverize_basic.addItemOutput(<contenttweaker:material_part:1273>);
+hafniumdustMetalPulverize_basic.addEnergyPerTickInput(4);
+hafniumdustMetalPulverize_basic.build();
+
+var hafniumdustMetalPulverize_advanced = mods.modularmachinery.RecipeBuilder.newBuilder("hafniumdustMetalPulverize_advanced", "basic", 100, 0);
+hafniumdustMetalPulverize_advanced.addItemInput(<contenttweaker:material_part:3783>);
+hafniumdustMetalPulverize_advanced.addFluidInput(<liquid:cotm_hafnium_molten> * 100);
+hafniumdustMetalPulverize_advanced.addItemOutput(<contenttweaker:material_part:1273>);
+hafniumdustMetalPulverize_advanced.addFluidInput(<liquid:hydrogen> * 100);
+hafniumdustMetalPulverize_advanced.addEnergyPerTickInput(1024);
+hafniumdustMetalPulverize_advanced.build();
+
+var hafniumdustMetalPulverize_industrial = mods.modularmachinery.RecipeBuilder.newBuilder("hafniumdustMetalPulverize_industrial", "basic", 100, 0);
+hafniumdustMetalPulverize_industrial.addItemInput(<contenttweaker:material_part:3783>);
+hafniumdustMetalPulverize_industrial.addFluidInput(<liquid:cotm_hafnium_molten> * 100);
+hafniumdustMetalPulverize_industrial.addItemOutput(<contenttweaker:material_part:1273>);
+hafniumdustMetalPulverize_industrial.addFluidInput(<liquid:hydrogen> * 100);
+hafniumdustMetalPulverize_industrial.addFluidInput(<liquid:cotc_data> * 100);
+hafniumdustMetalPulverize_industrial.addEnergyPerTickInput(262144);
+hafniumdustMetalPulverize_industrial.build();
+
+var hafniumdustMetalPulverize_ultimate = mods.modularmachinery.RecipeBuilder.newBuilder("hafniumdustMetalPulverize_ultimate", "basic", 100, 0);
+hafniumdustMetalPulverize_ultimate.addItemInput(<contenttweaker:material_part:3783>);
+hafniumdustMetalPulverize_ultimate.addFluidInput(<liquid:cotm_hafnium_molten> * 100);
+hafniumdustMetalPulverize_ultimate.addItemOutput(<contenttweaker:material_part:1273>);
+hafniumdustMetalPulverize_ultimate.addFluidInput(<liquid:hydrogen> * 100);
+hafniumdustMetalPulverize_ultimate.addFluidInput(<liquid:cotc_data> * 100);
+hafniumdustMetalPulverize_ultimate.addFluidInput(<liquid:cotc_pos_red_matter> * 100);
+hafniumdustMetalPulverize_ultimate.addFluidOutput(<liquid:cotc_neg_orange_matter> * 100);
+hafniumdustMetalPulverize_ultimate.addEnergyPerTickInput(67108864);
+hafniumdustMetalPulverize_ultimate.build();
+
+var tantalumdustMetalPulverize_basic = mods.modularmachinery.RecipeBuilder.newBuilder("tantalumdustMetalPulverize_basic", "basic", 100, 0);
+tantalumdustMetalPulverize_basic.addItemInput(<contenttweaker:material_part:3822>);
+tantalumdustMetalPulverize_basic.addFluidInput(<liquid:cotm_tantalum_molten> * 100);
+tantalumdustMetalPulverize_basic.addItemOutput(<contenttweaker:material_part:1276>);
+tantalumdustMetalPulverize_basic.addEnergyPerTickInput(4);
+tantalumdustMetalPulverize_basic.build();
+
+var tantalumdustMetalPulverize_advanced = mods.modularmachinery.RecipeBuilder.newBuilder("tantalumdustMetalPulverize_advanced", "basic", 100, 0);
+tantalumdustMetalPulverize_advanced.addItemInput(<contenttweaker:material_part:3822>);
+tantalumdustMetalPulverize_advanced.addFluidInput(<liquid:cotm_tantalum_molten> * 100);
+tantalumdustMetalPulverize_advanced.addItemOutput(<contenttweaker:material_part:1276>);
+tantalumdustMetalPulverize_advanced.addFluidInput(<liquid:hydrogen> * 100);
+tantalumdustMetalPulverize_advanced.addEnergyPerTickInput(1024);
+tantalumdustMetalPulverize_advanced.build();
+
+var tantalumdustMetalPulverize_industrial = mods.modularmachinery.RecipeBuilder.newBuilder("tantalumdustMetalPulverize_industrial", "basic", 100, 0);
+tantalumdustMetalPulverize_industrial.addItemInput(<contenttweaker:material_part:3822>);
+tantalumdustMetalPulverize_industrial.addFluidInput(<liquid:cotm_tantalum_molten> * 100);
+tantalumdustMetalPulverize_industrial.addItemOutput(<contenttweaker:material_part:1276>);
+tantalumdustMetalPulverize_industrial.addFluidInput(<liquid:hydrogen> * 100);
+tantalumdustMetalPulverize_industrial.addFluidInput(<liquid:cotc_data> * 100);
+tantalumdustMetalPulverize_industrial.addEnergyPerTickInput(262144);
+tantalumdustMetalPulverize_industrial.build();
+
+var tantalumdustMetalPulverize_ultimate = mods.modularmachinery.RecipeBuilder.newBuilder("tantalumdustMetalPulverize_ultimate", "basic", 100, 0);
+tantalumdustMetalPulverize_ultimate.addItemInput(<contenttweaker:material_part:3822>);
+tantalumdustMetalPulverize_ultimate.addFluidInput(<liquid:cotm_tantalum_molten> * 100);
+tantalumdustMetalPulverize_ultimate.addItemOutput(<contenttweaker:material_part:1276>);
+tantalumdustMetalPulverize_ultimate.addFluidInput(<liquid:hydrogen> * 100);
+tantalumdustMetalPulverize_ultimate.addFluidInput(<liquid:cotc_data> * 100);
+tantalumdustMetalPulverize_ultimate.addFluidInput(<liquid:cotc_pos_red_matter> * 100);
+tantalumdustMetalPulverize_ultimate.addFluidOutput(<liquid:cotc_neg_orange_matter> * 100);
+tantalumdustMetalPulverize_ultimate.addEnergyPerTickInput(67108864);
+tantalumdustMetalPulverize_ultimate.build();
+
+var tungstendustMetalPulverize_basic = mods.modularmachinery.RecipeBuilder.newBuilder("tungstendustMetalPulverize_basic", "basic", 100, 0);
+tungstendustMetalPulverize_basic.addItemInput(<contenttweaker:material_part:3860>);
+tungstendustMetalPulverize_basic.addFluidInput(<liquid:cotm_tungsten_molten> * 100);
+tungstendustMetalPulverize_basic.addItemOutput(<contenttweaker:material_part:237>);
+tungstendustMetalPulverize_basic.addEnergyPerTickInput(4);
+tungstendustMetalPulverize_basic.build();
+
+var tungstendustMetalPulverize_advanced = mods.modularmachinery.RecipeBuilder.newBuilder("tungstendustMetalPulverize_advanced", "basic", 100, 0);
+tungstendustMetalPulverize_advanced.addItemInput(<contenttweaker:material_part:3860>);
+tungstendustMetalPulverize_advanced.addFluidInput(<liquid:cotm_tungsten_molten> * 100);
+tungstendustMetalPulverize_advanced.addItemOutput(<contenttweaker:material_part:237>);
+tungstendustMetalPulverize_advanced.addFluidInput(<liquid:hydrogen> * 100);
+tungstendustMetalPulverize_advanced.addEnergyPerTickInput(1024);
+tungstendustMetalPulverize_advanced.build();
+
+var tungstendustMetalPulverize_industrial = mods.modularmachinery.RecipeBuilder.newBuilder("tungstendustMetalPulverize_industrial", "basic", 100, 0);
+tungstendustMetalPulverize_industrial.addItemInput(<contenttweaker:material_part:3860>);
+tungstendustMetalPulverize_industrial.addFluidInput(<liquid:cotm_tungsten_molten> * 100);
+tungstendustMetalPulverize_industrial.addItemOutput(<contenttweaker:material_part:237>);
+tungstendustMetalPulverize_industrial.addFluidInput(<liquid:hydrogen> * 100);
+tungstendustMetalPulverize_industrial.addFluidInput(<liquid:cotc_data> * 100);
+tungstendustMetalPulverize_industrial.addEnergyPerTickInput(262144);
+tungstendustMetalPulverize_industrial.build();
+
+var tungstendustMetalPulverize_ultimate = mods.modularmachinery.RecipeBuilder.newBuilder("tungstendustMetalPulverize_ultimate", "basic", 100, 0);
+tungstendustMetalPulverize_ultimate.addItemInput(<contenttweaker:material_part:3860>);
+tungstendustMetalPulverize_ultimate.addFluidInput(<liquid:cotm_tungsten_molten> * 100);
+tungstendustMetalPulverize_ultimate.addItemOutput(<contenttweaker:material_part:237>);
+tungstendustMetalPulverize_ultimate.addFluidInput(<liquid:hydrogen> * 100);
+tungstendustMetalPulverize_ultimate.addFluidInput(<liquid:cotc_data> * 100);
+tungstendustMetalPulverize_ultimate.addFluidInput(<liquid:cotc_pos_red_matter> * 100);
+tungstendustMetalPulverize_ultimate.addFluidOutput(<liquid:cotc_neg_orange_matter> * 100);
+tungstendustMetalPulverize_ultimate.addEnergyPerTickInput(67108864);
+tungstendustMetalPulverize_ultimate.build();
+
+var rheniumdustMetalPulverize_basic = mods.modularmachinery.RecipeBuilder.newBuilder("rheniumdustMetalPulverize_basic", "basic", 100, 0);
+rheniumdustMetalPulverize_basic.addItemInput(<contenttweaker:material_part:3899>);
+rheniumdustMetalPulverize_basic.addFluidInput(<liquid:cotm_rhenium_molten> * 100);
+rheniumdustMetalPulverize_basic.addItemOutput(<contenttweaker:material_part:1279>);
+rheniumdustMetalPulverize_basic.addEnergyPerTickInput(4);
+rheniumdustMetalPulverize_basic.build();
+
+var rheniumdustMetalPulverize_advanced = mods.modularmachinery.RecipeBuilder.newBuilder("rheniumdustMetalPulverize_advanced", "basic", 100, 0);
+rheniumdustMetalPulverize_advanced.addItemInput(<contenttweaker:material_part:3899>);
+rheniumdustMetalPulverize_advanced.addFluidInput(<liquid:cotm_rhenium_molten> * 100);
+rheniumdustMetalPulverize_advanced.addItemOutput(<contenttweaker:material_part:1279>);
+rheniumdustMetalPulverize_advanced.addFluidInput(<liquid:hydrogen> * 100);
+rheniumdustMetalPulverize_advanced.addEnergyPerTickInput(1024);
+rheniumdustMetalPulverize_advanced.build();
+
+var rheniumdustMetalPulverize_industrial = mods.modularmachinery.RecipeBuilder.newBuilder("rheniumdustMetalPulverize_industrial", "basic", 100, 0);
+rheniumdustMetalPulverize_industrial.addItemInput(<contenttweaker:material_part:3899>);
+rheniumdustMetalPulverize_industrial.addFluidInput(<liquid:cotm_rhenium_molten> * 100);
+rheniumdustMetalPulverize_industrial.addItemOutput(<contenttweaker:material_part:1279>);
+rheniumdustMetalPulverize_industrial.addFluidInput(<liquid:hydrogen> * 100);
+rheniumdustMetalPulverize_industrial.addFluidInput(<liquid:cotc_data> * 100);
+rheniumdustMetalPulverize_industrial.addEnergyPerTickInput(262144);
+rheniumdustMetalPulverize_industrial.build();
+
+var rheniumdustMetalPulverize_ultimate = mods.modularmachinery.RecipeBuilder.newBuilder("rheniumdustMetalPulverize_ultimate", "basic", 100, 0);
+rheniumdustMetalPulverize_ultimate.addItemInput(<contenttweaker:material_part:3899>);
+rheniumdustMetalPulverize_ultimate.addFluidInput(<liquid:cotm_rhenium_molten> * 100);
+rheniumdustMetalPulverize_ultimate.addItemOutput(<contenttweaker:material_part:1279>);
+rheniumdustMetalPulverize_ultimate.addFluidInput(<liquid:hydrogen> * 100);
+rheniumdustMetalPulverize_ultimate.addFluidInput(<liquid:cotc_data> * 100);
+rheniumdustMetalPulverize_ultimate.addFluidInput(<liquid:cotc_pos_red_matter> * 100);
+rheniumdustMetalPulverize_ultimate.addFluidOutput(<liquid:cotc_neg_orange_matter> * 100);
+rheniumdustMetalPulverize_ultimate.addEnergyPerTickInput(67108864);
+rheniumdustMetalPulverize_ultimate.build();
+
+var osmiumdustMetalPulverize_basic = mods.modularmachinery.RecipeBuilder.newBuilder("osmiumdustMetalPulverize_basic", "basic", 100, 0);
+osmiumdustMetalPulverize_basic.addItemInput(<contenttweaker:material_part:3938>);
+osmiumdustMetalPulverize_basic.addFluidInput(<liquid:cotm_osmium_molten> * 100);
+osmiumdustMetalPulverize_basic.addItemOutput(<contenttweaker:material_part:243>);
+osmiumdustMetalPulverize_basic.addEnergyPerTickInput(4);
+osmiumdustMetalPulverize_basic.build();
+
+var osmiumdustMetalPulverize_advanced = mods.modularmachinery.RecipeBuilder.newBuilder("osmiumdustMetalPulverize_advanced", "basic", 100, 0);
+osmiumdustMetalPulverize_advanced.addItemInput(<contenttweaker:material_part:3938>);
+osmiumdustMetalPulverize_advanced.addFluidInput(<liquid:cotm_osmium_molten> * 100);
+osmiumdustMetalPulverize_advanced.addItemOutput(<contenttweaker:material_part:243>);
+osmiumdustMetalPulverize_advanced.addFluidInput(<liquid:hydrogen> * 100);
+osmiumdustMetalPulverize_advanced.addEnergyPerTickInput(1024);
+osmiumdustMetalPulverize_advanced.build();
+
+var osmiumdustMetalPulverize_industrial = mods.modularmachinery.RecipeBuilder.newBuilder("osmiumdustMetalPulverize_industrial", "basic", 100, 0);
+osmiumdustMetalPulverize_industrial.addItemInput(<contenttweaker:material_part:3938>);
+osmiumdustMetalPulverize_industrial.addFluidInput(<liquid:cotm_osmium_molten> * 100);
+osmiumdustMetalPulverize_industrial.addItemOutput(<contenttweaker:material_part:243>);
+osmiumdustMetalPulverize_industrial.addFluidInput(<liquid:hydrogen> * 100);
+osmiumdustMetalPulverize_industrial.addFluidInput(<liquid:cotc_data> * 100);
+osmiumdustMetalPulverize_industrial.addEnergyPerTickInput(262144);
+osmiumdustMetalPulverize_industrial.build();
+
+var osmiumdustMetalPulverize_ultimate = mods.modularmachinery.RecipeBuilder.newBuilder("osmiumdustMetalPulverize_ultimate", "basic", 100, 0);
+osmiumdustMetalPulverize_ultimate.addItemInput(<contenttweaker:material_part:3938>);
+osmiumdustMetalPulverize_ultimate.addFluidInput(<liquid:cotm_osmium_molten> * 100);
+osmiumdustMetalPulverize_ultimate.addItemOutput(<contenttweaker:material_part:243>);
+osmiumdustMetalPulverize_ultimate.addFluidInput(<liquid:hydrogen> * 100);
+osmiumdustMetalPulverize_ultimate.addFluidInput(<liquid:cotc_data> * 100);
+osmiumdustMetalPulverize_ultimate.addFluidInput(<liquid:cotc_pos_red_matter> * 100);
+osmiumdustMetalPulverize_ultimate.addFluidOutput(<liquid:cotc_neg_orange_matter> * 100);
+osmiumdustMetalPulverize_ultimate.addEnergyPerTickInput(67108864);
+osmiumdustMetalPulverize_ultimate.build();
+
+var iridiumdustMetalPulverize_basic = mods.modularmachinery.RecipeBuilder.newBuilder("iridiumdustMetalPulverize_basic", "basic", 100, 0);
+iridiumdustMetalPulverize_basic.addItemInput(<contenttweaker:material_part:3977>);
+iridiumdustMetalPulverize_basic.addFluidInput(<liquid:cotm_iridium_molten> * 100);
+iridiumdustMetalPulverize_basic.addItemOutput(<contenttweaker:material_part:240>);
+iridiumdustMetalPulverize_basic.addEnergyPerTickInput(4);
+iridiumdustMetalPulverize_basic.build();
+
+var iridiumdustMetalPulverize_advanced = mods.modularmachinery.RecipeBuilder.newBuilder("iridiumdustMetalPulverize_advanced", "basic", 100, 0);
+iridiumdustMetalPulverize_advanced.addItemInput(<contenttweaker:material_part:3977>);
+iridiumdustMetalPulverize_advanced.addFluidInput(<liquid:cotm_iridium_molten> * 100);
+iridiumdustMetalPulverize_advanced.addItemOutput(<contenttweaker:material_part:240>);
+iridiumdustMetalPulverize_advanced.addFluidInput(<liquid:hydrogen> * 100);
+iridiumdustMetalPulverize_advanced.addEnergyPerTickInput(1024);
+iridiumdustMetalPulverize_advanced.build();
+
+var iridiumdustMetalPulverize_industrial = mods.modularmachinery.RecipeBuilder.newBuilder("iridiumdustMetalPulverize_industrial", "basic", 100, 0);
+iridiumdustMetalPulverize_industrial.addItemInput(<contenttweaker:material_part:3977>);
+iridiumdustMetalPulverize_industrial.addFluidInput(<liquid:cotm_iridium_molten> * 100);
+iridiumdustMetalPulverize_industrial.addItemOutput(<contenttweaker:material_part:240>);
+iridiumdustMetalPulverize_industrial.addFluidInput(<liquid:hydrogen> * 100);
+iridiumdustMetalPulverize_industrial.addFluidInput(<liquid:cotc_data> * 100);
+iridiumdustMetalPulverize_industrial.addEnergyPerTickInput(262144);
+iridiumdustMetalPulverize_industrial.build();
+
+var iridiumdustMetalPulverize_ultimate = mods.modularmachinery.RecipeBuilder.newBuilder("iridiumdustMetalPulverize_ultimate", "basic", 100, 0);
+iridiumdustMetalPulverize_ultimate.addItemInput(<contenttweaker:material_part:3977>);
+iridiumdustMetalPulverize_ultimate.addFluidInput(<liquid:cotm_iridium_molten> * 100);
+iridiumdustMetalPulverize_ultimate.addItemOutput(<contenttweaker:material_part:240>);
+iridiumdustMetalPulverize_ultimate.addFluidInput(<liquid:hydrogen> * 100);
+iridiumdustMetalPulverize_ultimate.addFluidInput(<liquid:cotc_data> * 100);
+iridiumdustMetalPulverize_ultimate.addFluidInput(<liquid:cotc_pos_red_matter> * 100);
+iridiumdustMetalPulverize_ultimate.addFluidOutput(<liquid:cotc_neg_orange_matter> * 100);
+iridiumdustMetalPulverize_ultimate.addEnergyPerTickInput(67108864);
+iridiumdustMetalPulverize_ultimate.build();
+
+var platinumdustMetalPulverize_basic = mods.modularmachinery.RecipeBuilder.newBuilder("platinumdustMetalPulverize_basic", "basic", 100, 0);
+platinumdustMetalPulverize_basic.addItemInput(<contenttweaker:material_part:4016>);
+platinumdustMetalPulverize_basic.addFluidInput(<liquid:cotm_platinum_molten> * 100);
+platinumdustMetalPulverize_basic.addItemOutput(<contenttweaker:material_part:234>);
+platinumdustMetalPulverize_basic.addEnergyPerTickInput(4);
+platinumdustMetalPulverize_basic.build();
+
+var platinumdustMetalPulverize_advanced = mods.modularmachinery.RecipeBuilder.newBuilder("platinumdustMetalPulverize_advanced", "basic", 100, 0);
+platinumdustMetalPulverize_advanced.addItemInput(<contenttweaker:material_part:4016>);
+platinumdustMetalPulverize_advanced.addFluidInput(<liquid:cotm_platinum_molten> * 100);
+platinumdustMetalPulverize_advanced.addItemOutput(<contenttweaker:material_part:234>);
+platinumdustMetalPulverize_advanced.addFluidInput(<liquid:hydrogen> * 100);
+platinumdustMetalPulverize_advanced.addEnergyPerTickInput(1024);
+platinumdustMetalPulverize_advanced.build();
+
+var platinumdustMetalPulverize_industrial = mods.modularmachinery.RecipeBuilder.newBuilder("platinumdustMetalPulverize_industrial", "basic", 100, 0);
+platinumdustMetalPulverize_industrial.addItemInput(<contenttweaker:material_part:4016>);
+platinumdustMetalPulverize_industrial.addFluidInput(<liquid:cotm_platinum_molten> * 100);
+platinumdustMetalPulverize_industrial.addItemOutput(<contenttweaker:material_part:234>);
+platinumdustMetalPulverize_industrial.addFluidInput(<liquid:hydrogen> * 100);
+platinumdustMetalPulverize_industrial.addFluidInput(<liquid:cotc_data> * 100);
+platinumdustMetalPulverize_industrial.addEnergyPerTickInput(262144);
+platinumdustMetalPulverize_industrial.build();
+
+var platinumdustMetalPulverize_ultimate = mods.modularmachinery.RecipeBuilder.newBuilder("platinumdustMetalPulverize_ultimate", "basic", 100, 0);
+platinumdustMetalPulverize_ultimate.addItemInput(<contenttweaker:material_part:4016>);
+platinumdustMetalPulverize_ultimate.addFluidInput(<liquid:cotm_platinum_molten> * 100);
+platinumdustMetalPulverize_ultimate.addItemOutput(<contenttweaker:material_part:234>);
+platinumdustMetalPulverize_ultimate.addFluidInput(<liquid:hydrogen> * 100);
+platinumdustMetalPulverize_ultimate.addFluidInput(<liquid:cotc_data> * 100);
+platinumdustMetalPulverize_ultimate.addFluidInput(<liquid:cotc_pos_red_matter> * 100);
+platinumdustMetalPulverize_ultimate.addFluidOutput(<liquid:cotc_neg_orange_matter> * 100);
+platinumdustMetalPulverize_ultimate.addEnergyPerTickInput(67108864);
+platinumdustMetalPulverize_ultimate.build();
+
+var golddustMetalPulverize_basic = mods.modularmachinery.RecipeBuilder.newBuilder("golddustMetalPulverize_basic", "basic", 100, 0);
+golddustMetalPulverize_basic.addItemInput(<contenttweaker:material_part:4055>);
+golddustMetalPulverize_basic.addFluidInput(<liquid:cotm_gold_molten> * 100);
+golddustMetalPulverize_basic.addItemOutput(<contenttweaker:material_part:1282>);
+golddustMetalPulverize_basic.addEnergyPerTickInput(4);
+golddustMetalPulverize_basic.build();
+
+var golddustMetalPulverize_advanced = mods.modularmachinery.RecipeBuilder.newBuilder("golddustMetalPulverize_advanced", "basic", 100, 0);
+golddustMetalPulverize_advanced.addItemInput(<contenttweaker:material_part:4055>);
+golddustMetalPulverize_advanced.addFluidInput(<liquid:cotm_gold_molten> * 100);
+golddustMetalPulverize_advanced.addItemOutput(<contenttweaker:material_part:1282>);
+golddustMetalPulverize_advanced.addFluidInput(<liquid:hydrogen> * 100);
+golddustMetalPulverize_advanced.addEnergyPerTickInput(1024);
+golddustMetalPulverize_advanced.build();
+
+var golddustMetalPulverize_industrial = mods.modularmachinery.RecipeBuilder.newBuilder("golddustMetalPulverize_industrial", "basic", 100, 0);
+golddustMetalPulverize_industrial.addItemInput(<contenttweaker:material_part:4055>);
+golddustMetalPulverize_industrial.addFluidInput(<liquid:cotm_gold_molten> * 100);
+golddustMetalPulverize_industrial.addItemOutput(<contenttweaker:material_part:1282>);
+golddustMetalPulverize_industrial.addFluidInput(<liquid:hydrogen> * 100);
+golddustMetalPulverize_industrial.addFluidInput(<liquid:cotc_data> * 100);
+golddustMetalPulverize_industrial.addEnergyPerTickInput(262144);
+golddustMetalPulverize_industrial.build();
+
+var golddustMetalPulverize_ultimate = mods.modularmachinery.RecipeBuilder.newBuilder("golddustMetalPulverize_ultimate", "basic", 100, 0);
+golddustMetalPulverize_ultimate.addItemInput(<contenttweaker:material_part:4055>);
+golddustMetalPulverize_ultimate.addFluidInput(<liquid:cotm_gold_molten> * 100);
+golddustMetalPulverize_ultimate.addItemOutput(<contenttweaker:material_part:1282>);
+golddustMetalPulverize_ultimate.addFluidInput(<liquid:hydrogen> * 100);
+golddustMetalPulverize_ultimate.addFluidInput(<liquid:cotc_data> * 100);
+golddustMetalPulverize_ultimate.addFluidInput(<liquid:cotc_pos_red_matter> * 100);
+golddustMetalPulverize_ultimate.addFluidOutput(<liquid:cotc_neg_orange_matter> * 100);
+golddustMetalPulverize_ultimate.addEnergyPerTickInput(67108864);
+golddustMetalPulverize_ultimate.build();
+
+var mercurydustMetalPulverize_basic = mods.modularmachinery.RecipeBuilder.newBuilder("mercurydustMetalPulverize_basic", "basic", 100, 0);
+mercurydustMetalPulverize_basic.addItemInput(<contenttweaker:material_part:4093>);
+mercurydustMetalPulverize_basic.addFluidInput(<liquid:cotm_mercury_liquid> * 100);
+mercurydustMetalPulverize_basic.addItemOutput(<contenttweaker:material_part:1285>);
+mercurydustMetalPulverize_basic.addEnergyPerTickInput(4);
+mercurydustMetalPulverize_basic.build();
+
+var mercurydustMetalPulverize_advanced = mods.modularmachinery.RecipeBuilder.newBuilder("mercurydustMetalPulverize_advanced", "basic", 100, 0);
+mercurydustMetalPulverize_advanced.addItemInput(<contenttweaker:material_part:4093>);
+mercurydustMetalPulverize_advanced.addFluidInput(<liquid:cotm_mercury_liquid> * 100);
+mercurydustMetalPulverize_advanced.addItemOutput(<contenttweaker:material_part:1285>);
+mercurydustMetalPulverize_advanced.addFluidInput(<liquid:hydrogen> * 100);
+mercurydustMetalPulverize_advanced.addEnergyPerTickInput(1024);
+mercurydustMetalPulverize_advanced.build();
+
+var mercurydustMetalPulverize_industrial = mods.modularmachinery.RecipeBuilder.newBuilder("mercurydustMetalPulverize_industrial", "basic", 100, 0);
+mercurydustMetalPulverize_industrial.addItemInput(<contenttweaker:material_part:4093>);
+mercurydustMetalPulverize_industrial.addFluidInput(<liquid:cotm_mercury_liquid> * 100);
+mercurydustMetalPulverize_industrial.addItemOutput(<contenttweaker:material_part:1285>);
+mercurydustMetalPulverize_industrial.addFluidInput(<liquid:hydrogen> * 100);
+mercurydustMetalPulverize_industrial.addFluidInput(<liquid:cotc_data> * 100);
+mercurydustMetalPulverize_industrial.addEnergyPerTickInput(262144);
+mercurydustMetalPulverize_industrial.build();
+
+var mercurydustMetalPulverize_ultimate = mods.modularmachinery.RecipeBuilder.newBuilder("mercurydustMetalPulverize_ultimate", "basic", 100, 0);
+mercurydustMetalPulverize_ultimate.addItemInput(<contenttweaker:material_part:4093>);
+mercurydustMetalPulverize_ultimate.addFluidInput(<liquid:cotm_mercury_liquid> * 100);
+mercurydustMetalPulverize_ultimate.addItemOutput(<contenttweaker:material_part:1285>);
+mercurydustMetalPulverize_ultimate.addFluidInput(<liquid:hydrogen> * 100);
+mercurydustMetalPulverize_ultimate.addFluidInput(<liquid:cotc_data> * 100);
+mercurydustMetalPulverize_ultimate.addFluidInput(<liquid:cotc_pos_red_matter> * 100);
+mercurydustMetalPulverize_ultimate.addFluidOutput(<liquid:cotc_neg_orange_matter> * 100);
+mercurydustMetalPulverize_ultimate.addEnergyPerTickInput(67108864);
+mercurydustMetalPulverize_ultimate.build();
+
+var thalliumdustMetalPulverize_basic = mods.modularmachinery.RecipeBuilder.newBuilder("thalliumdustMetalPulverize_basic", "basic", 100, 0);
+thalliumdustMetalPulverize_basic.addItemInput(<contenttweaker:material_part:4131>);
+thalliumdustMetalPulverize_basic.addFluidInput(<liquid:cotm_thallium_molten> * 100);
+thalliumdustMetalPulverize_basic.addItemOutput(<contenttweaker:material_part:1288>);
+thalliumdustMetalPulverize_basic.addEnergyPerTickInput(4);
+thalliumdustMetalPulverize_basic.build();
+
+var thalliumdustMetalPulverize_advanced = mods.modularmachinery.RecipeBuilder.newBuilder("thalliumdustMetalPulverize_advanced", "basic", 100, 0);
+thalliumdustMetalPulverize_advanced.addItemInput(<contenttweaker:material_part:4131>);
+thalliumdustMetalPulverize_advanced.addFluidInput(<liquid:cotm_thallium_molten> * 100);
+thalliumdustMetalPulverize_advanced.addItemOutput(<contenttweaker:material_part:1288>);
+thalliumdustMetalPulverize_advanced.addFluidInput(<liquid:hydrogen> * 100);
+thalliumdustMetalPulverize_advanced.addEnergyPerTickInput(1024);
+thalliumdustMetalPulverize_advanced.build();
+
+var thalliumdustMetalPulverize_industrial = mods.modularmachinery.RecipeBuilder.newBuilder("thalliumdustMetalPulverize_industrial", "basic", 100, 0);
+thalliumdustMetalPulverize_industrial.addItemInput(<contenttweaker:material_part:4131>);
+thalliumdustMetalPulverize_industrial.addFluidInput(<liquid:cotm_thallium_molten> * 100);
+thalliumdustMetalPulverize_industrial.addItemOutput(<contenttweaker:material_part:1288>);
+thalliumdustMetalPulverize_industrial.addFluidInput(<liquid:hydrogen> * 100);
+thalliumdustMetalPulverize_industrial.addFluidInput(<liquid:cotc_data> * 100);
+thalliumdustMetalPulverize_industrial.addEnergyPerTickInput(262144);
+thalliumdustMetalPulverize_industrial.build();
+
+var thalliumdustMetalPulverize_ultimate = mods.modularmachinery.RecipeBuilder.newBuilder("thalliumdustMetalPulverize_ultimate", "basic", 100, 0);
+thalliumdustMetalPulverize_ultimate.addItemInput(<contenttweaker:material_part:4131>);
+thalliumdustMetalPulverize_ultimate.addFluidInput(<liquid:cotm_thallium_molten> * 100);
+thalliumdustMetalPulverize_ultimate.addItemOutput(<contenttweaker:material_part:1288>);
+thalliumdustMetalPulverize_ultimate.addFluidInput(<liquid:hydrogen> * 100);
+thalliumdustMetalPulverize_ultimate.addFluidInput(<liquid:cotc_data> * 100);
+thalliumdustMetalPulverize_ultimate.addFluidInput(<liquid:cotc_pos_red_matter> * 100);
+thalliumdustMetalPulverize_ultimate.addFluidOutput(<liquid:cotc_neg_orange_matter> * 100);
+thalliumdustMetalPulverize_ultimate.addEnergyPerTickInput(67108864);
+thalliumdustMetalPulverize_ultimate.build();
+
+var leaddustMetalPulverize_basic = mods.modularmachinery.RecipeBuilder.newBuilder("leaddustMetalPulverize_basic", "basic", 100, 0);
+leaddustMetalPulverize_basic.addItemInput(<contenttweaker:material_part:4169>);
+leaddustMetalPulverize_basic.addFluidInput(<liquid:cotm_lead_molten> * 100);
+leaddustMetalPulverize_basic.addItemOutput(<contenttweaker:material_part:228>);
+leaddustMetalPulverize_basic.addEnergyPerTickInput(4);
+leaddustMetalPulverize_basic.build();
+
+var leaddustMetalPulverize_advanced = mods.modularmachinery.RecipeBuilder.newBuilder("leaddustMetalPulverize_advanced", "basic", 100, 0);
+leaddustMetalPulverize_advanced.addItemInput(<contenttweaker:material_part:4169>);
+leaddustMetalPulverize_advanced.addFluidInput(<liquid:cotm_lead_molten> * 100);
+leaddustMetalPulverize_advanced.addItemOutput(<contenttweaker:material_part:228>);
+leaddustMetalPulverize_advanced.addFluidInput(<liquid:hydrogen> * 100);
+leaddustMetalPulverize_advanced.addEnergyPerTickInput(1024);
+leaddustMetalPulverize_advanced.build();
+
+var leaddustMetalPulverize_industrial = mods.modularmachinery.RecipeBuilder.newBuilder("leaddustMetalPulverize_industrial", "basic", 100, 0);
+leaddustMetalPulverize_industrial.addItemInput(<contenttweaker:material_part:4169>);
+leaddustMetalPulverize_industrial.addFluidInput(<liquid:cotm_lead_molten> * 100);
+leaddustMetalPulverize_industrial.addItemOutput(<contenttweaker:material_part:228>);
+leaddustMetalPulverize_industrial.addFluidInput(<liquid:hydrogen> * 100);
+leaddustMetalPulverize_industrial.addFluidInput(<liquid:cotc_data> * 100);
+leaddustMetalPulverize_industrial.addEnergyPerTickInput(262144);
+leaddustMetalPulverize_industrial.build();
+
+var leaddustMetalPulverize_ultimate = mods.modularmachinery.RecipeBuilder.newBuilder("leaddustMetalPulverize_ultimate", "basic", 100, 0);
+leaddustMetalPulverize_ultimate.addItemInput(<contenttweaker:material_part:4169>);
+leaddustMetalPulverize_ultimate.addFluidInput(<liquid:cotm_lead_molten> * 100);
+leaddustMetalPulverize_ultimate.addItemOutput(<contenttweaker:material_part:228>);
+leaddustMetalPulverize_ultimate.addFluidInput(<liquid:hydrogen> * 100);
+leaddustMetalPulverize_ultimate.addFluidInput(<liquid:cotc_data> * 100);
+leaddustMetalPulverize_ultimate.addFluidInput(<liquid:cotc_pos_red_matter> * 100);
+leaddustMetalPulverize_ultimate.addFluidOutput(<liquid:cotc_neg_orange_matter> * 100);
+leaddustMetalPulverize_ultimate.addEnergyPerTickInput(67108864);
+leaddustMetalPulverize_ultimate.build();
+
+var bismuthdustMetalPulverize_basic = mods.modularmachinery.RecipeBuilder.newBuilder("bismuthdustMetalPulverize_basic", "basic", 100, 0);
+bismuthdustMetalPulverize_basic.addItemInput(<contenttweaker:material_part:4207>);
+bismuthdustMetalPulverize_basic.addFluidInput(<liquid:cotm_bismuth_molten> * 100);
+bismuthdustMetalPulverize_basic.addItemOutput(<contenttweaker:material_part:1291>);
+bismuthdustMetalPulverize_basic.addEnergyPerTickInput(4);
+bismuthdustMetalPulverize_basic.build();
+
+var bismuthdustMetalPulverize_advanced = mods.modularmachinery.RecipeBuilder.newBuilder("bismuthdustMetalPulverize_advanced", "basic", 100, 0);
+bismuthdustMetalPulverize_advanced.addItemInput(<contenttweaker:material_part:4207>);
+bismuthdustMetalPulverize_advanced.addFluidInput(<liquid:cotm_bismuth_molten> * 100);
+bismuthdustMetalPulverize_advanced.addItemOutput(<contenttweaker:material_part:1291>);
+bismuthdustMetalPulverize_advanced.addFluidInput(<liquid:hydrogen> * 100);
+bismuthdustMetalPulverize_advanced.addEnergyPerTickInput(1024);
+bismuthdustMetalPulverize_advanced.build();
+
+var bismuthdustMetalPulverize_industrial = mods.modularmachinery.RecipeBuilder.newBuilder("bismuthdustMetalPulverize_industrial", "basic", 100, 0);
+bismuthdustMetalPulverize_industrial.addItemInput(<contenttweaker:material_part:4207>);
+bismuthdustMetalPulverize_industrial.addFluidInput(<liquid:cotm_bismuth_molten> * 100);
+bismuthdustMetalPulverize_industrial.addItemOutput(<contenttweaker:material_part:1291>);
+bismuthdustMetalPulverize_industrial.addFluidInput(<liquid:hydrogen> * 100);
+bismuthdustMetalPulverize_industrial.addFluidInput(<liquid:cotc_data> * 100);
+bismuthdustMetalPulverize_industrial.addEnergyPerTickInput(262144);
+bismuthdustMetalPulverize_industrial.build();
+
+var bismuthdustMetalPulverize_ultimate = mods.modularmachinery.RecipeBuilder.newBuilder("bismuthdustMetalPulverize_ultimate", "basic", 100, 0);
+bismuthdustMetalPulverize_ultimate.addItemInput(<contenttweaker:material_part:4207>);
+bismuthdustMetalPulverize_ultimate.addFluidInput(<liquid:cotm_bismuth_molten> * 100);
+bismuthdustMetalPulverize_ultimate.addItemOutput(<contenttweaker:material_part:1291>);
+bismuthdustMetalPulverize_ultimate.addFluidInput(<liquid:hydrogen> * 100);
+bismuthdustMetalPulverize_ultimate.addFluidInput(<liquid:cotc_data> * 100);
+bismuthdustMetalPulverize_ultimate.addFluidInput(<liquid:cotc_pos_red_matter> * 100);
+bismuthdustMetalPulverize_ultimate.addFluidOutput(<liquid:cotc_neg_orange_matter> * 100);
+bismuthdustMetalPulverize_ultimate.addEnergyPerTickInput(67108864);
+bismuthdustMetalPulverize_ultimate.build();
+
+var poloniumdustMetalPulverize_basic = mods.modularmachinery.RecipeBuilder.newBuilder("poloniumdustMetalPulverize_basic", "basic", 100, 0);
+poloniumdustMetalPulverize_basic.addItemInput(<contenttweaker:material_part:4245>);
+poloniumdustMetalPulverize_basic.addFluidInput(<liquid:cotm_polonium_molten> * 100);
+poloniumdustMetalPulverize_basic.addItemOutput(<contenttweaker:material_part:1294>);
+poloniumdustMetalPulverize_basic.addEnergyPerTickInput(4);
+poloniumdustMetalPulverize_basic.build();
+
+var poloniumdustMetalPulverize_advanced = mods.modularmachinery.RecipeBuilder.newBuilder("poloniumdustMetalPulverize_advanced", "basic", 100, 0);
+poloniumdustMetalPulverize_advanced.addItemInput(<contenttweaker:material_part:4245>);
+poloniumdustMetalPulverize_advanced.addFluidInput(<liquid:cotm_polonium_molten> * 100);
+poloniumdustMetalPulverize_advanced.addItemOutput(<contenttweaker:material_part:1294>);
+poloniumdustMetalPulverize_advanced.addFluidInput(<liquid:hydrogen> * 100);
+poloniumdustMetalPulverize_advanced.addEnergyPerTickInput(1024);
+poloniumdustMetalPulverize_advanced.build();
+
+var poloniumdustMetalPulverize_industrial = mods.modularmachinery.RecipeBuilder.newBuilder("poloniumdustMetalPulverize_industrial", "basic", 100, 0);
+poloniumdustMetalPulverize_industrial.addItemInput(<contenttweaker:material_part:4245>);
+poloniumdustMetalPulverize_industrial.addFluidInput(<liquid:cotm_polonium_molten> * 100);
+poloniumdustMetalPulverize_industrial.addItemOutput(<contenttweaker:material_part:1294>);
+poloniumdustMetalPulverize_industrial.addFluidInput(<liquid:hydrogen> * 100);
+poloniumdustMetalPulverize_industrial.addFluidInput(<liquid:cotc_data> * 100);
+poloniumdustMetalPulverize_industrial.addEnergyPerTickInput(262144);
+poloniumdustMetalPulverize_industrial.build();
+
+var poloniumdustMetalPulverize_ultimate = mods.modularmachinery.RecipeBuilder.newBuilder("poloniumdustMetalPulverize_ultimate", "basic", 100, 0);
+poloniumdustMetalPulverize_ultimate.addItemInput(<contenttweaker:material_part:4245>);
+poloniumdustMetalPulverize_ultimate.addFluidInput(<liquid:cotm_polonium_molten> * 100);
+poloniumdustMetalPulverize_ultimate.addItemOutput(<contenttweaker:material_part:1294>);
+poloniumdustMetalPulverize_ultimate.addFluidInput(<liquid:hydrogen> * 100);
+poloniumdustMetalPulverize_ultimate.addFluidInput(<liquid:cotc_data> * 100);
+poloniumdustMetalPulverize_ultimate.addFluidInput(<liquid:cotc_pos_red_matter> * 100);
+poloniumdustMetalPulverize_ultimate.addFluidOutput(<liquid:cotc_neg_orange_matter> * 100);
+poloniumdustMetalPulverize_ultimate.addEnergyPerTickInput(67108864);
+poloniumdustMetalPulverize_ultimate.build();
+
+var astatinedustMetalPulverize_basic = mods.modularmachinery.RecipeBuilder.newBuilder("astatinedustMetalPulverize_basic", "basic", 100, 0);
+astatinedustMetalPulverize_basic.addItemInput(<contenttweaker:material_part:4283>);
+astatinedustMetalPulverize_basic.addFluidInput(<liquid:cotm_astatine_molten> * 100);
+astatinedustMetalPulverize_basic.addItemOutput(<contenttweaker:material_part:1297>);
+astatinedustMetalPulverize_basic.addEnergyPerTickInput(4);
+astatinedustMetalPulverize_basic.build();
+
+var astatinedustMetalPulverize_advanced = mods.modularmachinery.RecipeBuilder.newBuilder("astatinedustMetalPulverize_advanced", "basic", 100, 0);
+astatinedustMetalPulverize_advanced.addItemInput(<contenttweaker:material_part:4283>);
+astatinedustMetalPulverize_advanced.addFluidInput(<liquid:cotm_astatine_molten> * 100);
+astatinedustMetalPulverize_advanced.addItemOutput(<contenttweaker:material_part:1297>);
+astatinedustMetalPulverize_advanced.addFluidInput(<liquid:hydrogen> * 100);
+astatinedustMetalPulverize_advanced.addEnergyPerTickInput(1024);
+astatinedustMetalPulverize_advanced.build();
+
+var astatinedustMetalPulverize_industrial = mods.modularmachinery.RecipeBuilder.newBuilder("astatinedustMetalPulverize_industrial", "basic", 100, 0);
+astatinedustMetalPulverize_industrial.addItemInput(<contenttweaker:material_part:4283>);
+astatinedustMetalPulverize_industrial.addFluidInput(<liquid:cotm_astatine_molten> * 100);
+astatinedustMetalPulverize_industrial.addItemOutput(<contenttweaker:material_part:1297>);
+astatinedustMetalPulverize_industrial.addFluidInput(<liquid:hydrogen> * 100);
+astatinedustMetalPulverize_industrial.addFluidInput(<liquid:cotc_data> * 100);
+astatinedustMetalPulverize_industrial.addEnergyPerTickInput(262144);
+astatinedustMetalPulverize_industrial.build();
+
+var astatinedustMetalPulverize_ultimate = mods.modularmachinery.RecipeBuilder.newBuilder("astatinedustMetalPulverize_ultimate", "basic", 100, 0);
+astatinedustMetalPulverize_ultimate.addItemInput(<contenttweaker:material_part:4283>);
+astatinedustMetalPulverize_ultimate.addFluidInput(<liquid:cotm_astatine_molten> * 100);
+astatinedustMetalPulverize_ultimate.addItemOutput(<contenttweaker:material_part:1297>);
+astatinedustMetalPulverize_ultimate.addFluidInput(<liquid:hydrogen> * 100);
+astatinedustMetalPulverize_ultimate.addFluidInput(<liquid:cotc_data> * 100);
+astatinedustMetalPulverize_ultimate.addFluidInput(<liquid:cotc_pos_red_matter> * 100);
+astatinedustMetalPulverize_ultimate.addFluidOutput(<liquid:cotc_neg_orange_matter> * 100);
+astatinedustMetalPulverize_ultimate.addEnergyPerTickInput(67108864);
+astatinedustMetalPulverize_ultimate.build();
+
+var franciumdustMetalPulverize_basic = mods.modularmachinery.RecipeBuilder.newBuilder("franciumdustMetalPulverize_basic", "basic", 100, 0);
+franciumdustMetalPulverize_basic.addItemInput(<contenttweaker:material_part:4321>);
+franciumdustMetalPulverize_basic.addFluidInput(<liquid:cotm_francium_molten> * 100);
+franciumdustMetalPulverize_basic.addItemOutput(<contenttweaker:material_part:1300>);
+franciumdustMetalPulverize_basic.addEnergyPerTickInput(4);
+franciumdustMetalPulverize_basic.build();
+
+var franciumdustMetalPulverize_advanced = mods.modularmachinery.RecipeBuilder.newBuilder("franciumdustMetalPulverize_advanced", "basic", 100, 0);
+franciumdustMetalPulverize_advanced.addItemInput(<contenttweaker:material_part:4321>);
+franciumdustMetalPulverize_advanced.addFluidInput(<liquid:cotm_francium_molten> * 100);
+franciumdustMetalPulverize_advanced.addItemOutput(<contenttweaker:material_part:1300>);
+franciumdustMetalPulverize_advanced.addFluidInput(<liquid:hydrogen> * 100);
+franciumdustMetalPulverize_advanced.addEnergyPerTickInput(1024);
+franciumdustMetalPulverize_advanced.build();
+
+var franciumdustMetalPulverize_industrial = mods.modularmachinery.RecipeBuilder.newBuilder("franciumdustMetalPulverize_industrial", "basic", 100, 0);
+franciumdustMetalPulverize_industrial.addItemInput(<contenttweaker:material_part:4321>);
+franciumdustMetalPulverize_industrial.addFluidInput(<liquid:cotm_francium_molten> * 100);
+franciumdustMetalPulverize_industrial.addItemOutput(<contenttweaker:material_part:1300>);
+franciumdustMetalPulverize_industrial.addFluidInput(<liquid:hydrogen> * 100);
+franciumdustMetalPulverize_industrial.addFluidInput(<liquid:cotc_data> * 100);
+franciumdustMetalPulverize_industrial.addEnergyPerTickInput(262144);
+franciumdustMetalPulverize_industrial.build();
+
+var franciumdustMetalPulverize_ultimate = mods.modularmachinery.RecipeBuilder.newBuilder("franciumdustMetalPulverize_ultimate", "basic", 100, 0);
+franciumdustMetalPulverize_ultimate.addItemInput(<contenttweaker:material_part:4321>);
+franciumdustMetalPulverize_ultimate.addFluidInput(<liquid:cotm_francium_molten> * 100);
+franciumdustMetalPulverize_ultimate.addItemOutput(<contenttweaker:material_part:1300>);
+franciumdustMetalPulverize_ultimate.addFluidInput(<liquid:hydrogen> * 100);
+franciumdustMetalPulverize_ultimate.addFluidInput(<liquid:cotc_data> * 100);
+franciumdustMetalPulverize_ultimate.addFluidInput(<liquid:cotc_pos_red_matter> * 100);
+franciumdustMetalPulverize_ultimate.addFluidOutput(<liquid:cotc_neg_orange_matter> * 100);
+franciumdustMetalPulverize_ultimate.addEnergyPerTickInput(67108864);
+franciumdustMetalPulverize_ultimate.build();
+
+var radiumdustMetalPulverize_basic = mods.modularmachinery.RecipeBuilder.newBuilder("radiumdustMetalPulverize_basic", "basic", 100, 0);
+radiumdustMetalPulverize_basic.addItemInput(<contenttweaker:material_part:4359>);
+radiumdustMetalPulverize_basic.addFluidInput(<liquid:cotm_radium_molten> * 100);
+radiumdustMetalPulverize_basic.addItemOutput(<contenttweaker:material_part:1303>);
+radiumdustMetalPulverize_basic.addEnergyPerTickInput(4);
+radiumdustMetalPulverize_basic.build();
+
+var radiumdustMetalPulverize_advanced = mods.modularmachinery.RecipeBuilder.newBuilder("radiumdustMetalPulverize_advanced", "basic", 100, 0);
+radiumdustMetalPulverize_advanced.addItemInput(<contenttweaker:material_part:4359>);
+radiumdustMetalPulverize_advanced.addFluidInput(<liquid:cotm_radium_molten> * 100);
+radiumdustMetalPulverize_advanced.addItemOutput(<contenttweaker:material_part:1303>);
+radiumdustMetalPulverize_advanced.addFluidInput(<liquid:hydrogen> * 100);
+radiumdustMetalPulverize_advanced.addEnergyPerTickInput(1024);
+radiumdustMetalPulverize_advanced.build();
+
+var radiumdustMetalPulverize_industrial = mods.modularmachinery.RecipeBuilder.newBuilder("radiumdustMetalPulverize_industrial", "basic", 100, 0);
+radiumdustMetalPulverize_industrial.addItemInput(<contenttweaker:material_part:4359>);
+radiumdustMetalPulverize_industrial.addFluidInput(<liquid:cotm_radium_molten> * 100);
+radiumdustMetalPulverize_industrial.addItemOutput(<contenttweaker:material_part:1303>);
+radiumdustMetalPulverize_industrial.addFluidInput(<liquid:hydrogen> * 100);
+radiumdustMetalPulverize_industrial.addFluidInput(<liquid:cotc_data> * 100);
+radiumdustMetalPulverize_industrial.addEnergyPerTickInput(262144);
+radiumdustMetalPulverize_industrial.build();
+
+var radiumdustMetalPulverize_ultimate = mods.modularmachinery.RecipeBuilder.newBuilder("radiumdustMetalPulverize_ultimate", "basic", 100, 0);
+radiumdustMetalPulverize_ultimate.addItemInput(<contenttweaker:material_part:4359>);
+radiumdustMetalPulverize_ultimate.addFluidInput(<liquid:cotm_radium_molten> * 100);
+radiumdustMetalPulverize_ultimate.addItemOutput(<contenttweaker:material_part:1303>);
+radiumdustMetalPulverize_ultimate.addFluidInput(<liquid:hydrogen> * 100);
+radiumdustMetalPulverize_ultimate.addFluidInput(<liquid:cotc_data> * 100);
+radiumdustMetalPulverize_ultimate.addFluidInput(<liquid:cotc_pos_red_matter> * 100);
+radiumdustMetalPulverize_ultimate.addFluidOutput(<liquid:cotc_neg_orange_matter> * 100);
+radiumdustMetalPulverize_ultimate.addEnergyPerTickInput(67108864);
+radiumdustMetalPulverize_ultimate.build();
+
+var actiniumdustMetalPulverize_basic = mods.modularmachinery.RecipeBuilder.newBuilder("actiniumdustMetalPulverize_basic", "basic", 100, 0);
+actiniumdustMetalPulverize_basic.addItemInput(<contenttweaker:material_part:4397>);
+actiniumdustMetalPulverize_basic.addFluidInput(<liquid:cotm_actinium_molten> * 100);
+actiniumdustMetalPulverize_basic.addItemOutput(<contenttweaker:material_part:1306>);
+actiniumdustMetalPulverize_basic.addEnergyPerTickInput(4);
+actiniumdustMetalPulverize_basic.build();
+
+var actiniumdustMetalPulverize_advanced = mods.modularmachinery.RecipeBuilder.newBuilder("actiniumdustMetalPulverize_advanced", "basic", 100, 0);
+actiniumdustMetalPulverize_advanced.addItemInput(<contenttweaker:material_part:4397>);
+actiniumdustMetalPulverize_advanced.addFluidInput(<liquid:cotm_actinium_molten> * 100);
+actiniumdustMetalPulverize_advanced.addItemOutput(<contenttweaker:material_part:1306>);
+actiniumdustMetalPulverize_advanced.addFluidInput(<liquid:hydrogen> * 100);
+actiniumdustMetalPulverize_advanced.addEnergyPerTickInput(1024);
+actiniumdustMetalPulverize_advanced.build();
+
+var actiniumdustMetalPulverize_industrial = mods.modularmachinery.RecipeBuilder.newBuilder("actiniumdustMetalPulverize_industrial", "basic", 100, 0);
+actiniumdustMetalPulverize_industrial.addItemInput(<contenttweaker:material_part:4397>);
+actiniumdustMetalPulverize_industrial.addFluidInput(<liquid:cotm_actinium_molten> * 100);
+actiniumdustMetalPulverize_industrial.addItemOutput(<contenttweaker:material_part:1306>);
+actiniumdustMetalPulverize_industrial.addFluidInput(<liquid:hydrogen> * 100);
+actiniumdustMetalPulverize_industrial.addFluidInput(<liquid:cotc_data> * 100);
+actiniumdustMetalPulverize_industrial.addEnergyPerTickInput(262144);
+actiniumdustMetalPulverize_industrial.build();
+
+var actiniumdustMetalPulverize_ultimate = mods.modularmachinery.RecipeBuilder.newBuilder("actiniumdustMetalPulverize_ultimate", "basic", 100, 0);
+actiniumdustMetalPulverize_ultimate.addItemInput(<contenttweaker:material_part:4397>);
+actiniumdustMetalPulverize_ultimate.addFluidInput(<liquid:cotm_actinium_molten> * 100);
+actiniumdustMetalPulverize_ultimate.addItemOutput(<contenttweaker:material_part:1306>);
+actiniumdustMetalPulverize_ultimate.addFluidInput(<liquid:hydrogen> * 100);
+actiniumdustMetalPulverize_ultimate.addFluidInput(<liquid:cotc_data> * 100);
+actiniumdustMetalPulverize_ultimate.addFluidInput(<liquid:cotc_pos_red_matter> * 100);
+actiniumdustMetalPulverize_ultimate.addFluidOutput(<liquid:cotc_neg_orange_matter> * 100);
+actiniumdustMetalPulverize_ultimate.addEnergyPerTickInput(67108864);
+actiniumdustMetalPulverize_ultimate.build();
+
+var thoriumdustMetalPulverize_basic = mods.modularmachinery.RecipeBuilder.newBuilder("thoriumdustMetalPulverize_basic", "basic", 100, 0);
+thoriumdustMetalPulverize_basic.addItemInput(<contenttweaker:material_part:4435>);
+thoriumdustMetalPulverize_basic.addFluidInput(<liquid:cotm_thorium_molten> * 100);
+thoriumdustMetalPulverize_basic.addItemOutput(<contenttweaker:material_part:1309>);
+thoriumdustMetalPulverize_basic.addEnergyPerTickInput(4);
+thoriumdustMetalPulverize_basic.build();
+
+var thoriumdustMetalPulverize_advanced = mods.modularmachinery.RecipeBuilder.newBuilder("thoriumdustMetalPulverize_advanced", "basic", 100, 0);
+thoriumdustMetalPulverize_advanced.addItemInput(<contenttweaker:material_part:4435>);
+thoriumdustMetalPulverize_advanced.addFluidInput(<liquid:cotm_thorium_molten> * 100);
+thoriumdustMetalPulverize_advanced.addItemOutput(<contenttweaker:material_part:1309>);
+thoriumdustMetalPulverize_advanced.addFluidInput(<liquid:hydrogen> * 100);
+thoriumdustMetalPulverize_advanced.addEnergyPerTickInput(1024);
+thoriumdustMetalPulverize_advanced.build();
+
+var thoriumdustMetalPulverize_industrial = mods.modularmachinery.RecipeBuilder.newBuilder("thoriumdustMetalPulverize_industrial", "basic", 100, 0);
+thoriumdustMetalPulverize_industrial.addItemInput(<contenttweaker:material_part:4435>);
+thoriumdustMetalPulverize_industrial.addFluidInput(<liquid:cotm_thorium_molten> * 100);
+thoriumdustMetalPulverize_industrial.addItemOutput(<contenttweaker:material_part:1309>);
+thoriumdustMetalPulverize_industrial.addFluidInput(<liquid:hydrogen> * 100);
+thoriumdustMetalPulverize_industrial.addFluidInput(<liquid:cotc_data> * 100);
+thoriumdustMetalPulverize_industrial.addEnergyPerTickInput(262144);
+thoriumdustMetalPulverize_industrial.build();
+
+var thoriumdustMetalPulverize_ultimate = mods.modularmachinery.RecipeBuilder.newBuilder("thoriumdustMetalPulverize_ultimate", "basic", 100, 0);
+thoriumdustMetalPulverize_ultimate.addItemInput(<contenttweaker:material_part:4435>);
+thoriumdustMetalPulverize_ultimate.addFluidInput(<liquid:cotm_thorium_molten> * 100);
+thoriumdustMetalPulverize_ultimate.addItemOutput(<contenttweaker:material_part:1309>);
+thoriumdustMetalPulverize_ultimate.addFluidInput(<liquid:hydrogen> * 100);
+thoriumdustMetalPulverize_ultimate.addFluidInput(<liquid:cotc_data> * 100);
+thoriumdustMetalPulverize_ultimate.addFluidInput(<liquid:cotc_pos_red_matter> * 100);
+thoriumdustMetalPulverize_ultimate.addFluidOutput(<liquid:cotc_neg_orange_matter> * 100);
+thoriumdustMetalPulverize_ultimate.addEnergyPerTickInput(67108864);
+thoriumdustMetalPulverize_ultimate.build();
+
+var uraniumdustMetalPulverize_basic = mods.modularmachinery.RecipeBuilder.newBuilder("uraniumdustMetalPulverize_basic", "basic", 100, 0);
+uraniumdustMetalPulverize_basic.addItemInput(<contenttweaker:material_part:4473>);
+uraniumdustMetalPulverize_basic.addFluidInput(<liquid:cotm_uranium_molten> * 100);
+uraniumdustMetalPulverize_basic.addItemOutput(<contenttweaker:material_part:1315>);
+uraniumdustMetalPulverize_basic.addEnergyPerTickInput(4);
+uraniumdustMetalPulverize_basic.build();
+
+var uraniumdustMetalPulverize_advanced = mods.modularmachinery.RecipeBuilder.newBuilder("uraniumdustMetalPulverize_advanced", "basic", 100, 0);
+uraniumdustMetalPulverize_advanced.addItemInput(<contenttweaker:material_part:4473>);
+uraniumdustMetalPulverize_advanced.addFluidInput(<liquid:cotm_uranium_molten> * 100);
+uraniumdustMetalPulverize_advanced.addItemOutput(<contenttweaker:material_part:1315>);
+uraniumdustMetalPulverize_advanced.addFluidInput(<liquid:hydrogen> * 100);
+uraniumdustMetalPulverize_advanced.addEnergyPerTickInput(1024);
+uraniumdustMetalPulverize_advanced.build();
+
+var uraniumdustMetalPulverize_industrial = mods.modularmachinery.RecipeBuilder.newBuilder("uraniumdustMetalPulverize_industrial", "basic", 100, 0);
+uraniumdustMetalPulverize_industrial.addItemInput(<contenttweaker:material_part:4473>);
+uraniumdustMetalPulverize_industrial.addFluidInput(<liquid:cotm_uranium_molten> * 100);
+uraniumdustMetalPulverize_industrial.addItemOutput(<contenttweaker:material_part:1315>);
+uraniumdustMetalPulverize_industrial.addFluidInput(<liquid:hydrogen> * 100);
+uraniumdustMetalPulverize_industrial.addFluidInput(<liquid:cotc_data> * 100);
+uraniumdustMetalPulverize_industrial.addEnergyPerTickInput(262144);
+uraniumdustMetalPulverize_industrial.build();
+
+var uraniumdustMetalPulverize_ultimate = mods.modularmachinery.RecipeBuilder.newBuilder("uraniumdustMetalPulverize_ultimate", "basic", 100, 0);
+uraniumdustMetalPulverize_ultimate.addItemInput(<contenttweaker:material_part:4473>);
+uraniumdustMetalPulverize_ultimate.addFluidInput(<liquid:cotm_uranium_molten> * 100);
+uraniumdustMetalPulverize_ultimate.addItemOutput(<contenttweaker:material_part:1315>);
+uraniumdustMetalPulverize_ultimate.addFluidInput(<liquid:hydrogen> * 100);
+uraniumdustMetalPulverize_ultimate.addFluidInput(<liquid:cotc_data> * 100);
+uraniumdustMetalPulverize_ultimate.addFluidInput(<liquid:cotc_pos_red_matter> * 100);
+uraniumdustMetalPulverize_ultimate.addFluidOutput(<liquid:cotc_neg_orange_matter> * 100);
+uraniumdustMetalPulverize_ultimate.addEnergyPerTickInput(67108864);
+uraniumdustMetalPulverize_ultimate.build();
+
+var neptuniumdustMetalPulverize_basic = mods.modularmachinery.RecipeBuilder.newBuilder("neptuniumdustMetalPulverize_basic", "basic", 100, 0);
+neptuniumdustMetalPulverize_basic.addItemInput(<contenttweaker:material_part:4511>);
+neptuniumdustMetalPulverize_basic.addFluidInput(<liquid:cotm_neptunium_molten> * 100);
+neptuniumdustMetalPulverize_basic.addItemOutput(<contenttweaker:material_part:1318>);
+neptuniumdustMetalPulverize_basic.addEnergyPerTickInput(4);
+neptuniumdustMetalPulverize_basic.build();
+
+var neptuniumdustMetalPulverize_advanced = mods.modularmachinery.RecipeBuilder.newBuilder("neptuniumdustMetalPulverize_advanced", "basic", 100, 0);
+neptuniumdustMetalPulverize_advanced.addItemInput(<contenttweaker:material_part:4511>);
+neptuniumdustMetalPulverize_advanced.addFluidInput(<liquid:cotm_neptunium_molten> * 100);
+neptuniumdustMetalPulverize_advanced.addItemOutput(<contenttweaker:material_part:1318>);
+neptuniumdustMetalPulverize_advanced.addFluidInput(<liquid:hydrogen> * 100);
+neptuniumdustMetalPulverize_advanced.addEnergyPerTickInput(1024);
+neptuniumdustMetalPulverize_advanced.build();
+
+var neptuniumdustMetalPulverize_industrial = mods.modularmachinery.RecipeBuilder.newBuilder("neptuniumdustMetalPulverize_industrial", "basic", 100, 0);
+neptuniumdustMetalPulverize_industrial.addItemInput(<contenttweaker:material_part:4511>);
+neptuniumdustMetalPulverize_industrial.addFluidInput(<liquid:cotm_neptunium_molten> * 100);
+neptuniumdustMetalPulverize_industrial.addItemOutput(<contenttweaker:material_part:1318>);
+neptuniumdustMetalPulverize_industrial.addFluidInput(<liquid:hydrogen> * 100);
+neptuniumdustMetalPulverize_industrial.addFluidInput(<liquid:cotc_data> * 100);
+neptuniumdustMetalPulverize_industrial.addEnergyPerTickInput(262144);
+neptuniumdustMetalPulverize_industrial.build();
+
+var neptuniumdustMetalPulverize_ultimate = mods.modularmachinery.RecipeBuilder.newBuilder("neptuniumdustMetalPulverize_ultimate", "basic", 100, 0);
+neptuniumdustMetalPulverize_ultimate.addItemInput(<contenttweaker:material_part:4511>);
+neptuniumdustMetalPulverize_ultimate.addFluidInput(<liquid:cotm_neptunium_molten> * 100);
+neptuniumdustMetalPulverize_ultimate.addItemOutput(<contenttweaker:material_part:1318>);
+neptuniumdustMetalPulverize_ultimate.addFluidInput(<liquid:hydrogen> * 100);
+neptuniumdustMetalPulverize_ultimate.addFluidInput(<liquid:cotc_data> * 100);
+neptuniumdustMetalPulverize_ultimate.addFluidInput(<liquid:cotc_pos_red_matter> * 100);
+neptuniumdustMetalPulverize_ultimate.addFluidOutput(<liquid:cotc_neg_orange_matter> * 100);
+neptuniumdustMetalPulverize_ultimate.addEnergyPerTickInput(67108864);
+neptuniumdustMetalPulverize_ultimate.build();
+
+var plutoniumdustMetalPulverize_basic = mods.modularmachinery.RecipeBuilder.newBuilder("plutoniumdustMetalPulverize_basic", "basic", 100, 0);
+plutoniumdustMetalPulverize_basic.addItemInput(<contenttweaker:material_part:4549>);
+plutoniumdustMetalPulverize_basic.addFluidInput(<liquid:cotm_plutonium_molten> * 100);
+plutoniumdustMetalPulverize_basic.addItemOutput(<contenttweaker:material_part:1321>);
+plutoniumdustMetalPulverize_basic.addEnergyPerTickInput(4);
+plutoniumdustMetalPulverize_basic.build();
+
+var plutoniumdustMetalPulverize_advanced = mods.modularmachinery.RecipeBuilder.newBuilder("plutoniumdustMetalPulverize_advanced", "basic", 100, 0);
+plutoniumdustMetalPulverize_advanced.addItemInput(<contenttweaker:material_part:4549>);
+plutoniumdustMetalPulverize_advanced.addFluidInput(<liquid:cotm_plutonium_molten> * 100);
+plutoniumdustMetalPulverize_advanced.addItemOutput(<contenttweaker:material_part:1321>);
+plutoniumdustMetalPulverize_advanced.addFluidInput(<liquid:hydrogen> * 100);
+plutoniumdustMetalPulverize_advanced.addEnergyPerTickInput(1024);
+plutoniumdustMetalPulverize_advanced.build();
+
+var plutoniumdustMetalPulverize_industrial = mods.modularmachinery.RecipeBuilder.newBuilder("plutoniumdustMetalPulverize_industrial", "basic", 100, 0);
+plutoniumdustMetalPulverize_industrial.addItemInput(<contenttweaker:material_part:4549>);
+plutoniumdustMetalPulverize_industrial.addFluidInput(<liquid:cotm_plutonium_molten> * 100);
+plutoniumdustMetalPulverize_industrial.addItemOutput(<contenttweaker:material_part:1321>);
+plutoniumdustMetalPulverize_industrial.addFluidInput(<liquid:hydrogen> * 100);
+plutoniumdustMetalPulverize_industrial.addFluidInput(<liquid:cotc_data> * 100);
+plutoniumdustMetalPulverize_industrial.addEnergyPerTickInput(262144);
+plutoniumdustMetalPulverize_industrial.build();
+
+var plutoniumdustMetalPulverize_ultimate = mods.modularmachinery.RecipeBuilder.newBuilder("plutoniumdustMetalPulverize_ultimate", "basic", 100, 0);
+plutoniumdustMetalPulverize_ultimate.addItemInput(<contenttweaker:material_part:4549>);
+plutoniumdustMetalPulverize_ultimate.addFluidInput(<liquid:cotm_plutonium_molten> * 100);
+plutoniumdustMetalPulverize_ultimate.addItemOutput(<contenttweaker:material_part:1321>);
+plutoniumdustMetalPulverize_ultimate.addFluidInput(<liquid:hydrogen> * 100);
+plutoniumdustMetalPulverize_ultimate.addFluidInput(<liquid:cotc_data> * 100);
+plutoniumdustMetalPulverize_ultimate.addFluidInput(<liquid:cotc_pos_red_matter> * 100);
+plutoniumdustMetalPulverize_ultimate.addFluidOutput(<liquid:cotc_neg_orange_matter> * 100);
+plutoniumdustMetalPulverize_ultimate.addEnergyPerTickInput(67108864);
+plutoniumdustMetalPulverize_ultimate.build();
+
+var americiumdustMetalPulverize_basic = mods.modularmachinery.RecipeBuilder.newBuilder("americiumdustMetalPulverize_basic", "basic", 100, 0);
+americiumdustMetalPulverize_basic.addItemInput(<contenttweaker:material_part:4587>);
+americiumdustMetalPulverize_basic.addFluidInput(<liquid:cotm_americium_molten> * 100);
+americiumdustMetalPulverize_basic.addItemOutput(<contenttweaker:material_part:1324>);
+americiumdustMetalPulverize_basic.addEnergyPerTickInput(4);
+americiumdustMetalPulverize_basic.build();
+
+var americiumdustMetalPulverize_advanced = mods.modularmachinery.RecipeBuilder.newBuilder("americiumdustMetalPulverize_advanced", "basic", 100, 0);
+americiumdustMetalPulverize_advanced.addItemInput(<contenttweaker:material_part:4587>);
+americiumdustMetalPulverize_advanced.addFluidInput(<liquid:cotm_americium_molten> * 100);
+americiumdustMetalPulverize_advanced.addItemOutput(<contenttweaker:material_part:1324>);
+americiumdustMetalPulverize_advanced.addFluidInput(<liquid:hydrogen> * 100);
+americiumdustMetalPulverize_advanced.addEnergyPerTickInput(1024);
+americiumdustMetalPulverize_advanced.build();
+
+var americiumdustMetalPulverize_industrial = mods.modularmachinery.RecipeBuilder.newBuilder("americiumdustMetalPulverize_industrial", "basic", 100, 0);
+americiumdustMetalPulverize_industrial.addItemInput(<contenttweaker:material_part:4587>);
+americiumdustMetalPulverize_industrial.addFluidInput(<liquid:cotm_americium_molten> * 100);
+americiumdustMetalPulverize_industrial.addItemOutput(<contenttweaker:material_part:1324>);
+americiumdustMetalPulverize_industrial.addFluidInput(<liquid:hydrogen> * 100);
+americiumdustMetalPulverize_industrial.addFluidInput(<liquid:cotc_data> * 100);
+americiumdustMetalPulverize_industrial.addEnergyPerTickInput(262144);
+americiumdustMetalPulverize_industrial.build();
+
+var americiumdustMetalPulverize_ultimate = mods.modularmachinery.RecipeBuilder.newBuilder("americiumdustMetalPulverize_ultimate", "basic", 100, 0);
+americiumdustMetalPulverize_ultimate.addItemInput(<contenttweaker:material_part:4587>);
+americiumdustMetalPulverize_ultimate.addFluidInput(<liquid:cotm_americium_molten> * 100);
+americiumdustMetalPulverize_ultimate.addItemOutput(<contenttweaker:material_part:1324>);
+americiumdustMetalPulverize_ultimate.addFluidInput(<liquid:hydrogen> * 100);
+americiumdustMetalPulverize_ultimate.addFluidInput(<liquid:cotc_data> * 100);
+americiumdustMetalPulverize_ultimate.addFluidInput(<liquid:cotc_pos_red_matter> * 100);
+americiumdustMetalPulverize_ultimate.addFluidOutput(<liquid:cotc_neg_orange_matter> * 100);
+americiumdustMetalPulverize_ultimate.addEnergyPerTickInput(67108864);
+americiumdustMetalPulverize_ultimate.build();
+
+var curiumdustMetalPulverize_basic = mods.modularmachinery.RecipeBuilder.newBuilder("curiumdustMetalPulverize_basic", "basic", 100, 0);
+curiumdustMetalPulverize_basic.addItemInput(<contenttweaker:material_part:4625>);
+curiumdustMetalPulverize_basic.addFluidInput(<liquid:cotm_curium_molten> * 100);
+curiumdustMetalPulverize_basic.addItemOutput(<contenttweaker:material_part:1327>);
+curiumdustMetalPulverize_basic.addEnergyPerTickInput(4);
+curiumdustMetalPulverize_basic.build();
+
+var curiumdustMetalPulverize_advanced = mods.modularmachinery.RecipeBuilder.newBuilder("curiumdustMetalPulverize_advanced", "basic", 100, 0);
+curiumdustMetalPulverize_advanced.addItemInput(<contenttweaker:material_part:4625>);
+curiumdustMetalPulverize_advanced.addFluidInput(<liquid:cotm_curium_molten> * 100);
+curiumdustMetalPulverize_advanced.addItemOutput(<contenttweaker:material_part:1327>);
+curiumdustMetalPulverize_advanced.addFluidInput(<liquid:hydrogen> * 100);
+curiumdustMetalPulverize_advanced.addEnergyPerTickInput(1024);
+curiumdustMetalPulverize_advanced.build();
+
+var curiumdustMetalPulverize_industrial = mods.modularmachinery.RecipeBuilder.newBuilder("curiumdustMetalPulverize_industrial", "basic", 100, 0);
+curiumdustMetalPulverize_industrial.addItemInput(<contenttweaker:material_part:4625>);
+curiumdustMetalPulverize_industrial.addFluidInput(<liquid:cotm_curium_molten> * 100);
+curiumdustMetalPulverize_industrial.addItemOutput(<contenttweaker:material_part:1327>);
+curiumdustMetalPulverize_industrial.addFluidInput(<liquid:hydrogen> * 100);
+curiumdustMetalPulverize_industrial.addFluidInput(<liquid:cotc_data> * 100);
+curiumdustMetalPulverize_industrial.addEnergyPerTickInput(262144);
+curiumdustMetalPulverize_industrial.build();
+
+var curiumdustMetalPulverize_ultimate = mods.modularmachinery.RecipeBuilder.newBuilder("curiumdustMetalPulverize_ultimate", "basic", 100, 0);
+curiumdustMetalPulverize_ultimate.addItemInput(<contenttweaker:material_part:4625>);
+curiumdustMetalPulverize_ultimate.addFluidInput(<liquid:cotm_curium_molten> * 100);
+curiumdustMetalPulverize_ultimate.addItemOutput(<contenttweaker:material_part:1327>);
+curiumdustMetalPulverize_ultimate.addFluidInput(<liquid:hydrogen> * 100);
+curiumdustMetalPulverize_ultimate.addFluidInput(<liquid:cotc_data> * 100);
+curiumdustMetalPulverize_ultimate.addFluidInput(<liquid:cotc_pos_red_matter> * 100);
+curiumdustMetalPulverize_ultimate.addFluidOutput(<liquid:cotc_neg_orange_matter> * 100);
+curiumdustMetalPulverize_ultimate.addEnergyPerTickInput(67108864);
+curiumdustMetalPulverize_ultimate.build();
+
+var berkeliumdustMetalPulverize_basic = mods.modularmachinery.RecipeBuilder.newBuilder("berkeliumdustMetalPulverize_basic", "basic", 100, 0);
+berkeliumdustMetalPulverize_basic.addItemInput(<contenttweaker:material_part:4663>);
+berkeliumdustMetalPulverize_basic.addFluidInput(<liquid:cotm_berkelium_molten> * 100);
+berkeliumdustMetalPulverize_basic.addItemOutput(<contenttweaker:material_part:1330>);
+berkeliumdustMetalPulverize_basic.addEnergyPerTickInput(4);
+berkeliumdustMetalPulverize_basic.build();
+
+var berkeliumdustMetalPulverize_advanced = mods.modularmachinery.RecipeBuilder.newBuilder("berkeliumdustMetalPulverize_advanced", "basic", 100, 0);
+berkeliumdustMetalPulverize_advanced.addItemInput(<contenttweaker:material_part:4663>);
+berkeliumdustMetalPulverize_advanced.addFluidInput(<liquid:cotm_berkelium_molten> * 100);
+berkeliumdustMetalPulverize_advanced.addItemOutput(<contenttweaker:material_part:1330>);
+berkeliumdustMetalPulverize_advanced.addFluidInput(<liquid:hydrogen> * 100);
+berkeliumdustMetalPulverize_advanced.addEnergyPerTickInput(1024);
+berkeliumdustMetalPulverize_advanced.build();
+
+var berkeliumdustMetalPulverize_industrial = mods.modularmachinery.RecipeBuilder.newBuilder("berkeliumdustMetalPulverize_industrial", "basic", 100, 0);
+berkeliumdustMetalPulverize_industrial.addItemInput(<contenttweaker:material_part:4663>);
+berkeliumdustMetalPulverize_industrial.addFluidInput(<liquid:cotm_berkelium_molten> * 100);
+berkeliumdustMetalPulverize_industrial.addItemOutput(<contenttweaker:material_part:1330>);
+berkeliumdustMetalPulverize_industrial.addFluidInput(<liquid:hydrogen> * 100);
+berkeliumdustMetalPulverize_industrial.addFluidInput(<liquid:cotc_data> * 100);
+berkeliumdustMetalPulverize_industrial.addEnergyPerTickInput(262144);
+berkeliumdustMetalPulverize_industrial.build();
+
+var berkeliumdustMetalPulverize_ultimate = mods.modularmachinery.RecipeBuilder.newBuilder("berkeliumdustMetalPulverize_ultimate", "basic", 100, 0);
+berkeliumdustMetalPulverize_ultimate.addItemInput(<contenttweaker:material_part:4663>);
+berkeliumdustMetalPulverize_ultimate.addFluidInput(<liquid:cotm_berkelium_molten> * 100);
+berkeliumdustMetalPulverize_ultimate.addItemOutput(<contenttweaker:material_part:1330>);
+berkeliumdustMetalPulverize_ultimate.addFluidInput(<liquid:hydrogen> * 100);
+berkeliumdustMetalPulverize_ultimate.addFluidInput(<liquid:cotc_data> * 100);
+berkeliumdustMetalPulverize_ultimate.addFluidInput(<liquid:cotc_pos_red_matter> * 100);
+berkeliumdustMetalPulverize_ultimate.addFluidOutput(<liquid:cotc_neg_orange_matter> * 100);
+berkeliumdustMetalPulverize_ultimate.addEnergyPerTickInput(67108864);
+berkeliumdustMetalPulverize_ultimate.build();
+
+var californiumdustMetalPulverize_basic = mods.modularmachinery.RecipeBuilder.newBuilder("californiumdustMetalPulverize_basic", "basic", 100, 0);
+californiumdustMetalPulverize_basic.addItemInput(<contenttweaker:material_part:4701>);
+californiumdustMetalPulverize_basic.addFluidInput(<liquid:cotm_californium_molten> * 100);
+californiumdustMetalPulverize_basic.addItemOutput(<contenttweaker:material_part:1333>);
+californiumdustMetalPulverize_basic.addEnergyPerTickInput(4);
+californiumdustMetalPulverize_basic.build();
+
+var californiumdustMetalPulverize_advanced = mods.modularmachinery.RecipeBuilder.newBuilder("californiumdustMetalPulverize_advanced", "basic", 100, 0);
+californiumdustMetalPulverize_advanced.addItemInput(<contenttweaker:material_part:4701>);
+californiumdustMetalPulverize_advanced.addFluidInput(<liquid:cotm_californium_molten> * 100);
+californiumdustMetalPulverize_advanced.addItemOutput(<contenttweaker:material_part:1333>);
+californiumdustMetalPulverize_advanced.addFluidInput(<liquid:hydrogen> * 100);
+californiumdustMetalPulverize_advanced.addEnergyPerTickInput(1024);
+californiumdustMetalPulverize_advanced.build();
+
+var californiumdustMetalPulverize_industrial = mods.modularmachinery.RecipeBuilder.newBuilder("californiumdustMetalPulverize_industrial", "basic", 100, 0);
+californiumdustMetalPulverize_industrial.addItemInput(<contenttweaker:material_part:4701>);
+californiumdustMetalPulverize_industrial.addFluidInput(<liquid:cotm_californium_molten> * 100);
+californiumdustMetalPulverize_industrial.addItemOutput(<contenttweaker:material_part:1333>);
+californiumdustMetalPulverize_industrial.addFluidInput(<liquid:hydrogen> * 100);
+californiumdustMetalPulverize_industrial.addFluidInput(<liquid:cotc_data> * 100);
+californiumdustMetalPulverize_industrial.addEnergyPerTickInput(262144);
+californiumdustMetalPulverize_industrial.build();
+
+var californiumdustMetalPulverize_ultimate = mods.modularmachinery.RecipeBuilder.newBuilder("californiumdustMetalPulverize_ultimate", "basic", 100, 0);
+californiumdustMetalPulverize_ultimate.addItemInput(<contenttweaker:material_part:4701>);
+californiumdustMetalPulverize_ultimate.addFluidInput(<liquid:cotm_californium_molten> * 100);
+californiumdustMetalPulverize_ultimate.addItemOutput(<contenttweaker:material_part:1333>);
+californiumdustMetalPulverize_ultimate.addFluidInput(<liquid:hydrogen> * 100);
+californiumdustMetalPulverize_ultimate.addFluidInput(<liquid:cotc_data> * 100);
+californiumdustMetalPulverize_ultimate.addFluidInput(<liquid:cotc_pos_red_matter> * 100);
+californiumdustMetalPulverize_ultimate.addFluidOutput(<liquid:cotc_neg_orange_matter> * 100);
+californiumdustMetalPulverize_ultimate.addEnergyPerTickInput(67108864);
+californiumdustMetalPulverize_ultimate.build();
+
+var einsteiniumdustMetalPulverize_basic = mods.modularmachinery.RecipeBuilder.newBuilder("einsteiniumdustMetalPulverize_basic", "basic", 100, 0);
+einsteiniumdustMetalPulverize_basic.addItemInput(<contenttweaker:material_part:4739>);
+einsteiniumdustMetalPulverize_basic.addFluidInput(<liquid:cotm_einsteinium_molten> * 100);
+einsteiniumdustMetalPulverize_basic.addItemOutput(<contenttweaker:material_part:1336>);
+einsteiniumdustMetalPulverize_basic.addEnergyPerTickInput(4);
+einsteiniumdustMetalPulverize_basic.build();
+
+var einsteiniumdustMetalPulverize_advanced = mods.modularmachinery.RecipeBuilder.newBuilder("einsteiniumdustMetalPulverize_advanced", "basic", 100, 0);
+einsteiniumdustMetalPulverize_advanced.addItemInput(<contenttweaker:material_part:4739>);
+einsteiniumdustMetalPulverize_advanced.addFluidInput(<liquid:cotm_einsteinium_molten> * 100);
+einsteiniumdustMetalPulverize_advanced.addItemOutput(<contenttweaker:material_part:1336>);
+einsteiniumdustMetalPulverize_advanced.addFluidInput(<liquid:hydrogen> * 100);
+einsteiniumdustMetalPulverize_advanced.addEnergyPerTickInput(1024);
+einsteiniumdustMetalPulverize_advanced.build();
+
+var einsteiniumdustMetalPulverize_industrial = mods.modularmachinery.RecipeBuilder.newBuilder("einsteiniumdustMetalPulverize_industrial", "basic", 100, 0);
+einsteiniumdustMetalPulverize_industrial.addItemInput(<contenttweaker:material_part:4739>);
+einsteiniumdustMetalPulverize_industrial.addFluidInput(<liquid:cotm_einsteinium_molten> * 100);
+einsteiniumdustMetalPulverize_industrial.addItemOutput(<contenttweaker:material_part:1336>);
+einsteiniumdustMetalPulverize_industrial.addFluidInput(<liquid:hydrogen> * 100);
+einsteiniumdustMetalPulverize_industrial.addFluidInput(<liquid:cotc_data> * 100);
+einsteiniumdustMetalPulverize_industrial.addEnergyPerTickInput(262144);
+einsteiniumdustMetalPulverize_industrial.build();
+
+var einsteiniumdustMetalPulverize_ultimate = mods.modularmachinery.RecipeBuilder.newBuilder("einsteiniumdustMetalPulverize_ultimate", "basic", 100, 0);
+einsteiniumdustMetalPulverize_ultimate.addItemInput(<contenttweaker:material_part:4739>);
+einsteiniumdustMetalPulverize_ultimate.addFluidInput(<liquid:cotm_einsteinium_molten> * 100);
+einsteiniumdustMetalPulverize_ultimate.addItemOutput(<contenttweaker:material_part:1336>);
+einsteiniumdustMetalPulverize_ultimate.addFluidInput(<liquid:hydrogen> * 100);
+einsteiniumdustMetalPulverize_ultimate.addFluidInput(<liquid:cotc_data> * 100);
+einsteiniumdustMetalPulverize_ultimate.addFluidInput(<liquid:cotc_pos_red_matter> * 100);
+einsteiniumdustMetalPulverize_ultimate.addFluidOutput(<liquid:cotc_neg_orange_matter> * 100);
+einsteiniumdustMetalPulverize_ultimate.addEnergyPerTickInput(67108864);
+einsteiniumdustMetalPulverize_ultimate.build();
+
+var fermiumdustMetalPulverize_basic = mods.modularmachinery.RecipeBuilder.newBuilder("fermiumdustMetalPulverize_basic", "basic", 100, 0);
+fermiumdustMetalPulverize_basic.addItemInput(<contenttweaker:material_part:4777>);
+fermiumdustMetalPulverize_basic.addFluidInput(<liquid:cotm_fermium_molten> * 100);
+fermiumdustMetalPulverize_basic.addItemOutput(<contenttweaker:material_part:1339>);
+fermiumdustMetalPulverize_basic.addEnergyPerTickInput(4);
+fermiumdustMetalPulverize_basic.build();
+
+var fermiumdustMetalPulverize_advanced = mods.modularmachinery.RecipeBuilder.newBuilder("fermiumdustMetalPulverize_advanced", "basic", 100, 0);
+fermiumdustMetalPulverize_advanced.addItemInput(<contenttweaker:material_part:4777>);
+fermiumdustMetalPulverize_advanced.addFluidInput(<liquid:cotm_fermium_molten> * 100);
+fermiumdustMetalPulverize_advanced.addItemOutput(<contenttweaker:material_part:1339>);
+fermiumdustMetalPulverize_advanced.addFluidInput(<liquid:hydrogen> * 100);
+fermiumdustMetalPulverize_advanced.addEnergyPerTickInput(1024);
+fermiumdustMetalPulverize_advanced.build();
+
+var fermiumdustMetalPulverize_industrial = mods.modularmachinery.RecipeBuilder.newBuilder("fermiumdustMetalPulverize_industrial", "basic", 100, 0);
+fermiumdustMetalPulverize_industrial.addItemInput(<contenttweaker:material_part:4777>);
+fermiumdustMetalPulverize_industrial.addFluidInput(<liquid:cotm_fermium_molten> * 100);
+fermiumdustMetalPulverize_industrial.addItemOutput(<contenttweaker:material_part:1339>);
+fermiumdustMetalPulverize_industrial.addFluidInput(<liquid:hydrogen> * 100);
+fermiumdustMetalPulverize_industrial.addFluidInput(<liquid:cotc_data> * 100);
+fermiumdustMetalPulverize_industrial.addEnergyPerTickInput(262144);
+fermiumdustMetalPulverize_industrial.build();
+
+var fermiumdustMetalPulverize_ultimate = mods.modularmachinery.RecipeBuilder.newBuilder("fermiumdustMetalPulverize_ultimate", "basic", 100, 0);
+fermiumdustMetalPulverize_ultimate.addItemInput(<contenttweaker:material_part:4777>);
+fermiumdustMetalPulverize_ultimate.addFluidInput(<liquid:cotm_fermium_molten> * 100);
+fermiumdustMetalPulverize_ultimate.addItemOutput(<contenttweaker:material_part:1339>);
+fermiumdustMetalPulverize_ultimate.addFluidInput(<liquid:hydrogen> * 100);
+fermiumdustMetalPulverize_ultimate.addFluidInput(<liquid:cotc_data> * 100);
+fermiumdustMetalPulverize_ultimate.addFluidInput(<liquid:cotc_pos_red_matter> * 100);
+fermiumdustMetalPulverize_ultimate.addFluidOutput(<liquid:cotc_neg_orange_matter> * 100);
+fermiumdustMetalPulverize_ultimate.addEnergyPerTickInput(67108864);
+fermiumdustMetalPulverize_ultimate.build();
+
+var mendeleviumdustMetalPulverize_basic = mods.modularmachinery.RecipeBuilder.newBuilder("mendeleviumdustMetalPulverize_basic", "basic", 100, 0);
+mendeleviumdustMetalPulverize_basic.addItemInput(<contenttweaker:material_part:4815>);
+mendeleviumdustMetalPulverize_basic.addFluidInput(<liquid:cotm_mendelevium_molten> * 100);
+mendeleviumdustMetalPulverize_basic.addItemOutput(<contenttweaker:material_part:1342>);
+mendeleviumdustMetalPulverize_basic.addEnergyPerTickInput(4);
+mendeleviumdustMetalPulverize_basic.build();
+
+var mendeleviumdustMetalPulverize_advanced = mods.modularmachinery.RecipeBuilder.newBuilder("mendeleviumdustMetalPulverize_advanced", "basic", 100, 0);
+mendeleviumdustMetalPulverize_advanced.addItemInput(<contenttweaker:material_part:4815>);
+mendeleviumdustMetalPulverize_advanced.addFluidInput(<liquid:cotm_mendelevium_molten> * 100);
+mendeleviumdustMetalPulverize_advanced.addItemOutput(<contenttweaker:material_part:1342>);
+mendeleviumdustMetalPulverize_advanced.addFluidInput(<liquid:hydrogen> * 100);
+mendeleviumdustMetalPulverize_advanced.addEnergyPerTickInput(1024);
+mendeleviumdustMetalPulverize_advanced.build();
+
+var mendeleviumdustMetalPulverize_industrial = mods.modularmachinery.RecipeBuilder.newBuilder("mendeleviumdustMetalPulverize_industrial", "basic", 100, 0);
+mendeleviumdustMetalPulverize_industrial.addItemInput(<contenttweaker:material_part:4815>);
+mendeleviumdustMetalPulverize_industrial.addFluidInput(<liquid:cotm_mendelevium_molten> * 100);
+mendeleviumdustMetalPulverize_industrial.addItemOutput(<contenttweaker:material_part:1342>);
+mendeleviumdustMetalPulverize_industrial.addFluidInput(<liquid:hydrogen> * 100);
+mendeleviumdustMetalPulverize_industrial.addFluidInput(<liquid:cotc_data> * 100);
+mendeleviumdustMetalPulverize_industrial.addEnergyPerTickInput(262144);
+mendeleviumdustMetalPulverize_industrial.build();
+
+var mendeleviumdustMetalPulverize_ultimate = mods.modularmachinery.RecipeBuilder.newBuilder("mendeleviumdustMetalPulverize_ultimate", "basic", 100, 0);
+mendeleviumdustMetalPulverize_ultimate.addItemInput(<contenttweaker:material_part:4815>);
+mendeleviumdustMetalPulverize_ultimate.addFluidInput(<liquid:cotm_mendelevium_molten> * 100);
+mendeleviumdustMetalPulverize_ultimate.addItemOutput(<contenttweaker:material_part:1342>);
+mendeleviumdustMetalPulverize_ultimate.addFluidInput(<liquid:hydrogen> * 100);
+mendeleviumdustMetalPulverize_ultimate.addFluidInput(<liquid:cotc_data> * 100);
+mendeleviumdustMetalPulverize_ultimate.addFluidInput(<liquid:cotc_pos_red_matter> * 100);
+mendeleviumdustMetalPulverize_ultimate.addFluidOutput(<liquid:cotc_neg_orange_matter> * 100);
+mendeleviumdustMetalPulverize_ultimate.addEnergyPerTickInput(67108864);
+mendeleviumdustMetalPulverize_ultimate.build();
+
+var nobeliumdustMetalPulverize_basic = mods.modularmachinery.RecipeBuilder.newBuilder("nobeliumdustMetalPulverize_basic", "basic", 100, 0);
+nobeliumdustMetalPulverize_basic.addItemInput(<contenttweaker:material_part:4853>);
+nobeliumdustMetalPulverize_basic.addFluidInput(<liquid:cotm_nobelium_molten> * 100);
+nobeliumdustMetalPulverize_basic.addItemOutput(<contenttweaker:material_part:1345>);
+nobeliumdustMetalPulverize_basic.addEnergyPerTickInput(4);
+nobeliumdustMetalPulverize_basic.build();
+
+var nobeliumdustMetalPulverize_advanced = mods.modularmachinery.RecipeBuilder.newBuilder("nobeliumdustMetalPulverize_advanced", "basic", 100, 0);
+nobeliumdustMetalPulverize_advanced.addItemInput(<contenttweaker:material_part:4853>);
+nobeliumdustMetalPulverize_advanced.addFluidInput(<liquid:cotm_nobelium_molten> * 100);
+nobeliumdustMetalPulverize_advanced.addItemOutput(<contenttweaker:material_part:1345>);
+nobeliumdustMetalPulverize_advanced.addFluidInput(<liquid:hydrogen> * 100);
+nobeliumdustMetalPulverize_advanced.addEnergyPerTickInput(1024);
+nobeliumdustMetalPulverize_advanced.build();
+
+var nobeliumdustMetalPulverize_industrial = mods.modularmachinery.RecipeBuilder.newBuilder("nobeliumdustMetalPulverize_industrial", "basic", 100, 0);
+nobeliumdustMetalPulverize_industrial.addItemInput(<contenttweaker:material_part:4853>);
+nobeliumdustMetalPulverize_industrial.addFluidInput(<liquid:cotm_nobelium_molten> * 100);
+nobeliumdustMetalPulverize_industrial.addItemOutput(<contenttweaker:material_part:1345>);
+nobeliumdustMetalPulverize_industrial.addFluidInput(<liquid:hydrogen> * 100);
+nobeliumdustMetalPulverize_industrial.addFluidInput(<liquid:cotc_data> * 100);
+nobeliumdustMetalPulverize_industrial.addEnergyPerTickInput(262144);
+nobeliumdustMetalPulverize_industrial.build();
+
+var nobeliumdustMetalPulverize_ultimate = mods.modularmachinery.RecipeBuilder.newBuilder("nobeliumdustMetalPulverize_ultimate", "basic", 100, 0);
+nobeliumdustMetalPulverize_ultimate.addItemInput(<contenttweaker:material_part:4853>);
+nobeliumdustMetalPulverize_ultimate.addFluidInput(<liquid:cotm_nobelium_molten> * 100);
+nobeliumdustMetalPulverize_ultimate.addItemOutput(<contenttweaker:material_part:1345>);
+nobeliumdustMetalPulverize_ultimate.addFluidInput(<liquid:hydrogen> * 100);
+nobeliumdustMetalPulverize_ultimate.addFluidInput(<liquid:cotc_data> * 100);
+nobeliumdustMetalPulverize_ultimate.addFluidInput(<liquid:cotc_pos_red_matter> * 100);
+nobeliumdustMetalPulverize_ultimate.addFluidOutput(<liquid:cotc_neg_orange_matter> * 100);
+nobeliumdustMetalPulverize_ultimate.addEnergyPerTickInput(67108864);
+nobeliumdustMetalPulverize_ultimate.build();
+
+var lawrenciumdustMetalPulverize_basic = mods.modularmachinery.RecipeBuilder.newBuilder("lawrenciumdustMetalPulverize_basic", "basic", 100, 0);
+lawrenciumdustMetalPulverize_basic.addItemInput(<contenttweaker:material_part:4891>);
+lawrenciumdustMetalPulverize_basic.addFluidInput(<liquid:cotm_lawrencium_molten> * 100);
+lawrenciumdustMetalPulverize_basic.addItemOutput(<contenttweaker:material_part:1348>);
+lawrenciumdustMetalPulverize_basic.addEnergyPerTickInput(4);
+lawrenciumdustMetalPulverize_basic.build();
+
+var lawrenciumdustMetalPulverize_advanced = mods.modularmachinery.RecipeBuilder.newBuilder("lawrenciumdustMetalPulverize_advanced", "basic", 100, 0);
+lawrenciumdustMetalPulverize_advanced.addItemInput(<contenttweaker:material_part:4891>);
+lawrenciumdustMetalPulverize_advanced.addFluidInput(<liquid:cotm_lawrencium_molten> * 100);
+lawrenciumdustMetalPulverize_advanced.addItemOutput(<contenttweaker:material_part:1348>);
+lawrenciumdustMetalPulverize_advanced.addFluidInput(<liquid:hydrogen> * 100);
+lawrenciumdustMetalPulverize_advanced.addEnergyPerTickInput(1024);
+lawrenciumdustMetalPulverize_advanced.build();
+
+var lawrenciumdustMetalPulverize_industrial = mods.modularmachinery.RecipeBuilder.newBuilder("lawrenciumdustMetalPulverize_industrial", "basic", 100, 0);
+lawrenciumdustMetalPulverize_industrial.addItemInput(<contenttweaker:material_part:4891>);
+lawrenciumdustMetalPulverize_industrial.addFluidInput(<liquid:cotm_lawrencium_molten> * 100);
+lawrenciumdustMetalPulverize_industrial.addItemOutput(<contenttweaker:material_part:1348>);
+lawrenciumdustMetalPulverize_industrial.addFluidInput(<liquid:hydrogen> * 100);
+lawrenciumdustMetalPulverize_industrial.addFluidInput(<liquid:cotc_data> * 100);
+lawrenciumdustMetalPulverize_industrial.addEnergyPerTickInput(262144);
+lawrenciumdustMetalPulverize_industrial.build();
+
+var lawrenciumdustMetalPulverize_ultimate = mods.modularmachinery.RecipeBuilder.newBuilder("lawrenciumdustMetalPulverize_ultimate", "basic", 100, 0);
+lawrenciumdustMetalPulverize_ultimate.addItemInput(<contenttweaker:material_part:4891>);
+lawrenciumdustMetalPulverize_ultimate.addFluidInput(<liquid:cotm_lawrencium_molten> * 100);
+lawrenciumdustMetalPulverize_ultimate.addItemOutput(<contenttweaker:material_part:1348>);
+lawrenciumdustMetalPulverize_ultimate.addFluidInput(<liquid:hydrogen> * 100);
+lawrenciumdustMetalPulverize_ultimate.addFluidInput(<liquid:cotc_data> * 100);
+lawrenciumdustMetalPulverize_ultimate.addFluidInput(<liquid:cotc_pos_red_matter> * 100);
+lawrenciumdustMetalPulverize_ultimate.addFluidOutput(<liquid:cotc_neg_orange_matter> * 100);
+lawrenciumdustMetalPulverize_ultimate.addEnergyPerTickInput(67108864);
+lawrenciumdustMetalPulverize_ultimate.build();
+
+var rutherfordiumdustMetalPulverize_basic = mods.modularmachinery.RecipeBuilder.newBuilder("rutherfordiumdustMetalPulverize_basic", "basic", 100, 0);
+rutherfordiumdustMetalPulverize_basic.addItemInput(<contenttweaker:material_part:4929>);
+rutherfordiumdustMetalPulverize_basic.addFluidInput(<liquid:cotm_rutherfordium_molten> * 100);
+rutherfordiumdustMetalPulverize_basic.addItemOutput(<contenttweaker:material_part:1351>);
+rutherfordiumdustMetalPulverize_basic.addEnergyPerTickInput(4);
+rutherfordiumdustMetalPulverize_basic.build();
+
+var rutherfordiumdustMetalPulverize_advanced = mods.modularmachinery.RecipeBuilder.newBuilder("rutherfordiumdustMetalPulverize_advanced", "basic", 100, 0);
+rutherfordiumdustMetalPulverize_advanced.addItemInput(<contenttweaker:material_part:4929>);
+rutherfordiumdustMetalPulverize_advanced.addFluidInput(<liquid:cotm_rutherfordium_molten> * 100);
+rutherfordiumdustMetalPulverize_advanced.addItemOutput(<contenttweaker:material_part:1351>);
+rutherfordiumdustMetalPulverize_advanced.addFluidInput(<liquid:hydrogen> * 100);
+rutherfordiumdustMetalPulverize_advanced.addEnergyPerTickInput(1024);
+rutherfordiumdustMetalPulverize_advanced.build();
+
+var rutherfordiumdustMetalPulverize_industrial = mods.modularmachinery.RecipeBuilder.newBuilder("rutherfordiumdustMetalPulverize_industrial", "basic", 100, 0);
+rutherfordiumdustMetalPulverize_industrial.addItemInput(<contenttweaker:material_part:4929>);
+rutherfordiumdustMetalPulverize_industrial.addFluidInput(<liquid:cotm_rutherfordium_molten> * 100);
+rutherfordiumdustMetalPulverize_industrial.addItemOutput(<contenttweaker:material_part:1351>);
+rutherfordiumdustMetalPulverize_industrial.addFluidInput(<liquid:hydrogen> * 100);
+rutherfordiumdustMetalPulverize_industrial.addFluidInput(<liquid:cotc_data> * 100);
+rutherfordiumdustMetalPulverize_industrial.addEnergyPerTickInput(262144);
+rutherfordiumdustMetalPulverize_industrial.build();
+
+var rutherfordiumdustMetalPulverize_ultimate = mods.modularmachinery.RecipeBuilder.newBuilder("rutherfordiumdustMetalPulverize_ultimate", "basic", 100, 0);
+rutherfordiumdustMetalPulverize_ultimate.addItemInput(<contenttweaker:material_part:4929>);
+rutherfordiumdustMetalPulverize_ultimate.addFluidInput(<liquid:cotm_rutherfordium_molten> * 100);
+rutherfordiumdustMetalPulverize_ultimate.addItemOutput(<contenttweaker:material_part:1351>);
+rutherfordiumdustMetalPulverize_ultimate.addFluidInput(<liquid:hydrogen> * 100);
+rutherfordiumdustMetalPulverize_ultimate.addFluidInput(<liquid:cotc_data> * 100);
+rutherfordiumdustMetalPulverize_ultimate.addFluidInput(<liquid:cotc_pos_red_matter> * 100);
+rutherfordiumdustMetalPulverize_ultimate.addFluidOutput(<liquid:cotc_neg_orange_matter> * 100);
+rutherfordiumdustMetalPulverize_ultimate.addEnergyPerTickInput(67108864);
+rutherfordiumdustMetalPulverize_ultimate.build();
+
+var dubniumdustMetalPulverize_basic = mods.modularmachinery.RecipeBuilder.newBuilder("dubniumdustMetalPulverize_basic", "basic", 100, 0);
+dubniumdustMetalPulverize_basic.addItemInput(<contenttweaker:material_part:4967>);
+dubniumdustMetalPulverize_basic.addFluidInput(<liquid:cotm_dubnium_molten> * 100);
+dubniumdustMetalPulverize_basic.addItemOutput(<contenttweaker:material_part:1354>);
+dubniumdustMetalPulverize_basic.addEnergyPerTickInput(4);
+dubniumdustMetalPulverize_basic.build();
+
+var dubniumdustMetalPulverize_advanced = mods.modularmachinery.RecipeBuilder.newBuilder("dubniumdustMetalPulverize_advanced", "basic", 100, 0);
+dubniumdustMetalPulverize_advanced.addItemInput(<contenttweaker:material_part:4967>);
+dubniumdustMetalPulverize_advanced.addFluidInput(<liquid:cotm_dubnium_molten> * 100);
+dubniumdustMetalPulverize_advanced.addItemOutput(<contenttweaker:material_part:1354>);
+dubniumdustMetalPulverize_advanced.addFluidInput(<liquid:hydrogen> * 100);
+dubniumdustMetalPulverize_advanced.addEnergyPerTickInput(1024);
+dubniumdustMetalPulverize_advanced.build();
+
+var dubniumdustMetalPulverize_industrial = mods.modularmachinery.RecipeBuilder.newBuilder("dubniumdustMetalPulverize_industrial", "basic", 100, 0);
+dubniumdustMetalPulverize_industrial.addItemInput(<contenttweaker:material_part:4967>);
+dubniumdustMetalPulverize_industrial.addFluidInput(<liquid:cotm_dubnium_molten> * 100);
+dubniumdustMetalPulverize_industrial.addItemOutput(<contenttweaker:material_part:1354>);
+dubniumdustMetalPulverize_industrial.addFluidInput(<liquid:hydrogen> * 100);
+dubniumdustMetalPulverize_industrial.addFluidInput(<liquid:cotc_data> * 100);
+dubniumdustMetalPulverize_industrial.addEnergyPerTickInput(262144);
+dubniumdustMetalPulverize_industrial.build();
+
+var dubniumdustMetalPulverize_ultimate = mods.modularmachinery.RecipeBuilder.newBuilder("dubniumdustMetalPulverize_ultimate", "basic", 100, 0);
+dubniumdustMetalPulverize_ultimate.addItemInput(<contenttweaker:material_part:4967>);
+dubniumdustMetalPulverize_ultimate.addFluidInput(<liquid:cotm_dubnium_molten> * 100);
+dubniumdustMetalPulverize_ultimate.addItemOutput(<contenttweaker:material_part:1354>);
+dubniumdustMetalPulverize_ultimate.addFluidInput(<liquid:hydrogen> * 100);
+dubniumdustMetalPulverize_ultimate.addFluidInput(<liquid:cotc_data> * 100);
+dubniumdustMetalPulverize_ultimate.addFluidInput(<liquid:cotc_pos_red_matter> * 100);
+dubniumdustMetalPulverize_ultimate.addFluidOutput(<liquid:cotc_neg_orange_matter> * 100);
+dubniumdustMetalPulverize_ultimate.addEnergyPerTickInput(67108864);
+dubniumdustMetalPulverize_ultimate.build();
+
+var seaborgiumdustMetalPulverize_basic = mods.modularmachinery.RecipeBuilder.newBuilder("seaborgiumdustMetalPulverize_basic", "basic", 100, 0);
+seaborgiumdustMetalPulverize_basic.addItemInput(<contenttweaker:material_part:5005>);
+seaborgiumdustMetalPulverize_basic.addFluidInput(<liquid:cotm_seaborgium_molten> * 100);
+seaborgiumdustMetalPulverize_basic.addItemOutput(<contenttweaker:material_part:1357>);
+seaborgiumdustMetalPulverize_basic.addEnergyPerTickInput(4);
+seaborgiumdustMetalPulverize_basic.build();
+
+var seaborgiumdustMetalPulverize_advanced = mods.modularmachinery.RecipeBuilder.newBuilder("seaborgiumdustMetalPulverize_advanced", "basic", 100, 0);
+seaborgiumdustMetalPulverize_advanced.addItemInput(<contenttweaker:material_part:5005>);
+seaborgiumdustMetalPulverize_advanced.addFluidInput(<liquid:cotm_seaborgium_molten> * 100);
+seaborgiumdustMetalPulverize_advanced.addItemOutput(<contenttweaker:material_part:1357>);
+seaborgiumdustMetalPulverize_advanced.addFluidInput(<liquid:hydrogen> * 100);
+seaborgiumdustMetalPulverize_advanced.addEnergyPerTickInput(1024);
+seaborgiumdustMetalPulverize_advanced.build();
+
+var seaborgiumdustMetalPulverize_industrial = mods.modularmachinery.RecipeBuilder.newBuilder("seaborgiumdustMetalPulverize_industrial", "basic", 100, 0);
+seaborgiumdustMetalPulverize_industrial.addItemInput(<contenttweaker:material_part:5005>);
+seaborgiumdustMetalPulverize_industrial.addFluidInput(<liquid:cotm_seaborgium_molten> * 100);
+seaborgiumdustMetalPulverize_industrial.addItemOutput(<contenttweaker:material_part:1357>);
+seaborgiumdustMetalPulverize_industrial.addFluidInput(<liquid:hydrogen> * 100);
+seaborgiumdustMetalPulverize_industrial.addFluidInput(<liquid:cotc_data> * 100);
+seaborgiumdustMetalPulverize_industrial.addEnergyPerTickInput(262144);
+seaborgiumdustMetalPulverize_industrial.build();
+
+var seaborgiumdustMetalPulverize_ultimate = mods.modularmachinery.RecipeBuilder.newBuilder("seaborgiumdustMetalPulverize_ultimate", "basic", 100, 0);
+seaborgiumdustMetalPulverize_ultimate.addItemInput(<contenttweaker:material_part:5005>);
+seaborgiumdustMetalPulverize_ultimate.addFluidInput(<liquid:cotm_seaborgium_molten> * 100);
+seaborgiumdustMetalPulverize_ultimate.addItemOutput(<contenttweaker:material_part:1357>);
+seaborgiumdustMetalPulverize_ultimate.addFluidInput(<liquid:hydrogen> * 100);
+seaborgiumdustMetalPulverize_ultimate.addFluidInput(<liquid:cotc_data> * 100);
+seaborgiumdustMetalPulverize_ultimate.addFluidInput(<liquid:cotc_pos_red_matter> * 100);
+seaborgiumdustMetalPulverize_ultimate.addFluidOutput(<liquid:cotc_neg_orange_matter> * 100);
+seaborgiumdustMetalPulverize_ultimate.addEnergyPerTickInput(67108864);
+seaborgiumdustMetalPulverize_ultimate.build();
+
+var bohriumdustMetalPulverize_basic = mods.modularmachinery.RecipeBuilder.newBuilder("bohriumdustMetalPulverize_basic", "basic", 100, 0);
+bohriumdustMetalPulverize_basic.addItemInput(<contenttweaker:material_part:5043>);
+bohriumdustMetalPulverize_basic.addFluidInput(<liquid:cotm_bohrium_molten> * 100);
+bohriumdustMetalPulverize_basic.addItemOutput(<contenttweaker:material_part:1360>);
+bohriumdustMetalPulverize_basic.addEnergyPerTickInput(4);
+bohriumdustMetalPulverize_basic.build();
+
+var bohriumdustMetalPulverize_advanced = mods.modularmachinery.RecipeBuilder.newBuilder("bohriumdustMetalPulverize_advanced", "basic", 100, 0);
+bohriumdustMetalPulverize_advanced.addItemInput(<contenttweaker:material_part:5043>);
+bohriumdustMetalPulverize_advanced.addFluidInput(<liquid:cotm_bohrium_molten> * 100);
+bohriumdustMetalPulverize_advanced.addItemOutput(<contenttweaker:material_part:1360>);
+bohriumdustMetalPulverize_advanced.addFluidInput(<liquid:hydrogen> * 100);
+bohriumdustMetalPulverize_advanced.addEnergyPerTickInput(1024);
+bohriumdustMetalPulverize_advanced.build();
+
+var bohriumdustMetalPulverize_industrial = mods.modularmachinery.RecipeBuilder.newBuilder("bohriumdustMetalPulverize_industrial", "basic", 100, 0);
+bohriumdustMetalPulverize_industrial.addItemInput(<contenttweaker:material_part:5043>);
+bohriumdustMetalPulverize_industrial.addFluidInput(<liquid:cotm_bohrium_molten> * 100);
+bohriumdustMetalPulverize_industrial.addItemOutput(<contenttweaker:material_part:1360>);
+bohriumdustMetalPulverize_industrial.addFluidInput(<liquid:hydrogen> * 100);
+bohriumdustMetalPulverize_industrial.addFluidInput(<liquid:cotc_data> * 100);
+bohriumdustMetalPulverize_industrial.addEnergyPerTickInput(262144);
+bohriumdustMetalPulverize_industrial.build();
+
+var bohriumdustMetalPulverize_ultimate = mods.modularmachinery.RecipeBuilder.newBuilder("bohriumdustMetalPulverize_ultimate", "basic", 100, 0);
+bohriumdustMetalPulverize_ultimate.addItemInput(<contenttweaker:material_part:5043>);
+bohriumdustMetalPulverize_ultimate.addFluidInput(<liquid:cotm_bohrium_molten> * 100);
+bohriumdustMetalPulverize_ultimate.addItemOutput(<contenttweaker:material_part:1360>);
+bohriumdustMetalPulverize_ultimate.addFluidInput(<liquid:hydrogen> * 100);
+bohriumdustMetalPulverize_ultimate.addFluidInput(<liquid:cotc_data> * 100);
+bohriumdustMetalPulverize_ultimate.addFluidInput(<liquid:cotc_pos_red_matter> * 100);
+bohriumdustMetalPulverize_ultimate.addFluidOutput(<liquid:cotc_neg_orange_matter> * 100);
+bohriumdustMetalPulverize_ultimate.addEnergyPerTickInput(67108864);
+bohriumdustMetalPulverize_ultimate.build();
+
+var hassiumdustMetalPulverize_basic = mods.modularmachinery.RecipeBuilder.newBuilder("hassiumdustMetalPulverize_basic", "basic", 100, 0);
+hassiumdustMetalPulverize_basic.addItemInput(<contenttweaker:material_part:5081>);
+hassiumdustMetalPulverize_basic.addFluidInput(<liquid:cotm_hassium_molten> * 100);
+hassiumdustMetalPulverize_basic.addItemOutput(<contenttweaker:material_part:1363>);
+hassiumdustMetalPulverize_basic.addEnergyPerTickInput(4);
+hassiumdustMetalPulverize_basic.build();
+
+var hassiumdustMetalPulverize_advanced = mods.modularmachinery.RecipeBuilder.newBuilder("hassiumdustMetalPulverize_advanced", "basic", 100, 0);
+hassiumdustMetalPulverize_advanced.addItemInput(<contenttweaker:material_part:5081>);
+hassiumdustMetalPulverize_advanced.addFluidInput(<liquid:cotm_hassium_molten> * 100);
+hassiumdustMetalPulverize_advanced.addItemOutput(<contenttweaker:material_part:1363>);
+hassiumdustMetalPulverize_advanced.addFluidInput(<liquid:hydrogen> * 100);
+hassiumdustMetalPulverize_advanced.addEnergyPerTickInput(1024);
+hassiumdustMetalPulverize_advanced.build();
+
+var hassiumdustMetalPulverize_industrial = mods.modularmachinery.RecipeBuilder.newBuilder("hassiumdustMetalPulverize_industrial", "basic", 100, 0);
+hassiumdustMetalPulverize_industrial.addItemInput(<contenttweaker:material_part:5081>);
+hassiumdustMetalPulverize_industrial.addFluidInput(<liquid:cotm_hassium_molten> * 100);
+hassiumdustMetalPulverize_industrial.addItemOutput(<contenttweaker:material_part:1363>);
+hassiumdustMetalPulverize_industrial.addFluidInput(<liquid:hydrogen> * 100);
+hassiumdustMetalPulverize_industrial.addFluidInput(<liquid:cotc_data> * 100);
+hassiumdustMetalPulverize_industrial.addEnergyPerTickInput(262144);
+hassiumdustMetalPulverize_industrial.build();
+
+var hassiumdustMetalPulverize_ultimate = mods.modularmachinery.RecipeBuilder.newBuilder("hassiumdustMetalPulverize_ultimate", "basic", 100, 0);
+hassiumdustMetalPulverize_ultimate.addItemInput(<contenttweaker:material_part:5081>);
+hassiumdustMetalPulverize_ultimate.addFluidInput(<liquid:cotm_hassium_molten> * 100);
+hassiumdustMetalPulverize_ultimate.addItemOutput(<contenttweaker:material_part:1363>);
+hassiumdustMetalPulverize_ultimate.addFluidInput(<liquid:hydrogen> * 100);
+hassiumdustMetalPulverize_ultimate.addFluidInput(<liquid:cotc_data> * 100);
+hassiumdustMetalPulverize_ultimate.addFluidInput(<liquid:cotc_pos_red_matter> * 100);
+hassiumdustMetalPulverize_ultimate.addFluidOutput(<liquid:cotc_neg_orange_matter> * 100);
+hassiumdustMetalPulverize_ultimate.addEnergyPerTickInput(67108864);
+hassiumdustMetalPulverize_ultimate.build();
+
+var meitneriumdustMetalPulverize_basic = mods.modularmachinery.RecipeBuilder.newBuilder("meitneriumdustMetalPulverize_basic", "basic", 100, 0);
+meitneriumdustMetalPulverize_basic.addItemInput(<contenttweaker:material_part:5119>);
+meitneriumdustMetalPulverize_basic.addFluidInput(<liquid:cotm_meitnerium_molten> * 100);
+meitneriumdustMetalPulverize_basic.addItemOutput(<contenttweaker:material_part:1366>);
+meitneriumdustMetalPulverize_basic.addEnergyPerTickInput(4);
+meitneriumdustMetalPulverize_basic.build();
+
+var meitneriumdustMetalPulverize_advanced = mods.modularmachinery.RecipeBuilder.newBuilder("meitneriumdustMetalPulverize_advanced", "basic", 100, 0);
+meitneriumdustMetalPulverize_advanced.addItemInput(<contenttweaker:material_part:5119>);
+meitneriumdustMetalPulverize_advanced.addFluidInput(<liquid:cotm_meitnerium_molten> * 100);
+meitneriumdustMetalPulverize_advanced.addItemOutput(<contenttweaker:material_part:1366>);
+meitneriumdustMetalPulverize_advanced.addFluidInput(<liquid:hydrogen> * 100);
+meitneriumdustMetalPulverize_advanced.addEnergyPerTickInput(1024);
+meitneriumdustMetalPulverize_advanced.build();
+
+var meitneriumdustMetalPulverize_industrial = mods.modularmachinery.RecipeBuilder.newBuilder("meitneriumdustMetalPulverize_industrial", "basic", 100, 0);
+meitneriumdustMetalPulverize_industrial.addItemInput(<contenttweaker:material_part:5119>);
+meitneriumdustMetalPulverize_industrial.addFluidInput(<liquid:cotm_meitnerium_molten> * 100);
+meitneriumdustMetalPulverize_industrial.addItemOutput(<contenttweaker:material_part:1366>);
+meitneriumdustMetalPulverize_industrial.addFluidInput(<liquid:hydrogen> * 100);
+meitneriumdustMetalPulverize_industrial.addFluidInput(<liquid:cotc_data> * 100);
+meitneriumdustMetalPulverize_industrial.addEnergyPerTickInput(262144);
+meitneriumdustMetalPulverize_industrial.build();
+
+var meitneriumdustMetalPulverize_ultimate = mods.modularmachinery.RecipeBuilder.newBuilder("meitneriumdustMetalPulverize_ultimate", "basic", 100, 0);
+meitneriumdustMetalPulverize_ultimate.addItemInput(<contenttweaker:material_part:5119>);
+meitneriumdustMetalPulverize_ultimate.addFluidInput(<liquid:cotm_meitnerium_molten> * 100);
+meitneriumdustMetalPulverize_ultimate.addItemOutput(<contenttweaker:material_part:1366>);
+meitneriumdustMetalPulverize_ultimate.addFluidInput(<liquid:hydrogen> * 100);
+meitneriumdustMetalPulverize_ultimate.addFluidInput(<liquid:cotc_data> * 100);
+meitneriumdustMetalPulverize_ultimate.addFluidInput(<liquid:cotc_pos_red_matter> * 100);
+meitneriumdustMetalPulverize_ultimate.addFluidOutput(<liquid:cotc_neg_orange_matter> * 100);
+meitneriumdustMetalPulverize_ultimate.addEnergyPerTickInput(67108864);
+meitneriumdustMetalPulverize_ultimate.build();
+
+var darmstadtiumdustMetalPulverize_basic = mods.modularmachinery.RecipeBuilder.newBuilder("darmstadtiumdustMetalPulverize_basic", "basic", 100, 0);
+darmstadtiumdustMetalPulverize_basic.addItemInput(<contenttweaker:material_part:5157>);
+darmstadtiumdustMetalPulverize_basic.addFluidInput(<liquid:cotm_darmstadtium_molten> * 100);
+darmstadtiumdustMetalPulverize_basic.addItemOutput(<contenttweaker:material_part:1369>);
+darmstadtiumdustMetalPulverize_basic.addEnergyPerTickInput(4);
+darmstadtiumdustMetalPulverize_basic.build();
+
+var darmstadtiumdustMetalPulverize_advanced = mods.modularmachinery.RecipeBuilder.newBuilder("darmstadtiumdustMetalPulverize_advanced", "basic", 100, 0);
+darmstadtiumdustMetalPulverize_advanced.addItemInput(<contenttweaker:material_part:5157>);
+darmstadtiumdustMetalPulverize_advanced.addFluidInput(<liquid:cotm_darmstadtium_molten> * 100);
+darmstadtiumdustMetalPulverize_advanced.addItemOutput(<contenttweaker:material_part:1369>);
+darmstadtiumdustMetalPulverize_advanced.addFluidInput(<liquid:hydrogen> * 100);
+darmstadtiumdustMetalPulverize_advanced.addEnergyPerTickInput(1024);
+darmstadtiumdustMetalPulverize_advanced.build();
+
+var darmstadtiumdustMetalPulverize_industrial = mods.modularmachinery.RecipeBuilder.newBuilder("darmstadtiumdustMetalPulverize_industrial", "basic", 100, 0);
+darmstadtiumdustMetalPulverize_industrial.addItemInput(<contenttweaker:material_part:5157>);
+darmstadtiumdustMetalPulverize_industrial.addFluidInput(<liquid:cotm_darmstadtium_molten> * 100);
+darmstadtiumdustMetalPulverize_industrial.addItemOutput(<contenttweaker:material_part:1369>);
+darmstadtiumdustMetalPulverize_industrial.addFluidInput(<liquid:hydrogen> * 100);
+darmstadtiumdustMetalPulverize_industrial.addFluidInput(<liquid:cotc_data> * 100);
+darmstadtiumdustMetalPulverize_industrial.addEnergyPerTickInput(262144);
+darmstadtiumdustMetalPulverize_industrial.build();
+
+var darmstadtiumdustMetalPulverize_ultimate = mods.modularmachinery.RecipeBuilder.newBuilder("darmstadtiumdustMetalPulverize_ultimate", "basic", 100, 0);
+darmstadtiumdustMetalPulverize_ultimate.addItemInput(<contenttweaker:material_part:5157>);
+darmstadtiumdustMetalPulverize_ultimate.addFluidInput(<liquid:cotm_darmstadtium_molten> * 100);
+darmstadtiumdustMetalPulverize_ultimate.addItemOutput(<contenttweaker:material_part:1369>);
+darmstadtiumdustMetalPulverize_ultimate.addFluidInput(<liquid:hydrogen> * 100);
+darmstadtiumdustMetalPulverize_ultimate.addFluidInput(<liquid:cotc_data> * 100);
+darmstadtiumdustMetalPulverize_ultimate.addFluidInput(<liquid:cotc_pos_red_matter> * 100);
+darmstadtiumdustMetalPulverize_ultimate.addFluidOutput(<liquid:cotc_neg_orange_matter> * 100);
+darmstadtiumdustMetalPulverize_ultimate.addEnergyPerTickInput(67108864);
+darmstadtiumdustMetalPulverize_ultimate.build();
+
+var roentgeniumdustMetalPulverize_basic = mods.modularmachinery.RecipeBuilder.newBuilder("roentgeniumdustMetalPulverize_basic", "basic", 100, 0);
+roentgeniumdustMetalPulverize_basic.addItemInput(<contenttweaker:material_part:5195>);
+roentgeniumdustMetalPulverize_basic.addFluidInput(<liquid:cotm_roentgenium_molten> * 100);
+roentgeniumdustMetalPulverize_basic.addItemOutput(<contenttweaker:material_part:1372>);
+roentgeniumdustMetalPulverize_basic.addEnergyPerTickInput(4);
+roentgeniumdustMetalPulverize_basic.build();
+
+var roentgeniumdustMetalPulverize_advanced = mods.modularmachinery.RecipeBuilder.newBuilder("roentgeniumdustMetalPulverize_advanced", "basic", 100, 0);
+roentgeniumdustMetalPulverize_advanced.addItemInput(<contenttweaker:material_part:5195>);
+roentgeniumdustMetalPulverize_advanced.addFluidInput(<liquid:cotm_roentgenium_molten> * 100);
+roentgeniumdustMetalPulverize_advanced.addItemOutput(<contenttweaker:material_part:1372>);
+roentgeniumdustMetalPulverize_advanced.addFluidInput(<liquid:hydrogen> * 100);
+roentgeniumdustMetalPulverize_advanced.addEnergyPerTickInput(1024);
+roentgeniumdustMetalPulverize_advanced.build();
+
+var roentgeniumdustMetalPulverize_industrial = mods.modularmachinery.RecipeBuilder.newBuilder("roentgeniumdustMetalPulverize_industrial", "basic", 100, 0);
+roentgeniumdustMetalPulverize_industrial.addItemInput(<contenttweaker:material_part:5195>);
+roentgeniumdustMetalPulverize_industrial.addFluidInput(<liquid:cotm_roentgenium_molten> * 100);
+roentgeniumdustMetalPulverize_industrial.addItemOutput(<contenttweaker:material_part:1372>);
+roentgeniumdustMetalPulverize_industrial.addFluidInput(<liquid:hydrogen> * 100);
+roentgeniumdustMetalPulverize_industrial.addFluidInput(<liquid:cotc_data> * 100);
+roentgeniumdustMetalPulverize_industrial.addEnergyPerTickInput(262144);
+roentgeniumdustMetalPulverize_industrial.build();
+
+var roentgeniumdustMetalPulverize_ultimate = mods.modularmachinery.RecipeBuilder.newBuilder("roentgeniumdustMetalPulverize_ultimate", "basic", 100, 0);
+roentgeniumdustMetalPulverize_ultimate.addItemInput(<contenttweaker:material_part:5195>);
+roentgeniumdustMetalPulverize_ultimate.addFluidInput(<liquid:cotm_roentgenium_molten> * 100);
+roentgeniumdustMetalPulverize_ultimate.addItemOutput(<contenttweaker:material_part:1372>);
+roentgeniumdustMetalPulverize_ultimate.addFluidInput(<liquid:hydrogen> * 100);
+roentgeniumdustMetalPulverize_ultimate.addFluidInput(<liquid:cotc_data> * 100);
+roentgeniumdustMetalPulverize_ultimate.addFluidInput(<liquid:cotc_pos_red_matter> * 100);
+roentgeniumdustMetalPulverize_ultimate.addFluidOutput(<liquid:cotc_neg_orange_matter> * 100);
+roentgeniumdustMetalPulverize_ultimate.addEnergyPerTickInput(67108864);
+roentgeniumdustMetalPulverize_ultimate.build();
+
+var coperniciumdustMetalPulverize_basic = mods.modularmachinery.RecipeBuilder.newBuilder("coperniciumdustMetalPulverize_basic", "basic", 100, 0);
+coperniciumdustMetalPulverize_basic.addItemInput(<contenttweaker:material_part:5233>);
+coperniciumdustMetalPulverize_basic.addFluidInput(<liquid:cotm_copernicium_molten> * 100);
+coperniciumdustMetalPulverize_basic.addItemOutput(<contenttweaker:material_part:1375>);
+coperniciumdustMetalPulverize_basic.addEnergyPerTickInput(4);
+coperniciumdustMetalPulverize_basic.build();
+
+var coperniciumdustMetalPulverize_advanced = mods.modularmachinery.RecipeBuilder.newBuilder("coperniciumdustMetalPulverize_advanced", "basic", 100, 0);
+coperniciumdustMetalPulverize_advanced.addItemInput(<contenttweaker:material_part:5233>);
+coperniciumdustMetalPulverize_advanced.addFluidInput(<liquid:cotm_copernicium_molten> * 100);
+coperniciumdustMetalPulverize_advanced.addItemOutput(<contenttweaker:material_part:1375>);
+coperniciumdustMetalPulverize_advanced.addFluidInput(<liquid:hydrogen> * 100);
+coperniciumdustMetalPulverize_advanced.addEnergyPerTickInput(1024);
+coperniciumdustMetalPulverize_advanced.build();
+
+var coperniciumdustMetalPulverize_industrial = mods.modularmachinery.RecipeBuilder.newBuilder("coperniciumdustMetalPulverize_industrial", "basic", 100, 0);
+coperniciumdustMetalPulverize_industrial.addItemInput(<contenttweaker:material_part:5233>);
+coperniciumdustMetalPulverize_industrial.addFluidInput(<liquid:cotm_copernicium_molten> * 100);
+coperniciumdustMetalPulverize_industrial.addItemOutput(<contenttweaker:material_part:1375>);
+coperniciumdustMetalPulverize_industrial.addFluidInput(<liquid:hydrogen> * 100);
+coperniciumdustMetalPulverize_industrial.addFluidInput(<liquid:cotc_data> * 100);
+coperniciumdustMetalPulverize_industrial.addEnergyPerTickInput(262144);
+coperniciumdustMetalPulverize_industrial.build();
+
+var coperniciumdustMetalPulverize_ultimate = mods.modularmachinery.RecipeBuilder.newBuilder("coperniciumdustMetalPulverize_ultimate", "basic", 100, 0);
+coperniciumdustMetalPulverize_ultimate.addItemInput(<contenttweaker:material_part:5233>);
+coperniciumdustMetalPulverize_ultimate.addFluidInput(<liquid:cotm_copernicium_molten> * 100);
+coperniciumdustMetalPulverize_ultimate.addItemOutput(<contenttweaker:material_part:1375>);
+coperniciumdustMetalPulverize_ultimate.addFluidInput(<liquid:hydrogen> * 100);
+coperniciumdustMetalPulverize_ultimate.addFluidInput(<liquid:cotc_data> * 100);
+coperniciumdustMetalPulverize_ultimate.addFluidInput(<liquid:cotc_pos_red_matter> * 100);
+coperniciumdustMetalPulverize_ultimate.addFluidOutput(<liquid:cotc_neg_orange_matter> * 100);
+coperniciumdustMetalPulverize_ultimate.addEnergyPerTickInput(67108864);
+coperniciumdustMetalPulverize_ultimate.build();
+
+var nihoniumdustMetalPulverize_basic = mods.modularmachinery.RecipeBuilder.newBuilder("nihoniumdustMetalPulverize_basic", "basic", 100, 0);
+nihoniumdustMetalPulverize_basic.addItemInput(<contenttweaker:material_part:5271>);
+nihoniumdustMetalPulverize_basic.addFluidInput(<liquid:cotm_nihonium_molten> * 100);
+nihoniumdustMetalPulverize_basic.addItemOutput(<contenttweaker:material_part:1378>);
+nihoniumdustMetalPulverize_basic.addEnergyPerTickInput(4);
+nihoniumdustMetalPulverize_basic.build();
+
+var nihoniumdustMetalPulverize_advanced = mods.modularmachinery.RecipeBuilder.newBuilder("nihoniumdustMetalPulverize_advanced", "basic", 100, 0);
+nihoniumdustMetalPulverize_advanced.addItemInput(<contenttweaker:material_part:5271>);
+nihoniumdustMetalPulverize_advanced.addFluidInput(<liquid:cotm_nihonium_molten> * 100);
+nihoniumdustMetalPulverize_advanced.addItemOutput(<contenttweaker:material_part:1378>);
+nihoniumdustMetalPulverize_advanced.addFluidInput(<liquid:hydrogen> * 100);
+nihoniumdustMetalPulverize_advanced.addEnergyPerTickInput(1024);
+nihoniumdustMetalPulverize_advanced.build();
+
+var nihoniumdustMetalPulverize_industrial = mods.modularmachinery.RecipeBuilder.newBuilder("nihoniumdustMetalPulverize_industrial", "basic", 100, 0);
+nihoniumdustMetalPulverize_industrial.addItemInput(<contenttweaker:material_part:5271>);
+nihoniumdustMetalPulverize_industrial.addFluidInput(<liquid:cotm_nihonium_molten> * 100);
+nihoniumdustMetalPulverize_industrial.addItemOutput(<contenttweaker:material_part:1378>);
+nihoniumdustMetalPulverize_industrial.addFluidInput(<liquid:hydrogen> * 100);
+nihoniumdustMetalPulverize_industrial.addFluidInput(<liquid:cotc_data> * 100);
+nihoniumdustMetalPulverize_industrial.addEnergyPerTickInput(262144);
+nihoniumdustMetalPulverize_industrial.build();
+
+var nihoniumdustMetalPulverize_ultimate = mods.modularmachinery.RecipeBuilder.newBuilder("nihoniumdustMetalPulverize_ultimate", "basic", 100, 0);
+nihoniumdustMetalPulverize_ultimate.addItemInput(<contenttweaker:material_part:5271>);
+nihoniumdustMetalPulverize_ultimate.addFluidInput(<liquid:cotm_nihonium_molten> * 100);
+nihoniumdustMetalPulverize_ultimate.addItemOutput(<contenttweaker:material_part:1378>);
+nihoniumdustMetalPulverize_ultimate.addFluidInput(<liquid:hydrogen> * 100);
+nihoniumdustMetalPulverize_ultimate.addFluidInput(<liquid:cotc_data> * 100);
+nihoniumdustMetalPulverize_ultimate.addFluidInput(<liquid:cotc_pos_red_matter> * 100);
+nihoniumdustMetalPulverize_ultimate.addFluidOutput(<liquid:cotc_neg_orange_matter> * 100);
+nihoniumdustMetalPulverize_ultimate.addEnergyPerTickInput(67108864);
+nihoniumdustMetalPulverize_ultimate.build();
+
+var fleroviumdustMetalPulverize_basic = mods.modularmachinery.RecipeBuilder.newBuilder("fleroviumdustMetalPulverize_basic", "basic", 100, 0);
+fleroviumdustMetalPulverize_basic.addItemInput(<contenttweaker:material_part:5309>);
+fleroviumdustMetalPulverize_basic.addFluidInput(<liquid:cotm_flerovium_molten> * 100);
+fleroviumdustMetalPulverize_basic.addItemOutput(<contenttweaker:material_part:1381>);
+fleroviumdustMetalPulverize_basic.addEnergyPerTickInput(4);
+fleroviumdustMetalPulverize_basic.build();
+
+var fleroviumdustMetalPulverize_advanced = mods.modularmachinery.RecipeBuilder.newBuilder("fleroviumdustMetalPulverize_advanced", "basic", 100, 0);
+fleroviumdustMetalPulverize_advanced.addItemInput(<contenttweaker:material_part:5309>);
+fleroviumdustMetalPulverize_advanced.addFluidInput(<liquid:cotm_flerovium_molten> * 100);
+fleroviumdustMetalPulverize_advanced.addItemOutput(<contenttweaker:material_part:1381>);
+fleroviumdustMetalPulverize_advanced.addFluidInput(<liquid:hydrogen> * 100);
+fleroviumdustMetalPulverize_advanced.addEnergyPerTickInput(1024);
+fleroviumdustMetalPulverize_advanced.build();
+
+var fleroviumdustMetalPulverize_industrial = mods.modularmachinery.RecipeBuilder.newBuilder("fleroviumdustMetalPulverize_industrial", "basic", 100, 0);
+fleroviumdustMetalPulverize_industrial.addItemInput(<contenttweaker:material_part:5309>);
+fleroviumdustMetalPulverize_industrial.addFluidInput(<liquid:cotm_flerovium_molten> * 100);
+fleroviumdustMetalPulverize_industrial.addItemOutput(<contenttweaker:material_part:1381>);
+fleroviumdustMetalPulverize_industrial.addFluidInput(<liquid:hydrogen> * 100);
+fleroviumdustMetalPulverize_industrial.addFluidInput(<liquid:cotc_data> * 100);
+fleroviumdustMetalPulverize_industrial.addEnergyPerTickInput(262144);
+fleroviumdustMetalPulverize_industrial.build();
+
+var fleroviumdustMetalPulverize_ultimate = mods.modularmachinery.RecipeBuilder.newBuilder("fleroviumdustMetalPulverize_ultimate", "basic", 100, 0);
+fleroviumdustMetalPulverize_ultimate.addItemInput(<contenttweaker:material_part:5309>);
+fleroviumdustMetalPulverize_ultimate.addFluidInput(<liquid:cotm_flerovium_molten> * 100);
+fleroviumdustMetalPulverize_ultimate.addItemOutput(<contenttweaker:material_part:1381>);
+fleroviumdustMetalPulverize_ultimate.addFluidInput(<liquid:hydrogen> * 100);
+fleroviumdustMetalPulverize_ultimate.addFluidInput(<liquid:cotc_data> * 100);
+fleroviumdustMetalPulverize_ultimate.addFluidInput(<liquid:cotc_pos_red_matter> * 100);
+fleroviumdustMetalPulverize_ultimate.addFluidOutput(<liquid:cotc_neg_orange_matter> * 100);
+fleroviumdustMetalPulverize_ultimate.addEnergyPerTickInput(67108864);
+fleroviumdustMetalPulverize_ultimate.build();
+
+var moscoviumdustMetalPulverize_basic = mods.modularmachinery.RecipeBuilder.newBuilder("moscoviumdustMetalPulverize_basic", "basic", 100, 0);
+moscoviumdustMetalPulverize_basic.addItemInput(<contenttweaker:material_part:5347>);
+moscoviumdustMetalPulverize_basic.addFluidInput(<liquid:cotm_moscovium_molten> * 100);
+moscoviumdustMetalPulverize_basic.addItemOutput(<contenttweaker:material_part:1384>);
+moscoviumdustMetalPulverize_basic.addEnergyPerTickInput(4);
+moscoviumdustMetalPulverize_basic.build();
+
+var moscoviumdustMetalPulverize_advanced = mods.modularmachinery.RecipeBuilder.newBuilder("moscoviumdustMetalPulverize_advanced", "basic", 100, 0);
+moscoviumdustMetalPulverize_advanced.addItemInput(<contenttweaker:material_part:5347>);
+moscoviumdustMetalPulverize_advanced.addFluidInput(<liquid:cotm_moscovium_molten> * 100);
+moscoviumdustMetalPulverize_advanced.addItemOutput(<contenttweaker:material_part:1384>);
+moscoviumdustMetalPulverize_advanced.addFluidInput(<liquid:hydrogen> * 100);
+moscoviumdustMetalPulverize_advanced.addEnergyPerTickInput(1024);
+moscoviumdustMetalPulverize_advanced.build();
+
+var moscoviumdustMetalPulverize_industrial = mods.modularmachinery.RecipeBuilder.newBuilder("moscoviumdustMetalPulverize_industrial", "basic", 100, 0);
+moscoviumdustMetalPulverize_industrial.addItemInput(<contenttweaker:material_part:5347>);
+moscoviumdustMetalPulverize_industrial.addFluidInput(<liquid:cotm_moscovium_molten> * 100);
+moscoviumdustMetalPulverize_industrial.addItemOutput(<contenttweaker:material_part:1384>);
+moscoviumdustMetalPulverize_industrial.addFluidInput(<liquid:hydrogen> * 100);
+moscoviumdustMetalPulverize_industrial.addFluidInput(<liquid:cotc_data> * 100);
+moscoviumdustMetalPulverize_industrial.addEnergyPerTickInput(262144);
+moscoviumdustMetalPulverize_industrial.build();
+
+var moscoviumdustMetalPulverize_ultimate = mods.modularmachinery.RecipeBuilder.newBuilder("moscoviumdustMetalPulverize_ultimate", "basic", 100, 0);
+moscoviumdustMetalPulverize_ultimate.addItemInput(<contenttweaker:material_part:5347>);
+moscoviumdustMetalPulverize_ultimate.addFluidInput(<liquid:cotm_moscovium_molten> * 100);
+moscoviumdustMetalPulverize_ultimate.addItemOutput(<contenttweaker:material_part:1384>);
+moscoviumdustMetalPulverize_ultimate.addFluidInput(<liquid:hydrogen> * 100);
+moscoviumdustMetalPulverize_ultimate.addFluidInput(<liquid:cotc_data> * 100);
+moscoviumdustMetalPulverize_ultimate.addFluidInput(<liquid:cotc_pos_red_matter> * 100);
+moscoviumdustMetalPulverize_ultimate.addFluidOutput(<liquid:cotc_neg_orange_matter> * 100);
+moscoviumdustMetalPulverize_ultimate.addEnergyPerTickInput(67108864);
+moscoviumdustMetalPulverize_ultimate.build();
+
+var livermoriumdustMetalPulverize_basic = mods.modularmachinery.RecipeBuilder.newBuilder("livermoriumdustMetalPulverize_basic", "basic", 100, 0);
+livermoriumdustMetalPulverize_basic.addItemInput(<contenttweaker:material_part:5385>);
+livermoriumdustMetalPulverize_basic.addFluidInput(<liquid:cotm_livermorium_molten> * 100);
+livermoriumdustMetalPulverize_basic.addItemOutput(<contenttweaker:material_part:1387>);
+livermoriumdustMetalPulverize_basic.addEnergyPerTickInput(4);
+livermoriumdustMetalPulverize_basic.build();
+
+var livermoriumdustMetalPulverize_advanced = mods.modularmachinery.RecipeBuilder.newBuilder("livermoriumdustMetalPulverize_advanced", "basic", 100, 0);
+livermoriumdustMetalPulverize_advanced.addItemInput(<contenttweaker:material_part:5385>);
+livermoriumdustMetalPulverize_advanced.addFluidInput(<liquid:cotm_livermorium_molten> * 100);
+livermoriumdustMetalPulverize_advanced.addItemOutput(<contenttweaker:material_part:1387>);
+livermoriumdustMetalPulverize_advanced.addFluidInput(<liquid:hydrogen> * 100);
+livermoriumdustMetalPulverize_advanced.addEnergyPerTickInput(1024);
+livermoriumdustMetalPulverize_advanced.build();
+
+var livermoriumdustMetalPulverize_industrial = mods.modularmachinery.RecipeBuilder.newBuilder("livermoriumdustMetalPulverize_industrial", "basic", 100, 0);
+livermoriumdustMetalPulverize_industrial.addItemInput(<contenttweaker:material_part:5385>);
+livermoriumdustMetalPulverize_industrial.addFluidInput(<liquid:cotm_livermorium_molten> * 100);
+livermoriumdustMetalPulverize_industrial.addItemOutput(<contenttweaker:material_part:1387>);
+livermoriumdustMetalPulverize_industrial.addFluidInput(<liquid:hydrogen> * 100);
+livermoriumdustMetalPulverize_industrial.addFluidInput(<liquid:cotc_data> * 100);
+livermoriumdustMetalPulverize_industrial.addEnergyPerTickInput(262144);
+livermoriumdustMetalPulverize_industrial.build();
+
+var livermoriumdustMetalPulverize_ultimate = mods.modularmachinery.RecipeBuilder.newBuilder("livermoriumdustMetalPulverize_ultimate", "basic", 100, 0);
+livermoriumdustMetalPulverize_ultimate.addItemInput(<contenttweaker:material_part:5385>);
+livermoriumdustMetalPulverize_ultimate.addFluidInput(<liquid:cotm_livermorium_molten> * 100);
+livermoriumdustMetalPulverize_ultimate.addItemOutput(<contenttweaker:material_part:1387>);
+livermoriumdustMetalPulverize_ultimate.addFluidInput(<liquid:hydrogen> * 100);
+livermoriumdustMetalPulverize_ultimate.addFluidInput(<liquid:cotc_data> * 100);
+livermoriumdustMetalPulverize_ultimate.addFluidInput(<liquid:cotc_pos_red_matter> * 100);
+livermoriumdustMetalPulverize_ultimate.addFluidOutput(<liquid:cotc_neg_orange_matter> * 100);
+livermoriumdustMetalPulverize_ultimate.addEnergyPerTickInput(67108864);
+livermoriumdustMetalPulverize_ultimate.build();
+
+var tennessinedustMetalPulverize_basic = mods.modularmachinery.RecipeBuilder.newBuilder("tennessinedustMetalPulverize_basic", "basic", 100, 0);
+tennessinedustMetalPulverize_basic.addItemInput(<contenttweaker:material_part:5423>);
+tennessinedustMetalPulverize_basic.addFluidInput(<liquid:cotm_tennessine_molten> * 100);
+tennessinedustMetalPulverize_basic.addItemOutput(<contenttweaker:material_part:1390>);
+tennessinedustMetalPulverize_basic.addEnergyPerTickInput(4);
+tennessinedustMetalPulverize_basic.build();
+
+var tennessinedustMetalPulverize_advanced = mods.modularmachinery.RecipeBuilder.newBuilder("tennessinedustMetalPulverize_advanced", "basic", 100, 0);
+tennessinedustMetalPulverize_advanced.addItemInput(<contenttweaker:material_part:5423>);
+tennessinedustMetalPulverize_advanced.addFluidInput(<liquid:cotm_tennessine_molten> * 100);
+tennessinedustMetalPulverize_advanced.addItemOutput(<contenttweaker:material_part:1390>);
+tennessinedustMetalPulverize_advanced.addFluidInput(<liquid:hydrogen> * 100);
+tennessinedustMetalPulverize_advanced.addEnergyPerTickInput(1024);
+tennessinedustMetalPulverize_advanced.build();
+
+var tennessinedustMetalPulverize_industrial = mods.modularmachinery.RecipeBuilder.newBuilder("tennessinedustMetalPulverize_industrial", "basic", 100, 0);
+tennessinedustMetalPulverize_industrial.addItemInput(<contenttweaker:material_part:5423>);
+tennessinedustMetalPulverize_industrial.addFluidInput(<liquid:cotm_tennessine_molten> * 100);
+tennessinedustMetalPulverize_industrial.addItemOutput(<contenttweaker:material_part:1390>);
+tennessinedustMetalPulverize_industrial.addFluidInput(<liquid:hydrogen> * 100);
+tennessinedustMetalPulverize_industrial.addFluidInput(<liquid:cotc_data> * 100);
+tennessinedustMetalPulverize_industrial.addEnergyPerTickInput(262144);
+tennessinedustMetalPulverize_industrial.build();
+
+var tennessinedustMetalPulverize_ultimate = mods.modularmachinery.RecipeBuilder.newBuilder("tennessinedustMetalPulverize_ultimate", "basic", 100, 0);
+tennessinedustMetalPulverize_ultimate.addItemInput(<contenttweaker:material_part:5423>);
+tennessinedustMetalPulverize_ultimate.addFluidInput(<liquid:cotm_tennessine_molten> * 100);
+tennessinedustMetalPulverize_ultimate.addItemOutput(<contenttweaker:material_part:1390>);
+tennessinedustMetalPulverize_ultimate.addFluidInput(<liquid:hydrogen> * 100);
+tennessinedustMetalPulverize_ultimate.addFluidInput(<liquid:cotc_data> * 100);
+tennessinedustMetalPulverize_ultimate.addFluidInput(<liquid:cotc_pos_red_matter> * 100);
+tennessinedustMetalPulverize_ultimate.addFluidOutput(<liquid:cotc_neg_orange_matter> * 100);
+tennessinedustMetalPulverize_ultimate.addEnergyPerTickInput(67108864);
+tennessinedustMetalPulverize_ultimate.build();
+
+var oganessondustMetalPulverize_basic = mods.modularmachinery.RecipeBuilder.newBuilder("oganessondustMetalPulverize_basic", "basic", 100, 0);
+oganessondustMetalPulverize_basic.addItemInput(<contenttweaker:material_part:5461>);
+oganessondustMetalPulverize_basic.addFluidInput(<liquid:cotm_oganesson_molten> * 100);
+oganessondustMetalPulverize_basic.addItemOutput(<contenttweaker:material_part:1393>);
+oganessondustMetalPulverize_basic.addEnergyPerTickInput(4);
+oganessondustMetalPulverize_basic.build();
+
+var oganessondustMetalPulverize_advanced = mods.modularmachinery.RecipeBuilder.newBuilder("oganessondustMetalPulverize_advanced", "basic", 100, 0);
+oganessondustMetalPulverize_advanced.addItemInput(<contenttweaker:material_part:5461>);
+oganessondustMetalPulverize_advanced.addFluidInput(<liquid:cotm_oganesson_molten> * 100);
+oganessondustMetalPulverize_advanced.addItemOutput(<contenttweaker:material_part:1393>);
+oganessondustMetalPulverize_advanced.addFluidInput(<liquid:hydrogen> * 100);
+oganessondustMetalPulverize_advanced.addEnergyPerTickInput(1024);
+oganessondustMetalPulverize_advanced.build();
+
+var oganessondustMetalPulverize_industrial = mods.modularmachinery.RecipeBuilder.newBuilder("oganessondustMetalPulverize_industrial", "basic", 100, 0);
+oganessondustMetalPulverize_industrial.addItemInput(<contenttweaker:material_part:5461>);
+oganessondustMetalPulverize_industrial.addFluidInput(<liquid:cotm_oganesson_molten> * 100);
+oganessondustMetalPulverize_industrial.addItemOutput(<contenttweaker:material_part:1393>);
+oganessondustMetalPulverize_industrial.addFluidInput(<liquid:hydrogen> * 100);
+oganessondustMetalPulverize_industrial.addFluidInput(<liquid:cotc_data> * 100);
+oganessondustMetalPulverize_industrial.addEnergyPerTickInput(262144);
+oganessondustMetalPulverize_industrial.build();
+
+var oganessondustMetalPulverize_ultimate = mods.modularmachinery.RecipeBuilder.newBuilder("oganessondustMetalPulverize_ultimate", "basic", 100, 0);
+oganessondustMetalPulverize_ultimate.addItemInput(<contenttweaker:material_part:5461>);
+oganessondustMetalPulverize_ultimate.addFluidInput(<liquid:cotm_oganesson_molten> * 100);
+oganessondustMetalPulverize_ultimate.addItemOutput(<contenttweaker:material_part:1393>);
+oganessondustMetalPulverize_ultimate.addFluidInput(<liquid:hydrogen> * 100);
+oganessondustMetalPulverize_ultimate.addFluidInput(<liquid:cotc_data> * 100);
+oganessondustMetalPulverize_ultimate.addFluidInput(<liquid:cotc_pos_red_matter> * 100);
+oganessondustMetalPulverize_ultimate.addFluidOutput(<liquid:cotc_neg_orange_matter> * 100);
+oganessondustMetalPulverize_ultimate.addEnergyPerTickInput(67108864);
+oganessondustMetalPulverize_ultimate.build();
 

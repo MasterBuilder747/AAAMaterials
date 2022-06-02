@@ -9,10 +9,6 @@ import java.util.ArrayList;
 
 public class WelderRecipe extends AMaterialRecipe {
     public WelderRecipe(ArrayList<Machine> machines, MachineData data, ArrayList<MachineMatter> matters, ArrayList<Registry> registries) {
-        super("welder", "basic", machines, data, matters, registries);
-    }
-
-    public void addIO(String input, String output, String solder) {
-        updateIO(r(input), r(solder), r(output), r());
+        super("welder", "Welder", "basic", machines, data, matters, registries);
     }
 }
