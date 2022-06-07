@@ -13,10 +13,10 @@ public class LPart extends ALocalizedData {
     boolean hasOverlay;
     public String oreDict;
     public boolean exists;
-    double amount; //amount of material this has in it; 1 = 1 ingot
+    int amount; //amount of material this has in it; 1 = 1 ingot
     public String baseRegistryName; //the base part of the key being used to find the item registry
 
-    public LPart(String name, String localName, String oreDict, ArrayList<Machine> machines, MachineData data, ArrayList<MachineMatter> matters, ArrayList<Registry> registries, boolean hasOverlay, double amount) {
+    public LPart(String name, String localName, String oreDict, ArrayList<Machine> machines, MachineData data, ArrayList<MachineMatter> matters, ArrayList<Registry> registries, boolean hasOverlay, int amount) {
         super(name, localName, "LPart", machines, data, matters, registries);
         this.type = "item"; //default
         this.hasOverlay = hasOverlay;
@@ -32,7 +32,7 @@ public class LPart extends ALocalizedData {
     }
     //this part already exists in contentTweaker
     //to be used in a PartGroup
-    public LPart(String name, String localName, ArrayList<Machine> machines, MachineData data, ArrayList<MachineMatter> matters, ArrayList<Registry> registries, String oreDict, double amount) {
+    public LPart(String name, String localName, ArrayList<Machine> machines, MachineData data, ArrayList<MachineMatter> matters, ArrayList<Registry> registries, String oreDict, int amount) {
         super(name, localName, "LPart", machines, data, matters, registries);
         this.exists = true;
         this.oreDict = oreDict;

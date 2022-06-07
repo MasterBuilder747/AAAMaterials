@@ -1,7 +1,7 @@
 /material, addSmelt, addMachine, addBlast, addConductive
 /singular elemental transition metals
 /normal metals
-lithium, true, true, false, true
+lithium, true, true, false, false
 beryllium, true, true, false, true
 boron, true, true, false, true
 sodium, true, true, false, true

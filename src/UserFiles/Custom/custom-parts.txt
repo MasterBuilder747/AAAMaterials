@@ -1,46 +1,55 @@
-//name, localizedName, oreDict, bool isExistingPart, bool hasOverlay, double amount
+//name, localizedName, oreDict, bool isExistingPart, bool hasOverlay, int moltenMetalAmount(mB)
 /%s is required and denotes the material name, only needed if localized name
 /- denotes a space
 /existing parts
-tiny_dust, Tiny-%s-Dust, dustTiny, true, false, 0.111111111111111
-small_dust, Small-%s-Dust, dustSmall, true, false, 0.25
-dust, %s-Dust, dust, true, false, 1
+/dusts
+tiny_dust, Tiny-%s-Dust, dustTiny, true, false, 16
+small_dust, Small-%s-Dust, dustSmall, true, false, 36
+dust, %s-Dust, dust, true, false, 144
+/ores:
 /Note that this will only work on Stone variants, rock subtypes need to be handled
 /format: oreAmountName-dimensionOreType-%s-Ore
-poor_ore, Poor-%s-Ore, poorOre, true, false, -0.25
-ore, %s-Ore, ore, true, false, -1
-dense_ore, Dense-%s-Ore, denseOre, true, false, -4
-rock, %s-Rock, rock, true, false, -1
-ore_rock, %s-Ore-Rock, rockOre, true, false, -1
-cluster, %s-Cluster, cluster, true, false, -1
-clump, %s-Clump, clump, true, false, -1
-shard, %s-Shard, shard, true, false, -1
-crushed_ore, Crushed-%s-Ore, crushedOre, true, false, -1
-purified_ore, Purified-%s-Ore, orePurified, true, false, -1
-centrifuged_ore, Centrifuged-%s-Ore, oreCentrifuged, true, false, -1
-dirty_dust, Dirty-%s-Dust, dustDirty, true, false, -1
+poor_ore, Poor-%s-Ore, poorOre, true, false, 36
+ore, %s-Ore, ore, true, false, 144
+dense_ore, Dense-%s-Ore, denseOre, true, false, 576
+rock, %s-Rock, rock, true, false, 144
+ore_rock, %s-Ore-Rock, rockOre, true, false, 144
+cluster, %s-Cluster, cluster, true, false, 144
+clump, %s-Clump, clump, true, false, 144
+shard, %s-Shard, shard, true, false, 144
+crushed_ore, Crushed-%s-Ore, crushedOre, true, false, 144
+purified_ore, Purified-%s-Ore, orePurified, true, false, 144
+centrifuged_ore, Centrifuged-%s-Ore, oreCentrifuged, true, false, 144
+dirty_dust, Dirty-%s-Dust, dustDirty, true, false, 144
 ore_sample, %s-Ore-Sample, oreSample, true, false, 0
-flawless_gem, Flawless-%s-Gem, gemFlawless, true, false, 2
+/gems:
+flawless_gem, Flawless-%s-Gem, gemFlawless, true, false, -2
 crystal, %s-Crystal, crystal, true, false, -1
-flawed_gem, Flawed-%s-Gem, gemFlawed, true, false, 0.75
-chipped_gem, Chipped-%s-Gem, gemChipped, true, false, 0.5
-nugget, %s-Nugget, nugget, true, false, 0.111111111111111
-ingot, %s-Ingot, ingot, true, false, 1
-block, %s-Block, block, true, false, 9
-plate, %s-Plate, plate, true, false, 1
-dense_plate, Dense-%s-Plate, plateDense, true, false, 9
-casing, %s-Casing, casing, true, false, 0.75
-beam, %s-Beam, beam, true, false, 3
-gear, %s-Gear, gear, true, false, 1.25
-rod, %s-Rod, rod, true, false, 0.5
-long_rod, Long-%s-Rod, rodLong, true, false, 1
-bolt, %s-Bolt, bolt, true, false, 0.222222222222222
-ring, %s-Ring, ring, true, false, 0.25
-small_spring, Small-%s-Spring, smallSpring, true, false, 0.25
-large_spring, Large-%s-Spring, springLarge, true, false, 1.111111111111111
-round, %s-Round, round, true, false, 0.111111111111111
+flawed_gem, Flawed-%s-Gem, gemFlawed, true, false, -0.75
+chipped_gem, Chipped-%s-Gem, gemChipped, true, false, -0.5
+/smelt parts:
+nugget, %s-Nugget, nugget, true, false, 16
+ingot, %s-Ingot, ingot, true, false, 144
+block, %s-Block, block, true, false, 1296
+/plates:
+plate, %s-Plate, plate, true, false, 144
+dense_plate, Dense-%s-Plate, plateDense, true, false, 1296
+casing, %s-Casing, casing, true, false, 72
+/rods:
+beam, %s-Beam, beam, true, false, 1152
+rod, %s-Rod, rod, true, false, 108
+long_rod, Long-%s-Rod, rodLong, true, false, 108
+bolt, %s-Bolt, bolt, true, false, 36
+/coiled:
+ring, %s-Ring, ring, true, false, 72
+small_spring, Small-%s-Spring, smallSpring, true, false, 36
+large_spring, Large-%s-Spring, springLarge, true, false, 180
+/circular:
+round, %s-Round, round, true, false, 16
+gear, %s-Gear, gear, true, false, 144
 /
 /custom parts
+/plates
 axle, %s-Axle, axle, false, false, 0.666666666666666
 boule, %s-Boule, boule, false, false, 0
 chain, %s-Chain, chain, false, false, 1.5
@@ -95,6 +104,7 @@ small_powder, Small-%s-Powder, powderSmall, false, false, 0.25
 small_purified_ore, Small-Purified-%s-Ore, orePurifiedSmall, false, false, -0.25
 small_ring, Small-%s-Ring, ringSmall, false, false, 0.25
 small_rod, Small-%s-Rod, rodSmall, false, false, 0.222222222222222
+small_screw, Small-%s-Screw, screwSmall, false, false, 1.6944444444444
 small_screwed_plate, Small-Screwed-%s-Plate, plateScrewedSmall, false, false, 1.6944444444444
 /small_screwed_plate:[1 small plate, 4 screws, 4 small bolts]
 small_spring, Small-%s-Spring, springSmall, false, false, 0.111111111111111

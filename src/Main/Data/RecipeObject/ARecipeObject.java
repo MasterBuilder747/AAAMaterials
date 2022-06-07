@@ -39,19 +39,30 @@ public abstract class ARecipeObject extends AData {
         throw new IllegalArgumentException("Unknown machine " + s + " in the machine registry");
     }
 
-    protected String addRecipe(String recipeType, String input, String lInput, String output, String lOutput,
+    protected String addRecipe(int num, String recipeType, String input, String lInput, String output, String lOutput,
                                int time, int tier, double powerMultiplier, int chemAmt, int dataAmt, String matterIn, String matterOut) {
         //Recipe header
         AMaterialRecipe re;
+        String recipeVariable = this.NAME+output.replace("*", "_")+this.type+num;
         re = constructRecipe(recipeType);
         if (re == null) {
             throw new RecipeObjectException("Unknown recipeType: " + recipeType);
         }
-        re.createRecipe(this.NAME + output + this.type, time, tier, powerMultiplier, 0, this.getDataLiquid());
+        re.createRecipe(recipeVariable, time, tier, powerMultiplier, 0, this.getDataLiquid());
 
         //IO
         //@ overrides syntax and uses what is typed directly in the recipe instead (for molten, etc)
-        re.updateIO(parseOverrides(input), parseLOverrides(lInput), parseOverrides(output), parseLOverrides(lOutput));
+        String[] inputs = parseOverrides(input);
+        if (inputs == null) {
+            //System.out.println(recipeVariable+ ": noIN");
+            return "";
+        }
+        String[] outputs = parseOverrides(output);
+        if (outputs == null) {
+            //System.out.println(recipeVariable + ": noOut");
+            return "";
+        }
+        re.updateIO(inputs, parseLOverrides(lInput), outputs, parseLOverrides(lOutput));
         re.setMachineResources(chemAmt, dataAmt, getMatterIn(matterIn), getMatterOut(matterOut));
         return re.buildRecipe();
     }
@@ -79,29 +90,46 @@ public abstract class ARecipeObject extends AData {
 
     private String[] parseCustomRecipeIO(String[] ss) {
         //chance:partName*amount
-        String[] out = new String[ss.length];
+        ArrayList<String> out = new ArrayList<>();
         for (int i = 0; i < ss.length; i++) {
             String s = ss[i];
             double c = -1;
             int a = -1;
-            if (s.contains(":")) {
-                c = Double.parseDouble(s.substring(0, s.indexOf(":")));
-            }
-            if (s.contains("*")) {
-                a = Integer.parseInt(s.substring(s.indexOf("*")+1));
-            }
+            if (s.contains(":")) c = Double.parseDouble(s.substring(0, s.indexOf(":")));
+            if (s.contains("*")) a = Integer.parseInt(s.substring(s.indexOf("*")+1));
             if (c != -1 && a != -1) { //chance and amount
-                s = addChance(c)+getPart(s.substring(s.indexOf(":")+1, s.indexOf("*")), a);
+                String p = s.substring(s.indexOf(":")+1, s.indexOf("*"));
+                if (isPart(p)) {
+                    p = getPart(p, a);
+                    out.add(addChance(c)+p);
+                } else {
+                    return null;
+                }
             } else if (c != -1) { //chance only
-                s = addChance(c)+getPart(s.substring(s.indexOf(":")+1));
+                String p = s.substring(s.indexOf(":")+1);
+                if (isPart(p)) {
+                    p = getPart(p);
+                    out.add(addChance(c)+p);
+                } else {
+                    return null;
+                }
             } else if (a != -1) { //amount only
-                s = getPart(s.substring(0, s.indexOf("*")), a);
+                String p = s.substring(0, s.indexOf("*"));
+                if (isPart(p)) {
+                    p = getPart(p, a);
+                    out.add(p);
+                } else {
+                    return null;
+                }
             } else {
-                s = getPart(s);
+                if (isPart(s)) {
+                    out.add(getPart(s));
+                } else {
+                    return null;
+                }
             }
-            out[i] = s;
         }
-        return out;
+        return out.toArray(new String[0]);
     }
     private String[] parseCustomLiquidRecipeIO(String[] ss) {
         //chance:liquidKey*amount
@@ -139,16 +167,19 @@ public abstract class ARecipeObject extends AData {
 
     private AMaterialRecipe constructRecipe(String recipeType) {
         switch (recipeType) {
-            case "coil" -> {return new CoillerRecipe(this.machines, this.mData, this.matters, this.registries);}
-            case "bend" -> {return new HeatedBenderRecipe(this.machines, this.mData, this.matters, this.registries);}
+            case "coiller" -> {return new CoillerRecipe(this.machines, this.mData, this.matters, this.registries);}
+            case "bender" -> {return new HeatedBenderRecipe(this.machines, this.mData, this.matters, this.registries);}
             case "cut" -> {return new LaserCutterRecipe(this.machines, this.mData, this.matters, this.registries);}
             case "lathe" -> {return new LatheRecipe(this.machines, this.mData, this.matters, this.registries);}
-            case "mlathe" -> {return new MicroLatheRecipe(this.machines, this.mData, this.matters, this.registries);}
+            case "mLathe" -> {return new MicroLatheRecipe(this.machines, this.mData, this.matters, this.registries);}
             case "press" -> {return new PressRecipe(this.machines, this.mData, this.matters, this.registries);}
             case "pulverize" -> {return new PulverizeRecipe(this.machines, this.mData, this.matters, this.registries);}
             case "sharpen" -> {return new SharpenRecipe(this.machines, this.mData, this.matters, this.registries);}
             case "smelt" -> {return new SmeltingRecipe(this.machines, this.mData, this.matters, this.registries);}
-            case "wire" -> {return new WiremillRecipe(this.machines, this.mData, this.matters, this.registries);}
+            case "wiremill" -> {return new WiremillRecipe(this.machines, this.mData, this.matters, this.registries);}
+            case "welder" -> {return new WelderRecipe(this.machines, this.mData, this.matters, this.registries);}
+            case "melting" -> {return new MeltingRecipe(this.machines, this.mData, this.matters, this.registries);}
+            case "metalAssembler" -> {return new MetalAssemblerRecipe(this.machines, this.mData, this.matters, this.registries);}
         }
         return null;
     }

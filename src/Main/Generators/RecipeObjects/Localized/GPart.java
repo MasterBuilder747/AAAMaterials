@@ -18,10 +18,10 @@ public class GPart extends AGLocal<LPart> {
         //name, localizedName, oreDict, bool isExistingPart, bool hasOverlay, double amount
         if (parseBoolean(s[1])) {
             //add existing part, hasOverlay is always false, so it's not read
-            objects.add(new LPart(name, localName, getMachineRegistry(), getDataRegistry(), getMatterRegistry(), getRegistries(), s[0], parseDouble(s[3])));
+            objects.add(new LPart(name, localName, getMachineRegistry(), getDataRegistry(), getMatterRegistry(), getRegistries(), s[0], parseInt(s[3])));
         } else {
             //add custom part
-            objects.add(new LPart(name, localName, s[0], getMachineRegistry(), getDataRegistry(), getMatterRegistry(), getRegistries(), parseBoolean(s[2]), parseDouble(s[3])));
+            objects.add(new LPart(name, localName, s[0], getMachineRegistry(), getDataRegistry(), getMatterRegistry(), getRegistries(), parseBoolean(s[2]), parseInt(s[3])));
         }
     }
 }

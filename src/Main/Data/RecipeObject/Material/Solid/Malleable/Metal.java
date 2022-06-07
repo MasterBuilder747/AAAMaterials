@@ -29,55 +29,8 @@ public class Metal extends AMalleable {
         //5. blast furnace to gas since there is no liquid form and it is so hot it is gaseous > gas freezer/etc to ingot/gas shape?
         //6. fusion furnace to plasma > ingot through plasma cooling chamber/etc
         return
-                //create a chiselable item that can indicate the recipe for the same item inputs
-                //String recipeType, String input, String lInput, String output, String lOutput,
-                //int time, int tier, double powerMultiplier, int chemAmt, int dataAmt, String matterIn, String matterOut
-                addRecipe("pulverize", "ingot", "@"+getMolten(100), "dust", "", 100, 1, 0.5, 100, 100, "+red*100", "-orange*100")
-                /*
-                pulverize("morsel", "dustSmall") +
-                pulverize("nugget", "dustTiny") +
-                press(1, "plate") +
-                press(4, "plateTough") +
-                press(9, "plateDense") +
-                press("morsel", 1, "plateSmall") +
-                press("morsel", 3, "casing") +
-                press("nugget", 3, "foil") +
-                press("nugget", 4, "casingSmall") +
-                lathe("ingot", "rod", 2) +
-                lathe("ingot", "rodLong", 1) +
-                lathe("nugget", "axle", 6) +
-                lathe("ingot", "axleLarge", 2) +
-                lathe("metalSolid", "cone", 1) +
-                laserCutter("plate", "gear") +
-                laserCutter("plateSmall","gearSmall") +
-                laserCutter("plateLarge", "rotor") +
-                welder("plate", 8,"beam") +
-                welder("plateSmall", 9,"rail") +
-                welder("ring", 12,"chain") +
-                welder("rod", 4,"rodThick") +
-                microLathe("nugget", 3, "screw") +
-                microLathe("nugget", 2, "bolt") +
-                microLathe("nugget", 1, "boltSmall") +
-                microLathe("nugget", 1, "round") +
-                microLathe("nugget", 2, "rodSmall") +
-                coiller("rod", "spring") +
-                coiller("rodSmall", "springSmall") +
-                coiller("rodLong", "springLarge") +
-                coiller("wire", "coil") +
-                heatedBender("plate", "plateCurved") +
-                heatedBender("plateSmall", "plateCurvedSmall") +
-                heatedBender("rod", "ring") +
-                heatedBender("rodSmall", "ringSmall") +
-                heatedBender("rodThick", "ringU") +
-                sharpen("gear", "turbine") +
-                sharpen("cone", "drillhead") +
-                sharpen("ringU", "sawblade") +
-                sharpen("ringU", "hook") +
-                wiremill("rod", "wire") +
-                wiremill("rodThick", "wireDense") +
-                wiremill("rodSmall", "wireFine")
-                */
-                ;
+                ""
+        ;
     }
 
     @Override
