@@ -11,14 +11,14 @@ import Main.Data.AData;
 //compound with more than one compound: H2(PO4)2 = 2xH + 2XPO4
 //equation handling:
 //breaking: H12O19
-//photo: CO2 + H2O > C6H12O6 + O2 =>> 6*CO2-g + 6*H2O [sun] > C6H12O6-s + 6O2-g
-//-s solid, -g gas, -p plasma, etc...
+//photosynthesis: CO2-g + H2O > C6H12O6-s + O2-g => 6*CO2-g + 6*H2O [sun] > C6H12O6-s + 6O2-g
+//-s solid, -l liquid -g gas, -p plasma, etc... (letter not needed (but can be shown) for default state of material)
 public class ChemicalLabel extends AData {
     //chemical molecules use elements in tooltips
-    boolean isMixing;
-    boolean isCentrifuge;
-    boolean isChemReact;
-    boolean isElectrolyze;
+    boolean isMixing; //physical combination
+    boolean isCentrifuge; //physical separation
+    boolean isChemReact; //chemically combine
+    boolean isElectrolyze; //chemically separate
 
     public Composition composition; //a string of defined element(s) and their count(s) in a string with special syntax
     boolean isDefault;  //is this the default composition that is associated with this material?

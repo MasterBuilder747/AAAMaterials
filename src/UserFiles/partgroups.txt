@@ -1,17 +1,23 @@
 /name_parts: part1, part2...
 /ex: ore_blocks: ore, poor_ore, dense_ore
+ore_parts: dense_rock, rock, poor_rock, dense_ore_rock, ore_rock, poor_ore_rock, dense_raw_ore, raw_ore, poor_raw_ore, dense_concentrated_ore, concentrated_ore, poor_concentrated_ore, dense_cluster, cluster, poor_cluster, dense_clump, clump, poor_clump, dense_chunk, chunk, poor_chunk, dense_shard, shard, poor_shard, crushed_ore, small_crushed_ore, tiny_crushed_ore, purified_ore, small_purified_ore, tiny_purified_ore, centrifuged_ore, small_centrifuged_ore, tiny_centrifuged_ore, dirty_dust, small_dirty_dust, tiny_dirty_dust, pure_dust, small_pure_dust, tiny_pure_dust
+scrap_parts: large_scrap, scrap, small_scrap
+gem_parts: superior_gem, exquisite_gem, flawless_gem, crystal, gem, flawed_gem, chipped_gem, piece, petty_gem, lens
+plate_parts: small_curved_superdense_plate, small_superdense_plate, small_curved_dense_plate, small_dense_plate, small_curved_tough_plate, small_tough_plate, small_curved_plate, small_plate, small_curved_thin_plate, small_thin_plate, curved_superdense_plate, superdense_plate, curved_dense_plate, dense_plate, curved_tough_plate, tough_plate, curved_plate, plate, curved_thin_plate, thin_plate, large_curved_superdense_plate, large_superdense_plate, large_curved_dense_plate, large_dense_plate, large_curved_tough_plate, large_tough_plate, large_curved_plate, large_plate, large_curved_thin_plate, large_thin_plate
 dust_parts: dust, small_dust, tiny_dust
 fine_parts: fine_dust, small_fine_dust, tiny_fine_dust
 powder_parts: powder, small_powder, tiny_powder
-ore_parts: rock, ore_rock, cluster, clump, shard, crushed_ore, small_crushed_ore, purified_ore, small_purified_ore, centrifuged_ore, small_centrifuged_ore, pure_dust, raw_ore, chunk, scrap, large_scrap
-gem_parts: gem, chipped_gem, flawed_gem, crystal, flawless_gem, exquisite_gem, superior_gem, piece, lens
-smelt_parts: ingot, morsel, nugget, casing, plate, curved_plate, tough_plate, dense_plate, small_rod, rod, long_rod, small_spring, large_spring, beam, bolt, screw, round, foil, ring, small_gear, gear, small_plate, spring, chain, rail, large_plate, small_bolt, small_casing, small_screwed_plate, axle, large_axle, small_ring, small_curved_plate, thick_rod, solid_metal, u_ring, small_screw
-plastic_parts: ingot, morsel, nugget, casing, plate, curved_plate, tough_plate, dense_plate, small_rod, rod, long_rod, beam, bolt, screw, round, foil, ring, small_plate, spring, chain, large_plate, small_casing, small_screwed_plate, small_screw
-rubber_parts: ingot, morsel, nugget, casing, plate, curved_plate, tough_plate, dense_plate, round, ring, small_plate, large_plate, small_casing
-conductive_parts: wire, fine_wire, dense_wire, coil
-blast_parts: hot_ingot
-machine_parts: turbine_blade, drill_head, saw_blade, rotor, gearbox, hook, cone
-string_parts: fiber, fibers, dense_fibers
+/block goes in smelt_parts, handle block parts later
+smelt_parts: solid_metal, ingot, morsel, nugget
+rod_parts: small_rod, small_thick_rod, rod, thick_rod, long_rod, long_thick_rod, small_u_ring, small_ring, u_ring, ring, small_bolt, bolt, large_bolt, small_axle, axle, large_axle, small_screw, screw, large_screw
+beam_parts: rail, beam
+conductive_parts: fine_wire, wire, dense_wire
+machine_parts: turbine_blade, saw_blade, cone, round, drill_head, hook, rotor
+special_plate_parts: foil, small_casing, casing, large_casing, small_gear, gear, large_gear
+coiled rods: small_spring, spring, large_spring, coil
+string_parts: fiber, fibers, dense_fiber, dense_fibers
+blast_parts: hot_nugget, hot_morsel, hot_ingot, hot_solid_metal, hot_block
+wood_parts: short_stick, stick, long_stick, wood_plate
+stone_parts: pebble, stone_plate
 semi_conductive_parts: boule, infused_boule, wafer, infused_wafer
-wood_parts: wood_plate, stick, long_stick
-stone_parts: pebble
+assembled_parts: chain, gearbox, small_screwed_plate, screwed_plate

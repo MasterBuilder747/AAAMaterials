@@ -11,7 +11,7 @@ import Main.Util;
 import java.util.ArrayList;
 
 public abstract class ARecipeObject extends AData {
-    ArrayList<RegistryData> datas; //the array of registries that are used for adding recipes and other things
+    protected ArrayList<RegistryData> datas; //the array of registries that are used for adding recipes and other things
     ArrayList<LiquidData> liquids; //the array of liquid brackets
     protected ArrayList<Machine> machines; //registry of known machines are needed for each object's recipes //get the GMachine's arraylist only to reduce RAM usage
     protected ArrayList<Registry> registries; //for custom items (yeah this will use a lot of RAM...)
@@ -241,6 +241,9 @@ public abstract class ARecipeObject extends AData {
             }
         }
         throw new RecipeObjectException(key, this.NAME);
+    }
+    public ArrayList<RegistryData> getDatas() {
+        return this.datas;
     }
     protected String getLiquid(String key) {
         for (LiquidData m : this.liquids) {
