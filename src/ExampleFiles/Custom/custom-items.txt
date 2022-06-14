@@ -1,0 +1,2 @@
+/name, localizedName
+/ex: infi_single, Infinity-Singularity

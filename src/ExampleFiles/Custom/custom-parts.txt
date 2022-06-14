@@ -1,0 +1,4 @@
+//name, localizedName, oreDict, bool isExistingPart, bool hasOverlay, int moltenMetalAmount(mB)
+/%s is required and denotes the material name, only needed if localized name
+/- denotes a space
+/ex: ingot, %s-Ingot, ingot, true, false, 144

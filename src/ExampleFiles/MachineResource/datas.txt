@@ -1,0 +1,2 @@
+/String name, String localName, String color, int density, int luminosity, int temperature, int viscosity, boolean vaporize
+/ex: data, Data, 165e08, 6000, 10, 500, 6000, false

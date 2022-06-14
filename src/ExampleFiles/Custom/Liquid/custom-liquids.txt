@@ -1,0 +1,2 @@
+/String name, String localName, String color, int density, int luminosity, int temperature, int viscosity, boolean vaporize
+/ex: juice, Juice, 00ff00, 6000, 15, 1000, 6000, false

@@ -1,0 +1,2 @@
+/generated from tellme:
+/"Registry name","ID"

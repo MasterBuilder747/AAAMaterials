@@ -1,0 +1,2 @@
+/generated from tellme:
+/"OreDict Key","ItemStacks"

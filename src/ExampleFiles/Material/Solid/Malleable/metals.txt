@@ -1,0 +1,2 @@
+/material, addSmelt, addMachine, addBlast, addConductive
+/ex: lithium, true, true, false, false

@@ -1,0 +1,1 @@
+/localizedName, boolean enableSeasons, boolean tropical, boolean crops

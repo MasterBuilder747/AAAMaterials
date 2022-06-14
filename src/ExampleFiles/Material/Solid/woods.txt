@@ -1,0 +1,2 @@
+/boolean isVanilla
+/ex: oak, true

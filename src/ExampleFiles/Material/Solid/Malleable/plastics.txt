@@ -1,0 +1,2 @@
+/material, double meltingMultiplier
+/ex: polyethylene, 0.5

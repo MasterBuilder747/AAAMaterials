@@ -1,0 +1,2 @@
+/generated from tellme:
+/"Name","Density","Temperature","Viscosity","Luminosity","Rarity","isGaseous","Block"

@@ -1,0 +1,3 @@
+/material, int density, int luminosity, int temperature, int viscosity, boolean vaporize
+/all malleables are required here!
+/ex: lithium, 6000, 1, 1000, 6000, false

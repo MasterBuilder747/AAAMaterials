@@ -1,0 +1,2 @@
+/generated from tellme:
+/"Registry Name","Spawned ID","Egg primary color","Egg secondary color"

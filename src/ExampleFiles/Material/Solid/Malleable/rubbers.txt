@@ -1,0 +1,2 @@
+/material, double meltingMultiplier
+/ex: rubber, 0.5

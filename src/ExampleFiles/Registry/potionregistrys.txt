@@ -1,0 +1,2 @@
+/generated from tellme:
+/"Mod name","Registry name","Potion Name","ID","Liquid color","Is bad","Is beneficial"

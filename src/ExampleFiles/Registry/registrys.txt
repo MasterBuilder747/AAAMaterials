@@ -1,0 +1,2 @@
+/generated from tellme dump-csv items
+/"Mod name","Registry name","Item ID","Meta/dmg","Subtypes","Display name","Ore Dict keys"

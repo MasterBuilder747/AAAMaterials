@@ -1,0 +1,2 @@
+/materialName, bool addPebble, bool isSedimentary, bool noSlab
+/ex: stone, true, false, false

@@ -1,0 +1,2 @@
+/material, addSmelt, addMachine, addBlast, addConductive
+/ex: bronze, true, true, false, true

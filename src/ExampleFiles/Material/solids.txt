@@ -1,0 +1,2 @@
+/material, bool addDust, bool addFineDust, bool addPowder, String customName(for other states)[use = for no alt name]
+/ex: water, false, false, false, ice /by putting this here, you are adding its parts, not claiming its default state (that is defined in the material)

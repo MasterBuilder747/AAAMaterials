@@ -1,0 +1,2 @@
+/generated from tellme:
+/"ID","Registry name","Biome name","temp.","temp cat","rain","snow","oceanic","BiomeType","BiomeDictionary.Type","Valid for"

@@ -1,0 +1,2 @@
+/colorName, localizedColorName, hexColor
+/ex: white, White, ffffff

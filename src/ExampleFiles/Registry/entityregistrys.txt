@@ -1,0 +1,2 @@
+/generated from tellme:
+/"Mod name","Registry name","Entity class name","ID"
