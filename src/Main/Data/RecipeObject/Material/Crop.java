@@ -23,7 +23,7 @@ public class Crop extends AMaterialData {
     }
 
     @Override
-    public String buildRecipe() {
+    public String buildSpecificRecipe() {
         return null;
     }
 

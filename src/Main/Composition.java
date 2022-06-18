@@ -38,11 +38,7 @@ public class Composition {
         //0-9: \u2080-\u2089
 
         StringBuilder sb = new StringBuilder();
-/*        if (this.isMaterial) {
-            sb.append(this.m.composition);
-        } else {
-            sb.append(this.e);
-        }*/
+        sb.append(this.e.symbol);
         if (this.amount != 1) {
             sb.append(this.amount);
         }

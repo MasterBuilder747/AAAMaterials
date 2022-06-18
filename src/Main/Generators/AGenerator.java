@@ -38,6 +38,9 @@ public abstract class AGenerator<D extends AData> {
     public ArrayList<D> getObjects() {
         return this.objects;
     }
+    public void replace(String s, D o) {
+        this.objects.set(this.objects.indexOf(this.get(s)), o);
+    }
 
     private void populateObjects() throws IOException {
         //read: populate the ArrayList

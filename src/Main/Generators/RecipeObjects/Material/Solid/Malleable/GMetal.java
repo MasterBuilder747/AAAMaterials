@@ -1,6 +1,5 @@
 package Main.Generators.RecipeObjects.Material.Solid.Malleable;
 
-import Main.Data.RecipeObject.Material.Chemical;
 import Main.Data.RecipeObject.Material.Liquid.MLiquid;
 import Main.Data.RecipeObject.Material.MSolid;
 import Main.Data.RecipeObject.Material.Solid.Malleable.Metal;
@@ -30,8 +29,6 @@ public class GMetal extends AGMalleable<Metal> {
         metal.updateSolids(solid);
         metal = updateRegistryKeys(metal);
         metal = updateLiquids(metal);
-        Chemical c = new Chemical(m, getMachineRegistry(), getDataRegistry(), getMatterRegistry(), getRegistries(), metal.getDatas());
-        //TODO: make tooltips get appended
         objects.add(metal);
     }
 }

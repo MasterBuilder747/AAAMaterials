@@ -12,6 +12,7 @@ import Main.Generators.RecipeObjects.Localized.Liquid.GGas;
 import Main.Generators.RecipeObjects.Localized.Liquid.GLiquid;
 import Main.Generators.RecipeObjects.Localized.Liquid.GMolten;
 import Main.Generators.RecipeObjects.Localized.Liquid.GPlasma;
+import Main.Generators.RecipeObjects.Material.GChemicalComposition;
 import Main.Generators.RecipeObjects.Material.GMSolid;
 import Main.Generators.RecipeObjects.Material.Liquid.GMGas;
 import Main.Generators.RecipeObjects.Material.Liquid.GMLiquid;
@@ -102,6 +103,9 @@ public class MainRecipes {
         //3. the materials
         GMaterial material = new GMaterial("`material");
         sb.append(material.registerRecipes());
+        //material compositions
+        GChemicalComposition composition = new GChemicalComposition("composition", element, material, registry, liquids, data, matter, machine, partGroup, REG);
+        sb.append(composition.registerRecipes());
 
         //4. material states
         GMSolid mSolid = new GMSolid("solid", registry, liquids, data, matter, machine, material, partGroup, REG);

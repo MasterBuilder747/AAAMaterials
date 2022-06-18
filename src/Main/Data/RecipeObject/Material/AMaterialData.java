@@ -25,6 +25,22 @@ public abstract class AMaterialData extends ARecipeObject {
         this.localizedPartNames = new ArrayList<>();
     }
 
+    @Override
+    public String buildRecipe() {
+        StringBuilder sb = new StringBuilder();
+        ChemicalComposition comp = m.getComp();
+        if (comp != null) {
+            sb.append(comp.addTooltips(this.getRegistries()));
+        }
+        String r = buildSpecificRecipe();
+        if (r != null) {
+            sb.append(r);
+        }
+        if (r == null && comp == null) return "";
+        return sb.toString();
+    }
+    protected abstract String buildSpecificRecipe();
+
     //call this to get each localized registry name to be used for finding the registries
     private void setPartGroupsReg() {
         for (int i = 0; i < partGroups.length; i++) {

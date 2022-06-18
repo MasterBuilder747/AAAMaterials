@@ -1,0 +1,2 @@
+//material, Composition[String], boolean isDefaultComposition, boolean isMixing, boolean isCentrifuge, boolean isChemReact, boolean isElectrolyze
+osmium, Os, true, false, false, false, false

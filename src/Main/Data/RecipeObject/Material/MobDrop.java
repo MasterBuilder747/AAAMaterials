@@ -24,7 +24,7 @@ public class MobDrop extends AMaterialData {
     }
 
     @Override
-    public String buildRecipe() {
+    public String buildSpecificRecipe() {
         return null;
     }
 

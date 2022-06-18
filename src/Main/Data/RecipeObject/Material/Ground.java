@@ -21,7 +21,7 @@ public class Ground extends AMaterialData {
     }
 
     @Override
-    public String buildRecipe() {
+    public String buildSpecificRecipe() {
         return null;
     }
 

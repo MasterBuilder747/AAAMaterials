@@ -45,7 +45,7 @@ public class MSolid extends AMaterialData {
     }
 
     @Override
-    public String buildRecipe() {
+    public String buildSpecificRecipe() {
         StringBuilder sb = new StringBuilder();
 
 

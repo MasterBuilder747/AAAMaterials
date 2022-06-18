@@ -1,25 +1,28 @@
-package Main.Generators.Composition;
+package Main;
 
-import Main.Composition;
-import Main.Data.RecipeObject.Material.AMaterialData;
-import Main.Data.RecipeObject.Material.ChemicalLabel;
-import Main.Generators.AGenerator;
 import Main.Generators.GElement;
-import Main.Generators.GMaterial;
-import Main.Util;
 
+import java.io.IOException;
 import java.util.ArrayList;
 
-public abstract class AGComposition extends AGenerator<ChemicalLabel> {
-    GElement element;
+public class comptTest {
+    private final static String PC = "C:\\Users\\jaath\\IdeaProjects\\AAAMaterials\\src\\";
+    private final static String MAC = "/Users/jaudras/IdeaProjects/AAAMaterials/src/";
+    public final static String HOME = Detector.isMac() ? MAC : PC;
+    public final static String DEPLOY = "Deployment/";
+    public final static String Files = "UserFiles/";
 
-    public AGComposition(String filename, GElement element) {
-        super(0, filename);
-        this.element = element;
+    public final static boolean REG = false;
+
+    static GElement element = new GElement("element");
+
+    public static void main(String[] args) throws IOException {
+        element.registerMaterials();
+
+        System.out.println(createMoleculeComp("Fe"));
     }
 
-    //this creates a new material composition
-    protected Composition createMoleculeComp(String s) throws IllegalArgumentException {
+    private static Composition createMoleculeComp(String s) throws IllegalArgumentException {
         ArrayList<Composition> comps = new ArrayList<>();
         //symbol
         //symbol[_Symbol]

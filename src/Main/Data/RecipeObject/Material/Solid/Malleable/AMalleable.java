@@ -42,7 +42,7 @@ public abstract class AMalleable extends AMSolid {
     }
 
     @Override
-    public String buildRecipe() {
+    public String buildSpecificRecipe() {
         //printNames();
         String melting = "";
         if (meltingMultiplier != 0) {
@@ -178,7 +178,6 @@ public abstract class AMalleable extends AMSolid {
                 addRecipe(3,"wiremill", "rodSmall", "", "wireFine", "", 100, 1, 0.5, 100, 100, "+red*100", "-orange*100")
         ;
 
-        printNames();
         String metalParts = "";
         metalParts =
                 addRecipe(1,"metalAssembler", "plateSmall,screwSmall*4,boltSmall*4", "", "plateScrewedSmall", "", 100, 1, 0.5, 100, 100, "+red*100", "-orange*100") +

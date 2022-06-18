@@ -21,11 +21,10 @@ public class Material extends AData {
 
     //Material Part data, initializes to null if not registered, otherwise when building,
     //these will be read and used for various material parts and recipe generation:
-    AMaterialData[] datas;
-    ChemicalLabel chemicalLabel; //Chemical tooltip, breaking and forming composition recipes, if it has one
+    ChemicalComposition comp; //Chemical tooltip, breaking and forming composition recipes, if it has one
 
     //states
-    Main.Data.RecipeObject.Material.MSolid MSolid;
+    MSolid MSolid;
     MLiquid liquid; //standalone liquid (usually chemical), may allow changing of state (if not default state)
     MGas gas; //standalone gas (usually chemical), may allow changing of state (if not default state)
     MPlasma plasma; //standalone gas (usually chemical), may allow changing of state (usually made in fusion)
@@ -68,6 +67,14 @@ public class Material extends AData {
         this.state = state;
     }
 
+    public void addComposition(ChemicalComposition comp) {
+        this.comp = comp;
+    }
+
+    public ChemicalComposition getComp() {
+        return this.comp;
+    }
+
     //5) build the code based off these attributes
     @Override
     public String buildMaterial() {
@@ -82,7 +89,11 @@ public class Material extends AData {
 
     @Override
     public void print() {
-        System.out.println(this.NAME + ", " + this.LOCALNAME + ", " + this.color);
+        System.out.print(this.NAME + ", " + this.LOCALNAME + ", " + this.color + ", " + this.state);
+        if (this.comp != null) {
+            System.out.print(", " + this.comp);
+        }
+        System.out.println();
 /*
         if (this.composition.isMaterial) {
             System.out.print("compound, ");

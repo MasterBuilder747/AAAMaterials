@@ -21,7 +21,7 @@ public class Dye extends AMSolid {
     }
 
     @Override
-    public String buildRecipe() {
+    public String buildSpecificRecipe() {
         return null;
     }
 

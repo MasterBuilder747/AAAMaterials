@@ -21,7 +21,7 @@ public class Fuel extends AMSolid {
     }
 
     @Override
-    public String buildRecipe() {
+    public String buildSpecificRecipe() {
         return null;
     }
 
