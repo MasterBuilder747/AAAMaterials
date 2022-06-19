@@ -252,7 +252,7 @@ public abstract class ARecipeObject extends AData {
             for (String e : exclusions) {
                 if (r.name.equals(e)) {
                     newDatas.remove(r);
-                    System.out.println(this.NAME + ": " + r.name); //enable this to show exclusions in log
+                    //System.out.println(this.NAME + ": " + r.name); //enable this to show exclusions in log
                     k--;
                     break;
                 }

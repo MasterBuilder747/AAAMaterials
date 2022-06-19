@@ -2689,4 +2689,75 @@ bedrock_lumiumBedrockDense.addDataValue("harvestLevel","-1");
 bedrock_lumiumBedrockDense.addDataValue("harvestTool","none");
 
 
+osmium.registerParts(ore_parts);
+var osmiumStoneOre = osmium.registerPart("ore").getData();
+osmiumStoneOre.addDataValue("variants","minecraft:stone");
+osmiumStoneOre.addDataValue("hardness","4");
+osmiumStoneOre.addDataValue("resistance","6");
+osmiumStoneOre.addDataValue("harvestLevel","2");
+osmiumStoneOre.addDataValue("harvestTool","pickaxe");
+var osmiumStonePoor = osmium.registerPart("poor_ore").getData();
+osmiumStonePoor.addDataValue("variants","minecraft:stone");
+osmiumStonePoor.addDataValue("hardness","3");
+osmiumStonePoor.addDataValue("resistance","6");
+osmiumStonePoor.addDataValue("harvestLevel","2");
+osmiumStonePoor.addDataValue("harvestTool","pickaxe");
+var osmiumStoneDense = osmium.registerPart("dense_ore").getData();
+osmiumStoneDense.addDataValue("variants","minecraft:stone");
+osmiumStoneDense.addDataValue("hardness","5");
+osmiumStoneDense.addDataValue("resistance","6");
+osmiumStoneDense.addDataValue("harvestLevel","2");
+osmiumStoneDense.addDataValue("harvestTool","pickaxe");
+
+var nether_osmium = MaterialSystem.getMaterialBuilder().setName("Nether Osmium").setColor(Color.fromHex("0000ff")).build();
+nether_osmium.registerParts(ore_parts);
+var nether_osmiumNetherOre = nether_osmium.registerPart("ore").getData();
+nether_osmiumNetherOre.addDataValue("variants","minecraft:netherrack");
+nether_osmiumNetherOre.addDataValue("hardness","4");
+nether_osmiumNetherOre.addDataValue("resistance","6");
+nether_osmiumNetherOre.addDataValue("harvestLevel","2");
+nether_osmiumNetherOre.addDataValue("harvestTool","pickaxe");
+var nether_osmiumNetherPoor = nether_osmium.registerPart("poor_ore").getData();
+nether_osmiumNetherPoor.addDataValue("variants","minecraft:netherrack");
+nether_osmiumNetherPoor.addDataValue("hardness","3");
+nether_osmiumNetherPoor.addDataValue("resistance","6");
+nether_osmiumNetherPoor.addDataValue("harvestLevel","2");
+nether_osmiumNetherPoor.addDataValue("harvestTool","pickaxe");
+var nether_osmiumNetherDense = nether_osmium.registerPart("dense_ore").getData();
+nether_osmiumNetherDense.addDataValue("variants","minecraft:netherrack");
+nether_osmiumNetherDense.addDataValue("hardness","5");
+nether_osmiumNetherDense.addDataValue("resistance","6");
+nether_osmiumNetherDense.addDataValue("harvestLevel","2");
+nether_osmiumNetherDense.addDataValue("harvestTool","pickaxe");
+
+var end_osmium = MaterialSystem.getMaterialBuilder().setName("End Osmium").setColor(Color.fromHex("0000ff")).build();
+end_osmium.registerParts(ore_parts);
+var end_osmiumEndOre = end_osmium.registerPart("ore").getData();
+end_osmiumEndOre.addDataValue("variants","minecraft:end_stone");
+end_osmiumEndOre.addDataValue("hardness","4");
+end_osmiumEndOre.addDataValue("resistance","9");
+end_osmiumEndOre.addDataValue("harvestLevel","2");
+end_osmiumEndOre.addDataValue("harvestTool","pickaxe");
+var end_osmiumEndPoor = end_osmium.registerPart("poor_ore").getData();
+end_osmiumEndPoor.addDataValue("variants","minecraft:end_stone");
+end_osmiumEndPoor.addDataValue("hardness","3");
+end_osmiumEndPoor.addDataValue("resistance","9");
+end_osmiumEndPoor.addDataValue("harvestLevel","2");
+end_osmiumEndPoor.addDataValue("harvestTool","pickaxe");
+var end_osmiumEndDense = end_osmium.registerPart("dense_ore").getData();
+end_osmiumEndDense.addDataValue("variants","minecraft:end_stone");
+end_osmiumEndDense.addDataValue("hardness","5");
+end_osmiumEndDense.addDataValue("resistance","9");
+end_osmiumEndDense.addDataValue("harvestLevel","2");
+end_osmiumEndDense.addDataValue("harvestTool","pickaxe");
+
+var bedrock_osmium = MaterialSystem.getMaterialBuilder().setName("Bedrock Osmium").setColor(Color.fromHex("0000ff")).build();
+var bedrock_osmiumBedrockDense = bedrock_osmium.registerPart("dense_ore").getData();
+bedrock_osmiumBedrockDense.addDataValue("variants","minecraft:bedrock");
+bedrock_osmiumBedrockDense.addDataValue("hardness","-1");
+bedrock_osmiumBedrockDense.addDataValue("resistance","3600000");
+bedrock_osmiumBedrockDense.addDataValue("harvestLevel","-1");
+bedrock_osmiumBedrockDense.addDataValue("harvestTool","none");
+
+
 

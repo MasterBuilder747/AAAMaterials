@@ -182,11 +182,13 @@ public class GOre extends AGMSolid<Ore> {
     public String genUBJson() {
         ArrayList<JsonObject> jsons = new ArrayList<>();
         for (Ore o : this.objects) {
-            JsonObject[] ins = o.genStoneVariants();
-            if (ins != null) {
-                jsons.add(ins[0]);
-                jsons.add(ins[1]);
-                jsons.add(ins[2]);
+            if (o.enableGen) {
+                JsonObject[] ins = o.genStoneVariants();
+                if (ins != null) {
+                    jsons.add(ins[0]);
+                    jsons.add(ins[1]);
+                    jsons.add(ins[2]);
+                }
             }
         }
         Builder b = new Builder(jsons.toArray(new JsonObject[0]));
