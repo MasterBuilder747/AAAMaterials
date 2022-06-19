@@ -11,8 +11,8 @@ import java.util.ArrayList;
 public class Fuel extends AMSolid {
     //furnace.setFuel(<minecraft:coal:1>, 800);
 
-    public Fuel(Material m, ArrayList<Machine> machines, MachineData data, ArrayList<MachineMatter> matters, ArrayList<Registry> registries) {
-        super(m, "Fuel", machines, data, matters, registries);
+    public Fuel(Material m, ArrayList<Machine> machines, MachineData data, ArrayList<MachineMatter> matters, ArrayList<Registry> registries, String[] toolTipExclusions) {
+        super(m, "Fuel", machines, data, matters, registries, toolTipExclusions);
     }
 
     @Override

@@ -15,8 +15,8 @@ public class Rubber extends AMalleable {
     //when melting a part:
     //get some back
     //get no material back
-    public Rubber(Material m, double meltingMultiplier, MLiquid liquid, ArrayList<Machine> machines, MachineData data, ArrayList<MachineMatter> matters, ArrayList<Registry> registries) {
-        super(m, "Rubber", machines, data, matters, registries, meltingMultiplier, liquid);
+    public Rubber(Material m, double meltingMultiplier, MLiquid liquid, ArrayList<Machine> machines, MachineData data, ArrayList<MachineMatter> matters, ArrayList<Registry> registries, String[] toolTipExclusions) {
+        super(m, "Rubber", machines, data, matters, registries, meltingMultiplier, liquid, toolTipExclusions);
     }
 
     @Override

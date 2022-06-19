@@ -21,7 +21,7 @@ public class GMSolid extends AGMaterialData<MSolid> {
     @Override
     protected void readMaterialParameters(Material m, String[] s) {
         //bool addDust, bool addFineDust, bool addPowder, String customName(for other states)[= for none]
-        MSolid sol = new MSolid(m, getMachineRegistry(), getDataRegistry(), getMatterRegistry(), getRegistries());
+        MSolid sol = new MSolid(m, getMachineRegistry(), getDataRegistry(), getMatterRegistry(), getRegistries(), null);
         sol.setPartGroups(genPartGroups(new String[]{"dust", "fine", "powder"}),
                 new boolean[]{Boolean.parseBoolean(s[0]), Boolean.parseBoolean(s[1]), Boolean.parseBoolean(s[2])});
         sol = updateRegistryKeys(sol);

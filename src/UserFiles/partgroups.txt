@@ -14,7 +14,7 @@ beam_parts: rail, beam
 conductive_parts: fine_wire, wire, dense_wire
 machine_parts: turbine_blade, saw_blade, cone, round, drill_head, hook, rotor
 special_plate_parts: foil, small_casing, casing, large_casing, small_gear, gear, large_gear
-coiled rods: small_spring, spring, large_spring, coil
+coiled_rod_parts: small_spring, spring, large_spring, coil
 string_parts: fiber, fibers, dense_fiber, dense_fibers
 blast_parts: hot_nugget, hot_morsel, hot_ingot, hot_solid_metal, hot_block
 wood_parts: short_stick, stick, long_stick, wood_plate

@@ -88,8 +88,8 @@ public class Ore extends AMSolid {
     BEACH;
      */
 
-    public Ore(Material m, boolean enableGen, ArrayList<Machine> machines, MachineData data, ArrayList<MachineMatter> matters, ArrayList<Registry> registries) {
-        super(m, "Ore", machines, data, matters, registries);
+    public Ore(Material m, boolean enableGen, ArrayList<Machine> machines, MachineData data, ArrayList<MachineMatter> matters, ArrayList<Registry> registries, String[] toolTipExclusions) {
+        super(m, "Ore", machines, data, matters, registries, toolTipExclusions);
         this.enableGen = enableGen;
     }
 

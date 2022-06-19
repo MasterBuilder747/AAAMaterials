@@ -12,8 +12,8 @@ public class Stone extends AMSolid {
     boolean isSedimentary; //does not have cobblestone registered for UB
     boolean noSlab; //only applied to Conglomerate...?
 
-    public Stone(Material m, boolean isSedimentary, boolean noSlab, ArrayList<Machine> machines, MachineData data, ArrayList<MachineMatter> matters, ArrayList<Registry> registries) {
-        super(m, "Stone", machines, data, matters, registries);
+    public Stone(Material m, boolean isSedimentary, boolean noSlab, ArrayList<Machine> machines, MachineData data, ArrayList<MachineMatter> matters, ArrayList<Registry> registries, String[] toolTipExclusions) {
+        super(m, "Stone", machines, data, matters, registries, toolTipExclusions);
         this.isSedimentary = isSedimentary;
         this.noSlab = noSlab;
     }

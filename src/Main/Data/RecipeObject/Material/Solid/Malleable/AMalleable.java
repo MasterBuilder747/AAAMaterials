@@ -16,8 +16,9 @@ public abstract class AMalleable extends AMSolid {
     MLiquid molten;
     //negative numbers indicate the value of this material, but it cannot be melted
 
-    public AMalleable(Material m, String type, ArrayList<Machine> machines, MachineData data, ArrayList<MachineMatter> matters, ArrayList<Registry> registries, double meltingMultiplier, MLiquid molten) {
-        super(m, type, machines, data, matters, registries);
+    public AMalleable(Material m, String type, ArrayList<Machine> machines, MachineData data, ArrayList<MachineMatter> matters, ArrayList<Registry> registries,
+                      double meltingMultiplier, MLiquid molten, String[] toolTipExclusions) {
+        super(m, type, machines, data, matters, registries, toolTipExclusions);
         this.meltingMultiplier = meltingMultiplier;
         this.molten = molten;
     }

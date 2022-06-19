@@ -11,8 +11,8 @@ import java.util.ArrayList;
 public class Dye extends AMSolid {
     String color;
 
-    public Dye(Material m, ArrayList<Machine> machines, MachineData data, ArrayList<MachineMatter> matters, ArrayList<Registry> registries) {
-        super(m, "Dye", machines, data, matters, registries);
+    public Dye(Material m, ArrayList<Machine> machines, MachineData data, ArrayList<MachineMatter> matters, ArrayList<Registry> registries, String[] toolTipExclusions) {
+        super(m, "Dye", machines, data, matters, registries, toolTipExclusions);
     }
 
     @Override

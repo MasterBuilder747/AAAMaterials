@@ -11,8 +11,8 @@ import java.util.ArrayList;
 
 public class MPlasma extends AMLiquid {
     public MPlasma(Material m, ArrayList<Machine> machine, MachineData data, ArrayList<MachineMatter> matters, ArrayList<Registry> registries,
-                   int density, int luminosity, int temperature, int viscosity, boolean vaporize) {
-        super(m, "mPlasma", machine, data, matters, registries);
+                   int density, int luminosity, int temperature, int viscosity, boolean vaporize, String[] toolTipExclusions) {
+        super(m, "mPlasma", machine, data, matters, registries, toolTipExclusions);
         this.l = new LPlasma(true, machine, data, matters, registries, m.NAME +"_plasma", m.LOCALNAME+" Plasma", m.color, density, luminosity, temperature, viscosity, vaporize);
     }
 

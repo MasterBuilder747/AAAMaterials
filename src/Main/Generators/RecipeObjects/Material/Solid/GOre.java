@@ -22,8 +22,6 @@ import Main.Util;
 import java.util.ArrayList;
 
 public class GOre extends AGMSolid<Ore> {
-
-
     public GOre(String filename, GMachine machine, GRegistry registry,
                 GLiquidRegistry liquids, GMachineData data, GMachineMatter matter, GMaterial material, GPartGroup partGroup, GMSolid solid, boolean isReg) {
         //    int params, String filename, GMachine machine, GRegistry registry, GMaterial material, GPartGroup partGroup, GMSolid solid,
@@ -63,7 +61,7 @@ public class GOre extends AGMSolid<Ore> {
         // int bedrockChunkChance
 
         //configure ore gen here
-        Ore o = new Ore(m, Boolean.parseBoolean(s[0]), getMachineRegistry(), getDataRegistry(), getMatterRegistry(), getRegistries());
+        Ore o = new Ore(m, Boolean.parseBoolean(s[0]), getMachineRegistry(), getDataRegistry(), getMatterRegistry(), getRegistries(), null);
         String[] blocks = new String[s.length-1]; //includes each ore variant
         System.arraycopy(s, 1, blocks, 0, blocks.length);
 //        if (!mol.is(name)) {
@@ -127,7 +125,7 @@ public class GOre extends AGMSolid<Ore> {
                     types.add(new OreType(block+"_"+m.NAME, type_name, b));
                 }
             }
-            oreVariants.add(new OreVariant(m, getMachineRegistry(), getDataRegistry(), getMatterRegistry(), getRegistries(), block, types.toArray(new OreType[0]), this.partGroup.getPart("ore")));
+            oreVariants.add(new OreVariant(m, getMachineRegistry(), getDataRegistry(), getMatterRegistry(), getRegistries(), block, types.toArray(new OreType[0]), this.partGroup.getPart("ore"), null));
 
             //handle block's oreGen
             if (o.enableGen) {

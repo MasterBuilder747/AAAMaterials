@@ -62,7 +62,7 @@ public class GStone extends AGMSolid<Stone> {
         */
         boolean isSedimentary = parseBoolean(s[1]);
         boolean noSlab = parseBoolean(s[2]);
-        Stone c = new Stone(m, isSedimentary, noSlab, getMachineRegistry(), getDataRegistry(), getMatterRegistry(), getRegistries());
+        Stone c = new Stone(m, isSedimentary, noSlab, getMachineRegistry(), getDataRegistry(), getMatterRegistry(), getRegistries(), null);
         c.setPartGroup(genPartGroup("stone"), parseBoolean(s[0]));
         ArrayList<Registry> registries = new ArrayList<>();
         if (!isSedimentary) {

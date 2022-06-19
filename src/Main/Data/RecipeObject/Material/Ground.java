@@ -11,8 +11,8 @@ import java.util.ArrayList;
 public class Ground extends AMaterialData {
     //just a block, maybe used in cobblestone process
 
-    public Ground(Material m, ArrayList<Machine> machines, MachineData data, ArrayList<MachineMatter> matters, ArrayList<Registry> registries) {
-        super(m, "Ground", machines, data, matters, registries);
+    public Ground(Material m, ArrayList<Machine> machines, MachineData data, ArrayList<MachineMatter> matters, ArrayList<Registry> registries, String[] toolTipExclusions) {
+        super(m, "Ground", machines, data, matters, registries, toolTipExclusions);
     }
 
     @Override

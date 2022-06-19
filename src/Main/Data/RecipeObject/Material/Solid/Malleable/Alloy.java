@@ -11,9 +11,8 @@ import java.util.ArrayList;
 
 //data > material > malleable > alloy
 public class Alloy extends AMalleable {
-
-    public Alloy(Material m, MLiquid liquid, ArrayList<Machine> machines, MachineData data, ArrayList<MachineMatter> matters, ArrayList<Registry> registries) {
-        super(m, "Alloy", machines, data, matters, registries, 1, liquid);
+    public Alloy(Material m, MLiquid liquid, ArrayList<Machine> machines, MachineData data, ArrayList<MachineMatter> matters, ArrayList<Registry> registries, String[] toolTipExclusions) {
+        super(m, "Alloy", machines, data, matters, registries, 1, liquid, toolTipExclusions);
     }
 
     @Override

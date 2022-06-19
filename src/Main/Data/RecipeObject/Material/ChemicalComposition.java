@@ -36,8 +36,8 @@ public class ChemicalComposition extends AMaterialData {
     //multiple materials can be assigned to one composition, but is this material the one that gets outputted in a separation/combination recipe?
 
     public ChemicalComposition(Material m, ArrayList<Machine> machines, MachineData data, ArrayList<MachineMatter> matters, ArrayList<Registry> registries,
-                               Composition c, boolean isDefault, boolean isMixing, boolean isCentrifuge, boolean isChemReact, boolean isElectrolyze) {
-        super(m, "ChemicalComposition", machines, data, matters, registries);
+                               Composition c, boolean isDefault, boolean isMixing, boolean isCentrifuge, boolean isChemReact, boolean isElectrolyze, String[] toolTipExclusions) {
+        super(m, "ChemicalComposition", machines, data, matters, registries, toolTipExclusions);
         this.isDefault = isDefault;
         this.composition = c;
         this.symbol = c.toString();

@@ -22,6 +22,6 @@ public class GMGas extends AGMLiquid<MGas> {
         //int density, int luminosity, int temperature, int viscosity, boolean vaporize
         objects.add(new MGas(m, getMachineRegistry(), getDataRegistry(), getMatterRegistry(), getRegistries(),
                 Integer.parseInt(s[0]), Integer.parseInt(s[1]), Integer.parseInt(s[2]), Integer.parseInt(s[3]),
-                Boolean.parseBoolean(s[4])));
+                Boolean.parseBoolean(s[4]), null));
     }
 }

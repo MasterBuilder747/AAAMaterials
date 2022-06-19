@@ -23,9 +23,16 @@ public class GMetal extends AGMalleable<Metal> {
     @Override
     protected void setMalleableParts(Material m, String[] s, MLiquid liquid, MSolid solid) {
         //addSmelt, addMachine, addBlast, addConductive
-        Metal metal = new Metal(m, liquid, getMachineRegistry(), getDataRegistry(), getMatterRegistry(), getRegistries());
-        metal.setPartGroups(this.genPartGroups(new String[]{"smelt", "machine", "blast", "conductive"}),
-                new boolean[]{Boolean.parseBoolean(s[0]), Boolean.parseBoolean(s[1]), Boolean.parseBoolean(s[2]), Boolean.parseBoolean(s[3])});
+        Metal metal = new Metal(m, liquid, getMachineRegistry(), getDataRegistry(), getMatterRegistry(), getRegistries(),
+                new String[]{
+                    "dust", "dustSmall", "dustTiny",
+                    "dustFine", "dustFineSmall", "dustFineTiny",
+                    "powder", "powderSmall", "powderTiny"
+                });
+        boolean smelt = Boolean.parseBoolean(s[0]);
+        metal.setPartGroups(this.genPartGroups(
+                new String[]{"scrap", "plate", "smelt", "rod", "beam", "conductive", "machine", "special_plate", "coiled_rod", "blast", "assembled"}),
+                new boolean[]{smelt, smelt, smelt, smelt, smelt, Boolean.parseBoolean(s[3]), Boolean.parseBoolean(s[1]), smelt, smelt, Boolean.parseBoolean(s[2]), smelt});
         metal.updateSolids(solid);
         metal = updateRegistryKeys(metal);
         metal = updateLiquids(metal);

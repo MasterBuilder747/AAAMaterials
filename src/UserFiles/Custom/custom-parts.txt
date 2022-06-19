@@ -14,7 +14,7 @@ rock, %s-Rock, rock, true, false, 0
 poor_rock, %s-Rock, rockPoor, false, false, 0
 dense_ore_rock, %s-Ore-Rock, rockOreDense, false, false, 0
 ore_rock, %s-Ore-Rock, rockOre, true, false, 0
-poor_ore_rock, %s-Ore-Rock, rockOrePoor, true, false, 0
+poor_ore_rock, %s-Ore-Rock, rockOrePoor, false, false, 0
 dense_raw_ore, Raw-%s-Ore, oreRawDense, false, true, 0
 raw_ore, Raw-%s-Ore, oreRaw, false, true, 0
 poor_raw_ore, Raw-%s-Ore, oreRawPoor, false, true, 0
@@ -30,9 +30,9 @@ poor_clump, Poor-%s-Clump, clumpPoor, false, false, 0
 dense_chunk, Dense-%s-Chunk, chunkDense, false, false, 0
 chunk, %s-Chunk, chunk, false, false, 0
 poor_chunk, Poor-%s-Chunk, chunkPoor, false, false, 0
-dense_shard, Dense-%s-Shard, shardDense, true, false, 0
+dense_shard, Dense-%s-Shard, shardDense, false, false, 0
 shard, %s-Shard, shard, true, false, 0
-poor_shard, Poor-%s-Shard, shardPoor, true, false, 0
+poor_shard, Poor-%s-Shard, shardPoor, false, false, 0
 crushed_ore, Crushed-%s-Ore, crushedOre, true, false, -144
 small_crushed_ore, Small-Crushed-%s-Ore, oreCrushedSmall, false, true, -36
 tiny_crushed_ore, Tiny-Crushed-%s-Ore, oreCrushedTiny, false, true, -16
@@ -60,7 +60,7 @@ crystal, %s-Crystal, crystal, true, false, -1
 gem, %s, gem, false, false, -1
 flawed_gem, Flawed-%s, gemFlawed, true, false, -05
 chipped_gem, Chipped-%s, gemChipped, true, false, -025
-piece, %s-Piece, piece, true, false, -0125
+piece, %s-Piece, piece, false, false, -0125
 petty_gem, Petty-%s, gemPetty, false, false, -00625
 lens, %s-Lens, lens, false, true, -5
 /plates:
@@ -72,8 +72,8 @@ small_curved_tough_plate, Small-Curved-Tough-%s-Plate, plateCurvedToughSmall, fa
 small_tough_plate, Small-Tough-%s-Plate, plateToughSmall, false, false, 144
 small_curved_plate, Small-Curved-%s-Plate, plateCurvedSmall, false, false, 36
 small_plate, Small-%s-Plate, plateSmall, false, false, 36
-small_curved_thin_plate, Small-Curved-%s-Plate, plateCurvedThinSmall, false, false, 18
-small_thin_plate, Small-%s-Plate, plateThinSmall, false, false, 18
+small_curved_thin_plate, Small-Curved-Thin-%s-Plate, plateCurvedThinSmall, false, false, 18
+small_thin_plate, Small-%s-Thin-Plate, plateThinSmall, false, false, 18
 curved_superdense_plate, Curved-Superdense-%s-Plate, plateCurvedSuperdense, false, false, 2304
 superdense_plate, Superdense-%s-Plate, plateSuperdense, false, false, 2304
 curved_dense_plate, Curved-Dense-%s-Plate, plateCurvedDense, false, false, 1296
@@ -82,8 +82,8 @@ curved_tough_plate, Curved-Tough-%s-Plate, plateCurvedTough, false, false, 576
 tough_plate, Tough-%s-Plate, plateTough, false, false, 576
 curved_plate, Curved-%s-Plate, plateCurved, false, false, 144
 plate, %s-Plate, plate, true, false, 144
-curved_thin_plate, Curved-%s-Plate, plateCurvedThin, false, false, 72
-thin_plate, %s-Plate, plateThin, false, false, 72
+curved_thin_plate, Curved-%s-Thin-Plate, plateCurvedThin, false, false, 72
+thin_plate, Thin-%s-Plate, plateThin, false, false, 72
 large_curved_superdense_plate, Large-Curved-Superdense-%s-Plate, plateCurvedSuperdenseLarge, false, false, 4608
 large_superdense_plate, Large-Superdense-%s-Plate, plateSuperdenseLarge, false, false, 4608
 large_curved_dense_plate, Large-Curved-Dense-%s-Plate, plateCurvedDenseLarge, false, false, 2592
@@ -92,8 +92,8 @@ large_curved_tough_plate, Large-Curved-Tough-%s-Plate, plateCurvedToughLarge, fa
 large_tough_plate, Large-Tough-%s-Plate, plateToughLarge, false, false, 1152
 large_curved_plate, Large-Curved-%s-Plate, plateCurvedLarge, false, false, 288
 large_plate, Large-%s-Plate, plateLarge, false, false, 288
-large_curved_thin_plate, Large-Curved-%s-Plate, plateCurvedThinLarge, false, false, 144
-large_thin_plate, Large-%s-Plate, plateThinLarge, false, false, 144
+large_curved_thin_plate, Large-Curved-%s-Thin-Plate, plateCurvedThinLarge, false, false, 144
+large_thin_plate, Large-%s-Thin-Plate, plateThinLarge, false, false, 144
 /dusts
 tiny_dust, Tiny-%s-Dust, dustTiny, true, false, 16
 tiny_fine_dust, Tiny-Fine-%s-Dust, dustFineTiny, false, false, 16

@@ -13,8 +13,8 @@ import Main.Data.RecipeObject.RegistryData;
 import java.util.ArrayList;
 
 public abstract class AMSolid extends AMaterialData {
-    public AMSolid(Material m, String type, ArrayList<Machine> machines, MachineData data, ArrayList<MachineMatter> matters, ArrayList<Registry> registries) {
-        super(m, type, machines, data, matters, registries);
+    public AMSolid(Material m, String type, ArrayList<Machine> machines, MachineData data, ArrayList<MachineMatter> matters, ArrayList<Registry> registries, String[] toolTipExclusions) {
+        super(m, type, machines, data, matters, registries, toolTipExclusions);
     }
 
     public void updateSolids(MSolid sol) {

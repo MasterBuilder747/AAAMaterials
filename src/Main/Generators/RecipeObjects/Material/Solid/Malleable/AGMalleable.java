@@ -25,7 +25,6 @@ public abstract class AGMalleable <M extends AMalleable> extends AGMSolid<M> {
         super(params, filename, machine, registry, liquids, data, matter, material, partGroup, solid, isDust, isFineDust, isPowder, "Malleable", isReg);
         this.liquid = liquid;
     }
-
     @Override
     protected void readSolidParameters(Material m, String[] s, MSolid solid) {
         //the second parameter always adds molten liquid

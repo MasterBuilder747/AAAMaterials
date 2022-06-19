@@ -11,8 +11,8 @@ import java.util.ArrayList;
 public class Wood extends AMSolid {
     boolean isVanilla; //for quark integration
 
-    public Wood(Material m, boolean isVanilla, ArrayList<Machine> machines, MachineData data, ArrayList<MachineMatter> matters, ArrayList<Registry> registries) {
-        super(m, "Wood", machines, data, matters, registries);
+    public Wood(Material m, boolean isVanilla, ArrayList<Machine> machines, MachineData data, ArrayList<MachineMatter> matters, ArrayList<Registry> registries, String[] toolTipExclusions) {
+        super(m, "Wood", machines, data, matters, registries, toolTipExclusions);
         this.isVanilla = isVanilla;
     }
 

@@ -70,7 +70,7 @@ public class GChemicalComposition extends AGMaterialData<ChemicalComposition> {
         assert c != null;
         //material, Composition[String], boolean isDefaultComposition, boolean isMixing, boolean isCentrifuge, boolean isChemReact, boolean isElectrolyze
         ChemicalComposition comp = new ChemicalComposition(m, getMachineRegistry(), getDataRegistry(), getMatterRegistry(), getRegistries(),
-                c, parseBoolean(s[1]), parseBoolean(s[2]), parseBoolean(s[3]), parseBoolean(s[4]), parseBoolean(s[5]));
+                c, parseBoolean(s[1]), parseBoolean(s[2]), parseBoolean(s[3]), parseBoolean(s[4]), parseBoolean(s[5]), null);
         m.addComposition(comp);
         objects.add(comp);
         //this.material.replace(m.NAME, m); //apparently this isnt needed, somehow GMaterial gets updated (yeah java is weird)

@@ -12,8 +12,8 @@ import java.util.ArrayList;
 public class MSolid extends AMaterialData {
     String altName;
 
-    public MSolid(Material m, ArrayList<Machine> machines, MachineData data, ArrayList<MachineMatter> matters, ArrayList<Registry> registries) {
-        super(m, "MSolid", machines, data, matters, registries);
+    public MSolid(Material m, ArrayList<Machine> machines, MachineData data, ArrayList<MachineMatter> matters, ArrayList<Registry> registries, String[] toolTipExclusions) {
+        super(m, "MSolid", machines, data, matters, registries, toolTipExclusions);
     }
     public void addAltName(String altName) {
         this.altName = altName;

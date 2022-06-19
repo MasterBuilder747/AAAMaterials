@@ -23,7 +23,7 @@ public class GGem extends AGMSolid<Gem>{
 
     @Override
     protected void readSolidParameters(Material m, String[] s, MSolid solid) {
-        Gem g = new Gem(m, getMachineRegistry(), getDataRegistry(), getMatterRegistry(), getRegistries());
+        Gem g = new Gem(m, getMachineRegistry(), getDataRegistry(), getMatterRegistry(), getRegistries(), null);
         g.setPartGroupTrue(genPartGroup("gem"));
         objects.add(g);
     }

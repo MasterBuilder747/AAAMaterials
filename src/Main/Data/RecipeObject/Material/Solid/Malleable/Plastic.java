@@ -16,8 +16,8 @@ public class Plastic extends AMalleable {
     //get some back
     //get no material back
     public Plastic(Material m, double meltingMultiplier, MLiquid liquid, ArrayList<Machine> machines,
-                   MachineData data, ArrayList<MachineMatter> matters, ArrayList<Registry> registries) {
-        super(m, "Plastic", machines, data, matters, registries, meltingMultiplier, liquid);
+                   MachineData data, ArrayList<MachineMatter> matters, ArrayList<Registry> registries, String[] toolTipExclusions) {
+        super(m, "Plastic", machines, data, matters, registries, meltingMultiplier, liquid, toolTipExclusions);
     }
 
     @Override

@@ -12,8 +12,8 @@ public class Natural extends AMaterialData {
 
     //dirt, podzol, other vegetation, other things not involved in the cobblestone process
 
-    public Natural(Material m, ArrayList<Machine> machines, MachineData data, ArrayList<MachineMatter> matters, ArrayList<Registry> registries) {
-        super(m, "Natural", machines, data, matters, registries);
+    public Natural(Material m, ArrayList<Machine> machines, MachineData data, ArrayList<MachineMatter> matters, ArrayList<Registry> registries, String[] toolTipExclusions) {
+        super(m, "Natural", machines, data, matters, registries, toolTipExclusions);
     }
 
     @Override

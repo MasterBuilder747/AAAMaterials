@@ -9,6 +9,7 @@ import Main.Data.RecipeObject.MaterialRecipe.*;
 import Main.Util;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 
 public abstract class ARecipeObject extends AData {
     protected ArrayList<RegistryData> datas; //the array of registries that are used for adding recipes and other things
@@ -37,6 +38,14 @@ public abstract class ARecipeObject extends AData {
             }
         }
         throw new IllegalArgumentException("Unknown machine " + s + " in the machine registry");
+    }
+
+    protected void printDatas() {
+        System.out.print("[");
+        for (RegistryData r : this.datas) {
+            System.out.print(r.r.NAME+", ");
+        }
+        System.out.println("]");
     }
 
     protected String addRecipe(int num, String recipeType, String input, String lInput, String output, String lOutput,
@@ -233,6 +242,23 @@ public abstract class ARecipeObject extends AData {
 
     public RegistryData[] getRegistries() {
         return this.datas.toArray(new RegistryData[0]);
+    }
+    public RegistryData[] getRegistries(String[] exclusions) {
+        ArrayList<RegistryData> newDatas = this.datas;
+        //printDatas();
+        for (int k = 0; k < newDatas.size(); k++) {
+            RegistryData r = newDatas.get(k);
+            //System.out.println(r.name);
+            for (String e : exclusions) {
+                if (r.name.equals(e)) {
+                    newDatas.remove(r);
+                    System.out.println(this.NAME + ": " + r.name); //enable this to show exclusions in log
+                    k--;
+                    break;
+                }
+            }
+        }
+        return newDatas.toArray(new RegistryData[0]);
     }
     protected RegistryData getData(String key) {
         for (RegistryData m : this.datas) {

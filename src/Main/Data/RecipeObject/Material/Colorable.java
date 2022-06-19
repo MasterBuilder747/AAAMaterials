@@ -9,8 +9,8 @@ import Main.Data.Material;
 import java.util.ArrayList;
 
 public class Colorable extends AMaterialData {
-    public Colorable(Material m, ArrayList<Machine> machines, MachineData data, ArrayList<MachineMatter> matters, ArrayList<Registry> registries) {
-        super(m, "Colorable", machines, data, matters, registries);
+    public Colorable(Material m, ArrayList<Machine> machines, MachineData data, ArrayList<MachineMatter> matters, ArrayList<Registry> registries, String[] toolTipExclusions) {
+        super(m, "Colorable", machines, data, matters, registries, toolTipExclusions);
     }
 
     @Override

@@ -18,11 +18,13 @@ public abstract class AMaterialData extends ARecipeObject {
     protected PartGroup[] partGroups;
     protected boolean[] enablePartGroups;
     public ArrayList<String> localizedPartNames;
+    String[] toolTipExclusions; //an array of part oredicts that are excluded from being added tooltips (used to prevent duplications)
 
-    public AMaterialData(Material m, String type, ArrayList<Machine> machines, MachineData data, ArrayList<MachineMatter> matters, ArrayList<Registry> registries) {
+    public AMaterialData(Material m, String type, ArrayList<Machine> machines, MachineData data, ArrayList<MachineMatter> matters, ArrayList<Registry> registries, String[] toolTipExclusions) {
         super(m.NAME, type, machines, data, matters, registries);
         this.m = m;
         this.localizedPartNames = new ArrayList<>();
+        this.toolTipExclusions = toolTipExclusions;
     }
 
     @Override
@@ -30,7 +32,11 @@ public abstract class AMaterialData extends ARecipeObject {
         StringBuilder sb = new StringBuilder();
         ChemicalComposition comp = m.getComp();
         if (comp != null) {
-            sb.append(comp.addTooltips(this.getRegistries()));
+            if (this.toolTipExclusions == null) {
+                sb.append(comp.addTooltips(this.getRegistries()));
+            } else {
+                sb.append(comp.addTooltips(this.getRegistries(this.toolTipExclusions)));
+            }
         }
         String r = buildSpecificRecipe();
         if (r != null) {
