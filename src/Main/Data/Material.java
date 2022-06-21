@@ -2,6 +2,7 @@ package Main.Data;
 
 import Main.Data.RecipeObject.Localized.LFood;
 import Main.Data.RecipeObject.Material.*;
+import Main.Data.RecipeObject.Material.Composition.AChemicalComposition;
 import Main.Data.RecipeObject.Material.Liquid.*;
 import Main.Data.MachineResource.MachineData;
 import Main.Data.MachineResource.MachineMatter;
@@ -21,7 +22,7 @@ public class Material extends AData {
 
     //Material Part data, initializes to null if not registered, otherwise when building,
     //these will be read and used for various material parts and recipe generation:
-    ChemicalComposition comp; //Chemical tooltip, breaking and forming composition recipes, if it has one
+    AChemicalComposition comp; //Chemical tooltip, breaking and forming composition recipes, if it has one
 
     //states
     MSolid MSolid;
@@ -67,11 +68,11 @@ public class Material extends AData {
         this.state = state;
     }
 
-    public void addComposition(ChemicalComposition comp) {
+    public void addComposition(AChemicalComposition comp) {
         this.comp = comp;
     }
 
-    public ChemicalComposition getComp() {
+    public AChemicalComposition getComp() {
         return this.comp;
     }
 

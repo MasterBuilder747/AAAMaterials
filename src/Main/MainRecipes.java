@@ -12,7 +12,9 @@ import Main.Generators.RecipeObjects.Localized.Liquid.GGas;
 import Main.Generators.RecipeObjects.Localized.Liquid.GLiquid;
 import Main.Generators.RecipeObjects.Localized.Liquid.GMolten;
 import Main.Generators.RecipeObjects.Localized.Liquid.GPlasma;
-import Main.Generators.RecipeObjects.Material.GChemicalComposition;
+import Main.Generators.RecipeObjects.Material.Composition.AGChemicalComposition;
+import Main.Generators.RecipeObjects.Material.Composition.GCompoundComposition;
+import Main.Generators.RecipeObjects.Material.Composition.GMoleculeComposition;
 import Main.Generators.RecipeObjects.Material.GMSolid;
 import Main.Generators.RecipeObjects.Material.Liquid.GMGas;
 import Main.Generators.RecipeObjects.Material.Liquid.GMLiquid;
@@ -26,11 +28,7 @@ import Main.Generators.RecipeObjects.Material.Solid.Malleable.GMetal;
 import Main.Generators.RecipeObjects.Material.Solid.Malleable.GPlastic;
 import Main.Generators.RecipeObjects.Material.Solid.Malleable.GRubber;
 
-import java.io.BufferedReader;
-import java.io.BufferedWriter;
-import java.io.FileWriter;
 import java.io.IOException;
-import java.util.ArrayList;
 
 public class MainRecipes {
     //files to be generated:
@@ -104,8 +102,10 @@ public class MainRecipes {
         GMaterial material = new GMaterial("`material");
         sb.append(material.registerRecipes());
         //material compositions
-        GChemicalComposition composition = new GChemicalComposition("composition", element, material, registry, liquids, data, matter, machine, partGroup, REG);
-        sb.append(composition.registerRecipes());
+        GMoleculeComposition molecule = new GMoleculeComposition("molecule", element, material, registry, liquids, data, matter, machine, partGroup, REG);
+        sb.append(molecule.registerRecipes());
+        GCompoundComposition compound = new GCompoundComposition("compound", element, material, registry, liquids, data, matter, machine, partGroup, REG);
+        sb.append(compound.registerRecipes());
 
         //4. material states
         GMSolid mSolid = new GMSolid("solid", registry, liquids, data, matter, machine, material, partGroup, REG);

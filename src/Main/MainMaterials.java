@@ -12,7 +12,9 @@ import Main.Generators.RecipeObjects.Localized.Liquid.GPlasma;
 import Main.Generators.MachineResource.GMachine;
 import Main.Generators.MachineResource.GMachineData;
 import Main.Generators.MachineResource.GMachineMatter;
-import Main.Generators.RecipeObjects.Material.GChemicalComposition;
+import Main.Generators.RecipeObjects.Material.Composition.AGChemicalComposition;
+import Main.Generators.RecipeObjects.Material.Composition.GCompoundComposition;
+import Main.Generators.RecipeObjects.Material.Composition.GMoleculeComposition;
 import Main.Generators.RecipeObjects.Material.GMSolid;
 import Main.Generators.RecipeObjects.Material.Liquid.GMGas;
 import Main.Generators.RecipeObjects.Material.Liquid.GMLiquid;
@@ -114,9 +116,11 @@ public class MainMaterials {
         //3. the materials
         GMaterial material = new GMaterial("`material");
         bw.write(material.registerMaterials());
-        //material compositions
-        GChemicalComposition composition = new GChemicalComposition("composition", element, material, registry, liquids, data, matter, machine, partGroup, REG);
-        bw.write(composition.registerMaterials());
+        //material compositions: not really used in materials, only recipes
+        GMoleculeComposition molecule = new GMoleculeComposition("molecule", element, material, registry, liquids, data, matter, machine, partGroup, REG);
+        bw.write(molecule.registerMaterials());
+        GCompoundComposition compound = new GCompoundComposition("compound", element, material, registry, liquids, data, matter, machine, partGroup, REG);
+        bw.write(compound.registerMaterials());
 
         //4. material states
         GMSolid mSolid = new GMSolid("solid", registry, liquids, data, matter, machine, material, partGroup, REG);
