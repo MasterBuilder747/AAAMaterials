@@ -15,6 +15,8 @@
       <excludeFolder url="file://$MODULE_DIR$/src/UserFiles/Custom" />
       <excludeFolder url="file://$MODULE_DIR$/src/UserFiles/MachineResource" />
       <excludeFolder url="file://$MODULE_DIR$/src/UserFiles/Registry" />
+      <excludeFolder url="file://$MODULE_DIR$/src/Deployment" />
+      <excludeFolder url="file://$MODULE_DIR$/src/UserFiles" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
