@@ -1,6 +1,8 @@
 package Main.Data.RecipeObject.Material.Composition;
 
 import Main.Composition;
+import Main.Compositions;
+import Main.Data.Element;
 import Main.Data.GameData.Registry;
 import Main.Data.MachineResource.Machine.Machine;
 import Main.Data.MachineResource.MachineData;
@@ -23,18 +25,29 @@ import java.util.ArrayList;
 //-s solid, -l liquid -g gas, -p plasma, etc... (letter not needed (but can be shown) for default state of material)
 public abstract class AChemicalComposition extends AMaterialData {
     Composition composition; //a string of defined element(s) and their count(s) in a string with special syntax
+    Compositions comps;
     boolean isDefault;  //is this the default composition that is associated with this material?
                         //If so, then when a chemical composition is specified, it returns this material
     //multiple materials can be assigned to one composition, but is this material the one that gets outputted in a separation/combination recipe?
     String symbol; //the chemical symbol, shown as tooltip for all parts
     //this is loaded after all parts have been added so that the tooltip can
+    boolean isElement; //for handling getting the element rather than the composition
 
     public AChemicalComposition(Material m, String type, ArrayList<Machine> machines, MachineData data, ArrayList<MachineMatter> matters, ArrayList<Registry> registries, String[] toolTipExclusions,
-                                Composition c, boolean isDefault) {
+                                Composition c, boolean isDefault, boolean isElement) {
         super(m, type, machines, data, matters, registries, toolTipExclusions);
         this.composition = c;
         this.isDefault = isDefault;
         this.symbol = c.toString();
+        this.isElement = isElement;
+    }
+    public AChemicalComposition(Material m, String type, ArrayList<Machine> machines, MachineData data, ArrayList<MachineMatter> matters, ArrayList<Registry> registries, String[] toolTipExclusions,
+                                Compositions c, boolean isDefault, boolean isElement) {
+        super(m, type, machines, data, matters, registries, toolTipExclusions);
+        this.comps = c;
+        this.isDefault = isDefault;
+        this.symbol = c.toString();
+        this.isElement = isElement;
     }
 
     public String addTooltips(RegistryData[] registries) {
@@ -44,12 +57,26 @@ public abstract class AChemicalComposition extends AMaterialData {
     }
 
     public Composition getComp() {
-        return this.composition;
+        if (this.composition != null) {
+            return this.composition;
+        } else if (this.comps != null) {
+            return this.comps.getComp();
+        } else {
+            return null;
+        }
+    }
+
+    public Element getE() {
+        if (this.isElement) {
+            return this.composition.getE();
+        } else {
+            throw new IllegalArgumentException("No element for composition " + this);
+        }
     }
 
     @Override
     public void print() {
-        System.out.println(this.symbol);
+        System.out.println(this.m.NAME + ": " + this.symbol);
     }
 
     @Override

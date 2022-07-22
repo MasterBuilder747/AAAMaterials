@@ -119,8 +119,9 @@ public class MainMaterials {
         //material compositions: not really used in materials, only recipes
         GMoleculeComposition molecule = new GMoleculeComposition("molecule", element, material, registry, liquids, data, matter, machine, partGroup, REG);
         bw.write(molecule.registerMaterials());
-        GCompoundComposition compound = new GCompoundComposition("compound", element, material, registry, liquids, data, matter, machine, partGroup, REG);
+        GCompoundComposition compound = new GCompoundComposition("compound", material, registry, liquids, data, matter, machine, partGroup, REG, molecule);
         bw.write(compound.registerMaterials());
+        compound.print();
 
         //4. material states
         GMSolid mSolid = new GMSolid("solid", registry, liquids, data, matter, machine, material, partGroup, REG);

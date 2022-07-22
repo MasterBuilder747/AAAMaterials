@@ -104,7 +104,7 @@ public class MainRecipes {
         //material compositions
         GMoleculeComposition molecule = new GMoleculeComposition("molecule", element, material, registry, liquids, data, matter, machine, partGroup, REG);
         sb.append(molecule.registerRecipes());
-        GCompoundComposition compound = new GCompoundComposition("compound", element, material, registry, liquids, data, matter, machine, partGroup, REG);
+        GCompoundComposition compound = new GCompoundComposition("compound", material, registry, liquids, data, matter, machine, partGroup, REG, molecule);
         sb.append(compound.registerRecipes());
 
         //4. material states

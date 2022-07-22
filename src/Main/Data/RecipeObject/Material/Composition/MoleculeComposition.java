@@ -12,7 +12,7 @@ import java.util.ArrayList;
 public class MoleculeComposition extends AChemicalComposition {
     public MoleculeComposition(Material m, ArrayList<Machine> machines, MachineData data, ArrayList<MachineMatter> matters, ArrayList<Registry> registries, String[] toolTipExclusions,
                                Composition c, boolean isDefault) {
-        super(m, "MoleculeComposition", machines, data, matters, registries, toolTipExclusions, c, isDefault);
+        super(m, "MoleculeComposition", machines, data, matters, registries, toolTipExclusions, c, isDefault, true);
     }
 
     @Override

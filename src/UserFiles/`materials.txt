@@ -46,20 +46,20 @@ charcoal, Charcoal, 1c1616, solid
 wool, Wool, f2f4f7, solid
 /elements:
 /gas
-/hydrogen, hydrogen, ffadc1, gas
-/nitrogen, nitrogen, 629df0, gas
-/oxygen, oxygen, 8db1e3, gas
-/fluorine, fluorine, d7d975, gas
-/chlorine, chlorine, d4e0a6, gas
-/helium, helium, e84a4a, gas
-/neon, neon, ff3526, gas
-/argon, argon, eb9de7, gas
-/krypton, krypton, 81d2f7, gas
-/xenon, xenon, c8dae3, gas
-/radon, radon, ff2bf4, gas
+hydrogen, hydrogen, ffadc1, gas
+nitrogen, nitrogen, 629df0, gas
+oxygen, oxygen, 8db1e3, gas
+fluorine, fluorine, d7d975, gas
+chlorine, chlorine, d4e0a6, gas
+helium, helium, e84a4a, gas
+neon, neon, ff3526, gas
+argon, argon, eb9de7, gas
+krypton, krypton, 81d2f7, gas
+xenon, xenon, c8dae3, gas
+radon, radon, ff2bf4, gas
 /liquid:
-/bromine, bromine, ab2507, liquid
-/mercury, mercury, 8c8280, liquid
+bromine, bromine, ab2507, liquid
+mercury, mercury, 8c8280, liquid
 /ores:
 bauxite, Bauxite, ff9b79, solid
 galena, Galena, af78b6, solid

@@ -1,0 +1,19 @@
+//material, ElementComposition[String] {Must be a singular element, amount optional}, boolean isDefaultComposition, boolean isDiatomic
+osmium, Os, true, false
+iridium, Ir, true, false
+zinc, Zn, true, false
+tin, Sn, true, false
+copper, Cu, true, false
+aluminum, Al, true, false
+//C
+carbon, C, true, false
+/graphite, C, false, false
+diamond, C, false, false
+//diatomics:
+hydrogen, H, true, true
+nitrogen, N, true, true
+fluorine, F, true, true
+oxygen, O, true, true
+iodine, I, true, true
+chlorine, Cl, true, true
+bromine, Br, true, true

@@ -19,9 +19,9 @@ public class comptTest {
     public static void main(String[] args) throws IOException {
         element.registerMaterials();
 
-        System.out.println(createMoleculeComp("Fe"));
+        //System.out.println(createMoleculeComp("Fe"));
     }
-
+/*
     private static Composition createMoleculeComp(String s) throws IllegalArgumentException {
         ArrayList<Composition> comps = new ArrayList<>();
         //symbol
@@ -126,4 +126,6 @@ public class comptTest {
         }
         return out;
     }
+
+ */
 }

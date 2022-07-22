@@ -18,6 +18,23 @@ public class Util {
         return s.substring(0, 1).toUpperCase(Locale.ROOT) + s.substring(1);
     }
 
+    public static String subSymbolString(String s, char c1, char c2, int i) {
+        char[] ss = s.toCharArray();
+        int i1 = -1;
+        int i2 = -1;
+        for (; i < ss.length; i++) {
+            if (ss[i] == c1) {
+                i1 = i;
+            }
+            if (ss[i] == c2 && i1 != -1) {
+                i2 = i;
+                break;
+            }
+        }
+        if (i1 == -1 || i2 == -1) return null;
+        return s.substring(i1, i2+1);
+    }
+
     public static void splitFiles(String code, String header, String initialCode, String filePath) throws IOException {
         //Split code into multiple files
         //recipes[N].zs

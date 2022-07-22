@@ -34,6 +34,9 @@ fluid.cotc_pos_black_matter=Positive Black Matter
 fluid.cotc_neg_black_matter=Negative Black Matter
 
 tile.contenttweaker.mica.name=Mica
+tile.contenttweaker.fertile_soil.name=Fertile Soil
+tile.contenttweaker.volcanic_soil.name=Volcanic Soil
+tile.contenttweaker.rocky_snow.name=Rocky Snow
 
 item.contenttweaker.infi_single.name=Infinity Singularity
 
@@ -240,7 +243,7 @@ fluid.cotm_osmium_molten=Molten Osmium
 fluid.cotm_iridium_molten=Molten Iridium
 fluid.cotm_platinum_molten=Molten Platinum
 fluid.cotm_gold_molten=Molten Gold
-fluid.cotm_mercury_liquid=Liquid Mercury
+fluid.cotm_mercury_liquid=Liquid mercury
 fluid.cotm_thallium_molten=Molten Thallium
 fluid.cotm_lead_molten=Molten Lead
 fluid.cotm_bismuth_molten=Molten Bismuth

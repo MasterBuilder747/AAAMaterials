@@ -50,6 +50,9 @@ genPlasma("cotc_neg_black_matter", "000000", 1000, true, 15, 15000, 10000, false
 
 # -custom-blocks
 genBlock("mica", <blockMaterial:rock>, 5, 6, "pickaxe", 1);
+genBlock("fertile_soil", <blockMaterial:ground>, 1, 1, "shovel", 1);
+genBlock("volcanic_soil", <blockMaterial:ground>, 2, 1, "shovel", 3);
+genBlock("rocky_snow", <blockMaterial:ground>, 1, 1, "shovel", 1);
 
 # -custom-items
 genItem("infi_single");
@@ -255,6 +258,19 @@ var coal = MaterialSystem.getMaterialBuilder().setName("Coal").setColor(Color.fr
 var lignite = MaterialSystem.getMaterialBuilder().setName("Lignite").setColor(Color.fromHex("292626")).build();
 var charcoal = MaterialSystem.getMaterialBuilder().setName("Charcoal").setColor(Color.fromHex("1c1616")).build();
 var wool = MaterialSystem.getMaterialBuilder().setName("Wool").setColor(Color.fromHex("f2f4f7")).build();
+var hydrogen = MaterialSystem.getMaterialBuilder().setName("hydrogen").setColor(Color.fromHex("ffadc1")).build();
+var nitrogen = MaterialSystem.getMaterialBuilder().setName("nitrogen").setColor(Color.fromHex("629df0")).build();
+var oxygen = MaterialSystem.getMaterialBuilder().setName("oxygen").setColor(Color.fromHex("8db1e3")).build();
+var fluorine = MaterialSystem.getMaterialBuilder().setName("fluorine").setColor(Color.fromHex("d7d975")).build();
+var chlorine = MaterialSystem.getMaterialBuilder().setName("chlorine").setColor(Color.fromHex("d4e0a6")).build();
+var helium = MaterialSystem.getMaterialBuilder().setName("helium").setColor(Color.fromHex("e84a4a")).build();
+var neon = MaterialSystem.getMaterialBuilder().setName("neon").setColor(Color.fromHex("ff3526")).build();
+var argon = MaterialSystem.getMaterialBuilder().setName("argon").setColor(Color.fromHex("eb9de7")).build();
+var krypton = MaterialSystem.getMaterialBuilder().setName("krypton").setColor(Color.fromHex("81d2f7")).build();
+var xenon = MaterialSystem.getMaterialBuilder().setName("xenon").setColor(Color.fromHex("c8dae3")).build();
+var radon = MaterialSystem.getMaterialBuilder().setName("radon").setColor(Color.fromHex("ff2bf4")).build();
+var bromine = MaterialSystem.getMaterialBuilder().setName("bromine").setColor(Color.fromHex("ab2507")).build();
+var mercury = MaterialSystem.getMaterialBuilder().setName("mercury").setColor(Color.fromHex("8c8280")).build();
 var bauxite = MaterialSystem.getMaterialBuilder().setName("Bauxite").setColor(Color.fromHex("ff9b79")).build();
 var galena = MaterialSystem.getMaterialBuilder().setName("Galena").setColor(Color.fromHex("af78b6")).build();
 var polyethylene = MaterialSystem.getMaterialBuilder().setName("Polyethylene").setColor(Color.fromHex("a8a59d")).build();
@@ -811,7 +827,7 @@ genMolten("cotm_osmium_molten", "0000ff", 6000, false, 1, 1000, 4000, false);
 genMolten("cotm_iridium_molten", "edfffd", 6000, false, 1, 1000, 4000, false);
 genMolten("cotm_platinum_molten", "ced7db", 6000, false, 1, 1000, 4000, false);
 genMolten("cotm_gold_molten", "ffd95c", 6000, false, 1, 1000, 4000, false);
-genLiquid("cotm_mercury_liquid", "ff5c5c", 6000, false, 1, 1000, 4000, false);
+genLiquid("cotm_mercury_liquid", "8c8280", 6000, false, 1, 1000, 4000, false);
 genMolten("cotm_thallium_molten", "c6d7f2", 6000, false, 1, 1000, 4000, false);
 genMolten("cotm_lead_molten", "9771ab", 6000, false, 1, 1000, 4000, false);
 genMolten("cotm_bismuth_molten", "54946e", 6000, false, 1, 1000, 4000, false);
