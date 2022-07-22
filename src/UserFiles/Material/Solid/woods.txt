@@ -1,8 +1,0 @@
-/boolean isVanilla
-/vanilla
-oak, true
-birch, true
-spruce, true
-jungle, true
-acacia, true
-dark_oak, true
