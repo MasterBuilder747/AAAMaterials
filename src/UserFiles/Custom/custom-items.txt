@@ -1,2 +1,0 @@
-/name, localizedName
-infi_single, Infinity-Singularity
