@@ -83,7 +83,7 @@ public class MainMaterials {
                 """);
 
         //LOAD ORDER for .zs:
-        //0. required machine resources for machine recipes
+        //1. required machine resources for machine recipes
         GMachine machine = new GMachine("machine", liquids);
         machine.registerMaterials(); //this doesn't write anything, but we will use this data (a lot)
         GMachineData data = new GMachineData("data");
@@ -91,7 +91,7 @@ public class MainMaterials {
         GMachineMatter matter = new GMachineMatter("matter");
         bw.write(matter.registerMaterials());
 
-        //1. custom content not using the material system
+        //2. custom content not using the material system
         GBlock block = new GBlock("block", machine, registry, liquids, data, matter, REG);
         bw.write(block.registerMaterials());
         GItem item = new GItem("item", machine, registry, liquids, data, matter, REG);
@@ -105,7 +105,7 @@ public class MainMaterials {
         GPlasma plasma = new GPlasma("plasma", machine, registry, liquids, data, matter, REG);
         bw.write(plasma.registerMaterials());
 
-        //2. any established content needed for the material system
+        //3. any established content needed for the material system
         GPart part = new GPart("part", machine, registry, liquids, data, matter, REG); //this is localized
         bw.write(part.registerMaterials());
         GPartGroup partGroup = new GPartGroup("partgroup", part);
@@ -113,17 +113,16 @@ public class MainMaterials {
         GElement element = new GElement("element");
         bw.write(element.registerMaterials());
 
-        //3. the materials
+        //4. the materials
         GMaterial material = new GMaterial("`material");
         bw.write(material.registerMaterials());
-        //material compositions: not really used in materials, only recipes
+        //material compositions
         GMoleculeComposition molecule = new GMoleculeComposition("molecule", element, material, registry, liquids, data, matter, machine, partGroup, REG);
         bw.write(molecule.registerMaterials());
         GCompoundComposition compound = new GCompoundComposition("compound", material, registry, liquids, data, matter, machine, partGroup, REG, molecule);
         bw.write(compound.registerMaterials());
-        compound.print();
 
-        //4. material states
+        //5. material states
         GMSolid mSolid = new GMSolid("solid", registry, liquids, data, matter, machine, material, partGroup, REG);
         bw.write(mSolid.registerMaterials());
         GMLiquid mLiquid = new GMLiquid("liquid", registry, liquids, data, matter, machine, material, partGroup, REG);
@@ -132,13 +131,6 @@ public class MainMaterials {
         bw.write(mGas.registerMaterials());
         GMPlasma mPlasma = new GMPlasma("plasma", registry, liquids, data, matter, machine, material, partGroup, REG);
         bw.write(mPlasma.registerMaterials());
-
-        //5. material compositions, material parts must be added after this!!!
-        //GComposition
-        //        CMolecule molecule = new CMolecule("moleculeComposition", element);
-        //        bw.write(molecule.register());
-        //        GCompound compound = new GCompound("compoundComposition", element);
-        //        bw.write(compound.register());
 
         //6. all other material data (unless there are some other requirements later)
         //naturals
@@ -166,7 +158,6 @@ public class MainMaterials {
 
         //8. finish
         bw.close();
-
 
         //LOCALIZATION
         //CoT .lang file

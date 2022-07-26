@@ -57,14 +57,6 @@ public abstract class AGMaterialData<M extends AMaterialData> extends AGRecipeOb
         return this.partGroup.getPart(partGroupName);
     }
 
-    protected Registry[] getRegistries(String[] registries) {
-        ArrayList<Registry> regs = new ArrayList<>();
-        for (String s : registries) {
-            regs.add(registry.get(s));
-        }
-        return regs.toArray(new Registry[0]);
-    }
-
     //this is called after genPartGroups
     protected M updateRegistryKeys(M r) {
         if (this.isReg) {
@@ -73,5 +65,13 @@ public abstract class AGMaterialData<M extends AMaterialData> extends AGRecipeOb
             r.addAll(ores, getRegistries(regs));
         }
         return r;
+    }
+
+    protected Registry[] getRegistries(String[] registries) {
+        ArrayList<Registry> regs = new ArrayList<>();
+        for (String s : registries) {
+            regs.add(registry.get(s));
+        }
+        return regs.toArray(new Registry[0]);
     }
 }

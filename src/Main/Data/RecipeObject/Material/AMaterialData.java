@@ -19,7 +19,7 @@ public abstract class AMaterialData extends ARecipeObject {
     protected PartGroup[] partGroups;
     protected boolean[] enablePartGroups;
     public ArrayList<String> localizedPartNames;
-    String[] toolTipExclusions; //an array of part oredicts that are excluded from being added tooltips (used to prevent duplications)
+    protected String[] toolTipExclusions; //an array of part oredicts that are excluded from being added tooltips (used to prevent duplications)
 
     public AMaterialData(Material m, String type, ArrayList<Machine> machines, MachineData data, ArrayList<MachineMatter> matters, ArrayList<Registry> registries, String[] toolTipExclusions) {
         super(m.NAME, type, machines, data, matters, registries);

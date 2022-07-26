@@ -125,7 +125,16 @@ public class GOre extends AGMSolid<Ore> {
                     types.add(new OreType(block+"_"+m.NAME, type_name, b));
                 }
             }
-            oreVariants.add(new OreVariant(m, getMachineRegistry(), getDataRegistry(), getMatterRegistry(), getRegistries(), block, types.toArray(new OreType[0]), this.partGroup.getPart("ore"), null));
+            OreVariant ov = new OreVariant(m, getMachineRegistry(), getDataRegistry(), getMatterRegistry(), getRegistries(),
+                    block, types.toArray(new OreType[0]), this.partGroup.getPart("ore"), null);
+            ov.setPartGroupTrue(genPartGroup("ore"));
+            if (this.isReg) {
+                String[] regs = ov.localizedPartNames.toArray(new String[0]);
+                String[] ores2 = ov.getEnabledOredicts();
+                ov.addAll(ores2, getRegistries(regs));
+            }
+            ov.printNames();
+            oreVariants.add(ov);
 
             //handle block's oreGen
             if (o.enableGen) {
@@ -167,15 +176,11 @@ public class GOre extends AGMSolid<Ore> {
             }
         }
         o.addVariants(oreVariants.toArray(new OreVariant[0]));
-        OreVariant[] vars = o.getVariants();
-        boolean isVar = false;
-        for (OreVariant v : vars) {
-            if (v.block.equals("stone")) {
-                isVar = true;
-                break;
-            }
-        }
-        o.setPartGroup(genPartGroup("ore"), isVar);
+        o.setPartGroupTrue(genPartGroup("ore"));
+        o.updateSolids(solid);
+        o = updateRegistryKeys(o);
+        o = updateLiquids(o);
+        o.printNames();
         objects.add(o);
     }
 

@@ -4,6 +4,7 @@ import Main.Data.MachineResource.Machine.Machine;
 import Main.Data.MachineResource.MachineData;
 import Main.Data.MachineResource.MachineMatter;
 import Main.Data.Material;
+import Main.Data.RecipeObject.Material.Composition.AChemicalComposition;
 import Main.Data.RecipeObject.Material.OreVariant;
 import Main.Data.GameData.Registry;
 import Main.Json.JsonObject;
@@ -93,10 +94,6 @@ public class Ore extends AMSolid {
         this.enableGen = enableGen;
     }
 
-    public OreVariant[] getVariants() {
-        return this.variants;
-    }
-
     @Override
     public String buildMaterial() {
         StringBuilder sb = new StringBuilder();
@@ -111,7 +108,12 @@ public class Ore extends AMSolid {
 
     @Override
     public String buildSpecificRecipe() {
-        return null;
+        //append additional tooltips for additional parts added by ore variants
+        StringBuilder sb = new StringBuilder();
+        for (OreVariant variant : this.variants) {
+            sb.append(variant.buildRecipe());
+        }
+        return sb.toString();
     }
 
     public void addVariants(OreVariant[] variants) {

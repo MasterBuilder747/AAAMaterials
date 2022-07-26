@@ -223,7 +223,7 @@ public abstract class AMalleable extends AMSolid {
         StringBuilder sb = new StringBuilder();
 
         sb.append(printParts());
-        System.out.println(sb.toString());
+        System.out.println(sb);
     }
 
     //    public void conductive() {

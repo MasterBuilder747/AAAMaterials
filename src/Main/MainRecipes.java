@@ -28,7 +28,10 @@ import Main.Generators.RecipeObjects.Material.Solid.Malleable.GMetal;
 import Main.Generators.RecipeObjects.Material.Solid.Malleable.GPlastic;
 import Main.Generators.RecipeObjects.Material.Solid.Malleable.GRubber;
 
+import java.io.BufferedWriter;
+import java.io.FileWriter;
 import java.io.IOException;
+import java.sql.SQLOutput;
 
 public class MainRecipes {
     //files to be generated:
@@ -165,6 +168,31 @@ public class MainRecipes {
 
         //HARDCODED MACHINE RESOURCE RECIPES GO HERE (don't repeat it)
         String initialCode = "";
+
+        //tooltip code is now written to a separate file
+        String[] codes = Util.split(sb.toString(), "\n");
+        sb = new StringBuilder();
+
+        FileWriter fw = new FileWriter(HOME+DEPLOY+"scripts/tooltips.zs");
+        BufferedWriter bw = new BufferedWriter(fw);
+        String tooltipHeader = """
+                #priority 0
+                
+                # TOOLTIPS FILE
+                # ============================================
+
+                """;
+        bw.write(tooltipHeader);
+        for (String s : codes) {
+            if (s.contains(".addTooltip")) {
+                bw.write(s); //tooltip code
+                bw.write("\n");
+            } else {
+                sb.append(s); //machine recipe code
+                sb.append("\n");
+            }
+        }
+        bw.close();
 
         Util.splitFiles(sb.toString(), header, initialCode, HOME+DEPLOY+"scripts/recipes/recipes");
     }

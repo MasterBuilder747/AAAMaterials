@@ -26,14 +26,9 @@ public class GMoleculeComposition extends AGChemicalComposition<MoleculeComposit
         //material,
         //element, boolean isDefaultMaterialForElement, boolean isDiatomic
         Element e = element.get(s[0]);
-        Composition c;
-        if (parseBoolean(s[2])) {
-            c = new Composition(e, 2);
-        } else {
-            c = new Composition(e);
-        }
+        Composition c = new Composition(e);
         MoleculeComposition comp = new MoleculeComposition(m, getMachineRegistry(), getDataRegistry(), getMatterRegistry(), getRegistries(), null,
-                c, parseBoolean(s[1]));
+                c, parseBoolean(s[1]), parseBoolean(s[2]));
         m.addComposition(comp);
         objects.add(comp);
         //this.material.replace(m.NAME, m); //apparently this isn't needed, somehow GMaterial gets updated (yeah java is weird)

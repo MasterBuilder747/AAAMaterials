@@ -9,6 +9,10 @@ public class Builder {
     }
 
     public String print(boolean brackets) {
+        //no ore data yet
+        if (this.objects.length == 0) {
+            return "";
+        }
         String b1 = brackets ? "[" : "{";
         String b2 = brackets ? "]" : "}";
         StringBuilder sb = new StringBuilder();
