@@ -1,7 +1,6 @@
 package Main.Data.RecipeObject.Material.Composition;
 
 import Main.Composition;
-import Main.Compositions;
 import Main.Data.GameData.Registry;
 import Main.Data.MachineResource.Machine.Machine;
 import Main.Data.MachineResource.MachineData;
@@ -50,15 +49,6 @@ public class CompoundComposition extends AChemicalComposition {
 
     public CompoundComposition(Material m, ArrayList<Machine> machines, MachineData data, ArrayList<MachineMatter> matters, ArrayList<Registry> registries, String[] toolTipExclusions,
                                Composition c, boolean isDefault,
-                               boolean isMixing, boolean isCentrifuge, boolean isChemReact, boolean isElectrolyze) {
-        super(m, "CompoundComposition", machines, data, matters, registries, toolTipExclusions, c, isDefault, false);
-        this.isMixing = isMixing;
-        this.isChemReact = isChemReact;
-        this.isCentrifuge = isCentrifuge;
-        this.isElectrolyze = isElectrolyze;
-    }
-    public CompoundComposition(Material m, ArrayList<Machine> machines, MachineData data, ArrayList<MachineMatter> matters, ArrayList<Registry> registries, String[] toolTipExclusions,
-                               Compositions c, boolean isDefault,
                                boolean isMixing, boolean isCentrifuge, boolean isChemReact, boolean isElectrolyze) {
         super(m, "CompoundComposition", machines, data, matters, registries, toolTipExclusions, c, isDefault, false);
         this.isMixing = isMixing;

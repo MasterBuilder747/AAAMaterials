@@ -121,6 +121,7 @@ public class MainMaterials {
         bw.write(molecule.registerMaterials());
         GCompoundComposition compound = new GCompoundComposition("compound", material, registry, liquids, data, matter, machine, partGroup, REG, molecule);
         bw.write(compound.registerMaterials());
+        compound.print();
 
         //5. material states
         GMSolid mSolid = new GMSolid("solid", registry, liquids, data, matter, machine, material, partGroup, REG);

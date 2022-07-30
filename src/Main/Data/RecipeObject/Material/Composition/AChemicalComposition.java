@@ -1,7 +1,6 @@
 package Main.Data.RecipeObject.Material.Composition;
 
 import Main.Composition;
-import Main.Compositions;
 import Main.Data.Element;
 import Main.Data.GameData.Registry;
 import Main.Data.MachineResource.Machine.Machine;
@@ -25,7 +24,6 @@ import java.util.ArrayList;
 //-s solid, -l liquid -g gas, -p plasma, etc... (letter not needed (but can be shown) for default state of material)
 public abstract class AChemicalComposition extends AMaterialData {
     Composition composition; //a string of defined element(s) and their count(s) in a string with special syntax
-    Compositions comps;
     boolean isDefault;  //is this the default composition that is associated with this material?
                         //If so, then when a chemical composition is specified, it returns this material
     //multiple materials can be assigned to one composition, but is this material the one that gets outputted in a separation/combination recipe?
@@ -41,14 +39,6 @@ public abstract class AChemicalComposition extends AMaterialData {
         this.symbol = c.toString();
         this.isElement = isElement;
     }
-    public AChemicalComposition(Material m, String type, ArrayList<Machine> machines, MachineData data, ArrayList<MachineMatter> matters, ArrayList<Registry> registries, String[] toolTipExclusions,
-                                Compositions c, boolean isDefault, boolean isElement) {
-        super(m, type, machines, data, matters, registries, toolTipExclusions);
-        this.comps = c;
-        this.isDefault = isDefault;
-        this.symbol = c.toString();
-        this.isElement = isElement;
-    }
 
     public String addTooltips(RegistryData[] registries) {
         StringBuilder sb = new StringBuilder();
@@ -56,14 +46,8 @@ public abstract class AChemicalComposition extends AMaterialData {
         return sb.toString();
     }
 
-    public Composition getComp() {
-        if (this.composition != null) {
-            return this.composition;
-        } else if (this.comps != null) {
-            return this.comps.getComp();
-        } else {
-            return null;
-        }
+    public Composition getCComp() {
+        return this.composition;
     }
 
     public Element getE() {
@@ -76,7 +60,8 @@ public abstract class AChemicalComposition extends AMaterialData {
 
     @Override
     public void print() {
-        System.out.println(this.m.NAME + ": " + this.symbol);
+        System.out.println(this.m.NAME + ": " + this.symbol + ":");
+        this.m.getComp().getCComp().printIngredients();
     }
 
     @Override

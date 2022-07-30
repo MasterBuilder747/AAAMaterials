@@ -1,7 +1,6 @@
 package Main.Generators.RecipeObjects.Material.Composition;
 
 import Main.Composition;
-import Main.Compositions;
 import Main.Data.Material;
 import Main.Data.RecipeObject.Material.Composition.CompoundComposition;
 import Main.Generators.GMaterial;
@@ -31,24 +30,24 @@ public class GCompoundComposition extends AGChemicalComposition<CompoundComposit
         //boolean isDefaultComposition,
         //boolean isMixing, boolean isCentrifuge, boolean isChemReact, boolean isElectrolyze
         CompoundComposition comp;
+        Composition c;
         if (!s[0].contains("]") && !s[0].contains("]")) {
-            Composition c = buildComposition(createCompoundComp(s[0]));
-            comp = new CompoundComposition(m, getMachineRegistry(), getDataRegistry(), getMatterRegistry(), getRegistries(), null,
-                    c, parseBoolean(s[1]),
-                    parseBoolean(s[2]), parseBoolean(s[3]), parseBoolean(s[4]), parseBoolean(s[5]));
+            //element comp
+            c = buildComposition(createCompoundComp(s[0]));
         } else {
-            Compositions c = createMaterialCompoundComp(s[0]);
-            comp = new CompoundComposition(m, getMachineRegistry(), getDataRegistry(), getMatterRegistry(), getRegistries(), null,
-                    c, parseBoolean(s[1]),
-                    parseBoolean(s[2]), parseBoolean(s[3]), parseBoolean(s[4]), parseBoolean(s[5]));
+            //material comp
+            c = createMaterialCompoundComp(s[0]);
         }
+        comp = new CompoundComposition(m, getMachineRegistry(), getDataRegistry(), getMatterRegistry(), getRegistries(), null,
+                c, parseBoolean(s[1]),
+                parseBoolean(s[2]), parseBoolean(s[3]), parseBoolean(s[4]), parseBoolean(s[5]));
         m.addComposition(comp);
         objects.add(comp);
         //this.material.replace(m.NAME, m); //apparently this isnt needed, somehow GMaterial gets updated (yeah java is weird)
     }
 
     //contains brackets
-    private Compositions createMaterialCompoundComp(String s) {
+    private Composition createMaterialCompoundComp(String s) {
         if (s.length() < 1) error("No composition specified!");
         ArrayList<Composition> comps = new ArrayList<>();
         for (int i = 0; i < s.length(); i++) {
@@ -89,7 +88,7 @@ public class GCompoundComposition extends AGChemicalComposition<CompoundComposit
                 error("character \"" + s0 + "\" is neither an uppercase letter or a starting bracket at index " + i);
             }
         }
-        return new Compositions(comps.toArray(new Composition[0]));
+        return buildComposition(comps);
     }
 
     //does not contain brackets

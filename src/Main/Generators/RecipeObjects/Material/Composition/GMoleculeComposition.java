@@ -36,7 +36,7 @@ public class GMoleculeComposition extends AGChemicalComposition<MoleculeComposit
 
     public MoleculeComposition getMole(String s) {
         for (MoleculeComposition mole: this.objects) {
-            if (mole.getComp().toString().equals(s)) {
+            if (mole.getCComp().toString().equals(s)) {
                 return mole;
             }
         }

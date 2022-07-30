@@ -3,6 +3,8 @@ package Main;
 import Main.Data.Element;
 import Main.Data.Material;
 
+import java.util.ArrayList;
+
 //an internal class that represents a chemical composition using materials/elements
 //this is a linked list
 public class Composition {
@@ -40,6 +42,48 @@ public class Composition {
         return this.e;
     }
 
+    public void printIngredients() {
+        Ingredient[] ings = this.getIngredients();
+        for (Ingredient i : ings) {
+            System.out.println(i);
+        }
+    }
+
+    private Ingredient[] getIngredients() {
+        ArrayList<Ingredient> outs = new ArrayList<>();
+        if (this.e != null) {
+            outs.add(new Ingredient(this.e, this.amount));
+        }
+        if (this.m != null) {
+            Ingredient[] matI = m.getComp().getCComp().getIngredients();
+            for (Ingredient i : matI) {
+                i.amount *= this.amount;
+            }
+            updateIngredients(matI, outs);
+            //this.amount multiply all components by this
+        }
+        if (this.comp != null) {
+            updateIngredients(comp.getIngredients(), outs);
+        }
+        return outs.toArray(new Ingredient[0]);
+    }
+
+     private static void updateIngredients(Ingredient[] ing1, ArrayList<Ingredient> ing2) {
+        for (Ingredient i: ing1) {
+            boolean exists = false;
+            for (Ingredient j : ing2) {
+                if (j.symbol.equals(i.symbol)) {
+                    j.amount += i.amount;
+                    exists = true;
+                    break;
+                }
+            }
+            if (!exists) {
+                ing2.add(i);
+            }
+        }
+    }
+
     public String toString() {
         //outputs the entire tooltip
         //UTF-8 characters:
@@ -53,7 +97,7 @@ public class Composition {
         }
         if (this.m != null) {
             sb.append("(");
-            sb.append(this.m.getComp().getComp().toString());
+            sb.append(this.m.getComp().getCComp().toString());
             sb.append(")");
             if (this.amount > 1) {
                 sb.append(this.amount);
