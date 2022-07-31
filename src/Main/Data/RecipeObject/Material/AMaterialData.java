@@ -59,6 +59,17 @@ public abstract class AMaterialData extends ARecipeObject {
             }
         }
     }
+    //for the ore system
+    private void setPartGroupsReg(String variant) {
+        for (int i = 0; i < partGroups.length; i++) {
+            if (this.enablePartGroups[i]) {
+                for (LPart p : partGroups[i].getParts()) {
+                    this.localizedPartNames.add(p.baseRegistryName.replace("%s", variant + m.LOCALNAME.replace(" ", "")));
+                    //some materials have space in their localName, remove it to allow the registry to find the item
+                }
+            }
+        }
+    }
     public LPart[] getEnabledParts() {
         ArrayList<LPart> parts = new ArrayList<>();
         for (int i = 0; i < this.partGroups.length; i++) {
@@ -98,6 +109,11 @@ public abstract class AMaterialData extends ARecipeObject {
         this.partGroups = new PartGroup[]{partGroup};
         this.enablePartGroups = new boolean[]{true};
         this.setPartGroupsReg();
+    }
+    public void setPartGroupTrueCustom(PartGroup partGroup, String variant) {
+        this.partGroups = new PartGroup[]{partGroup};
+        this.enablePartGroups = new boolean[]{true};
+        this.setPartGroupsReg(variant);
     }
     public boolean[] getEnablePartGroups() {
         return this.enablePartGroups;

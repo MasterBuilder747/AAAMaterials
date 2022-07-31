@@ -27,7 +27,10 @@ public class OreVariant extends AMaterialData {
     }
 
     @Override
-    public void print() {}
+    public void print() {
+        System.out.println(block + ":");
+        this.printNames();
+    }
 
     @Override
     public String buildMaterial() {
@@ -41,6 +44,9 @@ public class OreVariant extends AMaterialData {
                 //add ore parts to this block variant of this material as well:
                 sb.append(this.buildAltPart(var, oreParts)); //processing these parts will be handled differently in recipes
             }
+        } else {
+            //stone variant parts are now stored in the oreVariant
+            sb.append(buildPart(oreParts));
         }
         for (OreType type : this.oreTypes) {
             sb.append(type.buildMaterial());
@@ -51,6 +57,12 @@ public class OreVariant extends AMaterialData {
 
     @Override
     public String buildSpecificRecipe() {
-        return null;
+        StringBuilder sb = new StringBuilder();
+        //test
+        if (this.block.equals("nether") || this.block.equals("end")) {
+            String test = addRecipe(1, "pulverize", "rock", "", "rockOre", "", 100, 1, 1, 100, 100, "+red*100", "-orange*100", this.block);
+            sb.append(test);
+        }
+        return sb.toString();
     }
 }

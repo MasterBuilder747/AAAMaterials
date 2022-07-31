@@ -9,7 +9,6 @@ import Main.Data.RecipeObject.MaterialRecipe.*;
 import Main.Util;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 
 public abstract class ARecipeObject extends AData {
     protected ArrayList<RegistryData> datas; //the array of registries that are used for adding recipes and other things
@@ -53,6 +52,33 @@ public abstract class ARecipeObject extends AData {
         //Recipe header
         AMaterialRecipe re;
         String recipeVariable = this.NAME+output.replace("*", "_")+this.type+num;
+        re = constructRecipe(recipeType);
+        if (re == null) {
+            throw new RecipeObjectException("Unknown recipeType: " + recipeType);
+        }
+        re.createRecipe(recipeVariable, time, tier, powerMultiplier, 0, this.getDataLiquid());
+
+        //IO
+        //@ overrides syntax and uses what is typed directly in the recipe instead (for molten, etc)
+        String[] inputs = parseOverrides(input);
+        if (inputs == null) {
+            //System.out.println(recipeVariable+ ": noIN");
+            return "";
+        }
+        String[] outputs = parseOverrides(output);
+        if (outputs == null) {
+            //System.out.println(recipeVariable + ": noOut");
+            return "";
+        }
+        re.updateIO(inputs, parseLOverrides(lInput), outputs, parseLOverrides(lOutput));
+        re.setMachineResources(chemAmt, dataAmt, getMatterIn(matterIn), getMatterOut(matterOut));
+        return re.buildRecipe();
+    }
+    protected String addRecipe(int num, String recipeType, String input, String lInput, String output, String lOutput,
+                               int time, int tier, double powerMultiplier, int chemAmt, int dataAmt, String matterIn, String matterOut, String customVar) {
+        //Recipe header
+        AMaterialRecipe re;
+        String recipeVariable = this.NAME+output.replace("*", "_")+this.type+num+customVar;
         re = constructRecipe(recipeType);
         if (re == null) {
             throw new RecipeObjectException("Unknown recipeType: " + recipeType);

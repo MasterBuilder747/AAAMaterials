@@ -60,7 +60,6 @@ public class Composition {
                 i.amount *= this.amount;
             }
             updateIngredients(matI, outs);
-            //this.amount multiply all components by this
         }
         if (this.comp != null) {
             updateIngredients(comp.getIngredients(), outs);

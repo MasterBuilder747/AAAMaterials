@@ -4,7 +4,6 @@ import Main.Data.MachineResource.Machine.Machine;
 import Main.Data.MachineResource.MachineData;
 import Main.Data.MachineResource.MachineMatter;
 import Main.Data.Material;
-import Main.Data.RecipeObject.Material.Composition.AChemicalComposition;
 import Main.Data.RecipeObject.Material.OreVariant;
 import Main.Data.GameData.Registry;
 import Main.Json.JsonObject;
@@ -97,7 +96,7 @@ public class Ore extends AMSolid {
     @Override
     public String buildMaterial() {
         StringBuilder sb = new StringBuilder();
-        sb.append(this.genPartGroups());
+        if (this.partGroups != null) sb.append(this.genPartGroups());
         //build block's partGroup variants
         for (OreVariant variant : this.variants) {
             sb.append(variant.buildMaterial());
@@ -379,6 +378,9 @@ public class Ore extends AMSolid {
 
     @Override
     public void print() {
-        System.out.println(this.NAME);
+        System.out.println(this.NAME + " ore parts:");
+        for (OreVariant o : this.variants) {
+            o.print();
+        }
     }
 }
