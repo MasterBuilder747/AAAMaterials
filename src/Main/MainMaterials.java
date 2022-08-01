@@ -44,6 +44,8 @@ public class MainMaterials {
         //gamedata registries: most will not be needed
         GRegistry registry = new GRegistry("registry");
         registry.registerMaterials();
+        GModRegistry mods = new GModRegistry("modregistrie", registry);
+        mods.registerMaterials();
         GOreDictRegistry oreDict = new GOreDictRegistry("oredictregistrie", registry);
         oreDict.registerMaterials(); //needs a lot of work parsing in order to use
         GLiquidRegistry liquids = new GLiquidRegistry("liquidregistrie");

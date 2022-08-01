@@ -52,6 +52,8 @@ public class MainRecipes {
         //gamedata registries: required
         GRegistry registry = new GRegistry("registry");
         registry.registerRecipes();
+        GModRegistry mods = new GModRegistry("modregistrie", registry);
+        mods.registerRecipes();
         GOreDictRegistry oreDict = new GOreDictRegistry("oredictregistrie", registry);
         oreDict.registerRecipes(); //needs a lot of work parsing in order to use
         GLiquidRegistry liquids = new GLiquidRegistry("liquidregistrie");

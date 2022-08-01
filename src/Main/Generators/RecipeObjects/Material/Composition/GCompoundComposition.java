@@ -80,7 +80,12 @@ public class GCompoundComposition extends AGChemicalComposition<CompoundComposit
                     break;
                 }
             } else if (Util.isUppercase(s0)) {
-                String ss = s.substring(i, s.indexOf("[", i));
+                String ss;
+                if (s.indexOf("[", i) == -1) {
+                    ss = s.substring(i);
+                } else {
+                    ss = s.substring(i, s.indexOf("[", i));
+                }
                 Composition[] compss = createCompoundComp(ss).toArray(new Composition[0]);
                 comps.addAll(Arrays.asList(compss));
                 i += compss.length+1;
@@ -97,7 +102,6 @@ public class GCompoundComposition extends AGChemicalComposition<CompoundComposit
         ArrayList<Composition> comps = new ArrayList<>();
         for (int i = 0; i < s.length(); i++) {
             String s0 = String.valueOf(s.charAt(i));
-            if (Util.isOut(s, i + 1)) error("incomplete composition for " + s);
             if (Util.isUppercase(s0)) {
                 if (Util.isOut(s, i + 1)) {
                     //Symbol[Empty]

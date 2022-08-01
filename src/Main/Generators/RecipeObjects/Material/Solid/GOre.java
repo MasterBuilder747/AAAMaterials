@@ -207,7 +207,7 @@ public class GOre extends AGMSolid<Ore> {
             for (RegistryData r : solid.getRegistries()) {
                 ov.add(r.name, r.r);
             }
-            ov.print();
+            //ov.print();
             oreVariants.add(ov);
         }
         if (!o.enableGen) warn("Checks are not enabled for worldgen of ore for material " + m.NAME);
