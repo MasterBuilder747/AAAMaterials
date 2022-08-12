@@ -2,12 +2,16 @@ package Main.Data.GameData;
 
 public class ModRegistry extends AGameData {
     Registry[] items;
+    JCategory[] cats;
     public ModRegistry(String name, String registryName) {
         super(name, registryName);
     }
 
     public void setItems(Registry[] items) {
         this.items = items;
+    }
+    public void setCats(JCategory[] cats) {
+        this.cats = cats;
     }
 
     @Override

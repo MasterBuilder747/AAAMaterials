@@ -1,4 +1,4 @@
-package Main.Generators;
+package Main.Generators.GameData;
 
 import Main.Data.GameData.SoundRegistry;
 import Main.Generators.GameData.AGGameData;

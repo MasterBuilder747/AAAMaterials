@@ -1,7 +1,6 @@
 package Main.Generators;
 
 import Main.Data.AData;
-import Main.MainMaterials;
 import Main.Parameter.ParameterException;
 import Main.Stopwatch;
 import Main.Util;
@@ -44,7 +43,7 @@ public abstract class AGenerator<D extends AData> {
 
     private void populateObjects() throws IOException {
         //read: populate the ArrayList
-        FileReader fr = new FileReader(MainMaterials.HOME + MainMaterials.Files + this.SUBFOLDER + "/" + this.filename.toLowerCase() + "s.txt");
+        FileReader fr = new FileReader(Util.HOME + Util.FILES + this.SUBFOLDER + "/" + this.filename.toLowerCase() + "s.txt");
         BufferedReader br = new BufferedReader(fr);
         readFile(br);
         fr.close();

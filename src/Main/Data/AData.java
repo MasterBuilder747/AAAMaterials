@@ -1,5 +1,8 @@
 package Main.Data;
 
+import java.io.FileNotFoundException;
+import java.io.IOException;
+
 public abstract class AData {
     //defines a data holding object
     public final String NAME;

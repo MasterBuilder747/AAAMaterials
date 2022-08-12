@@ -2,6 +2,7 @@ package Main;
 
 import Main.Generators.*;
 import Main.Generators.GameData.*;
+import Main.Generators.ModTweak.GModTweak;
 import Main.Generators.RecipeObjects.Localized.GBlock;
 import Main.Generators.RecipeObjects.Localized.GItem;
 import Main.Generators.RecipeObjects.Localized.GPart;
@@ -12,7 +13,6 @@ import Main.Generators.RecipeObjects.Localized.Liquid.GPlasma;
 import Main.Generators.MachineResource.GMachine;
 import Main.Generators.MachineResource.GMachineData;
 import Main.Generators.MachineResource.GMachineMatter;
-import Main.Generators.RecipeObjects.Material.Composition.AGChemicalComposition;
 import Main.Generators.RecipeObjects.Material.Composition.GCompoundComposition;
 import Main.Generators.RecipeObjects.Material.Composition.GMoleculeComposition;
 import Main.Generators.RecipeObjects.Material.GMSolid;
@@ -30,21 +30,17 @@ import java.io.*;
 public class MainMaterials {
     //files to be generated:
     //1 the .zs script file (one giant one)
-    //3 the .json file for undergroundbiome ore registry
-    //2 the .lang file for localization
-    private final static String PC = "C:\\Users\\jaath\\IdeaProjects\\AAAMaterials\\src\\";
-    private final static String MAC = "/Users/jaudras/IdeaProjects/AAAMaterials/src/";
-    public final static String HOME = Detector.isMac() ? MAC : PC;
-    public final static String DEPLOY = "Deployment/";
-    public final static String Files = "UserFiles/";
-
+    //2 the .json file for undergroundbiome ore registry
+    //3 the .lang file for localization
     public final static boolean REG = false;
 
     public static void main(String[] args) throws IOException {
         //gamedata registries: most will not be needed
         GRegistry registry = new GRegistry("registry");
         registry.registerMaterials();
-        GModRegistry mods = new GModRegistry("modregistrie", registry);
+        GJCategory jeiC = new GJCategory("JEICategorie");
+        jeiC.registerMaterials();
+        GModRegistry mods = new GModRegistry("modregistrie", registry, jeiC);
         mods.registerMaterials();
         GOreDictRegistry oreDict = new GOreDictRegistry("oredictregistrie", registry);
         oreDict.registerMaterials(); //needs a lot of work parsing in order to use
@@ -63,8 +59,12 @@ public class MainMaterials {
         GSoundRegistry sounds = new GSoundRegistry("soundregistry");
         sounds.registerMaterials();
 
+        //mod tweaking
+        GModTweak tweaks = new GModTweak("`modstotweak", mods);
+        tweaks.registerMaterials();
+
         //materials.zs
-        FileWriter fw = new FileWriter(HOME + DEPLOY + "scripts/materials" + ".zs");
+        FileWriter fw = new FileWriter(Util.HOME + Util.DEPLOY + "scripts/materials" + ".zs");
         BufferedWriter bw = new BufferedWriter(fw);
 
         //starting script code
@@ -163,7 +163,7 @@ public class MainMaterials {
 
         //LOCALIZATION
         //CoT .lang file
-        fw = new FileWriter(HOME + DEPLOY + "resources/contenttweaker/lang/en_us.lang");
+        fw = new FileWriter(Util.HOME + Util.DEPLOY + "resources/contenttweaker/lang/en_us.lang");
         bw = new BufferedWriter(fw);
         //machine resource
         bw.write(data.localize());
@@ -185,19 +185,19 @@ public class MainMaterials {
 
         //CONFIGS
         //cofh world gen .json file
-        fw = new FileWriter(HOME + DEPLOY + "config/cofh/world/01_aaaores.json");
+        fw = new FileWriter(Util.HOME + Util.DEPLOY + "config/cofh/world/01_aaaores.json");
         bw = new BufferedWriter(fw);
         bw.write(ore.genCWJson());
         bw.close();
 
         //underground biomes ore .json file
-        fw = new FileWriter(HOME + DEPLOY + "config/undergroundbiomes/ores/aaaores.json");
+        fw = new FileWriter(Util.HOME + Util.DEPLOY + "config/undergroundbiomes/ores/aaaores.json");
         bw = new BufferedWriter(fw);
         bw.write(ore.genUBJson());
         bw.close();
 
         //serene seasons biomes .json file
-        fw = new FileWriter(HOME + DEPLOY + "config/sereneseasons/biome_info.json");
+        fw = new FileWriter(Util.HOME + Util.DEPLOY + "config/sereneseasons/biome_info.json");
         bw = new BufferedWriter(fw);
         bw.write(biome.genSeasons());
         bw.close();

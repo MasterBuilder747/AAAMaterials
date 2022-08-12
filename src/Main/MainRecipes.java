@@ -12,7 +12,6 @@ import Main.Generators.RecipeObjects.Localized.Liquid.GGas;
 import Main.Generators.RecipeObjects.Localized.Liquid.GLiquid;
 import Main.Generators.RecipeObjects.Localized.Liquid.GMolten;
 import Main.Generators.RecipeObjects.Localized.Liquid.GPlasma;
-import Main.Generators.RecipeObjects.Material.Composition.AGChemicalComposition;
 import Main.Generators.RecipeObjects.Material.Composition.GCompoundComposition;
 import Main.Generators.RecipeObjects.Material.Composition.GMoleculeComposition;
 import Main.Generators.RecipeObjects.Material.GMSolid;
@@ -31,16 +30,10 @@ import Main.Generators.RecipeObjects.Material.Solid.Malleable.GRubber;
 import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.sql.SQLOutput;
 
 public class MainRecipes {
     //files to be generated:
     //1 the .zs recipe script file (one giant one)
-    private final static String PC = "C:\\Users\\jaath\\IdeaProjects\\AAAMaterials\\src\\";
-    private final static String MAC = "/Users/jaudras/IdeaProjects/AAAMaterials/src/";
-    public final static String HOME = Detector.isMac() ? MAC : PC;
-    public final static String DEPLOY = "Deployment/";
-    
     public final static boolean REG = true;
 
     public static void main(String[] args) throws IOException {
@@ -52,7 +45,9 @@ public class MainRecipes {
         //gamedata registries: required
         GRegistry registry = new GRegistry("registry");
         registry.registerRecipes();
-        GModRegistry mods = new GModRegistry("modregistrie", registry);
+        GJCategory jeiC = new GJCategory("JEICategorie");
+        jeiC.registerRecipes();
+        GModRegistry mods = new GModRegistry("modregistrie", registry, jeiC);
         mods.registerRecipes();
         GOreDictRegistry oreDict = new GOreDictRegistry("oredictregistrie", registry);
         oreDict.registerRecipes(); //needs a lot of work parsing in order to use
@@ -175,7 +170,7 @@ public class MainRecipes {
         String[] codes = Util.split(sb.toString(), "\n");
         sb = new StringBuilder();
 
-        FileWriter fw = new FileWriter(HOME+DEPLOY+"scripts/tooltips.zs");
+        FileWriter fw = new FileWriter(Util.HOME + Util.DEPLOY+"scripts/tooltips.zs");
         BufferedWriter bw = new BufferedWriter(fw);
         String tooltipHeader = """
                 #priority 0
@@ -196,6 +191,6 @@ public class MainRecipes {
         }
         bw.close();
 
-        Util.splitFiles(sb.toString(), header, initialCode, HOME+DEPLOY+"scripts/recipes/recipes");
+        Util.splitFiles(sb.toString(), header, initialCode, Util.HOME + Util.DEPLOY+"scripts/recipes/recipes");
     }
 }

@@ -5,10 +5,16 @@ import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Locale;
 
 public class Util {
+    //any global variables to be used
+    public final static String PC = "C:\\Users\\jaath\\IdeaProjects\\AAAMaterials\\src\\";
+    public final static String MAC = "/Users/jaudras/IdeaProjects/AAAMaterials/src/";
+    public final static String HOME = Detector.isMac() ? MAC : PC;
+    public final static String DEPLOY = "Deployment/";
+    public final static String FILES = "UserFiles/";
+
     //any global utilities needed for coding
     public static String toUpper(String s) {
         if (s.equals("")) {
