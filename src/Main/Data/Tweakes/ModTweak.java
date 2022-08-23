@@ -9,9 +9,8 @@ public class ModTweak extends ATweaker {
     ModRegistry mod; //this stores all the items from that mod
 
     public ModTweak(ModRegistry mod) {
-        super("ModTweak", mod.getUnlocalizedName(), mod.getUnlocalizedName()); //using the registry name of the mod to identify
+        super(-1,3, "ModTweak", mod.getUnlocalizedName(), mod.getUnlocalizedName()); //using the registry name of the mod to identify
         this.mod = mod;
-        this.subFolder = mod.getUnlocalizedName();
     }
     @Override
     protected void writeLine(String[] s, BufferedWriter bw) throws IOException {

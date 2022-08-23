@@ -11,7 +11,7 @@ public class GModTweak extends AGenerator<ModTweak> {
     GModRegistry mods;
 
     public GModTweak(String filename, GModRegistry mods) {
-        super(1, filename);
+        super(1, filename, "Tweaks/ModTweak/");
         this.mods = mods;
     }
 

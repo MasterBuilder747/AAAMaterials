@@ -2,7 +2,7 @@ package Main.Data.Tweakes;
 
 import Main.Data.AData;
 import Main.Generators.GeneratorException;
-import Main.MainRecipes;
+import Main.Parameter.ParameterException;
 import Main.Util;
 
 import java.io.*;
@@ -14,13 +14,19 @@ public abstract class ATweaker extends AData {
     boolean writeToFile;
     String fileToWrite; //what is the name of the file we are writing to?
     int line = 0;
+    final int PARAMS;
+    final int MINPARAMS;
 
-    public ATweaker(String subFolder, String filename) {
+    public ATweaker(int PARAMS, int MINPARAMS, String subFolder, String filename) {
         super(filename); //unique file used by the data object
+        this.PARAMS = PARAMS;
+        this.MINPARAMS = MINPARAMS;
         this.subFolder = subFolder; //the name of the object itself
     }
-    public ATweaker(String subFolder, String filename, String fileToWrite) {
+    public ATweaker(int PARAMS, int MINPARAMS, String subFolder, String filename, String fileToWrite) {
         super(filename); //unique file used by the data object
+        this.PARAMS = PARAMS;
+        this.MINPARAMS = MINPARAMS;
         this.subFolder = subFolder; //the name of the object itself
         this.writeToFile = true;
         this.fileToWrite = fileToWrite;
@@ -32,7 +38,7 @@ public abstract class ATweaker extends AData {
         try {
             fr = new FileReader(path);
         } catch (FileNotFoundException e) {
-            throw new GeneratorException("Cannot find file " + path);
+            throw new GeneratorException("Cannot find file: " + path);
         }
         BufferedReader br = new BufferedReader(fr);
         while (true) {
@@ -40,6 +46,8 @@ public abstract class ATweaker extends AData {
             if (s1 != null) {
                 if (s1.charAt(0) != '/') { //commented out line, ignored
                     String[] s = Util.split(s1.replace(" ", ""), ",");
+                    if (this.PARAMS != -1 && s.length != this.PARAMS) throw new GeneratorException(path + ": " + this.PARAMS + " parameters expected at line " + line);
+                    if (this.MINPARAMS != -1 && s.length < this.MINPARAMS) throw new GeneratorException(path + ": At least " + this.MINPARAMS + " parameters expected at line " + line);
                     if (this.writeToFile) {
                         FileWriter fw = new FileWriter(Util.HOME + Util.DEPLOY + "scripts/tweaks/" + this.fileToWrite + ".zs");
                         BufferedWriter bw = new BufferedWriter(fw);
@@ -58,8 +66,38 @@ public abstract class ATweaker extends AData {
     protected abstract void readLine(String[] s) throws IOException;
     protected abstract void writeLine(String[] s, BufferedWriter bw) throws IOException;
 
-    @Override
-    public void print() {}
+    private void paramError(String s, String type) {
+        throw new ParameterException(s, type, this.NAME, this.line);
+    }
+    protected boolean parseBoolean(String s) {
+        String ss = s.toLowerCase();
+        if (ss.equals("true")) {
+            return true;
+        } else if (ss.equals("false")) {
+            return false;
+        }
+        this.paramError(s, "boolean");
+        return false;
+    }
+    protected int parseInt(String s) {
+        int out = 0;
+        try {
+            out = Integer.parseInt(s);
+        } catch (NumberFormatException e) {
+            this.paramError(s, "int");
+        }
+        return out;
+    }
+    protected double parseDouble(String s) {
+        double out = 0;
+        try {
+            out = Double.parseDouble(s);
+        } catch (NumberFormatException e) {
+            this.paramError(s, "double");
+        }
+        return out;
+    }
+
     @Override
     public String buildMaterial() {
         try {
@@ -78,4 +116,6 @@ public abstract class ATweaker extends AData {
         }
         return null;
     }
+    @Override
+    public void print() {}
 }

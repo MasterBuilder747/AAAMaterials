@@ -14,8 +14,7 @@ public class ModRegistry extends AGameData {
         this.cats = cats;
     }
 
-    @Override
-    public void print() {
+    public void printItems() {
         System.out.print(this.registryName + ", " + this.NAME + ":");
         if (this.items == null) {
             System.out.println(" No items");
@@ -26,6 +25,11 @@ public class ModRegistry extends AGameData {
             }
             System.out.println();
         }
+    }
+
+    @Override
+    public void print() {
+        System.out.println(this.NAME + ", " + this.registryName);
     }
 
     @Override

@@ -9,6 +9,8 @@ import Main.Data.RecipeObject.MaterialRecipe.*;
 import Main.Util;
 
 import java.util.ArrayList;
+import java.util.List;
+import java.util.Objects;
 
 public abstract class ARecipeObject extends AData {
     protected ArrayList<RegistryData> datas; //the array of registries that are used for adding recipes and other things
@@ -60,20 +62,14 @@ public abstract class ARecipeObject extends AData {
 
         //IO
         //@ overrides syntax and uses what is typed directly in the recipe instead (for molten, etc)
-        String[] inputs = parseOverrides(input);
-        if (inputs == null) {
-            //System.out.println(recipeVariable+ ": noIN");
-            return "";
-        }
-        String[] outputs = parseOverrides(output);
-        if (outputs == null) {
-            //System.out.println(recipeVariable + ": noOut");
-            return "";
-        }
+        String[] inputs = parseCustomRecipeIO(Util.split(input, ";"));
+        String[] outputs = parseCustomRecipeIO(Util.split(output, ";"));
+
         re.updateIO(inputs, parseLOverrides(lInput), outputs, parseLOverrides(lOutput));
         re.setMachineResources(chemAmt, dataAmt, getMatterIn(matterIn), getMatterOut(matterOut));
         return re.buildRecipe();
     }
+    //IO is a semicolon separated list for each
     protected String addRecipe(int num, String recipeType, String input, String lInput, String output, String lOutput,
                                int time, int tier, double powerMultiplier, int chemAmt, int dataAmt, String matterIn, String matterOut, String customVar) {
         //Recipe header
@@ -87,31 +83,14 @@ public abstract class ARecipeObject extends AData {
 
         //IO
         //@ overrides syntax and uses what is typed directly in the recipe instead (for molten, etc)
-        String[] inputs = parseOverrides(input);
-        if (inputs == null) {
-            //System.out.println(recipeVariable+ ": noIN");
-            return "";
-        }
-        String[] outputs = parseOverrides(output);
-        if (outputs == null) {
-            //System.out.println(recipeVariable + ": noOut");
-            return "";
-        }
+        String[] inputs = parseCustomRecipeIO(Util.split(input, ";"));
+        String[] outputs = parseCustomRecipeIO(Util.split(output, ";"));
+
         re.updateIO(inputs, parseLOverrides(lInput), outputs, parseLOverrides(lOutput));
         re.setMachineResources(chemAmt, dataAmt, getMatterIn(matterIn), getMatterOut(matterOut));
         return re.buildRecipe();
     }
 
-    private String[] parseOverrides(String s) {
-        String[] out;
-        if (s.startsWith("@")) {
-            out = new String[1];
-            out[0] = s.substring(1);
-        } else {
-            out = parseCustomRecipeIO(Util.split(s, ","));
-        }
-        return out;
-    }
     private String[] parseLOverrides(String s) {
         String[] out;
         if (s.startsWith("@")) {
@@ -124,44 +103,28 @@ public abstract class ARecipeObject extends AData {
     }
 
     private String[] parseCustomRecipeIO(String[] ss) {
-        //chance:partName*amount
         ArrayList<String> out = new ArrayList<>();
-        for (int i = 0; i < ss.length; i++) {
-            String s = ss[i];
-            double c = -1;
-            int a = -1;
-            if (s.contains(":")) c = Double.parseDouble(s.substring(0, s.indexOf(":")));
-            if (s.contains("*")) a = Integer.parseInt(s.substring(s.indexOf("*")+1));
+        for (String s : ss) {
+            double c = -1; //chance
+            int a = -1; //amount
+            //$chance#oredict*amount
+            //$chance&mod:registryName:meta*amount
+            //$chance&mod:registryName*amount //meta is 0
+            //$chance@localizedName*amount //use - for spaces
+            //$chance%partName*amount
+            if (s.contains("$")) c = Double.parseDouble(s.substring(0, s.indexOf("$")));
+            if (s.contains("*")) a = Integer.parseInt(s.substring(s.indexOf("*") + 1));
             if (c != -1 && a != -1) { //chance and amount
-                String p = s.substring(s.indexOf(":")+1, s.indexOf("*"));
-                if (isPart(p)) {
-                    p = getPart(p, a);
-                    out.add(addChance(c)+p);
-                } else {
-                    return null;
-                }
+                String p = s.substring(s.indexOf("$") + 1, s.indexOf("*"));
+                out.add(addBoth(c, p, a));
             } else if (c != -1) { //chance only
-                String p = s.substring(s.indexOf(":")+1);
-                if (isPart(p)) {
-                    p = getPart(p);
-                    out.add(addChance(c)+p);
-                } else {
-                    return null;
-                }
+                String p = s.substring(s.indexOf("$") + 1);
+                out.add(addChance(c, p));
             } else if (a != -1) { //amount only
                 String p = s.substring(0, s.indexOf("*"));
-                if (isPart(p)) {
-                    p = getPart(p, a);
-                    out.add(p);
-                } else {
-                    return null;
-                }
+                out.add(addAmount(p, a));
             } else {
-                if (isPart(s)) {
-                    out.add(getPart(s));
-                } else {
-                    return null;
-                }
+                out.add(getRegistryBracket(s));
             }
         }
         return out.toArray(new String[0]);
@@ -191,6 +154,29 @@ public abstract class ARecipeObject extends AData {
             out[i] = s;
         }
         return out;
+    }
+    //recipe tweaker
+    private String getRegistryBracket(String p) {
+        if (p.startsWith("&")) {
+            p = getItemUnlocalized(p.substring(1)); //full unlocalized name: mod:registry:meta
+        } else if (p.startsWith("@")) {
+            p = getItem(p.substring(1)); //localized name
+        } else {
+            p = getPart(p); //key of an item known in this recipe object
+        }
+        return p;
+    }
+    private String addChance(double chance) {
+        return "chance:"+chance+"$";
+    }
+    private String addChance(double chance, String p) {
+        return getRegistryBracket(p)+"chance:"+chance+"$";
+    }
+    private String addAmount(String p, int amount) {
+        return getRegistryBracket(p)+"*"+amount;
+    }
+    private String addBoth(double chance, String p, int amount) {
+        return addChance(chance)+addAmount(p, amount);
     }
 
     protected boolean isAllParts(String[] parts) {
@@ -374,9 +360,6 @@ public abstract class ARecipeObject extends AData {
     protected String getPart(String key) {
         return this.getData(key).r.getBracket();
     }
-    protected String getPart(String key, int amount) {
-        return this.getPart(key)+"*"+amount;
-    }
     protected boolean isPart(String key) {
         try {
             this.getPart(key);
@@ -390,10 +373,6 @@ public abstract class ARecipeObject extends AData {
     }
     protected String getOredict(String ore, int amount) {
         return "ore:"+ore+"*"+amount;
-    }
-    protected String addChance(double chance) {
-        //Must be called before items/liquids!
-        return "chance:"+chance+"$";
     }
 
     protected Registry getRegistry(String key) {

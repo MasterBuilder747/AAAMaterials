@@ -18,7 +18,7 @@ public class GModRegistry extends AGGameData<ModRegistry> {
 
     @Override
     protected void readGameData(String[] s) {
-        ModRegistry m = new ModRegistry(s[1], s[0]);
+        ModRegistry m = new ModRegistry(s[0], s[1]);
         //registries
         //"ModID","Mod name"
         ArrayList<Registry> regs = new ArrayList<>();
