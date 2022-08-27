@@ -2,6 +2,7 @@ package Main.Data.MachineRecipe;
 
 import Main.Data.AData;
 import Main.Data.MachineResource.Machine.Machine;
+import Main.Generators.GeneratorException;
 
 public abstract class ARecipe extends AData {
     //THIS IS DEFINING ONE RECIPE
@@ -55,110 +56,94 @@ public abstract class ARecipe extends AData {
         return sb.toString();
     }
     private String buildIO() {
-        /*
-        buildMain();
-        reci.addEnergyPerTickInput(int perTick);
-        reci.setChance(float chance); //called after each event (does not work on energy)
-        reci.addEnergyPerTickOutput(int perTick);
-        reci.addItemInput(IItemStack stack);
-        reci.addItemInput(IOreDictEntry oreDict);
-        reci.addItemInput(IOreDictEntry oreDict, int amount);
-        reci.addFluidInput(ILiquidStack stack);
-        reci.addItemOutput(IItemStack stack);
-        reci.addItemOutput(IOreDictEntry oreDict);
-        reci.addItemOutput(IOreDictEntry oreDict, int amount);
-        reci.addFluidOutput(ILiquidStack stack);
-        buildBuild();
-        */
         StringBuilder sb = new StringBuilder();
         for (String s : this.itemInputs) {
-            boolean isChance = false;
-            double chance = -1;
-            if (s.startsWith("chance:")) {
-                chance = Double.parseDouble(s.substring(s.indexOf(":")+1, s.indexOf("$")));
-                s = s.substring(s.indexOf("$")+1);
-                isChance = true;
-            }
-            if (s.startsWith("<liquid:")) throw new IllegalArgumentException("Liquids are not allowed here for recipe " + this.NAME);
-            if (s.contains("ore:")) {
-                sb.append(handleOreMultiple(s, "ItemIn"));
-            } else {
-                sb.append(handleMultiple(s, "ItemIn"));
-            }
-            if (isChance) {
-                sb.append(handleChance(chance));
-            }
+            sb.append(handleItems(s, "In"));
         }
         for (String s : this.liquidInputs) {
-            boolean isChance = false;
-            double chance = -1;
-            if (s.startsWith("chance:")) {
-                chance = Double.parseDouble(s.substring(s.indexOf(":")+1, s.indexOf("$")));
-                s = s.substring(s.indexOf("$")+1);
-                isChance = true;
-            }
-            if (!s.startsWith("<liquid:")) throw new IllegalArgumentException("Only liquids are allowed here for recipe " + this.NAME);
-            sb.append(handleMultiple(s, "FluidIn"));
-            if (isChance) {
-                sb.append(handleChance(chance));
-            }
+            sb.append(handleFluids(s, "In"));
         }
         for (String s : this.itemOutputs) {
-            boolean isChance = false;
-            double chance = -1;
-            if (s.startsWith("chance:")) {
-                chance = Double.parseDouble(s.substring(s.indexOf(":")+1, s.indexOf("$")));
-                s = s.substring(s.indexOf("$")+1);
-                isChance = true;
-            }
-            if (s.startsWith("<liquid:")) throw new IllegalArgumentException("Liquids are not allowed here for recipe " + this.NAME);
-            if (s.contains("ore:")) {
-                sb.append(handleOreMultiple(s, "ItemOut"));
-            } else {
-                sb.append(handleMultiple(s, "ItemOut"));
-            }
-            if (isChance) {
-                sb.append(handleChance(chance));
-            }
+            sb.append(handleItems(s, "Out"));
         }
         for (String s : this.liquidOutputs) {
-            boolean isChance = false;
-            double chance = -1;
-            if (s.startsWith("chance:")) {
-                chance = Double.parseDouble(s.substring(s.indexOf(":")+1, s.indexOf("$")));
-                s = s.substring(s.indexOf("$")+1);
-                isChance = true;
-            }
-            if (!s.startsWith("<liquid:")) throw new IllegalArgumentException("Only liquids are allowed here for recipe " + this.NAME);
-            sb.append(handleMultiple(s, "FluidOut"));
-            if (isChance) {
-                sb.append(handleChance(chance));
-            }
+            sb.append(handleFluids(s, "Out"));
         }
         return sb.toString();
     }
-    private String handleChance(double c) {
+    /*
+    buildMain();
+    reci.addEnergyPerTickInput(int perTick);
+    reci.setChance(float chance); //called after each event (does not work on energy)
+    reci.addEnergyPerTickOutput(int perTick);
+    reci.addItemInput(IItemStack stack);
+    reci.addItemInput(IOreDictEntry oreDict);
+    reci.addItemInput(IOreDictEntry oreDict, int amount);
+    reci.addFluidInput(ILiquidStack stack);
+    reci.addItemOutput(IItemStack stack);
+    reci.addItemOutput(IOreDictEntry oreDict);
+    reci.addItemOutput(IOreDictEntry oreDict, int amount);
+    reci.addFluidOutput(ILiquidStack stack);
+    buildBuild();
+    */
+    private String handleItems(String s, String type) {
+        //internal syntax:
+        //12.5%mod:ItemStack:9 -> <mod:ItemStack:9> //meta is always included now!
+        //12.5%mod:ItemStack:9*10 -> <mod:ItemStack:9> * 10
+        //12.5%ore:oreDict -> <ore:oreDict>
+        //12.5%ore:oreDict*10 -> <ore:oreDict>, 10
+        StringBuilder sb = new StringBuilder();
+        float chance = -1;
+        if (s.contains("%")) {
+            chance = Float.parseFloat(s.substring(0, s.indexOf("%")));
+            s = s.substring(s.indexOf("%")+1);
+        }
+        if (!s.contains(":")) throw new GeneratorException("Recipe I/O for items requires a : for string " + s);
+        if (s.substring(0, s.indexOf(":")).equals("ore")) sb.append(handleOreMultiple(s.substring(s.indexOf(":")+1), "Item"+type));
+        else sb.append(handleMultiple(s, "Item"+type));
+        if (chance != -1) sb.append(appendChance(chance));
+        return sb.toString();
+    }
+    private String handleFluids(String s, String type) {
+        //12.5%water*1000 //unlocalized name (registry name) required
+        StringBuilder sb = new StringBuilder();
+        float chance = -1;
+        if (s.contains("%")) {
+            chance = Float.parseFloat(s.substring(0, s.indexOf("%")));
+            s = s.substring(s.indexOf("%")+1);
+        }
+        sb.append(handleMultiple("liquid:"+s, "Fluid"+type));
+        if (chance != -1) {
+            sb.append(appendChance(chance));
+        }
+        return sb.toString();
+    }
+    private String appendChance(float c) {
+        c /= 100;
         return this.NAME+".setChance("+c+");\n";
     }
     private String handleMultiple(String s, String r) {
         StringBuilder sb = new StringBuilder();
-        sb.append(this.NAME).append(".add").append(r).append("put(");
+        sb.append(this.NAME).append(".add").append(r).append("put(<");
         if (s.contains("*")) {
-            sb.append(s, 0, s.indexOf("*")).append(" * ").append(s.substring(s.indexOf("*")+1)).append(");\n");
+            sb.append(s, 0, s.indexOf("*")).append("> * ").append(appendAmt(s)).append(");\n");
         } else {
-            sb.append(s).append(");\n");
+            sb.append(s).append(">);\n");
         }
         return sb.toString();
     }
     private String handleOreMultiple(String s, String r) {
         StringBuilder sb = new StringBuilder();
-        sb.append(this.NAME).append(".add").append(r).append("put(<");
+        sb.append(this.NAME).append(".add").append(r).append("put(<ore:");
         if (s.contains("*")) {
-            sb.append(s, /*isChance ? s.indexOf(";")+1 :*/ 0, s.indexOf("*")).append(">, ").append(s.substring(s.indexOf("*")+1)).append(");\n");
+            sb.append(s, 0, s.indexOf("*")).append(">, ").append(appendAmt(s)).append(");\n");
         } else {
             sb.append(s).append(">);\n");
         }
         return sb.toString();
+    }
+    private int appendAmt(String s) {
+        return Integer.parseInt(s.substring(s.indexOf("*")+1));
     }
 
     protected abstract String buildAdditionalIO();

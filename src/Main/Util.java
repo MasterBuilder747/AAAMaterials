@@ -126,7 +126,7 @@ public class Util {
 
     //chars
     public static int amountOfChar(String s, char chr) {
-        //returns true if s contains count amount or greater of character chr
+        //returns the count if s contains count amount or greater of character chr
         char[] chars = s.toCharArray();
         int j = 0;
         for (char c : chars) {

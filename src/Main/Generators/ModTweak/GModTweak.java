@@ -1,6 +1,6 @@
 package Main.Generators.ModTweak;
 
-import Main.Data.Tweakes.ModTweak;
+import Main.Data.Tweaks.ModTweak;
 import Main.Generators.AGenerator;
 import Main.Generators.GameData.GModRegistry;
 

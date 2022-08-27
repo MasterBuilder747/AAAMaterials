@@ -41,6 +41,7 @@ public class GRegistry extends AGGameData<Registry> {
     @Override
     protected void readGameData(String[] s) {
         //"-Mod name","Registry name","-Item ID","Meta/dmg","-Subtypes","Display name","Ore Dict keys,..."
+        //NOTE: meta is always stored per item! Meta is required when searching!
         Registry r = new Registry(s[1].substring(0, s[1].indexOf(":")), s[1].substring(s[1].indexOf(":")+1), parseInt(s[3]), s[5]);
         String[] ores = new String[s.length - 6];
         System.arraycopy(s, 6, ores, 0, ores.length);
@@ -48,10 +49,11 @@ public class GRegistry extends AGGameData<Registry> {
         objects.add(r);
     }
 
-    //requires meta as well
+    //requires meta, no brackets
+    //search = mod:item:meta
     public Registry getUnlocalized(String search) {
         for (Registry r : this.objects) {
-            if (r.NAME.equals(search)) {
+            if (r.getFullUnlocalizedName().equals(search)) {
                 return r;
             }
         }

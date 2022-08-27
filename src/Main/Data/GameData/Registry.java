@@ -22,14 +22,14 @@ public class Registry extends AGameData {
     }
 
     @Override
-    public String getBracket() { return "<" + this.mod + ":" + this.registryName + ":" + this.meta + ">"; }
-
-    @Override
     public String getUnlocalizedName() { return this.mod + ":" + this.registryName; }
 
     public String getFullUnlocalizedName() {
         return this.mod + ":" + this.registryName + ":" + this.meta;
     }
+
+    @Override
+    public String getBracket() { return "<" + this.getFullUnlocalizedName() + ">"; }
 
     @Override
     public void print() {

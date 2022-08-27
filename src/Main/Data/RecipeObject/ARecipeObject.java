@@ -107,11 +107,12 @@ public abstract class ARecipeObject extends AData {
         for (String s : ss) {
             double c = -1; //chance
             int a = -1; //amount
-            //$chance#oredict*amount
-            //$chance&mod:registryName:meta*amount
-            //$chance&mod:registryName*amount //meta is 0
-            //$chance@localizedName*amount //use - for spaces
-            //$chance%partName*amount
+            //12.5%#ingotIron*10 //finds the first entry in the oredict registry
+            //12.5%Iron-Ingot*10 //finds the first entry from the first mod
+            //12.5%minecraft:Iron-Ingot*10 //meta not needed
+            //12.5%@minecraft:iron_ingot*10 //meta 0
+            //12.5%@minecraft:wool:2*10
+            //12.5%&gear*10 //part key, added by this api
             if (s.contains("$")) c = Double.parseDouble(s.substring(0, s.indexOf("$")));
             if (s.contains("*")) a = Integer.parseInt(s.substring(s.indexOf("*") + 1));
             if (c != -1 && a != -1) { //chance and amount
@@ -130,7 +131,7 @@ public abstract class ARecipeObject extends AData {
         return out.toArray(new String[0]);
     }
     private String[] parseCustomLiquidRecipeIO(String[] ss) {
-        //chance:liquidKey*amount
+        //12.5%water*1000 //unlocalized name (registry name) required
         String[] out = new String[ss.length];
         for (int i = 0; i < ss.length; i++) {
             String s = ss[i];

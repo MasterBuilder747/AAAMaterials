@@ -133,20 +133,20 @@ public class MainRecipes {
         sb.append(stone.registerRecipes());
         //malleables: need liquid as well
         GMetal metal = new GMetal("metal", machine, registry, liquids, data, matter, material, partGroup, mSolid, mLiquid, REG);
-        sb.append(metal.registerRecipes());
+        //sb.append(metal.registerRecipes());
         GAlloy alloy = new GAlloy("alloy", machine, registry, liquids, data, matter, material, partGroup, mSolid, mLiquid, REG);
-        sb.append(alloy.registerRecipes());
+        //sb.append(alloy.registerRecipes());
         GPlastic plastic = new GPlastic("plastic", machine, registry, liquids, data, matter, material, partGroup, mSolid, mLiquid, REG);
-        sb.append(plastic.registerRecipes());
+        //sb.append(plastic.registerRecipes());
         GRubber rubber = new GRubber("rubber", machine, registry, liquids, data, matter, material, partGroup, mSolid, mLiquid, REG);
-        sb.append(rubber.registerRecipes());
+        //sb.append(rubber.registerRecipes());
         //gems: no liquids
         GGem gem = new GGem("gem", machine, registry, liquids, data, matter, material, partGroup, mSolid, REG);
-        sb.append(gem.registerRecipes());
+        //sb.append(gem.registerRecipes());
 
         //7. ore system
         GOre ore = new GOre("ore", machine, registry, liquids, data, matter, material, partGroup, mSolid, REG);
-        sb.append(ore.registerRecipes());
+        //sb.append(ore.registerRecipes());
 
         //8. custom machine recipes, only used in MainRecipes
         GMachineRecipe recipe = new GMachineRecipe("recipe", registry, liquids, oreDict, machine, data, matter);
