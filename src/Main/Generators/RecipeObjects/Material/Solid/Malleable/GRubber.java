@@ -7,6 +7,7 @@ import Main.Data.Material;
 import Main.Generators.GMaterial;
 import Main.Generators.GPartGroup;
 import Main.Generators.GameData.GLiquidRegistry;
+import Main.Generators.GameData.GOreDictRegistry;
 import Main.Generators.GameData.GRegistry;
 import Main.Generators.MachineResource.GMachine;
 import Main.Generators.MachineResource.GMachineData;
@@ -16,8 +17,8 @@ import Main.Generators.RecipeObjects.Material.GMSolid;
 
 public class GRubber extends AGMalleable<Rubber> {
     public GRubber(String filename, GMachine machine, GRegistry registry,
-                   GLiquidRegistry liquids, GMachineData data, GMachineMatter matter, GMaterial material, GPartGroup partGroup, GMSolid solid, GMLiquid liquid, boolean isReg) {
-        super(1, filename, machine, registry, liquids, data, matter, material, partGroup, liquid, solid, true, false, false, isReg);
+                   GLiquidRegistry liquids, GOreDictRegistry ores, GMachineData data, GMachineMatter matter, GMaterial material, GPartGroup partGroup, GMSolid solid, GMLiquid liquid, boolean isReg) {
+        super(1, filename, machine, registry, liquids, ores, data, matter, material, partGroup, liquid, solid, true, false, false, isReg);
     }
 
     @Override
@@ -27,6 +28,7 @@ public class GRubber extends AGMalleable<Rubber> {
         rubber.updateSolids(solid);
         rubber = updateRegistryKeys(rubber);
         rubber = updateLiquids(rubber);
+        rubber = updateOres(rubber);
         objects.add(rubber);
     }
 }

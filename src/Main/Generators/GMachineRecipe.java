@@ -98,14 +98,13 @@ public class GMachineRecipe extends AGenerator<CustomMachineRecipe> {
     }
 
     private String[] handleIO(String[] objects, boolean liquid) {
-        ArrayList<String> outs = new ArrayList<>();
-        //IO:
         //external syntax:
         //12.5%Iron-Ingot*10 //finds the first mod's first item that has this localized name, no meta
         //12.5%minecraft:Iron-Ingot*10 //meta not needed
         //12.5%#ingotIron*10 //finds the first entry in the oredict registry
         //12.5%@minecraft:iron_ingot*10 //meta 0
         //12.5%@minecraft:wool:2*10
+        ArrayList<String> outs = new ArrayList<>();
         for (String i : objects) {
             //check if there is a chance and/or an amount
             double chance = -1;

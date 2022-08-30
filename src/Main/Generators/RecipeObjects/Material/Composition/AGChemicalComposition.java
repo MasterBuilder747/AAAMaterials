@@ -5,6 +5,7 @@ import Main.Data.RecipeObject.Material.Composition.AChemicalComposition;
 import Main.Generators.GMaterial;
 import Main.Generators.GPartGroup;
 import Main.Generators.GameData.GLiquidRegistry;
+import Main.Generators.GameData.GOreDictRegistry;
 import Main.Generators.GameData.GRegistry;
 import Main.Generators.MachineResource.GMachine;
 import Main.Generators.MachineResource.GMachineData;
@@ -16,9 +17,9 @@ import java.util.ArrayList;
 public abstract class AGChemicalComposition<C extends AChemicalComposition> extends AGMaterialData<C> {
     boolean isSingular;
 
-    public AGChemicalComposition(int params, String filename, GMaterial material, GRegistry registry, GLiquidRegistry liquids, GMachineData data, GMachineMatter matter, GMachine machine, GPartGroup partGroup,
+    public AGChemicalComposition(int params, String filename, GMaterial material, GRegistry registry, GLiquidRegistry liquids, GOreDictRegistry ores, GMachineData data, GMachineMatter matter, GMachine machine, GPartGroup partGroup,
                                  boolean isSingular, boolean isReg) {
-        super(params, filename + "_composition", machine, material, partGroup, registry, liquids, data, matter, isReg);
+        super(params, filename + "_composition", machine, material, partGroup, registry, liquids, ores, data, matter, isReg);
         this.isSingular = isSingular;
     }
 

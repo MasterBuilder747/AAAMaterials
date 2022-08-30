@@ -5,6 +5,7 @@ import Main.Data.RecipeObject.Material.MSolid;
 import Main.Generators.GMaterial;
 import Main.Generators.GPartGroup;
 import Main.Generators.GameData.GLiquidRegistry;
+import Main.Generators.GameData.GOreDictRegistry;
 import Main.Generators.GameData.GRegistry;
 import Main.Generators.MachineResource.GMachine;
 import Main.Generators.MachineResource.GMachineData;
@@ -13,8 +14,8 @@ import Main.Generators.MachineResource.GMachineMatter;
 public class GMSolid extends AGMaterialData<MSolid> {
     GPartGroup partGroup;
 
-    public GMSolid(String filename, GRegistry registry, GLiquidRegistry liquids, GMachineData data, GMachineMatter matter, GMachine machine, GMaterial material, GPartGroup partGroup, boolean isReg) {
-        super(4, filename, machine, material, partGroup, registry, liquids, data, matter, isReg);
+    public GMSolid(String filename, GRegistry registry, GLiquidRegistry liquids, GOreDictRegistry ores, GMachineData data, GMachineMatter matter, GMachine machine, GMaterial material, GPartGroup partGroup, boolean isReg) {
+        super(4, filename, machine, material, partGroup, registry, liquids, ores, data, matter, isReg);
         this.partGroup = partGroup;
     }
 
@@ -26,6 +27,7 @@ public class GMSolid extends AGMaterialData<MSolid> {
                 new boolean[]{Boolean.parseBoolean(s[0]), Boolean.parseBoolean(s[1]), Boolean.parseBoolean(s[2])});
         sol = updateRegistryKeys(sol);
         sol = updateLiquids(sol);
+        sol = updateOres(sol);
         if (!s[3].equals("=")) sol.addAltName(s[3]);
         objects.add(sol);
     }

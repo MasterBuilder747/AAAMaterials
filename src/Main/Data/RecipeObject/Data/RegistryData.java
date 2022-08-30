@@ -1,15 +1,14 @@
-package Main.Data.RecipeObject;
+package Main.Data.RecipeObject.Data;
 
 import Main.Data.GameData.Registry;
 
 //points a material part name to a registry
 //used primarily for existing items in the registry
-public class RegistryData {
-    public String name;
+public class RegistryData extends ARecipeData {
     public Registry r;
 
     public RegistryData(String name, Registry r) {
-        this.name = name;
+        super(name);
         this.r = r;
     }
 }

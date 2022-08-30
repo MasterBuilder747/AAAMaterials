@@ -7,6 +7,7 @@ import Main.Data.GameData.Registry;
 import Main.Generators.GMaterial;
 import Main.Generators.GPartGroup;
 import Main.Generators.GameData.GLiquidRegistry;
+import Main.Generators.GameData.GOreDictRegistry;
 import Main.Generators.GameData.GRegistry;
 import Main.Generators.MachineResource.GMachine;
 import Main.Generators.MachineResource.GMachineData;
@@ -19,10 +20,10 @@ public class GStone extends AGMSolid<Stone> {
     GRegistry registry;
 
     public GStone(String filename, GMachine machine, GRegistry registry,
-                  GLiquidRegistry liquids, GMachineData data, GMachineMatter matter, GMaterial material, GPartGroup partGroup, GMSolid solid, boolean isReg) {
+                  GLiquidRegistry liquids, GOreDictRegistry ores, GMachineData data, GMachineMatter matter, GMaterial material, GPartGroup partGroup, GMSolid solid, boolean isReg) {
         //    int params, String filename, GMachine machine, GRegistry registry, GMaterial material, GPartGroup partGroup, GMSolid solid,
         //    boolean isDust, boolean isFineDust, boolean isPowder, boolean isReg) {
-        super(3, filename, machine, registry, liquids, data, matter, material, partGroup, solid, true, false, false, isReg);
+        super(3, filename, machine, registry, liquids, ores, data, matter, material, partGroup, solid, true, false, false, isReg);
         this.registry = registry;
     }
 

@@ -1,32 +1,40 @@
 package Main.Data.RecipeObject;
 
 import Main.Data.AData;
+import Main.Data.GameData.OreDict;
 import Main.Data.GameData.Registry;
 import Main.Data.MachineResource.Machine.Machine;
 import Main.Data.MachineResource.MachineData;
 import Main.Data.MachineResource.MachineMatter;
+import Main.Data.RecipeObject.Data.LiquidData;
+import Main.Data.RecipeObject.Data.OreData;
+import Main.Data.RecipeObject.Data.RegistryData;
 import Main.Data.RecipeObject.MaterialRecipe.*;
+import Main.Generators.GeneratorException;
+import Main.Parameter.ParameterException;
 import Main.Util;
 
 import java.util.ArrayList;
-import java.util.List;
-import java.util.Objects;
 
 public abstract class ARecipeObject extends AData {
     protected ArrayList<RegistryData> datas; //the array of registries that are used for adding recipes and other things
-    ArrayList<LiquidData> liquids; //the array of liquid brackets
+    protected ArrayList<LiquidData> liquids; //the array of liquid brackets
+    protected ArrayList<OreData> ores; //the array of ore dictionary entries
+    
     protected ArrayList<Machine> machines; //registry of known machines are needed for each object's recipes //get the GMachine's arraylist only to reduce RAM usage
-    protected ArrayList<Registry> registries; //for custom items (yeah this will use a lot of RAM...)
     protected ArrayList<MachineMatter> matters; //machine resource matter
+    protected ArrayList<Registry> registries; //for custom items (yeah this will use a lot of RAM...)
     protected MachineData mData; //the one machine data
     String type; //unique type for recipe uniqueness and other identifiers
 
-    public ARecipeObject(String NAME, String type, ArrayList<Machine> machines, MachineData mData, ArrayList<MachineMatter> matters, ArrayList<Registry> registries) {
+    public ARecipeObject(String NAME, 
+                         String type, ArrayList<Machine> machines, MachineData mData, ArrayList<MachineMatter> matters, ArrayList<Registry> registries) {
         super(NAME);
         this.type = type;
         this.machines = machines;
         this.datas = new ArrayList<>();
         this.liquids = new ArrayList<>();
+        this.ores = new ArrayList<>();
         this.mData = mData;
         this.matters = matters;
         this.registries = registries;
@@ -56,14 +64,14 @@ public abstract class ARecipeObject extends AData {
         String recipeVariable = this.NAME+output.replace("*", "_")+this.type+num;
         re = constructRecipe(recipeType);
         if (re == null) {
-            throw new RecipeObjectException("Unknown recipeType: " + recipeType);
+            error("Unknown recipeType: " + recipeType);
         }
         re.createRecipe(recipeVariable, time, tier, powerMultiplier, 0, this.getDataLiquid());
 
         //IO
         //@ overrides syntax and uses what is typed directly in the recipe instead (for molten, etc)
-        String[] inputs = parseCustomRecipeIO(Util.split(input, ";"));
-        String[] outputs = parseCustomRecipeIO(Util.split(output, ";"));
+        String[] inputs = parseRecipeIO(Util.split(input, ";"), false);
+        String[] outputs = parseRecipeIO(Util.split(output, ";"), false);
 
         re.updateIO(inputs, parseLOverrides(lInput), outputs, parseLOverrides(lOutput));
         re.setMachineResources(chemAmt, dataAmt, getMatterIn(matterIn), getMatterOut(matterOut));
@@ -77,14 +85,14 @@ public abstract class ARecipeObject extends AData {
         String recipeVariable = this.NAME+output.replace("*", "_")+this.type+num+customVar;
         re = constructRecipe(recipeType);
         if (re == null) {
-            throw new RecipeObjectException("Unknown recipeType: " + recipeType);
+            error("Unknown recipeType: " + recipeType);
         }
         re.createRecipe(recipeVariable, time, tier, powerMultiplier, 0, this.getDataLiquid());
 
         //IO
         //@ overrides syntax and uses what is typed directly in the recipe instead (for molten, etc)
-        String[] inputs = parseCustomRecipeIO(Util.split(input, ";"));
-        String[] outputs = parseCustomRecipeIO(Util.split(output, ";"));
+        String[] inputs = parseRecipeIO(Util.split(input, ";"), false);
+        String[] outputs = parseRecipeIO(Util.split(output, ";"), false);
 
         re.updateIO(inputs, parseLOverrides(lInput), outputs, parseLOverrides(lOutput));
         re.setMachineResources(chemAmt, dataAmt, getMatterIn(matterIn), getMatterOut(matterOut));
@@ -97,65 +105,70 @@ public abstract class ARecipeObject extends AData {
             out = new String[1];
             out[0] = s.substring(1);
         } else {
-            out = parseCustomLiquidRecipeIO(Util.split(s, ","));
+            out = parseRecipeIO(Util.split(s, ","), true);
         }
         return out;
     }
 
-    private String[] parseCustomRecipeIO(String[] ss) {
-        ArrayList<String> out = new ArrayList<>();
+    private String[] parseRecipeIO(String[] ss, boolean liquid) {
+        ArrayList<String> outs = new ArrayList<>();
         for (String s : ss) {
-            double c = -1; //chance
-            int a = -1; //amount
-            //12.5%#ingotIron*10 //finds the first entry in the oredict registry
-            //12.5%Iron-Ingot*10 //finds the first entry from the first mod
+            //external syntax:
+            //12.5%Iron-Ingot*10 //finds the first mod's first item that has this localized name, no meta
             //12.5%minecraft:Iron-Ingot*10 //meta not needed
+            //12.5%#ingotIron*10 //finds the first entry in the oredict registry
             //12.5%@minecraft:iron_ingot*10 //meta 0
             //12.5%@minecraft:wool:2*10
             //12.5%&gear*10 //part key, added by this api
-            if (s.contains("$")) c = Double.parseDouble(s.substring(0, s.indexOf("$")));
-            if (s.contains("*")) a = Integer.parseInt(s.substring(s.indexOf("*") + 1));
-            if (c != -1 && a != -1) { //chance and amount
-                String p = s.substring(s.indexOf("$") + 1, s.indexOf("*"));
-                out.add(addBoth(c, p, a));
-            } else if (c != -1) { //chance only
-                String p = s.substring(s.indexOf("$") + 1);
-                out.add(addChance(c, p));
-            } else if (a != -1) { //amount only
-                String p = s.substring(0, s.indexOf("*"));
-                out.add(addAmount(p, a));
-            } else {
-                out.add(getRegistryBracket(s));
+            double chance = -1;
+            if (s.contains("%")) {
+                chance = parseDouble(s.substring(0, s.indexOf("%")));
+                s = s.substring(s.indexOf("%")+1);
             }
-        }
-        return out.toArray(new String[0]);
-    }
-    private String[] parseCustomLiquidRecipeIO(String[] ss) {
-        //12.5%water*1000 //unlocalized name (registry name) required
-        String[] out = new String[ss.length];
-        for (int i = 0; i < ss.length; i++) {
-            String s = ss[i];
-            double c = -1;
-            int a = -1;
-            if (s.contains(":")) {
-                c = Double.parseDouble(s.substring(0, s.indexOf(":")));
-            }
+            int amount = 1;
             if (s.contains("*")) {
-                a = Integer.parseInt(s.substring(s.indexOf("*")+1));
+                amount = Integer.parseInt(s.substring(s.indexOf("*")+1));
+                if (amount < 2) throw new GeneratorException("Amount must be greater than 1 for amount " + amount);
+                s = s.substring(0, s.indexOf("*"));
             }
-            if (c != -1 && a != -1) { //chance and amount
-                s = addChance(c)+getLiquid(s.substring(s.indexOf(":")+1, s.indexOf("*")), a);
-            } else if (c != -1) { //chance only
-                s = addChance(c)+getLiquid(s.substring(s.indexOf(":")+1));
-            } else if (a != -1) { //amount only
-                s = getLiquid(s.substring(0, s.indexOf("*")), a);
-            } else {
-                s = getLiquid(s);
-            }
-            out[i] = s;
+            //internal syntax:
+            //12.5%mod:ItemStack:9*10
+            //12.5%ore:oreDict*10
+            StringBuilder sb = new StringBuilder();
+            if (chance != -1) sb.append(chance).append("%");
+            if (liquid) sb.append(getLiquid(s));
+            else sb.append(handleItem(s));
+            if (amount != 1) sb.append("*").append(amount);
+            outs.add(sb.toString());
         }
-        return out;
+        return outs.toArray(new String[0]);
     }
+    private String handleItem(String i) {
+        //check the item string if it exists
+        String item;
+        if (i.startsWith("#")) {
+            //ore dictionary
+            OreData ore = getOredict(i.substring(1));
+            item = ore.getUnlocalizedName();
+        } else if (i.startsWith("@")) {
+            //registry name (unlocalized name)
+            //meta is required
+            int amt = Util.amountOfChar(i, ':');
+            if (amt == 1) i += ":0"; //mod:item:0
+            else if (amt != 2)
+                error("At least one colon is required to specify the mod for the unlocalized name for string " + i.substring(1));
+            item = this.getData(i.substring(1)).r.getFullUnlocalizedName();
+        } else if (i.startsWith("&")) {
+            //key
+            item = getPart(i.substring(1));
+        } else {
+            //localized name
+            i = i.replace("-", ""); //dash is for readability, spaces are not needed for searching by localized name in the registry
+            item = this.getData(i).r.getFullUnlocalizedName();
+        }
+        return item;
+    }
+
     //recipe tweaker
     private String getRegistryBracket(String p) {
         if (p.startsWith("&")) {
@@ -166,18 +179,6 @@ public abstract class ARecipeObject extends AData {
             p = getPart(p); //key of an item known in this recipe object
         }
         return p;
-    }
-    private String addChance(double chance) {
-        return "chance:"+chance+"$";
-    }
-    private String addChance(double chance, String p) {
-        return getRegistryBracket(p)+"chance:"+chance+"$";
-    }
-    private String addAmount(String p, int amount) {
-        return getRegistryBracket(p)+"*"+amount;
-    }
-    private String addBoth(double chance, String p, int amount) {
-        return addChance(chance)+addAmount(p, amount);
     }
 
     protected boolean isAllParts(String[] parts) {
@@ -207,15 +208,21 @@ public abstract class ARecipeObject extends AData {
     }
 
     public void addAll(String[] keys, Registry[] regs) {
-        if (keys.length != regs.length) throw new IllegalArgumentException("Keys and registries need to be the same for recipeObject named " + this.NAME);
+        if (keys.length != regs.length) error("Keys and registries need to be the same length for recipeObject named " + this.NAME);
         for (int i = 0; i < keys.length; i++) {
             this.add(keys[i], regs[i]);
         }
     }
     public void addAllLiquids(String[] keys, String[] brackets) {
-        if (keys.length != brackets.length) throw new IllegalArgumentException("Keys and liquid registries need to be the same for recipeObject named " + this.NAME);
+        if (keys.length != brackets.length) error("Keys and liquid registries need to be the same length for recipeObject named " + this.NAME);
         for (int i = 0; i < keys.length; i++) {
             this.addLiquid(keys[i], brackets[i]);
+        }
+    }
+    public void addAllOres(String[] keys, OreDict[] brackets) {
+        if (keys.length != brackets.length) error("Keys and oredict registries need to be the same length for recipeObject named " + this.NAME);
+        for (int i = 0; i < keys.length; i++) {
+            this.addOre(keys[i], brackets[i]);
         }
     }
 
@@ -226,6 +233,9 @@ public abstract class ARecipeObject extends AData {
     public void addLiquid(String key, String bracket) {
         this.liquids.add(new LiquidData(key, bracket));
     }
+    public void addOre(String key, OreDict ore) {
+        this.ores.add(new OreData(key, ore));
+    }
 
     protected String getItem(String key) {
         for (Registry r : this.registries) {
@@ -233,7 +243,8 @@ public abstract class ARecipeObject extends AData {
                 return r.getBracket();
             }
         }
-        throw new RecipeObjectException(key, "item registry", this.NAME);
+        error(key, "item registry", this.NAME);
+        return null;
     }
     protected String getItemByMod(String key, String mod) {
         for (Registry r : this.registries) {
@@ -241,7 +252,8 @@ public abstract class ARecipeObject extends AData {
                 return r.getBracket();
             }
         }
-        throw new RecipeObjectException(key, "item registry", this.NAME);
+        error(key, "item registry", this.NAME);
+        return null;
     }
     //mod:registryName:meta (0 if no meta)
     protected String getItemUnlocalized(String key) {
@@ -250,7 +262,8 @@ public abstract class ARecipeObject extends AData {
                 return r.getBracket();
             }
         }
-        throw new RecipeObjectException(key, "item registry", this.NAME);
+        error(key, "item registry", this.NAME);
+        return null;
     }
 
     public RegistryData[] getRegistries() {
@@ -263,7 +276,7 @@ public abstract class ARecipeObject extends AData {
             RegistryData r = newDatas.get(k);
             //System.out.println(r.name);
             for (String e : exclusions) {
-                if (r.name.equals(e)) {
+                if (r.is(e)) {
                     newDatas.remove(r);
                     //System.out.println(this.NAME + ": " + r.name); //enable this to show exclusions in log
                     k--;
@@ -275,22 +288,24 @@ public abstract class ARecipeObject extends AData {
     }
     protected RegistryData getData(String key) {
         for (RegistryData m : this.datas) {
-            if (m.name.equals(key)) {
+            if (m.is(key)) {
                 return m;
             }
         }
-        throw new RecipeObjectException(key, this.NAME);
+        error(key, this.NAME);
+        return null;
     }
     public ArrayList<RegistryData> getDatas() {
         return this.datas;
     }
     protected String getLiquid(String key) {
         for (LiquidData m : this.liquids) {
-            if (m.key.equals(key)) {
+            if (m.is(key)) {
                 return m.bracket;
             }
         }
-        throw new RecipeObjectException(key, "liquid", this.NAME);
+        error(key, "liquid", this.NAME);
+        return null;
     }
     protected String getLiquid(String key, int amount) {
         return getLiquid(key) + "*" + amount;
@@ -304,7 +319,8 @@ public abstract class ARecipeObject extends AData {
                 return m;
             }
         }
-        throw new RecipeObjectException(key, "matter", this.NAME);
+        error(key, "matter", this.NAME);
+        return null;
     }
     protected String getMatterIn(String s) {
         if (!s.contains("*")) throw new IllegalArgumentException("Must specify an amount of matter input denoted after a *");
@@ -338,21 +354,21 @@ public abstract class ARecipeObject extends AData {
     public void printNames() {
         System.out.println("Keys for " + this.NAME + ":");
         for (RegistryData r : this.datas) {
-            System.out.println(r.name + " = " + r.r.NAME);
+            System.out.println(r.NAME + " = " + r.r.NAME);
         }
         System.out.println();
     }
     public void printBrackets() {
         System.out.println("Keys:");
         for (RegistryData r : this.datas) {
-            System.out.println(r.name + " = " + r.r.getBracket());
+            System.out.println(r.NAME + " = " + r.r.getBracket());
         }
         System.out.println();
     }
     public void printAll() {
         System.out.println("Keys:");
         for (RegistryData r : this.datas) {
-            System.out.print(r.name + " = ");
+            System.out.print(r.NAME + " = ");
             r.r.print();
         }
         System.out.println();
@@ -369,11 +385,20 @@ public abstract class ARecipeObject extends AData {
         }
         return true;
     }
-    protected String getOredict(String ore) {
+    protected String appendOredict(String ore) {
         return "ore:"+ore;
     }
-    protected String getOredict(String ore, int amount) {
+    protected String appendOredict(String ore, int amount) {
         return "ore:"+ore+"*"+amount;
+    }
+    protected OreData getOredict(String s) {
+        for (OreData o : this.ores) {
+            if(o.is(s)) {
+                return o;
+            }
+        }
+        error("Unknown oredict: " + s);
+        return null;
     }
 
     protected Registry getRegistry(String key) {
@@ -398,7 +423,38 @@ public abstract class ARecipeObject extends AData {
             this.datas.remove(mat);
             this.add(key, r);
         } else {
-            throw new RecipeObjectException(key, this.NAME);
+            error(key, this.NAME);
         }
+    }
+    protected int parseInt(String s) {
+        int out = 0;
+        try {
+            out = Integer.parseInt(s);
+        } catch (NumberFormatException e) {
+            this.paramError(s, "int");
+        }
+        return out;
+    }
+    protected double parseDouble(String s) {
+        double out = 0;
+        try {
+            out = Double.parseDouble(s);
+        } catch (NumberFormatException e) {
+            this.paramError(s, "double");
+        }
+        return out;
+    }
+    private void paramError(String s, String type) {
+        throw new ParameterException(s, type);
+    }
+
+    protected void error(String s) {
+        throw new RecipeObjectException(s);
+    }
+    protected void error(String s, String name) {
+        throw new RecipeObjectException(s, name);
+    }
+    protected void error(String key, String type, String name) {
+        throw new RecipeObjectException(key, type, name);
     }
 }

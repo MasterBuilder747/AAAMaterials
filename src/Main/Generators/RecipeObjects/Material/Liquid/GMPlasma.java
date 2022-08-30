@@ -5,6 +5,7 @@ import Main.Data.Material;
 import Main.Generators.GMaterial;
 import Main.Generators.GPartGroup;
 import Main.Generators.GameData.GLiquidRegistry;
+import Main.Generators.GameData.GOreDictRegistry;
 import Main.Generators.GameData.GRegistry;
 import Main.Generators.MachineResource.GMachine;
 import Main.Generators.MachineResource.GMachineData;
@@ -12,8 +13,8 @@ import Main.Generators.MachineResource.GMachineMatter;
 
 public class GMPlasma extends AGMLiquid<MPlasma> {
     public GMPlasma(String filename, GRegistry registry,
-                    GLiquidRegistry liquids, GMachineData data, GMachineMatter matter, GMachine machine, GMaterial material, GPartGroup partGroup, boolean isReg) {
-        super(5, machine, registry, liquids, data, matter, partGroup, filename, material, isReg);
+                    GLiquidRegistry liquids, GOreDictRegistry ores, GMachineData data, GMachineMatter matter, GMachine machine, GMaterial material, GPartGroup partGroup, boolean isReg) {
+        super(5, machine, registry, liquids, ores, data, matter, partGroup, filename, material, isReg);
     }
 
     @Override

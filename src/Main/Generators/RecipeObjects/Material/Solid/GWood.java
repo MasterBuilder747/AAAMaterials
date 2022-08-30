@@ -7,6 +7,7 @@ import Main.Data.GameData.Registry;
 import Main.Generators.GMaterial;
 import Main.Generators.GPartGroup;
 import Main.Generators.GameData.GLiquidRegistry;
+import Main.Generators.GameData.GOreDictRegistry;
 import Main.Generators.GameData.GRegistry;
 import Main.Generators.MachineResource.GMachine;
 import Main.Generators.MachineResource.GMachineData;
@@ -17,8 +18,8 @@ import java.util.ArrayList;
 
 public class GWood extends AGMSolid<Wood> {
     public GWood(String filename, GMachine machine, GRegistry registry,
-                 GLiquidRegistry liquids, GMachineData data, GMachineMatter matter, GMaterial material, GPartGroup partGroup, GMSolid solid, boolean isReg) {
-        super(1, filename, machine, registry, liquids, data, matter, material, partGroup, solid, true, false, false, isReg);
+                 GLiquidRegistry liquids, GOreDictRegistry ores, GMachineData data, GMachineMatter matter, GMaterial material, GPartGroup partGroup, GMSolid solid, boolean isReg) {
+        super(1, filename, machine, registry, liquids, ores, data, matter, material, partGroup, solid, true, false, false, isReg);
     }
 
     @Override

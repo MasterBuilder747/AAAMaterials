@@ -6,6 +6,7 @@ import Main.Data.RecipeObject.Material.Composition.CompoundComposition;
 import Main.Generators.GMaterial;
 import Main.Generators.GPartGroup;
 import Main.Generators.GameData.GLiquidRegistry;
+import Main.Generators.GameData.GOreDictRegistry;
 import Main.Generators.GameData.GRegistry;
 import Main.Generators.MachineResource.GMachine;
 import Main.Generators.MachineResource.GMachineData;
@@ -18,9 +19,9 @@ import java.util.Arrays;
 public class GCompoundComposition extends AGChemicalComposition<CompoundComposition> {
     GMoleculeComposition molecule;
 
-    public GCompoundComposition(String filename, GMaterial material, GRegistry registry, GLiquidRegistry liquids, GMachineData data, GMachineMatter matter, GMachine machine, GPartGroup partGroup, boolean isReg,
+    public GCompoundComposition(String filename, GMaterial material, GRegistry registry, GLiquidRegistry liquids, GOreDictRegistry ores, GMachineData data, GMachineMatter matter, GMachine machine, GPartGroup partGroup, boolean isReg,
                                 GMoleculeComposition molecule) {
-        super(6, filename, material, registry, liquids, data, matter, machine, partGroup, false, isReg);
+        super(6, filename, material, registry, liquids, ores, data, matter, machine, partGroup, false, isReg);
         this.molecule = molecule;
     }
 

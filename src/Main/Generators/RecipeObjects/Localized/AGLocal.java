@@ -2,6 +2,7 @@ package Main.Generators.RecipeObjects.Localized;
 
 import Main.Data.RecipeObject.Localized.ALocalizedData;
 import Main.Generators.GameData.GLiquidRegistry;
+import Main.Generators.GameData.GOreDictRegistry;
 import Main.Generators.GameData.GRegistry;
 import Main.Generators.MachineResource.GMachine;
 import Main.Generators.MachineResource.GMachineData;
@@ -13,11 +14,11 @@ import java.io.IOException;
 
 public abstract class AGLocal<L extends ALocalizedData> extends AGRecipeObject<L> {
     //a variant of Generator that implements localized data
-    public AGLocal(int params, String filename, boolean isReg, GRegistry registry, GLiquidRegistry liquids, GMachineData data, GMachineMatter matter, GMachine machine) {
-        super(params+2, "custom-"+filename, "Custom", registry, isReg, machine, liquids, data, matter);
+    public AGLocal(int params, String filename, boolean isReg, GRegistry registry, GLiquidRegistry liquids, GOreDictRegistry ores, GMachineData data, GMachineMatter matter, GMachine machine) {
+        super(params+2, "custom-"+filename, "Custom", registry, isReg, machine, liquids, ores, data, matter);
     }
-    public AGLocal(int params, String filename, String localFolder, boolean isReg, GRegistry registry, GLiquidRegistry liquids, GMachineData data, GMachineMatter matter, GMachine machine) {
-        super(params+2, "custom-"+filename, "Custom/"+localFolder, registry, isReg, machine, liquids, data, matter);
+    public AGLocal(int params, String filename, String localFolder, boolean isReg, GRegistry registry, GLiquidRegistry liquids, GOreDictRegistry ores, GMachineData data, GMachineMatter matter, GMachine machine) {
+        super(params+2, "custom-"+filename, "Custom/"+localFolder, registry, isReg, machine, liquids, ores, data, matter);
     }
 
     @Override

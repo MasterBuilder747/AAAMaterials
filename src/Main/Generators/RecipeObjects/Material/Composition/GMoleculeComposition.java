@@ -8,6 +8,7 @@ import Main.Generators.GElement;
 import Main.Generators.GMaterial;
 import Main.Generators.GPartGroup;
 import Main.Generators.GameData.GLiquidRegistry;
+import Main.Generators.GameData.GOreDictRegistry;
 import Main.Generators.GameData.GRegistry;
 import Main.Generators.MachineResource.GMachine;
 import Main.Generators.MachineResource.GMachineData;
@@ -16,8 +17,8 @@ import Main.Generators.MachineResource.GMachineMatter;
 public class GMoleculeComposition extends AGChemicalComposition<MoleculeComposition> {
     GElement element;
     public GMoleculeComposition(String filename, GElement element, GMaterial material, GRegistry registry,
-                                GLiquidRegistry liquids, GMachineData data, GMachineMatter matter, GMachine machine, GPartGroup partGroup, boolean isReg) {
-        super(3, filename, material, registry, liquids, data, matter, machine, partGroup,true, isReg);
+                                GLiquidRegistry liquids, GOreDictRegistry ores, GMachineData data, GMachineMatter matter, GMachine machine, GPartGroup partGroup, boolean isReg) {
+        super(3, filename, material, registry, liquids, ores, data, matter, machine, partGroup,true, isReg);
         this.element = element;
     }
 

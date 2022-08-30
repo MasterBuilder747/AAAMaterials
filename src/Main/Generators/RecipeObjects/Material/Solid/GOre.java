@@ -7,10 +7,11 @@ import Main.Data.RecipeObject.Material.Solid.Ore;
 import Main.Data.RecipeObject.Material.OreVariant;
 import Main.Data.OreType;
 import Main.Data.GameData.Registry;
-import Main.Data.RecipeObject.RegistryData;
+import Main.Data.RecipeObject.Data.RegistryData;
 import Main.Generators.GMaterial;
 import Main.Generators.GPartGroup;
 import Main.Generators.GameData.GLiquidRegistry;
+import Main.Generators.GameData.GOreDictRegistry;
 import Main.Generators.GameData.GRegistry;
 import Main.Generators.MachineResource.GMachine;
 import Main.Generators.MachineResource.GMachineData;
@@ -24,10 +25,10 @@ import java.util.ArrayList;
 
 public class GOre extends AGMSolid<Ore> {
     public GOre(String filename, GMachine machine, GRegistry registry,
-                GLiquidRegistry liquids, GMachineData data, GMachineMatter matter, GMaterial material, GPartGroup partGroup, GMSolid solid, boolean isReg) {
+                GLiquidRegistry liquids, GOreDictRegistry ores, GMachineData data, GMachineMatter matter, GMaterial material, GPartGroup partGroup, GMSolid solid, boolean isReg) {
         //    int params, String filename, GMachine machine, GRegistry registry, GMaterial material, GPartGroup partGroup, GMSolid solid,
         //    boolean isDust, boolean isFineDust, boolean isPowder, boolean isReg
-        super(-2, filename, machine, registry, liquids, data, matter, material, partGroup, solid, true, false, false, isReg);
+        super(-2, filename, machine, registry, liquids, ores, data, matter, material, partGroup, solid, true, false, false, isReg);
         this.material = material;
     }
 
@@ -205,7 +206,7 @@ public class GOre extends AGMSolid<Ore> {
             }
             //add access to the material's dust parts to each ore variant, but don't register them
             for (RegistryData r : solid.getRegistries()) {
-                ov.add(r.name, r.r);
+                ov.add(r.NAME, r.r);
             }
             //ov.print();
             oreVariants.add(ov);
@@ -214,6 +215,7 @@ public class GOre extends AGMSolid<Ore> {
         o.addVariants(oreVariants.toArray(new OreVariant[0]));
         o.updateSolids(solid);
         o = updateLiquids(o);
+        o = updateOres(o);
         objects.add(o);
     }
 
