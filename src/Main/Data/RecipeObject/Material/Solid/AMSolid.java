@@ -18,7 +18,7 @@ public abstract class AMSolid extends AMaterialData {
 
     public void updateSolids(MSolid sol) {
         for (RegistryData r : sol.getRegistries()) {
-            this.add(r.NAME, r.r);
+            this.addRegistry(r.NAME, r.r);
         }
     }
 }

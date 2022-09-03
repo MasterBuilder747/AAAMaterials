@@ -44,28 +44,28 @@ public class Wood extends AMSolid {
         plank
         */
         if (isVanilla) {
-            this.add("log", registries[0]);
-            this.add("planks", registries[1]);
-            this.add("sapling", registries[2]);
-            this.add("stairs", registries[3]);
-            this.add("slab", registries[4]);
-            this.add("fence", registries[5]);
-            this.add("fence_gate", registries[6]);
-            this.add("door", registries[7]);
-            this.add("boat", registries[8]);
-            this.add("leaves", registries[9]);
-            this.add("button", registries[10]);
-            this.add("pressure_plate", registries[11]);
-            this.add("bark", registries[12]);
-            this.add("carved_wood", registries[13]);
-            this.add("bookshelf", registries[14]);
-            this.add("chest", registries[15]);
-            this.add("chest_trap", registries[16]);
-            this.add("leaf_carpet", registries[17]);
-            this.add("vertical_planks", registries[18]);
-            this.add("bark_slab", registries[19]);
-            this.add("bark_stairs", registries[20]);
-            this.add("bark_wall", registries[21]);
+            this.addRegistry("log", registries[0]);
+            this.addRegistry("planks", registries[1]);
+            this.addRegistry("sapling", registries[2]);
+            this.addRegistry("stairs", registries[3]);
+            this.addRegistry("slab", registries[4]);
+            this.addRegistry("fence", registries[5]);
+            this.addRegistry("fence_gate", registries[6]);
+            this.addRegistry("door", registries[7]);
+            this.addRegistry("boat", registries[8]);
+            this.addRegistry("leaves", registries[9]);
+            this.addRegistry("button", registries[10]);
+            this.addRegistry("pressure_plate", registries[11]);
+            this.addRegistry("bark", registries[12]);
+            this.addRegistry("carved_wood", registries[13]);
+            this.addRegistry("bookshelf", registries[14]);
+            this.addRegistry("chest", registries[15]);
+            this.addRegistry("chest_trap", registries[16]);
+            this.addRegistry("leaf_carpet", registries[17]);
+            this.addRegistry("vertical_planks", registries[18]);
+            this.addRegistry("bark_slab", registries[19]);
+            this.addRegistry("bark_stairs", registries[20]);
+            this.addRegistry("bark_wall", registries[21]);
         } else {
 
         }

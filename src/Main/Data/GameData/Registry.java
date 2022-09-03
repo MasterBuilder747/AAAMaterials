@@ -21,6 +21,10 @@ public class Registry extends AGameData {
         this.ore = ore;
     }
 
+    public String getLocalizedName() {
+        return this.NAME;
+    }
+
     @Override
     public String getUnlocalizedName() { return this.mod + ":" + this.registryName; }
 

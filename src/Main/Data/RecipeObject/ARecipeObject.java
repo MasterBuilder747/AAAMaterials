@@ -17,27 +17,84 @@ import Main.Util;
 import java.util.ArrayList;
 
 public abstract class ARecipeObject extends AData {
-    protected ArrayList<RegistryData> datas; //the array of registries that are used for adding recipes and other things
+    //registries for validating recipe IO
+    protected ArrayList<RegistryData> registries; //the array of registries that are used for adding recipes and other things
     protected ArrayList<LiquidData> liquids; //the array of liquid brackets
     protected ArrayList<OreData> ores; //the array of ore dictionary entries
-    
     protected ArrayList<Machine> machines; //registry of known machines are needed for each object's recipes //get the GMachine's arraylist only to reduce RAM usage
+    //global machine resources needed by recipes
     protected ArrayList<MachineMatter> matters; //machine resource matter
-    protected ArrayList<Registry> registries; //for custom items (yeah this will use a lot of RAM...)
     protected MachineData mData; //the one machine data
+
     String type; //unique type for recipe uniqueness and other identifiers
 
     public ARecipeObject(String NAME, 
-                         String type, ArrayList<Machine> machines, MachineData mData, ArrayList<MachineMatter> matters, ArrayList<Registry> registries) {
+                         String type, ArrayList<Machine> machines, MachineData mData, ArrayList<MachineMatter> matters) {
         super(NAME);
         this.type = type;
         this.machines = machines;
-        this.datas = new ArrayList<>();
+        this.registries = new ArrayList<>();
         this.liquids = new ArrayList<>();
         this.ores = new ArrayList<>();
         this.mData = mData;
         this.matters = matters;
-        this.registries = registries;
+    }
+
+    //REGISTRIES
+    //populate the registries, must be called by each recipe object externally from the generator
+    public void addAll(String[] keys, Registry[] regs) {
+        if (keys.length != regs.length) error("Keys and registries need to be the same length for recipeObject named " + this.NAME);
+        for (int i = 0; i < keys.length; i++) {
+            this.addRegistry(keys[i], regs[i]);
+        }
+    }
+    public void addAllLiquids(String[] keys, String[] brackets) {
+        if (keys.length != brackets.length) error("Keys and liquid registries need to be the same length for recipeObject named " + this.NAME);
+        for (int i = 0; i < keys.length; i++) {
+            this.addLiquid(keys[i], brackets[i]);
+        }
+    }
+    public void addAllOres(String[] keys, OreDict[] brackets) {
+        if (keys.length != brackets.length) error("Keys and oredict registries need to be the same length for recipeObject named " + this.NAME);
+        for (int i = 0; i < keys.length; i++) {
+            this.addOre(keys[i], brackets[i]);
+        }
+    }
+    public void addRegistry(String key, Registry r) {
+        this.registries.add(new RegistryData(key, r));
+    }
+    public void addLiquid(String key, String bracket) {
+        this.liquids.add(new LiquidData(key, bracket));
+    }
+    public void addOre(String key, OreDict ore) {
+        this.ores.add(new OreData(key, ore));
+    }
+    protected String getItemLocalized(String key) {
+        for (RegistryData r : this.registries) {
+            if (r.r.getLocalizedName().equals(key)) {
+                return r.r.getLocalizedName();
+            }
+        }
+        error(key, "item registry", this.NAME);
+        return null;
+    }
+    protected String getItemUnlocalized(String key) {
+        for (RegistryData r : this.registries) {
+            if (r.r.getFullUnlocalizedName().equals(key)) {
+                return r.r.getFullUnlocalizedName();
+            }
+        }
+        error(key, "item registry", this.NAME);
+        return null;
+    }
+    protected String getOredict(String s) {
+        for (OreData o : this.ores) {
+            if(o.is(s)) {
+                return o.o.NAME;
+            }
+        }
+        error("Unknown oredict: " + s);
+        return null;
     }
 
     protected Machine getMachine(String s) {
@@ -47,14 +104,6 @@ public abstract class ARecipeObject extends AData {
             }
         }
         throw new IllegalArgumentException("Unknown machine " + s + " in the machine registry");
-    }
-
-    protected void printDatas() {
-        System.out.print("[");
-        for (RegistryData r : this.datas) {
-            System.out.print(r.r.NAME+", ");
-        }
-        System.out.println("]");
     }
 
     protected String addRecipe(int num, String recipeType, String input, String lInput, String output, String lOutput,
@@ -148,8 +197,7 @@ public abstract class ARecipeObject extends AData {
         String item;
         if (i.startsWith("#")) {
             //ore dictionary
-            OreData ore = getOredict(i.substring(1));
-            item = ore.getUnlocalizedName();
+            item = getOredict(i.substring(1));
         } else if (i.startsWith("@")) {
             //registry name (unlocalized name)
             //meta is required
@@ -157,120 +205,61 @@ public abstract class ARecipeObject extends AData {
             if (amt == 1) i += ":0"; //mod:item:0
             else if (amt != 2)
                 error("At least one colon is required to specify the mod for the unlocalized name for string " + i.substring(1));
-            item = this.getData(i.substring(1)).r.getFullUnlocalizedName();
+            item = this.getByKey(i.substring(1)).r.getFullUnlocalizedName();
         } else if (i.startsWith("&")) {
             //key
             item = getPart(i.substring(1));
         } else {
             //localized name
             i = i.replace("-", ""); //dash is for readability, spaces are not needed for searching by localized name in the registry
-            item = this.getData(i).r.getFullUnlocalizedName();
+            item = this.getByKey(i).r.getFullUnlocalizedName();
         }
         return item;
     }
-
     //recipe tweaker
     private String getRegistryBracket(String p) {
         if (p.startsWith("&")) {
             p = getItemUnlocalized(p.substring(1)); //full unlocalized name: mod:registry:meta
         } else if (p.startsWith("@")) {
-            p = getItem(p.substring(1)); //localized name
+            p = getItemLocalized(p.substring(1)); //localized name (display name)
         } else {
             p = getPart(p); //key of an item known in this recipe object
         }
         return p;
     }
-
-    protected boolean isAllParts(String[] parts) {
-        for(String p : parts) {
-            if (!isPart(p)) return false;
+    
+    protected ArrayList<Registry> getRegistryArray() {
+        ArrayList<Registry> out = new ArrayList<>();
+        for (RegistryData d : this.registries) {
+            out.add(d.r);
         }
-        return true;
+        return out;
     }
-
+    //change this api later, make it user defined
     private AMaterialRecipe constructRecipe(String recipeType) {
         switch (recipeType) {
-            case "coiller" -> {return new CoillerRecipe(this.machines, this.mData, this.matters, this.registries);}
-            case "bender" -> {return new HeatedBenderRecipe(this.machines, this.mData, this.matters, this.registries);}
-            case "cut" -> {return new LaserCutterRecipe(this.machines, this.mData, this.matters, this.registries);}
-            case "lathe" -> {return new LatheRecipe(this.machines, this.mData, this.matters, this.registries);}
-            case "mLathe" -> {return new MicroLatheRecipe(this.machines, this.mData, this.matters, this.registries);}
-            case "press" -> {return new PressRecipe(this.machines, this.mData, this.matters, this.registries);}
-            case "pulverize" -> {return new PulverizeRecipe(this.machines, this.mData, this.matters, this.registries);}
-            case "sharpen" -> {return new SharpenRecipe(this.machines, this.mData, this.matters, this.registries);}
-            case "smelt" -> {return new SmeltingRecipe(this.machines, this.mData, this.matters, this.registries);}
-            case "wiremill" -> {return new WiremillRecipe(this.machines, this.mData, this.matters, this.registries);}
-            case "welder" -> {return new WelderRecipe(this.machines, this.mData, this.matters, this.registries);}
-            case "melting" -> {return new MeltingRecipe(this.machines, this.mData, this.matters, this.registries);}
-            case "metalAssembler" -> {return new MetalAssemblerRecipe(this.machines, this.mData, this.matters, this.registries);}
+            case "coiller" -> {return new CoillerRecipe(this.machines, this.mData, this.matters, this.getRegistryArray());}
+            case "bender" -> {return new HeatedBenderRecipe(this.machines, this.mData, this.matters, this.getRegistryArray());}
+            case "cut" -> {return new LaserCutterRecipe(this.machines, this.mData, this.matters, this.getRegistryArray());}
+            case "lathe" -> {return new LatheRecipe(this.machines, this.mData, this.matters, this.getRegistryArray());}
+            case "mLathe" -> {return new MicroLatheRecipe(this.machines, this.mData, this.matters, this.getRegistryArray());}
+            case "press" -> {return new PressRecipe(this.machines, this.mData, this.matters, this.getRegistryArray());}
+            case "pulverize" -> {return new PulverizeRecipe(this.machines, this.mData, this.matters, this.getRegistryArray());}
+            case "sharpen" -> {return new SharpenRecipe(this.machines, this.mData, this.matters, this.getRegistryArray());}
+            case "smelt" -> {return new SmeltingRecipe(this.machines, this.mData, this.matters, this.getRegistryArray());}
+            case "wiremill" -> {return new WiremillRecipe(this.machines, this.mData, this.matters, this.getRegistryArray());}
+            case "welder" -> {return new WelderRecipe(this.machines, this.mData, this.matters, this.getRegistryArray());}
+            case "melting" -> {return new MeltingRecipe(this.machines, this.mData, this.matters, this.getRegistryArray());}
+            case "metalAssembler" -> {return new MetalAssemblerRecipe(this.machines, this.mData, this.matters, this.getRegistryArray());}
         }
-        return null;
-    }
-
-    public void addAll(String[] keys, Registry[] regs) {
-        if (keys.length != regs.length) error("Keys and registries need to be the same length for recipeObject named " + this.NAME);
-        for (int i = 0; i < keys.length; i++) {
-            this.add(keys[i], regs[i]);
-        }
-    }
-    public void addAllLiquids(String[] keys, String[] brackets) {
-        if (keys.length != brackets.length) error("Keys and liquid registries need to be the same length for recipeObject named " + this.NAME);
-        for (int i = 0; i < keys.length; i++) {
-            this.addLiquid(keys[i], brackets[i]);
-        }
-    }
-    public void addAllOres(String[] keys, OreDict[] brackets) {
-        if (keys.length != brackets.length) error("Keys and oredict registries need to be the same length for recipeObject named " + this.NAME);
-        for (int i = 0; i < keys.length; i++) {
-            this.addOre(keys[i], brackets[i]);
-        }
-    }
-
-    //uses the localized name externally
-    public void add(String key, Registry r) {
-        this.datas.add(new RegistryData(key, r));
-    }
-    public void addLiquid(String key, String bracket) {
-        this.liquids.add(new LiquidData(key, bracket));
-    }
-    public void addOre(String key, OreDict ore) {
-        this.ores.add(new OreData(key, ore));
-    }
-
-    protected String getItem(String key) {
-        for (Registry r : this.registries) {
-            if (r.NAME.equals(key)) {
-                return r.getBracket();
-            }
-        }
-        error(key, "item registry", this.NAME);
-        return null;
-    }
-    protected String getItemByMod(String key, String mod) {
-        for (Registry r : this.registries) {
-            if (r.NAME.equals(key) && r.mod.equals(mod)) {
-                return r.getBracket();
-            }
-        }
-        error(key, "item registry", this.NAME);
-        return null;
-    }
-    //mod:registryName:meta (0 if no meta)
-    protected String getItemUnlocalized(String key) {
-        for (Registry r : this.registries) {
-            if (r.getFullUnlocalizedName().equals(key)) {
-                return r.getBracket();
-            }
-        }
-        error(key, "item registry", this.NAME);
         return null;
     }
 
     public RegistryData[] getRegistries() {
-        return this.datas.toArray(new RegistryData[0]);
+        return this.registries.toArray(new RegistryData[0]);
     }
     public RegistryData[] getRegistries(String[] exclusions) {
-        ArrayList<RegistryData> newDatas = this.datas;
+        ArrayList<RegistryData> newDatas = this.registries;
         //printDatas();
         for (int k = 0; k < newDatas.size(); k++) {
             RegistryData r = newDatas.get(k);
@@ -286,17 +275,14 @@ public abstract class ARecipeObject extends AData {
         }
         return newDatas.toArray(new RegistryData[0]);
     }
-    protected RegistryData getData(String key) {
-        for (RegistryData m : this.datas) {
+    protected RegistryData getByKey(String key) {
+        for (RegistryData m : this.registries) {
             if (m.is(key)) {
                 return m;
             }
         }
         error(key, this.NAME);
         return null;
-    }
-    public ArrayList<RegistryData> getDatas() {
-        return this.datas;
     }
     protected String getLiquid(String key) {
         for (LiquidData m : this.liquids) {
@@ -306,9 +292,6 @@ public abstract class ARecipeObject extends AData {
         }
         error(key, "liquid", this.NAME);
         return null;
-    }
-    protected String getLiquid(String key, int amount) {
-        return getLiquid(key) + "*" + amount;
     }
     protected String getDataLiquid() {
         return this.mData.getData();
@@ -353,21 +336,28 @@ public abstract class ARecipeObject extends AData {
 
     public void printNames() {
         System.out.println("Keys for " + this.NAME + ":");
-        for (RegistryData r : this.datas) {
+        for (RegistryData r : this.registries) {
             System.out.println(r.NAME + " = " + r.r.NAME);
         }
         System.out.println();
     }
+    protected void printDatas() {
+        System.out.print("[");
+        for (RegistryData r : this.registries) {
+            System.out.print(r.r.NAME+", ");
+        }
+        System.out.println("]");
+    }
     public void printBrackets() {
         System.out.println("Keys:");
-        for (RegistryData r : this.datas) {
+        for (RegistryData r : this.registries) {
             System.out.println(r.NAME + " = " + r.r.getBracket());
         }
         System.out.println();
     }
     public void printAll() {
         System.out.println("Keys:");
-        for (RegistryData r : this.datas) {
+        for (RegistryData r : this.registries) {
             System.out.print(r.NAME + " = ");
             r.r.print();
         }
@@ -375,7 +365,7 @@ public abstract class ARecipeObject extends AData {
     }
 
     protected String getPart(String key) {
-        return this.getData(key).r.getBracket();
+        return this.getByKey(key).r.getBracket();
     }
     protected boolean isPart(String key) {
         try {
@@ -385,31 +375,16 @@ public abstract class ARecipeObject extends AData {
         }
         return true;
     }
-    protected String appendOredict(String ore) {
-        return "ore:"+ore;
-    }
-    protected String appendOredict(String ore, int amount) {
-        return "ore:"+ore+"*"+amount;
-    }
-    protected OreData getOredict(String s) {
-        for (OreData o : this.ores) {
-            if(o.is(s)) {
-                return o;
-            }
-        }
-        error("Unknown oredict: " + s);
-        return null;
-    }
 
     protected Registry getRegistry(String key) {
-        return this.getData(key).r;
+        return this.getByKey(key).r;
     }
     protected String getUnlocalizedName(String key) {
-        return this.getData(key).r.getUnlocalizedName();
+        return this.getByKey(key).r.getUnlocalizedName();
     }
     protected boolean is(String key) {
         try {
-            this.getData(key);
+            this.getByKey(key);
         } catch (IllegalArgumentException e) {
             return false;
         }
@@ -418,10 +393,10 @@ public abstract class ARecipeObject extends AData {
 
     //replaces the existing key with a new registry
     protected void change(String key, Registry r) {
-        RegistryData mat = this.getData(key);
+        RegistryData mat = this.getByKey(key);
         if (mat != null) {
-            this.datas.remove(mat);
-            this.add(key, r);
+            this.registries.remove(mat);
+            this.addRegistry(key, r);
         } else {
             error(key, this.NAME);
         }

@@ -119,29 +119,29 @@ public class Ore extends AMSolid {
         this.variants = variants;
     }
     public void addStoneGen(Registry ore, Registry poor, Registry dense, int chunkChance, int minHeight, String biome) {
-        this.add("poorStone" , poor);
-        this.add("oreStone", ore);
-        this.add("denseStone", dense);
+        this.addRegistry("poorStone" , poor);
+        this.addRegistry("oreStone", ore);
+        this.addRegistry("denseStone", dense);
         this.stoneMinHeight = minHeight;
         this.stoneChunkChance = chunkChance;
         this.biome = biome;
     }
     public void addNetherGen(Registry ore, Registry poor, Registry dense, int chunkChance, int minHeight) {
-        this.add("poorNether", poor);
-        this.add("oreNether", ore);
-        this.add("denseNether", dense);
+        this.addRegistry("poorNether", poor);
+        this.addRegistry("oreNether", ore);
+        this.addRegistry("denseNether", dense);
         this.netherMinHeight = minHeight;
         this.netherChunkChance = chunkChance;
     }
     public void addEndGen(Registry ore, Registry poor, Registry dense, int chunkChance, int minHeight) {
-        this.add("poorEnd", poor);
-        this.add("oreEnd", ore);
-        this.add("denseEnd", dense);
+        this.addRegistry("poorEnd", poor);
+        this.addRegistry("oreEnd", ore);
+        this.addRegistry("denseEnd", dense);
         this.endMinHeight = minHeight;
         this.endChunkChance = chunkChance;
     }
     public void addBedrockGen(Registry denseBedrock, int bedrockChunkChance, int bedrockDimension) {
-        this.add("denseBedrock", denseBedrock);
+        this.addRegistry("denseBedrock", denseBedrock);
         this.bedrockChunkChance = bedrockChunkChance;
         this.bedrockDimension = bedrockDimension;
     }
