@@ -120,7 +120,7 @@ public abstract class ARecipeObject extends AData {
             out = getItemUnlocalized(item.substring(1));
         } else {
             //key
-            out = getUnlocalizedByKey(item.substring(1));
+            out = getUnlocalizedByKey(item);
         }
         return out;
     }
@@ -208,7 +208,7 @@ public abstract class ARecipeObject extends AData {
     protected boolean is(String key) {
         try {
             this.getRegistryData(key);
-        } catch (IllegalArgumentException e) {
+        } catch (RecipeObjectException e) {
             return false;
         }
         return true;

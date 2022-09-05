@@ -45,6 +45,7 @@ public abstract class AMalleable extends AMSolid {
     @Override
     public String buildSpecificRecipe() {
         //printNames();
+        /*
         String melting = "";
         if (meltingMultiplier != 0) {
             melting =
@@ -216,6 +217,8 @@ public abstract class AMalleable extends AMSolid {
                 parts +
                 metalParts +
                 buildPartRecipes();
+         */
+        return buildPartRecipes();
     }
 
     @Override
