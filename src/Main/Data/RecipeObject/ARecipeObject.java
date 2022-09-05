@@ -64,6 +64,9 @@ public abstract class ARecipeObject extends AData {
     private String[] parseRecipeIO(String sss, boolean liquid) {
         String[] ss = Util.split(sss, ";");
         ArrayList<String> outs = new ArrayList<>();
+        //internal syntax:
+        //12.5%mod:ItemStack:9*10
+        //12.5%ore:oreDict*10
         for (String s : ss) {
             double chance = -1;
             if (s.contains("%")) {
@@ -88,33 +91,36 @@ public abstract class ARecipeObject extends AData {
     }
     private String handleItem(String item) {
         //external syntax:
-        //Iron-Ingot //finds the first mod's first item that has this localized name, no meta
-        //minecraft:Iron-Ingot //meta not needed
+        //@Iron-Ingot //finds the first mod's first item that has this localized name, no meta
+        //@minecraft:Iron-Ingot //meta not needed
         //#ingotIron //finds the first entry in the oredict registry
-        //@minecraft:iron_ingot //meta 0
-        //@minecraft:wool:2
-        //&gear //part key, added by this api
-        //internal syntax:
-        //12.5%mod:ItemStack:9*10
-        //12.5%ore:oreDict*10
+        //&minecraft:iron_ingot //meta 0
+        //&minecraft:wool:2
+        //gear //part key, added by this api
         String out;
         if (item.startsWith("#")) {
             //ore dictionary
             out = getOredict(item.substring(1));
         } else if (item.startsWith("@")) {
+            //localized name
+            String mod = null;
+            if (item.contains(":")) {
+                mod = item.substring(1, item.indexOf(":"));
+                item = item.substring(item.indexOf(":")+1);
+            }
+            item = item.replace("-", ""); //dash is for readability, spaces are not needed for searching by localized name in the registry
+            if (mod == null) out = getItemLocalized(item);
+            else out = getItemLocalized(item, mod);
+        } else if (item.startsWith("&")) {
             //registry name (unlocalized name)
             int amt = Util.amountOfChar(item, ':');
             if (amt == 1) item += ":0"; //mod:item:0
             else if (amt != 2)
                 error("At least one colon is required to specify the mod for the unlocalized name for string " + item.substring(1));
             out = getItemUnlocalized(item.substring(1));
-        } else if (item.startsWith("&")) {
+        } else {
             //key
             out = getUnlocalizedByKey(item.substring(1));
-        } else {
-            //localized name
-            item = item.replace("-", ""); //dash is for readability, spaces are not needed for searching by localized name in the registry
-            out = getItemLocalized(item);
         }
         return out;
     }
@@ -216,6 +222,15 @@ public abstract class ARecipeObject extends AData {
             }
         }
         error(key, "item registry", this.NAME);
+        return null;
+    }
+    protected String getItemLocalized(String key, String mod) {
+        for (Registry r : this.items) {
+            if (r.getLocalizedName().equals(key) && r.mod.equals(mod)) {
+                return r.getLocalizedName();
+            }
+        }
+        error(mod+":"+key, "item registry", this.NAME);
         return null;
     }
     protected String getItemUnlocalized(String key) {
