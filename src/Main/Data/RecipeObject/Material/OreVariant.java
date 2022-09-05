@@ -60,8 +60,9 @@ public class OreVariant extends AMaterialData {
         StringBuilder sb = new StringBuilder();
         //test
         if (this.block.equals("nether") || this.block.equals("end")) {
-            String test = addRecipe(1, "pulverize", "rock", "", "rockOre", "", 100, 1, 1, 100, 100, "+red*100", "-orange*100", this.block);
-            sb.append(test);
+            //String test = addRecipe(1, "pulverize", "rock", "", "rockOre", "", 100, 1, 1, 100, 100, "+red*100", "-orange*100", this.block);
+            //sb.append(test);
+            //this is now user defined!
         }
         return sb.toString();
     }

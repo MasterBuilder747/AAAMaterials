@@ -36,61 +36,33 @@ public abstract class ARecipeObject extends AData {
         this.machines = machines;
         this.matters = matters;
         this.dataLiquid = dataLiquid;
+        this.itemKeys = new ArrayList<>();
     }
     
     //build recipe
-    protected String addRecipe(int num, String recipeType, String input, String lInput, String output, String lOutput,
+    protected String addRecipe(int num, String recipeType, String iInput, String lInput, String iOutput, String lOutput,
                                int time, int tier, double powerMultiplier, int chemAmt, int dataAmt, String matterIn, String matterOut) {
-        //Recipe header
-        AMaterialRecipe re;
-        String recipeVariable = this.NAME+output.replace("*", "_")+this.type+num;
-        re = constructRecipe(recipeType);
-        if (re == null) {
+        String customVar = ""; //this is a parameter later on!
+        AMaterialRecipe r;
+        String recipeVariable = this.NAME+iOutput.replace("*", "_")+this.type+num+customVar;
+        r = constructRecipe(recipeType);
+        if (r == null) {
             error("Unknown recipeType: " + recipeType);
-        }
-        re.createRecipe(recipeVariable, time, tier, powerMultiplier, 0, this.getDataLiquid());
-
-        //IO
-        //@ overrides syntax and uses what is typed directly in the recipe instead (for molten, etc)
-        String[] inputs = parseRecipeIO(Util.split(input, ";"), false);
-        String[] outputs = parseRecipeIO(Util.split(output, ";"), false);
-
-        re.updateIO(inputs, parseLOverrides(lInput), outputs, parseLOverrides(lOutput));
-        re.setMachineResources(chemAmt, dataAmt, getMatterIn(matterIn), getMatterOut(matterOut));
-        return re.buildRecipe();
-    }
-    //IO is a semicolon separated list for each
-    protected String addRecipe(int num, String recipeType, String input, String lInput, String output, String lOutput,
-                               int time, int tier, double powerMultiplier, int chemAmt, int dataAmt, String matterIn, String matterOut, String customVar) {
-        //Recipe header
-        AMaterialRecipe re;
-        String recipeVariable = this.NAME+output.replace("*", "_")+this.type+num+customVar;
-        re = constructRecipe(recipeType);
-        if (re == null) {
-            error("Unknown recipeType: " + recipeType);
-        }
-        re.createRecipe(recipeVariable, time, tier, powerMultiplier, 0, this.getDataLiquid());
-
-        //IO
-        //@ overrides syntax and uses what is typed directly in the recipe instead (for molten, etc)
-        String[] inputs = parseRecipeIO(Util.split(input, ";"), false);
-        String[] outputs = parseRecipeIO(Util.split(output, ";"), false);
-
-        re.updateIO(inputs, parseLOverrides(lInput), outputs, parseLOverrides(lOutput));
-        re.setMachineResources(chemAmt, dataAmt, getMatterIn(matterIn), getMatterOut(matterOut));
-        return re.buildRecipe();
-    }
-    private String[] parseLOverrides(String s) {
-        String[] out;
-        if (s.startsWith("@")) {
-            out = new String[1];
-            out[0] = s.substring(1);
+            return null;
         } else {
-            out = parseRecipeIO(Util.split(s, ","), true);
+            r.createRecipe(recipeVariable, time, tier, powerMultiplier, 0, this.getDataLiquid());
+            //IO
+            String[] iInputs = parseRecipeIO(iInput,false);
+            String[] iOutputs = parseRecipeIO(iOutput,false);
+            String[] lInputs = parseRecipeIO(lInput,true);
+            String[] lOutputs = parseRecipeIO(lOutput,true);
+            r.updateIO(iInputs, lInputs, iOutputs, lOutputs);
+            r.setMachineResources(chemAmt, dataAmt, getMatterIn(matterIn), getMatterOut(matterOut));
+            return r.buildRecipe();
         }
-        return out;
     }
-    private String[] parseRecipeIO(String[] ss, boolean liquid) {
+    private String[] parseRecipeIO(String sss, boolean liquid) {
+        String[] ss = Util.split(sss, ";");
         ArrayList<String> outs = new ArrayList<>();
         for (String s : ss) {
             double chance = -1;
@@ -106,6 +78,7 @@ public abstract class ARecipeObject extends AData {
             }
             StringBuilder sb = new StringBuilder();
             if (chance != -1) sb.append(chance).append("%");
+            //liquid or item?
             if (liquid) sb.append(getLiquid(s));
             else sb.append(handleItem(s));
             if (amount != 1) sb.append("*").append(amount);
@@ -113,7 +86,7 @@ public abstract class ARecipeObject extends AData {
         }
         return outs.toArray(new String[0]);
     }
-    private String handleItem(String i) {
+    private String handleItem(String item) {
         //external syntax:
         //Iron-Ingot //finds the first mod's first item that has this localized name, no meta
         //minecraft:Iron-Ingot //meta not needed
@@ -124,37 +97,26 @@ public abstract class ARecipeObject extends AData {
         //internal syntax:
         //12.5%mod:ItemStack:9*10
         //12.5%ore:oreDict*10
-        String item;
-        if (i.startsWith("#")) {
+        String out;
+        if (item.startsWith("#")) {
             //ore dictionary
-            item = getOredict(i.substring(1));
-        } else if (i.startsWith("@")) {
+            out = getOredict(item.substring(1));
+        } else if (item.startsWith("@")) {
             //registry name (unlocalized name)
-            int amt = Util.amountOfChar(i, ':');
-            if (amt == 1) i += ":0"; //mod:item:0
+            int amt = Util.amountOfChar(item, ':');
+            if (amt == 1) item += ":0"; //mod:item:0
             else if (amt != 2)
-                error("At least one colon is required to specify the mod for the unlocalized name for string " + i.substring(1));
-            item = this.getRegistryData(i.substring(1)).r.getFullUnlocalizedName();
-        } else if (i.startsWith("&")) {
+                error("At least one colon is required to specify the mod for the unlocalized name for string " + item.substring(1));
+            out = getItemUnlocalized(item.substring(1));
+        } else if (item.startsWith("&")) {
             //key
-            item = getBracket(i.substring(1));
+            out = getUnlocalizedByKey(item.substring(1));
         } else {
             //localized name
-            i = i.replace("-", ""); //dash is for readability, spaces are not needed for searching by localized name in the registry
-            item = this.getRegistryData(i).r.getFullUnlocalizedName();
+            item = item.replace("-", ""); //dash is for readability, spaces are not needed for searching by localized name in the registry
+            out = getItemLocalized(item);
         }
-        return item;
-    }
-    //recipe tweaker
-    private String getRegistryBracket(String p) {
-        if (p.startsWith("&")) {
-            p = getItemUnlocalized(p.substring(1)); //full unlocalized name: mod:registry:meta
-        } else if (p.startsWith("@")) {
-            p = getItemLocalized(p.substring(1)); //localized name (display name)
-        } else {
-            p = getBracket(p); //key of an item known in this recipe object
-        }
-        return p;
+        return out;
     }
     
     //change this api later, make it user defined
@@ -233,14 +195,8 @@ public abstract class ARecipeObject extends AData {
     protected Registry get(String key) {
         return this.getRegistryData(key).r;
     }
-    protected String getBracket(String key) {
-        return this.get(key).getBracket();
-    }
-    protected String getUnlocalized(String key) {
-        return this.get(key).getUnlocalizedName();
-    }
-    protected String getLocalizedName(String key) {
-        return this.get(key).getLocalizedName();
+    protected String getUnlocalizedByKey(String key) {
+        return this.get(key).getFullUnlocalizedName();
     }
     //logic
     protected boolean is(String key) {
