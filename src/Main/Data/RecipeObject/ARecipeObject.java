@@ -15,27 +15,27 @@ import java.util.Arrays;
 
 public abstract class ARecipeObject extends AData {
     //registries for validating recipe IO
-    protected ArrayList<Registry> registries; //the array of registries that are used for adding recipes and other things, does not associate with keys!
+    protected ArrayList<Registry> items; //the array of registries that are used for adding recipes and other things, does not associate with keys!
     protected ArrayList<String> liquids; //the array of liquid brackets (liquid:water1 where water1 is only included)
     protected ArrayList<String> ores; //the array of ore dictionary entries (ore:ingotIron where ingotIron is only included)
     protected ArrayList<Machine> machines; //registry of known machines are needed for each object's recipes //get the GMachine's arraylist only to reduce RAM usage
     //global machine resources needed by recipes
     protected ArrayList<MachineMatter> matters; //machine resource matter
-    protected MachineData mData; //the one machine data
+    protected MachineData dataLiquid; //the one machine data
 
     String type; //unique type for recipe uniqueness and other identifiers
-    ArrayList<RegistryData> datas; //key used to identify items to be used by this recipe object more easily, this is manually populated
+    ArrayList<RegistryData> itemKeys; //key used to identify items to be used by this recipe object more easily, this is manually populated
 
-    public ARecipeObject(String NAME, 
-                         String type, ArrayList<Machine> machines, MachineData mData, ArrayList<MachineMatter> matters, ArrayList<Registry> registries) {
+    public ARecipeObject(String NAME,
+                         String type, ArrayList<Machine> machines, MachineData dataLiquid, ArrayList<MachineMatter> matters, ArrayList<Registry> items) {
         super(NAME);
-        this.type = type;
-        this.registries = registries;
+        this.items = items;
         this.liquids = new ArrayList<>();
         this.ores = new ArrayList<>();
+        this.type = type;
         this.machines = machines;
-        this.mData = mData;
         this.matters = matters;
+        this.dataLiquid = dataLiquid;
     }
     
     //build recipe
@@ -134,14 +134,14 @@ public abstract class ARecipeObject extends AData {
             if (amt == 1) i += ":0"; //mod:item:0
             else if (amt != 2)
                 error("At least one colon is required to specify the mod for the unlocalized name for string " + i.substring(1));
-            item = this.getByKey(i.substring(1)).r.getFullUnlocalizedName();
+            item = this.getRegistryData(i.substring(1)).r.getFullUnlocalizedName();
         } else if (i.startsWith("&")) {
             //key
-            item = getPart(i.substring(1));
+            item = getBracket(i.substring(1));
         } else {
             //localized name
             i = i.replace("-", ""); //dash is for readability, spaces are not needed for searching by localized name in the registry
-            item = this.getByKey(i).r.getFullUnlocalizedName();
+            item = this.getRegistryData(i).r.getFullUnlocalizedName();
         }
         return item;
     }
@@ -152,7 +152,7 @@ public abstract class ARecipeObject extends AData {
         } else if (p.startsWith("@")) {
             p = getItemLocalized(p.substring(1)); //localized name (display name)
         } else {
-            p = getPart(p); //key of an item known in this recipe object
+            p = getBracket(p); //key of an item known in this recipe object
         }
         return p;
     }
@@ -160,83 +160,51 @@ public abstract class ARecipeObject extends AData {
     //change this api later, make it user defined
     private AMaterialRecipe constructRecipe(String recipeType) {
         switch (recipeType) {
-            case "coiller" -> {return new CoillerRecipe(this.machines, this.mData, this.matters, this.registries);}
-            case "bender" -> {return new HeatedBenderRecipe(this.machines, this.mData, this.matters, this.registries);}
-            case "cut" -> {return new LaserCutterRecipe(this.machines, this.mData, this.matters, this.registries);}
-            case "lathe" -> {return new LatheRecipe(this.machines, this.mData, this.matters, this.registries);}
-            case "mLathe" -> {return new MicroLatheRecipe(this.machines, this.mData, this.matters, this.registries);}
-            case "press" -> {return new PressRecipe(this.machines, this.mData, this.matters, this.registries);}
-            case "pulverize" -> {return new PulverizeRecipe(this.machines, this.mData, this.matters, this.registries);}
-            case "sharpen" -> {return new SharpenRecipe(this.machines, this.mData, this.matters, this.registries);}
-            case "smelt" -> {return new SmeltingRecipe(this.machines, this.mData, this.matters, this.registries);}
-            case "wiremill" -> {return new WiremillRecipe(this.machines, this.mData, this.matters, this.registries);}
-            case "welder" -> {return new WelderRecipe(this.machines, this.mData, this.matters, this.registries);}
-            case "melting" -> {return new MeltingRecipe(this.machines, this.mData, this.matters, this.registries);}
-            case "metalAssembler" -> {return new MetalAssemblerRecipe(this.machines, this.mData, this.matters, this.registries);}
+            case "coiller" -> {return new CoillerRecipe(this.machines, this.dataLiquid, this.matters, this.items);}
+            case "bender" -> {return new HeatedBenderRecipe(this.machines, this.dataLiquid, this.matters, this.items);}
+            case "cut" -> {return new LaserCutterRecipe(this.machines, this.dataLiquid, this.matters, this.items);}
+            case "lathe" -> {return new LatheRecipe(this.machines, this.dataLiquid, this.matters, this.items);}
+            case "mLathe" -> {return new MicroLatheRecipe(this.machines, this.dataLiquid, this.matters, this.items);}
+            case "press" -> {return new PressRecipe(this.machines, this.dataLiquid, this.matters, this.items);}
+            case "pulverize" -> {return new PulverizeRecipe(this.machines, this.dataLiquid, this.matters, this.items);}
+            case "sharpen" -> {return new SharpenRecipe(this.machines, this.dataLiquid, this.matters, this.items);}
+            case "smelt" -> {return new SmeltingRecipe(this.machines, this.dataLiquid, this.matters, this.items);}
+            case "wiremill" -> {return new WiremillRecipe(this.machines, this.dataLiquid, this.matters, this.items);}
+            case "welder" -> {return new WelderRecipe(this.machines, this.dataLiquid, this.matters, this.items);}
+            case "melting" -> {return new MeltingRecipe(this.machines, this.dataLiquid, this.matters, this.items);}
+            case "metalAssembler" -> {return new MetalAssemblerRecipe(this.machines, this.dataLiquid, this.matters, this.items);}
         }
         return null;
     }
     
-    //key registry
-    public void addAll(String[] keys, Registry[] regs) {
+    //key registry (parts)
+    //add
+    //called by Generator
+    public void addAllRegistryDatas(String[] keys, Registry[] regs) {
         if (keys.length != regs.length) error("Keys and registries need to be the same length for recipeObject named " + this.NAME);
         for (int i = 0; i < keys.length; i++) {
-            this.addRegistry(keys[i], regs[i]);
+            this.addRegistryData(keys[i], regs[i]);
         }
     }
-    public void addRegistry(String key, Registry r) {
-        this.datas.add(new RegistryData(key, r));
-    }
-    protected RegistryData getByKey(String key) {
-        for (RegistryData m : this.datas) {
-            if (this.is(key)) {
-                return m;
-            }
-        }
-        error(key, this.NAME);
-        return null;
-    }
-    protected String getPart(String key) {
-        return this.getByKey(key).r.getBracket();
-    }
-    protected boolean isPart(String key) {
-        try {
-            this.getPart(key);
-        } catch (RecipeObjectException e) {
-            return false;
-        }
-        return true;
-    }
-    protected Registry getRegistry(String key) {
-        return this.getByKey(key).r;
-    }
-    protected String getUnlocalizedName(String key) {
-        return this.getByKey(key).r.getUnlocalizedName();
-    }
-    protected boolean is(String key) {
-        try {
-            this.getByKey(key);
-        } catch (IllegalArgumentException e) {
-            return false;
-        }
-        return true;
+    public void addRegistryData(String key, Registry r) {
+        this.itemKeys.add(new RegistryData(key, r));
     }
     //replaces the existing key with a new registry
     protected void change(String key, Registry r) {
-        RegistryData mat = this.getByKey(key);
+        RegistryData mat = this.getRegistryData(key);
         if (mat != null) {
-            this.datas.remove(mat);
-            this.addRegistry(key, r);
+            this.itemKeys.remove(mat);
+            this.addRegistryData(key, r);
         } else {
             error(key, this.NAME);
         }
     }
     //return the whole array
-    public RegistryData[] getRegistries() {
-        return this.datas.toArray(new RegistryData[0]);
+    public RegistryData[] getItemsArray() {
+        return this.itemKeys.toArray(new RegistryData[0]);
     }
-    public RegistryData[] getRegistries(String[] exclusions) {
-        ArrayList<RegistryData> newDatas = this.datas;
+    public RegistryData[] getItemsArray(String[] exclusions) {
+        ArrayList<RegistryData> newDatas = this.itemKeys;
         //printDatas();
         for (int k = 0; k < newDatas.size(); k++) {
             RegistryData r = newDatas.get(k);
@@ -252,10 +220,41 @@ public abstract class ARecipeObject extends AData {
         }
         return newDatas.toArray(new RegistryData[0]);
     }
+    //get
+    protected RegistryData getRegistryData(String key) {
+        for (RegistryData d : this.itemKeys) {
+            if (d.key.equals(key)) {
+                return d;
+            }
+        }
+        error(key, this.NAME);
+        return null;
+    }
+    protected Registry get(String key) {
+        return this.getRegistryData(key).r;
+    }
+    protected String getBracket(String key) {
+        return this.get(key).getBracket();
+    }
+    protected String getUnlocalized(String key) {
+        return this.get(key).getUnlocalizedName();
+    }
+    protected String getLocalizedName(String key) {
+        return this.get(key).getLocalizedName();
+    }
+    //logic
+    protected boolean is(String key) {
+        try {
+            this.getRegistryData(key);
+        } catch (IllegalArgumentException e) {
+            return false;
+        }
+        return true;
+    }
 
     //item registry
     protected String getItemLocalized(String key) {
-        for (Registry r : this.registries) {
+        for (Registry r : this.items) {
             if (r.getLocalizedName().equals(key)) {
                 return r.getLocalizedName();
             }
@@ -264,7 +263,7 @@ public abstract class ARecipeObject extends AData {
         return null;
     }
     protected String getItemUnlocalized(String key) {
-        for (Registry r : this.registries) {
+        for (Registry r : this.items) {
             if (r.getFullUnlocalizedName().equals(key)) {
                 return r.getFullUnlocalizedName();
             }
@@ -311,7 +310,7 @@ public abstract class ARecipeObject extends AData {
         throw new IllegalArgumentException("Unknown machine " + s + " in the machine registry");
     }
     protected String getDataLiquid() {
-        return this.mData.getData();
+        return this.dataLiquid.getData();
     }
     private MachineMatter getMatter(String key) {
         for (MachineMatter m : this.matters) {
@@ -354,29 +353,29 @@ public abstract class ARecipeObject extends AData {
     //print methods
     public void printNames() {
         System.out.println("Keys for " + this.NAME + ":");
-        for (RegistryData r : this.datas) {
-            System.out.println(r.NAME + " = " + r.r.NAME);
+        for (RegistryData r : this.itemKeys) {
+            System.out.println(r.key + " = " + r.r.NAME);
         }
         System.out.println();
     }
     protected void printDatas() {
         System.out.print("[");
-        for (RegistryData r : this.datas) {
+        for (RegistryData r : this.itemKeys) {
             System.out.print(r.r.NAME+", ");
         }
         System.out.println("]");
     }
     public void printBrackets() {
         System.out.println("Keys:");
-        for (RegistryData r : this.datas) {
-            System.out.println(r.NAME + " = " + r.r.getBracket());
+        for (RegistryData r : this.itemKeys) {
+            System.out.println(r.key + " = " + r.r.getBracket());
         }
         System.out.println();
     }
     public void printAll() {
         System.out.println("Keys:");
-        for (RegistryData r : this.datas) {
-            System.out.print(r.NAME + " = ");
+        for (RegistryData r : this.itemKeys) {
+            System.out.print(r.key + " = ");
             r.r.print();
         }
         System.out.println();

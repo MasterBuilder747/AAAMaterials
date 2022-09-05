@@ -63,7 +63,7 @@ public abstract class AGMaterialData<M extends AMaterialData> extends AGRecipeOb
         if (this.isReg) {
             String[] regs = r.localizedPartNames.toArray(new String[0]);
             String[] ores = r.getEnabledOredicts();
-            r.addAll(ores, getRegistries(regs));
+            r.addAllRegistryDatas(ores, getRegistries(regs));
         }
         return r;
     }

@@ -34,9 +34,9 @@ public abstract class AMaterialData extends ARecipeObject {
         AChemicalComposition comp = m.getComp();
         if (comp != null) {
             if (this.toolTipExclusions == null) {
-                sb.append(comp.addTooltips(this.getRegistries()));
+                sb.append(comp.addTooltips(this.getItemsArray()));
             } else {
-                sb.append(comp.addTooltips(this.getRegistries(this.toolTipExclusions)));
+                sb.append(comp.addTooltips(this.getItemsArray(this.toolTipExclusions)));
             }
         }
         String r = buildSpecificRecipe();

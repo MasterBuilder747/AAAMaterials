@@ -147,7 +147,7 @@ public class GOre extends AGMSolid<Ore> {
                 if (this.isReg) {
                     String[] regs = ov.localizedPartNames.toArray(new String[0]);
                     String[] ores2 = ov.getEnabledOredicts();
-                    ov.addAll(ores2, getRegistries(regs));
+                    ov.addAllRegistryDatas(ores2, getRegistries(regs));
                 }
             }
             if (block.equals("nether") || block.equals("end")) {
@@ -155,7 +155,7 @@ public class GOre extends AGMSolid<Ore> {
                 if (this.isReg) {
                     String[] regs = ov.localizedPartNames.toArray(new String[0]);
                     String[] ores2 = ov.getEnabledOredicts();
-                    ov.addAll(ores2, getRegistries(regs));
+                    ov.addAllRegistryDatas(ores2, getRegistries(regs));
                 }
             }
             //handle block's oreGen, use these registries for variants to access as well for recipes
@@ -169,9 +169,9 @@ public class GOre extends AGMSolid<Ore> {
                         Registry poor = this.oreRegistryCheck("poor", block, m.NAME);
                         Registry dense = this.oreRegistryCheck("dense", block, m.NAME);
                         o.addStoneGen(ore, poor, dense, parseInt(gens[0]), parseInt(gens[1]), gens[2]);
-                        ov.addRegistry("ore", ore);
-                        ov.addRegistry("orePoor", poor);
-                        ov.addRegistry("oreDense", dense);
+                        ov.addRegistryData("ore", ore);
+                        ov.addRegistryData("orePoor", poor);
+                        ov.addRegistryData("oreDense", dense);
                     }
                     case "nether" -> {
                         if (gens.length != 2)
@@ -180,9 +180,9 @@ public class GOre extends AGMSolid<Ore> {
                         Registry poor = this.oreRegistryCheck("poor", block, m.NAME);
                         Registry dense = this.oreRegistryCheck("dense", block, m.NAME);
                         o.addNetherGen(ore, poor, dense, parseInt(gens[0]), parseInt(gens[1]));
-                        ov.addRegistry("ore", ore);
-                        ov.addRegistry("orePoor", poor);
-                        ov.addRegistry("oreDense", dense);
+                        ov.addRegistryData("ore", ore);
+                        ov.addRegistryData("orePoor", poor);
+                        ov.addRegistryData("oreDense", dense);
                     }
                     case "end" -> {
                         if (gens.length != 2)
@@ -191,22 +191,22 @@ public class GOre extends AGMSolid<Ore> {
                         Registry poor = this.oreRegistryCheck("poor", block, m.NAME);
                         Registry dense = this.oreRegistryCheck("dense", block, m.NAME);
                         o.addEndGen(ore, poor, dense, parseInt(gens[0]), parseInt(gens[1]));
-                        ov.addRegistry("ore", ore);
-                        ov.addRegistry("orePoor", poor);
-                        ov.addRegistry("oreDense", dense);
+                        ov.addRegistryData("ore", ore);
+                        ov.addRegistryData("orePoor", poor);
+                        ov.addRegistryData("oreDense", dense);
                     }
                     case "bedrock" -> {
                         if (gens.length != 2)
                             error("Two parameters are required for bedrock gen: the chunk chance and the dimension to gen in, for material " + m.NAME);
                         Registry dense = this.oreRegistryCheck("dense", block, m.NAME);
                         o.addBedrockGen(dense, parseInt(gens[0]), parseInt(gens[1]));
-                        ov.addRegistry("oreDense", dense);
+                        ov.addRegistryData("oreDense", dense);
                     }
                 }
             }
             //add access to the material's dust parts to each ore variant, but don't register them
-            for (RegistryData r : solid.getRegistries()) {
-                ov.addRegistry(r.NAME, r.r);
+            for (RegistryData r : solid.getItemsArray()) {
+                ov.addRegistryData(r.key, r.r);
             }
             //ov.print();
             oreVariants.add(ov);

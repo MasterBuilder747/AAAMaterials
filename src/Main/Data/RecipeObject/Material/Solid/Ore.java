@@ -119,29 +119,29 @@ public class Ore extends AMSolid {
         this.variants = variants;
     }
     public void addStoneGen(Registry ore, Registry poor, Registry dense, int chunkChance, int minHeight, String biome) {
-        this.addRegistry("poorStone" , poor);
-        this.addRegistry("oreStone", ore);
-        this.addRegistry("denseStone", dense);
+        this.addRegistryData("poorStone" , poor);
+        this.addRegistryData("oreStone", ore);
+        this.addRegistryData("denseStone", dense);
         this.stoneMinHeight = minHeight;
         this.stoneChunkChance = chunkChance;
         this.biome = biome;
     }
     public void addNetherGen(Registry ore, Registry poor, Registry dense, int chunkChance, int minHeight) {
-        this.addRegistry("poorNether", poor);
-        this.addRegistry("oreNether", ore);
-        this.addRegistry("denseNether", dense);
+        this.addRegistryData("poorNether", poor);
+        this.addRegistryData("oreNether", ore);
+        this.addRegistryData("denseNether", dense);
         this.netherMinHeight = minHeight;
         this.netherChunkChance = chunkChance;
     }
     public void addEndGen(Registry ore, Registry poor, Registry dense, int chunkChance, int minHeight) {
-        this.addRegistry("poorEnd", poor);
-        this.addRegistry("oreEnd", ore);
-        this.addRegistry("denseEnd", dense);
+        this.addRegistryData("poorEnd", poor);
+        this.addRegistryData("oreEnd", ore);
+        this.addRegistryData("denseEnd", dense);
         this.endMinHeight = minHeight;
         this.endChunkChance = chunkChance;
     }
     public void addBedrockGen(Registry denseBedrock, int bedrockChunkChance, int bedrockDimension) {
-        this.addRegistry("denseBedrock", denseBedrock);
+        this.addRegistryData("denseBedrock", denseBedrock);
         this.bedrockChunkChance = bedrockChunkChance;
         this.bedrockDimension = bedrockDimension;
     }
@@ -304,8 +304,8 @@ public class Ore extends AMSolid {
                 new Value("cluster-size")
         };
         Value[] values = {
-                new Value("str", this.getRegistry("denseBedrock").getUnlocalizedName()),
-                new Value("int", String.valueOf(this.getRegistry("denseBedrock").meta)),
+                new Value("str", this.get("denseBedrock").getUnlocalizedName()),
+                new Value("int", String.valueOf(this.get("denseBedrock").meta)),
                 new Value("int", "1")
         };
         return new JsonObject(keys, values);
@@ -345,7 +345,7 @@ public class Ore extends AMSolid {
             case "poor" -> weight = "30";
             case "dense" -> weight = "10";
         }
-        Registry r = this.getRegistry(type+Util.toUpper(block));
+        Registry r = this.get(type+Util.toUpper(block));
         Value[] keys = {
                 new Value("name"),
                 new Value("metadata"),
@@ -363,9 +363,9 @@ public class Ore extends AMSolid {
     //this only executes for stone ore
     public JsonObject[] genStoneVariants() {
         if (this.is("oreStone")) {
-            Registry ore = this.getRegistry("oreStone");
-            Registry poor = this.getRegistry("poorStone");
-            Registry dense = this.getRegistry("denseStone");
+            Registry ore = this.get("oreStone");
+            Registry poor = this.get("poorStone");
+            Registry dense = this.get("denseStone");
             Value[] keys = {new Value("internalOreName"), new Value("meta"), new Value("overlay"), new Value("lightValue"), new Value("alphaOverlay"), new Value("oreDirectories"), new Value("color")};
             Value[] poors = {new Value(poor.getUnlocalizedName()), new Value("int", Integer.toString(poor.meta)), new Value("base:blocks/poor_ore"), new Value("int", "0"), new Value("bool", "false"), new Value("arr", "str", "poorOre" + Util.toUpper(this.m.NAME)), new Value("#" + this.m.color)};
             Value[] ores = {new Value(ore.getUnlocalizedName()), new Value("int", Integer.toString(ore.meta)), new Value("base:blocks/ore"), new Value("int", "0"), new Value("bool", "false"), new Value("arr", "str", "ore" + Util.toUpper(this.m.NAME)), new Value("#" + this.m.color)};
