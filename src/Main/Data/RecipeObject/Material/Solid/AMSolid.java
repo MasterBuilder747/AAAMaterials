@@ -7,7 +7,7 @@ import Main.Data.MachineResource.MachineMatter;
 import Main.Data.Material;
 import Main.Data.RecipeObject.Material.AMaterialData;
 import Main.Data.RecipeObject.Material.MSolid;
-import Main.Data.RecipeObject.Data.RegistryData;
+import Main.Data.RecipeObject.RegistryData;
 
 import java.util.ArrayList;
 

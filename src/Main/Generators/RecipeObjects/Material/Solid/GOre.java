@@ -7,7 +7,7 @@ import Main.Data.RecipeObject.Material.Solid.Ore;
 import Main.Data.RecipeObject.Material.OreVariant;
 import Main.Data.OreType;
 import Main.Data.GameData.Registry;
-import Main.Data.RecipeObject.Data.RegistryData;
+import Main.Data.RecipeObject.RegistryData;
 import Main.Generators.GMaterial;
 import Main.Generators.GPartGroup;
 import Main.Generators.GameData.GLiquidRegistry;

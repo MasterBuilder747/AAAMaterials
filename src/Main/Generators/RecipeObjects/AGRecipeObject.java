@@ -50,26 +50,22 @@ public abstract class AGRecipeObject<R extends ARecipeObject> extends AGenerator
 
     protected R updateLiquids(R r) {
         if (this.isReg) {
-            ArrayList<String> keys = new ArrayList<>();
             ArrayList<String> brackets = new ArrayList<>();
             for (LiquidRegistry l : this.liquids.getObjects()) {
-                keys.add(l.NAME);
-                brackets.add(l.getBracket());
+                brackets.add(l.getUnlocalizedName());
             }
-            r.addAllLiquids(keys.toArray(new String[0]), brackets.toArray(new String[0]));
+            r.addAllLiquids(brackets.toArray(new String[0]));
         }
         return r;
     }
 
     protected R updateOres(R r) {
         if (this.isReg) {
-            ArrayList<String> keys = new ArrayList<>();
-            ArrayList<OreDict> brackets = new ArrayList<>();
+            ArrayList<String> brackets = new ArrayList<>();
             for (OreDict o : this.ores.getObjects()) {
-                keys.add(o.NAME);
-                brackets.add(o);
+                brackets.add(o.NAME);
             }
-            r.addAllOres(keys.toArray(new String[0]), brackets.toArray(new OreDict[0]));
+            r.addAllOres(brackets.toArray(new String[0]));
         }
         return r;
     }
