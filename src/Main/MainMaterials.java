@@ -2,7 +2,7 @@ package Main;
 
 import Main.Generators.*;
 import Main.Generators.GameData.*;
-import Main.Generators.ModTweak.GModTweak;
+import Main.Generators.Tweakers.GModTweak;
 import Main.Generators.RecipeObjects.Localized.GBlock;
 import Main.Generators.RecipeObjects.Localized.GItem;
 import Main.Generators.RecipeObjects.Localized.GPart;
@@ -60,7 +60,7 @@ public class MainMaterials {
         sounds.registerMaterials();
 
         //mod tweaking
-        GModTweak tweaks = new GModTweak("`modstotweak", mods);
+        GModTweak tweaks = new GModTweak("modstotweak", mods);
         tweaks.registerMaterials();
 
         //materials.zs

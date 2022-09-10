@@ -1,4 +1,4 @@
-package Main.Data.Tweaks;
+package Main.Data.Tweakers;
 
 import Main.Data.GameData.ModRegistry;
 import Main.Generators.GeneratorException;

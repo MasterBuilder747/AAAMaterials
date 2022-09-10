@@ -1,4 +1,4 @@
-package Main.Data.Tweaks;
+package Main.Data.Tweakers;
 
 import Main.Data.AData;
 import Main.Generators.GeneratorException;

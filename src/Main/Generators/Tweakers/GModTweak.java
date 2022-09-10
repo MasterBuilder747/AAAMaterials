@@ -1,17 +1,16 @@
-package Main.Generators.ModTweak;
+package Main.Generators.Tweakers;
 
-import Main.Data.Tweaks.ModTweak;
-import Main.Generators.AGenerator;
+import Main.Data.Tweakers.ModTweak;
 import Main.Generators.GameData.GModRegistry;
 
 import java.io.BufferedReader;
 import java.io.IOException;
 
-public class GModTweak extends AGenerator<ModTweak> {
+public class GModTweak extends AGTweaker<ModTweak> {
     GModRegistry mods;
 
     public GModTweak(String filename, GModRegistry mods) {
-        super(1, filename, "Tweaks/ModTweak/");
+        super(1, filename, "ModTweak");
         this.mods = mods;
     }
 
