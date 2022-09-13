@@ -18,8 +18,18 @@ public class GMachineMatter extends AGMachineResource<MachineMatter> {
         String localName = s[1].replace("-", " ");
         MachineMatter m = new MachineMatter(s[0],
                 //recipes for matter liquids have to be hardcoded!
-                new LPlasma(false, null, null, null, null,"pos_"+s[0]+"_matter", "Positive "+localName+" Matter", s[2], 1000, 15, 15000, 10000, false),
-                new LPlasma(false, null, null, null, null,"neg_"+s[0]+"_matter", "Negative "+localName+" Matter", s[2], 1000, 15, 15000, 10000, false)
+                new LPlasma("pos_"+s[0]+"_matter",
+                        null, null,
+                        null, null, null,
+                        "Positive "+localName+" Matter",
+                        s[2], false, false,
+                        1000, 15, 15000, 10000),
+                new LPlasma("neg_"+s[0]+"_matter",
+                        null, null,
+                        null, null, null,
+                        "Negative "+localName+" Matter",
+                        s[2], false, false,
+                        1000, 15, 15000, 10000)
         );
         objects.add(m);
     }

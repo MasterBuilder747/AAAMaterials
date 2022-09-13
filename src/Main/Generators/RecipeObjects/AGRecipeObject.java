@@ -7,45 +7,44 @@ import Main.Data.MachineResource.Machine.Machine;
 import Main.Data.MachineResource.MachineData;
 import Main.Data.MachineResource.MachineMatter;
 import Main.Data.RecipeObject.ARecipeObject;
+import Main.Data.Tweakers.RecipeTweak;
 import Main.Generators.AGenerator;
 import Main.Generators.GameData.GLiquidRegistry;
 import Main.Generators.GameData.GOreDictRegistry;
 import Main.Generators.GameData.GRegistry;
+import Main.Generators.GeneratorException;
 import Main.Generators.MachineResource.GMachine;
 import Main.Generators.MachineResource.GMachineData;
 import Main.Generators.MachineResource.GMachineMatter;
+import Main.Generators.Tweakers.GRecipeTweak;
 
 import java.util.ArrayList;
 
 public abstract class AGRecipeObject<R extends ARecipeObject> extends AGenerator<R> {
-    private final GMachine machine;
-    protected GRegistry registry; //required for recipes
-    protected GLiquidRegistry liquids; //required for recipes
-    protected GOreDictRegistry ores; //required for recipes
-    protected GMachineData data; //machine resources
-    protected GMachineMatter matter;
+
     protected boolean isReg; //enable recipes or no?
+    //registries
+    protected GRecipeTweak tweak;
+    protected GRegistry registry;
+    protected GLiquidRegistry liquids;
+    protected GOreDictRegistry ores;
+    //machine resources
+    private final GMachine machine;
+    protected GMachineMatter matter;
+    protected GMachineData data;
 
-    public AGRecipeObject(int PARAMS, String filename, GRegistry registry, boolean isReg, GMachine machine, GLiquidRegistry liquids, GOreDictRegistry ores, GMachineData data, GMachineMatter matter) {
-        super(PARAMS, filename);
-        this.machine = machine;
-        this.registry = registry;
-        this.liquids = liquids;
-        this.ores = ores;
-        this.data = data;
-        this.matter = matter;
-        this.isReg = isReg;
-    }
-
-    public AGRecipeObject(int PARAMS, String filename, String materialFolder, GRegistry registry, boolean isReg, GMachine machine, GLiquidRegistry liquids, GOreDictRegistry ores, GMachineData data, GMachineMatter matter) {
+    public AGRecipeObject(int PARAMS, String filename, String materialFolder, boolean isReg,
+                          GRecipeTweak tweak, GRegistry registry, GLiquidRegistry liquids, GOreDictRegistry ores,
+                          GMachine machine, GMachineMatter matter, GMachineData data) {
         super(PARAMS, filename, materialFolder);
-        this.machine = machine;
+        this.isReg = isReg;
+        this.tweak = tweak;
         this.registry = registry;
         this.liquids = liquids;
         this.ores = ores;
-        this.data = data;
+        this.machine = machine;
         this.matter = matter;
-        this.isReg = isReg;
+        this.data = data;
     }
 
     protected R updateLiquids(R r) {
@@ -81,5 +80,16 @@ public abstract class AGRecipeObject<R extends ARecipeObject> extends AGenerator
     }
     protected ArrayList<MachineMatter> getMatterRegistry() {
         return this.matter.getObjects();
+    }
+    protected RecipeTweak getRecipeTweak(String s) {
+        if (this.isReg) {
+            try {
+                return this.tweak.get("F" + s);
+            } catch (GeneratorException e) {
+                System.out.println("Warn: Unknown RecipeTweak: F" + s);
+                return null;
+            }
+        }
+        else return null;
     }
 }

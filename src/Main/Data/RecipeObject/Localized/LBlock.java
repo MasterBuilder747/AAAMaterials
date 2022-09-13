@@ -4,6 +4,7 @@ import Main.Data.GameData.Registry;
 import Main.Data.MachineResource.Machine.Machine;
 import Main.Data.MachineResource.MachineData;
 import Main.Data.MachineResource.MachineMatter;
+import Main.Data.Tweakers.RecipeTweak;
 
 import java.util.ArrayList;
 
@@ -16,18 +17,30 @@ public class LBlock extends ALocalizedData {
     public String tool;
     String material;
 
-    public LBlock(String name, String localName, ArrayList<Machine> machines, MachineData data, ArrayList<MachineMatter> matters, ArrayList<Registry> registries,
+    public LBlock(String name,
+                  RecipeTweak tweak, ArrayList<Registry> registries,
+                  ArrayList<Machine> machines, ArrayList<MachineMatter> matters, MachineData data,
+                  String localName,
                   String material, int hardness, int resistance, int miningLevel, String tool) {
-        super(name, localName, "LBlock", machines, data, matters, registries);
+        super(name, "LBlock",
+                tweak, registries,
+                machines, matters, data,
+                localName);
         this.material = material;
         this.hardness = hardness;
         this.resistance = resistance;
         this.miningLevel = miningLevel;
         this.tool = tool;
     }
-    //for variants
-    public LBlock(String name, ArrayList<Machine> machines, MachineData data, ArrayList<MachineMatter> matters, ArrayList<Registry> registries, String material, String tool) {
-        super(name, name, "LBlock", machines, data, matters, registries);
+    //for ore variants
+    public LBlock(String name,
+                  RecipeTweak tweak, ArrayList<Registry> registries,
+                  ArrayList<Machine> machines, ArrayList<MachineMatter> matters, MachineData data,
+                  String material, String tool) {
+        super(name, "LBlock",
+                tweak, registries,
+                machines, matters, data,
+                name);
         this.material = material;
         this.tool = tool;
     }
@@ -53,5 +66,10 @@ public class LBlock extends ALocalizedData {
     //tile.contenttweaker.[name].name=[localName]
     public String localize() {
         return "tile.contenttweaker." + this.NAME + ".name=" + this.localName + "\n";
+    }
+
+    @Override
+    protected String buildAdditionalRecipes() {
+        return null;
     }
 }

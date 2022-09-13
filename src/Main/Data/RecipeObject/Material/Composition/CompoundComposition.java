@@ -6,6 +6,7 @@ import Main.Data.MachineResource.Machine.Machine;
 import Main.Data.MachineResource.MachineData;
 import Main.Data.MachineResource.MachineMatter;
 import Main.Data.Material;
+import Main.Data.Tweakers.RecipeTweak;
 
 import java.util.ArrayList;
 
@@ -47,10 +48,16 @@ public class CompoundComposition extends AChemicalComposition {
     boolean isChemReact; //chemically combine
     boolean isElectrolyze; //chemically separate
 
-    public CompoundComposition(Material m, ArrayList<Machine> machines, MachineData data, ArrayList<MachineMatter> matters, ArrayList<Registry> registries, String[] toolTipExclusions,
+    public CompoundComposition(RecipeTweak tweak, ArrayList<Registry> registries,
+                               ArrayList<Machine> machines, ArrayList<MachineMatter> matters, MachineData data,
+                               Material m, String[] toolTipExclusions,
                                Composition c, boolean isDefault,
                                boolean isMixing, boolean isCentrifuge, boolean isChemReact, boolean isElectrolyze) {
-        super(m, "CompoundComposition", machines, data, matters, registries, toolTipExclusions, c, isDefault, false);
+        super("CompoundComposition",
+                tweak, registries,
+                machines, matters, data,
+                m, toolTipExclusions,
+                c, isDefault, false);
         this.isMixing = isMixing;
         this.isChemReact = isChemReact;
         this.isCentrifuge = isCentrifuge;

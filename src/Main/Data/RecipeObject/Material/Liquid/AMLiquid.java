@@ -7,6 +7,7 @@ import Main.Data.MachineResource.MachineMatter;
 import Main.Data.RecipeObject.Localized.Liquid.ALiquid;
 import Main.Data.RecipeObject.Material.AMaterialData;
 import Main.Data.Material;
+import Main.Data.Tweakers.RecipeTweak;
 
 import java.util.ArrayList;
 
@@ -14,8 +15,14 @@ public abstract class AMLiquid extends AMaterialData {
     //be aware that you cannot call any methods that are specific to children of ALiquid, only ALiquid itself
     ALiquid l;
 
-    public AMLiquid(Material m, String type, ArrayList<Machine> machine, MachineData data, ArrayList<MachineMatter> matters, ArrayList<Registry> registries, String[] toolTipExclusions) {
-        super(m, type, machine, data, matters, registries, toolTipExclusions);
+    public AMLiquid(String type,
+                    RecipeTweak tweak, ArrayList<Registry> registries,
+                    ArrayList<Machine> machines, ArrayList<MachineMatter> matters, MachineData data,
+                    Material m, String[] toolTipExclusions) {
+        super(type,
+                tweak, registries,
+                machines, matters, data,
+                m, toolTipExclusions);
     }
 
     @Override

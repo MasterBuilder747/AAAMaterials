@@ -13,12 +13,20 @@ import Main.Generators.GameData.GRegistry;
 import Main.Generators.MachineResource.GMachine;
 import Main.Generators.MachineResource.GMachineData;
 import Main.Generators.MachineResource.GMachineMatter;
+import Main.Generators.Tweakers.GRecipeTweak;
 
 public class GMoleculeComposition extends AGChemicalComposition<MoleculeComposition> {
     GElement element;
-    public GMoleculeComposition(String filename, GElement element, GMaterial material, GRegistry registry,
-                                GLiquidRegistry liquids, GOreDictRegistry ores, GMachineData data, GMachineMatter matter, GMachine machine, GPartGroup partGroup, boolean isReg) {
-        super(3, filename, material, registry, liquids, ores, data, matter, machine, partGroup,true, isReg);
+    public GMoleculeComposition(String filename, boolean isReg,
+                                GRecipeTweak tweak, GRegistry registry, GLiquidRegistry liquids, GOreDictRegistry ores,
+                                GMachine machine, GMachineMatter matter, GMachineData data,
+                                GMaterial material, GPartGroup partGroup,
+                                GElement element) {
+        super(3, filename, isReg,
+                tweak, registry, liquids, ores,
+                machine, data, matter,
+                material, partGroup,
+                true);
         this.element = element;
     }
 
@@ -28,7 +36,10 @@ public class GMoleculeComposition extends AGChemicalComposition<MoleculeComposit
         //element, boolean isDefaultMaterialForElement, boolean isDiatomic
         Element e = element.get(s[0]);
         Composition c = new Composition(e);
-        MoleculeComposition comp = new MoleculeComposition(m, getMachineRegistry(), getDataRegistry(), getMatterRegistry(), getRegistries(), null,
+        MoleculeComposition comp = new MoleculeComposition(
+                getRecipeTweak("MoleculeComposition"), getRegistries(),
+                getMachineRegistry(), getMatterRegistry(), getDataRegistry(),
+                m, null,
                 c, parseBoolean(s[1]), parseBoolean(s[2]));
         m.addComposition(comp);
         objects.add(comp);

@@ -7,6 +7,8 @@ import Main.Data.MachineResource.MachineMatter;
 import Main.Data.RecipeObject.Material.Solid.AMSolid;
 import Main.Data.RecipeObject.Material.Liquid.MLiquid;
 import Main.Data.Material;
+import Main.Data.Tweakers.RecipeTweak;
+import Main.Util;
 
 import java.util.ArrayList;
 
@@ -16,11 +18,17 @@ public abstract class AMalleable extends AMSolid {
     MLiquid molten;
     //negative numbers indicate the value of this material, but it cannot be melted
 
-    public AMalleable(Material m, String type, ArrayList<Machine> machines, MachineData data, ArrayList<MachineMatter> matters, ArrayList<Registry> registries,
-                      double meltingMultiplier, MLiquid molten, String[] toolTipExclusions) {
-        super(m, type, machines, data, matters, registries, toolTipExclusions);
-        this.meltingMultiplier = meltingMultiplier;
+    public AMalleable(String type,
+                      RecipeTweak tweak, ArrayList<Registry> registries,
+                      ArrayList<Machine> machines, ArrayList<MachineMatter> matters, MachineData data,
+                      Material m, String[] toolTipExclusions,
+                      MLiquid molten, double meltingMultiplier) {
+        super(type,
+                tweak, registries,
+                machines, matters, data,
+                m, toolTipExclusions);
         this.molten = molten;
+        this.meltingMultiplier = meltingMultiplier;
     }
 
     protected String getMolten() {
@@ -45,7 +53,23 @@ public abstract class AMalleable extends AMSolid {
     @Override
     public String buildSpecificRecipe() {
         //printNames();
-        return buildPartRecipes();
+        //copied from ARecipeObject
+        StringBuilder sb = new StringBuilder();
+        if (this.tweak != null) {
+            this.tweak.buildRecipe();
+            String[] recipes = this.tweak.getRecipes();
+            for (int i = 0; i < recipes.length; i++) {
+                String r = recipes[i];
+                String[] p = Util.split(r, ",");
+                sb.append(addRecipe(
+                        i, p[0], parseInt(p[1]), parseInt(p[2]), parseDouble(p[3]), p[4], p[5],
+                        parseInt(p[6]), parseInt(p[7]),
+                        p[8], p[9], p[10], p[11]
+                ));
+            }
+        }
+        sb.append(buildPartRecipes());
+        return sb.toString();
     }
 
     @Override

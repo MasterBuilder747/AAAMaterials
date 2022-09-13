@@ -8,12 +8,19 @@ import Main.Data.Material;
 import Main.Data.RecipeObject.Material.AMaterialData;
 import Main.Data.RecipeObject.Material.MSolid;
 import Main.Data.RecipeObject.RegistryData;
+import Main.Data.Tweakers.RecipeTweak;
 
 import java.util.ArrayList;
 
 public abstract class AMSolid extends AMaterialData {
-    public AMSolid(Material m, String type, ArrayList<Machine> machines, MachineData data, ArrayList<MachineMatter> matters, ArrayList<Registry> registries, String[] toolTipExclusions) {
-        super(m, type, machines, data, matters, registries, toolTipExclusions);
+    public AMSolid(String type,
+                   RecipeTweak tweak, ArrayList<Registry> registries,
+                   ArrayList<Machine> machines, ArrayList<MachineMatter> matters, MachineData data,
+                   Material m, String[] toolTipExclusions) {
+        super(type,
+                tweak, registries,
+                machines, matters, data,
+                m, toolTipExclusions);
     }
 
     public void updateSolids(MSolid sol) {

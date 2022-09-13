@@ -13,6 +13,7 @@ import Main.Generators.MachineResource.GMachineData;
 import Main.Generators.MachineResource.GMachineMatter;
 import Main.Generators.RecipeObjects.Material.AGMaterialData;
 import Main.Generators.RecipeObjects.Material.GMSolid;
+import Main.Generators.Tweakers.GRecipeTweak;
 
 public abstract class AGMSolid <S extends AMSolid> extends AGMaterialData<S> {
     GMSolid solid;
@@ -20,17 +21,29 @@ public abstract class AGMSolid <S extends AMSolid> extends AGMaterialData<S> {
     boolean isFineDust;
     boolean isPowder;
 
-    public AGMSolid(int params, String filename, GMachine machine, GRegistry registry,
-                    GLiquidRegistry liquids, GOreDictRegistry ores, GMachineData data, GMachineMatter matter, GMaterial material, GPartGroup partGroup, GMSolid solid, boolean isDust, boolean isFineDust, boolean isPowder, boolean isReg) {
-        super(params, filename, machine, material, partGroup, "Solid", registry, liquids, ores, data, matter, isReg);
+    public AGMSolid(int params, String filename, boolean isReg,
+                    GRecipeTweak tweak, GRegistry registry, GLiquidRegistry liquids, GOreDictRegistry ores,
+                    GMachine machine, GMachineMatter matter, GMachineData data,
+                    GMaterial material, GPartGroup partGroup,
+                    GMSolid solid, boolean isDust, boolean isFineDust, boolean isPowder) {
+        super(params, filename, "Solid", isReg,
+                tweak, registry, liquids, ores,
+                machine, matter, data,
+                material, partGroup);
         this.solid = solid;
         this.isDust = isDust;
         this.isFineDust = isFineDust;
         this.isPowder = isPowder;
     }
-    public AGMSolid(int params, String filename, GMachine machine, GRegistry registry,
-                    GLiquidRegistry liquids, GOreDictRegistry ores, GMachineData data, GMachineMatter matter, GMaterial material, GPartGroup partGroup, GMSolid solid, boolean isDust, boolean isFineDust, boolean isPowder, String solidFolder, boolean isReg) {
-        super(params, filename, machine, material, partGroup, "Solid/"+solidFolder, registry, liquids, ores, data, matter, isReg);
+    public AGMSolid(int params, String filename, String solidFolder, boolean isReg,
+                    GRecipeTweak tweak, GRegistry registry, GLiquidRegistry liquids, GOreDictRegistry ores,
+                    GMachine machine, GMachineMatter matter, GMachineData data,
+                    GMaterial material, GPartGroup partGroup,
+                    GMSolid solid, boolean isDust, boolean isFineDust, boolean isPowder) {
+        super(params, filename, "Solid/"+solidFolder, isReg,
+                tweak, registry, liquids, ores,
+                machine, matter, data,
+                material, partGroup);
         this.solid = solid;
         this.isDust = isDust;
         this.isFineDust = isFineDust;

@@ -12,19 +12,26 @@ import Main.Generators.MachineResource.GMachine;
 import Main.Generators.MachineResource.GMachineData;
 import Main.Generators.MachineResource.GMachineMatter;
 import Main.Generators.RecipeObjects.Material.GMSolid;
-import Main.Generators.RecipeObjects.Material.Liquid.GMLiquid;
+import Main.Generators.Tweakers.GRecipeTweak;
 
 public class GGem extends AGMSolid<Gem>{
-    public GGem(String filename, GMachine machine, GRegistry registry,
-                GLiquidRegistry liquids, GOreDictRegistry ores, GMachineData data, GMachineMatter matter, GMaterial material, GPartGroup partGroup, GMSolid solid, boolean isReg) {
-        //    int params, String filename, GMachine machine, GRegistry registry, GMaterial material, GPartGroup partGroup, GMSolid solid,
-        //    boolean isDust, boolean isFineDust, boolean isPowder, boolean isReg
-        super(0, filename, machine, registry, liquids, ores, data, matter, material, partGroup, solid, true, false, false, isReg);
+    public GGem(String filename, boolean isReg,
+                GRecipeTweak tweak, GRegistry registry, GLiquidRegistry liquids, GOreDictRegistry ores,
+                GMachine machine, GMachineMatter matter, GMachineData data,
+                GMaterial material, GPartGroup partGroup,
+                GMSolid solid) {
+        super(0, filename, isReg,
+                tweak, registry, liquids, ores,
+                machine, matter, data,
+                material, partGroup,
+                solid, true, false, false);
     }
 
     @Override
     protected void readSolidParameters(Material m, String[] s, MSolid solid) {
-        Gem g = new Gem(m, getMachineRegistry(), getDataRegistry(), getMatterRegistry(), getRegistries(), null);
+        Gem g = new Gem(getRecipeTweak("Gem"), getRegistries(),
+                getMachineRegistry(), getMatterRegistry(), getDataRegistry(),
+                m, null);
         g.setPartGroupTrue(genPartGroup("gem"));
         objects.add(g);
     }

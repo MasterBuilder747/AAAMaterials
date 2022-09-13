@@ -6,6 +6,7 @@ import Main.Data.MachineResource.Machine.Machine;
 import Main.Data.MachineResource.MachineData;
 import Main.Data.MachineResource.MachineMatter;
 import Main.Data.RecipeObject.ARecipeObject;
+import Main.Data.Tweakers.RecipeTweak;
 import Main.Util;
 
 import java.util.ArrayList;
@@ -16,8 +17,13 @@ public abstract class AMaterialRecipe extends ARecipeObject {
     CustomMachineRecipe recipe;
     String machineName;
 
-    public AMaterialRecipe(String NAME, String type, String machineName, ArrayList<Machine> machines, MachineData data, ArrayList<MachineMatter> matters, ArrayList<Registry> registries) {
-        super(NAME, type, machines, data, matters, registries);
+    public AMaterialRecipe(String NAME, String type,
+                           RecipeTweak tweak, ArrayList<Registry> registries,
+                           ArrayList<Machine> machines, ArrayList<MachineMatter> matters, MachineData data,
+                           String machineName) {
+        super(NAME, type,
+                tweak, registries,
+                machines, matters, data);
         this.machineName = machineName;
     }
 
@@ -41,4 +47,9 @@ public abstract class AMaterialRecipe extends ARecipeObject {
     public String buildMaterial() {return null;}
     @Override
     public void print() {}
+
+    @Override
+    protected String buildAdditionalRecipes() {
+        return null;
+    }
 }

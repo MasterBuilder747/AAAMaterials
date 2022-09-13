@@ -8,10 +8,15 @@ import Main.Generators.MachineResource.GMachine;
 import Main.Generators.MachineResource.GMachineData;
 import Main.Generators.MachineResource.GMachineMatter;
 import Main.Generators.RecipeObjects.Localized.AGLocal;
+import Main.Generators.Tweakers.GRecipeTweak;
 
 //these are custom defined liquids
 public abstract class AGLiquid<L extends ALiquid> extends AGLocal<L> {
-    public AGLiquid(int params, String filename, boolean isReg, GRegistry registry, GLiquidRegistry liquids, GOreDictRegistry ores, GMachineData data, GMachineMatter matter, GMachine machine) {
-        super(params, filename, "Liquid", isReg, registry, liquids, ores, data, matter, machine);
+    public AGLiquid(int params, String filename, boolean isReg,
+                    GRecipeTweak tweak, GRegistry registry, GLiquidRegistry liquids, GOreDictRegistry ores,
+                    GMachine machine, GMachineMatter matter, GMachineData data) {
+        super(params, filename, "Liquid", isReg,
+                tweak, registry, liquids, ores,
+                machine, matter, data);
     }
 }

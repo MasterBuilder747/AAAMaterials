@@ -5,6 +5,7 @@ import Main.Data.MachineResource.Machine.Machine;
 import Main.Data.MachineResource.MachineData;
 import Main.Data.MachineResource.MachineMatter;
 import Main.Data.Material;
+import Main.Data.Tweakers.RecipeTweak;
 
 import java.util.ArrayList;
 
@@ -14,8 +15,13 @@ public class MobDrop extends AMaterialData {
     //the amount
     //other conditions?
 
-    public MobDrop(Material m, ArrayList<Machine> machines, MachineData data, ArrayList<MachineMatter> matters, ArrayList<Registry> registries, String[] toolTipExclusions) {
-        super(m, "MobDrop", machines, data, matters, registries, null);
+    public MobDrop(RecipeTweak tweak, ArrayList<Registry> registries,
+                   ArrayList<Machine> machines, ArrayList<MachineMatter> matters, MachineData data,
+                   Material m, String[] toolTipExclusions) {
+        super("MobDrop",
+                tweak, registries,
+                machines, matters, data,
+                m, toolTipExclusions);
     }
 
     @Override

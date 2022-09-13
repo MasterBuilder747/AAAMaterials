@@ -7,14 +7,22 @@ import Main.Generators.GameData.GRegistry;
 import Main.Generators.MachineResource.GMachine;
 import Main.Generators.MachineResource.GMachineData;
 import Main.Generators.MachineResource.GMachineMatter;
+import Main.Generators.Tweakers.GRecipeTweak;
 
 public class GItem extends AGLocal<LItem> {
-    public GItem(String filename, GMachine machine, GRegistry registry, GLiquidRegistry liquids, GOreDictRegistry ores, GMachineData data, GMachineMatter matter, boolean isReg) {
-        super(0, filename, isReg, registry, liquids, ores, data, matter, machine);
+    public GItem(String filename, boolean isReg,
+                 GRecipeTweak tweak, GRegistry registry, GLiquidRegistry liquids, GOreDictRegistry ores,
+                 GMachine machine, GMachineMatter matter, GMachineData data) {
+        super(0, filename, isReg,
+                tweak, registry, liquids, ores,
+                machine, matter, data);
     }
 
     @Override
     protected void addParameters(String name, String localName, String[] s) {
-        objects.add(new LItem(name, localName, getMachineRegistry(), getDataRegistry(), getMatterRegistry(), getRegistries()));
+        objects.add(new LItem(name,
+                getRecipeTweak("LItem"), getRegistries(),
+                getMachineRegistry(), getMatterRegistry(), getDataRegistry(),
+                localName));
     }
 }

@@ -6,13 +6,21 @@ import Main.Data.MachineResource.MachineData;
 import Main.Data.MachineResource.MachineMatter;
 import Main.Data.RecipeObject.Material.Liquid.MLiquid;
 import Main.Data.Material;
+import Main.Data.Tweakers.RecipeTweak;
 
 import java.util.ArrayList;
 
 //data > material > malleable > alloy
 public class Alloy extends AMalleable {
-    public Alloy(Material m, MLiquid liquid, ArrayList<Machine> machines, MachineData data, ArrayList<MachineMatter> matters, ArrayList<Registry> registries, String[] toolTipExclusions) {
-        super(m, "Alloy", machines, data, matters, registries, 1, liquid, toolTipExclusions);
+    public Alloy(RecipeTweak tweak, ArrayList<Registry> registries,
+                 ArrayList<Machine> machines, ArrayList<MachineMatter> matters, MachineData data,
+                 Material m, String[] toolTipExclusions,
+                 MLiquid molten) {
+        super("Alloy",
+                tweak, registries,
+                machines, matters, data,
+                m, toolTipExclusions,
+                molten, 1);
     }
 
     @Override

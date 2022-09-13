@@ -11,15 +11,22 @@ import Main.Generators.MachineResource.GMachine;
 import Main.Generators.MachineResource.GMachineData;
 import Main.Generators.MachineResource.GMachineMatter;
 import Main.Generators.RecipeObjects.Material.AGMaterialData;
+import Main.Generators.Tweakers.GRecipeTweak;
 
 import java.util.ArrayList;
 
 public abstract class AGChemicalComposition<C extends AChemicalComposition> extends AGMaterialData<C> {
     boolean isSingular;
 
-    public AGChemicalComposition(int params, String filename, GMaterial material, GRegistry registry, GLiquidRegistry liquids, GOreDictRegistry ores, GMachineData data, GMachineMatter matter, GMachine machine, GPartGroup partGroup,
-                                 boolean isSingular, boolean isReg) {
-        super(params, filename + "_composition", machine, material, partGroup, registry, liquids, ores, data, matter, isReg);
+    public AGChemicalComposition(int params, String filename, boolean isReg,
+                                 GRecipeTweak tweak, GRegistry registry, GLiquidRegistry liquids, GOreDictRegistry ores,
+                                 GMachine machine, GMachineData data, GMachineMatter matter,
+                                 GMaterial material, GPartGroup partGroup,
+                                 boolean isSingular) {
+        super(params, filename + "_composition", isReg,
+                tweak, registry, liquids, ores,
+                machine, matter, data,
+                material, partGroup);
         this.isSingular = isSingular;
     }
 

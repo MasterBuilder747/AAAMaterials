@@ -9,6 +9,7 @@ import java.io.IOException;
 public class GModTweak extends AGTweaker<ModTweak> {
     GModRegistry mods;
 
+    //called in mainmaterials
     public GModTweak(String filename, GModRegistry mods) {
         super(1, filename, "ModTweak");
         this.mods = mods;

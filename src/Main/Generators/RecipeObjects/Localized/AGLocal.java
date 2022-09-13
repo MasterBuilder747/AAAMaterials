@@ -8,17 +8,26 @@ import Main.Generators.MachineResource.GMachine;
 import Main.Generators.MachineResource.GMachineData;
 import Main.Generators.MachineResource.GMachineMatter;
 import Main.Generators.RecipeObjects.AGRecipeObject;
+import Main.Generators.Tweakers.GRecipeTweak;
 
 import java.io.BufferedReader;
 import java.io.IOException;
 
 public abstract class AGLocal<L extends ALocalizedData> extends AGRecipeObject<L> {
     //a variant of Generator that implements localized data
-    public AGLocal(int params, String filename, boolean isReg, GRegistry registry, GLiquidRegistry liquids, GOreDictRegistry ores, GMachineData data, GMachineMatter matter, GMachine machine) {
-        super(params+2, "custom-"+filename, "Custom", registry, isReg, machine, liquids, ores, data, matter);
+    public AGLocal(int params, String filename, boolean isReg,
+                   GRecipeTweak tweak, GRegistry registry, GLiquidRegistry liquids, GOreDictRegistry ores,
+                   GMachine machine, GMachineMatter matter, GMachineData data) {
+        super(params+2, "custom-"+filename, "Custom", isReg,
+                tweak, registry, liquids, ores,
+                machine, matter, data);
     }
-    public AGLocal(int params, String filename, String localFolder, boolean isReg, GRegistry registry, GLiquidRegistry liquids, GOreDictRegistry ores, GMachineData data, GMachineMatter matter, GMachine machine) {
-        super(params+2, "custom-"+filename, "Custom/"+localFolder, registry, isReg, machine, liquids, ores, data, matter);
+    public AGLocal(int params, String filename, String localFolder, boolean isReg,
+                   GRecipeTweak tweak, GRegistry registry, GLiquidRegistry liquids, GOreDictRegistry ores,
+                   GMachine machine, GMachineMatter matter, GMachineData data) {
+        super(params+2, "custom-"+filename, "Custom/"+localFolder, isReg,
+                tweak, registry, liquids, ores,
+                machine, matter, data);
     }
 
     @Override

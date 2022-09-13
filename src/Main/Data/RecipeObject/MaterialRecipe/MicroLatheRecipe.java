@@ -4,11 +4,16 @@ import Main.Data.GameData.Registry;
 import Main.Data.MachineResource.Machine.Machine;
 import Main.Data.MachineResource.MachineData;
 import Main.Data.MachineResource.MachineMatter;
+import Main.Data.Tweakers.RecipeTweak;
 
 import java.util.ArrayList;
 
 public class MicroLatheRecipe extends AMaterialRecipe {
-    public MicroLatheRecipe(ArrayList<Machine> machines, MachineData data, ArrayList<MachineMatter> matters, ArrayList<Registry> registries) {
-        super("microLathe", "MicroLathe", "basic", machines, data, matters, registries);
+    public MicroLatheRecipe(ArrayList<Registry> registries, RecipeTweak tweak,
+                            ArrayList<Machine> machines, ArrayList<MachineMatter> matters, MachineData data) {
+        super("microLathe", "MicroLathe",
+                tweak, registries,
+                machines, matters, data,
+                "basic");
     }
 }

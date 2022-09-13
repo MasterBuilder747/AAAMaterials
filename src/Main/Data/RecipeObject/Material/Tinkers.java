@@ -5,6 +5,7 @@ import Main.Data.MachineResource.Machine.Machine;
 import Main.Data.MachineResource.MachineData;
 import Main.Data.MachineResource.MachineMatter;
 import Main.Data.Material;
+import Main.Data.Tweakers.RecipeTweak;
 
 import java.util.ArrayList;
 
@@ -45,8 +46,12 @@ public class Tinkers extends AMaterialData {
     //ModID:ItemID:MaterialCost
 
     //see: https://docs.blamejared.com/1.12/en/Mods/ContentTweaker/Tinkers_Construct/Material
-    public Tinkers(Material m, ArrayList<Machine> machines, MachineData data, ArrayList<MachineMatter> matters, ArrayList<Registry> registries, String[] toolTipExclusions) {
-        super(m, "Tinker", machines, data, matters, registries, toolTipExclusions);
+    public Tinkers(RecipeTweak tweak, ArrayList<Registry> registries,
+                   ArrayList<Machine> machines, ArrayList<MachineMatter> matters, MachineData data,
+                   Material m, String[] toolTipExclusions) {
+        super("Tinker", tweak, registries,
+                machines, matters, data,
+                m, toolTipExclusions);
     }
 
     boolean isTool;

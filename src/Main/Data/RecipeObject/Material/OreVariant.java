@@ -7,6 +7,7 @@ import Main.Data.MachineResource.MachineMatter;
 import Main.Data.Material;
 import Main.Data.OreType;
 import Main.Data.PartGroup;
+import Main.Data.Tweakers.RecipeTweak;
 import Main.Util;
 
 import java.util.ArrayList;
@@ -18,9 +19,13 @@ public class OreVariant extends AMaterialData {
     public String block; //stone, nether, end, bedrock
     PartGroup oreParts;
 
-    public OreVariant(Material m, ArrayList<Machine> machines, MachineData data, ArrayList<MachineMatter> matters, ArrayList<Registry> registries,
-                      String block, OreType[] oreTypes, PartGroup oreParts, String[] toolTipExclusions) {
-        super(m, "OreVariant", machines, data, matters, registries, toolTipExclusions); //the material name
+    public OreVariant(RecipeTweak tweak, ArrayList<Registry> registries,
+                      ArrayList<Machine> machines, ArrayList<MachineMatter> matters, MachineData data,
+                      Material m, String[] toolTipExclusions,
+                      String block, OreType[] oreTypes, PartGroup oreParts) {
+        super("OreVariant", tweak, registries,
+                machines, matters, data,
+                m, toolTipExclusions);
         this.block = block;
         this.oreTypes = oreTypes;
         this.oreParts = oreParts;

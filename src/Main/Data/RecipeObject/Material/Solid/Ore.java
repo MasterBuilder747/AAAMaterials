@@ -6,6 +6,7 @@ import Main.Data.MachineResource.MachineMatter;
 import Main.Data.Material;
 import Main.Data.RecipeObject.Material.OreVariant;
 import Main.Data.GameData.Registry;
+import Main.Data.Tweakers.RecipeTweak;
 import Main.Json.JsonObject;
 import Main.Json.Value;
 import Main.Util;
@@ -88,8 +89,14 @@ public class Ore extends AMSolid {
     BEACH;
      */
 
-    public Ore(Material m, boolean enableGen, ArrayList<Machine> machines, MachineData data, ArrayList<MachineMatter> matters, ArrayList<Registry> registries, String[] toolTipExclusions) {
-        super(m, "Ore", machines, data, matters, registries, toolTipExclusions);
+    public Ore(RecipeTweak tweak, ArrayList<Registry> registries,
+               ArrayList<Machine> machines, ArrayList<MachineMatter> matters, MachineData data,
+               Material m, String[] toolTipExclusions,
+               boolean enableGen) {
+        super("Ore",
+                tweak, registries,
+                machines, matters, data,
+                m, toolTipExclusions);
         this.enableGen = enableGen;
     }
 

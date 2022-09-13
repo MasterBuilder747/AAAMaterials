@@ -14,24 +14,34 @@ import Main.Generators.MachineResource.GMachineData;
 import Main.Generators.MachineResource.GMachineMatter;
 import Main.Generators.RecipeObjects.Material.Liquid.GMLiquid;
 import Main.Generators.RecipeObjects.Material.GMSolid;
+import Main.Generators.Tweakers.GRecipeTweak;
 
 public class GAlloy extends AGMalleable<Alloy> {
-    public GAlloy(String filename, GMachine machine, GRegistry registry,
-                  GLiquidRegistry liquids, GOreDictRegistry ores, GMachineData data, GMachineMatter matter, GMaterial material, GPartGroup partGroup, GMSolid solid, GMLiquid liquid, boolean isReg) {
-        //int params, String filename, GMachine machine, GRegistry registry, GMaterial material, GPartGroup partGroup, GMLiquid liquid,
-        //GMSolid solid, boolean isDust, boolean isFineDust, boolean isPowder, boolean isReg
-        super(4, filename, machine, registry, liquids, ores, data, matter, material, partGroup, liquid, solid, true, false, false, isReg);
+    public GAlloy(String filename, boolean isReg,
+                  GRecipeTweak tweak, GRegistry registry, GLiquidRegistry liquids, GOreDictRegistry ores,
+                  GMachine machine, GMachineMatter matter, GMachineData data,
+                  GMaterial material, GPartGroup partGroup,
+                  GMSolid solid, GMLiquid liquid) {
+        super(4, filename, isReg,
+                tweak, registry, liquids, ores,
+                machine, matter, data,
+                material, partGroup,
+                solid, true, false, false,
+                liquid);
     }
 
     @Override
-    protected void setMalleableParts(Material m, String[] s, MLiquid liquid, MSolid solid) {
+    protected void setMalleableParts(Material m, String[] s, MLiquid molten, MSolid solid) {
         //addSmelt, addMachine, addBlast, addConductive
-        Alloy alloy = new Alloy(m, liquid, getMachineRegistry(), getDataRegistry(), getMatterRegistry(), getRegistries(),
-                new String[]{
+        Alloy alloy = new Alloy(
+                getRecipeTweak("Alloy"), getRegistries(),
+                getMachineRegistry(), getMatterRegistry(), getDataRegistry(),
+                m, new String[]{
                     "dust", "dustSmall", "dustTiny",
                     "dustFine", "dustFineSmall", "dustFineTiny",
                     "powder", "powderSmall", "powderTiny"
-                });
+                },
+                molten);
         boolean smelt = Boolean.parseBoolean(s[0]);
         alloy.setPartGroups(this.genPartGroups(
                 new String[]{"scrap", "plate", "smelt", "rod", "beam", "conductive", "machine", "special_plate", "coiled_rod", "blast", "assembled"}),

@@ -4,21 +4,39 @@ import Main.Data.GameData.Registry;
 import Main.Data.MachineResource.Machine.Machine;
 import Main.Data.MachineResource.MachineData;
 import Main.Data.MachineResource.MachineMatter;
-import Main.Data.RecipeObject.Localized.Liquid.LLiquid;
 import Main.Data.RecipeObject.Localized.Liquid.LMolten;
 import Main.Data.Material;
+import Main.Data.Tweakers.RecipeTweak;
 
 import java.util.ArrayList;
 
 public class MLiquid extends AMLiquid {
-    public MLiquid(Material m, ArrayList<Machine> machine, MachineData data, ArrayList<MachineMatter> matters, ArrayList<Registry> registries,
-                   int density, int luminosity, int temperature, int viscosity, boolean vaporize, String[] toolTipExclusions) {
-        super(m, "mLiquid", machine, data, matters, registries, toolTipExclusions);
+    public MLiquid(RecipeTweak tweak, ArrayList<Registry> registries,
+                   ArrayList<Machine> machines, ArrayList<MachineMatter> matters, MachineData data,
+                   Material m, String[] toolTipExclusions,
+                   int density, int luminosity, int temperature, int viscosity, boolean vaporize) {
+        super("MLiquid",
+                tweak, registries,
+                machines, matters, data,
+                m, toolTipExclusions);
+        String localName = null;
+        String name = null;
         if (m.state.equals("solid")) {
-            this.l = new LMolten(true, machine, data, matters, registries, m.NAME +"_molten", "Molten " + m.LOCALNAME, m.color, density, luminosity, temperature, viscosity, vaporize);
+            name = m.NAME +"_molten";
+            localName = "Molten " + m.LOCALNAME;
         } else if (m.state.equals("liquid") || m.state.equals("gas") || m.state.equals("plasma")) {
-            this.l = new LLiquid(true, machine, data, matters, registries, m.NAME +"_liquid", "Liquid " + m.LOCALNAME, m.color, density, luminosity, temperature, viscosity, vaporize);
+            name = m.NAME +"_liquid";
+            localName = "Liquid " + m.LOCALNAME;
+        } else {
+            error("Invalid state " + m.state + " for material " + m.NAME);
         }
+        this.l = new LMolten(
+                name,
+                tweak, registries,
+                machines, matters, data,
+                localName,
+                m.color, true, vaporize,
+                density, luminosity, temperature, viscosity);
     }
 
     @Override

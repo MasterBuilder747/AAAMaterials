@@ -14,22 +14,33 @@ import Main.Generators.MachineResource.GMachineData;
 import Main.Generators.MachineResource.GMachineMatter;
 import Main.Generators.RecipeObjects.Material.Liquid.GMLiquid;
 import Main.Generators.RecipeObjects.Material.GMSolid;
+import Main.Generators.Tweakers.GRecipeTweak;
 
 public class GMetal extends AGMalleable<Metal> {
-    public GMetal(String filename, GMachine machine, GRegistry registry,
-                  GLiquidRegistry liquids, GOreDictRegistry ores, GMachineData data, GMachineMatter matter, GMaterial material, GPartGroup partGroup, GMSolid solid, GMLiquid liquid, boolean isReg) {
-        super(4, filename, machine, registry, liquids, ores, data, matter, material, partGroup, liquid, solid, true, false, false, isReg);
+    public GMetal(String filename, boolean isReg,
+                  GRecipeTweak tweak, GRegistry registry, GLiquidRegistry liquids, GOreDictRegistry ores,
+                  GMachine machine, GMachineMatter matter, GMachineData data,
+                  GMaterial material, GPartGroup partGroup,
+                  GMSolid solid, GMLiquid liquid) {
+        super(4, filename, isReg,
+                tweak, registry, liquids, ores,
+                machine, matter, data,
+                material, partGroup,
+                solid, true, false, false,
+                liquid);
     }
 
     @Override
-    protected void setMalleableParts(Material m, String[] s, MLiquid liquid, MSolid solid) {
+    protected void setMalleableParts(Material m, String[] s, MLiquid molten, MSolid solid) {
         //addSmelt, addMachine, addBlast, addConductive
-        Metal metal = new Metal(m, liquid, getMachineRegistry(), getDataRegistry(), getMatterRegistry(), getRegistries(),
-                new String[]{
+        Metal metal = new Metal(getRecipeTweak("Metal"), getRegistries(),
+                getMachineRegistry(), getMatterRegistry(), getDataRegistry(),
+                m, new String[]{
                     "dust", "dustSmall", "dustTiny",
                     "dustFine", "dustFineSmall", "dustFineTiny",
                     "powder", "powderSmall", "powderTiny"
-                });
+                },
+                molten);
         boolean smelt = Boolean.parseBoolean(s[0]);
         metal.setPartGroups(this.genPartGroups(
                 new String[]{"scrap", "plate", "smelt", "rod", "beam", "conductive", "machine", "special_plate", "coiled_rod", "blast", "assembled"}),

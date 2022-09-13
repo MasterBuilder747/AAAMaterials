@@ -17,6 +17,7 @@ import Main.Generators.MachineResource.GMachine;
 import Main.Generators.MachineResource.GMachineData;
 import Main.Generators.MachineResource.GMachineMatter;
 import Main.Generators.RecipeObjects.Material.GMSolid;
+import Main.Generators.Tweakers.GRecipeTweak;
 import Main.Json.Builder;
 import Main.Json.JsonObject;
 import Main.Util;
@@ -24,12 +25,16 @@ import Main.Util;
 import java.util.ArrayList;
 
 public class GOre extends AGMSolid<Ore> {
-    public GOre(String filename, GMachine machine, GRegistry registry,
-                GLiquidRegistry liquids, GOreDictRegistry ores, GMachineData data, GMachineMatter matter, GMaterial material, GPartGroup partGroup, GMSolid solid, boolean isReg) {
-        //    int params, String filename, GMachine machine, GRegistry registry, GMaterial material, GPartGroup partGroup, GMSolid solid,
-        //    boolean isDust, boolean isFineDust, boolean isPowder, boolean isReg
-        super(-2, filename, machine, registry, liquids, ores, data, matter, material, partGroup, solid, true, false, false, isReg);
-        this.material = material;
+    public GOre(String filename, boolean isReg,
+                GRecipeTweak tweak, GRegistry registry, GLiquidRegistry liquids, GOreDictRegistry ores,
+                GMachine machine, GMachineMatter matter, GMachineData data,
+                GMaterial material, GPartGroup partGroup,
+                GMSolid solid) {
+        super(-2, filename, isReg,
+                tweak, registry, liquids, ores,
+                machine, matter, data,
+                material, partGroup,
+                solid, true, false, false);
     }
 
     @Override
@@ -63,12 +68,15 @@ public class GOre extends AGMSolid<Ore> {
         // int bedrockChunkChance
 
         //configure ore gen here
-        Ore o = new Ore(m, Boolean.parseBoolean(s[0]), getMachineRegistry(), getDataRegistry(), getMatterRegistry(), getRegistries(),
-                new String[]{
+        Ore o = new Ore(
+                getRecipeTweak("Ore"), getRegistries(),
+                getMachineRegistry(), getMatterRegistry(), getDataRegistry(),
+                m, new String[]{
                     "dust", "dustSmall", "dustTiny",
                     "dustFine", "dustFineSmall", "dustFineTiny",
                     "powder", "powderSmall", "powderTiny"
-                });
+                },
+                Boolean.parseBoolean(s[0]));
         String[] blocks = new String[s.length-1]; //includes each ore variant
         System.arraycopy(s, 1, blocks, 0, blocks.length);
 //        if (!mol.is(name)) {
@@ -124,7 +132,10 @@ public class GOre extends AGMSolid<Ore> {
                 if (block.equals("bedrock")) {
                     tool = "none";
                 }
-                b = new LBlock(block, getMachineRegistry(), getDataRegistry(), getMatterRegistry(), getRegistries(), "rock", tool);
+                b = new LBlock(block,
+                        getRecipeTweak("LBlock"), getRegistries(),
+                        getMachineRegistry(), getMatterRegistry(), getDataRegistry(),
+                        "rock", tool);
                 b.setAttributes(parseInt(attributes[1]), parseInt(attributes[2]), parseInt(attributes[3]));
                 if (block.equals("stone")) {
                     types.add(new OreType(m.NAME, type_name, b));
@@ -134,14 +145,16 @@ public class GOre extends AGMSolid<Ore> {
             }
 
             //create oreVariant to be added to ore
-            OreVariant ov = new OreVariant(m, getMachineRegistry(), getDataRegistry(), getMatterRegistry(), getRegistries(),
-                    block, types.toArray(new OreType[0]), this.partGroup.getPart("ore"),
-                    new String[]{
+            OreVariant ov = new OreVariant(
+                    getRecipeTweak("OreVariant"), getRegistries(),
+                    getMachineRegistry(), getMatterRegistry(), getDataRegistry(),
+                    m, new String[]{
                         "dust", "dustSmall", "dustTiny",
                         "dustFine", "dustFineSmall", "dustFineTiny",
                         "powder", "powderSmall", "powderTiny",
                         "ore", "orePoor", "oreDense"
-                    });
+                    },
+                    block, types.toArray(new OreType[0]), this.partGroup.getPart("ore"));
             if (block.equals("stone")) {
                 ov.setPartGroupTrue(genPartGroup("ore"));
                 if (this.isReg) {

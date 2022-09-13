@@ -13,18 +13,21 @@ import Main.Generators.MachineResource.GMachine;
 import Main.Generators.MachineResource.GMachineData;
 import Main.Generators.MachineResource.GMachineMatter;
 import Main.Generators.RecipeObjects.Material.GMSolid;
+import Main.Generators.Tweakers.GRecipeTweak;
 
 import java.util.ArrayList;
 
 public class GStone extends AGMSolid<Stone> {
-    GRegistry registry;
-
-    public GStone(String filename, GMachine machine, GRegistry registry,
-                  GLiquidRegistry liquids, GOreDictRegistry ores, GMachineData data, GMachineMatter matter, GMaterial material, GPartGroup partGroup, GMSolid solid, boolean isReg) {
-        //    int params, String filename, GMachine machine, GRegistry registry, GMaterial material, GPartGroup partGroup, GMSolid solid,
-        //    boolean isDust, boolean isFineDust, boolean isPowder, boolean isReg) {
-        super(3, filename, machine, registry, liquids, ores, data, matter, material, partGroup, solid, true, false, false, isReg);
-        this.registry = registry;
+    public GStone(String filename, boolean isReg,
+                  GRecipeTweak tweak, GRegistry registry, GLiquidRegistry liquids, GOreDictRegistry ores,
+                  GMachine machine, GMachineMatter matter, GMachineData data,
+                  GMaterial material, GPartGroup partGroup,
+                  GMSolid solid) {
+        super(3, filename, isReg,
+                tweak, registry, liquids, ores,
+                machine, matter, data,
+                material, partGroup,
+                solid, true, false, false);
     }
 
     @Override
@@ -63,7 +66,10 @@ public class GStone extends AGMSolid<Stone> {
         */
         boolean isSedimentary = parseBoolean(s[1]);
         boolean noSlab = parseBoolean(s[2]);
-        Stone c = new Stone(m, isSedimentary, noSlab, getMachineRegistry(), getDataRegistry(), getMatterRegistry(), getRegistries(), null);
+        Stone c = new Stone(getRecipeTweak("Stone"), getRegistries(),
+                getMachineRegistry(), getMatterRegistry(), getDataRegistry(),
+                m, null,
+                isSedimentary, noSlab);
         c.setPartGroup(genPartGroup("stone"), parseBoolean(s[0]));
         ArrayList<Registry> registries = new ArrayList<>();
         if (!isSedimentary) {

@@ -10,19 +10,24 @@ import Main.Generators.GameData.GRegistry;
 import Main.Generators.MachineResource.GMachine;
 import Main.Generators.MachineResource.GMachineData;
 import Main.Generators.MachineResource.GMachineMatter;
+import Main.Generators.Tweakers.GRecipeTweak;
 
 public class GMSolid extends AGMaterialData<MSolid> {
-    GPartGroup partGroup;
-
-    public GMSolid(String filename, GRegistry registry, GLiquidRegistry liquids, GOreDictRegistry ores, GMachineData data, GMachineMatter matter, GMachine machine, GMaterial material, GPartGroup partGroup, boolean isReg) {
-        super(4, filename, machine, material, partGroup, registry, liquids, ores, data, matter, isReg);
-        this.partGroup = partGroup;
+    public GMSolid(String filename, boolean isReg,
+                   GRecipeTweak tweak, GRegistry registry, GLiquidRegistry liquids, GOreDictRegistry ores,
+                   GMachine machine, GMachineMatter matter, GMachineData data,
+                   GMaterial material, GPartGroup partGroup) {
+        super(4, filename, isReg,
+                tweak, registry, liquids, ores,
+                machine, matter, data, material, partGroup);
     }
 
     @Override
     protected void readMaterialParameters(Material m, String[] s) {
         //bool addDust, bool addFineDust, bool addPowder, String customName(for other states)[= for none]
-        MSolid sol = new MSolid(m, getMachineRegistry(), getDataRegistry(), getMatterRegistry(), getRegistries(), null);
+        MSolid sol = new MSolid(getRecipeTweak("MSolid"), getRegistries(),
+                getMachineRegistry(), getMatterRegistry(), getDataRegistry(),
+                m, null);
         sol.setPartGroups(genPartGroups(new String[]{"dust", "fine", "powder"}),
                 new boolean[]{Boolean.parseBoolean(s[0]), Boolean.parseBoolean(s[1]), Boolean.parseBoolean(s[2])});
         sol = updateRegistryKeys(sol);

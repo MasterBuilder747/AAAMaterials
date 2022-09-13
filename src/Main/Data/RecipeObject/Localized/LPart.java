@@ -4,6 +4,7 @@ import Main.Data.GameData.Registry;
 import Main.Data.MachineResource.Machine.Machine;
 import Main.Data.MachineResource.MachineData;
 import Main.Data.MachineResource.MachineMatter;
+import Main.Data.Tweakers.RecipeTweak;
 
 import java.util.ArrayList;
 
@@ -16,25 +17,34 @@ public class LPart extends ALocalizedData {
     int amount; //amount of material this has in it; 1 = 1 ingot
     public String baseRegistryName; //the base part of the key being used to find the item registry
 
-    public LPart(String name, String localName, String oreDict, ArrayList<Machine> machines, MachineData data, ArrayList<MachineMatter> matters, ArrayList<Registry> registries, boolean hasOverlay, int amount) {
-        super(name, localName, "LPart", machines, data, matters, registries);
-        this.type = "item"; //default
-        this.hasOverlay = hasOverlay;
+    //this part already exists in contentTweaker
+    //to be used in a PartGroup
+    public LPart(String name,
+                 RecipeTweak tweak, ArrayList<Registry> registries,
+                 ArrayList<Machine> machines, ArrayList<MachineMatter> matters, MachineData data,
+                 String localName,
+                 String oreDict, int amount) {
+        super(name, "LPart",
+                tweak, registries,
+                machines, matters, data,
+                localName);
+        this.exists = true;
         this.oreDict = oreDict;
-        /*
-        while (this.oreDict.contains("_")) {
-            int s = this.oreDict.indexOf("_");
-            this.oreDict = this.oreDict.substring(0, s)+this.oreDict.substring(s+1, s+2).toUpperCase()+this.oreDict.substring(s+2);
-        }
-        */
         this.amount = amount;
         this.baseRegistryName = localName.replace(" ", "");
     }
-    //this part already exists in contentTweaker
-    //to be used in a PartGroup
-    public LPart(String name, String localName, ArrayList<Machine> machines, MachineData data, ArrayList<MachineMatter> matters, ArrayList<Registry> registries, String oreDict, int amount) {
-        super(name, localName, "LPart", machines, data, matters, registries);
-        this.exists = true;
+    //custom part
+    public LPart(String name,
+                 RecipeTweak tweak, ArrayList<Registry> registries,
+                 ArrayList<Machine> machines, ArrayList<MachineMatter> matters, MachineData data,
+                 String localName,
+                 String  oreDict, boolean hasOverlay, int amount) {
+        super(name, "LPart",
+                tweak, registries,
+                machines, matters, data,
+                localName);
+        this.type = "item"; //default
+        this.hasOverlay = hasOverlay;
         this.oreDict = oreDict;
         this.amount = amount;
         this.baseRegistryName = localName.replace(" ", "");
@@ -67,5 +77,10 @@ public class LPart extends ALocalizedData {
                 throw new IllegalArgumentException("Part " + this.NAME + " does not contain a \"%s\" to denote the material name for localization");
             }
         } else return "";
+    }
+
+    @Override
+    protected String buildAdditionalRecipes() {
+        return null;
     }
 }

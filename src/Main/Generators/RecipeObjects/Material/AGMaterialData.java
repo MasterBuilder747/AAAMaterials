@@ -13,6 +13,7 @@ import Main.Generators.MachineResource.GMachine;
 import Main.Generators.MachineResource.GMachineData;
 import Main.Generators.MachineResource.GMachineMatter;
 import Main.Generators.RecipeObjects.AGRecipeObject;
+import Main.Generators.Tweakers.GRecipeTweak;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -23,15 +24,23 @@ public abstract class AGMaterialData<M extends AMaterialData> extends AGRecipeOb
     protected GMaterial material; //required for passing material data through
 
     //material data that is stored to indicate what is registered for a given material
-    public AGMaterialData(int params, String filename, GMachine machine, GMaterial material, GPartGroup partGroup,
-                          GRegistry registry, GLiquidRegistry liquids, GOreDictRegistry ores, GMachineData data, GMachineMatter matter, boolean isReg) {
-        super(params+1, filename, "Material", registry, isReg, machine, liquids, ores, data, matter);
+    public AGMaterialData(int params, String filename, boolean isReg,
+                          GRecipeTweak tweak, GRegistry registry, GLiquidRegistry liquids, GOreDictRegistry ores,
+                          GMachine machine, GMachineMatter matter, GMachineData data,
+                          GMaterial material, GPartGroup partGroup) {
+        super(params+1, filename, "Material", isReg,
+                tweak, registry, liquids, ores,
+                machine, matter, data);
         this.material = material;
         this.partGroup = partGroup;
     }
-    public AGMaterialData(int params, String filename, GMachine machine, GMaterial material, GPartGroup partGroup, String materialFolder,
-                          GRegistry registry, GLiquidRegistry liquids, GOreDictRegistry ores, GMachineData data, GMachineMatter matter, boolean isReg) {
-        super(params+1, filename, "Material/"+materialFolder, registry, isReg, machine, liquids, ores, data, matter);
+    public AGMaterialData(int params, String filename, String materialFolder, boolean isReg,
+                          GRecipeTweak tweak, GRegistry registry, GLiquidRegistry liquids, GOreDictRegistry ores,
+                          GMachine machine, GMachineMatter matter, GMachineData data,
+                          GMaterial material, GPartGroup partGroup) {
+        super(params+1, filename, "Material/"+materialFolder, isReg,
+                tweak, registry, liquids, ores,
+                machine, matter, data);
         this.material = material;
         this.partGroup = partGroup;
     }

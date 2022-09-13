@@ -4,6 +4,7 @@ import Main.Data.GameData.Registry;
 import Main.Data.MachineResource.Machine.Machine;
 import Main.Data.MachineResource.MachineData;
 import Main.Data.MachineResource.MachineMatter;
+import Main.Data.Tweakers.RecipeTweak;
 
 import java.util.ArrayList;
 
@@ -17,8 +18,15 @@ public class LFood extends ALocalizedData {
     String foodGroup; //dairy, fruit, vegetable, protein, grain, none
     String type; //milk, meat, nut, cheese, oil, citrus, nonCitrus, vegetable, grain, seed, legume, yogurt, bread, pasta
 
-    public LFood(String name, String localName, ArrayList<Machine> machines, MachineData data, ArrayList<MachineMatter> matters, ArrayList<Registry> registries, int heal, double saturation, boolean alwaysEdible) {
-        super(name, localName, "LFood", machines, data, matters, registries);
+    public LFood(String name,
+                 RecipeTweak tweak, ArrayList<Registry> registries,
+                 ArrayList<Machine> machines, ArrayList<MachineMatter> matters, MachineData data,
+                 String localName,
+                 int heal, double saturation, boolean alwaysEdible) {
+        super(name, "LFood",
+                tweak, registries,
+                machines, matters, data,
+                localName);
         this.heal = heal;
         this.saturation = saturation;
         this.alwaysEdible = alwaysEdible;
@@ -35,7 +43,7 @@ public class LFood extends ALocalizedData {
     }
 
     @Override
-    public String buildRecipe() {
+    protected String buildAdditionalRecipes() {
         return null;
     }
 

@@ -9,6 +9,7 @@ import Main.Data.MachineResource.MachineMatter;
 import Main.Data.Material;
 import Main.Data.RecipeObject.Material.AMaterialData;
 import Main.Data.RecipeObject.RegistryData;
+import Main.Data.Tweakers.RecipeTweak;
 
 import java.util.ArrayList;
 
@@ -31,9 +32,15 @@ public abstract class AChemicalComposition extends AMaterialData {
     //this is loaded after all parts have been added so that the tooltip can
     boolean isElement; //for handling getting the element rather than the composition
 
-    public AChemicalComposition(Material m, String type, ArrayList<Machine> machines, MachineData data, ArrayList<MachineMatter> matters, ArrayList<Registry> registries, String[] toolTipExclusions,
+    public AChemicalComposition(String type,
+                                RecipeTweak tweak, ArrayList<Registry> registries,
+                                ArrayList<Machine> machines, ArrayList<MachineMatter> matters, MachineData data,
+                                Material m, String[] toolTipExclusions,
                                 Composition c, boolean isDefault, boolean isElement) {
-        super(m, type, machines, data, matters, registries, toolTipExclusions);
+        super(type,
+                tweak, registries,
+                machines, matters, data,
+                m, toolTipExclusions);
         this.composition = c;
         this.isDefault = isDefault;
         this.symbol = c.toString();

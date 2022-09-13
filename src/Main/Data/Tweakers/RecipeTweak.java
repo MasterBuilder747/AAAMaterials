@@ -16,6 +16,11 @@ public class RecipeTweak extends ATweaker {
         this.recipes = new ArrayList<>();
     }
 
+    //call this after build()
+    public String[] getRecipes() {
+        return this.recipes.toArray(new String[0]);
+    }
+
     @Override
     protected void readLine(String[] s) throws IOException {
         //externally handled: int num,
@@ -35,34 +40,31 @@ public class RecipeTweak extends ATweaker {
         sb.append(s[4]); //matterIn
         sb.append(",");
         sb.append(s[5]); //matterOut
+        sb.append(",");
         if (tier < 13) {
             if (s[6].equals("-")) throw new GeneratorException("Data amount required for voltage tiers 12 and below");
-            sb.append(",");
             sb.append(parseInt(s[6])); //dataAmt
+        } else {
+            sb.append("-1");
         }
+        sb.append(",");
         if (tier < 9) {
             if (s[7].equals("-")) throw new GeneratorException("Chemical amount required for voltage tiers 8 and below");
-            sb.append(",");
             sb.append(parseInt(s[7])); //chemAmt
+        } else {
+            sb.append("-1");
         }
         //8-11: String input, String output, String lInput, String lOutput
         //validations are internally handled in ARecipeObject
-        if (!s[8].equals("-")) {
-            sb.append(",");
-            sb.append(s[8]);
-        }
-        if (!s[9].equals("-")) {
-            sb.append(",");
-            sb.append(s[9]);
-        }
-        if (!s[10].equals("-")) {
-            sb.append(",");
-            sb.append(s[10]);
-        }
-        if (!s[11].equals("-")) {
-            sb.append(",");
-            sb.append(s[11]);
-        }
+        // - indicates no I/O of that type
+        sb.append(",");
+        sb.append(s[8]);
+        sb.append(",");
+        sb.append(s[9]);
+        sb.append(",");
+        sb.append(s[10]);
+        sb.append(",");
+        sb.append(s[11]);
         this.recipes.add(sb.toString());
     }
 

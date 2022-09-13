@@ -9,6 +9,7 @@ import Main.Data.PartGroup;
 import Main.Data.RecipeObject.ARecipeObject;
 import Main.Data.RecipeObject.Localized.LPart;
 import Main.Data.RecipeObject.Material.Composition.AChemicalComposition;
+import Main.Data.Tweakers.RecipeTweak;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -21,15 +22,20 @@ public abstract class AMaterialData extends ARecipeObject {
     public ArrayList<String> localizedPartNames;
     protected String[] toolTipExclusions; //an array of part oredicts that are excluded from being added tooltips (used to prevent duplications)
 
-    public AMaterialData(Material m, String type, ArrayList<Machine> machines, MachineData data, ArrayList<MachineMatter> matters, ArrayList<Registry> registries, String[] toolTipExclusions) {
-        super(m.NAME, type, machines, data, matters, registries);
+    public AMaterialData(String type,
+                         RecipeTweak tweak, ArrayList<Registry> registries,
+                         ArrayList<Machine> machines, ArrayList<MachineMatter> matters, MachineData data,
+                         Material m, String[] toolTipExclusions) {
+        super(m.NAME, type,
+                tweak, registries,
+                machines, matters, data);
         this.m = m;
         this.localizedPartNames = new ArrayList<>();
         this.toolTipExclusions = toolTipExclusions;
     }
 
     @Override
-    public String buildRecipe() {
+    protected String buildAdditionalRecipes() {
         StringBuilder sb = new StringBuilder();
         AChemicalComposition comp = m.getComp();
         if (comp != null) {

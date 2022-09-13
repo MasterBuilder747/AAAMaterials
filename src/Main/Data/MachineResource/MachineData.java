@@ -5,10 +5,17 @@ import Main.Data.RecipeObject.Localized.Liquid.LLiquid;
 public class MachineData extends AMachineResource {
     LLiquid data;
 
-    public MachineData(String name, String localName, String color, int density, int luminosity, int temperature, int viscosity, boolean vaporize) {
+    public MachineData(String name,
+                       String localName, String color, int density, int luminosity, int temperature, int viscosity, boolean vaporize) {
         super(name);
         //data liquid will have to have a hardcoded recipe!
-        this.data = new LLiquid(false, null, null, null, null, name, localName, color, density, luminosity, temperature, viscosity, vaporize);
+        this.data = new LLiquid(
+                name,
+                null, null,
+                null, null, null,
+                localName,
+                color, false, vaporize,
+                density, luminosity, temperature, viscosity);
     }
 
     public String getData() {

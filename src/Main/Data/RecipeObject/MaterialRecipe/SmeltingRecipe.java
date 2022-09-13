@@ -4,11 +4,16 @@ import Main.Data.GameData.Registry;
 import Main.Data.MachineResource.Machine.Machine;
 import Main.Data.MachineResource.MachineData;
 import Main.Data.MachineResource.MachineMatter;
+import Main.Data.Tweakers.RecipeTweak;
 
 import java.util.ArrayList;
 
 public class SmeltingRecipe extends AMaterialRecipe {
-    public SmeltingRecipe(ArrayList<Machine> machines, MachineData data, ArrayList<MachineMatter> matters, ArrayList<Registry> registries) {
-        super("smelting", "Smelting", "basic", machines, data, matters, registries);
+    public SmeltingRecipe(ArrayList<Registry> registries, RecipeTweak tweak,
+                          ArrayList<Machine> machines, ArrayList<MachineMatter> matters, MachineData data) {
+        super("smelting", "Smelting",
+                tweak, registries,
+                machines, matters, data,
+                "basic");
     }
 }

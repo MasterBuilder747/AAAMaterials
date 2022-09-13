@@ -5,11 +5,16 @@ import Main.Data.MachineResource.Machine.Machine;
 import Main.Data.MachineResource.MachineData;
 import Main.Data.MachineResource.MachineMatter;
 import Main.Data.RecipeObject.MaterialRecipe.AMaterialRecipe;
+import Main.Data.Tweakers.RecipeTweak;
 
 import java.util.ArrayList;
 
 public class LaserCutterRecipe extends AMaterialRecipe {
-    public LaserCutterRecipe(ArrayList<Machine> machines, MachineData data, ArrayList<MachineMatter> matters, ArrayList<Registry> registries) {
-        super("laserCutter", "LaserCutter", "basic", machines, data, matters, registries);
+    public LaserCutterRecipe(ArrayList<Registry> registries, RecipeTweak tweak,
+                             ArrayList<Machine> machines, ArrayList<MachineMatter> matters, MachineData data) {
+        super("laserCutter", "LaserCutter",
+                tweak, registries,
+                machines, matters, data,
+                "basic");
     }
 }

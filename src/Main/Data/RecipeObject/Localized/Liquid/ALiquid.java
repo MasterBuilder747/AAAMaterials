@@ -5,6 +5,7 @@ import Main.Data.MachineResource.Machine.Machine;
 import Main.Data.MachineResource.MachineData;
 import Main.Data.MachineResource.MachineMatter;
 import Main.Data.RecipeObject.Localized.ALocalizedData;
+import Main.Data.Tweakers.RecipeTweak;
 
 import java.util.ArrayList;
 
@@ -19,16 +20,23 @@ public abstract class ALiquid extends ALocalizedData {
     boolean vaporize;
 
     //IMPORTANT NOTE: Machine resources always set machines to null, since their recipes are hardcoded!
-    public ALiquid(String type, ArrayList<Machine> machines, MachineData data, ArrayList<MachineMatter> matters, ArrayList<Registry> registries, boolean isMaterial, String name, String localName, String color, int density, boolean gas,
-                   int luminosity, int temperature, int viscosity, boolean vaporize) {
-        super("cot"+(isMaterial ? "m" : "c")+"_"+name, localName, type, machines, data, matters, registries);
+    public ALiquid(String name, String type,
+                   RecipeTweak tweak, ArrayList<Registry> registries,
+                   ArrayList<Machine> machines, ArrayList<MachineMatter> matters, MachineData data,
+                   String localName,
+                   String color, boolean isMaterial, boolean gas, boolean vaporize,
+                   int density, int luminosity, int temperature, int viscosity) {
+        super("cot"+(isMaterial ? "m" : "c")+"_"+name, type,
+                tweak, registries,
+                machines, matters, data,
+                localName);
         this.color = color;
-        this.density = density;
         this.gas = gas;
+        this.vaporize = vaporize;
+        this.density = density;
         this.luminosity = luminosity;
         this.temperature = temperature;
         this.viscosity = viscosity;
-        this.vaporize = vaporize;
     }
 
     @Override

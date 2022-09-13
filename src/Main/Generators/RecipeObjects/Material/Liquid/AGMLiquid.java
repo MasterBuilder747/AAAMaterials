@@ -11,14 +11,19 @@ import Main.Generators.MachineResource.GMachine;
 import Main.Generators.MachineResource.GMachineData;
 import Main.Generators.MachineResource.GMachineMatter;
 import Main.Generators.RecipeObjects.Material.AGMaterialData;
+import Main.Generators.Tweakers.GRecipeTweak;
 
 public abstract class AGMLiquid <L extends AMLiquid> extends AGMaterialData<L> {
-
-    public AGMLiquid(int params, GMachine machine, GRegistry registry,
-                     GLiquidRegistry liquids, GOreDictRegistry ores, GMachineData data, GMachineMatter matter, GPartGroup partGroup, String filename, GMaterial material, boolean isReg) {
+    public AGMLiquid(int params, String filename, boolean isReg,
+                     GRecipeTweak tweak, GRegistry registry, GLiquidRegistry liquids, GOreDictRegistry ores,
+                     GMachine machine, GMachineMatter matter, GMachineData data,
+                     GMaterial material, GPartGroup partGroup) {
         //part groups are only used with solid material datas
         //int params, String filename, GMachine machine, GMaterial material, GPartGroup partGroup, String materialFolder, GRegistry registry, boolean isReg
-        super(params, filename, machine, material, partGroup, "Liquid", registry, liquids, ores, data, matter, isReg);
+        super(params, filename, "Liquid", isReg,
+                tweak, registry, liquids, ores,
+                machine, matter, data,
+                material, partGroup);
     }
 
     protected abstract void readMaterialParameters(Material m, String[] s);

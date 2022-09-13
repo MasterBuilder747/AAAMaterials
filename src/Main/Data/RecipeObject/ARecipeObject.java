@@ -6,6 +6,7 @@ import Main.Data.MachineResource.Machine.Machine;
 import Main.Data.MachineResource.MachineData;
 import Main.Data.MachineResource.MachineMatter;
 import Main.Data.RecipeObject.MaterialRecipe.*;
+import Main.Data.Tweakers.RecipeTweak;
 import Main.Generators.GeneratorException;
 import Main.Parameter.ParameterException;
 import Main.Util;
@@ -25,29 +26,61 @@ public abstract class ARecipeObject extends AData {
 
     String type; //unique type for recipe uniqueness and other identifiers
     ArrayList<RegistryData> itemKeys; //key used to identify items to be used by this recipe object more easily, this is manually populated
+    protected RecipeTweak tweak; //constructs all user defined recipes per object
 
-    public ARecipeObject(String NAME,
-                         String type, ArrayList<Machine> machines, MachineData dataLiquid, ArrayList<MachineMatter> matters, ArrayList<Registry> items) {
+    public ARecipeObject(String NAME, String type,
+                         RecipeTweak tweak, ArrayList<Registry> items,
+                         ArrayList<Machine> machines, ArrayList<MachineMatter> matters, MachineData data) {
         super(NAME);
+        this.type = type;
+        this.tweak = tweak;
         this.items = items;
+        this.machines = machines;
+        this.dataLiquid = data;
+        this.matters = matters;
+
+        this.itemKeys = new ArrayList<>();
         this.liquids = new ArrayList<>();
         this.ores = new ArrayList<>();
-        this.type = type;
-        this.machines = machines;
-        this.matters = matters;
-        this.dataLiquid = dataLiquid;
-        this.itemKeys = new ArrayList<>();
     }
+
+    @Override
+    public String buildRecipe() {
+        StringBuilder sb = new StringBuilder();
+        if (this.tweak != null) {
+            this.tweak.buildRecipe();
+            String[] recipes = this.tweak.getRecipes();
+            for (int i = 0; i < recipes.length; i++) {
+                String r = recipes[i];
+                String[] p = Util.split(r, ",");
+                sb.append(addRecipe(
+                        i, p[0], parseInt(p[1]), parseInt(p[2]), parseDouble(p[3]), p[4], p[5],
+                        parseInt(p[6]), parseInt(p[7]),
+                        p[8], p[9], p[10], p[11]
+                ));
+            }
+        }
+        String b = buildAdditionalRecipes();
+        if (b != null) sb.append(b);
+        return sb.toString();
+    }
+    protected abstract String buildAdditionalRecipes();
     
     //build recipe
-    protected String addRecipe(int num, String recipeType, String iInput, String lInput, String iOutput, String lOutput,
-                               int time, int tier, double powerMultiplier, int chemAmt, int dataAmt, String matterIn, String matterOut) {
+    //required: String machine, int tier, int time, double powerMultiplier, String matterIn, String matterOut,
+    //depends on voltage tier: int dataAmt, int chemAmt,
+    //optional: String input, String output, String lInput, String lOutput
+    protected String addRecipe(
+            int num, String machine, int tier, int time, double powerMultiplier, String matterIn, String matterOut,
+            int dataAmt, int chemAmt,
+            String iInput, String lInput, String iOutput, String lOutput
+    ) {
         String customVar = ""; //this is a parameter later on!
         AMaterialRecipe r;
         String recipeVariable = this.NAME+iOutput.replace("*", "_")+this.type+num+customVar;
-        r = constructRecipe(recipeType);
+        r = constructRecipe(machine);
         if (r == null) {
-            error("Unknown recipeType: " + recipeType);
+            error("Unknown machine: " + machine);
             return null;
         } else {
             r.createRecipe(recipeVariable, time, tier, powerMultiplier, 0, this.getDataLiquid());
@@ -62,6 +95,7 @@ public abstract class ARecipeObject extends AData {
         }
     }
     private String[] parseRecipeIO(String sss, boolean liquid) {
+        if (sss.equals("-")) return new String[0];
         String[] ss = Util.split(sss, ";");
         ArrayList<String> outs = new ArrayList<>();
         //internal syntax:
@@ -128,19 +162,19 @@ public abstract class ARecipeObject extends AData {
     //change this api later, make it user defined
     private AMaterialRecipe constructRecipe(String recipeType) {
         switch (recipeType) {
-            case "coiller" -> {return new CoillerRecipe(this.machines, this.dataLiquid, this.matters, this.items);}
-            case "bender" -> {return new HeatedBenderRecipe(this.machines, this.dataLiquid, this.matters, this.items);}
-            case "cut" -> {return new LaserCutterRecipe(this.machines, this.dataLiquid, this.matters, this.items);}
-            case "lathe" -> {return new LatheRecipe(this.machines, this.dataLiquid, this.matters, this.items);}
-            case "mLathe" -> {return new MicroLatheRecipe(this.machines, this.dataLiquid, this.matters, this.items);}
-            case "press" -> {return new PressRecipe(this.machines, this.dataLiquid, this.matters, this.items);}
-            case "pulverize" -> {return new PulverizeRecipe(this.machines, this.dataLiquid, this.matters, this.items);}
-            case "sharpen" -> {return new SharpenRecipe(this.machines, this.dataLiquid, this.matters, this.items);}
-            case "smelt" -> {return new SmeltingRecipe(this.machines, this.dataLiquid, this.matters, this.items);}
-            case "wiremill" -> {return new WiremillRecipe(this.machines, this.dataLiquid, this.matters, this.items);}
-            case "welder" -> {return new WelderRecipe(this.machines, this.dataLiquid, this.matters, this.items);}
-            case "melting" -> {return new MeltingRecipe(this.machines, this.dataLiquid, this.matters, this.items);}
-            case "metalAssembler" -> {return new MetalAssemblerRecipe(this.machines, this.dataLiquid, this.matters, this.items);}
+            case "coiller" -> {return new CoillerRecipe(this.items, this.tweak, this.machines, this.matters, this.dataLiquid);}
+            case "bender" -> {return new HeatedBenderRecipe(this.items, this.tweak, this.machines, this.matters, this.dataLiquid);}
+            case "cut" -> {return new LaserCutterRecipe(this.items, this.tweak, this.machines, this.matters, this.dataLiquid);}
+            case "lathe" -> {return new LatheRecipe(this.items, this.tweak, this.machines, this.matters, this.dataLiquid);}
+            case "mLathe" -> {return new MicroLatheRecipe(this.items, this.tweak, this.machines, this.matters, this.dataLiquid);}
+            case "press" -> {return new PressRecipe(this.items, this.tweak, this.machines, this.matters, this.dataLiquid);}
+            case "pulverize" -> {return new PulverizeRecipe(this.items, this.tweak, this.machines, this.matters, this.dataLiquid);}
+            case "sharpen" -> {return new SharpenRecipe(this.items, this.tweak, this.machines, this.matters, this.dataLiquid);}
+            case "smelt" -> {return new SmeltingRecipe(this.items, this.tweak, this.machines, this.matters, this.dataLiquid);}
+            case "wiremill" -> {return new WiremillRecipe(this.items, this.tweak, this.machines, this.matters, this.dataLiquid);}
+            case "welder" -> {return new WelderRecipe(this.items, this.tweak, this.machines, this.matters, this.dataLiquid);}
+            case "melting" -> {return new MeltingRecipe(this.items, this.tweak, this.machines, this.matters, this.dataLiquid);}
+            case "metalAssembler" -> {return new MetalAssemblerRecipe(this.items, this.tweak, this.machines, this.matters, this.dataLiquid);}
         }
         return null;
     }

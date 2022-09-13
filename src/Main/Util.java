@@ -83,6 +83,27 @@ public class Util {
         }
     }
 
+    //get class with given string (only for our classes added)
+    public static Class<?> getClass(String s) {
+        try {
+            return Class.forName("Main." + s);
+        } catch (ClassNotFoundException e) {
+            throw new IllegalArgumentException("Unknown class: " + s);
+        }
+    }
+    public static boolean isClass(String s) {
+        try {
+            getClass(s);
+            return true;
+        } catch (IllegalArgumentException e) {
+            return false;
+        }
+    }
+
+    public static boolean isChildOf(String child, String parent) {
+        return getClass(parent).isAssignableFrom(getClass(child));
+    }
+
     //Strings
     public static String[] split(String s, String regex) {
         if (s.equals("")) return new String[0];

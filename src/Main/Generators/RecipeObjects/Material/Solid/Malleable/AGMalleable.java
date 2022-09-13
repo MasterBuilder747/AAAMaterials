@@ -1,9 +1,8 @@
 package Main.Generators.RecipeObjects.Material.Solid.Malleable;
 
-import Main.Data.RecipeObject.Material.MSolid;
-import Main.Data.RecipeObject.Material.Solid.AMSolid;
-import Main.Data.RecipeObject.Material.Liquid.MLiquid;
 import Main.Data.Material;
+import Main.Data.RecipeObject.Material.Liquid.MLiquid;
+import Main.Data.RecipeObject.Material.MSolid;
 import Main.Data.RecipeObject.Material.Solid.Malleable.AMalleable;
 import Main.Generators.GMaterial;
 import Main.Generators.GPartGroup;
@@ -13,17 +12,25 @@ import Main.Generators.GameData.GRegistry;
 import Main.Generators.MachineResource.GMachine;
 import Main.Generators.MachineResource.GMachineData;
 import Main.Generators.MachineResource.GMachineMatter;
+import Main.Generators.RecipeObjects.Material.GMSolid;
 import Main.Generators.RecipeObjects.Material.Liquid.GMLiquid;
 import Main.Generators.RecipeObjects.Material.Solid.AGMSolid;
-import Main.Generators.RecipeObjects.Material.GMSolid;
+import Main.Generators.Tweakers.GRecipeTweak;
 
 public abstract class AGMalleable <M extends AMalleable> extends AGMSolid<M> {
-    GMLiquid liquid;
+    GMLiquid liquid; //represents the molten liquid
 
-    public AGMalleable(int params, String filename, GMachine machine, GRegistry registry,
-                       GLiquidRegistry liquids, GOreDictRegistry ores, GMachineData data, GMachineMatter matter, GMaterial material, GPartGroup partGroup, GMLiquid liquid, GMSolid solid,
-                       boolean isDust, boolean isFineDust, boolean isPowder, boolean isReg) {
-        super(params, filename, machine, registry, liquids, ores, data, matter, material, partGroup, solid, isDust, isFineDust, isPowder, "Malleable", isReg);
+    public AGMalleable(int params, String filename, boolean isReg,
+                       GRecipeTweak tweak, GRegistry registry, GLiquidRegistry liquids, GOreDictRegistry ores,
+                       GMachine machine, GMachineMatter matter, GMachineData data,
+                       GMaterial material, GPartGroup partGroup,
+                       GMSolid solid, boolean isDust, boolean isFineDust, boolean isPowder,
+                       GMLiquid liquid) {
+        super(params, filename, "Malleable", isReg,
+                tweak, registry, liquids, ores,
+                machine, matter, data,
+                material, partGroup,
+                solid, isDust, isFineDust, isPowder);
         this.liquid = liquid;
     }
     @Override

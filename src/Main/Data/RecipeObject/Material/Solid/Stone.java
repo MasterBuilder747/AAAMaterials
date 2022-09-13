@@ -5,6 +5,7 @@ import Main.Data.MachineResource.MachineData;
 import Main.Data.MachineResource.MachineMatter;
 import Main.Data.Material;
 import Main.Data.GameData.Registry;
+import Main.Data.Tweakers.RecipeTweak;
 
 import java.util.ArrayList;
 
@@ -12,8 +13,14 @@ public class Stone extends AMSolid {
     boolean isSedimentary; //does not have cobblestone registered for UB
     boolean noSlab; //only applied to Conglomerate...?
 
-    public Stone(Material m, boolean isSedimentary, boolean noSlab, ArrayList<Machine> machines, MachineData data, ArrayList<MachineMatter> matters, ArrayList<Registry> registries, String[] toolTipExclusions) {
-        super(m, "Stone", machines, data, matters, registries, toolTipExclusions);
+    public Stone(RecipeTweak tweak, ArrayList<Registry> registries,
+                 ArrayList<Machine> machines, ArrayList<MachineMatter> matters, MachineData data,
+                 Material m, String[] toolTipExclusions,
+                 boolean isSedimentary, boolean noSlab) {
+        super("Stone",
+                tweak, registries,
+                machines, matters, data,
+                m, toolTipExclusions);
         this.isSedimentary = isSedimentary;
         this.noSlab = noSlab;
     }
