@@ -5,6 +5,7 @@ import Main.Generators.GeneratorException;
 import java.io.BufferedWriter;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Arrays;
 
 public class RecipeTweak extends ATweaker {
     //this holds one line for each recipe syntax, comma separated (IO is colon separated),

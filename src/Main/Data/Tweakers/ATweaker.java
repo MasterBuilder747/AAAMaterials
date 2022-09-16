@@ -65,7 +65,6 @@ public abstract class ATweaker extends AData {
     }
     protected abstract void readLine(String[] s) throws IOException;
     protected abstract void writeLine(String[] s, BufferedWriter bw) throws IOException;
-
     private void paramError(String s, String type) {
         throw new ParameterException(s, type, this.NAME, this.line);
     }

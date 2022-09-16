@@ -48,13 +48,10 @@ public abstract class ARecipeObject extends AData {
     public String buildRecipe() {
         StringBuilder sb = new StringBuilder();
         if (this.tweak != null) {
-            this.tweak.buildRecipe();
             String[] recipes = this.tweak.getRecipes();
-            System.out.println("LENGTH: " + recipes.length + " in " + this.type);
             for (int i = 0; i < recipes.length; i++) {
                 String r = recipes[i];
                 String[] p = Util.split(r, ",");
-                System.out.println("Starting recipe...");
                 sb.append(addRecipe(
                         i, p[0], parseInt(p[1]), parseInt(p[2]), parseDouble(p[3]), p[4], p[5],
                         parseInt(p[6]), parseInt(p[7]),
@@ -80,11 +77,11 @@ public abstract class ARecipeObject extends AData {
         String customVar = ""; //this is a parameter later on!
         AMaterialRecipe r;
         r = constructRecipe(machine);
-        String recipeVariable = this.NAME+iOutput.replace("*", "_")+this.type+num+customVar;
         if (r == null) {
             error("Unknown machine: " + machine);
             return null;
         } else {
+            String recipeVariable = this.NAME+iOutput.replace("*", "_")+this.type+num+customVar;
             r.createRecipe(recipeVariable, time, tier, powerMultiplier, 0, this.getDataLiquid());
             //IO
             String[] iInputs = parseRecipeIO(iInput,false);
@@ -156,9 +153,7 @@ public abstract class ARecipeObject extends AData {
             out = getItemUnlocalized(item.substring(1));
         } else {
             //key
-            System.out.println("Searching for " + item);
             out = getUnlocalizedByKey(item);
-            System.out.println("Key: " + item);
         }
         return out;
     }

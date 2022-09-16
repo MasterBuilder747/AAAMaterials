@@ -126,7 +126,6 @@ public abstract class AGenerator<D extends AData> {
         for (D o : objects) {
             o.print();
         }
-        System.out.println();
     }
 
     //exceptions
