@@ -65,7 +65,15 @@ public class RecipeTweak extends ATweaker {
         sb.append(s[10]);
         sb.append(",");
         sb.append(s[11]);
-        this.recipes.add(sb.toString());
+        String out = sb.toString();
+        this.recipes.add(out);
+    }
+
+    @Override
+    public void print() {
+        for (String s : this.recipes) {
+            System.out.println(s);
+        }
     }
 
     @Override

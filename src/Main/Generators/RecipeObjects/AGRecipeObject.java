@@ -86,7 +86,7 @@ public abstract class AGRecipeObject<R extends ARecipeObject> extends AGenerator
             try {
                 return this.tweak.get("F" + s);
             } catch (GeneratorException e) {
-                System.out.println("Warn: Unknown RecipeTweak: F" + s);
+                //System.out.println("Warn: Unknown RecipeTweak: F" + s);
                 return null;
             }
         }

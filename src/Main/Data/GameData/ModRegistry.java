@@ -40,13 +40,4 @@ public class ModRegistry extends AGameData {
     public String getUnlocalizedName() {
         return this.registryName;
     }
-
-    @Override
-    public String buildMaterial() {
-        return null;
-    }
-    @Override
-    public String buildRecipe() {
-        return null;
-    }
 }

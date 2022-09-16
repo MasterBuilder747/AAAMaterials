@@ -103,4 +103,9 @@ public class ModTweak extends ATweaker {
 
     @Override
     protected void readLine(String[] s) throws IOException {}
+
+    @Override
+    public void print() {
+
+    }
 }

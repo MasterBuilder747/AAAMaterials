@@ -24,9 +24,4 @@ public abstract class ALocalizedData extends ARecipeObject {
                 machines, matters, data);
         this.localName = localName;
     }
-
-    @Override
-    public String buildRecipe() {
-        return null;
-    }
 }

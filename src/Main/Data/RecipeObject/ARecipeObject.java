@@ -50,9 +50,11 @@ public abstract class ARecipeObject extends AData {
         if (this.tweak != null) {
             this.tweak.buildRecipe();
             String[] recipes = this.tweak.getRecipes();
+            System.out.println("LENGTH: " + recipes.length + " in " + this.type);
             for (int i = 0; i < recipes.length; i++) {
                 String r = recipes[i];
                 String[] p = Util.split(r, ",");
+                System.out.println("Starting recipe...");
                 sb.append(addRecipe(
                         i, p[0], parseInt(p[1]), parseInt(p[2]), parseDouble(p[3]), p[4], p[5],
                         parseInt(p[6]), parseInt(p[7]),
@@ -73,12 +75,12 @@ public abstract class ARecipeObject extends AData {
     protected String addRecipe(
             int num, String machine, int tier, int time, double powerMultiplier, String matterIn, String matterOut,
             int dataAmt, int chemAmt,
-            String iInput, String lInput, String iOutput, String lOutput
+            String iInput, String iOutput, String lInput, String lOutput
     ) {
         String customVar = ""; //this is a parameter later on!
         AMaterialRecipe r;
-        String recipeVariable = this.NAME+iOutput.replace("*", "_")+this.type+num+customVar;
         r = constructRecipe(machine);
+        String recipeVariable = this.NAME+iOutput.replace("*", "_")+this.type+num+customVar;
         if (r == null) {
             error("Unknown machine: " + machine);
             return null;
@@ -154,7 +156,9 @@ public abstract class ARecipeObject extends AData {
             out = getItemUnlocalized(item.substring(1));
         } else {
             //key
+            System.out.println("Searching for " + item);
             out = getUnlocalizedByKey(item);
+            System.out.println("Key: " + item);
         }
         return out;
     }
@@ -378,7 +382,7 @@ public abstract class ARecipeObject extends AData {
         System.out.println();
     }
     public void printAll() {
-        System.out.println("Keys:");
+        System.out.println("Keys for RecipeObject of type " + this.type + ":");
         for (RegistryData r : this.itemKeys) {
             System.out.print(r.key + " = ");
             r.r.print();

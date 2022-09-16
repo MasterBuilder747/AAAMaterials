@@ -12,7 +12,7 @@ import java.util.ArrayList;
 
 public abstract class AGenerator<D extends AData> {
     //holds an arraylist and can generate code using it
-    protected String filename; //the name of the file
+    protected String filename;
     protected ArrayList<D> objects;
     protected int line = 1;
     protected String s1;
@@ -34,65 +34,48 @@ public abstract class AGenerator<D extends AData> {
         objects = new ArrayList<>();
     }
 
-    public ArrayList<D> getObjects() {
-        return this.objects;
+    public String registerMaterials() throws IOException {
+        return load(false);
     }
-    public void replace(String s, D o) {
-        this.objects.set(this.objects.indexOf(this.get(s)), o);
+    public String registerRecipes() throws IOException {
+        return load(true);
     }
-
+    private String load(boolean isRecipe) throws IOException {
+        Stopwatch w = new Stopwatch();
+        System.out.print("Loading " + this.filename + "s.txt... ");
+        w.start();
+        populateObjects(); //reads the file and populates objects
+        StringBuilder sb = new StringBuilder();
+        String test;
+        if (objects.size() > 0) {
+            if (isRecipe) test = objects.get(0).buildRecipe();
+            else test = objects.get(0).buildMaterial();
+            if (test != null) {
+                sb.append(appendHeader());
+                sb.append(test);
+                if (objects.size() > 1) {
+                    for (int i = 1; i < objects.size(); i++) {
+                        if (isRecipe) sb.append(objects.get(i).buildRecipe());
+                        else sb.append(objects.get(i).buildMaterial());
+                    }
+                }
+                sb.append("\n");
+            }
+        }
+        w.stop();
+        System.out.println("completed in " + w.getMillis() + " ms");
+        return sb.toString();
+    }
+    private String appendHeader() {
+        return "# -"+this.filename+"s\n";
+    }
     private void populateObjects() throws IOException {
-        //read: populate the ArrayList
         FileReader fr = new FileReader(Util.HOME + Util.FILES + this.SUBFOLDER + "/" + this.filename.toLowerCase() + "s.txt");
         BufferedReader br = new BufferedReader(fr);
         readFile(br);
         fr.close();
     }
-    private String appendHeader() {
-        return "# -"+this.filename+"s\n";
-    }
-
-    public String registerMaterials() throws IOException {
-        Stopwatch w = new Stopwatch();
-        System.out.print("Loading " + this.filename + "s.txt... ");
-        w.start();
-        populateObjects();
-        StringBuilder sb = new StringBuilder();
-        if (objects.size() > 0) {
-            if (objects.get(0).buildMaterial() != null) { //indicates that the generator doesn't need to build anything
-                //output the zs code for each object
-                sb.append(appendHeader());
-                for (D o : objects) {
-                    sb.append(o.buildMaterial());
-                }
-                sb.append("\n");
-            }
-        }
-        w.stop();
-        System.out.println("completed in " + w.getMillis() + " ms");
-        return sb.toString();
-    }
-    public String registerRecipes() throws IOException {
-        Stopwatch w = new Stopwatch();
-        System.out.print("Loading " + this.filename + "s.txt... ");
-        w.start();
-        populateObjects();
-        StringBuilder sb = new StringBuilder();
-        if (objects.size() > 0) {
-            if (objects.get(0).buildRecipe() != null) { //indicates that the generator doesn't need to build anything
-                //output the zs code for each object
-                sb.append(appendHeader());
-                for (D o : objects) {
-                    sb.append(o.buildRecipe());
-                }
-                sb.append("\n");
-            }
-        }
-        w.stop();
-        System.out.println("completed in " + w.getMillis() + " ms");
-        return sb.toString();
-    }
-    protected void readFile(BufferedReader br) throws IOException {
+    private void readFile(BufferedReader br) throws IOException {
         while (true) {
             s1 = br.readLine();
             if (s1 != null) {
@@ -115,6 +98,12 @@ public abstract class AGenerator<D extends AData> {
     protected abstract void readLine(BufferedReader br, String[] s) throws IOException; //this populates the arraylist with the specified object
 
     //utilities
+    public ArrayList<D> getObjects() {
+        return this.objects;
+    }
+    public void replace(String s, D o) {
+        this.objects.set(this.objects.indexOf(this.get(s)), o);
+    }
     public D get(String s) {
         for (D o : objects) {
             if (o.NAME.equals(s)) {
@@ -141,14 +130,14 @@ public abstract class AGenerator<D extends AData> {
     }
 
     //exceptions
-    protected void warn(String s) {
-        System.out.println("Warning in file " + this.filename+"s.txt: " + s + " at line " + this.line);
+    protected void error(String s, boolean o) throws GeneratorException {
+        throw new GeneratorException(s);
     }
     protected void error(String s) throws GeneratorException {
         throw new GeneratorException(s, this.filename, this.line);
     }
-    protected void error(String s, boolean o) throws GeneratorException {
-        throw new GeneratorException(s);
+    protected void warn(String s) {
+        System.out.println("Warning in file " + this.filename+"s.txt: " + s + " at line " + this.line);
     }
 
     //parameter validation

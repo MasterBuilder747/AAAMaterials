@@ -46,9 +46,7 @@ public abstract class AMaterialData extends ARecipeObject {
             }
         }
         String r = buildSpecificRecipe();
-        if (r != null) {
-            sb.append(r);
-        }
+        if (r != null) sb.append(r);
         if (r == null && comp == null) return "";
         return sb.toString();
     }
