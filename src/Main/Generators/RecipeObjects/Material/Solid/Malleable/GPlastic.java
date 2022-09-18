@@ -33,7 +33,7 @@ public class GPlastic extends AGMalleable<Plastic> {
     @Override
     protected void setMalleableParts(Material m, String[] s, MLiquid molten, MSolid solid) {
         Plastic plastic = new Plastic(
-                getRecipeTweak("Plastic"), getRegistries(),
+                getRecipeTweak("Plastic"), getRecipeTweak("AMalleable"), getRegistries(),
                 getMachineRegistry(), getMatterRegistry(), getDataRegistry(),
                 m, new String[]{
                     "dust", "dustSmall", "dustTiny",
@@ -42,7 +42,7 @@ public class GPlastic extends AGMalleable<Plastic> {
                 },
                 molten, parseDouble(s[0]));
         plastic.setPartGroups(this.genPartGroups(new String[]{"smelt"}), new boolean[]{true});
-        plastic.updateSolids(solid);
+        plastic = updateSolids(plastic, solid);
         plastic = updateRegistryKeys(plastic);
         plastic = updateLiquids(plastic);
         plastic = updateOres(plastic);

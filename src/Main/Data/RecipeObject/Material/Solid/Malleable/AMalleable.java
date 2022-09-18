@@ -7,18 +7,21 @@ import Main.Data.MachineResource.MachineMatter;
 import Main.Data.RecipeObject.Material.Solid.AMSolid;
 import Main.Data.RecipeObject.Material.Liquid.MLiquid;
 import Main.Data.Material;
+import Main.Data.RecipeObject.RegistryData;
 import Main.Data.Tweakers.RecipeTweak;
+import Main.Util;
 
 import java.util.ArrayList;
 
 //data > material > malleable
 public abstract class AMalleable extends AMSolid {
-    double meltingMultiplier; //default is 1, but if 0, then recipes won't be generated
     MLiquid molten;
+    double meltingMultiplier; //default is 1, but if 0, then recipes won't be generated
     //negative numbers indicate the value of this material, but it cannot be melted
+    RecipeTweak aTweak; //recipe to be added to each child object
 
     public AMalleable(String type,
-                      RecipeTweak tweak, ArrayList<Registry> registries,
+                      RecipeTweak tweak, RecipeTweak aTweak, ArrayList<Registry> registries,
                       ArrayList<Machine> machines, ArrayList<MachineMatter> matters, MachineData data,
                       Material m, String[] toolTipExclusions,
                       MLiquid molten, double meltingMultiplier) {
@@ -26,6 +29,7 @@ public abstract class AMalleable extends AMSolid {
                 tweak, registries,
                 machines, matters, data,
                 m, toolTipExclusions);
+        this.aTweak = aTweak;
         this.molten = molten;
         this.meltingMultiplier = meltingMultiplier;
     }
@@ -48,12 +52,29 @@ public abstract class AMalleable extends AMSolid {
         sb.append(buildPartMaterials());
         return sb.toString();
     }
-
+    abstract String buildPartMaterials();
     @Override
     public String buildSpecificRecipe() {
-        //printNames();
-        //copied from ARecipeObject
-        return buildPartRecipes();
+        return buildATweaker() + buildPartRecipes();
+    }
+    abstract String buildPartRecipes();
+    protected String buildATweaker() {
+        //call this in each child object since the keys have not been loaded yet
+        StringBuilder sb = new StringBuilder();
+        if (this.aTweak != null) {
+            String[] recipes = this.aTweak.getRecipes();
+            for (int i = 0; i < recipes.length; i++) {
+                String r = recipes[i];
+                String[] p = Util.split(r, ",");
+                sb.append(addRecipe(
+                        i, p[0], parseInt(p[1]), parseInt(p[2]), parseDouble(p[3]), p[4], p[5],
+                        parseInt(p[6]), parseInt(p[7]),
+                        p[8], p[9], p[10], p[11]
+                ));
+            }
+        }
+        sb.append("\n");
+        return sb.toString();
     }
 
     @Override
@@ -63,6 +84,7 @@ public abstract class AMalleable extends AMSolid {
         sb.append(printParts());
         System.out.println(sb);
     }
+    abstract String printParts();
 
     //    public void conductive() {
 //        this.setParts("conductive");
@@ -114,7 +136,6 @@ public abstract class AMalleable extends AMSolid {
 
  */
 
-
     /////-----from Smelt.java
     /*
     //defaults to false
@@ -159,9 +180,4 @@ public abstract class AMalleable extends AMSolid {
 	"gear",
 	"rotor"
     */
-    int voltageTier;
-
-    abstract String buildPartMaterials();
-    abstract String buildPartRecipes();
-    abstract String printParts();
 }

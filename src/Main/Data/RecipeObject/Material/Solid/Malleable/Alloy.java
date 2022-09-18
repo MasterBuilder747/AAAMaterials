@@ -12,12 +12,12 @@ import java.util.ArrayList;
 
 //data > material > malleable > alloy
 public class Alloy extends AMalleable {
-    public Alloy(RecipeTweak tweak, ArrayList<Registry> registries,
+    public Alloy(RecipeTweak tweak, RecipeTweak aTweak, ArrayList<Registry> registries,
                  ArrayList<Machine> machines, ArrayList<MachineMatter> matters, MachineData data,
                  Material m, String[] toolTipExclusions,
                  MLiquid molten) {
         super("Alloy",
-                tweak, registries,
+                tweak, aTweak, registries,
                 machines, matters, data,
                 m, toolTipExclusions,
                 molten, 1);

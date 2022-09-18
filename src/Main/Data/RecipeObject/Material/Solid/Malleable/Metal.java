@@ -14,12 +14,12 @@ import java.util.ArrayList;
 //data > material > malleable > metal
 public class Metal extends AMalleable {
     //this is a malleable metal, which means that it can be molded into different metal parts
-    public Metal(RecipeTweak tweak, ArrayList<Registry> registries,
+    public Metal(RecipeTweak tweak, RecipeTweak aTweak, ArrayList<Registry> registries,
                  ArrayList<Machine> machines, ArrayList<MachineMatter> matters, MachineData data,
                  Material m, String[] toolTipExclusions,
                  MLiquid molten) {
         super("Metal",
-                tweak, registries,
+                tweak, aTweak, registries,
                 machines, matters, data,
                 m, toolTipExclusions,
                 molten, 1);

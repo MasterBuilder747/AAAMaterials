@@ -6,8 +6,6 @@ import Main.Data.MachineResource.MachineData;
 import Main.Data.MachineResource.MachineMatter;
 import Main.Data.Material;
 import Main.Data.RecipeObject.Material.AMaterialData;
-import Main.Data.RecipeObject.Material.MSolid;
-import Main.Data.RecipeObject.RegistryData;
 import Main.Data.Tweakers.RecipeTweak;
 
 import java.util.ArrayList;
@@ -21,11 +19,5 @@ public abstract class AMSolid extends AMaterialData {
                 tweak, registries,
                 machines, matters, data,
                 m, toolTipExclusions);
-    }
-
-    public void updateSolids(MSolid sol) {
-        for (RegistryData r : sol.getItemsArray()) {
-            this.addRegistryData(r.key, r.r);
-        }
     }
 }

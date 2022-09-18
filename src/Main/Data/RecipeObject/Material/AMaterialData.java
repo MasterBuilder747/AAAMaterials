@@ -9,6 +9,7 @@ import Main.Data.PartGroup;
 import Main.Data.RecipeObject.ARecipeObject;
 import Main.Data.RecipeObject.Localized.LPart;
 import Main.Data.RecipeObject.Material.Composition.AChemicalComposition;
+import Main.Data.RecipeObject.RegistryData;
 import Main.Data.Tweakers.RecipeTweak;
 
 import java.util.ArrayList;
@@ -37,6 +38,8 @@ public abstract class AMaterialData extends ARecipeObject {
     @Override
     protected String buildAdditionalRecipes() {
         StringBuilder sb = new StringBuilder();
+        String r = buildSpecificRecipe();
+        if (r != null) sb.append(r);
         AChemicalComposition comp = m.getComp();
         if (comp != null) {
             if (this.toolTipExclusions == null) {
@@ -45,8 +48,6 @@ public abstract class AMaterialData extends ARecipeObject {
                 sb.append(comp.addTooltips(this.getItemsArray(this.toolTipExclusions)));
             }
         }
-        String r = buildSpecificRecipe();
-        if (r != null) sb.append(r);
         if (r == null && comp == null) return "";
         return sb.toString();
     }

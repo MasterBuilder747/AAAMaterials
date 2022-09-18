@@ -32,7 +32,8 @@ public class GRubber extends AGMalleable<Rubber> {
 
     @Override
     protected void setMalleableParts(Material m, String[] s, MLiquid molten, MSolid solid) {
-        Rubber rubber = new Rubber(getRecipeTweak("Rubber"), getRegistries(),
+        Rubber rubber = new Rubber(
+                getRecipeTweak("Rubber"), getRecipeTweak("AMalleable"), getRegistries(),
                 getMachineRegistry(), getMatterRegistry(), getDataRegistry(),
                 m, new String[]{
                     "dust", "dustSmall", "dustTiny",
@@ -41,7 +42,7 @@ public class GRubber extends AGMalleable<Rubber> {
                 },
                 molten, parseDouble(s[0]));
         rubber.setPartGroups(this.genPartGroups(new String[]{"smelt"}), new boolean[]{true});
-        rubber.updateSolids(solid);
+        rubber = updateSolids(rubber, solid);
         rubber = updateRegistryKeys(rubber);
         rubber = updateLiquids(rubber);
         rubber = updateOres(rubber);

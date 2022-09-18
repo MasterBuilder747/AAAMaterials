@@ -25,7 +25,7 @@ public abstract class ARecipeObject extends AData {
     protected MachineData dataLiquid; //the one machine data
 
     String type; //unique type for recipe uniqueness and other identifiers
-    ArrayList<RegistryData> itemKeys; //key used to identify items to be used by this recipe object more easily, this is manually populated
+    protected ArrayList<RegistryData> itemKeys; //key used to identify items to be used by this recipe object more easily, this is manually populated
     protected RecipeTweak tweak; //constructs all user defined recipes per object
 
     public ARecipeObject(String NAME, String type,
@@ -383,6 +383,9 @@ public abstract class ARecipeObject extends AData {
             r.r.print();
         }
         System.out.println();
+    }
+    public void printAmount() {
+        System.out.println("Amount of keys: " + this.itemKeys.size());
     }
     
     //generator utilities

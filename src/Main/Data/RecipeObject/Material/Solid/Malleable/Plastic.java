@@ -16,12 +16,12 @@ public class Plastic extends AMalleable {
     //when melting a part:
     //get some back
     //get no material back
-    public Plastic(RecipeTweak tweak, ArrayList<Registry> registries,
+    public Plastic(RecipeTweak tweak, RecipeTweak aTweak, ArrayList<Registry> registries,
                    ArrayList<Machine> machines, ArrayList<MachineMatter> matters, MachineData data,
                    Material m, String[] toolTipExclusions,
                    MLiquid molten, double meltingMultiplier) {
         super("Plastic",
-                tweak, registries,
+                tweak, aTweak, registries,
                 machines, matters, data,
                 m, toolTipExclusions,
                 molten, meltingMultiplier);

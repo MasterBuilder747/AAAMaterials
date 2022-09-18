@@ -34,7 +34,7 @@ public class GAlloy extends AGMalleable<Alloy> {
     protected void setMalleableParts(Material m, String[] s, MLiquid molten, MSolid solid) {
         //addSmelt, addMachine, addBlast, addConductive
         Alloy alloy = new Alloy(
-                getRecipeTweak("Alloy"), getRegistries(),
+                getRecipeTweak("Alloy"), getRecipeTweak("AMalleable"), getRegistries(),
                 getMachineRegistry(), getMatterRegistry(), getDataRegistry(),
                 m, new String[]{
                     "dust", "dustSmall", "dustTiny",
@@ -46,7 +46,7 @@ public class GAlloy extends AGMalleable<Alloy> {
         alloy.setPartGroups(this.genPartGroups(
                 new String[]{"scrap", "plate", "smelt", "rod", "beam", "conductive", "machine", "special_plate", "coiled_rod", "blast", "assembled"}),
                 new boolean[]{smelt, smelt, smelt, smelt, smelt, Boolean.parseBoolean(s[3]), Boolean.parseBoolean(s[1]), smelt, smelt, Boolean.parseBoolean(s[2]), smelt});
-        alloy.updateSolids(solid);
+        alloy = updateSolids(alloy, solid);
         alloy = updateRegistryKeys(alloy);
         alloy = updateLiquids(alloy);
         alloy = updateOres(alloy);

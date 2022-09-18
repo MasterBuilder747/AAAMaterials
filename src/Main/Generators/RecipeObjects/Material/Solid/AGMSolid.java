@@ -3,6 +3,7 @@ package Main.Generators.RecipeObjects.Material.Solid;
 import Main.Data.RecipeObject.Material.Solid.AMSolid;
 import Main.Data.Material;
 import Main.Data.RecipeObject.Material.MSolid;
+import Main.Data.RecipeObject.RegistryData;
 import Main.Generators.GMaterial;
 import Main.Generators.GPartGroup;
 import Main.Generators.GameData.GLiquidRegistry;
@@ -61,4 +62,11 @@ public abstract class AGMSolid <S extends AMSolid> extends AGMaterialData<S> {
         readSolidParameters(m, s, sol);
     }
     protected abstract void readSolidParameters(Material m, String[] s, MSolid solid);
+
+    public S updateSolids(S s, MSolid sol) {
+        for (RegistryData r : sol.getItemsArray()) {
+            s.addRegistryData(r.key, r.r);
+        }
+        return s;
+    }
 }
