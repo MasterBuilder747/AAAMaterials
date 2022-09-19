@@ -37,17 +37,17 @@ public class Gem extends AMSolid {
     }
 
     @Override
-    public String buildMaterial() {
-        return genPartGroups();
-    }
-
-    @Override
     public String buildSpecificRecipe() {
         return null;
     }
-
     @Override
-    public void print() {
-
+    protected String customLiquidKey(String key) {
+        return null;
     }
+    @Override
+    public String buildMaterial() {
+        return null;
+    }
+    @Override
+    public void print() {}
 }

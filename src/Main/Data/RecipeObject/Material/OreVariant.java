@@ -71,4 +71,9 @@ public class OreVariant extends AMaterialData {
         }
         return sb.toString();
     }
+
+    @Override
+    protected String customLiquidKey(String key) {
+        return null;
+    }
 }

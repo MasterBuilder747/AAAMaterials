@@ -115,12 +115,23 @@ public abstract class ARecipeObject extends AData {
             StringBuilder sb = new StringBuilder();
             if (chance != -1) sb.append(chance).append("%");
             //liquid or item?
-            if (liquid) sb.append(getLiquid(s));
+            if (liquid) sb.append(handleLiquid(s));
             else sb.append(handleItem(s));
             if (amount != 1) sb.append("*").append(amount);
             outs.add(sb.toString());
         }
         return outs.toArray(new String[0]);
+    }
+    private String handleLiquid(String liquid) {
+        String out;
+        if (liquid.startsWith("^")) {
+            //custom item key defined by the child object (abstract or not), if it exists
+            String c = customLiquidKey(liquid.substring(1));
+            out = null;
+            if (c != null) out = c;
+            else error("No custom keys exists for object of type " + this.type);
+        } else out = getLiquid(liquid);
+        return out;
     }
     private String handleItem(String item) {
         //external syntax:
@@ -151,12 +162,25 @@ public abstract class ARecipeObject extends AData {
             else if (amt != 2)
                 error("At least one colon is required to specify the mod for the unlocalized name for string " + item.substring(1));
             out = getItemUnlocalized(item.substring(1));
+        } else if (item.startsWith("^")) {
+            //custom item key defined by the child object (abstract or not), if it exists
+            /*
+            String c = customItemKey(item.substring(1));
+            out = null;
+            if (c != null) out = c;
+            else error("No custom keys exists for object of type " + this.type);
+
+             */
+            error("Wrong character: ^");
+            out = null;
         } else {
             //key
             out = getUnlocalizedByKey(item);
         }
         return out;
     }
+    //add if needed: protected abstract String customItemKey(String key);
+    protected abstract String customLiquidKey(String key);
     
     //change this api later, make it user defined
     private AMaterialRecipe constructRecipe(String recipeType) {

@@ -7,7 +7,6 @@ import Main.Data.MachineResource.MachineMatter;
 import Main.Data.RecipeObject.Material.Solid.AMSolid;
 import Main.Data.RecipeObject.Material.Liquid.MLiquid;
 import Main.Data.Material;
-import Main.Data.RecipeObject.RegistryData;
 import Main.Data.Tweakers.RecipeTweak;
 import Main.Util;
 
@@ -35,7 +34,7 @@ public abstract class AMalleable extends AMSolid {
     }
 
     protected String getMolten() {
-        return this.molten.getBracket();
+        return this.molten.getUnlocalized();
     }
     protected String getMolten(int amount) {
         return getMolten()+"*" + amount;
@@ -58,6 +57,21 @@ public abstract class AMalleable extends AMSolid {
         return buildATweaker() + buildPartRecipes();
     }
     abstract String buildPartRecipes();
+
+    @Override
+    protected String customLiquidKey(String key) {
+        if (key.startsWith("molten")) {
+            int amount = 1;
+            if (key.contains("(") && key.contains(")")) {
+                amount = parseInt(key.substring(key.indexOf("(")+1, key.indexOf(")")));
+            }
+            return this.getMolten((int)(amount * this.meltingMultiplier));
+        } else {
+            error("Unknown key: " + key);
+            return null;
+        }
+    }
+
     protected String buildATweaker() {
         //call this in each child object since the keys have not been loaded yet
         StringBuilder sb = new StringBuilder();

@@ -121,6 +121,10 @@ public class Ore extends AMSolid {
         }
         return sb.toString();
     }
+    @Override
+    protected String customLiquidKey(String key) {
+        return null;
+    }
 
     public void addVariants(OreVariant[] variants) {
         this.variants = variants;

@@ -24,4 +24,7 @@ public abstract class ALocalizedData extends ARecipeObject {
                 machines, matters, data);
         this.localName = localName;
     }
+
+    @Override
+    protected String customLiquidKey(String key) {return null;}
 }

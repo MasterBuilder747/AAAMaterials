@@ -19,7 +19,7 @@ public class MachineData extends AMachineResource {
     }
 
     public String getData() {
-        return this.data.getUnlocalizedName();
+        return this.data.getBracket();
     }
 
     @Override

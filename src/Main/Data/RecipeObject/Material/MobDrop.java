@@ -25,17 +25,17 @@ public class MobDrop extends AMaterialData {
     }
 
     @Override
-    public String buildMaterial() {
-        return null;
-    }
-
-    @Override
     public String buildSpecificRecipe() {
         return null;
     }
-
     @Override
-    public void print() {
-
+    protected String customLiquidKey(String key) {
+        return null;
     }
+    @Override
+    public String buildMaterial() {
+        return null;
+    }
+    @Override
+    public void print() {}
 }

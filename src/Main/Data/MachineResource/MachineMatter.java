@@ -13,10 +13,10 @@ public class MachineMatter extends AMachineResource {
     }
 
     public String getPos() {
-        return this.pos.getUnlocalizedName();
+        return this.pos.getBracket();
     }
     public String getNeg() {
-        return this.neg.getUnlocalizedName();
+        return this.neg.getBracket();
     }
 
     @Override

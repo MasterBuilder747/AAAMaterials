@@ -49,6 +49,9 @@ public abstract class AMaterialRecipe extends ARecipeObject {
     public void print() {}
 
     @Override
+    protected String customLiquidKey(String key) {return null;}
+
+    @Override
     protected String buildAdditionalRecipes() {
         return null;
     }

@@ -227,4 +227,9 @@ public class Tinkers extends AMaterialData {
         sb.append("\"]");
         return sb.toString();
     }
+
+    @Override
+    protected String customLiquidKey(String key) {
+        return null;
+    }
 }

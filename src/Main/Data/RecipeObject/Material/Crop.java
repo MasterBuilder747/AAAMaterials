@@ -27,14 +27,14 @@ public class Crop extends AMaterialData {
     public String buildSpecificRecipe() {
         return null;
     }
-
+    @Override
+    protected String customLiquidKey(String key) {
+        return null;
+    }
     @Override
     public String buildMaterial() {
         return null;
     }
-
     @Override
-    public void print() {
-
-    }
+    public void print() {}
 }

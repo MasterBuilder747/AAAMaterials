@@ -72,6 +72,9 @@ public abstract class AChemicalComposition extends AMaterialData {
     }
 
     @Override
+    protected String customLiquidKey(String key) {return null;}
+
+    @Override
     public String toString() {
         return this.symbol;
     }

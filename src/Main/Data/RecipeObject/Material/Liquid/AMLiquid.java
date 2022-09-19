@@ -36,10 +36,17 @@ public abstract class AMLiquid extends AMaterialData {
     }
 
     public String getBracket() {
-        return this.l.getUnlocalizedName();
+        return this.l.getBracket();
+    }
+
+    public String getUnlocalized() {
+        return this.l.NAME;
     }
 
     public String localize() {
         return l.localize();
     }
+
+    @Override
+    protected String customLiquidKey(String key) {return null;}
 }

@@ -44,7 +44,7 @@ public abstract class ALiquid extends ALocalizedData {
         System.out.println(this.NAME);
     }
 
-    public String getUnlocalizedName() {
+    public String getBracket() {
         return "<liquid:"+this.NAME +">";
     }
 

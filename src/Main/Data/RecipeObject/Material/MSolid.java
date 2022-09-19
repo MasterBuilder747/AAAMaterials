@@ -54,7 +54,11 @@ public class MSolid extends AMaterialData {
     public String buildSpecificRecipe() {
         StringBuilder sb = new StringBuilder();
 
-
         return sb.toString();
+    }
+
+    @Override
+    protected String customLiquidKey(String key) {
+        return null;
     }
 }

@@ -110,6 +110,10 @@ public class Wood extends AMSolid {
         //furnace.setFuel(<minecraft:coal:1>, 800);
         return null;
     }
+    @Override
+    protected String customLiquidKey(String key) {
+        return null;
+    }
 
     @Override
     public void print() {
