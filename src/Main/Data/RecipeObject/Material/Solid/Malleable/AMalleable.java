@@ -4,6 +4,8 @@ import Main.Data.GameData.Registry;
 import Main.Data.MachineResource.Machine.Machine;
 import Main.Data.MachineResource.MachineData;
 import Main.Data.MachineResource.MachineMatter;
+import Main.Data.PartGroup;
+import Main.Data.RecipeObject.Localized.LPart;
 import Main.Data.RecipeObject.Material.Solid.AMSolid;
 import Main.Data.RecipeObject.Material.Liquid.MLiquid;
 import Main.Data.Material;
@@ -54,24 +56,22 @@ public abstract class AMalleable extends AMSolid {
     abstract String buildPartMaterials();
     @Override
     public String buildSpecificRecipe() {
-        return buildATweaker() + buildPartRecipes();
+        StringBuilder sb = new StringBuilder();
+        int i = 0;
+        for (PartGroup pg : this.partGroups) {
+            for (LPart p : pg.getParts()) {
+                if (p.amount > 0) {
+                    sb.append(addRecipe(
+                            i, "melting", 1, (int)((p.amount / 144f) * 100), 0.5,
+                            "+red*100", "-orange*100", 100, 100,
+                            p.oreDict, "-", "-", "^molten(" + (int) (p.amount * this.meltingMultiplier) + ")"));
+                    i++;
+                }
+            }
+        }
+        return sb + buildATweaker() + buildPartRecipes();
     }
     abstract String buildPartRecipes();
-
-    @Override
-    protected String customLiquidKey(String key) {
-        if (key.startsWith("molten")) {
-            int amount = 1;
-            if (key.contains("(") && key.contains(")")) {
-                amount = parseInt(key.substring(key.indexOf("(")+1, key.indexOf(")")));
-            }
-            return this.getMolten((int)(amount * this.meltingMultiplier));
-        } else {
-            error("Unknown key: " + key);
-            return null;
-        }
-    }
-
     protected String buildATweaker() {
         //call this in each child object since the keys have not been loaded yet
         StringBuilder sb = new StringBuilder();
@@ -89,6 +89,20 @@ public abstract class AMalleable extends AMSolid {
         }
         sb.append("\n");
         return sb.toString();
+    }
+
+    @Override
+    protected String customLiquidKey(String key) {
+        if (key.startsWith("molten")) {
+            int amount = 1;
+            if (key.contains("(") && key.contains(")")) {
+                amount = parseInt(key.substring(key.indexOf("(")+1, key.indexOf(")")));
+            }
+            return this.getMolten((int)(amount * this.meltingMultiplier));
+        } else {
+            error("Unknown key: " + key);
+            return null;
+        }
     }
 
     @Override

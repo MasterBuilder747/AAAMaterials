@@ -14,7 +14,7 @@ public class LPart extends ALocalizedData {
     boolean hasOverlay;
     public String oreDict;
     public boolean exists;
-    int amount; //amount of material this has in it; 1 = 1 ingot
+    public int amount; //amount of material when melting in mB
     public String baseRegistryName; //the base part of the key being used to find the item registry
 
     //this part already exists in contentTweaker

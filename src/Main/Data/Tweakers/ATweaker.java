@@ -13,7 +13,7 @@ public abstract class ATweaker extends AData {
     String subFolder;
     boolean writeToFile;
     String fileToWrite; //what is the name of the file we are writing to?
-    int line = 0;
+    int line = 1;
     final int PARAMS;
     final int MINPARAMS;
 

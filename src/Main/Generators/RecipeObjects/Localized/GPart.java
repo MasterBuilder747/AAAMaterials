@@ -21,7 +21,7 @@ public class GPart extends AGLocal<LPart> {
     @Override
     protected void addParameters(String name, String localName, String[] s) {
         //super: [name/existingPartName, oreDict/localizedName],
-        //name, localizedName, oreDict, bool isExistingPart, bool hasOverlay, double amount
+        //name, localizedName, oreDict, bool isExistingPart, bool hasOverlay, int amount
         if (parseBoolean(s[1])) {
             //add existing part, hasOverlay is always false, so it's not read
             objects.add(new LPart(
