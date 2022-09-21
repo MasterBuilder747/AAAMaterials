@@ -164,14 +164,9 @@ public abstract class ARecipeObject extends AData {
             out = getItemUnlocalized(item.substring(1));
         } else if (item.startsWith("^")) {
             //custom item key defined by the child object (abstract or not), if it exists
-            /*
             String c = customItemKey(item.substring(1));
-            out = null;
             if (c != null) out = c;
             else error("No custom keys exists for object of type " + this.type);
-
-             */
-            error("Wrong character: ^");
             out = null;
         } else {
             //key
@@ -179,7 +174,7 @@ public abstract class ARecipeObject extends AData {
         }
         return out;
     }
-    //add if needed: protected abstract String customItemKey(String key);
+    protected abstract String customItemKey(String key);
     protected abstract String customLiquidKey(String key);
     
     //change this api later, make it user defined

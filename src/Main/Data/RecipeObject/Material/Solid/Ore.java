@@ -122,6 +122,10 @@ public class Ore extends AMSolid {
         return sb.toString();
     }
     @Override
+    protected String customItemKey(String key) {
+        return null;
+    }
+    @Override
     protected String customLiquidKey(String key) {
         return null;
     }

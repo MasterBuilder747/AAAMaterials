@@ -92,6 +92,10 @@ public abstract class AMalleable extends AMSolid {
     }
 
     @Override
+    protected String customItemKey(String key) {
+        return null;
+    }
+    @Override
     protected String customLiquidKey(String key) {
         if (key.startsWith("molten")) {
             int amount = 1;

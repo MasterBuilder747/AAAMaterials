@@ -154,7 +154,8 @@ public class GOre extends AGMSolid<Ore> {
                         "powder", "powderSmall", "powderTiny",
                         "ore", "orePoor", "oreDense"
                     },
-                    block, types.toArray(new OreType[0]), this.partGroup.getPart("ore"));
+                    block, types.toArray(new OreType[0]), this.partGroup.getPart("ore")
+            );
             if (block.equals("stone")) {
                 ov.setPartGroupTrue(genPartGroup("ore"));
                 if (this.isReg) {
@@ -226,9 +227,10 @@ public class GOre extends AGMSolid<Ore> {
         }
         if (!o.enableGen) warn("Checks are not enabled for worldgen of ore for material " + m.NAME);
         o.addVariants(oreVariants.toArray(new OreVariant[0]));
-        //o.updateSolids(solid);
+        o = updateSolids(o, solid);
         o = updateLiquids(o);
         o = updateOres(o);
+        o.printAll();
         objects.add(o);
     }
 

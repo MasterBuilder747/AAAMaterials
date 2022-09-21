@@ -23,7 +23,8 @@ public class OreVariant extends AMaterialData {
                       ArrayList<Machine> machines, ArrayList<MachineMatter> matters, MachineData data,
                       Material m, String[] toolTipExclusions,
                       String block, OreType[] oreTypes, PartGroup oreParts) {
-        super("OreVariant", tweak, registries,
+        super("OreVariant",
+                tweak, registries,
                 machines, matters, data,
                 m, toolTipExclusions);
         this.block = block;
@@ -72,6 +73,15 @@ public class OreVariant extends AMaterialData {
         return sb.toString();
     }
 
+    @Override
+    protected String customItemKey(String key) {
+        if (key.startsWith("stone")) {
+            return "";
+        } else {
+            error("Unknown key: " + key);
+            return null;
+        }
+    }
     @Override
     protected String customLiquidKey(String key) {
         return null;
