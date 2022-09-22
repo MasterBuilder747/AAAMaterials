@@ -24,7 +24,7 @@ public abstract class ARecipeObject extends AData {
     protected ArrayList<MachineMatter> matters; //machine resource matter
     protected MachineData dataLiquid; //the one machine data
 
-    String type; //unique type for recipe uniqueness and other identifiers
+    protected String type; //unique type for recipe uniqueness and other identifiers
     protected ArrayList<RegistryData> itemKeys; //key used to identify items to be used by this recipe object more easily, this is manually populated
     protected RecipeTweak tweak; //constructs all user defined recipes per object
 

@@ -117,7 +117,8 @@ public class Ore extends AMSolid {
         //append additional tooltips for additional parts added by ore variants
         StringBuilder sb = new StringBuilder();
         for (OreVariant variant : this.variants) {
-            sb.append(variant.buildSpecificRecipe());
+            //remove later, handle blocktypes later
+            if (!variant.block.equals("bedrock")) sb.append(variant.buildRecipe());
         }
         return sb.toString();
     }

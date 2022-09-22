@@ -63,18 +63,12 @@ public class OreVariant extends AMaterialData {
 
     @Override
     public String buildSpecificRecipe() {
-        StringBuilder sb = new StringBuilder();
-        //test
-        if (this.block.equals("nether") || this.block.equals("end")) {
-            //String test = addRecipe(1, "pulverize", "rock", "", "rockOre", "", 100, 1, 1, 100, 100, "+red*100", "-orange*100", this.block);
-            //sb.append(test);
-            //this is now user defined!
-        }
-        return sb.toString();
+        return null;
     }
 
     @Override
     protected String customItemKey(String key) {
+        //handle the stone dust that the ore is encased in here (returned)
         if (key.startsWith("stone")) {
             return "";
         } else {
