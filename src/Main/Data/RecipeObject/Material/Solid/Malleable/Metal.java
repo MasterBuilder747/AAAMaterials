@@ -36,7 +36,7 @@ public class Metal extends AMalleable {
         //4. blast furnace to super hot ingot > cryo freezer/chamber etc using cryo fluid/fuel
         //5. blast furnace to gas since there is no liquid form and it is so hot it is gaseous > gas freezer/etc to ingot/gas shape?
         //6. fusion furnace to plasma > ingot through plasma cooling chamber/etc
-        return null;
+        return "";
     }
 
     @Override

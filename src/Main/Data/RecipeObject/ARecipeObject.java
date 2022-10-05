@@ -25,6 +25,7 @@ public abstract class ARecipeObject extends AData {
     protected MachineData dataLiquid; //the one machine data
 
     protected String type; //unique type for recipe uniqueness and other identifiers
+    protected String customVar; //custom variable in recipe for uniqueness if needed
     protected ArrayList<RegistryData> itemKeys; //key used to identify items to be used by this recipe object more easily, this is manually populated
     protected RecipeTweak tweak; //constructs all user defined recipes per object
 
@@ -42,6 +43,10 @@ public abstract class ARecipeObject extends AData {
         this.itemKeys = new ArrayList<>();
         this.liquids = new ArrayList<>();
         this.ores = new ArrayList<>();
+        this.customVar = "";
+    }
+    protected void setCustomVar(String s) {
+        this.customVar = s;
     }
 
     @Override
@@ -74,14 +79,13 @@ public abstract class ARecipeObject extends AData {
             int dataAmt, int chemAmt,
             String iInput, String iOutput, String lInput, String lOutput
     ) {
-        String customVar = ""; //this is a parameter later on!
         AMaterialRecipe r;
         r = constructRecipe(machine);
         if (r == null) {
             error("Unknown machine: " + machine);
             return null;
         } else {
-            String recipeVariable = this.NAME+iOutput.replace("*", "_")+this.type+num+customVar;
+            String recipeVariable = this.NAME+iOutput.replace("-", "_")+this.type+num+this.customVar;
             r.createRecipe(recipeVariable, time, tier, powerMultiplier, 0, this.getDataLiquid());
             //IO
             String[] iInputs = parseRecipeIO(iInput,false);

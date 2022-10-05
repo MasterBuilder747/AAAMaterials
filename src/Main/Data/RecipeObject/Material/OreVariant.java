@@ -30,6 +30,7 @@ public class OreVariant extends AMaterialData {
         this.block = block;
         this.oreTypes = oreTypes;
         this.oreParts = oreParts;
+        this.setCustomVar(this.block);
     }
 
     @Override
