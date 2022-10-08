@@ -84,7 +84,7 @@ public class Wood extends AMSolid {
     }
 
     @Override
-    public String buildSpecificRecipe() {
+    protected String buildSpecificRecipe() {
         //log = 1
         //1 log > short bark + short planks
         //2 logs > bark + planks

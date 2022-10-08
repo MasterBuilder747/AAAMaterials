@@ -104,7 +104,7 @@ public abstract class ATweaker extends AData {
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
-        return null;
+        return "";
     }
     @Override
     public String buildRecipe() {
@@ -113,6 +113,6 @@ public abstract class ATweaker extends AData {
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
-        return null;
+        return "";
     }
 }

@@ -148,7 +148,7 @@ public class Stone extends AMSolid {
     }
 
     @Override
-    public String buildSpecificRecipe() {
+    protected String buildSpecificRecipe() {
         /*
         stone processing compound byproducts:
         SiO2, TiO2, Al2O3, FeO, MnO, MgO, CaO,

@@ -15,16 +15,6 @@ public class Gem extends AMSolid {
     //gem prospecting info goes here
     //this requires rocks and ores to be implemented first
 
-    //added parts:
-    /*
-    "gem_morsel",
-	"chipped_gem",
-	"flawed_gem",
-	"crystal",
-	"flawless_gem",
-	"gem_exquisite"
-    */
-
     public Gem(RecipeTweak tweak, Registry[] items, String[] liquids, String[] ores,
                Machine[] machines, MachineMatter[] matters, MachineData data,
                Material m) {
@@ -35,7 +25,19 @@ public class Gem extends AMSolid {
     }
 
     @Override
-    public String buildSpecificRecipe() {
+    protected String buildSpecificRecipe() {
+        /*
+        gemSuperior = SuperiorRuby
+        gemExquisite = ExquisiteRuby
+        gemFlawless = FlawlessRuby
+        crystal = Ruby
+        gem = Ruby
+        gemFlawed = FlawedRuby
+        gemChipped = ChippedRuby
+        piece = RubyPiece
+        gemPetty = PettyRuby
+        lens = RubyLens
+         */
         return null;
     }
     @Override
@@ -48,7 +50,7 @@ public class Gem extends AMSolid {
     }
     @Override
     public String buildMaterial() {
-        return null;
+        return this.genPartGroups();
     }
     @Override
     public void print() {}

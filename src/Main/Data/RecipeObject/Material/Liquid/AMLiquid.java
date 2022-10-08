@@ -29,7 +29,7 @@ public abstract class AMLiquid extends AMaterialData {
     }
 
     @Override
-    public String buildSpecificRecipe() {
+    protected String buildSpecificRecipe() {
         return null;
     }
 

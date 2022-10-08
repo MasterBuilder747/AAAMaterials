@@ -33,7 +33,14 @@ public class GGem extends AGMSolid<Gem>{
                 getRecipeTweak("Gem"), getItems(), getLiquids(), getOres(),
                 getMachineRegistry(), getMatterRegistry(), getDataRegistry(),
                 m);
+        g = updateSolids(g, solid);
+        g.setTooltipExclusions(new String[]{
+                "dust", "dustSmall", "dustTiny",
+                "dustFine", "dustFineSmall", "dustFineTiny",
+                "powder", "powderSmall", "powderTiny"
+        });
         g.setPartGroupTrue(genPartGroup("gem"));
+        g = updateRegistryKeys(g);
         objects.add(g);
     }
 }

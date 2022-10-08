@@ -46,8 +46,10 @@ public class GMetal extends AGMalleable<Metal> {
                 "dustFine", "dustFineSmall", "dustFineTiny",
                 "powder", "powderSmall", "powderTiny"
         });
-        metal.setPartGroups(this.genPartGroups(
-                        new String[]{"scrap", "plate", "smelt", "rod", "beam", "conductive", "machine", "special_plate", "coiled_rod", "blast", "assembled"}),
+        metal.setPartGroups(
+                this.genPartGroups(
+                        new String[]{"scrap", "plate", "smelt", "rod", "beam", "conductive", "machine", "special_plate", "coiled_rod", "blast", "assembled"}
+                ),
                 new boolean[]{smelt, smelt, smelt, smelt, smelt, Boolean.parseBoolean(s[3]), Boolean.parseBoolean(s[1]), smelt, smelt, Boolean.parseBoolean(s[2]), smelt}
         );
         metal = updateRegistryKeys(metal);

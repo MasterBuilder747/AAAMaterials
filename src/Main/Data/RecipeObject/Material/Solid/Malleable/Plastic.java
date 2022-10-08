@@ -26,12 +26,12 @@ public class Plastic extends AMalleable {
     }
 
     @Override
-    String buildPartMaterials() {
+    protected String buildPartMaterials() {
         return this.genPartGroups();
     }
 
     @Override
-    String buildPartRecipes() {
+    protected String buildPartRecipes() {
         return "";
     }
 

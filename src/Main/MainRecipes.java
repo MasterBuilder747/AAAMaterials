@@ -142,9 +142,9 @@ public class MainRecipes {
         GAlloy alloy = new GAlloy("alloy", REG, tweak, registry, liquids, oreDict, machine, matter, data, material, partGroup, mSolid, mLiquid);
         sb.append(alloy.registerRecipes());
         GPlastic plastic = new GPlastic("plastic", REG, tweak, registry, liquids, oreDict, machine, matter, data, material, partGroup, mSolid, mLiquid);
-        //sb.append(plastic.registerRecipes());
+        sb.append(plastic.registerRecipes());
         GRubber rubber = new GRubber("rubber", REG, tweak, registry, liquids, oreDict, machine, matter, data, material, partGroup, mSolid, mLiquid);
-        //sb.append(rubber.registerRecipes());
+        sb.append(rubber.registerRecipes());
         //gems: no liquids
         GGem gem = new GGem("gem", REG, tweak, registry, liquids, oreDict, machine, matter, data, material, partGroup, mSolid);
         sb.append(gem.registerRecipes());

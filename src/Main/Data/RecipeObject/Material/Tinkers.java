@@ -205,7 +205,7 @@ public class Tinkers extends AMaterialData {
     }
 
     @Override
-    public String buildSpecificRecipe() {
+    protected String buildSpecificRecipe() {
         //recipes using tinker's material parts goes here
         return "";
     }

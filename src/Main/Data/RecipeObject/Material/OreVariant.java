@@ -76,7 +76,7 @@ public class OreVariant extends AMaterialData {
     }
 
     @Override
-    public String buildSpecificRecipe() {
+    protected String buildSpecificRecipe() {
         if (this.block.equals("stone")) {
             StringBuilder sb = new StringBuilder();
             if (this.tweak != null) {

@@ -25,6 +25,16 @@ public class PartGroup extends AData {
         System.out.println(this.LParts[this.LParts.length-1].NAME);
     }
 
+    public void altPrint() {
+        System.out.print(this.NAME + " ("+ this.LParts.length+"):\n");
+        for(int i = 0; i < this.LParts.length-1; i++) {
+            System.out.print("\t");
+            this.LParts[i].print();
+        }
+        System.out.print("\t");
+        this.LParts[this.LParts.length-1].print();
+    }
+
     @Override
     public String buildMaterial() {
         StringBuilder sb = new StringBuilder();

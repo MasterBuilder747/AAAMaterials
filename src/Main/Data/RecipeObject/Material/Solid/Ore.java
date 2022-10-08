@@ -113,7 +113,7 @@ public class Ore extends AMSolid {
     }
 
     @Override
-    public String buildSpecificRecipe() {
+    protected String buildSpecificRecipe() {
         //append additional tooltips for additional parts added by ore variants
         StringBuilder sb = new StringBuilder();
         for (OreVariant variant : this.variants) {

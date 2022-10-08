@@ -51,9 +51,9 @@ public abstract class AMalleable extends AMSolid {
         sb.append(buildPartMaterials());
         return sb.toString();
     }
-    abstract String buildPartMaterials();
+    protected abstract String buildPartMaterials();
     @Override
-    public String buildSpecificRecipe() {
+    protected String buildSpecificRecipe() {
         StringBuilder sb = new StringBuilder();
         int i = 0;
         for (PartGroup pg : this.partGroups) {
@@ -69,7 +69,7 @@ public abstract class AMalleable extends AMSolid {
         }
         return sb + buildATweaker() + buildPartRecipes();
     }
-    abstract String buildPartRecipes();
+    protected abstract String buildPartRecipes();
     protected String buildATweaker() {
         //call this in each child object since the keys have not been loaded yet
         StringBuilder sb = new StringBuilder();

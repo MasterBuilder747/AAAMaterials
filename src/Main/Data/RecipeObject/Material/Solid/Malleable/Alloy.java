@@ -22,12 +22,12 @@ public class Alloy extends AMalleable {
     }
 
     @Override
-    String buildPartMaterials() {
+    protected String buildPartMaterials() {
         return this.genPartGroups();
     }
 
     @Override
-    String buildPartRecipes() {
+    protected String buildPartRecipes() {
         //smelting: ore -> ingot
         //melting: dust > ingot?
         //tiers of (s)melting:

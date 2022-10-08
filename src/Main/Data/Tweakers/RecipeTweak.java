@@ -72,6 +72,7 @@ public class RecipeTweak extends ATweaker {
 
     @Override
     public void print() {
+        System.out.println(this.NAME + ":");
         for (String s : this.recipes) {
             System.out.println(s);
         }
