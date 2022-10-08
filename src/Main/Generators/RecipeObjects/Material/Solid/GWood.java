@@ -34,9 +34,10 @@ public class GWood extends AGMSolid<Wood> {
     protected void readSolidParameters(Material m, String[] s, MSolid solid) {
         //boolean isVanilla
         boolean isVanilla = parseBoolean(s[0]);
-        Wood w = new Wood(getRecipeTweak("Wood"), getRegistries(),
+        Wood w = new Wood(
+                getRecipeTweak("Wood"), getItems(), getLiquids(), getOres(),
                 getMachineRegistry(), getMatterRegistry(), getDataRegistry(),
-                m, null,
+                m,
                 isVanilla);
         ArrayList<Registry> registries = new ArrayList<>();
         for (int i = 0; i < 22; i++) {

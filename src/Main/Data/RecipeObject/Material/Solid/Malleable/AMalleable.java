@@ -12,8 +12,6 @@ import Main.Data.Material;
 import Main.Data.Tweakers.RecipeTweak;
 import Main.Util;
 
-import java.util.ArrayList;
-
 //data > material > malleable
 public abstract class AMalleable extends AMSolid {
     MLiquid molten;
@@ -22,14 +20,14 @@ public abstract class AMalleable extends AMSolid {
     RecipeTweak aTweak; //recipe to be added to each child object
 
     public AMalleable(String type,
-                      RecipeTweak tweak, RecipeTweak aTweak, ArrayList<Registry> registries,
-                      ArrayList<Machine> machines, ArrayList<MachineMatter> matters, MachineData data,
-                      Material m, String[] toolTipExclusions,
+                      RecipeTweak tweak, RecipeTweak aTweak, Registry[] items, String[] liquids, String[] ores,
+                      Machine[] machines, MachineMatter[] matters, MachineData data,
+                      Material m,
                       MLiquid molten, double meltingMultiplier) {
         super(type,
-                tweak, registries,
+                tweak, items, liquids, ores,
                 machines, matters, data,
-                m, toolTipExclusions);
+                m);
         this.aTweak = aTweak;
         this.molten = molten;
         this.meltingMultiplier = meltingMultiplier;

@@ -48,9 +48,9 @@ public class GCompoundComposition extends AGChemicalComposition<CompoundComposit
             c = createMaterialCompoundComp(s[0]);
         }
         comp = new CompoundComposition(
-                getRecipeTweak("CompoundComposition"), getRegistries(),
+                getRecipeTweak("CompoundComposition"), getItems(), getLiquids(), getOres(),
                 getMachineRegistry(), getMatterRegistry(), getDataRegistry(),
-                m, null,
+                m,
                 c, parseBoolean(s[1]),
                 parseBoolean(s[2]), parseBoolean(s[3]), parseBoolean(s[4]), parseBoolean(s[5]));
         m.addComposition(comp);

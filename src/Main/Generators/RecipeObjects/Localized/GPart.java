@@ -26,7 +26,7 @@ public class GPart extends AGLocal<LPart> {
             //add existing part, hasOverlay is always false, so it's not read
             objects.add(new LPart(
                     name,
-                    getRecipeTweak("LPart"), getRegistries(),
+                    getRecipeTweak("LPart"), getItems(), getLiquids(), getOres(),
                     getMachineRegistry(), getMatterRegistry(), getDataRegistry(),
                     localName,
                     s[0], parseInt(s[3])));
@@ -34,7 +34,7 @@ public class GPart extends AGLocal<LPart> {
             //add custom part
             objects.add(new LPart(
                     name,
-                    getRecipeTweak("LPart"), getRegistries(),
+                    getRecipeTweak("LPart"), getItems(), getLiquids(), getOres(),
                     getMachineRegistry(), getMatterRegistry(), getDataRegistry(),
                     localName,
                     s[0], parseBoolean(s[2]), parseInt(s[3])));

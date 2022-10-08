@@ -7,6 +7,7 @@ import Main.Data.MachineResource.MachineMatter;
 import Main.Data.Material;
 import Main.Data.OreType;
 import Main.Data.PartGroup;
+import Main.Data.RecipeObject.Material.Solid.Stone;
 import Main.Data.Tweakers.RecipeTweak;
 import Main.Util;
 
@@ -18,19 +19,31 @@ public class OreVariant extends AMaterialData {
     OreType[] oreTypes;
     public String block; //stone, nether, end, bedrock
     PartGroup oreParts;
+    Stone[] stones;
 
-    public OreVariant(RecipeTweak tweak, ArrayList<Registry> registries,
-                      ArrayList<Machine> machines, ArrayList<MachineMatter> matters, MachineData data,
-                      Material m, String[] toolTipExclusions,
+    public OreVariant(RecipeTweak tweak, Registry[] items, String[] liquids, String[] ores,
+                      Machine[] machines, MachineMatter[] matters, MachineData data,
+                      Material m,
                       String block, OreType[] oreTypes, PartGroup oreParts) {
         super("OreVariant",
-                tweak, registries,
+                tweak, items, liquids, ores,
                 machines, matters, data,
-                m, toolTipExclusions);
+                m);
         this.block = block;
         this.oreTypes = oreTypes;
         this.oreParts = oreParts;
         this.setCustomVar(this.block);
+        this.customUserRecipes = true;
+    }
+
+    public void addStoneVariants(Stone[] stones) {
+        //only applies to stone block type
+        this.stones = stones;
+        for (Stone s : this.stones) {
+            this.addRegistryData(s.NAME+"ore", this.getItemRegistry(Util.toUpper(s.NAME)+Util.toUpper(this.NAME)+"Ore"));
+            this.addRegistryData(s.NAME+"poor", this.getItemRegistry(Util.toUpper(s.NAME)+"Poor"+Util.toUpper(this.NAME)+"Ore"));
+            this.addRegistryData(s.NAME+"dense", this.getItemRegistry(Util.toUpper(s.NAME)+"Dense"+Util.toUpper(this.NAME)+"Ore"));
+        }
     }
 
     @Override
@@ -64,18 +77,51 @@ public class OreVariant extends AMaterialData {
 
     @Override
     public String buildSpecificRecipe() {
+        if (this.block.equals("stone")) {
+            StringBuilder sb = new StringBuilder();
+            if (this.tweak != null) {
+                String[] recipes = this.tweak.getRecipes();
+                for (int i = 0; i < recipes.length; i++) {
+                    String r = recipes[i];
+                    String[] p = Util.split(r, ",");
+                    for (Stone s : this.stones) {
+                        //can add custom parameters if needed
+                        sb.append(addRecipe(
+                                i, p[0], parseInt(p[1]), parseInt(p[2]), parseDouble(p[3]), p[4], p[5],
+                                parseInt(p[6]), parseInt(p[7]),
+                                getStoneData(p[8], s), getStoneData(p[9], s), getStoneData(p[10], s), getStoneData(p[11], s)
+                        ));
+                    }
+                }
+                return sb.toString();
+            }
+        }
         return null;
+    }
+
+    private String getStoneData(String s, Stone stone) {
+        if (s.contains("$") || s.contains("+")) {
+            StringBuilder sb = new StringBuilder();
+            String[] ss = Util.split(s, ";");
+            for (int i = 0; i < ss.length; i++) {
+                String sss = ss[i];
+                if (sss.startsWith("$")) {
+                    sb.append("<>").append(stone.getUnlocalizedByKey(sss.substring(1)));
+                } else if (sss.startsWith("+")) {
+                    sb.append("<>").append(this.getUnlocalizedByKey(stone.NAME + sss.substring(1)));
+                } else {
+                    sb.append(sss);
+                }
+                if (i != ss.length-1) sb.append("; ");
+            }
+            return sb.toString();
+        }
+        return s;
     }
 
     @Override
     protected String customItemKey(String key) {
-        //handle the stone dust that the ore is encased in here (returned)
-        if (key.startsWith("stone")) {
-            return "";
-        } else {
-            error("Unknown key: " + key);
-            return null;
-        }
+        return null;
     }
     @Override
     protected String customLiquidKey(String key) {

@@ -21,11 +21,15 @@ public class GPlasma extends AGLiquid<LPlasma> {
     @Override
     protected void addParameters(String name, String localName, String[] s) {
         //String color, int density, int luminosity, int temperature, int viscosity, boolean vaporize
-        objects.add(new LPlasma(name,
-                getRecipeTweak("LPlasma"), getRegistries(),
-                getMachineRegistry(), getMatterRegistry(), getDataRegistry(),
-                localName,
-                s[0], false, parseBoolean(s[5]),
-                parseInt(s[1]), parseInt(s[2]), parseInt(s[3]), parseInt(s[4])));
+        objects.add(
+                new LPlasma(
+                    name,
+                    getRecipeTweak("LPlasma"), getItems(), getLiquids(), getOres(),
+                    getMachineRegistry(), getMatterRegistry(), getDataRegistry(),
+                    localName,
+                    s[0], false, parseBoolean(s[5]),
+                    parseInt(s[1]), parseInt(s[2]), parseInt(s[3]), parseInt(s[4])
+                )
+        );
     }
 }

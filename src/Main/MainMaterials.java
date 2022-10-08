@@ -157,7 +157,7 @@ public class MainMaterials {
         bw.write(gem.registerMaterials());
 
         //7. ore system
-        GOre ore = new GOre("ore", REG, tweak, registry, liquids, oreDict, machine, matter, data, material, partGroup, mSolid);
+        GOre ore = new GOre("ore", REG, tweak, registry, liquids, oreDict, machine, matter, data, material, partGroup, mSolid, stone);
         bw.write(ore.registerMaterials());
 
         //8. finish

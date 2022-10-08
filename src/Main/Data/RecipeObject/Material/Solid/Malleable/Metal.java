@@ -7,21 +7,18 @@ import Main.Data.MachineResource.MachineMatter;
 import Main.Data.Material;
 import Main.Data.RecipeObject.Material.Liquid.MLiquid;
 import Main.Data.Tweakers.RecipeTweak;
-import Main.Util;
-
-import java.util.ArrayList;
 
 //data > material > malleable > metal
 public class Metal extends AMalleable {
     //this is a malleable metal, which means that it can be molded into different metal parts
-    public Metal(RecipeTweak tweak, RecipeTweak aTweak, ArrayList<Registry> registries,
-                 ArrayList<Machine> machines, ArrayList<MachineMatter> matters, MachineData data,
-                 Material m, String[] toolTipExclusions,
+    public Metal(RecipeTweak tweak, RecipeTweak aTweak, Registry[] items, String[] liquids, String[] ores,
+                 Machine[] machines, MachineMatter[] matters, MachineData data,
+                 Material m,
                  MLiquid molten) {
         super("Metal",
-                tweak, aTweak, registries,
+                tweak, aTweak, items, liquids, ores,
                 machines, matters, data,
-                m, toolTipExclusions,
+                m,
                 molten, 1);
     }
 

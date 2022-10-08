@@ -7,8 +7,6 @@ import Main.Data.MachineResource.MachineMatter;
 import Main.Data.Material;
 import Main.Data.Tweakers.RecipeTweak;
 
-import java.util.ArrayList;
-
 public class Gem extends AMSolid {
     //automatically adds gem parts, no parameters for now
     //note that a gem is conventionally not smeltable into ingot
@@ -27,13 +25,13 @@ public class Gem extends AMSolid {
 	"gem_exquisite"
     */
 
-    public Gem(RecipeTweak tweak, ArrayList<Registry> registries,
-               ArrayList<Machine> machines, ArrayList<MachineMatter> matters, MachineData data,
-               Material m, String[] toolTipExclusions) {
+    public Gem(RecipeTweak tweak, Registry[] items, String[] liquids, String[] ores,
+               Machine[] machines, MachineMatter[] matters, MachineData data,
+               Material m) {
         super("Gem",
-                tweak, registries,
+                tweak, items, liquids, ores,
                 machines, matters, data,
-                m, toolTipExclusions);
+                m);
     }
 
     @Override

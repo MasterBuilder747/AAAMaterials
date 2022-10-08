@@ -11,14 +11,14 @@ import java.util.ArrayList;
 public class LGas extends ALiquid {
     //gas
     //genFluid("iron_gas", "ff1000", 100, true, 0, 5000, 200, true, "contenttweaker:fluids/gas", "contenttweaker:fluids/gas_flowing", <blockmaterial:water>);
-    public LGas(String name,
-                RecipeTweak tweak, ArrayList<Registry> registries,
-                ArrayList<Machine> machines, ArrayList<MachineMatter> matters, MachineData data,
+    public LGas(String NAME,
+                RecipeTweak tweak, Registry[] items, String[] liquids, String[] ores,
+                Machine[] machines, MachineMatter[] matters, MachineData data,
                 String localName,
                 String color, boolean isMaterial, boolean vaporize,
                 int density, int luminosity, int temperature, int viscosity) {
-        super(name, "LGas",
-                tweak, registries,
+        super(NAME, "LGas",
+                tweak, items, liquids, ores,
                 machines, matters, data,
                 localName,
                 color, isMaterial, true, vaporize,

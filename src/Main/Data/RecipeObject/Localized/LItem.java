@@ -10,12 +10,12 @@ import java.util.ArrayList;
 
 public class LItem extends ALocalizedData {
 
-    public LItem(String name,
-                 RecipeTweak tweak, ArrayList<Registry> registries,
-                 ArrayList<Machine> machines, ArrayList<MachineMatter> matters, MachineData data,
+    public LItem(String NAME,
+                 RecipeTweak tweak, Registry[] items, String[] liquids, String[] ores,
+                 Machine[] machines, MachineMatter[] matters, MachineData data,
                  String localName) {
-        super(name, "LItem",
-                tweak, registries,
+        super(NAME, "LItem",
+                tweak, items, liquids, ores,
                 machines, matters, data,
                 localName);
     }

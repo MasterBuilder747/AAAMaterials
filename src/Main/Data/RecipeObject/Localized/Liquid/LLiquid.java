@@ -11,14 +11,14 @@ import java.util.ArrayList;
 //custom liquid
 public class LLiquid extends ALiquid {
 
-    public LLiquid(String name,
-                   RecipeTweak tweak, ArrayList<Registry> registries,
-                   ArrayList<Machine> machines, ArrayList<MachineMatter> matters, MachineData data,
+    public LLiquid(String NAME,
+                   RecipeTweak tweak, Registry[] items, String[] liquids, String[] ores,
+                   Machine[] machines, MachineMatter[] matters, MachineData data,
                    String localName,
                    String color, boolean isMaterial, boolean vaporize,
                    int density, int luminosity, int temperature, int viscosity) {
-        super(name, "LLiquid",
-                tweak, registries,
+        super(NAME, "LLiquid",
+                tweak, items, liquids, ores,
                 machines, matters, data,
                 localName,
                 color, isMaterial, false, vaporize,

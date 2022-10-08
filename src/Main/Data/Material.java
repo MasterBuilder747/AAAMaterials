@@ -46,17 +46,21 @@ public class Material extends AData {
     Gem gem; //Gem prospecting via geodes, sifting, other byproducts
 
     //natural
-    Ground ground; //for any ground block that naturally, clay, sand, gravel, dirt, mud, etc.
-    Fuel fuel; //for coal, charcoal, etc, adds a burnable trait, other processing
+    //Ground ground; //for any ground block that naturally, clay, sand, gravel, dirt, mud, etc.
+    //Fuel fuel; //for coal, charcoal, etc, adds a burnable trait, other processing //furnace.setFuel(<minecraft:coal:1>, 800);
     Wood wood; //Logs, planks, sticks, leaves, sawmill, sap/resin/oil/etc processing, other use, tree generation on other planet?
     Stone stone; //Custom or existing rocks that generate in the world or used in ores, uses a block and has other parts too
-    Dye dye; //associates with a dye color, existing
-    Colorable colorable; //any item that can be colored using dye, creates colorizer machine recipes for it
-    Natural natural; //for any natural misc items that needs methane/other extraction of chemicals
-    MobDrop mobDrop; //for processing of mob drops for late/endgame farming machines
+    //Dye dye; //associates with a dye color, existing
+    //Colorable colorable; //any item that can be colored using dye, creates colorizer machine recipes for it
+    //Natural natural; //for any natural misc items that needs methane/other extraction of chemicals
+    //MobDrop mobDrop; //for processing of mob drops for late/endgame farming machines
 
     //mod compat
-    Crop crop; //the primitive crop and product, or cooking system/nutritional system, seasonal system (mostly for survival pack version)
+    //Crop crop; //the primitive crop and product, or cooking system/nutritional system, seasonal system (mostly for survival pack version)
+        String season; //spring, summer, fall, winter, all
+        String foodGroup; //dairy, fruit, vegetable, protein, grain, none
+        String type; //milk, meat, nut, cheese, oil, citrus, nonCitrus, vegetable, grain, seed, legume, yogurt, bread, pasta
+
     LFood LFood; //not a crop, does not have planting/farming ability, for cooking system/nutritional system, seasonal system (mostly for survival pack version)
     Tinkers tinkers; //allows this material to have tinker's armor and tool materials, recipe only
     //Chicken chicken; //skyblock pack?

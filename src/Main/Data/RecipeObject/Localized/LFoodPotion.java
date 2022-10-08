@@ -22,13 +22,13 @@ public class LFoodPotion extends ALocalizedData {
     String foodGroup; //dairy, fruit, vegetable, protein, grain, none
     String type; //milk, meat, nut, cheese, oil, citrus, nonCitrus, vegetable, grain, seed, legume, yogurt, bread, pasta
 
-    public LFoodPotion(String name,
-                       RecipeTweak tweak, ArrayList<Registry> registries,
-                       ArrayList<Machine> machines, ArrayList<MachineMatter> matters, MachineData data,
+    public LFoodPotion(String NAME,
+                       RecipeTweak tweak, Registry[] items, String[] liquids, String[] ores,
+                       Machine[] machines, MachineMatter[] matters, MachineData data,
                        String localName,
                        int heal, double saturation, boolean alwaysEdible, String[] potions, int duration, int amplifier) {
-        super(name, "LFoodPotion",
-                tweak, registries,
+        super(NAME, "LFoodPotion",
+                tweak, items, liquids, ores,
                 machines, matters, data,
                 localName);
         this.heal = heal;

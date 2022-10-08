@@ -46,12 +46,12 @@ public class Tinkers extends AMaterialData {
     //ModID:ItemID:MaterialCost
 
     //see: https://docs.blamejared.com/1.12/en/Mods/ContentTweaker/Tinkers_Construct/Material
-    public Tinkers(RecipeTweak tweak, ArrayList<Registry> registries,
-                   ArrayList<Machine> machines, ArrayList<MachineMatter> matters, MachineData data,
-                   Material m, String[] toolTipExclusions) {
-        super("Tinker", tweak, registries,
+    public Tinkers(RecipeTweak tweak, Registry[] items, String[] liquids, String[] ores,
+                   Machine[] machines, MachineMatter[] matters, MachineData data,
+                   Material m) {
+        super("Tinker", tweak, items, liquids, ores,
                 machines, matters, data,
-                m, toolTipExclusions);
+                m);
     }
 
     boolean isTool;

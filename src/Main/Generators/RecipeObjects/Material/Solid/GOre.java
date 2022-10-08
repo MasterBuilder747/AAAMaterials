@@ -25,16 +25,19 @@ import Main.Util;
 import java.util.ArrayList;
 
 public class GOre extends AGMSolid<Ore> {
+    GStone stones;
     public GOre(String filename, boolean isReg,
                 GRecipeTweak tweak, GRegistry registry, GLiquidRegistry liquids, GOreDictRegistry ores,
                 GMachine machine, GMachineMatter matter, GMachineData data,
                 GMaterial material, GPartGroup partGroup,
-                GMSolid solid) {
+                GMSolid solid,
+                GStone stones) {
         super(-2, filename, isReg,
                 tweak, registry, liquids, ores,
                 machine, matter, data,
                 material, partGroup,
                 solid, true, false, false);
+        this.stones = stones;
     }
 
     @Override
@@ -69,22 +72,18 @@ public class GOre extends AGMSolid<Ore> {
 
         //configure ore gen here
         Ore o = new Ore(
-                getRecipeTweak("Ore"), getRegistries(),
+                getRecipeTweak("Ore"), getItems(), getLiquids(), getOres(),
                 getMachineRegistry(), getMatterRegistry(), getDataRegistry(),
-                m, new String[]{
-                    "dust", "dustSmall", "dustTiny",
-                    "dustFine", "dustFineSmall", "dustFineTiny",
-                    "powder", "powderSmall", "powderTiny"
-                },
-                Boolean.parseBoolean(s[0]));
+                m,
+                Boolean.parseBoolean(s[0])
+        );
+        o.setTooltipExclusions(new String[]{
+                "dust", "dustSmall", "dustTiny",
+                "dustFine", "dustFineSmall", "dustFineTiny",
+                "powder", "powderSmall", "powderTiny"
+        });
         String[] blocks = new String[s.length-1]; //includes each ore variant
         System.arraycopy(s, 1, blocks, 0, blocks.length);
-//        if (!mol.is(name)) {
-//            error("Unknown molecule material " + name);
-//        }
-//        if (!mol.is(name) && !comp.is(name)) {
-//            error("Unknown compound material " + name);
-//        }
         ArrayList<OreVariant> oreVariants = new ArrayList<>();
         for (String variant : blocks) {
             String[] s2 = Util.split(variant, ":");
@@ -132,10 +131,12 @@ public class GOre extends AGMSolid<Ore> {
                 if (block.equals("bedrock")) {
                     tool = "none";
                 }
-                b = new LBlock(block,
-                        getRecipeTweak("LBlock"), getRegistries(),
+                b = new LBlock(
+                        block,
+                        getRecipeTweak("LBlock"), getItems(), getLiquids(), getOres(),
                         getMachineRegistry(), getMatterRegistry(), getDataRegistry(),
-                        "rock", tool);
+                        "rock", tool
+                );
                 b.setAttributes(parseInt(attributes[1]), parseInt(attributes[2]), parseInt(attributes[3]));
                 if (block.equals("stone")) {
                     types.add(new OreType(m.NAME, type_name, b));
@@ -146,26 +147,24 @@ public class GOre extends AGMSolid<Ore> {
 
             //create oreVariant to be added to ore
             OreVariant ov = new OreVariant(
-                    getRecipeTweak("OreVariant"), getRegistries(),
+                    getRecipeTweak("OreVariant"), getItems(), getLiquids(), getOres(),
                     getMachineRegistry(), getMatterRegistry(), getDataRegistry(),
-                    m, new String[]{
-                        "dust", "dustSmall", "dustTiny",
-                        "dustFine", "dustFineSmall", "dustFineTiny",
-                        "powder", "powderSmall", "powderTiny",
-                        "ore", "orePoor", "oreDense"
-                    },
+                    m,
                     block, types.toArray(new OreType[0]), this.partGroup.getPart("ore")
             );
+            ov.setTooltipExclusions(new String[]{
+                    "dust", "dustSmall", "dustTiny",
+                    "dustFine", "dustFineSmall", "dustFineTiny",
+                    "powder", "powderSmall", "powderTiny",
+                    "ore", "orePoor", "oreDense"
+            });
             if (block.equals("stone")) {
                 ov.setPartGroupTrue(genPartGroup("ore"));
-                if (this.isReg) {
-                    String[] regs = ov.localizedPartNames.toArray(new String[0]);
-                    String[] ores2 = ov.getEnabledOredicts();
-                    ov.addAllRegistryDatas(ores2, getRegistries(regs));
-                }
-            }
-            if (block.equals("nether") || block.equals("end")) {
+                ov.addStoneVariants(this.stones.getOreStones());
+            } else if (block.equals("nether") || block.equals("end")) {
                 ov.setPartGroupTrueCustom(genPartGroup("ore"), Util.toUpper(block));
+            }
+            if (!block.equals("bedrock")) {
                 if (this.isReg) {
                     String[] regs = ov.localizedPartNames.toArray(new String[0]);
                     String[] ores2 = ov.getEnabledOredicts();
@@ -227,7 +226,7 @@ public class GOre extends AGMSolid<Ore> {
         if (!o.enableGen) warn("Checks are not enabled for worldgen of ore for material " + m.NAME);
         o.addVariants(oreVariants.toArray(new OreVariant[0]));
         o = updateSolids(o, solid);
-        o = updateLiquids(o);
+        //o = updateRegistryKeys(o); //not needed for ores since they have no part groups
         objects.add(o);
     }
 

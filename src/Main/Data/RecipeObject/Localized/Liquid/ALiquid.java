@@ -20,14 +20,14 @@ public abstract class ALiquid extends ALocalizedData {
     boolean vaporize;
 
     //IMPORTANT NOTE: Machine resources always set machines to null, since their recipes are hardcoded!
-    public ALiquid(String name, String type,
-                   RecipeTweak tweak, ArrayList<Registry> registries,
-                   ArrayList<Machine> machines, ArrayList<MachineMatter> matters, MachineData data,
+    public ALiquid(String NAME, String type,
+                   RecipeTweak tweak, Registry[] items, String[] liquids, String[] ores,
+                   Machine[] machines, MachineMatter[] matters, MachineData data,
                    String localName,
                    String color, boolean isMaterial, boolean gas, boolean vaporize,
                    int density, int luminosity, int temperature, int viscosity) {
-        super("cot"+(isMaterial ? "m" : "c")+"_"+name, type,
-                tweak, registries,
+        super("cot"+(isMaterial ? "m" : "c")+"_"+NAME, type,
+                tweak, items, liquids, ores,
                 machines, matters, data,
                 localName);
         this.color = color;

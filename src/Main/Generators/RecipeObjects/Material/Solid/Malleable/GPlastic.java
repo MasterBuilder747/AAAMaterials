@@ -33,19 +33,19 @@ public class GPlastic extends AGMalleable<Plastic> {
     @Override
     protected void setMalleableParts(Material m, String[] s, MLiquid molten, MSolid solid) {
         Plastic plastic = new Plastic(
-                getRecipeTweak("Plastic"), getRecipeTweak("AMalleable"), getRegistries(),
+                getRecipeTweak("Plastic"), getRecipeTweak("AMalleable"),
+                getItems(), getLiquids(), getOres(),
                 getMachineRegistry(), getMatterRegistry(), getDataRegistry(),
-                m, new String[]{
-                    "dust", "dustSmall", "dustTiny",
-                    "dustFine", "dustFineSmall", "dustFineTiny",
-                    "powder", "powderSmall", "powderTiny"
-                },
+                m,
                 molten, parseDouble(s[0]));
+        plastic.setTooltipExclusions(new String[]{
+                "dust", "dustSmall", "dustTiny",
+                "dustFine", "dustFineSmall", "dustFineTiny",
+                "powder", "powderSmall", "powderTiny"
+        });
         plastic.setPartGroups(this.genPartGroups(new String[]{"smelt"}), new boolean[]{true});
         plastic = updateSolids(plastic, solid);
         plastic = updateRegistryKeys(plastic);
-        plastic = updateLiquids(plastic);
-        plastic = updateOres(plastic);
         objects.add(plastic);
     }
 }

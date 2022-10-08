@@ -150,7 +150,7 @@ public class MainRecipes {
         sb.append(gem.registerRecipes());
 
         //7. ore system
-        GOre ore = new GOre("ore", REG, tweak, registry, liquids, oreDict, machine, matter, data, material, partGroup, mSolid);
+        GOre ore = new GOre("ore", REG, tweak, registry, liquids, oreDict, machine, matter, data, material, partGroup, mSolid, stone);
         sb.append(ore.registerRecipes());
 
         //8. custom machine recipes, only used in MainRecipes

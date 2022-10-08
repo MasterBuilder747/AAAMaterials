@@ -16,33 +16,38 @@ import java.util.Arrays;
 
 public abstract class ARecipeObject extends AData {
     //registries for validating recipe IO
-    protected ArrayList<Registry> items; //the array of registries that are used for adding recipes and other things, does not associate with keys!
-    protected ArrayList<String> liquids; //the array of liquid brackets (liquid:water1 where water1 is only included)
-    protected ArrayList<String> ores; //the array of ore dictionary entries (ore:ingotIron where ingotIron is only included)
-    protected ArrayList<Machine> machines; //registry of known machines are needed for each object's recipes //get the GMachine's arraylist only to reduce RAM usage
+    protected Registry[] items; //the array of registries that are used for adding recipes and other things, does not associate with keys!
+    protected String[] liquids; //the array of liquid brackets (liquid:water1 where water1 is only included)
+    protected String[] ores; //the array of ore dictionary entries (ore:ingotIron where ingotIron is only included)
+
     //global machine resources needed by recipes
-    protected ArrayList<MachineMatter> matters; //machine resource matter
+    protected Machine[] machines; //registry of known machines are needed for each object's recipes //get the GMachine's arraylist only to reduce RAM usage
+    protected MachineMatter[] matters; //machine resource matter
     protected MachineData dataLiquid; //the one machine data
 
+    //recipe variables
     protected String type; //unique type for recipe uniqueness and other identifiers
     protected String customVar; //custom variable in recipe for uniqueness if needed
     protected ArrayList<RegistryData> itemKeys; //key used to identify items to be used by this recipe object more easily, this is manually populated
+    protected boolean customUserRecipes; //override the custom user recipes for a specific event to the object?
     protected RecipeTweak tweak; //constructs all user defined recipes per object
 
     public ARecipeObject(String NAME, String type,
-                         RecipeTweak tweak, ArrayList<Registry> items,
-                         ArrayList<Machine> machines, ArrayList<MachineMatter> matters, MachineData data) {
+                         RecipeTweak tweak, Registry[] items, String[] liquids, String[] ores,
+                         Machine[] machines, MachineMatter[] matters, MachineData data) {
         super(NAME);
         this.type = type;
+        
         this.tweak = tweak;
         this.items = items;
+        this.liquids = liquids;
+        this.ores = ores;
+        
         this.machines = machines;
         this.dataLiquid = data;
         this.matters = matters;
 
         this.itemKeys = new ArrayList<>();
-        this.liquids = new ArrayList<>();
-        this.ores = new ArrayList<>();
         this.customVar = "";
     }
     protected void setCustomVar(String s) {
@@ -52,7 +57,7 @@ public abstract class ARecipeObject extends AData {
     @Override
     public String buildRecipe() {
         StringBuilder sb = new StringBuilder();
-        if (this.tweak != null) {
+        if (this.tweak != null && !this.customUserRecipes) {
             String[] recipes = this.tweak.getRecipes();
             for (int i = 0; i < recipes.length; i++) {
                 String r = recipes[i];
@@ -85,7 +90,7 @@ public abstract class ARecipeObject extends AData {
             error("Unknown machine: " + machine);
             return null;
         } else {
-            String recipeVariable = this.NAME+iOutput.replace("-", "_")+this.type+num+this.customVar;
+            String recipeVariable = this.NAME/*+iOutput.replace("-", "_")*/+this.type+num+this.customVar;
             r.createRecipe(recipeVariable, time, tier, powerMultiplier, 0, this.getDataLiquid());
             //IO
             String[] iInputs = parseRecipeIO(iInput,false);
@@ -172,10 +177,14 @@ public abstract class ARecipeObject extends AData {
             if (c != null) out = c;
             else error("No custom keys exists for object of type " + this.type);
             out = null;
+        } else if (item.startsWith("<>")) {
+            //override and use whatever text is there in the actual recipe code
+            out = item.substring(2);
         } else {
             //key
             out = getUnlocalizedByKey(item);
         }
+        //$ is custom symbol
         return out;
     }
     protected abstract String customItemKey(String key);
@@ -184,19 +193,19 @@ public abstract class ARecipeObject extends AData {
     //change this api later, make it user defined
     private AMaterialRecipe constructRecipe(String recipeType) {
         switch (recipeType) {
-            case "coiller" -> {return new CoillerRecipe(this.items, this.tweak, this.machines, this.matters, this.dataLiquid);}
-            case "bender" -> {return new HeatedBenderRecipe(this.items, this.tweak, this.machines, this.matters, this.dataLiquid);}
-            case "cut" -> {return new LaserCutterRecipe(this.items, this.tweak, this.machines, this.matters, this.dataLiquid);}
-            case "lathe" -> {return new LatheRecipe(this.items, this.tweak, this.machines, this.matters, this.dataLiquid);}
-            case "mLathe" -> {return new MicroLatheRecipe(this.items, this.tweak, this.machines, this.matters, this.dataLiquid);}
-            case "press" -> {return new PressRecipe(this.items, this.tweak, this.machines, this.matters, this.dataLiquid);}
-            case "pulverize" -> {return new PulverizeRecipe(this.items, this.tweak, this.machines, this.matters, this.dataLiquid);}
-            case "sharpen" -> {return new SharpenRecipe(this.items, this.tweak, this.machines, this.matters, this.dataLiquid);}
-            case "smelt" -> {return new SmeltingRecipe(this.items, this.tweak, this.machines, this.matters, this.dataLiquid);}
-            case "wiremill" -> {return new WiremillRecipe(this.items, this.tweak, this.machines, this.matters, this.dataLiquid);}
-            case "welder" -> {return new WelderRecipe(this.items, this.tweak, this.machines, this.matters, this.dataLiquid);}
-            case "melting" -> {return new MeltingRecipe(this.items, this.tweak, this.machines, this.matters, this.dataLiquid);}
-            case "metalAssembler" -> {return new MetalAssemblerRecipe(this.items, this.tweak, this.machines, this.matters, this.dataLiquid);}
+            case "coiller" -> {return new CoillerRecipe(this.tweak, this.items, this.liquids, this.ores, this.machines, this.matters, this.dataLiquid);}
+            case "bender" -> {return new HeatedBenderRecipe(this.tweak, this.items, this.liquids, this.ores, this.machines, this.matters, this.dataLiquid);}
+            case "cut" -> {return new LaserCutterRecipe(this.tweak, this.items, this.liquids, this.ores, this.machines, this.matters, this.dataLiquid);}
+            case "lathe" -> {return new LatheRecipe(this.tweak, this.items, this.liquids, this.ores, this.machines, this.matters, this.dataLiquid);}
+            case "mLathe" -> {return new MicroLatheRecipe(this.tweak, this.items, this.liquids, this.ores, this.machines, this.matters, this.dataLiquid);}
+            case "press" -> {return new PressRecipe(this.tweak, this.items, this.liquids, this.ores, this.machines, this.matters, this.dataLiquid);}
+            case "pulverize" -> {return new PulverizeRecipe(this.tweak, this.items, this.liquids, this.ores, this.machines, this.matters, this.dataLiquid);}
+            case "sharpen" -> {return new SharpenRecipe(this.tweak, this.items, this.liquids, this.ores, this.machines, this.matters, this.dataLiquid);}
+            case "smelt" -> {return new SmeltingRecipe(this.tweak, this.items, this.liquids, this.ores, this.machines, this.matters, this.dataLiquid);}
+            case "wiremill" -> {return new WiremillRecipe(this.tweak, this.items, this.liquids, this.ores, this.machines, this.matters, this.dataLiquid);}
+            case "welder" -> {return new WelderRecipe(this.tweak, this.items, this.liquids, this.ores, this.machines, this.matters, this.dataLiquid);}
+            case "melting" -> {return new MeltingRecipe(this.tweak, this.items, this.liquids, this.ores, this.machines, this.matters, this.dataLiquid);}
+            case "metalAssembler" -> {return new MetalAssemblerRecipe(this.tweak, this.items, this.liquids, this.ores, this.machines, this.matters, this.dataLiquid);}
         }
         return null;
     }
@@ -223,26 +232,19 @@ public abstract class ARecipeObject extends AData {
             error(key, this.NAME);
         }
     }
+    //marks the existing registryData as a tooltip exclusion for this object
+    protected void excludeTooltip(String key) {
+        for (RegistryData r : this.itemKeys) {
+            if (r.key.equals(key)) {
+                r.isTooltipExclusion = true;
+                return;
+            }
+        }
+        error(key, this.NAME);
+    }
     //return the whole array
     public RegistryData[] getItemsArray() {
         return this.itemKeys.toArray(new RegistryData[0]);
-    }
-    public RegistryData[] getItemsArray(String[] exclusions) {
-        ArrayList<RegistryData> newDatas = this.itemKeys;
-        //printDatas();
-        for (int k = 0; k < newDatas.size(); k++) {
-            RegistryData r = newDatas.get(k);
-            //System.out.println(r.name);
-            for (String e : exclusions) {
-                if (this.is(e)) {
-                    newDatas.remove(r);
-                    //System.out.println(this.NAME + ": " + r.name); //enable this to show exclusions in log
-                    k--;
-                    break;
-                }
-            }
-        }
-        return newDatas.toArray(new RegistryData[0]);
     }
     //get
     protected RegistryData getRegistryData(String key) {
@@ -257,7 +259,7 @@ public abstract class ARecipeObject extends AData {
     protected Registry get(String key) {
         return this.getRegistryData(key).r;
     }
-    protected String getUnlocalizedByKey(String key) {
+    public String getUnlocalizedByKey(String key) { //externally called if needed (eg, stone)
         return this.get(key).getFullUnlocalizedName();
     }
     //logic
@@ -271,14 +273,17 @@ public abstract class ARecipeObject extends AData {
     }
 
     //item registry
-    protected String getItemLocalized(String key) {
+    protected Registry getItemRegistry(String s) {
         for (Registry r : this.items) {
-            if (r.getLocalizedName().equals(key)) {
-                return r.getLocalizedName();
+            if (r.getLocalizedName().equals(s)) {
+                return r;
             }
         }
-        error(key, "item registry", this.NAME);
+        error(s, "item registry", this.NAME);
         return null;
+    }
+    protected String getItemLocalized(String key) {
+        return getItemRegistry(key).getLocalizedName();
     }
     protected String getItemLocalized(String key, String mod) {
         for (Registry r : this.items) {
@@ -298,11 +303,6 @@ public abstract class ARecipeObject extends AData {
         error(key, "item registry", this.NAME);
         return null;
     }
-
-    //liquid registry
-    public void addAllLiquids(String[] liquids) {
-        this.liquids.addAll(Arrays.asList(liquids));
-    }
     protected String getLiquid(String key) {
         for (String l : this.liquids) {
             if (l.equals(key)) {
@@ -314,9 +314,6 @@ public abstract class ARecipeObject extends AData {
     }
 
     //oredict registry
-    public void addAllOres(String[] ores) {
-        this.ores.addAll(Arrays.asList(ores));
-    }
     protected String getOredict(String key) {
         for (String o : this.ores) {
             if(o.equals(key)) {

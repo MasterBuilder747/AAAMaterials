@@ -12,14 +12,14 @@ import java.util.ArrayList;
 public class Wood extends AMSolid {
     boolean isVanilla; //for quark integration
 
-    public Wood(RecipeTweak tweak, ArrayList<Registry> registries,
-                ArrayList<Machine> machines, ArrayList<MachineMatter> matters, MachineData data,
-                Material m, String[] toolTipExclusions,
+    public Wood(RecipeTweak tweak, Registry[] items, String[] liquids, String[] ores,
+                Machine[] machines, MachineMatter[] matters, MachineData data,
+                Material m,
                 boolean isVanilla) {
         super("Wood",
-                tweak, registries,
+                tweak, items, liquids, ores,
                 machines, matters, data,
-                m, toolTipExclusions);
+                m);
         this.isVanilla = isVanilla;
     }
 

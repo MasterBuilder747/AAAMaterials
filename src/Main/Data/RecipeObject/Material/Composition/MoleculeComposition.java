@@ -14,14 +14,14 @@ public class MoleculeComposition extends AChemicalComposition {
     boolean isDiatomic; //this is handled later in recipes
     //(aka, whenever a breaking reaction occurs, if this is returned by itself, the amount must be even)
 
-    public MoleculeComposition(RecipeTweak tweak, ArrayList<Registry> registries,
-                               ArrayList<Machine> machines, ArrayList<MachineMatter> matters, MachineData data,
-                               Material m, String[] toolTipExclusions,
+    public MoleculeComposition(RecipeTweak tweak, Registry[] items, String[] liquids, String[] ores,
+                               Machine[] machines, MachineMatter[] matters, MachineData data,
+                               Material m,
                                Composition c, boolean isDefault,
                                boolean isDiatomic) {
-        super("MoleculeComposition", tweak, registries,
+        super("MoleculeComposition", tweak, items, liquids, ores,
                 machines, matters, data,
-                m, toolTipExclusions,
+                m,
                 c, isDefault, true);
         this.isDiatomic = isDiatomic;
     }

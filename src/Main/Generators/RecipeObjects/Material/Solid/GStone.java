@@ -23,7 +23,7 @@ public class GStone extends AGMSolid<Stone> {
                   GMachine machine, GMachineMatter matter, GMachineData data,
                   GMaterial material, GPartGroup partGroup,
                   GMSolid solid) {
-        super(3, filename, isReg,
+        super(4, filename, isReg,
                 tweak, registry, liquids, ores,
                 machine, matter, data,
                 material, partGroup,
@@ -64,15 +64,33 @@ public class GStone extends AGMSolid<Stone> {
         23 cobblestone,
         24 brick)
         */
-        boolean isSedimentary = parseBoolean(s[1]);
-        boolean noSlab = parseBoolean(s[2]);
-        Stone c = new Stone(getRecipeTweak("Stone"), getRegistries(),
+        boolean isOreStone = parseBoolean(s[0]);
+        boolean addPebble = parseBoolean(s[1]);
+        String typeOre = s[2];
+        int type = -1;
+        switch (typeOre) {
+            case "vanilla" -> type = 0;
+            case "igneous" -> type = 1;
+            case "metamorphic" -> type = 2;
+            case "sedimentary" -> type = 3;
+            case "custom" -> type = 4;
+        }
+        if (type == -1) error("Unknown stoneType: " + typeOre);
+        boolean noSlab = parseBoolean(s[3]);
+        Stone st = new Stone(
+                getRecipeTweak("Stone"), getItems(), getLiquids(), getOres(),
                 getMachineRegistry(), getMatterRegistry(), getDataRegistry(),
-                m, null,
-                isSedimentary, noSlab);
-        c.setPartGroup(genPartGroup("stone"), parseBoolean(s[0]));
+                m,
+                typeOre, noSlab, isOreStone
+        );
+        st.setTooltipExclusions(new String[]{
+                "dust", "dustSmall", "dustTiny",
+                "dustFine", "dustFineSmall", "dustFineTiny",
+                "powder", "powderSmall", "powderTiny"
+        });
+
         ArrayList<Registry> registries = new ArrayList<>();
-        if (!isSedimentary) {
+        if (type == 1 || type == 2) {
             for (int i = 0; i < 25; i++) {
                 String test = m.LOCALNAME;
                 switch (i) {
@@ -108,7 +126,7 @@ public class GStone extends AGMSolid<Stone> {
                     error("stone type " + test + " for material " + m.NAME + " is not in the registry");
                 }
             }
-        } else {
+        } else if (type == 3) {
             if (!noSlab) {
                 for (int i = 0; i < 16; i++) {
                     String test = m.LOCALNAME;
@@ -162,8 +180,24 @@ public class GStone extends AGMSolid<Stone> {
                     }
                 }
             }
+        } else if (type == 0) {
+            //vanilla objects
+        } else {
+            //custom
         }
-        c.addVariants(registries.toArray(new Registry[0]));
-        objects.add(c);
+        st = updateSolids(st, solid);
+        st.setPartGroup(genPartGroup("stone"), addPebble);
+        st.addVariants(registries.toArray(new Registry[0]));
+        st = updateRegistryKeys(st);
+        objects.add(st);
+    }
+
+    public Stone[] getOreStones() {
+        ArrayList<Stone> outs = new ArrayList<>();
+        for (Stone s : this.objects) {
+            s.printAll();
+            if (s.oreStone) outs.add(s);
+        }
+        return outs.toArray(new Stone[0]);
     }
 }

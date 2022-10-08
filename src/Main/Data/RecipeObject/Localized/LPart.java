@@ -19,13 +19,13 @@ public class LPart extends ALocalizedData {
 
     //this part already exists in contentTweaker
     //to be used in a PartGroup
-    public LPart(String name,
-                 RecipeTweak tweak, ArrayList<Registry> registries,
-                 ArrayList<Machine> machines, ArrayList<MachineMatter> matters, MachineData data,
+    public LPart(String NAME,
+                 RecipeTweak tweak, Registry[] items, String[] liquids, String[] ores,
+                 Machine[] machines, MachineMatter[] matters, MachineData data,
                  String localName,
                  String oreDict, int amount) {
-        super(name, "LPart",
-                tweak, registries,
+        super(NAME, "LPart",
+                tweak, items, liquids, ores,
                 machines, matters, data,
                 localName);
         this.exists = true;
@@ -34,13 +34,13 @@ public class LPart extends ALocalizedData {
         this.baseRegistryName = localName.replace(" ", "");
     }
     //custom part
-    public LPart(String name,
-                 RecipeTweak tweak, ArrayList<Registry> registries,
-                 ArrayList<Machine> machines, ArrayList<MachineMatter> matters, MachineData data,
+    public LPart(String NAME,
+                 RecipeTweak tweak, Registry[] items, String[] liquids, String[] ores,
+                 Machine[] machines, MachineMatter[] matters, MachineData data,
                  String localName,
                  String  oreDict, boolean hasOverlay, int amount) {
-        super(name, "LPart",
-                tweak, registries,
+        super(NAME, "LPart",
+                tweak, items, liquids, ores,
                 machines, matters, data,
                 localName);
         this.type = "item"; //default

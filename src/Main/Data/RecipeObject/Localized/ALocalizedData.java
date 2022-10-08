@@ -15,12 +15,12 @@ public abstract class ALocalizedData extends ARecipeObject {
 
     public abstract String localize() throws IllegalArgumentException;
 
-    public ALocalizedData(String name, String type,
-                          RecipeTweak tweak, ArrayList<Registry> registries,
-                          ArrayList<Machine> machines, ArrayList<MachineMatter> matters, MachineData data,
+    public ALocalizedData(String NAME, String type,
+                          RecipeTweak tweak, Registry[] items, String[] liquids, String[] ores,
+                          Machine[] machines, MachineMatter[] matters, MachineData data,
                           String localName) {
-        super(name, type,
-                tweak, registries,
+        super(NAME, type,
+                tweak, items, liquids, ores,
                 machines, matters, data);
         this.localName = localName;
     }

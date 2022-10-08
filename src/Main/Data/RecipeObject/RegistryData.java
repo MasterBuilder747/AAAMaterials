@@ -7,6 +7,7 @@ import Main.Data.GameData.Registry;
 public class RegistryData {
     public String key;
     public Registry r;
+    public boolean isTooltipExclusion;
 
     public RegistryData(String name, Registry r) {
         this.key = name;

@@ -9,20 +9,18 @@ import Main.Data.RecipeObject.Material.AMaterialData;
 import Main.Data.Material;
 import Main.Data.Tweakers.RecipeTweak;
 
-import java.util.ArrayList;
-
 public abstract class AMLiquid extends AMaterialData {
     //be aware that you cannot call any methods that are specific to children of ALiquid, only ALiquid itself
     ALiquid l;
 
     public AMLiquid(String type,
-                    RecipeTweak tweak, ArrayList<Registry> registries,
-                    ArrayList<Machine> machines, ArrayList<MachineMatter> matters, MachineData data,
-                    Material m, String[] toolTipExclusions) {
+                    RecipeTweak tweak, Registry[] items, String[] liquids, String[] ores,
+                    Machine[] machines, MachineMatter[] matters, MachineData data,
+                    Material m) {
         super(type,
-                tweak, registries,
+                tweak, items, liquids, ores,
                 machines, matters, data,
-                m, toolTipExclusions);
+                m);
     }
 
     @Override

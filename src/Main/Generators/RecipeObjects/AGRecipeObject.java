@@ -21,7 +21,6 @@ import Main.Generators.Tweakers.GRecipeTweak;
 import java.util.ArrayList;
 
 public abstract class AGRecipeObject<R extends ARecipeObject> extends AGenerator<R> {
-
     protected boolean isReg; //enable recipes or no?
     //registries
     protected GRecipeTweak tweak;
@@ -47,40 +46,6 @@ public abstract class AGRecipeObject<R extends ARecipeObject> extends AGenerator
         this.data = data;
     }
 
-    protected R updateLiquids(R r) {
-        if (this.isReg) {
-            ArrayList<String> brackets = new ArrayList<>();
-            for (LiquidRegistry l : this.liquids.getObjects()) {
-                brackets.add(l.getUnlocalizedName());
-            }
-            r.addAllLiquids(brackets.toArray(new String[0]));
-        }
-        return r;
-    }
-
-    protected R updateOres(R r) {
-        if (this.isReg) {
-            ArrayList<String> brackets = new ArrayList<>();
-            for (OreDict o : this.ores.getObjects()) {
-                brackets.add(o.NAME);
-            }
-            r.addAllOres(brackets.toArray(new String[0]));
-        }
-        return r;
-    }
-
-    protected ArrayList<Registry> getRegistries() {
-        return this.registry.getObjects();
-    }
-    protected ArrayList<Machine> getMachineRegistry() {
-        return this.machine.getObjects();
-    }
-    protected MachineData getDataRegistry() {
-        return this.data.getObjects().get(0);
-    }
-    protected ArrayList<MachineMatter> getMatterRegistry() {
-        return this.matter.getObjects();
-    }
     protected RecipeTweak getRecipeTweak(String s) {
         if (this.isReg) {
             try {
@@ -91,5 +56,33 @@ public abstract class AGRecipeObject<R extends ARecipeObject> extends AGenerator
             }
         }
         else return null;
+    }
+
+    //registries for data object constructors
+    protected Registry[] getItems() {
+        return this.registry.getObjects().toArray(new Registry[0]);
+    }
+    protected String[] getLiquids() {
+        ArrayList<String> out = new ArrayList<>();
+        for (LiquidRegistry l : this.liquids.getObjects()) {
+            out.add(l.getUnlocalizedName());
+        }
+        return out.toArray(new String[0]);
+    }
+    protected String[] getOres() {
+        ArrayList<String> out = new ArrayList<>();
+        for (OreDict o : this.ores.getObjects()) {
+            out.add(o.NAME);
+        }
+        return out.toArray(new String[0]);
+    }
+    protected Machine[] getMachineRegistry() {
+        return this.machine.getObjects().toArray(new Machine[0]);
+    }
+    protected MachineMatter[] getMatterRegistry() {
+        return this.matter.getObjects().toArray(new MachineMatter[0]);
+    }
+    protected MachineData getDataRegistry() {
+        return this.data.getObjects().get(0);
     }
 }

@@ -9,10 +9,10 @@ import Main.Data.Tweakers.RecipeTweak;
 import java.util.ArrayList;
 
 public class SharpenRecipe extends AMaterialRecipe {
-    public SharpenRecipe(ArrayList<Registry> registries, RecipeTweak tweak,
-                         ArrayList<Machine> machines, ArrayList<MachineMatter> matters, MachineData data) {
+    public SharpenRecipe(RecipeTweak tweak, Registry[] items, String[] liquids, String[] ores,
+                         Machine[] machines, MachineMatter[] matters, MachineData data) {
         super("sharpen", "Sharpener",
-                tweak, registries,
+                tweak, items, liquids, ores,
                 machines, matters, data,
                 "basic");
     }

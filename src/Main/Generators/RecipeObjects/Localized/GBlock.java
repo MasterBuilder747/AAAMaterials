@@ -23,7 +23,7 @@ public class GBlock extends AGLocal<LBlock> {
         //String material, int hardness, int resistance, int miningLevel, String tool
         objects.add(new LBlock(
                 name,
-                getRecipeTweak("LBlock"), getRegistries(),
+                getRecipeTweak("LBlock"), getItems(), getLiquids(), getOres(),
                 getMachineRegistry(), getMatterRegistry(), getDataRegistry(),
                 localName,
                 s[0], parseInt(s[1]), parseInt(s[2]), parseInt(s[3]), s[4]));

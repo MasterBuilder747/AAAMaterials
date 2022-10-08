@@ -37,9 +37,9 @@ public class GMoleculeComposition extends AGChemicalComposition<MoleculeComposit
         Element e = element.get(s[0]);
         Composition c = new Composition(e);
         MoleculeComposition comp = new MoleculeComposition(
-                getRecipeTweak("MoleculeComposition"), getRegistries(),
+                getRecipeTweak("MoleculeComposition"), getItems(), getLiquids(), getOres(),
                 getMachineRegistry(), getMatterRegistry(), getDataRegistry(),
-                m, null,
+                m,
                 c, parseBoolean(s[1]), parseBoolean(s[2]));
         m.addComposition(comp);
         objects.add(comp);

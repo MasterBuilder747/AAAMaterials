@@ -48,15 +48,15 @@ public class CompoundComposition extends AChemicalComposition {
     boolean isChemReact; //chemically combine
     boolean isElectrolyze; //chemically separate
 
-    public CompoundComposition(RecipeTweak tweak, ArrayList<Registry> registries,
-                               ArrayList<Machine> machines, ArrayList<MachineMatter> matters, MachineData data,
-                               Material m, String[] toolTipExclusions,
+    public CompoundComposition(RecipeTweak tweak, Registry[] items, String[] liquids, String[] ores,
+                               Machine[] machines, MachineMatter[] matters, MachineData data,
+                               Material m,
                                Composition c, boolean isDefault,
                                boolean isMixing, boolean isCentrifuge, boolean isChemReact, boolean isElectrolyze) {
         super("CompoundComposition",
-                tweak, registries,
+                tweak, items, liquids, ores,
                 machines, matters, data,
-                m, toolTipExclusions,
+                m,
                 c, isDefault, false);
         this.isMixing = isMixing;
         this.isChemReact = isChemReact;

@@ -33,14 +33,14 @@ public abstract class AChemicalComposition extends AMaterialData {
     boolean isElement; //for handling getting the element rather than the composition
 
     public AChemicalComposition(String type,
-                                RecipeTweak tweak, ArrayList<Registry> registries,
-                                ArrayList<Machine> machines, ArrayList<MachineMatter> matters, MachineData data,
-                                Material m, String[] toolTipExclusions,
+                                RecipeTweak tweak, Registry[] items, String[] liquids, String[] ores,
+                                Machine[] machines, MachineMatter[] matters, MachineData data,
+                                Material m,
                                 Composition c, boolean isDefault, boolean isElement) {
         super(type,
-                tweak, registries,
+                tweak, items, liquids, ores,
                 machines, matters, data,
-                m, toolTipExclusions);
+                m);
         this.composition = c;
         this.isDefault = isDefault;
         this.symbol = c.toString();
@@ -49,7 +49,11 @@ public abstract class AChemicalComposition extends AMaterialData {
 
     public String addTooltips(RegistryData[] registries) {
         StringBuilder sb = new StringBuilder();
-        for(RegistryData d : registries) sb.append(d.r.getBracket()).append(".addTooltip(\"").append(this.symbol).append("\");\n");
+        for(RegistryData d : registries) {
+            if (!d.isTooltipExclusion) {
+                sb.append(d.r.getBracket()).append(".addTooltip(\"").append(this.symbol).append("\");\n");
+            }
+        }
         return sb.toString();
     }
 

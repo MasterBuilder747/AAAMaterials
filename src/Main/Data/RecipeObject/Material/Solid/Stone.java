@@ -10,19 +10,21 @@ import Main.Data.Tweakers.RecipeTweak;
 import java.util.ArrayList;
 
 public class Stone extends AMSolid {
-    boolean isSedimentary; //does not have cobblestone registered for UB
+    String type; //does not have cobblestone registered for UB
     boolean noSlab; //only applied to Conglomerate...?
+    public boolean oreStone; //is this a stone that encases an ore?
 
-    public Stone(RecipeTweak tweak, ArrayList<Registry> registries,
-                 ArrayList<Machine> machines, ArrayList<MachineMatter> matters, MachineData data,
-                 Material m, String[] toolTipExclusions,
-                 boolean isSedimentary, boolean noSlab) {
+    public Stone(RecipeTweak tweak, Registry[] items, String[] liquids, String[] ores,
+                 Machine[] machines, MachineMatter[] matters, MachineData data,
+                 Material m,
+                 String type, boolean noSlab, boolean oreStone) {
         super("Stone",
-                tweak, registries,
+                tweak, items, liquids, ores,
                 machines, matters, data,
-                m, toolTipExclusions);
-        this.isSedimentary = isSedimentary;
+                m);
+        this.type = type;
         this.noSlab = noSlab;
+        this.oreStone = oreStone;
     }
 
     //this assumes that all registries are in the registry
@@ -58,70 +60,79 @@ public class Stone extends AMSolid {
         23 cobblestone,
         24 brick)
         */
-        if (!this.isSedimentary) {
-            //size = 25
-            this.addRegistryData("stone", registries[0]);
-            this.addRegistryData("monsterEgg", registries[1]);
-            this.addRegistryData("cobblestone", registries[2]);
-            this.addRegistryData("bricks", registries[3]);
-            this.addRegistryData("gravel", registries[4]);
-            this.addRegistryData("sand", registries[5]);
-            this.addRegistryData("sandstone", registries[6]);
-            this.addRegistryData("smoothSandstone", registries[7]);
-            this.addRegistryData("chiseledSandstone", registries[8]);
-            this.addRegistryData("clay", registries[9]);
-            this.addRegistryData("overgrownStone", registries[10]);
-            this.addRegistryData("snowyStone", registries[11]);
-            this.addRegistryData("mossyCobblestone", registries[12]);
-            this.addRegistryData("speleothem", registries[13]);
-            this.addRegistryData("slabStone", registries[14]);
-            this.addRegistryData("slabCobblestone", registries[15]);
-            this.addRegistryData("slabBrick", registries[16]);
-            this.addRegistryData("stoneButton", registries[17]);
-            this.addRegistryData("cobblestoneButton", registries[18]);
-            this.addRegistryData("wallStone", registries[19]);
-            this.addRegistryData("wallCobblestone", registries[20]);
-            this.addRegistryData("wallBrick", registries[21]);
-            this.addRegistryData("stairStone", registries[22]);
-            this.addRegistryData("stairCobblestone", registries[23]);
-            this.addRegistryData("stairBrick", registries[24]);
-        } else {
-            if (!this.noSlab) {
-                //size = 16
+        switch (this.type) {
+            case "igneous", "metamorphic":
+                //size = 25
                 this.addRegistryData("stone", registries[0]);
                 this.addRegistryData("monsterEgg", registries[1]);
-                this.addRegistryData("gravel", registries[2]);
-                this.addRegistryData("sand", registries[3]);
-                this.addRegistryData("sandstone", registries[4]);
-                this.addRegistryData("smoothSandstone", registries[5]);
-                this.addRegistryData("chiseledSandstone", registries[6]);
-                this.addRegistryData("clay", registries[7]);
-                this.addRegistryData("overgrownStone", registries[8]);
-                this.addRegistryData("snowyStone", registries[9]);
-                this.addRegistryData("speleothem", registries[10]);
-                this.addRegistryData("slabStone", registries[11]);
-                this.addRegistryData("stoneButton", registries[12]);
-                this.addRegistryData("wallStone", registries[13]);
-                this.addRegistryData("stairStone", registries[14]);
-                this.addRegistryData("blockMossy", registries[15]);
-            } else {
-                //size = 15
-                this.addRegistryData("stone", registries[0]);
-                this.addRegistryData("monsterEgg", registries[1]);
-                this.addRegistryData("gravel", registries[2]);
-                this.addRegistryData("sand", registries[3]);
-                this.addRegistryData("sandstone", registries[4]);
-                this.addRegistryData("smoothSandstone", registries[5]);
-                this.addRegistryData("chiseledSandstone", registries[6]);
-                this.addRegistryData("clay", registries[7]);
-                this.addRegistryData("overgrownStone", registries[8]);
-                this.addRegistryData("snowyStone", registries[9]);
-                this.addRegistryData("speleothem", registries[10]);
-                this.addRegistryData("stoneButton", registries[11]);
-                this.addRegistryData("wallStone", registries[12]);
-                this.addRegistryData("stairStone", registries[13]);
-                this.addRegistryData("blockMossy", registries[14]);
-            }
+                this.addRegistryData("cobblestone", registries[2]);
+                this.addRegistryData("bricks", registries[3]);
+                this.addRegistryData("gravel", registries[4]);
+                this.addRegistryData("sand", registries[5]);
+                this.addRegistryData("sandstone", registries[6]);
+                this.addRegistryData("smoothSandstone", registries[7]);
+                this.addRegistryData("chiseledSandstone", registries[8]);
+                this.addRegistryData("clay", registries[9]);
+                this.addRegistryData("overgrownStone", registries[10]);
+                this.addRegistryData("snowyStone", registries[11]);
+                this.addRegistryData("mossyCobblestone", registries[12]);
+                this.addRegistryData("speleothem", registries[13]);
+                this.addRegistryData("slabStone", registries[14]);
+                this.addRegistryData("slabCobblestone", registries[15]);
+                this.addRegistryData("slabBrick", registries[16]);
+                this.addRegistryData("stoneButton", registries[17]);
+                this.addRegistryData("cobblestoneButton", registries[18]);
+                this.addRegistryData("wallStone", registries[19]);
+                this.addRegistryData("wallCobblestone", registries[20]);
+                this.addRegistryData("wallBrick", registries[21]);
+                this.addRegistryData("stairStone", registries[22]);
+                this.addRegistryData("stairCobblestone", registries[23]);
+                this.addRegistryData("stairBrick", registries[24]);
+                break;
+            case "sedimentary":
+                if (!this.noSlab) {
+                    //size = 16
+                    this.addRegistryData("stone", registries[0]);
+                    this.addRegistryData("monsterEgg", registries[1]);
+                    this.addRegistryData("gravel", registries[2]);
+                    this.addRegistryData("sand", registries[3]);
+                    this.addRegistryData("sandstone", registries[4]);
+                    this.addRegistryData("smoothSandstone", registries[5]);
+                    this.addRegistryData("chiseledSandstone", registries[6]);
+                    this.addRegistryData("clay", registries[7]);
+                    this.addRegistryData("overgrownStone", registries[8]);
+                    this.addRegistryData("snowyStone", registries[9]);
+                    this.addRegistryData("speleothem", registries[10]);
+                    this.addRegistryData("slabStone", registries[11]);
+                    this.addRegistryData("stoneButton", registries[12]);
+                    this.addRegistryData("wallStone", registries[13]);
+                    this.addRegistryData("stairStone", registries[14]);
+                    this.addRegistryData("blockMossy", registries[15]);
+                } else {
+                    //size = 15
+                    this.addRegistryData("stone", registries[0]);
+                    this.addRegistryData("monsterEgg", registries[1]);
+                    this.addRegistryData("gravel", registries[2]);
+                    this.addRegistryData("sand", registries[3]);
+                    this.addRegistryData("sandstone", registries[4]);
+                    this.addRegistryData("smoothSandstone", registries[5]);
+                    this.addRegistryData("chiseledSandstone", registries[6]);
+                    this.addRegistryData("clay", registries[7]);
+                    this.addRegistryData("overgrownStone", registries[8]);
+                    this.addRegistryData("snowyStone", registries[9]);
+                    this.addRegistryData("speleothem", registries[10]);
+                    this.addRegistryData("stoneButton", registries[11]);
+                    this.addRegistryData("wallStone", registries[12]);
+                    this.addRegistryData("stairStone", registries[13]);
+                    this.addRegistryData("blockMossy", registries[14]);
+                }
+                break;
+            case "vanilla":
+                //vanilla objects
+                break;
+            default:
+                //custom
+                break;
         }
     }
 

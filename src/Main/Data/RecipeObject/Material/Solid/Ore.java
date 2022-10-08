@@ -89,14 +89,14 @@ public class Ore extends AMSolid {
     BEACH;
      */
 
-    public Ore(RecipeTweak tweak, ArrayList<Registry> registries,
-               ArrayList<Machine> machines, ArrayList<MachineMatter> matters, MachineData data,
-               Material m, String[] toolTipExclusions,
+    public Ore(RecipeTweak tweak, Registry[] items, String[] liquids, String[] ores,
+               Machine[] machines, MachineMatter[] matters, MachineData data,
+               Material m,
                boolean enableGen) {
         super("Ore",
-                tweak, registries,
+                tweak, items, liquids, ores,
                 machines, matters, data,
-                m, toolTipExclusions);
+                m);
         this.enableGen = enableGen;
     }
 

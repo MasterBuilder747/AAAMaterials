@@ -8,27 +8,25 @@ import Main.Data.RecipeObject.Localized.Liquid.LGas;
 import Main.Data.Material;
 import Main.Data.Tweakers.RecipeTweak;
 
-import java.util.ArrayList;
-
 public class MGas extends AMLiquid {
-    public MGas(RecipeTweak tweak, ArrayList<Registry> registries,
-                ArrayList<Machine> machines, ArrayList<MachineMatter> matters, MachineData data,
-                Material m, String[] toolTipExclusions,
+    public MGas(RecipeTweak tweak, Registry[] items, String[] liquids, String[] ores,
+                Machine[] machines, MachineMatter[] matters, MachineData data,
+                Material m,
                 int density, int luminosity, int temperature, int viscosity, boolean vaporize) {
         super("mGas",
-                tweak, registries,
+                tweak, items, liquids, ores,
                 machines, matters, data,
-                m, toolTipExclusions);
-        this.l = new LGas(m.NAME +"_gas",
-                tweak, registries,
+                m);
+        this.l = new LGas(
+                m.NAME +"_gas",
+                tweak, items, liquids, ores,
                 machines, matters, data,
                 m.LOCALNAME+" Gas",
                 m.color, true, vaporize,
-                density, luminosity, temperature, viscosity);
+                density, luminosity, temperature, viscosity
+        );
     }
 
     @Override
-    public void print() {
-
-    }
+    public void print() {}
 }

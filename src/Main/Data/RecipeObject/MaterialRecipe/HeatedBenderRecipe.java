@@ -10,10 +10,10 @@ import Main.Data.Tweakers.RecipeTweak;
 import java.util.ArrayList;
 
 public class HeatedBenderRecipe extends AMaterialRecipe {
-    public HeatedBenderRecipe(ArrayList<Registry> registries, RecipeTweak tweak,
-                              ArrayList<Machine> machines, ArrayList<MachineMatter> matters, MachineData data) {
+    public HeatedBenderRecipe(RecipeTweak tweak, Registry[] items, String[] liquids, String[] ores,
+                              Machine[] machines, MachineMatter[] matters, MachineData data) {
         super("heatedBender", "HeatedBender",
-                tweak, registries,
+                tweak, items, liquids, ores,
                 machines, matters, data,
                 "basic");
     }

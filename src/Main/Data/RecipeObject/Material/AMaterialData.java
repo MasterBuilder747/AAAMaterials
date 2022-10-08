@@ -20,37 +20,39 @@ public abstract class AMaterialData extends ARecipeObject {
     protected PartGroup[] partGroups;
     protected boolean[] enablePartGroups;
     public ArrayList<String> localizedPartNames;
-    protected String[] toolTipExclusions; //an array of part oredicts that are excluded from being added tooltips (used to prevent duplications)
 
     public AMaterialData(String type,
-                         RecipeTweak tweak, ArrayList<Registry> registries,
-                         ArrayList<Machine> machines, ArrayList<MachineMatter> matters, MachineData data,
-                         Material m, String[] toolTipExclusions) {
+                         RecipeTweak tweak, Registry[] items, String[] liquids, String[] ores,
+                         Machine[] machines, MachineMatter[] matters, MachineData data,
+                         Material m) {
         super(m.NAME, type,
-                tweak, registries,
+                tweak, items, liquids, ores,
                 machines, matters, data);
         this.m = m;
         this.localizedPartNames = new ArrayList<>();
-        this.toolTipExclusions = toolTipExclusions;
     }
 
     @Override
     protected String buildAdditionalRecipes() {
         StringBuilder sb = new StringBuilder();
+
         String r = buildSpecificRecipe();
         if (r != null) sb.append(r);
+
         AChemicalComposition comp = m.getComp();
-        if (comp != null) {
-            if (this.toolTipExclusions == null) {
-                sb.append(comp.addTooltips(this.getItemsArray()));
-            } else {
-                sb.append(comp.addTooltips(this.getItemsArray(this.toolTipExclusions)));
-            }
-        }
+        if (comp != null) sb.append(comp.addTooltips(this.getItemsArray()));
+
         if (r == null && comp == null) return "";
         return sb.toString();
     }
     protected abstract String buildSpecificRecipe();
+
+    //must be called after all keys are registered
+    public void setTooltipExclusions(String[] ss) {
+        for (String s : ss) {
+            this.excludeTooltip(s);
+        }
+    }
 
     //call this to get each localized registry name to be used for finding the registries
     private void setPartGroupsReg() {

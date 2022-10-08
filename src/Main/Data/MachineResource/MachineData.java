@@ -11,7 +11,7 @@ public class MachineData extends AMachineResource {
         //data liquid will have to have a hardcoded recipe!
         this.data = new LLiquid(
                 name,
-                null, null,
+                null, null, null, null,
                 null, null, null,
                 localName,
                 color, false, vaporize,

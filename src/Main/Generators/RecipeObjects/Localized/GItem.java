@@ -21,7 +21,7 @@ public class GItem extends AGLocal<LItem> {
     @Override
     protected void addParameters(String name, String localName, String[] s) {
         objects.add(new LItem(name,
-                getRecipeTweak("LItem"), getRegistries(),
+                getRecipeTweak("LItem"), getItems(), getLiquids(), getOres(),
                 getMachineRegistry(), getMatterRegistry(), getDataRegistry(),
                 localName));
     }

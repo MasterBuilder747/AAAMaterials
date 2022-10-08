@@ -8,22 +8,20 @@ import Main.Data.RecipeObject.Material.Liquid.MLiquid;
 import Main.Data.Material;
 import Main.Data.Tweakers.RecipeTweak;
 
-import java.util.ArrayList;
-
 //data > material > malleable > rubber
 public class Rubber extends AMalleable {
     //can never get full amount back when melting again, depends on the material
     //when melting a part:
     //get some back
     //get no material back
-    public Rubber(RecipeTweak tweak, RecipeTweak aTweak, ArrayList<Registry> registries,
-                  ArrayList<Machine> machines, ArrayList<MachineMatter> matters, MachineData data,
-                  Material m, String[] toolTipExclusions,
+    public Rubber(RecipeTweak tweak, RecipeTweak aTweak, Registry[] items, String[] liquids, String[] ores,
+                  Machine[] machines, MachineMatter[] matters, MachineData data,
+                  Material m,
                   MLiquid molten, double meltingMultiplier) {
         super("Rubber",
-                tweak, aTweak, registries,
+                tweak, aTweak, items, liquids, ores,
                 machines, matters, data,
-                m, toolTipExclusions,
+                m,
                 molten, meltingMultiplier);
     }
 

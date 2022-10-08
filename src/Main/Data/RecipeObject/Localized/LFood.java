@@ -18,13 +18,13 @@ public class LFood extends ALocalizedData {
     String foodGroup; //dairy, fruit, vegetable, protein, grain, none
     String type; //milk, meat, nut, cheese, oil, citrus, nonCitrus, vegetable, grain, seed, legume, yogurt, bread, pasta
 
-    public LFood(String name,
-                 RecipeTweak tweak, ArrayList<Registry> registries,
-                 ArrayList<Machine> machines, ArrayList<MachineMatter> matters, MachineData data,
+    public LFood(String NAME,
+                 RecipeTweak tweak, Registry[] items, String[] liquids, String[] ores,
+                 Machine[] machines, MachineMatter[] matters, MachineData data,
                  String localName,
                  int heal, double saturation, boolean alwaysEdible) {
-        super(name, "LFood",
-                tweak, registries,
+        super(NAME, "LFood",
+                tweak, items, liquids, ores,
                 machines, matters, data,
                 localName);
         this.heal = heal;

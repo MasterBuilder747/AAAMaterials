@@ -9,10 +9,10 @@ import Main.Data.Tweakers.RecipeTweak;
 import java.util.ArrayList;
 
 public class MetalAssemblerRecipe extends AMaterialRecipe {
-    public MetalAssemblerRecipe(ArrayList<Registry> registries, RecipeTweak tweak,
-                                ArrayList<Machine> machines, ArrayList<MachineMatter> matters, MachineData data) {
+    public MetalAssemblerRecipe(RecipeTweak tweak, Registry[] items, String[] liquids, String[] ores,
+                                Machine[] machines, MachineMatter[] matters, MachineData data) {
         super("metalAssembler", "MetalAssembler",
-                tweak, registries,
+                tweak, items, liquids, ores,
                 machines, matters, data,
                 "basic");
     }

@@ -11,16 +11,16 @@ import Main.Data.Tweakers.RecipeTweak;
 import java.util.ArrayList;
 
 public class MPlasma extends AMLiquid {
-    public MPlasma(RecipeTweak tweak, ArrayList<Registry> registries,
-                   ArrayList<Machine> machines, ArrayList<MachineMatter> matters, MachineData data,
-                   Material m, String[] toolTipExclusions,
+    public MPlasma(RecipeTweak tweak, Registry[] items, String[] liquids, String[] ores,
+                   Machine[] machines, MachineMatter[] matters, MachineData data,
+                   Material m,
                    int density, int luminosity, int temperature, int viscosity, boolean vaporize) {
         super("mPlasma",
-                tweak, registries,
+                tweak, items, liquids, ores,
                 machines, matters, data,
-                m, toolTipExclusions);
+                m);
         this.l = new LPlasma( m.NAME +"_plasma",
-                tweak, registries,
+                tweak, items, liquids, ores,
                 machines, matters, data,
                 m.LOCALNAME+" Plasma",
                 m.color, true, vaporize,
