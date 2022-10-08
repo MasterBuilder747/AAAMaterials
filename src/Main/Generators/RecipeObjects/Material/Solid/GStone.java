@@ -77,17 +77,13 @@ public class GStone extends AGMSolid<Stone> {
         }
         if (type == -1) error("Unknown stoneType: " + typeOre);
         boolean noSlab = parseBoolean(s[3]);
+
         Stone st = new Stone(
                 getRecipeTweak("Stone"), getItems(), getLiquids(), getOres(),
                 getMachineRegistry(), getMatterRegistry(), getDataRegistry(),
                 m,
                 typeOre, noSlab, isOreStone
         );
-        st.setTooltipExclusions(new String[]{
-                "dust", "dustSmall", "dustTiny",
-                "dustFine", "dustFineSmall", "dustFineTiny",
-                "powder", "powderSmall", "powderTiny"
-        });
 
         ArrayList<Registry> registries = new ArrayList<>();
         if (type == 1 || type == 2) {
@@ -186,6 +182,11 @@ public class GStone extends AGMSolid<Stone> {
             //custom
         }
         st = updateSolids(st, solid);
+        st.setTooltipExclusions(new String[]{
+                "dust", "dustSmall", "dustTiny",
+                "dustFine", "dustFineSmall", "dustFineTiny",
+                "powder", "powderSmall", "powderTiny"
+        });
         st.setPartGroup(genPartGroup("stone"), addPebble);
         st.addVariants(registries.toArray(new Registry[0]));
         st = updateRegistryKeys(st);
@@ -195,7 +196,6 @@ public class GStone extends AGMSolid<Stone> {
     public Stone[] getOreStones() {
         ArrayList<Stone> outs = new ArrayList<>();
         for (Stone s : this.objects) {
-            s.printAll();
             if (s.oreStone) outs.add(s);
         }
         return outs.toArray(new Stone[0]);

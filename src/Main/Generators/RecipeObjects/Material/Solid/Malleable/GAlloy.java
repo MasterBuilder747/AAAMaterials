@@ -39,16 +39,16 @@ public class GAlloy extends AGMalleable<Alloy> {
                 getMachineRegistry(), getMatterRegistry(), getDataRegistry(),
                 m,
                 molten);
+        boolean smelt = Boolean.parseBoolean(s[0]);
+        alloy = updateSolids(alloy, solid);
         alloy.setTooltipExclusions(new String[]{
                 "dust", "dustSmall", "dustTiny",
                 "dustFine", "dustFineSmall", "dustFineTiny",
                 "powder", "powderSmall", "powderTiny"
         });
-        boolean smelt = Boolean.parseBoolean(s[0]);
         alloy.setPartGroups(this.genPartGroups(
-                new String[]{"scrap", "plate", "smelt", "rod", "beam", "conductive", "machine", "special_plate", "coiled_rod", "blast", "assembled"}),
+                        new String[]{"scrap", "plate", "smelt", "rod", "beam", "conductive", "machine", "special_plate", "coiled_rod", "blast", "assembled"}),
                 new boolean[]{smelt, smelt, smelt, smelt, smelt, Boolean.parseBoolean(s[3]), Boolean.parseBoolean(s[1]), smelt, smelt, Boolean.parseBoolean(s[2]), smelt});
-        alloy = updateSolids(alloy, solid);
         alloy = updateRegistryKeys(alloy);
         objects.add(alloy);
     }

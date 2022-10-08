@@ -38,13 +38,13 @@ public class GRubber extends AGMalleable<Rubber> {
                 getMachineRegistry(), getMatterRegistry(), getDataRegistry(),
                 m,
                 molten, parseDouble(s[0]));
+        rubber.setPartGroups(this.genPartGroups(new String[]{"smelt"}), new boolean[]{true});
+        rubber = updateSolids(rubber, solid);
         rubber.setTooltipExclusions(new String[]{
                 "dust", "dustSmall", "dustTiny",
                 "dustFine", "dustFineSmall", "dustFineTiny",
                 "powder", "powderSmall", "powderTiny"
         });
-        rubber.setPartGroups(this.genPartGroups(new String[]{"smelt"}), new boolean[]{true});
-        rubber = updateSolids(rubber, solid);
         rubber = updateRegistryKeys(rubber);
         objects.add(rubber);
     }

@@ -240,7 +240,6 @@ public abstract class ARecipeObject extends AData {
                 return;
             }
         }
-        error(key, this.NAME);
     }
     //return the whole array
     public RegistryData[] getItemsArray() {
