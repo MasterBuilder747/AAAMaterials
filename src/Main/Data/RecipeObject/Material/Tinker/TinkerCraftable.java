@@ -13,13 +13,13 @@ public class TinkerCraftable extends ATinkers {
             RecipeTweak tweak, Registry[] items, String[] liquids, String[] ores,
             Machine[] machines, MachineMatter[] matters, MachineData data,
             Material m,
-            boolean craftable, boolean castable, String icon, String oreDict, TCPart[] parts
+            boolean craftable, String icon, String oreDict, TCPart[] parts
     ) {
         super(
-                tweak, items, liquids, ores,
-                machines, matters, data,
-                m,
-                craftable, castable, icon, oreDict, parts
+            tweak, items, liquids, ores,
+            machines, matters, data,
+            m,
+            craftable, false, icon, oreDict, parts
         );
     }
 

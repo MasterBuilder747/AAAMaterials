@@ -3,6 +3,8 @@ package Main;
 import Main.Generators.*;
 import Main.Generators.GameData.*;
 import Main.Generators.RecipeObjects.Material.Solid.Tinkers.GTinkerCastable;
+import Main.Generators.RecipeObjects.Material.Solid.Tinkers.GTinkerCraftable;
+import Main.Generators.RecipeObjects.Material.Solid.Tinkers.GTinkerCustom;
 import Main.Generators.Tweakers.GModTweak;
 import Main.Generators.RecipeObjects.Localized.GBlock;
 import Main.Generators.RecipeObjects.Localized.GItem;
@@ -166,9 +168,13 @@ public class MainMaterials {
         bw.write(ore.registerMaterials());
 
         //8. Tinkers system
-        GTinkerCastable castable = new GTinkerCastable("TinkerCastable", REG, tweak, registry, liquids, oreDict, machine, matter, data, material, partGroup, tcParts, tcTraits, alloy, metal, plastic, rubber);
-        bw.write(castable.registerMaterials());
-
+        GTinkerCastable tCastable = new GTinkerCastable("TinkerCastable", REG, tweak, registry, liquids, oreDict, machine, matter, data, material, partGroup, tcParts, tcTraits, alloy, metal, plastic, rubber);
+        bw.write(tCastable.registerMaterials());
+        GTinkerCraftable tCraftable = new GTinkerCraftable("TinkerCraftable", REG, tweak, registry, liquids, oreDict, machine, matter, data, material, partGroup, tcParts, tcTraits);
+        bw.write(tCraftable.registerMaterials());
+        GTinkerCustom tCustom = new GTinkerCustom("TinkerCustom", REG, tweak, registry, liquids, oreDict, machine, matter, data, material, partGroup, tcParts, tcTraits);
+        bw.write(tCustom.registerMaterials());
+        
         //9. finish
         bw.close();
 

@@ -107,6 +107,7 @@ public class Util {
     //Strings
     public static String[] split(String s, String regex) {
         if (s.equals("")) return new String[0];
+        if (regex.equals(".")) return s.split("\\.");
         return s.split(regex+"\\s*");
     }
 

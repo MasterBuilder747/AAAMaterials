@@ -10,6 +10,8 @@ import Main.Data.RecipeObject.Material.AMaterialData;
 import Main.Data.Tweakers.RecipeTweak;
 import Main.Util;
 
+import java.util.ArrayList;
+
 public abstract class ATinkers extends AMaterialData {
     //this requires smelt to be implemented, the parts will be used here
     //the smelt parts must be registered before using this, so only buildRecipe will be used
@@ -75,7 +77,8 @@ public abstract class ATinkers extends AMaterialData {
 
     //TiC material parts
     //tool
-    boolean isTool;
+    boolean isHead;
+    boolean isToolHandleExtra;
     int headDurability;
     double miningSpeed;
     double attackDamage;
@@ -90,7 +93,8 @@ public abstract class ATinkers extends AMaterialData {
             int headDurability, double miningSpeed, double attackDamage, int harvestLevel, String[] headTraits,
             double handleModifier, int handleDurability, String[] handleTraits,
             int extraDurability, String[] extraTraits) {
-        this.isTool = true;
+        this.isHead = true;
+        this.isToolHandleExtra = true;
 
         this.headDurability = headDurability;
         this.miningSpeed = miningSpeed;
@@ -170,6 +174,7 @@ public abstract class ATinkers extends AMaterialData {
             int headDurability, double miningSpeed, double attackDamage, int harvestLevel, String[] headTraits
     ) {
         this.isArrowHead = true;
+        this.isHead = true;
 
         this.headDurability = headDurability;
         this.miningSpeed = miningSpeed;
@@ -229,35 +234,36 @@ public abstract class ATinkers extends AMaterialData {
             partType (Optional) which tool part the traits should be removed from
         */
 
-        //genTCMaterial(
-        //	//string name, string color, bool craftable, bool castable, IItemStack item, IOreDictEntry ore, ILiquidStack liquid
-        //	"Osmium", "0000ff", true, false, null, <ore:ingotOsmium>, <liquid:cotm_osmium_molten>,
-        //	//bool isTool, int headDurability, float miningSpeed, float attackDamage, int harvestLevel, string[] headTraits
-        //	false, 100, 5, 5, 3, ["autosmelt"],
-        //	//float handleModifier, int handleDurability, string[] handleTraits
-        //	1.0f, 10, [],
-        //	//int extraDurability, string[] extraTraits
-        //	10, [],
-        //	//float drawSpeed, float range, float bonusDamage, string[] bowTraits
-        //	0.0f, 1.0f, 1.0f, [],
-        //	//float stringModifier, string[] bowstringTraits
-        //	0.0f, [],
-        //	//float arrowModifier, int bonusAmmo, string[] shaftTraits
-        //	0.0f, 1, [],
-        //	//float accuracy, float fletchingModifier, string[] fletchingTraits
-        //	-1.0f, 1.0f, [],
-        //	//string[] coreTraits, string[] trimTraits, string[] platesTraits
-        //	[], [], []
-        //);
+        //material items to be used as TiC material
+        String[] items = new String[0];
+        String[] amountsNeeded = new String[0];
+        String[] amountsMatched = new String[0];
+        if (this.matItems != null) {
+            ArrayList<String> itemAA = new ArrayList<>();
+            ArrayList<String> amtNA = new ArrayList<>();
+            ArrayList<String> amtMA = new ArrayList<>();
+            for (TCMaterialItem t : matItems) {
+                itemAA.add(t.NAME);
+                amtNA.add(Integer.toString(t.amountNeeded));
+                amtMA.add(Integer.toString(t.amountMatched));
+            }
+            items = itemAA.toArray(new String[0]);
+            amountsNeeded = amtNA.toArray(new String[0]);
+            amountsMatched = amtMA.toArray(new String[0]);
+        }
+
         String iconNew = "<item:" + icon + ">";
-        if (icon.equals("null")) {
+        if (icon == null || icon.equals("null")) {
             iconNew = icon;
         }
-        return "genTCMaterial(\"" + Util.toUpper(m.NAME) + "\", \"" + m.color + "\", " + craftable + ", " + castable + ", " +
-                iconNew + ", <ore:" + oreDict + Util.toUpper(m.NAME) + ">, " + molten + ", " + isTool + ", " +
+        return "genTCMaterial(" +
+                //string name, string color, bool craftable, bool castable, IItemStack icon, IOreDictEntry ore, ILiquidStack liquid,
+                "\"" + Util.toUpper(m.NAME) + "\", \"" + m.color + "\", " + craftable + ", " + castable + ", " + iconNew + ", <ore:" + oreDict + Util.toUpper(m.NAME) + ">, " + molten + ", " +
+                //IItemStack[] items, int[] amtsNeeded, int[] amtsMatched,
+                createArray(items) + ", " + createArray(amountsNeeded) + ", " + createArray(amountsMatched) + ", " +
                 //Tools
-                //int headDurability, float miningSpeed, float attackDamage, int harvestLevel, string[] headTraits
-                headDurability + ", " + handleFloat(miningSpeed) + ", " + handleFloat(attackDamage) + ", " + harvestLevel + ", " + createArray(headTraits) + ", " +
+                //bool isHead, bool isToolHandleExtra, int headDurability, float miningSpeed, float attackDamage, int harvestLevel, string[] headTraits
+                isHead + ", " + isToolHandleExtra + ", " + headDurability + ", " + handleFloat(miningSpeed) + ", " + handleFloat(attackDamage) + ", " + harvestLevel + ", " + createArray(headTraits) + ", " +
                 //float handleModifier, int handleDurability, string[] handleTraits
                 handleFloat(handleModifier) + ", " + handleDurability + ", " + createArray(handleTraits) + ", " +
                 //int extraDurability, string[] extraTraits
@@ -289,6 +295,7 @@ public abstract class ATinkers extends AMaterialData {
             sb.append(s[i]);
             sb.append("\",");
         }
+        sb.append("\"");
         sb.append(s[s.length-1]);
         sb.append("\"]");
         return sb.toString();
