@@ -10,14 +10,24 @@ import java.util.ArrayList;
 
 public abstract class AGGameData<G extends AGameData> extends AGenerator<G> {
     final int minParams;
+    boolean normalFormat;
 
     public AGGameData(int PARAMS, String filename, int minParams) {
         super(PARAMS, filename, "Registry");
         this.minParams = minParams;
     }
+    public AGGameData(int PARAMS, String filename, int minParams, boolean normalFormat) {
+        super(PARAMS, filename, "Registry");
+        this.minParams = minParams;
+        this.normalFormat = normalFormat;
+    }
 
     @Override
     protected void readLine(BufferedReader br, String[] s) throws IOException {
+        if (normalFormat) {
+            readGameData(s);
+            return;
+        }
         if (minParams != -1 && s.length < minParams) error("Parameter amount must be " + minParams + " or greater");
         ArrayList<String> ss = new ArrayList<>();
         for (int i = 0; i < s.length; i++) {

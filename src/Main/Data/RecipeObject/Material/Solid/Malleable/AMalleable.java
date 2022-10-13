@@ -36,8 +36,14 @@ public abstract class AMalleable extends AMSolid {
     protected String getMolten() {
         return this.molten.getUnlocalized();
     }
+    public String getMoltenBracket() {
+        return this.molten.getBracket();
+    }
     protected String getMolten(int amount) {
         return getMolten()+"*" + amount;
+    }
+    public double getMelting() {
+        return this.meltingMultiplier;
     }
 
     @Override

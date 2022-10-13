@@ -17,11 +17,13 @@ import Main.Generators.RecipeObjects.Material.GMSolid;
 import Main.Generators.Tweakers.GRecipeTweak;
 
 public class GPlastic extends AGMalleable<Plastic> {
-    public GPlastic(String filename, boolean isReg,
-                    GRecipeTweak tweak, GRegistry registry, GLiquidRegistry liquids, GOreDictRegistry ores,
-                    GMachine machine, GMachineMatter matter, GMachineData data,
-                    GMaterial material, GPartGroup partGroup,
-                    GMSolid solid, GMLiquid liquid) {
+    public GPlastic(
+            String filename, boolean isReg,
+            GRecipeTweak tweak, GRegistry registry, GLiquidRegistry liquids, GOreDictRegistry ores,
+            GMachine machine, GMachineMatter matter, GMachineData data,
+            GMaterial material, GPartGroup partGroup,
+            GMSolid solid, GMLiquid liquid
+    ) {
         super(1, filename, isReg,
                 tweak, registry, liquids, ores,
                 machine, matter, data,

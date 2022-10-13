@@ -11,6 +11,7 @@ import Main.Data.RecipeObject.Material.Solid.Malleable.Alloy;
 import Main.Data.RecipeObject.Material.Solid.Malleable.Metal;
 import Main.Data.RecipeObject.Material.Solid.Malleable.Plastic;
 import Main.Data.RecipeObject.Material.Solid.Malleable.Rubber;
+import Main.Data.RecipeObject.Material.Tinker.ATinkers;
 
 //data > material
 public class Material extends AData {
@@ -62,7 +63,7 @@ public class Material extends AData {
         String type; //milk, meat, nut, cheese, oil, citrus, nonCitrus, vegetable, grain, seed, legume, yogurt, bread, pasta
 
     LFood LFood; //not a crop, does not have planting/farming ability, for cooking system/nutritional system, seasonal system (mostly for survival pack version)
-    Tinkers tinkers; //allows this material to have tinker's armor and tool materials, recipe only
+    ATinkers tinkers; //allows this material to have tinker's armor and tool materials, recipe only
     //Chicken chicken; //skyblock pack?
 
     public Material(String name, String localName, String color, String state) {

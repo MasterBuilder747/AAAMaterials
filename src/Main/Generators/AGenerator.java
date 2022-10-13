@@ -113,6 +113,14 @@ public abstract class AGenerator<D extends AData> {
         error("Unknown item from " + filename + "s.txt: " + s, true);
         return null;
     }
+    public D getNoError(String s) {
+        for (D o : objects) {
+            if (o.NAME.equals(s)) {
+                return o;
+            }
+        }
+        return null;
+    }
     public boolean is(String s) {
         for (D o : objects) {
             if (o.NAME.equals(s)) {

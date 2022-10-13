@@ -2,6 +2,7 @@ package Main;
 
 import Main.Generators.*;
 import Main.Generators.GameData.*;
+import Main.Generators.RecipeObjects.Material.Solid.Tinkers.GTinkerCastable;
 import Main.Generators.Tweakers.GModTweak;
 import Main.Generators.RecipeObjects.Localized.GBlock;
 import Main.Generators.RecipeObjects.Localized.GItem;
@@ -59,6 +60,10 @@ public class MainMaterials {
         foods.registerMaterials();
         GSoundRegistry sounds = new GSoundRegistry("soundregistry");
         sounds.registerMaterials();
+        GTCTraitRegistry tcTraits = new GTCTraitRegistry("TCTraitRegistrie");
+        tcTraits.registerMaterials();
+        GTCPartRegistry tcParts = new GTCPartRegistry("TCPartRegistrie");
+        tcParts.registerMaterials();
 
         //tweakers
         GModTweak modTweaks = new GModTweak("modstotweak", mods);
@@ -160,7 +165,11 @@ public class MainMaterials {
         GOre ore = new GOre("ore", REG, tweak, registry, liquids, oreDict, machine, matter, data, material, partGroup, mSolid, stone);
         bw.write(ore.registerMaterials());
 
-        //8. finish
+        //8. Tinkers system
+        GTinkerCastable castable = new GTinkerCastable("TinkerCastable", REG, tweak, registry, liquids, oreDict, machine, matter, data, material, partGroup, tcParts, tcTraits, alloy, metal, plastic, rubber);
+        bw.write(castable.registerMaterials());
+
+        //9. finish
         bw.close();
 
 

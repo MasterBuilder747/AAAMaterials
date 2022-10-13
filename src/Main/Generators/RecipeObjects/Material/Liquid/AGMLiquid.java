@@ -1,7 +1,6 @@
 package Main.Generators.RecipeObjects.Material.Liquid;
 
 import Main.Data.RecipeObject.Material.Liquid.AMLiquid;
-import Main.Data.Material;
 import Main.Generators.GMaterial;
 import Main.Generators.GPartGroup;
 import Main.Generators.GameData.GLiquidRegistry;
@@ -25,8 +24,6 @@ public abstract class AGMLiquid <L extends AMLiquid> extends AGMaterialData<L> {
                 machine, matter, data,
                 material, partGroup);
     }
-
-    protected abstract void readMaterialParameters(Material m, String[] s);
 
     public String localize() {
         StringBuilder sb = new StringBuilder();
