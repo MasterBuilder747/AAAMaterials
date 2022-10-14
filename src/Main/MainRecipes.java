@@ -2,6 +2,7 @@ package Main;
 
 import Main.Generators.*;
 import Main.Generators.GameData.*;
+import Main.Generators.GameData.Other.GJeiCategory;
 import Main.Generators.RecipeObjects.Localized.GBlock;
 import Main.Generators.RecipeObjects.Localized.GItem;
 import Main.Generators.RecipeObjects.Localized.GPart;
@@ -46,7 +47,7 @@ public class MainRecipes {
         //gamedata registries: required
         GRegistry registry = new GRegistry("registry");
         registry.registerRecipes();
-        GJCategory jeiC = new GJCategory("JEICategorie");
+        GJeiCategory jeiC = new GJeiCategory("JEICategorie");
         jeiC.registerRecipes();
         GModRegistry mods = new GModRegistry("modregistrie", registry, jeiC);
         mods.registerRecipes();

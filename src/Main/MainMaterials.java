@@ -2,6 +2,10 @@ package Main;
 
 import Main.Generators.*;
 import Main.Generators.GameData.*;
+import Main.Generators.GameData.Other.GJeiCategory;
+import Main.Generators.GameData.Tinker.GTCMaterialRegistry;
+import Main.Generators.GameData.Tinker.GTCPartRegistry;
+import Main.Generators.GameData.Tinker.GTCTraitRegistry;
 import Main.Generators.RecipeObjects.Material.Solid.Tinkers.GTinkerCastable;
 import Main.Generators.RecipeObjects.Material.Solid.Tinkers.GTinkerCraftable;
 import Main.Generators.RecipeObjects.Material.Solid.Tinkers.GTinkerCustom;
@@ -42,7 +46,7 @@ public class MainMaterials {
         //gamedata registries: most will not be needed
         GRegistry registry = new GRegistry("registry");
         registry.registerMaterials();
-        GJCategory jeiC = new GJCategory("JEICategorie");
+        GJeiCategory jeiC = new GJeiCategory("JEICategorie");
         jeiC.registerMaterials();
         GModRegistry mods = new GModRegistry("modregistrie", registry, jeiC);
         mods.registerMaterials();
@@ -62,10 +66,13 @@ public class MainMaterials {
         foods.registerMaterials();
         GSoundRegistry sounds = new GSoundRegistry("soundregistry");
         sounds.registerMaterials();
+        //TiC
         GTCTraitRegistry tcTraits = new GTCTraitRegistry("TCTraitRegistrie");
         tcTraits.registerMaterials();
         GTCPartRegistry tcParts = new GTCPartRegistry("TCPartRegistrie");
         tcParts.registerMaterials();
+        GTCMaterialRegistry tcMaterials = new GTCMaterialRegistry("TCMaterialRegistrie");
+        tcMaterials.registerMaterials();
 
         //tweakers
         GModTweak modTweaks = new GModTweak("modstotweak", mods);
@@ -76,7 +83,7 @@ public class MainMaterials {
         FileWriter fw = new FileWriter(Util.HOME + Util.DEPLOY + "scripts/materials" + ".zs");
         BufferedWriter bw = new BufferedWriter(fw);
 
-        //starting script code
+        //script header
         bw.write("""
                 #loader contenttweaker
                 import mods.contenttweaker.Material;
@@ -174,7 +181,7 @@ public class MainMaterials {
         bw.write(tCraftable.registerMaterials());
         GTinkerCustom tCustom = new GTinkerCustom("TinkerCustom", REG, tweak, registry, liquids, oreDict, machine, matter, data, material, partGroup, tcParts, tcTraits);
         bw.write(tCustom.registerMaterials());
-        
+
         //9. finish
         bw.close();
 

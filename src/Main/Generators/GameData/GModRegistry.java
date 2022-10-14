@@ -3,14 +3,15 @@ package Main.Generators.GameData;
 import Main.Data.GameData.JCategory;
 import Main.Data.GameData.ModRegistry;
 import Main.Data.GameData.Registry;
+import Main.Generators.GameData.Other.GJeiCategory;
 
 import java.util.ArrayList;
 
 public class GModRegistry extends AGGameData<ModRegistry> {
     GRegistry registry;
-    GJCategory cats;
+    GJeiCategory cats;
 
-    public GModRegistry(String filename, GRegistry registry, GJCategory cats) {
+    public GModRegistry(String filename, GRegistry registry, GJeiCategory cats) {
         super(2, filename, -1);
         this.registry = registry;
         this.cats = cats;

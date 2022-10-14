@@ -5,6 +5,8 @@ import Main.Data.RecipeObject.Material.Tinker.ATinkers;
 import Main.Generators.GMaterial;
 import Main.Generators.GPartGroup;
 import Main.Generators.GameData.*;
+import Main.Generators.GameData.Tinker.GTCPartRegistry;
+import Main.Generators.GameData.Tinker.GTCTraitRegistry;
 import Main.Generators.MachineResource.GMachine;
 import Main.Generators.MachineResource.GMachineData;
 import Main.Generators.MachineResource.GMachineMatter;
@@ -15,6 +17,8 @@ import Main.Util;
 public abstract class AGTinkers <T extends ATinkers> extends AGMaterialData<T> {
     GTCPartRegistry parts;
     GTCTraitRegistry traits;
+
+    int index; //depends on param amount
 
     /*
     TO DISABLE ARMOR:
@@ -43,6 +47,7 @@ public abstract class AGTinkers <T extends ATinkers> extends AGMaterialData<T> {
                 material, partGroup);
         this.parts = parts;
         this.traits = traits;
+        this.index = params - 6;
     }
 
     @Override
@@ -51,7 +56,7 @@ public abstract class AGTinkers <T extends ATinkers> extends AGMaterialData<T> {
         //part type syntax: type: param1; param2...
         //disable = type:false
         T t = readTinkerParameters(m, s);
-        String[] tool = handlePartStats(s[2], "tool");
+        String[] tool = handlePartStats(s[index], "tool");
         boolean isHead = false;
         if (tool != null) {
             isHead = true;
@@ -113,7 +118,7 @@ public abstract class AGTinkers <T extends ATinkers> extends AGMaterialData<T> {
         }
 
         //bow
-        String[] bow = handlePartStats(s[3], "bow");
+        String[] bow = handlePartStats(s[index+1], "bow");
         if (bow != null) {
             //bow:double drawSpeed; double range; double bonusDamage; String[.] bowTraits,
             if (bow.length == 4) {
@@ -131,7 +136,7 @@ public abstract class AGTinkers <T extends ATinkers> extends AGMaterialData<T> {
         }
 
         //string
-        String[] string = handlePartStats(s[4], "string");
+        String[] string = handlePartStats(s[index+2], "string");
         if (string != null) {
             //string:double stringModifier; String[.] bowstringTraits
             if (string.length == 2) {
@@ -145,7 +150,7 @@ public abstract class AGTinkers <T extends ATinkers> extends AGMaterialData<T> {
         }
 
         //shaft
-        String[] shaft = handlePartStats(s[5], "shaft");
+        String[] shaft = handlePartStats(s[index+3], "shaft");
         if (shaft != null) {
             //shaft:double arrowModifier; int bonusAmmo; String[.] shaftTraits
             if (shaft.length == 3) {
@@ -160,7 +165,7 @@ public abstract class AGTinkers <T extends ATinkers> extends AGMaterialData<T> {
         }
 
         //feather
-        String[] feather = handlePartStats(s[6], "feather");
+        String[] feather = handlePartStats(s[index+4], "feather");
         if (feather != null) {
             //feather:double accuracy; double fletchingModifier; String[.] fletchingTraits
             if (feather.length == 3) {
@@ -175,7 +180,7 @@ public abstract class AGTinkers <T extends ATinkers> extends AGMaterialData<T> {
         }
 
         //armor
-        String[] armor = handlePartStats(s[7], "armor");
+        String[] armor = handlePartStats(s[index+5], "armor");
         if (armor != null) {
             //armor:double coreDurability; double defense; double armorModifier; double platesDurability; double toughness; double armorExtraDurability;
             //String[.] coreTraits; String[.] trimTraits; String[.] platesTraits

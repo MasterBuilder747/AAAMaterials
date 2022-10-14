@@ -10,6 +10,8 @@ import Main.Data.RecipeObject.RecipeObjectException;
 import Main.Generators.GMaterial;
 import Main.Generators.GPartGroup;
 import Main.Generators.GameData.*;
+import Main.Generators.GameData.Tinker.GTCPartRegistry;
+import Main.Generators.GameData.Tinker.GTCTraitRegistry;
 import Main.Generators.MachineResource.GMachine;
 import Main.Generators.MachineResource.GMachineData;
 import Main.Generators.MachineResource.GMachineMatter;
@@ -112,8 +114,7 @@ public class GTinkerCastable extends AGTinkers<TinkerCastable> {
                 }
             }
         }
-        //required parameters
-        //material, bool addAutomaticCraftableRecipes, bool addAutomaticCastingRecipes, icon, oreDict(not including material, eg: ingot = ingotOsmium)
+        //material, bool addAutomaticCastingRecipes, icon/oreDict,
         return new TinkerCastable(
                 getRecipeTweak("TinkerCastable"), getItems(), getLiquids(), getOres(),
                 getMachineRegistry(), getMatterRegistry(), getDataRegistry(),

@@ -5,6 +5,8 @@ import Main.Data.RecipeObject.Material.Tinker.TinkerCraftable;
 import Main.Generators.GMaterial;
 import Main.Generators.GPartGroup;
 import Main.Generators.GameData.*;
+import Main.Generators.GameData.Tinker.GTCPartRegistry;
+import Main.Generators.GameData.Tinker.GTCTraitRegistry;
 import Main.Generators.MachineResource.GMachine;
 import Main.Generators.MachineResource.GMachineData;
 import Main.Generators.MachineResource.GMachineMatter;
@@ -18,7 +20,7 @@ public class GTinkerCraftable extends AGTinkers<TinkerCraftable> {
             GMaterial material, GPartGroup partGroup,
             GTCPartRegistry parts, GTCTraitRegistry traits
     ) {
-        super(8, filename, isReg,
+        super(7, filename, isReg,
             tweak, registry, liquids, ores,
             machine, matter, data,
             material, partGroup,
@@ -28,11 +30,12 @@ public class GTinkerCraftable extends AGTinkers<TinkerCraftable> {
 
     @Override
     protected TinkerCraftable readTinkerParameters(Material m, String[] s) {
+        //material, icon/oreDict(not including material, eg: ingot = ingotOsmium),
         return new TinkerCraftable(
                 getRecipeTweak("TinkerCraftable"), getItems(), getLiquids(), getOres(),
                 getMachineRegistry(), getMatterRegistry(), getDataRegistry(),
                 m,
-                parseBoolean(s[0]), null, s[1], parts.getPartRegistry() //todo: fix icon for craftable and custom
+                true, s[0], s[0], parts.getPartRegistry() //todo: fix icon for craftable and custom
         );
     }
 }

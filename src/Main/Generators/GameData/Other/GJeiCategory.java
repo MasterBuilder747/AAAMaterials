@@ -1,4 +1,4 @@
-package Main.Generators.GameData;
+package Main.Generators.GameData.Other;
 
 import Main.Data.GameData.JCategory;
 import Main.Generators.AGenerator;
@@ -6,8 +6,8 @@ import Main.Generators.AGenerator;
 import java.io.BufferedReader;
 import java.io.IOException;
 
-public class GJCategory extends AGenerator<JCategory> {
-    public GJCategory(String filename) {
+public class GJeiCategory extends AGenerator<JCategory> {
+    public GJeiCategory(String filename) {
         super(2, filename, "Registry/Other/");
     }
 

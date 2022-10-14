@@ -1,14 +1,18 @@
-package Main.Generators.GameData;
+package Main.Generators.GameData.Tinker;
 
 import Main.Data.GameData.TCPart;
+import Main.Generators.AGenerator;
 
-public class GTCPartRegistry extends AGGameData<TCPart> {
+import java.io.BufferedReader;
+import java.io.IOException;
+
+public class GTCPartRegistry extends AGenerator<TCPart> {
     public GTCPartRegistry(String filename) {
-        super(4, filename, -1, true);
+        super(4, filename, "Registry/Tinker/");
     }
 
     @Override
-    protected void readGameData(String[] s) {
+    protected void readLine(BufferedReader br, String[] s) throws IOException {
         String item = s[1]+">";
         if (item.contains(":")) {
             item = "<"+item;
