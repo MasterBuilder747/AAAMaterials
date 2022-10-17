@@ -3,6 +3,9 @@ package Main;
 import Main.Generators.*;
 import Main.Generators.GameData.*;
 import Main.Generators.GameData.Other.GJeiCategory;
+import Main.Generators.GameData.Tinker.GTCMaterialRegistry;
+import Main.Generators.GameData.Tinker.GTCPartRegistry;
+import Main.Generators.GameData.Tinker.GTCTraitRegistry;
 import Main.Generators.RecipeObjects.Localized.GBlock;
 import Main.Generators.RecipeObjects.Localized.GItem;
 import Main.Generators.RecipeObjects.Localized.GPart;
@@ -27,6 +30,9 @@ import Main.Generators.RecipeObjects.Material.Solid.Malleable.GAlloy;
 import Main.Generators.RecipeObjects.Material.Solid.Malleable.GMetal;
 import Main.Generators.RecipeObjects.Material.Solid.Malleable.GPlastic;
 import Main.Generators.RecipeObjects.Material.Solid.Malleable.GRubber;
+import Main.Generators.RecipeObjects.Material.Solid.Tinkers.GTinkerCastable;
+import Main.Generators.RecipeObjects.Material.Solid.Tinkers.GTinkerCraftable;
+import Main.Generators.RecipeObjects.Material.Solid.Tinkers.GTinkerCustom;
 import Main.Generators.Tweakers.GRecipeTweak;
 
 import java.io.BufferedWriter;
@@ -67,6 +73,13 @@ public class MainRecipes {
         foods.registerRecipes();
         GSoundRegistry sounds = new GSoundRegistry("soundregistry");
         sounds.registerRecipes();
+        //TiC registries
+        GTCTraitRegistry tcTraits = new GTCTraitRegistry("TCTraitRegistrie");
+        tcTraits.registerRecipes();
+        GTCPartRegistry tcParts = new GTCPartRegistry("TCPartRegistrie");
+        tcParts.registerRecipes();
+        GTCMaterialRegistry tcMaterials = new GTCMaterialRegistry("TCMaterialRegistrie");
+        tcMaterials.registerRecipes();
 
         //machine resources
         GMachine machine = new GMachine("machine", liquids);
@@ -154,11 +167,19 @@ public class MainRecipes {
         GOre ore = new GOre("ore", REG, tweak, registry, liquids, oreDict, machine, matter, data, material, partGroup, mSolid, stone);
         sb.append(ore.registerRecipes());
 
-        //8. custom machine recipes, only used in MainRecipes
+        //8. Tinkers system
+        GTinkerCastable tCastable = new GTinkerCastable("TinkerCastable", REG, tweak, registry, liquids, oreDict, machine, matter, data, material, partGroup, tcParts, tcTraits, alloy, metal, plastic, rubber);
+        sb.append(tCastable.registerRecipes());
+        GTinkerCraftable tCraftable = new GTinkerCraftable("TinkerCraftable", REG, tweak, registry, liquids, oreDict, machine, matter, data, material, partGroup, tcParts, tcTraits);
+        //sb.append(tCraftable.registerRecipes());
+        GTinkerCustom tCustom = new GTinkerCustom("TinkerCustom", REG, tweak, registry, liquids, oreDict, machine, matter, data, material, partGroup, tcParts, tcTraits);
+        //sb.append(tCustom.registerRecipes());
+
+        //9. custom machine recipes, only used in MainRecipes
         GMachineRecipe recipe = new GMachineRecipe("recipe", registry, liquids, oreDict, machine, data, matter);
         sb.append(recipe.registerRecipes());
 
-        //starting script code
+        //script header
         String header = """
                 #priority 0
                 

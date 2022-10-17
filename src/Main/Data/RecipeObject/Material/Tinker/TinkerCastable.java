@@ -34,4 +34,19 @@ public class TinkerCastable extends ATinkers {
         //machine
         return null;
     }
+
+    @Override
+    protected String customItemKey(String key) {
+        return null;
+    }
+
+    @Override
+    protected String customLiquidKey(String key) {
+        return null;
+    }
+
+    @Override
+    public void print() {
+
+    }
 }

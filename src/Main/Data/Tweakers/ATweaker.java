@@ -10,31 +10,34 @@ import java.io.*;
 public abstract class ATweaker extends AData {
     //this is a data object that is reading files (data object generator),
     //as tweaks are applied for multiple of something per file
-    String subFolder;
+    String readFolder;
     boolean writeToFile;
     String fileToWrite; //what is the name of the file we are writing to?
+    String writePath;
     int line = 1;
     final int PARAMS;
     final int MINPARAMS;
 
-    public ATweaker(int PARAMS, int MINPARAMS, String subFolder, String filename) {
+    public ATweaker(int PARAMS, int MINPARAMS, String readFolder, String filename) {
         super(filename); //unique file used by the data object
         this.PARAMS = PARAMS;
         this.MINPARAMS = MINPARAMS;
-        this.subFolder = subFolder; //the name of the object itself
+        this.readFolder = readFolder; //the name of the object itself
     }
-    public ATweaker(int PARAMS, int MINPARAMS, String subFolder, String filename, String fileToWrite) {
+    public ATweaker(int PARAMS, int MINPARAMS, String readFolder, String filename, String writePath, String fileToWrite) {
         super(filename); //unique file used by the data object
         this.PARAMS = PARAMS;
         this.MINPARAMS = MINPARAMS;
-        this.subFolder = subFolder; //the name of the object itself
+        this.readFolder = readFolder; //the name of the object itself
+
         this.writeToFile = true;
+        this.writePath = writePath;
         this.fileToWrite = fileToWrite;
     }
 
     private void build() throws IOException {
         FileReader fr;
-        String path = Util.HOME + "UserFiles/Tweaks/" + this.subFolder + "/" + this.NAME + ".txt";
+        String path = Util.HOME + "UserFiles/Tweaks/" + this.readFolder + "/" + this.NAME + ".txt";
         try {
             fr = new FileReader(path);
         } catch (FileNotFoundException e) {
@@ -49,7 +52,7 @@ public abstract class ATweaker extends AData {
                     if (this.PARAMS != -1 && s.length != this.PARAMS) throw new GeneratorException(path + ": " + this.PARAMS + " parameters expected at line " + line);
                     if (this.MINPARAMS != -1 && s.length < this.MINPARAMS) throw new GeneratorException(path + ": At least " + this.MINPARAMS + " parameters expected at line " + line);
                     if (this.writeToFile) {
-                        FileWriter fw = new FileWriter(Util.HOME + Util.DEPLOY + "scripts/tweaks/" + this.fileToWrite + ".zs");
+                        FileWriter fw = new FileWriter(Util.HOME + Util.DEPLOY + writePath + this.fileToWrite + ".zs");
                         BufferedWriter bw = new BufferedWriter(fw);
                         writeLine(s, bw);
                         bw.close();

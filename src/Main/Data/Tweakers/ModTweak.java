@@ -9,12 +9,12 @@ public class ModTweak extends ATweaker {
     ModRegistry mod; //this stores all the items from that mod
 
     public ModTweak(ModRegistry mod) {
-        super(-1,3, "ModTweak", mod.getUnlocalizedName(), mod.getUnlocalizedName()); //using the registry name of the mod to identify
+        super(-1,3, "ModTweak", mod.getUnlocalizedName(), "scripts/tweaks/", mod.getUnlocalizedName()); //using the registry name of the mod to identify
         this.mod = mod;
     }
     @Override
     protected void writeLine(String[] s, BufferedWriter bw) throws IOException {
-        bw.write("#modloaded " + this.subFolder + "\n\n");
+        bw.write("#modloaded " + this.readFolder + "\n\n");
         bw.write("""
                 import mods.contenttweaker.Material;
                 import mods.contenttweaker.MaterialSystem;
@@ -97,7 +97,7 @@ public class ModTweak extends ATweaker {
             }
             if (syntax != null) bw.write(syntax);
         } else {
-            throw new GeneratorException(this.subFolder + ".txt: Requires 3 or 4 parameters at line " + line);
+            throw new GeneratorException(this.readFolder + ".txt: Requires 3 or 4 parameters at line " + line);
         }
     }
 

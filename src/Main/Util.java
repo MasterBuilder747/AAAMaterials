@@ -5,6 +5,7 @@ import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Locale;
 
 public class Util {
@@ -81,6 +82,14 @@ public class Util {
             bw.write(sbs.get(j));
             bw.close();
         }
+    }
+
+    //print array
+    public static void printArray(String[] a) {
+        System.out.println(Arrays.toString(a));
+    }
+    public static void printArray(ArrayList<String> a) {
+        System.out.println(a.toString());
     }
 
     //get class with given string (only for our classes added)

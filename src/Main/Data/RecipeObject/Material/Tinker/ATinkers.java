@@ -308,14 +308,4 @@ public abstract class ATinkers extends AMaterialData {
             return s + ".0f";
         }
     }
-    @Override
-    public void print() {}
-    @Override
-    protected String customItemKey(String key) {
-        return null;
-    }
-    @Override
-    protected String customLiquidKey(String key) {
-        return null;
-    }
 }

@@ -68,7 +68,7 @@ public class GTinkerCastable extends AGTinkers<TinkerCastable> {
         }
         String molten = null;
         double meltingMultiplier = -1;
-        String ore = s[2];
+        String ore = s[1];
         String icon = null;
         if (a != null) {
             molten = a.getMoltenBracket();
