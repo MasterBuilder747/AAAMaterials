@@ -208,6 +208,31 @@ public abstract class ATinkers extends AMaterialData {
         this.trimTraits = trimTraits;
         this.platesTraits = platesTraits;
     }
+
+    //writes to TwC config file
+    public String exportArmorStats() {
+        //MaterialID:CoreDurability:Defense:Modifier:PlatesDurability:Toughness:ExtraDurability
+        //iron:12.0:15.0:0.85:5.0:0.0:3.5
+        if (isArmor) {
+            return "\t\t" +
+                    m.NAME + ":" +
+                    handleDouble(coreDurability) + ":" +
+                    handleDouble(defense) + ":" +
+                    handleDouble(armorModifier) + ":" +
+                    handleDouble(platesDurability) + ":" +
+                    handleDouble(toughness) + ":" +
+                    handleDouble(armorExtraDurability);
+        } else return "";
+    }
+
+    private String handleDouble(double d) {
+        String out = Double.toString(d);
+        if (out.contains(".")) {
+            return out;
+        } else {
+            return out+".0";
+        }
+    }
     
     //other setters
     public void addMaterialItems(TCMaterialItem[] matItems) {

@@ -17,7 +17,7 @@ public class TCPart extends AGameData {
 
     @Override
     public String getBracket() {
-        return this.registryName;
+        return this.registryName.substring(1, this.registryName.length()-1)+":"+this.amount;
     }
 
     @Override

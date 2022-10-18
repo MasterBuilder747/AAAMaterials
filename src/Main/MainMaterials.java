@@ -1,5 +1,6 @@
 package Main;
 
+import Main.Data.Tweakers.Config.ConfigParam;
 import Main.Generators.*;
 import Main.Generators.GameData.*;
 import Main.Generators.GameData.Other.GJeiCategory;
@@ -9,6 +10,7 @@ import Main.Generators.GameData.Tinker.GTCTraitRegistry;
 import Main.Generators.RecipeObjects.Material.Solid.Tinkers.GTinkerCastable;
 import Main.Generators.RecipeObjects.Material.Solid.Tinkers.GTinkerCraftable;
 import Main.Generators.RecipeObjects.Material.Solid.Tinkers.GTinkerCustom;
+import Main.Generators.Tweakers.GConfigTweak;
 import Main.Generators.Tweakers.GModTweak;
 import Main.Generators.RecipeObjects.Localized.GBlock;
 import Main.Generators.RecipeObjects.Localized.GItem;
@@ -34,6 +36,7 @@ import Main.Generators.RecipeObjects.Material.Solid.*;
 import Main.Generators.Tweakers.GRecipeTweak;
 
 import java.io.*;
+import java.util.ArrayList;
 
 public class MainMaterials {
     //files to be generated:
@@ -43,6 +46,12 @@ public class MainMaterials {
     public final static boolean REG = false;
 
     public static void main(String[] args) throws IOException {
+        //config tweaker (no requirements)
+        //however, each data file must have its data populated manually before registering
+        GConfigTweak config = new GConfigTweak("configstotweak");
+        //config param arrays
+        ArrayList<ConfigParam> ticParams = new ArrayList<>();
+
         //gamedata registries: most will not be needed
         GRegistry registry = new GRegistry("registry");
         registry.registerMaterials();
@@ -71,6 +80,7 @@ public class MainMaterials {
         tcTraits.registerMaterials();
         GTCPartRegistry tcParts = new GTCPartRegistry("TCPartRegistrie");
         tcParts.registerMaterials();
+        ticParams.add(new ConfigParam("string[]", "toolParts", tcParts.exportPartTweaks()));
         GTCMaterialRegistry tcMaterials = new GTCMaterialRegistry("TCMaterialRegistrie");
         tcMaterials.registerMaterials();
 
@@ -181,6 +191,22 @@ public class MainMaterials {
         bw.write(tCraftable.registerMaterials());
         GTinkerCustom tCustom = new GTinkerCustom("TinkerCustom", REG, tweak, registry, liquids, oreDict, machine, matter, data, material, partGroup, tcParts, tcTraits);
         bw.write(tCustom.registerMaterials());
+        //export armor stats to config
+        String castableArmorStats = tCastable.exportArmorStats();
+        if (!castableArmorStats.equals("")) {
+            castableArmorStats+="\n";
+        }
+        String craftableArmorStats = tCraftable.exportArmorStats();
+        if (!craftableArmorStats.equals("")) {
+            craftableArmorStats+="\n";
+        }
+        ticParams.add(
+                new ConfigParam("string[]", "armorStats",
+                        castableArmorStats+
+                        craftableArmorStats +
+                        tCustom.exportArmorStats()
+                )
+        );
 
         //9. finish
         bw.close();
@@ -208,7 +234,42 @@ public class MainMaterials {
         //close
         bw.close();
 
+
         //CONFIGS
+        //write config files
+        config.addData("tweakersConstruct", ticParams.toArray(new ConfigParam[0]));
+        config.registerMaterials();
+
+        //todo: conarm config for disabling armor and adding armor if armor only (disabling tools?)
+        /*
+        {
+            "toolOptions": {
+              "enableTool": false,
+              "enableHead": false,
+              "enableHandle": false,
+              "enableExtra": false
+            },
+            "rangedOptions": {
+              "enableRanged": false,
+              "enableBow": false,
+              "enableBowString": false,
+              "enableShaft": false,
+              "enableFletching": false,
+              "enableProjectile": false
+            },
+            "name": "osmium",
+            "material": true,
+            "fluid": false,
+            "traits": true,
+            "armorOptions": {
+              "enableArmor": true,
+              "enableCore": true,
+              "enablePlates": true,
+              "enableTrim": true
+            }
+          },
+         */
+
         //cofh world gen .json file
         fw = new FileWriter(Util.HOME + Util.DEPLOY + "config/cofh/world/01_aaaores.json");
         bw = new BufferedWriter(fw);

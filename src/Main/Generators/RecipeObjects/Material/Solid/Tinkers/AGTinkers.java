@@ -204,6 +204,16 @@ public abstract class AGTinkers <T extends ATinkers> extends AGMaterialData<T> {
     }
     protected abstract T readTinkerParameters(Material m, String[] s);
 
+    //export armorStats to config file after registration
+    public String exportArmorStats() {
+        StringBuilder sb = new StringBuilder();
+        for (int i = 0; i < this.objects.size(); i++) {
+            sb.append(this.objects.get(i).exportArmorStats());
+            if (i < this.objects.size()-1) sb.append("\n");
+        }
+        return sb.toString();
+    }
+
     private String[] handlePartStats(String ss, String type) {
         //part type syntax:
         //type: param1; param2...

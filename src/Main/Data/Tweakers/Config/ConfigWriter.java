@@ -1,4 +1,4 @@
-package Main.Data.Tweakers;
+package Main.Data.Tweakers.Config;
 
 import Main.Util;
 
@@ -32,7 +32,7 @@ public class ConfigWriter {
             bw.write(texts[i]);
             if (i < texts.length-1) {
                 bw.write(datas[i]);
-                bw.write("\n");
+                if (i < datas.length-1) bw.write("\n");
             }
         }
         bw.close();

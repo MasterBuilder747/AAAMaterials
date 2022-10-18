@@ -26,4 +26,15 @@ public class GTCPartRegistry extends AGenerator<TCPart> {
     public TCPart[] getPartRegistry() {
         return this.objects.toArray(new TCPart[0]);
     }
+
+    //called after registration
+    public String exportPartTweaks() {
+        StringBuilder sb = new StringBuilder();
+        for (int i = 0; i < this.objects.size(); i++) {
+            sb.append("\t\t");
+            sb.append(this.objects.get(i).getBracket());
+            if (i < this.objects.size()-1) sb.append("\n");
+        }
+        return sb.toString();
+    }
 }

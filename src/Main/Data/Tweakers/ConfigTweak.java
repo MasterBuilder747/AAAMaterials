@@ -1,5 +1,7 @@
 package Main.Data.Tweakers;
 
+import Main.Data.Tweakers.Config.ConfigParam;
+import Main.Data.Tweakers.Config.ConfigWriter;
 import Main.Generators.GeneratorException;
 import Main.Util;
 
@@ -8,32 +10,33 @@ import java.util.ArrayList;
 
 public class ConfigTweak extends ATweaker {
     String[] types = {"string", "string[]", "int", "int[]", "bool", "bool[]", "double", "double[]"}; //float?
+    ConfigParam[] params;
 
     public ConfigTweak(String fileToRead, String subFolder, String fileToWrite) {
         super(-1, -1, "ConfigTweak", fileToRead, subFolder, fileToWrite);
     }
 
-    private String getConfigData(String s) {
-        return "";
+    public void addData(ConfigParam[] params) {
+        this.params = params;
+        for (ConfigParam p : this.params) {
+            if (!checkType(p.type)) {
+                throw new GeneratorException(this.NAME + ": Unknown type " + p.type + " for parameter " + p.name);
+            }
+        }
     }
 
-    private void writeLine(String s, BufferedWriter bw) {
-        //<>BREAK:string[]<>
-        //S:"Toolpart Cost"
-        //tconstruct:tool_rod:0.5
-
-
-        //<>BREAK:string[]<>
-        //S:"Armory Stat Tweaks"
-        //iron:12.0:15.0:0.85:5.0:0.0:3.5
-
+    private String getConfigData(String s) {
+        for (ConfigParam p : this.params) {
+            if (p.name.equals(s)) {
+                return p.data;
+            }
+        }
+        throw new GeneratorException(this.NAME + ": Unknown parameter of name " + s);
     }
 
     private boolean checkType(String s) {
         for (String t : this.types) {
-            if (s.equals(t)) {
-                return true;
-            }
+            if (s.equals(t)) return true;
         }
         return false;
     }
@@ -59,8 +62,10 @@ public class ConfigTweak extends ATweaker {
                 if (s.startsWith("<>BREAK:")) { //does not work with inline! Must be new line for now
                     text.add(sb.toString());
                     sb = new StringBuilder();
-                    if (checkType(s.substring(8))) data.add("TEST"+getConfigData(s));
-                    else throw new IllegalArgumentException(this.NAME + ".txt: Unknown type " + s.substring(8) + " at line " + line);
+                    String varType = s.substring(8, s.indexOf(";"));
+                    String varName = s.substring(s.indexOf(";")+1);
+                    if (checkType(varType)) data.add(getConfigData(varName));
+                    else throw new IllegalArgumentException(this.NAME + ".txt: Unknown type " + varType + " at line " + line);
                 } else {
                     sb.append(s);
                     sb.append("\n");
@@ -73,7 +78,6 @@ public class ConfigTweak extends ATweaker {
         }
         String[] texts = text.toArray(new String[0]);
         String[] datas = data.toArray(new String[0]);
-        Util.printArray(data);
         ConfigWriter cw = new ConfigWriter(this.writePath, this.fileToWrite);
         cw.addData(texts, datas);
         cw.write();
