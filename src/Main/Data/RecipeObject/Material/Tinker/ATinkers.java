@@ -282,8 +282,8 @@ public abstract class ATinkers extends AMaterialData {
             iconNew = icon;
         }
         return "genTCMaterial(" +
-                //string name, string color, bool craftable, bool castable, IItemStack icon, IOreDictEntry ore, ILiquidStack liquid,
-                "\"" + Util.toUpper(m.NAME) + "\", \"" + m.color + "\", " + craftable + ", " + castable + ", " + iconNew + ", <ore:" + oreDict + Util.toUpper(m.NAME) + ">, " + molten + ", " +
+                //string name, string localName, string color, bool craftable, bool castable, IItemStack icon, IOreDictEntry ore, ILiquidStack liquid,
+                "\"" + m.NAME + "_cot\", \"" + Util.toUpper(m.NAME) + "\", \"" + m.color + "\", " + craftable + ", " + castable + ", " + iconNew + ", <ore:" + oreDict + Util.toUpper(m.NAME) + ">, " + molten + ", " +
                 //IItemStack[] items, int[] amtsNeeded, int[] amtsMatched,
                 createArray(items) + ", " + createArray(amountsNeeded) + ", " + createArray(amountsMatched) + ", " +
                 //Tools

@@ -84,9 +84,6 @@ public class ConfigTweak extends ATweaker {
     }
 
     @Override
-    public void print() {}
-
-    @Override
     public String buildMaterial() {
         try {
             build();
@@ -104,6 +101,9 @@ public class ConfigTweak extends ATweaker {
         }
         return "";
     }
+
+    @Override
+    public void print() {}
 
     //does not get called
     @Override

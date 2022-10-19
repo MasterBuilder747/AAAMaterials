@@ -26,7 +26,7 @@ public class ConfigWriter {
     }
 
     public void write() throws IOException {
-        FileWriter fw = new FileWriter(path + this.filename + ".cfg");
+        FileWriter fw = new FileWriter(path + this.filename);
         BufferedWriter bw = new BufferedWriter(fw);
         for (int i = 0; i < texts.length; i++) {
             bw.write(texts[i]);

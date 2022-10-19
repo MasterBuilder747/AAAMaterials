@@ -242,21 +242,6 @@ public class MainMaterials {
 
         //todo: conarm config for disabling armor and adding armor if armor only (disabling tools?)
         /*
-        {
-            "toolOptions": {
-              "enableTool": false,
-              "enableHead": false,
-              "enableHandle": false,
-              "enableExtra": false
-            },
-            "rangedOptions": {
-              "enableRanged": false,
-              "enableBow": false,
-              "enableBowString": false,
-              "enableShaft": false,
-              "enableFletching": false,
-              "enableProjectile": false
-            },
             "name": "osmium",
             "material": true,
             "fluid": false,
@@ -266,8 +251,6 @@ public class MainMaterials {
               "enableCore": true,
               "enablePlates": true,
               "enableTrim": true
-            }
-          },
          */
 
         //cofh world gen .json file
