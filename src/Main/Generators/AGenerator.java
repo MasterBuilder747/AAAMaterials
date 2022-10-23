@@ -101,8 +101,8 @@ public abstract class AGenerator<D extends AData> {
     public ArrayList<D> getObjects() {
         return this.objects;
     }
-    public void replace(String s, D o) {
-        this.objects.set(this.objects.indexOf(this.get(s)), o);
+    public void replace(D o) {
+        this.objects.set(this.objects.indexOf(this.get(o.NAME)), o);
     }
     public D get(String s) {
         for (D o : objects) {

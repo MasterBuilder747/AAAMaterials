@@ -181,7 +181,6 @@ public class GStone extends AGMSolid<Stone> {
         } else {
             //custom
         }
-        st = updateSolids(st, solid);
         st.setTooltipExclusions(new String[]{
                 "dust", "dustSmall", "dustTiny",
                 "dustFine", "dustFineSmall", "dustFineTiny",

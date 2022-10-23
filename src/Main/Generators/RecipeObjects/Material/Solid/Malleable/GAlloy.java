@@ -42,7 +42,6 @@ public class GAlloy extends AGMalleable<Alloy> {
                 m,
                 molten);
         boolean smelt = Boolean.parseBoolean(s[0]);
-        alloy = updateSolids(alloy, solid);
         alloy.setTooltipExclusions(new String[]{
                 "dust", "dustSmall", "dustTiny",
                 "dustFine", "dustFineSmall", "dustFineTiny",

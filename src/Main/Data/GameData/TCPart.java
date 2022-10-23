@@ -1,8 +1,8 @@
 package Main.Data.GameData;
 
 public class TCPart extends AGameData {
-    String type;
-    double amount;
+    public String type;
+    public double amount;
 
     public TCPart(String name, String item, String type, double amount) {
         super(name, item);
@@ -15,6 +15,7 @@ public class TCPart extends AGameData {
         System.out.println(this.NAME + "; " + this.registryName + "; " + this.type + "; " + this.amount);
     }
 
+    //registry name already has brackets
     @Override
     public String getBracket() {
         return this.registryName.substring(1, this.registryName.length()-1)+":"+this.amount;
@@ -23,5 +24,10 @@ public class TCPart extends AGameData {
     @Override
     public String getUnlocalizedName() {
         return this.registryName;
+    }
+
+    public String getTCPartRegistry(String materialName) {
+        //<tconstruct:tough_tool_rod>.withTag({Material: "osmium_cot"})
+        return this.registryName+".withTag({Material: \"" + materialName + "\"})";
     }
 }

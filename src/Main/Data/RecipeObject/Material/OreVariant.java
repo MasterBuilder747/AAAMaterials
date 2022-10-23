@@ -49,7 +49,7 @@ public class OreVariant extends AMaterialData {
     @Override
     public void print() {
         System.out.println(block + ":");
-        this.printNames();
+        //this.printNames();
     }
 
     @Override
@@ -86,11 +86,13 @@ public class OreVariant extends AMaterialData {
                     String[] p = Util.split(r, ",");
                     for (Stone s : this.stones) {
                         //can add custom parameters if needed
-                        sb.append(addRecipe(
-                                i, p[0], parseInt(p[1]), parseInt(p[2]), parseDouble(p[3]), p[4], p[5],
-                                parseInt(p[6]), parseInt(p[7]),
+                        sb.append(
+                            addRecipe(
+                                i, p[0], parseInt(p[1]), parseInt(p[2]), parseDouble(p[3]),
+                                p[4], p[5], parseInt(p[6]), parseInt(p[7]),
                                 getStoneData(p[8], s), getStoneData(p[9], s), getStoneData(p[10], s), getStoneData(p[11], s)
-                        ));
+                            )
+                        );
                     }
                 }
                 return sb.toString();
@@ -106,17 +108,26 @@ public class OreVariant extends AMaterialData {
             for (int i = 0; i < ss.length; i++) {
                 String sss = ss[i];
                 if (sss.startsWith("$")) {
-                    sb.append("<>").append(stone.getUnlocalizedByKey(sss.substring(1)));
+                    sb.append("<><").append(stone.getUnlocalizedByKey(sss.substring(1))).append(">");
                 } else if (sss.startsWith("+")) {
-                    sb.append("<>").append(this.getUnlocalizedByKey(stone.NAME + sss.substring(1)));
+                    sb.append("<><").append(this.getUnlocalizedByKey(stone.NAME + sss.substring(1))).append(">");
                 } else {
-                    sb.append(sss);
+                    if (sss.startsWith("<>")) { //use normal key (non-variant)
+                        sb.append(sss.substring(2));
+                    } else {
+                        sb.append(block).append("_").append(sss);
+                    }
                 }
                 if (i != ss.length-1) sb.append("; ");
             }
             return sb.toString();
+        } else if (s.startsWith("<>")) { //use normal key (non-variant)
+            return s.substring(2);
+        } else if (s.equals("-")) {
+            return s;
+        } else {
+            return this.block+"_"+s;
         }
-        return s;
     }
 
     @Override

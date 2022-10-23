@@ -21,7 +21,7 @@ public class GTinkerCustom extends AGTinkers<TinkerCustom> {
             GTCPartRegistry parts, GTCTraitRegistry traits
     ) {
         super(
-            9, filename, isReg,
+            11, filename, isReg,
             tweak, registry, liquids, ores,
             machine, matter, data,
             material, partGroup,
@@ -36,7 +36,7 @@ public class GTinkerCustom extends AGTinkers<TinkerCustom> {
                 getRecipeTweak("TinkerCustom"), getItems(), getLiquids(), getOres(),
                 getMachineRegistry(), getMatterRegistry(), getDataRegistry(),
                 m,
-                parseBoolean(s[0]), parseBoolean(s[1]), s[2], s[2], parts.getPartRegistry() //todo: fix icon for craftable and custom
+                parseBoolean(s[0]), parseBoolean(s[1]), s[2], s[2], parts.getPartRegistry()
         );
     }
 }

@@ -53,12 +53,15 @@ public abstract class ATinkers extends AMaterialData {
     //material icon
     String icon; //itemStack of item to be used from custom mod later
     String oreDict; //oredictionary entry for the "icon"  (ex: = ingot) then material name is added
-    TCMaterialItem[] matItems; //an array of additional items and their amount of material added
+
+    //material items
+    String[] matItems;
+    int[] amountNeeded, amountMatched;
 
     //automatic crafting recipes
     boolean craftable; //recipes are added through CoT
     boolean castable; //recipes won't be auto-added through CoT: we will use our own recipes here
-    String molten; //liquidStack being used but it won't be added to the function, only used in recipes
+    String molten; //liquidStack being used, but it won't be added to the function, only used in recipes (includes: <liquid:MOLTEN_REGISTRY>)
     TCPart[] parts; //part registry for recipes
 
     public ATinkers(RecipeTweak tweak, Registry[] items, String[] liquids, String[] ores,
@@ -76,7 +79,7 @@ public abstract class ATinkers extends AMaterialData {
     }
 
     //TiC material parts
-    //tool
+    //head and arrowHead
     boolean isHead;
     boolean isToolHandleExtra;
     int headDurability;
@@ -84,23 +87,30 @@ public abstract class ATinkers extends AMaterialData {
     double attackDamage;
     int harvestLevel;
     String[] headTraits;
-    double handleModifier;
-    int handleDurability;
-    String[] handleTraits;
-    int extraDurability;
-    String[] extraTraits;
-    public void setToolStats(
-            int headDurability, double miningSpeed, double attackDamage, int harvestLevel, String[] headTraits,
-            double handleModifier, int handleDurability, String[] handleTraits,
-            int extraDurability, String[] extraTraits) {
+    boolean isArrowHead;
+    public void setHeadStats(
+            int headDurability, double miningSpeed, double attackDamage, int harvestLevel, String[] headTraits, boolean isArrowHead
+    ) {
         this.isHead = true;
-        this.isToolHandleExtra = true;
+        this.isArrowHead = isArrowHead;
 
         this.headDurability = headDurability;
         this.miningSpeed = miningSpeed;
         this.attackDamage = attackDamage;
         this.harvestLevel = harvestLevel;
         this.headTraits = headTraits;
+    }
+
+    //handle-extra
+    double handleModifier;
+    int handleDurability;
+    String[] handleTraits;
+    int extraDurability;
+    String[] extraTraits;
+    public void setExtraStats(
+            double handleModifier, int handleDurability, String[] handleTraits,
+            int extraDurability, String[] extraTraits) {
+        this.isToolHandleExtra = true;
 
         this.handleModifier = handleModifier;
         this.handleDurability = handleDurability;
@@ -112,7 +122,8 @@ public abstract class ATinkers extends AMaterialData {
 
     //bow
     boolean isBow;
-    double drawSpeed, range, bonusDamage;
+    double drawSpeed = -1;
+    double range, bonusDamage;
     String[] bowTraits;
     public void setBowStats(
             double drawSpeed,
@@ -155,7 +166,8 @@ public abstract class ATinkers extends AMaterialData {
 
     //fletching
     boolean isFeather;
-    double accuracy, fletchingModifier;
+    double accuracy = -1;
+    double fletchingModifier;
     String[] fletchingTraits;
     public void setFeatherStats(
             double accuracy,
@@ -166,21 +178,6 @@ public abstract class ATinkers extends AMaterialData {
         this.accuracy = accuracy;
         this.fletchingModifier = fletchingModifier;
         this.fletchingTraits = fletchingTraits;
-    }
-
-    //arrowHead
-    boolean isArrowHead;
-    public void setArrowHeadStats(
-            int headDurability, double miningSpeed, double attackDamage, int harvestLevel, String[] headTraits
-    ) {
-        this.isArrowHead = true;
-        this.isHead = true;
-
-        this.headDurability = headDurability;
-        this.miningSpeed = miningSpeed;
-        this.attackDamage = attackDamage;
-        this.harvestLevel = harvestLevel;
-        this.headTraits = headTraits;
     }
 
     boolean isArmor;
@@ -215,7 +212,7 @@ public abstract class ATinkers extends AMaterialData {
         //iron:12.0:15.0:0.85:5.0:0.0:3.5
         if (isArmor) {
             return "\t\t" +
-                    m.NAME + ":" +
+                    m.NAME + "_cot:" +
                     handleDouble(coreDurability) + ":" +
                     handleDouble(defense) + ":" +
                     handleDouble(armorModifier) + ":" +
@@ -224,7 +221,6 @@ public abstract class ATinkers extends AMaterialData {
                     handleDouble(armorExtraDurability);
         } else return "";
     }
-
     private String handleDouble(double d) {
         String out = Double.toString(d);
         if (out.contains(".")) {
@@ -233,10 +229,44 @@ public abstract class ATinkers extends AMaterialData {
             return out+".0";
         }
     }
+
+    protected TCPart[] getEnabledTCParts() {
+        ArrayList<TCPart> out = new ArrayList<>();
+        for (TCPart p : this.parts) {
+            //types: armor, head, tool, bow, string, feather, shaft, arrow, armor, other
+            switch (p.type) {
+                case "head" -> {
+                    if (isHead) out.add(p);
+                }
+                case "tool" -> {
+                    if (isToolHandleExtra) out.add(p);
+                }
+                case "bow" -> {
+                    if (isBow) out.add(p);
+                }
+                case "string" -> {
+                    if (isString) out.add(p);
+                }
+                case "feather" -> {
+                    if (isFeather) out.add(p);
+                }
+                case "shaft" -> {
+                    if (isShaft) out.add(p);
+                }
+                case "arrow" -> {
+                    if (isArrowHead) out.add(p);
+                }
+                default -> out.add(p);
+            }
+        }
+        return out.toArray(new TCPart[0]);
+    }
     
-    //other setters
-    public void addMaterialItems(TCMaterialItem[] matItems) {
+    //todo: add material items
+    public void addMaterialItems(String[] matItems, int[] amountNeeded, int[] amountMatched) {
         this.matItems = matItems;
+        this.amountNeeded = amountNeeded;
+        this.amountMatched = amountMatched;
     }
 
     @Override
@@ -259,33 +289,13 @@ public abstract class ATinkers extends AMaterialData {
             partType (Optional) which tool part the traits should be removed from
         */
 
-        //material items to be used as TiC material
-        String[] items = new String[0];
-        String[] amountsNeeded = new String[0];
-        String[] amountsMatched = new String[0];
-        if (this.matItems != null) {
-            ArrayList<String> itemAA = new ArrayList<>();
-            ArrayList<String> amtNA = new ArrayList<>();
-            ArrayList<String> amtMA = new ArrayList<>();
-            for (TCMaterialItem t : matItems) {
-                itemAA.add(t.NAME);
-                amtNA.add(Integer.toString(t.amountNeeded));
-                amtMA.add(Integer.toString(t.amountMatched));
-            }
-            items = itemAA.toArray(new String[0]);
-            amountsNeeded = amtNA.toArray(new String[0]);
-            amountsMatched = amtMA.toArray(new String[0]);
-        }
-
-        String iconNew = "<item:" + icon + ">";
-        if (icon == null || icon.equals("null")) {
-            iconNew = icon;
-        }
+        //we have to hardcode the icon because it cannot be obtained from the material phase
+        String iconNew = "<item:contenttweaker:" + m.NAME + "_"+ icon + ":0>";
         return "genTCMaterial(" +
                 //string name, string localName, string color, bool craftable, bool castable, IItemStack icon, IOreDictEntry ore, ILiquidStack liquid,
                 "\"" + m.NAME + "_cot\", \"" + Util.toUpper(m.NAME) + "\", \"" + m.color + "\", " + craftable + ", " + castable + ", " + iconNew + ", <ore:" + oreDict + Util.toUpper(m.NAME) + ">, " + molten + ", " +
                 //IItemStack[] items, int[] amtsNeeded, int[] amtsMatched,
-                createArray(items) + ", " + createArray(amountsNeeded) + ", " + createArray(amountsMatched) + ", " +
+                createItemArray(matItems) + ", " + createArray(amountNeeded) + ", " + createArray(amountMatched) + ", " +
                 //Tools
                 //bool isHead, bool isToolHandleExtra, int headDurability, float miningSpeed, float attackDamage, int harvestLevel, string[] headTraits
                 isHead + ", " + isToolHandleExtra + ", " + headDurability + ", " + handleFloat(miningSpeed) + ", " + handleFloat(attackDamage) + ", " + harvestLevel + ", " + createArray(headTraits) + ", " +
@@ -309,6 +319,7 @@ public abstract class ATinkers extends AMaterialData {
                 createArray(coreTraits) + ", " + createArray(trimTraits) + ", " + createArray(platesTraits) + ");\n";
     }
 
+    //string array
     private String createArray(String[] s) {
         if (s == null || s.length == 0) {
             return "[]";
@@ -318,11 +329,41 @@ public abstract class ATinkers extends AMaterialData {
         for (int i = 0; i < s.length-1; i++) {
             sb.append("\"");
             sb.append(s[i]);
-            sb.append("\",");
+            sb.append("\", ");
         }
         sb.append("\"");
         sb.append(s[s.length-1]);
         sb.append("\"]");
+        return sb.toString();
+    }
+    //int array
+    private String createArray(int[] s) {
+        if (s == null || s.length == 0) {
+            return "[]";
+        }
+        StringBuilder sb = new StringBuilder();
+        sb.append("[");
+        for (int i = 0; i < s.length-1; i++) {
+            sb.append(s[i]);
+            sb.append(", ");
+        }
+        sb.append(s[s.length-1]);
+        sb.append("]");
+        return sb.toString();
+    }
+    //string array with no quotes (for IItemStack, etc)
+    private String createItemArray(String[] s) {
+        if (s == null || s.length == 0) {
+            return "[]";
+        }
+        StringBuilder sb = new StringBuilder();
+        sb.append("[");
+        for (int i = 0; i < s.length-1; i++) {
+            sb.append(s[i]);
+            sb.append(", ");
+        }
+        sb.append(s[s.length-1]);
+        sb.append("]");
         return sb.toString();
     }
     private static String handleFloat(double d) {

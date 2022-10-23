@@ -44,7 +44,6 @@ public class GRubber extends AGMalleable<Rubber> {
                 this.genPartGroups(new String[]{
                         "scrap", "plate", "smelt", "rod", "beam", "conductive", "machine", "special_plate", "coiled_rod", "blast", "assembled"
                 }));
-        rubber = updateSolids(rubber, solid);
         rubber.setTooltipExclusions(new String[]{
                 "dust", "dustSmall", "dustTiny",
                 "dustFine", "dustFineSmall", "dustFineTiny",

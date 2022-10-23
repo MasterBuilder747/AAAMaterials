@@ -29,10 +29,24 @@ public class TinkerCastable extends ATinkers {
 
     @Override
     protected String buildSpecificRecipe() {
+        TCPart[] tcParts = this.getEnabledTCParts();
+        StringBuilder sb = new StringBuilder();
         //melting
+        int i = 0;
+        for (TCPart p : tcParts) {
+            sb.append(
+                addRecipe(
+                    i, "melting", 1, (int)(p.amount * 60), 0.5,
+                    "+red*100", "-orange*100", 100, 100,
+                    "<>"+p.getTCPartRegistry(m.NAME+"_cot"), "-", "-", "^molten(" + (int)(p.amount * 144 * this.meltingMultiplier) + ")"
+                )
+            );
+            i++;
+        }
+
         //casting
         //machine
-        return null;
+        return sb.toString();
     }
 
     @Override
@@ -42,11 +56,18 @@ public class TinkerCastable extends ATinkers {
 
     @Override
     protected String customLiquidKey(String key) {
-        return null;
+        if (key.startsWith("molten")) {
+            int amount = 1;
+            if (key.contains("(") && key.contains(")")) {
+                amount = parseInt(key.substring(key.indexOf("(")+1, key.indexOf(")")));
+            }
+            return molten.substring(8, molten.length()-1)+"*"+((int)(amount * this.meltingMultiplier));
+        } else {
+            error("Unknown key: " + key);
+            return null;
+        }
     }
 
     @Override
-    public void print() {
-
-    }
+    public void print() {}
 }

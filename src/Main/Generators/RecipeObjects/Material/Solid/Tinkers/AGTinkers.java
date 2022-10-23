@@ -14,6 +14,8 @@ import Main.Generators.RecipeObjects.Material.AGMaterialData;
 import Main.Generators.Tweakers.GRecipeTweak;
 import Main.Util;
 
+import java.util.ArrayList;
+
 public abstract class AGTinkers <T extends ATinkers> extends AGMaterialData<T> {
     GTCPartRegistry parts;
     GTCTraitRegistry traits;
@@ -21,10 +23,10 @@ public abstract class AGTinkers <T extends ATinkers> extends AGMaterialData<T> {
     int index; //depends on param amount
 
     /*
-    TO DISABLE ARMOR:
+    TO DISABLE ARMOR: (not done automatically, must do manually)
 
     set this in conarm-config.json:
-    "name": "osmium", //match this to the material name
+    "name": "osmium",
     "material": true,
     "fluid": false,
     "traits": true,
@@ -47,158 +49,132 @@ public abstract class AGTinkers <T extends ATinkers> extends AGMaterialData<T> {
                 material, partGroup);
         this.parts = parts;
         this.traits = traits;
-        this.index = params - 6;
+        this.index = params - 7;
     }
 
     @Override
     protected void readMaterialParameters(Material m, String[] s) {
-        //tools
+        T t = readTinkerParameters(m, s);
+
+        //add material items here
+        String[] mItems = handleItemArray(s[2]);
+        ArrayList<String> matItems = new ArrayList<>();
+        ArrayList<Integer> amountNeeded = new ArrayList<>();
+        ArrayList<Integer> amountMatched = new ArrayList<>();
+        for (String mat : mItems) {
+            String[] mm = Util.split(mat, "=");
+            //<item:mod:registry:meta>
+
+            matItems.add(mm[0]);
+            amountNeeded.add(parseInt(mm[1]));
+            amountMatched.add(parseInt(mm[2]));
+        }
+        t.addMaterialItems(matItems.toArray(new String[0]), Util.toIntArray(amountNeeded), Util.toIntArray(amountMatched));
+
         //part type syntax: type: param1; param2...
         //disable = type:false
-        T t = readTinkerParameters(m, s);
-        String[] tool = handlePartStats(s[index], "tool");
+        
+        //head:
+        String[] head = handlePartStats(s[index], "head");
         boolean isHead = false;
-        if (tool != null) {
+        //int headDurability; double miningSpeed; double attackDamage; int harvestLevel; String[.] headTraits; bool addArrow;
+        if (head != null) {
             isHead = true;
-            switch (tool.length) {
-                case 5 ->
-                    //head stats only, for arrowHeads
-                    //tool:int headDurability; double miningSpeed; double attackDamage; int harvestLevel; String[.] headTraits,
-                        t.setArrowHeadStats(
-                                parseInt(tool[0]),
-                                parseDouble(tool[1]),
-                                parseDouble(tool[2]),
-                                parseInt(tool[3]),
-                                handleTraits(tool[4])
-                        );
-                case 6 -> {
-                    //head stats only, for arrowHeads and bowLimb
-                    //tool:int headDurability; double miningSpeed; double attackDamage; int harvestLevel; String[.] headTraits; bool addArrow,
-                    if (parseBoolean(tool[5])) {
-                        t.setArrowHeadStats(
-                                parseInt(tool[0]),
-                                parseDouble(tool[1]),
-                                parseDouble(tool[2]),
-                                parseInt(tool[3]),
-                                handleTraits(tool[4])
-                        );
-                    }
-                }
-                case 11 -> {
-                    //all tool stats
-                    boolean addArrow = parseBoolean(tool[5]);
-                    if (addArrow) {
-                        //tool:int headDurability; double miningSpeed; double attackDamage; int harvestLevel; String[.] headTraits; bool addArrow;
-                        t.setArrowHeadStats(
-                                parseInt(tool[0]),
-                                parseDouble(tool[1]),
-                                parseDouble(tool[2]),
-                                parseInt(tool[3]),
-                                handleTraits(tool[4])
-                        );
-                    }
-                    t.setToolStats(
-                            //tool:int headDurability; double miningSpeed; double attackDamage; int harvestLevel; String[.] headTraits; bool addArrow;
-                            parseInt(tool[0]),
-                            parseDouble(tool[1]),
-                            parseDouble(tool[2]),
-                            parseInt(tool[3]),
-                            handleTraits(tool[4]),
-                            //double handleModifier; int handleDurability; String[.] handleTraits;
-                            parseDouble(tool[6]),
-                            parseInt(tool[7]),
-                            handleTraits(tool[8]),
-                            //int extraDurability; String[.] extraTraits,
-                            parseInt(tool[9]),
-                            handleTraits(tool[10])
-                    );
-                }
-                default -> error("invalid amount of tool parameters: " + tool.length);
-            }
+            typeSizeCheck("head", head.length, 6);
+            //head stats only, for arrowHeads and bowLimb
+            //tool:int headDurability; double miningSpeed; double attackDamage; int harvestLevel; String[.] headTraits; bool addArrow,
+            t.setHeadStats(
+                    parseInt(head[0]),
+                    parseDouble(head[1]),
+                    parseDouble(head[2]),
+                    parseInt(head[3]),
+                    handleArray(head[4]),
+                    parseBoolean(head[5])
+            );
+        }
+        
+        //handle_extra:
+        String[] extra = handlePartStats(s[index+1], "handle_extra");
+        if (extra != null) {
+            typeSizeCheck("handle/extra", extra.length, 5);
+            if (!isHead) error("Handle and extra stats require head stats otherwise the material won't work");
+            t.setExtraStats(
+                    //double handleModifier; int handleDurability; String[.] handleTraits;
+                    parseDouble(extra[0]),
+                    parseInt(extra[1]),
+                    handleArray(extra[2]),
+                    //int extraDurability; String[.] extraTraits,
+                    parseInt(extra[3]),
+                    handleArray(extra[4])
+            );
         }
 
         //bow
-        String[] bow = handlePartStats(s[index+1], "bow");
+        String[] bow = handlePartStats(s[index+2], "bow");
         if (bow != null) {
+            typeSizeCheck("bow", bow.length, 4);
+            if (!isHead) error("Bow stats require head stats to be added");
             //bow:double drawSpeed; double range; double bonusDamage; String[.] bowTraits,
-            if (bow.length == 4) {
-                if (isHead) {
-                    t.setBowStats(
-                            parseDouble(bow[0]),
-                            parseDouble(bow[1]),
-                            parseDouble(bow[2]),
-                            handleTraits(bow[3])
-                    );
-                }
-            } else {
-                error("invalid amount of bow parameters: " + bow.length + ", expected 4");
-            }
+            t.setBowStats(
+                    parseDouble(bow[0]),
+                    parseDouble(bow[1]),
+                    parseDouble(bow[2]),
+                    handleArray(bow[3])
+            );
         }
 
         //string
-        String[] string = handlePartStats(s[index+2], "string");
+        String[] string = handlePartStats(s[index+3], "string");
         if (string != null) {
+            typeSizeCheck("string", string.length, 2);
             //string:double stringModifier; String[.] bowstringTraits
-            if (string.length == 2) {
-                t.setStringStats(
-                        parseDouble(string[0]),
-                        handleTraits(string[1])
-                );
-            } else {
-                error("invalid amount of string parameters: " + string.length + ", expected 2");
-            }
+            t.setStringStats(
+                    parseDouble(string[0]),
+                    handleArray(string[1])
+            );
         }
 
         //shaft
-        String[] shaft = handlePartStats(s[index+3], "shaft");
+        String[] shaft = handlePartStats(s[index+4], "shaft");
         if (shaft != null) {
+            typeSizeCheck("shaft", shaft.length, 3);
             //shaft:double arrowModifier; int bonusAmmo; String[.] shaftTraits
-            if (shaft.length == 3) {
-                t.setShaftStats(
-                        parseDouble(shaft[0]),
-                        parseInt(shaft[1]),
-                        handleTraits(shaft[2])
-                );
-            } else {
-                error("invalid amount of shaft parameters: " + shaft.length + ", expected 3");
-            }
+            t.setShaftStats(
+                    parseDouble(shaft[0]),
+                    parseInt(shaft[1]),
+                    handleArray(shaft[2])
+            );
         }
 
         //feather
-        String[] feather = handlePartStats(s[index+4], "feather");
+        String[] feather = handlePartStats(s[index+5], "feather");
         if (feather != null) {
+            typeSizeCheck("feather", feather.length, 3);
             //feather:double accuracy; double fletchingModifier; String[.] fletchingTraits
-            if (feather.length == 3) {
-                t.setFeatherStats(
-                        parseDouble(feather[0]),
-                        parseDouble(feather[1]),
-                        handleTraits(feather[2])
-                );
-            } else {
-                error("invalid amount of feather parameters: " + feather.length + ", expected 3");
-            }
+            t.setFeatherStats(
+                    parseDouble(feather[0]),
+                    parseDouble(feather[1]),
+                    handleArray(feather[2])
+            );
         }
 
         //armor
-        String[] armor = handlePartStats(s[index+5], "armor");
+        String[] armor = handlePartStats(s[index+6], "armor");
         if (armor != null) {
+            typeSizeCheck("armor", armor.length, 9);
             //armor:double coreDurability; double defense; double armorModifier; double platesDurability; double toughness; double armorExtraDurability;
             //String[.] coreTraits; String[.] trimTraits; String[.] platesTraits
-            if (armor.length == 9) {
-                t.setArmorStats(
-                        parseDouble(armor[0]),
-                        parseDouble(armor[1]),
-                        parseDouble(armor[2]),
-                        parseDouble(armor[3]),
-                        parseDouble(armor[4]),
-                        parseDouble(armor[5]),
-                        handleTraits(armor[6]),
-                        handleTraits(armor[7]),
-                        handleTraits(armor[8])
-                );
-            } else {
-                error("invalid amount of armor parameters: " + armor.length + ", expected 9");
-            }
+            t.setArmorStats(
+                    parseDouble(armor[0]),
+                    parseDouble(armor[1]),
+                    parseDouble(armor[2]),
+                    parseDouble(armor[3]),
+                    parseDouble(armor[4]),
+                    parseDouble(armor[5]),
+                    handleArray(armor[6]),
+                    handleArray(armor[7]),
+                    handleArray(armor[8])
+            );
         }
         objects.add(t);
     }
@@ -234,10 +210,21 @@ public abstract class AGTinkers <T extends ATinkers> extends AGMaterialData<T> {
         }
         return out;
     }
-    private String[] handleTraits(String ss) {
+    private String[] handleArray(String ss) {
         if (ss.equals("[]")) {
             return new String[0];
         }
         return Util.split(ss, ".");
+    }
+
+    private String[] handleItemArray(String ss) {
+        if (ss.equals("[]")) {
+            return new String[0];
+        }
+        return Util.split(ss, ";");
+    }
+
+    private void typeSizeCheck(String type, int length, int expected) {
+        if (length != expected) error("invalid amount of " + type + " parameters: " + length + ", expected " + expected);
     }
 }

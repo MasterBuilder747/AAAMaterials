@@ -9,12 +9,13 @@ import Main.Data.PartGroup;
 import Main.Data.RecipeObject.ARecipeObject;
 import Main.Data.RecipeObject.Localized.LPart;
 import Main.Data.RecipeObject.Material.Composition.AChemicalComposition;
+import Main.Data.RecipeObject.RecipeObjectException;
+import Main.Data.RecipeObject.RegistryData;
 import Main.Data.Tweakers.RecipeTweak;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 
-//data > material
 public abstract class AMaterialData extends ARecipeObject {
     protected Material m; //in case basic data is needed
     protected PartGroup[] partGroups;
@@ -40,7 +41,7 @@ public abstract class AMaterialData extends ARecipeObject {
         if (r != null) sb.append(r);
 
         AChemicalComposition comp = m.getComp();
-        if (comp != null) sb.append(comp.addTooltips(this.getItemsArray()));
+        if (comp != null) sb.append(comp.addTooltips(this.getKeysArray()));
 
         if (r == null && comp == null) return "";
         return sb.toString();
@@ -52,6 +53,109 @@ public abstract class AMaterialData extends ARecipeObject {
         for (String s : ss) {
             this.excludeTooltip(s);
         }
+    }
+
+    //keys
+    public void addKeys(String[] keys, Registry[] regs, boolean allowDupes) {
+        if (regs.length != keys.length) error("registries length must be equal to keys length when adding to material " + m.NAME);
+        for (int i = 0; i < regs.length; i++) {
+            if (!allowDupes) {
+                if (!m.is(keys[i])) {
+                    m.keys.add(new RegistryData(keys[i], regs[i]));
+                }
+            } else m.keys.add(new RegistryData(keys[i], regs[i]));
+        }
+    }
+    public void addAllRegistryDatas(String[] keys, Registry[] regs) {
+        if (keys.length != regs.length) error("Keys and registries need to be the same length for recipeObject named " + this.NAME);
+        for (int i = 0; i < keys.length; i++) {
+            this.addRegistryData(keys[i], regs[i]);
+        }
+    }
+    public void addRegistryData(String key, Registry r) {
+        this.m.keys.add(new RegistryData(key, r));
+    }
+    //replaces the existing key with a new registry
+    protected void change(String key, Registry r) {
+        RegistryData mat = this.getRegistryData(key);
+        if (mat != null) {
+            this.m.keys.remove(mat);
+            this.addRegistryData(key, r);
+        } else {
+            error(key, this.NAME);
+        }
+    }
+    //marks the existing registryData as a tooltip exclusion for this object
+    protected void excludeTooltip(String key) {
+        for (RegistryData r : this.m.keys) {
+            if (r.key.equals(key)) {
+                r.isTooltipExclusion = true;
+                return;
+            }
+        }
+    }
+    //return the whole array
+    public RegistryData[] getKeysArray() {
+        return this.m.keys.toArray(new RegistryData[0]);
+    }
+    //get
+    protected RegistryData getRegistryData(String key) {
+        for (RegistryData d : this.m.keys) {
+            if (d.key.equals(key)) {
+                return d;
+            }
+        }
+        error(key, this.NAME);
+        return null;
+    }
+    protected Registry get(String key) {
+        return this.getRegistryData(key).r;
+    }
+    @Override
+    public String getUnlocalizedByKey(String key) { //externally called if needed (eg, stone)
+        return this.get(key).getFullUnlocalizedName();
+    }
+    //logic
+    protected boolean is(String key) {
+        try {
+            this.getRegistryData(key);
+        } catch (RecipeObjectException e) {
+            return false;
+        }
+        return true;
+    }
+    //print methods
+    public void printNames() {
+        System.out.println("Keys for " + this.NAME + ":");
+        for (RegistryData r : this.m.keys) {
+            System.out.println(r.key + " = " + r.r.NAME);
+        }
+        System.out.println();
+    }
+    protected void printDatas() {
+        System.out.print("[");
+        for (RegistryData r : this.m.keys) {
+            System.out.print(r.r.NAME+", ");
+        }
+        System.out.println("]");
+    }
+    public void printBrackets() {
+        System.out.println("Keys for " + m.NAME + ":");
+        for (RegistryData r : this.m.keys) {
+            System.out.println(r.key + " = " + r.r.getBracket());
+        }
+        System.out.println();
+    }
+    public void printAll() {
+        System.out.println("Keys for RecipeObject of type " + this.type + ":");
+        for (RegistryData r : this.m.keys) {
+            System.out.print(r.key + " = ");
+            r.r.print();
+        }
+        System.out.println();
+    }
+    public void printAmount() {
+        System.out.println("Amount of keys: " + this.m.keys.size());
     }
 
     //call this to get each localized registry name to be used for finding the registries
@@ -93,6 +197,15 @@ public abstract class AMaterialData extends ARecipeObject {
         }
         return outs.toArray(new String[0]);
     }
+    //append a custom key based on the block variant
+    public String[] getEnabledOredicts(String variant) {
+        ArrayList<String> outs = new ArrayList<>();
+        LPart[] parts = this.getEnabledParts();
+        for (LPart p : parts) {
+            outs.add(variant+"_"+p.oreDict);
+        }
+        return outs.toArray(new String[0]);
+    }
     public void setPartGroups(PartGroup[] partGroups, boolean[] enablePartGroups) {
         this.partGroups = partGroups;
         this.enablePartGroups = enablePartGroups;
@@ -123,6 +236,10 @@ public abstract class AMaterialData extends ARecipeObject {
     }
     public boolean[] getEnablePartGroups() {
         return this.enablePartGroups;
+    }
+
+    public Material getMat() {
+        return this.m;
     }
 
     protected String genPartGroups() {

@@ -44,7 +44,6 @@ public class GPlastic extends AGMalleable<Plastic> {
                 this.genPartGroups(new String[]{
                         "scrap", "plate", "smelt", "rod", "beam", "conductive", "machine", "special_plate", "coiled_rod", "blast", "assembled"
                 }));
-        plastic = updateSolids(plastic, solid);
         plastic.setTooltipExclusions(new String[]{
                 "dust", "dustSmall", "dustTiny",
                 "dustFine", "dustFineSmall", "dustFineTiny",

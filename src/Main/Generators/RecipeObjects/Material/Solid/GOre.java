@@ -167,7 +167,7 @@ public class GOre extends AGMSolid<Ore> {
             if (!block.equals("bedrock")) {
                 if (this.isReg) {
                     String[] regs = ov.localizedPartNames.toArray(new String[0]);
-                    String[] ores2 = ov.getEnabledOredicts();
+                    String[] ores2 = ov.getEnabledOredicts(block);
                     ov.addAllRegistryDatas(ores2, getRegistries(regs));
                 }
             }
@@ -182,9 +182,6 @@ public class GOre extends AGMSolid<Ore> {
                         Registry poor = this.oreRegistryCheck("poor", block, m.NAME);
                         Registry dense = this.oreRegistryCheck("dense", block, m.NAME);
                         o.addStoneGen(ore, poor, dense, parseInt(gens[0]), parseInt(gens[1]), gens[2]);
-                        ov.addRegistryData("ore", ore);
-                        ov.addRegistryData("orePoor", poor);
-                        ov.addRegistryData("oreDense", dense);
                     }
                     case "nether" -> {
                         if (gens.length != 2)
@@ -193,9 +190,6 @@ public class GOre extends AGMSolid<Ore> {
                         Registry poor = this.oreRegistryCheck("poor", block, m.NAME);
                         Registry dense = this.oreRegistryCheck("dense", block, m.NAME);
                         o.addNetherGen(ore, poor, dense, parseInt(gens[0]), parseInt(gens[1]));
-                        ov.addRegistryData("ore", ore);
-                        ov.addRegistryData("orePoor", poor);
-                        ov.addRegistryData("oreDense", dense);
                     }
                     case "end" -> {
                         if (gens.length != 2)
@@ -204,29 +198,21 @@ public class GOre extends AGMSolid<Ore> {
                         Registry poor = this.oreRegistryCheck("poor", block, m.NAME);
                         Registry dense = this.oreRegistryCheck("dense", block, m.NAME);
                         o.addEndGen(ore, poor, dense, parseInt(gens[0]), parseInt(gens[1]));
-                        ov.addRegistryData("ore", ore);
-                        ov.addRegistryData("orePoor", poor);
-                        ov.addRegistryData("oreDense", dense);
                     }
                     case "bedrock" -> {
                         if (gens.length != 2)
                             error("Two parameters are required for bedrock gen: the chunk chance and the dimension to gen in, for material " + m.NAME);
                         Registry dense = this.oreRegistryCheck("dense", block, m.NAME);
                         o.addBedrockGen(dense, parseInt(gens[0]), parseInt(gens[1]));
-                        ov.addRegistryData("oreDense", dense);
                     }
                 }
-            }
-            //add access to the material's dust parts to each ore variant, but don't register them
-            for (RegistryData r : solid.getItemsArray()) {
-                ov.addRegistryData(r.key, r.r);
             }
             oreVariants.add(ov);
         }
         if (!o.enableGen) warn("Checks are not enabled for worldgen of ore for material " + m.NAME);
         o.addVariants(oreVariants.toArray(new OreVariant[0]));
-        o = updateSolids(o, solid);
         //o = updateRegistryKeys(o); //not needed for ores since they have no part groups
+        o.printBrackets();
         objects.add(o);
     }
 

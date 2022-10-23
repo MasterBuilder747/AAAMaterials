@@ -120,6 +120,14 @@ public class Util {
         return s.split(regex+"\\s*");
     }
 
+    public static int[] toIntArray(ArrayList<Integer> a) {
+        int[] out = new int[a.size()];
+        for (int i = 0; i < a.size(); i++) {
+            out[i] = a.get(i);
+        }
+        return out;
+    }
+
     //define a list of characters to replcae and what to replace them with
     //be aware that this updates per character, so if a replaced character is a replacement later, then it will be affected as well
     public static String replaces(String s, String[] toReplaces, String[] replacements) {

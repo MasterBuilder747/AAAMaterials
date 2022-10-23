@@ -88,6 +88,7 @@ public abstract class ARecipe extends AData {
     */
     private String handleItems(String s, String type) {
         //internal syntax:
+        //<>override all rules and use given text
         //12.5%mod:ItemStack:9 -> <mod:ItemStack:9> //meta is always included now!
         //12.5%mod:ItemStack:9*10 -> <mod:ItemStack:9> * 10
         //12.5%ore:oreDict -> <ore:oreDict>
@@ -122,13 +123,24 @@ public abstract class ARecipe extends AData {
         c /= 100;
         return this.NAME+".setChance("+c+");\n";
     }
-    private String handleMultiple(String s, String r) {
+    private String handleMultiple(String s, String type) {
         StringBuilder sb = new StringBuilder();
-        sb.append(this.NAME).append(".add").append(r).append("put(<");
-        if (s.contains("*")) {
-            sb.append(s, 0, s.indexOf("*")).append("> * ").append(appendAmt(s)).append(");\n");
+        sb.append(this.NAME).append(".add").append(type).append("put(");
+        if (s.startsWith("<>")) {
+            //no brackets added
+            String ss = s.substring(2);
+            if (s.contains("*")) {
+                sb.append(ss, 0, ss.indexOf("*")).append(" * ").append(appendAmt(ss)).append(");\n");
+            } else {
+                sb.append(ss).append(");\n");
+            }
         } else {
-            sb.append(s).append(">);\n");
+            sb.append("<");
+            if (s.contains("*")) {
+                sb.append(s, 0, s.indexOf("*")).append("> * ").append(appendAmt(s)).append(");\n");
+            } else {
+                sb.append(s).append(">);\n");
+            }
         }
         return sb.toString();
     }

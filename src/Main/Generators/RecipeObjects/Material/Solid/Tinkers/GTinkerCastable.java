@@ -37,7 +37,7 @@ public class GTinkerCastable extends AGTinkers<TinkerCastable> {
             GAlloy alloy, GMetal metal, GPlastic plastic, GRubber rubber
     ) {
         super(
-            8, filename, isReg,
+            10, filename, isReg,
             tweak, registry, liquids, ores,
             machine, matter, data,
             material, partGroup,
@@ -66,60 +66,32 @@ public class GTinkerCastable extends AGTinkers<TinkerCastable> {
                 }
             }
         }
+
         String molten = null;
         double meltingMultiplier = -1;
         String ore = s[1];
-        String icon = null;
         if (a != null) {
             molten = a.getMoltenBracket();
             meltingMultiplier = a.getMelting();
-            try {
-                icon = a.getUnlocalizedByKey(ore);
-            } catch (RecipeObjectException e) {
-                if (isReg) {
-                    throw new RecipeObjectException(ore, a.NAME);
-                }
-            }
         }
         if (mm != null) {
             molten = mm.getMoltenBracket();
             meltingMultiplier = mm.getMelting();
-            try {
-                icon = mm.getUnlocalizedByKey(ore);
-            } catch (RecipeObjectException e) {
-                if (isReg) {
-                    throw new RecipeObjectException(ore, mm.NAME);
-                }
-            }
         }
         if (p != null) {
             molten = p.getMoltenBracket();
             meltingMultiplier = p.getMelting();
-            try {
-                icon = p.getUnlocalizedByKey(ore);
-            } catch (RecipeObjectException e) {
-                if (isReg) {
-                    throw new RecipeObjectException(ore, p.NAME);
-                }
-            }
         }
         if (r != null) {
             molten = r.getMoltenBracket();
             meltingMultiplier = r.getMelting();
-            try {
-                icon = r.getUnlocalizedByKey(ore);
-            } catch (RecipeObjectException e) {
-                if (isReg) {
-                    throw new RecipeObjectException(ore, r.NAME);
-                }
-            }
         }
         //material, bool addAutomaticCastingRecipes, icon/oreDict,
         return new TinkerCastable(
                 getRecipeTweak("TinkerCastable"), getItems(), getLiquids(), getOres(),
                 getMachineRegistry(), getMatterRegistry(), getDataRegistry(),
                 m,
-                false, parseBoolean(s[0]), icon, ore, parts.getPartRegistry(),
+                false, parseBoolean(s[0]), ore, ore, parts.getPartRegistry(),
                 molten, meltingMultiplier
         );
     }

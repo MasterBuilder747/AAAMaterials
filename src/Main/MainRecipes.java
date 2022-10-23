@@ -171,9 +171,9 @@ public class MainRecipes {
         GTinkerCastable tCastable = new GTinkerCastable("TinkerCastable", REG, tweak, registry, liquids, oreDict, machine, matter, data, material, partGroup, tcParts, tcTraits, alloy, metal, plastic, rubber);
         sb.append(tCastable.registerRecipes());
         GTinkerCraftable tCraftable = new GTinkerCraftable("TinkerCraftable", REG, tweak, registry, liquids, oreDict, machine, matter, data, material, partGroup, tcParts, tcTraits);
-        //sb.append(tCraftable.registerRecipes());
+        sb.append(tCraftable.registerRecipes());
         GTinkerCustom tCustom = new GTinkerCustom("TinkerCustom", REG, tweak, registry, liquids, oreDict, machine, matter, data, material, partGroup, tcParts, tcTraits);
-        //sb.append(tCustom.registerRecipes());
+        sb.append(tCustom.registerRecipes());
 
         //9. custom machine recipes, only used in MainRecipes
         GMachineRecipe recipe = new GMachineRecipe("recipe", registry, liquids, oreDict, machine, data, matter);

@@ -65,10 +65,13 @@ public abstract class AMalleable extends AMSolid {
         for (PartGroup pg : this.partGroups) {
             for (LPart p : pg.getParts()) {
                 if (p.amount > 0) {
-                    sb.append(addRecipe(
+                    sb.append(
+                        addRecipe(
                             i, "melting", 1, (int)((p.amount / 144f) * 100), 0.5,
                             "+red*100", "-orange*100", 100, 100,
-                            p.oreDict, "-", "-", "^molten(" + (int) (p.amount * this.meltingMultiplier) + ")"));
+                            p.oreDict, "-", "-", "^molten(" + (int) (p.amount * this.meltingMultiplier) + ")"
+                        )
+                    );
                     i++;
                 }
             }
@@ -84,11 +87,13 @@ public abstract class AMalleable extends AMSolid {
             for (int i = 0; i < recipes.length; i++) {
                 String r = recipes[i];
                 String[] p = Util.split(r, ",");
-                sb.append(addRecipe(
-                        i, p[0], parseInt(p[1]), parseInt(p[2]), parseDouble(p[3]), p[4], p[5],
-                        parseInt(p[6]), parseInt(p[7]),
+                sb.append(
+                    addRecipe(
+                        i, p[0], parseInt(p[1]), parseInt(p[2]), parseDouble(p[3]),
+                        p[4], p[5], parseInt(p[6]), parseInt(p[7]),
                         p[8], p[9], p[10], p[11]
-                ));
+                    )
+                );
             }
         }
         sb.append("\n");

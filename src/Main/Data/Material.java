@@ -1,5 +1,6 @@
 package Main.Data;
 
+import Main.Data.GameData.Registry;
 import Main.Data.RecipeObject.Localized.LFood;
 import Main.Data.RecipeObject.Material.*;
 import Main.Data.RecipeObject.Material.Composition.AChemicalComposition;
@@ -12,6 +13,9 @@ import Main.Data.RecipeObject.Material.Solid.Malleable.Metal;
 import Main.Data.RecipeObject.Material.Solid.Malleable.Plastic;
 import Main.Data.RecipeObject.Material.Solid.Malleable.Rubber;
 import Main.Data.RecipeObject.Material.Tinker.ATinkers;
+import Main.Data.RecipeObject.RegistryData;
+
+import java.util.ArrayList;
 
 //data > material
 public class Material extends AData {
@@ -20,6 +24,9 @@ public class Material extends AData {
     public final String LOCALNAME;
     public String color; //HEX000 required
     public String state; //default state of the material, determines other states
+
+    //every registry key is now unified for the material itself
+    public ArrayList<RegistryData> keys = new ArrayList<>();
 
     //Material Part data, initializes to null if not registered, otherwise when building,
     //these will be read and used for various material parts and recipe generation:
@@ -73,24 +80,47 @@ public class Material extends AData {
         this.state = state;
     }
 
+    //keys
+    public RegistryData getRegistryData(String s) {
+        if (keys.isEmpty()) {
+            return null;
+        }
+        for (RegistryData d : keys) {
+            if (d.key.equals(s)) return d;
+        }
+        throw new IllegalArgumentException("Unknown key " + s + " for material " + NAME);
+    }
+    public Registry get(String s) {
+        if (keys.isEmpty()) return null;
+        return getRegistryData(s).r;
+    }
+    public boolean is(String s) {
+        try {
+            getRegistryData(s);
+        } catch (IllegalArgumentException e) {
+            return false;
+        }
+        return true;
+    }
+
     public void addComposition(AChemicalComposition comp) {
         this.comp = comp;
     }
-
     public AChemicalComposition getComp() {
         return this.comp;
     }
 
-    //5) build the code based off these attributes
+    public void printKeys() {
+        System.out.println("Material keys for " + NAME + ":");
+        for (RegistryData d : keys) {
+            System.out.println(d.key + " = " + d.r.getFullUnlocalizedName());
+        }
+    }
+
     @Override
     public String buildMaterial() {
         //even if non-solid, still need this in case it does have a solid form
         return "var " + this.NAME + " = MaterialSystem.getMaterialBuilder().setName(\"" + this.LOCALNAME + "\")" + ".setColor(Color.fromHex(\"" + this.color + "\"))" + ".build();\n";
-    }
-
-    @Override
-    public String buildRecipe() {
-        return "";
     }
 
     @Override
@@ -100,36 +130,8 @@ public class Material extends AData {
             System.out.print(", " + this.comp);
         }
         System.out.println();
-/*
-        if (this.composition.isMaterial) {
-            System.out.print("compound, ");
-        } else {
-            System.out.print("molecule, ");
-        }
-        System.out.print(this.composition + ": ");
-
-*/
-/*
-        System.out.print("| ");
-        String[] s1 = this.itemParts.split("\n\\s*");
-        for (String s : s1) {
-            System.out.print(s.substring(s.indexOf('(')+1, s.indexOf('_')));
-        }
-        System.out.print(" | ");
-        s1 = this.blockParts.split("\n\\s*");
-        for (String s : s1) {
-            System.out.print(s.substring(s.indexOf('(')+1, s.indexOf('_')));
-        }
-        System.out.print(" | ");
-*/
-/*
-        if (this.separation == -1) System.out.print("chemical separation, ");
-        if (this.separation == 1) System.out.print("physical separation, ");
-        if (this.separation == 0) System.out.print("no separation, ");
-        if (this.combination == -1) System.out.print("chemical combination ");
-        if (this.combination == 1) System.out.print("physical combination ");
-        if (this.combination == 0) System.out.print("no combination ");
-        System.out.println();
- */
     }
+
+    @Override
+    public String buildRecipe() { return null; }
 }

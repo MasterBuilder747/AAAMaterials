@@ -25,13 +25,12 @@ public class TinkerCustom extends ATinkers {
 
     @Override
     protected String buildSpecificRecipe() {
+        //recipes are defined only by the RecipeTweaker
         return null;
     }
 
     @Override
-    public void print() {
-
-    }
+    public void print() {}
 
     @Override
     protected String customItemKey(String key) {

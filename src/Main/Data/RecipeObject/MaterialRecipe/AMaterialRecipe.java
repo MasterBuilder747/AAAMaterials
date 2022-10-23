@@ -59,4 +59,6 @@ public abstract class AMaterialRecipe extends ARecipeObject {
     protected String buildAdditionalRecipes() {
         return null;
     }
+    @Override
+    public String getUnlocalizedByKey(String key) {return null;}
 }

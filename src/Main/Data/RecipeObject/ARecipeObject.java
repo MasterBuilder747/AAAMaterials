@@ -5,6 +5,7 @@ import Main.Data.GameData.Registry;
 import Main.Data.MachineResource.Machine.Machine;
 import Main.Data.MachineResource.MachineData;
 import Main.Data.MachineResource.MachineMatter;
+import Main.Data.RecipeObject.Material.AMaterialData;
 import Main.Data.RecipeObject.MaterialRecipe.*;
 import Main.Data.Tweakers.RecipeTweak;
 import Main.Generators.GeneratorException;
@@ -12,7 +13,6 @@ import Main.Parameter.ParameterException;
 import Main.Util;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 
 public abstract class ARecipeObject extends AData {
     //registries for validating recipe IO
@@ -28,7 +28,6 @@ public abstract class ARecipeObject extends AData {
     //recipe variables
     protected String type; //unique type for recipe uniqueness and other identifiers
     protected String customVar; //custom variable in recipe for uniqueness if needed
-    protected ArrayList<RegistryData> itemKeys; //key used to identify items to be used by this recipe object more easily, this is manually populated
     protected boolean customUserRecipes; //override the custom user recipes for a specific event to the object?
     protected RecipeTweak tweak; //constructs all user defined recipes per object
 
@@ -47,7 +46,6 @@ public abstract class ARecipeObject extends AData {
         this.dataLiquid = data;
         this.matters = matters;
 
-        this.itemKeys = new ArrayList<>();
         this.customVar = "";
     }
     protected void setCustomVar(String s) {
@@ -62,11 +60,13 @@ public abstract class ARecipeObject extends AData {
             for (int i = 0; i < recipes.length; i++) {
                 String r = recipes[i];
                 String[] p = Util.split(r, ",");
-                sb.append(addRecipe(
-                        i, p[0], parseInt(p[1]), parseInt(p[2]), parseDouble(p[3]), p[4], p[5],
-                        parseInt(p[6]), parseInt(p[7]),
+                sb.append(
+                    addRecipe(
+                        i, p[0], parseInt(p[1]), parseInt(p[2]), parseDouble(p[3]),
+                        p[4], p[5], parseInt(p[6]), parseInt(p[7]),
                         p[8], p[9], p[10], p[11]
-                ));
+                    )
+                );
             }
         }
         String b = buildAdditionalRecipes();
@@ -80,8 +80,8 @@ public abstract class ARecipeObject extends AData {
     //depends on voltage tier: int dataAmt, int chemAmt,
     //optional: String input, String output, String lInput, String lOutput
     protected String addRecipe(
-            int num, String machine, int tier, int time, double powerMultiplier, String matterIn, String matterOut,
-            int dataAmt, int chemAmt,
+            int num, String machine, int tier, int time, double powerMultiplier,
+            String matterIn, String matterOut, int dataAmt, int chemAmt,
             String iInput, String iOutput, String lInput, String lOutput
     ) {
         AMaterialRecipe r;
@@ -179,14 +179,17 @@ public abstract class ARecipeObject extends AData {
             out = null;
         } else if (item.startsWith("<>")) {
             //override and use whatever text is there in the actual recipe code
-            out = item.substring(2);
+            out = item;
         } else {
-            //key
+            //key, if used by material system
+            if (this instanceof AMaterialData) ;
+            else error("No keys exist for recipe object " + type);
             out = getUnlocalizedByKey(item);
         }
         //$ is custom symbol
         return out;
     }
+    protected abstract String getUnlocalizedByKey(String key);
     protected abstract String customItemKey(String key);
     protected abstract String customLiquidKey(String key);
     
@@ -209,68 +212,8 @@ public abstract class ARecipeObject extends AData {
         }
         return null;
     }
-    
-    //key registry (parts)
-    //add
-    //called by Generator
-    public void addAllRegistryDatas(String[] keys, Registry[] regs) {
-        if (keys.length != regs.length) error("Keys and registries need to be the same length for recipeObject named " + this.NAME);
-        for (int i = 0; i < keys.length; i++) {
-            this.addRegistryData(keys[i], regs[i]);
-        }
-    }
-    public void addRegistryData(String key, Registry r) {
-        this.itemKeys.add(new RegistryData(key, r));
-    }
-    //replaces the existing key with a new registry
-    protected void change(String key, Registry r) {
-        RegistryData mat = this.getRegistryData(key);
-        if (mat != null) {
-            this.itemKeys.remove(mat);
-            this.addRegistryData(key, r);
-        } else {
-            error(key, this.NAME);
-        }
-    }
-    //marks the existing registryData as a tooltip exclusion for this object
-    protected void excludeTooltip(String key) {
-        for (RegistryData r : this.itemKeys) {
-            if (r.key.equals(key)) {
-                r.isTooltipExclusion = true;
-                return;
-            }
-        }
-    }
-    //return the whole array
-    public RegistryData[] getItemsArray() {
-        return this.itemKeys.toArray(new RegistryData[0]);
-    }
-    //get
-    protected RegistryData getRegistryData(String key) {
-        for (RegistryData d : this.itemKeys) {
-            if (d.key.equals(key)) {
-                return d;
-            }
-        }
-        error(key, this.NAME);
-        return null;
-    }
-    protected Registry get(String key) {
-        return this.getRegistryData(key).r;
-    }
-    public String getUnlocalizedByKey(String key) { //externally called if needed (eg, stone)
-        return this.get(key).getFullUnlocalizedName();
-    }
-    //logic
-    protected boolean is(String key) {
-        try {
-            this.getRegistryData(key);
-        } catch (RecipeObjectException e) {
-            return false;
-        }
-        return true;
-    }
 
+    //registries
     //item registry
     protected Registry getItemRegistry(String s) {
         for (Registry r : this.items) {
@@ -371,40 +314,6 @@ public abstract class ARecipeObject extends AData {
             throw new IllegalArgumentException("Matter output must start with - or + to indicate positive or negative matter IO");
         }
         return matterOut + " * " + outAmount;
-    }
-
-    //print methods
-    public void printNames() {
-        System.out.println("Keys for " + this.NAME + ":");
-        for (RegistryData r : this.itemKeys) {
-            System.out.println(r.key + " = " + r.r.NAME);
-        }
-        System.out.println();
-    }
-    protected void printDatas() {
-        System.out.print("[");
-        for (RegistryData r : this.itemKeys) {
-            System.out.print(r.r.NAME+", ");
-        }
-        System.out.println("]");
-    }
-    public void printBrackets() {
-        System.out.println("Keys:");
-        for (RegistryData r : this.itemKeys) {
-            System.out.println(r.key + " = " + r.r.getBracket());
-        }
-        System.out.println();
-    }
-    public void printAll() {
-        System.out.println("Keys for RecipeObject of type " + this.type + ":");
-        for (RegistryData r : this.itemKeys) {
-            System.out.print(r.key + " = ");
-            r.r.print();
-        }
-        System.out.println();
-    }
-    public void printAmount() {
-        System.out.println("Amount of keys: " + this.itemKeys.size());
     }
     
     //generator utilities

@@ -25,6 +25,7 @@ public class TinkerCraftable extends ATinkers {
 
     @Override
     protected String buildSpecificRecipe() {
+        //we cannot add part table recipes, but we can add recipes from RecipeTweaker
         return null;
     }
 

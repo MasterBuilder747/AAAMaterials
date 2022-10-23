@@ -42,7 +42,6 @@ public class GMetal extends AGMalleable<Metal> {
                 m,
                 molten);
         boolean smelt = Boolean.parseBoolean(s[0]);
-        metal = updateSolids(metal, solid);
         metal.setTooltipExclusions(new String[]{
                 "dust", "dustSmall", "dustTiny",
                 "dustFine", "dustFineSmall", "dustFineTiny",
