@@ -261,12 +261,24 @@ public abstract class ATinkers extends AMaterialData {
         }
         return out.toArray(new TCPart[0]);
     }
-    
-    //todo: add material items
+
+    //BIG NOTE:
+    //this cannot be called from the material phase since it needs the recipe phase to get the keys
+    //calling this in the recipe phase won't work because it won't write to materials.zs
+    //in order to do this, you MUST manually add the entries after
     public void addMaterialItems(String[] matItems, int[] amountNeeded, int[] amountMatched) {
         this.matItems = matItems;
         this.amountNeeded = amountNeeded;
         this.amountMatched = amountMatched;
+    }
+    public String getMatItemsCode() {
+        //we have to hardcode the icon because it cannot be obtained from the material phase
+        String iconNew = "<item:"+m.get(icon).getFullUnlocalizedName()+">";
+        return "Add to materials.zs: genTCMaterial(..." +
+                //string name, string localName, string color, bool craftable, bool castable, IItemStack icon, IOreDictEntry ore, ILiquidStack liquid,
+                ", " + iconNew + ", <ore:" + oreDict + Util.toUpper(m.NAME) + ">, " + molten + ", " +
+                //IItemStack[] items, int[] amtsNeeded, int[] amtsMatched,
+                createItemArray(matItems) + ", " + createArray(amountNeeded) + ", " + createArray(amountMatched) + ", ";
     }
 
     @Override

@@ -56,20 +56,22 @@ public abstract class AGTinkers <T extends ATinkers> extends AGMaterialData<T> {
     protected void readMaterialParameters(Material m, String[] s) {
         T t = readTinkerParameters(m, s);
 
-        //add material items here
-        String[] mItems = handleItemArray(s[2]);
-        ArrayList<String> matItems = new ArrayList<>();
-        ArrayList<Integer> amountNeeded = new ArrayList<>();
-        ArrayList<Integer> amountMatched = new ArrayList<>();
-        for (String mat : mItems) {
-            String[] mm = Util.split(mat, "=");
-            //<item:mod:registry:meta>
-
-            matItems.add(mm[0]);
-            amountNeeded.add(parseInt(mm[1]));
-            amountMatched.add(parseInt(mm[2]));
+        if (isReg && !s[2].equals("null")) {
+            String[] mItems = handleItemArray(s[2]);
+            ArrayList<String> matItems = new ArrayList<>();
+            ArrayList<Integer> amountNeeded = new ArrayList<>();
+            ArrayList<Integer> amountMatched = new ArrayList<>();
+            for (String mat : mItems) {
+                String[] mm = Util.split(mat, "=");
+                //<item:mod:registry:meta>
+                String itemMat = "<item:" + m.get(mm[0]).getFullUnlocalizedName() + ">";
+                matItems.add(itemMat);
+                amountNeeded.add(parseInt(mm[1]));
+                amountMatched.add(parseInt(mm[2]));
+            }
+            t.addMaterialItems(matItems.toArray(new String[0]), Util.toIntArray(amountNeeded), Util.toIntArray(amountMatched));
+            System.out.println(t.getMatItemsCode());
         }
-        t.addMaterialItems(matItems.toArray(new String[0]), Util.toIntArray(amountNeeded), Util.toIntArray(amountMatched));
 
         //part type syntax: type: param1; param2...
         //disable = type:false

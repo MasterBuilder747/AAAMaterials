@@ -211,8 +211,6 @@ public class GOre extends AGMSolid<Ore> {
         }
         if (!o.enableGen) warn("Checks are not enabled for worldgen of ore for material " + m.NAME);
         o.addVariants(oreVariants.toArray(new OreVariant[0]));
-        //o = updateRegistryKeys(o); //not needed for ores since they have no part groups
-        o.printBrackets();
         objects.add(o);
     }
 
