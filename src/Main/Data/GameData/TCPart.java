@@ -4,8 +4,9 @@ public class TCPart extends AGameData {
     public String type;
     public double amount;
 
-    public TCPart(String name, String item, String type, double amount) {
-        super(name, item);
+    //key
+    public TCPart(String key, String item, String type, double amount) {
+        super(key, item);
         this.type = type;
         this.amount = amount;
     }
@@ -26,8 +27,11 @@ public class TCPart extends AGameData {
         return this.registryName;
     }
 
-    public String getTCPartRegistry(String materialName) {
-        //<tconstruct:tough_tool_rod>.withTag({Material: "osmium_cot"})
-        return this.registryName+".withTag({Material: \"" + materialName + "\"})";
+    public String getTCPartRegistry() {
+        return this.registryName;
+    }
+
+    public Registry getRegistry() {
+        return null;
     }
 }

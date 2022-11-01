@@ -90,7 +90,7 @@ public abstract class AGTinkers <T extends ATinkers> extends AGMaterialData<T> {
                     parseDouble(head[1]),
                     parseDouble(head[2]),
                     parseInt(head[3]),
-                    handleArray(head[4]),
+                    handleTraits(head[4]),
                     parseBoolean(head[5])
             );
         }
@@ -104,10 +104,10 @@ public abstract class AGTinkers <T extends ATinkers> extends AGMaterialData<T> {
                     //double handleModifier; int handleDurability; String[.] handleTraits;
                     parseDouble(extra[0]),
                     parseInt(extra[1]),
-                    handleArray(extra[2]),
+                    handleTraits(extra[2]),
                     //int extraDurability; String[.] extraTraits,
                     parseInt(extra[3]),
-                    handleArray(extra[4])
+                    handleTraits(extra[4])
             );
         }
 
@@ -121,7 +121,7 @@ public abstract class AGTinkers <T extends ATinkers> extends AGMaterialData<T> {
                     parseDouble(bow[0]),
                     parseDouble(bow[1]),
                     parseDouble(bow[2]),
-                    handleArray(bow[3])
+                    handleTraits(bow[3])
             );
         }
 
@@ -132,7 +132,7 @@ public abstract class AGTinkers <T extends ATinkers> extends AGMaterialData<T> {
             //string:double stringModifier; String[.] bowstringTraits
             t.setStringStats(
                     parseDouble(string[0]),
-                    handleArray(string[1])
+                    handleTraits(string[1])
             );
         }
 
@@ -144,7 +144,7 @@ public abstract class AGTinkers <T extends ATinkers> extends AGMaterialData<T> {
             t.setShaftStats(
                     parseDouble(shaft[0]),
                     parseInt(shaft[1]),
-                    handleArray(shaft[2])
+                    handleTraits(shaft[2])
             );
         }
 
@@ -156,7 +156,7 @@ public abstract class AGTinkers <T extends ATinkers> extends AGMaterialData<T> {
             t.setFeatherStats(
                     parseDouble(feather[0]),
                     parseDouble(feather[1]),
-                    handleArray(feather[2])
+                    handleTraits(feather[2])
             );
         }
 
@@ -173,9 +173,9 @@ public abstract class AGTinkers <T extends ATinkers> extends AGMaterialData<T> {
                     parseDouble(armor[3]),
                     parseDouble(armor[4]),
                     parseDouble(armor[5]),
-                    handleArray(armor[6]),
-                    handleArray(armor[7]),
-                    handleArray(armor[8])
+                    handleArmorTraits(armor[6]),
+                    handleArmorTraits(armor[7]),
+                    handleArmorTraits(armor[8])
             );
         }
         objects.add(t);
@@ -212,11 +212,28 @@ public abstract class AGTinkers <T extends ATinkers> extends AGMaterialData<T> {
         }
         return out;
     }
-    private String[] handleArray(String ss) {
+    private String[] handleTraits(String ss) {
         if (ss.equals("[]")) {
             return new String[0];
         }
-        return Util.split(ss, ".");
+        String[] out = Util.split(ss, ".");
+        for (String t : out) {
+            traits.check(t);
+        }
+        return out;
+    }
+    private String[] handleArmorTraits(String ss) {
+        if (ss.equals("[]")) {
+            return new String[0];
+        }
+        String[] out1 = Util.split(ss, ".");
+        String[] out = new String[out1.length];
+        for (int i = 0; i < out.length; i++) {
+            String t = out1[i]+"_armor";
+            traits.check(t);
+            out[i] = t;
+        }
+        return out;
     }
 
     private String[] handleItemArray(String ss) {

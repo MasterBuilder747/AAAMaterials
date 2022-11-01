@@ -66,6 +66,9 @@ public abstract class AMaterialData extends ARecipeObject {
             } else m.keys.add(new RegistryData(keys[i], regs[i]));
         }
     }
+    public void addKey(String key, Registry reg) {
+        m.keys.add(new RegistryData(key, reg));
+    }
     public void addAllRegistryDatas(String[] keys, Registry[] regs) {
         if (keys.length != regs.length) error("Keys and registries need to be the same length for recipeObject named " + this.NAME);
         for (int i = 0; i < keys.length; i++) {

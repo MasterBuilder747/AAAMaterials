@@ -31,6 +31,13 @@ public class TinkerCastable extends ATinkers {
     protected String buildSpecificRecipe() {
         TCPart[] tcParts = this.getEnabledTCParts();
         StringBuilder sb = new StringBuilder();
+
+        //add each tinkers part to the keys before doing recipes
+        for (TCPart p : tcParts) {
+            //addKey(p.NAME, new Registry(p.getTCPartRegistry()));
+        }
+
+        //recipes
         //melting
         int i = 0;
         for (TCPart p : tcParts) {
@@ -38,7 +45,7 @@ public class TinkerCastable extends ATinkers {
                 addRecipe(
                     i, "melting", 1, (int)(p.amount * 60), 0.5,
                     "+red*100", "-orange*100", 100, 100,
-                    "<>"+p.getTCPartRegistry(m.NAME+"_cot"), "-", "-", "^molten(" + (int)(p.amount * 144 * this.meltingMultiplier) + ")"
+                    "<>"+p.getTCPartRegistry(), "-", "-", "^molten(" + (int)(p.amount * 144 * this.meltingMultiplier) + ")"
                 )
             );
             i++;
