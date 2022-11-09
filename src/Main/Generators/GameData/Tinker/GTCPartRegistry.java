@@ -1,5 +1,6 @@
 package Main.Generators.GameData.Tinker;
 
+import Main.Data.GameData.Registry;
 import Main.Data.GameData.TCPart;
 import Main.Generators.AGenerator;
 
@@ -13,14 +14,20 @@ public class GTCPartRegistry extends AGenerator<TCPart> {
 
     @Override
     protected void readLine(BufferedReader br, String[] s) throws IOException {
-        String item = s[1]+">";
+        String item = s[1];
+        String mod;
+        String registry;
         if (item.contains(":")) {
-            item = "<"+item;
+            mod = item.substring(0, item.indexOf(":"));
+            registry = item.substring(item.indexOf(":")+1);
         } else {
-            item = "<tconstruct:"+item;
+            mod = "tconstruct";
+            registry = item;
         }
         //name, itemStack, type, amount
-        objects.add(new TCPart(s[0], item, s[2], parseDouble(s[3])));
+        //note that this is the general TiC part with NO NBT data, this does not exist in the item registry!
+        Registry r = new Registry(mod, registry, 0);
+        objects.add(new TCPart(s[0], r, s[2], parseDouble(s[3])));
     }
 
     public TCPart[] getPartRegistry() {

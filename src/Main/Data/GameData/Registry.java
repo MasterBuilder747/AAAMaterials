@@ -18,6 +18,12 @@ public class Registry extends AGameData {
         this.mod = mod;
         this.meta = meta;
     }
+    //for tinker parts with no NBT
+    public Registry(String mod, String registry, int meta) {
+        super(registry, registry);
+        this.mod = mod;
+        this.meta = meta;
+    }
     public void setOre(String[] ore) {
         this.ore = ore;
     }

@@ -6,7 +6,6 @@ import Main.Data.RecipeObject.Material.Solid.Malleable.Metal;
 import Main.Data.RecipeObject.Material.Solid.Malleable.Plastic;
 import Main.Data.RecipeObject.Material.Solid.Malleable.Rubber;
 import Main.Data.RecipeObject.Material.Tinker.TinkerCastable;
-import Main.Data.RecipeObject.RecipeObjectException;
 import Main.Generators.GMaterial;
 import Main.Generators.GPartGroup;
 import Main.Generators.GameData.*;

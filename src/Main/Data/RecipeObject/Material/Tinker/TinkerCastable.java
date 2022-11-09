@@ -34,7 +34,10 @@ public class TinkerCastable extends ATinkers {
 
         //add each tinkers part to the keys before doing recipes
         for (TCPart p : tcParts) {
-            //addKey(p.NAME, new Registry(p.getTCPartRegistry()));
+            //Registry r = getByNBT(p.getUnlocalizedName(), "{Material:\"\"" + this.NAME+ "_cot\"\"}");
+            Registry r = getByNBT("OsmiumPickaxeHead", "{Material:\"\"" + this.NAME+ "_cot\"\"}");
+            //Registry r = get
+            addKey(p.NAME, r);
         }
 
         //recipes
@@ -45,7 +48,7 @@ public class TinkerCastable extends ATinkers {
                 addRecipe(
                     i, "melting", 1, (int)(p.amount * 60), 0.5,
                     "+red*100", "-orange*100", 100, 100,
-                    "<>"+p.getTCPartRegistry(), "-", "-", "^molten(" + (int)(p.amount * 144 * this.meltingMultiplier) + ")"
+                    "<>"+p.getTCPartBracket(), "-", "-", "^molten(" + (int)(p.amount * 144 * this.meltingMultiplier) + ")"
                 )
             );
             i++;

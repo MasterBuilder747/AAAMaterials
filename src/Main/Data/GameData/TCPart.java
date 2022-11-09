@@ -3,35 +3,39 @@ package Main.Data.GameData;
 public class TCPart extends AGameData {
     public String type;
     public double amount;
+    Registry r;
+    String m; //name of the material
 
     //key
-    public TCPart(String key, String item, String type, double amount) {
-        super(key, item);
+    public TCPart(String key, Registry r, String type, double amount) {
+        super(key, r.getFullUnlocalizedName());
+        this.r = r;
         this.type = type;
         this.amount = amount;
     }
-
-    @Override
-    public void print() {
-        System.out.println(this.NAME + "; " + this.registryName + "; " + this.type + "; " + this.amount);
+    public void addMaterial(String m) {
+        this.m = m;
+        r.setNBT("{Material:\"\""+this.m+"_cot\"\"}");
     }
 
-    //registry name already has brackets
     @Override
     public String getBracket() {
-        return this.registryName.substring(1, this.registryName.length()-1)+":"+this.amount;
+        return r.getNBTBracket();
     }
-
     @Override
     public String getUnlocalizedName() {
         return this.registryName;
     }
 
-    public String getTCPartRegistry() {
-        return this.registryName;
+    public String getTCPartBracket() {
+        return this.registryName.substring(1, this.registryName.length()-1)+":"+this.amount;
+    }
+    public Registry getRegistry() {
+        return r;
     }
 
-    public Registry getRegistry() {
-        return null;
+    @Override
+    public void print() {
+        System.out.println(this.NAME + "; " + this.r.getNBTBracket() + "; " + this.type + "; " + this.amount);
     }
 }

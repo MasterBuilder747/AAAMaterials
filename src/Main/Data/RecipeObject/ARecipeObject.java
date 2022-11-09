@@ -245,6 +245,16 @@ public abstract class ARecipeObject extends AData {
         error(key, "item registry", this.NAME);
         return null;
     }
+    protected Registry getByNBT(String name, String nbt) {
+        for (Registry o : this.items) {
+            //mod:registry:meta, nbt
+            if (o.getLocalizedName().equals(name) && o.nbt.equals(nbt)) {
+                return o;
+            }
+        }
+        error(name, "item registry of NBT " + nbt, this.NAME);
+        return null;
+    }
     protected String getLiquid(String key) {
         for (String l : this.liquids) {
             if (l.equals(key)) {

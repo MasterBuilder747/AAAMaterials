@@ -5,12 +5,10 @@ import Main.Util;
 
 import java.io.BufferedReader;
 import java.io.IOException;
-import java.lang.reflect.Array;
-import java.util.ArrayList;
 
 public class GRegistry extends AGGameData<Registry> {
     public GRegistry(String filename) {
-        super(-1, filename, 8);
+        super(-1, filename, 7);
     }
 
     @Override
@@ -44,54 +42,74 @@ public class GRegistry extends AGGameData<Registry> {
         return null;
     }
 
+    public Registry getByNBT(String registry, String nbt) {
+        for (Registry o : objects) {
+            //mod:registry:meta, nbt
+            if (o.getFullUnlocalizedName().equals(registry) && o.nbt.equals(nbt)) {
+                return o;
+            }
+        }
+        error(filename + "\"s.txt: Unknown item of registry " + registry + " containing NBT data of " + nbt, true);
+        return null;
+    }
+    public Registry getLocalizedByNBT(String s, String nbt) {
+        for (Registry o : objects) {
+            if (o.NAME.equals(s) && o.nbt.equals(nbt)) {
+                return o;
+            }
+        }
+        error(filename + "\"s.txt: Unknown item of name " + s + " containing NBT data of " + nbt, true);
+        return null;
+    }
+
     @Override
     protected void readLine(BufferedReader br, String[] s) throws IOException {
+        //"-Mod name","Registry name","-Item ID","Meta/dmg","-Subtypes","Display name","Ore Dict keys,...","NBT"
         if (minParams != -1 && s.length < minParams) error("Parameter amount must be " + minParams + " or greater");
-        StringBuilder sb = new StringBuilder();
-        for (String str : s) {
-            sb.append(str);
-            sb.append(",");
-        }
-        String ss = sb.substring(0, sb.length()-1);
-        //ss = "\"test\",23,\"a1,a2\"";
-        ArrayList<String> strs = new ArrayList<>();
-        for (int i = 0; i < ss.length(); i++) {
-            if (ss.charAt(i) == ',') {
-                i++;
-            }
-            if (ss.charAt(i) == '"') {
-                //string or string[]
-                int j = i+1;
-                while (j < ss.length() && ss.charAt(j) != '"') {
-                    j++;
-                }
-                strs.add(ss.substring(i+1, j));
-                i += (j-i);
-            } else {
-                if (Util.isNumber(String.valueOf(ss.charAt(i)))) {
-                    //number (int)
-                    int j = i;
-                    while (j < ss.length() && Util.isNumber(String.valueOf(ss.charAt(j)))) {
-                        j++;
-                    }
-                    strs.add(ss.substring(i, j));
-                    i += (j-i);
-                } else {
-                    error("only numbers are non-quoted in csv for string " + ss);
-                }
+        //remove quotes on index 0, 1, 4, 5
+        String[] ss = new String[s.length];
+        for (int i = 0; i < s.length; i++) {
+            switch(i) {
+                case 0,1,4,5 -> ss[i] = s[i].substring(1, s[i].length()-1);
+                default -> ss[i] = s[i];
             }
         }
-        readGameData(strs.toArray(new String[0]));
+        readGameData(ss);
     }
     @Override
     protected void readGameData(String[] s) {
         //"-Mod name","Registry name","-Item ID","Meta/dmg","-Subtypes","Display name","Ore Dict keys,...","NBT"
         //NOTE: meta is always stored per item! Meta is required when searching!
-        Registry r = new Registry(s[1].substring(0, s[1].indexOf(":")), s[1].substring(s[1].indexOf(":")+1), parseInt(s[3]), s[5]);
-        String[] ores = new String[s.length - 6];
-        System.arraycopy(s, 6, ores, 0, ores.length);
-        r.setOre(ores);
-        if (!s[7].equals("")) r.setNBT(s[7]);
+        String mod = s[1].substring(0, s[1].indexOf(":"));
+        String reg = s[1].substring(s[1].indexOf(":")+1);
+        int meta = parseInt(s[3]);
+        String localName = s[5]; //as long as there is no commas in the local names...
+        Registry r = new Registry(mod, reg, meta, localName);
+        //put the oredicts and nbt strings back together
+        StringBuilder sb = new StringBuilder();
+        for (int i = 6; i < s.length; i++) {
+            sb.append(s[i]);
+            if (i != s.length-1) sb.append(",");
+        }
+        String rs = sb.toString();
+        System.out.println(rs);
+        //handle oredict and nbt here
+        //"", ""
+        if (!rs.equals("\"\",\"\"")) {
+            //"listAllseed,seedSeaweed",""
+            //"","{textureBlock:{id:""libvulpes:metal0"",Count:1b,Damage:4s}}"
+            int i = 1;
+            while (rs.charAt(i) != '"') {
+                i++;
+            }
+            String[] ores = Util.split(rs.substring(1, i), ",");
+            r.setOre(ores);
+            i+=3;
+            if (!Util.isOut(rs, i+1)) {
+                String nbt = rs.substring(i);
+                r.setNBT(nbt);
+            }
+        }
         objects.add(r);
     }
 

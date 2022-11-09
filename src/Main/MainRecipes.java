@@ -53,6 +53,7 @@ public class MainRecipes {
         //gamedata registries: required
         GRegistry registry = new GRegistry("registry");
         registry.registerRecipes();
+        registry.print();
         GJeiCategory jeiC = new GJeiCategory("JEICategorie");
         jeiC.registerRecipes();
         GModRegistry mods = new GModRegistry("modregistrie", registry, jeiC);

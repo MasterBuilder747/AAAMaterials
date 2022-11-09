@@ -235,28 +235,58 @@ public abstract class ATinkers extends AMaterialData {
         for (TCPart p : this.parts) {
             //types: armor, head, tool, bow, string, feather, shaft, arrow, armor, other
             switch (p.type) {
+                case "shard" -> {
+                    if (craftable) {
+                        p.addMaterial(this.NAME);
+                        out.add(p);
+                    }
+                }
                 case "head" -> {
-                    if (isHead) out.add(p);
+                    if (isHead) {
+                        p.addMaterial(this.NAME);
+                        out.add(p);
+                    }
                 }
                 case "tool" -> {
-                    if (isToolHandleExtra) out.add(p);
+                    if (isToolHandleExtra) {
+                        p.addMaterial(this.NAME);
+                        out.add(p);
+                    }
                 }
                 case "bow" -> {
-                    if (isBow) out.add(p);
+                    if (isBow) {
+                        p.addMaterial(this.NAME);
+                        out.add(p);
+                    }
                 }
                 case "string" -> {
-                    if (isString) out.add(p);
+                    if (isString) {
+                        p.addMaterial(this.NAME);
+                        out.add(p);
+                    }
                 }
                 case "feather" -> {
-                    if (isFeather) out.add(p);
+                    if (isFeather) {
+                        p.addMaterial(this.NAME);
+                        out.add(p);
+                    }
                 }
                 case "shaft" -> {
-                    if (isShaft) out.add(p);
+                    if (isShaft) {
+                        p.addMaterial(this.NAME);
+                        out.add(p);
+                    }
                 }
                 case "arrow" -> {
-                    if (isArrowHead) out.add(p);
+                    if (isArrowHead) {
+                        p.addMaterial(this.NAME);
+                        out.add(p);
+                    }
                 }
-                default -> out.add(p);
+                default -> {
+                    p.addMaterial(this.NAME);
+                    out.add(p);
+                }
             }
         }
         return out.toArray(new TCPart[0]);
