@@ -21,6 +21,10 @@ public class LiquidRegistry extends AGameData {
         this.isGaseous = isGaseous;
         this.sourceBlock = sourceBlock;
     }
+    //for material liquid keys
+    public LiquidRegistry(String name) {
+        super(name, name);
+    }
 
     @Override
     public String getBracket() {

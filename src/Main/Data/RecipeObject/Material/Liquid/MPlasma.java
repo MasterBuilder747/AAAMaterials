@@ -14,11 +14,12 @@ public class MPlasma extends AMLiquid {
     public MPlasma(RecipeTweak tweak, Registry[] items, String[] liquids, String[] ores,
                    Machine[] machines, MachineMatter[] matters, MachineData data,
                    Material m,
-                   int density, int luminosity, int temperature, int viscosity, boolean vaporize) {
+                   String key, int density, int luminosity, int temperature, int viscosity, boolean vaporize) {
         super("mPlasma",
                 tweak, items, liquids, ores,
                 machines, matters, data,
-                m);
+                m,
+                key);
         this.l = new LPlasma( m.NAME +"_plasma",
                 tweak, items, liquids, ores,
                 machines, matters, data,

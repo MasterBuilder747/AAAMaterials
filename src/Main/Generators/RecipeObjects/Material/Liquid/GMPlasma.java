@@ -17,7 +17,7 @@ public class GMPlasma extends AGMLiquid<MPlasma> {
                     GRecipeTweak tweak, GRegistry registry, GLiquidRegistry liquids, GOreDictRegistry ores,
                     GMachine machine, GMachineMatter matter, GMachineData data,
                     GMaterial material, GPartGroup partGroup) {
-        super(5, filename, isReg,
+        super(6, filename, isReg,
                 tweak, registry, liquids, ores,
                 machine, matter, data,
                 material,partGroup);
@@ -32,8 +32,8 @@ public class GMPlasma extends AGMLiquid<MPlasma> {
                     getItems(), getLiquids(), getOres(),
                     getMachineRegistry(), getMatterRegistry(), getDataRegistry(),
                     m,
-                    Integer.parseInt(s[0]), Integer.parseInt(s[1]), Integer.parseInt(s[2]), Integer.parseInt(s[3]),
-                    Boolean.parseBoolean(s[4])
+                    s[0], Integer.parseInt(s[1]), Integer.parseInt(s[2]), Integer.parseInt(s[3]), Integer.parseInt(s[4]),
+                    Boolean.parseBoolean(s[5])
                 )
         );
     }

@@ -256,6 +256,8 @@ public abstract class ARecipeObject extends AData {
         error(name, "item registry of NBT " + nbt, this.NAME);
         return null;
     }
+
+    //liquid registry
     protected String getLiquid(String key) {
         for (String l : this.liquids) {
             if (l.equals(key)) {

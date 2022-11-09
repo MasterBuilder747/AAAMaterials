@@ -12,11 +12,12 @@ public class MGas extends AMLiquid {
     public MGas(RecipeTweak tweak, Registry[] items, String[] liquids, String[] ores,
                 Machine[] machines, MachineMatter[] matters, MachineData data,
                 Material m,
-                int density, int luminosity, int temperature, int viscosity, boolean vaporize) {
+                String key, int density, int luminosity, int temperature, int viscosity, boolean vaporize) {
         super("mGas",
                 tweak, items, liquids, ores,
                 machines, matters, data,
-                m);
+                m,
+                key);
         this.l = new LGas(
                 m.NAME +"_gas",
                 tweak, items, liquids, ores,

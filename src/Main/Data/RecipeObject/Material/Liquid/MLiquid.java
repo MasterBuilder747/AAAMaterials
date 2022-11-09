@@ -12,11 +12,12 @@ public class MLiquid extends AMLiquid {
     public MLiquid(RecipeTweak tweak, Registry[] items, String[] liquids, String[] ores,
                    Machine[] machines, MachineMatter[] matters, MachineData data,
                    Material m,
-                   int density, int luminosity, int temperature, int viscosity, boolean vaporize) {
+                   String key, int density, int luminosity, int temperature, int viscosity, boolean vaporize) {
         super("MLiquid",
                 tweak, items, liquids, ores,
                 machines, matters, data,
-                m);
+                m,
+                key);
         String localName = null;
         String name = null;
         if (m.state.equals("solid")) {

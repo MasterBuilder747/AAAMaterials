@@ -7,8 +7,6 @@ import Main.Data.MachineResource.MachineMatter;
 import Main.Data.RecipeObject.Localized.ALocalizedData;
 import Main.Data.Tweakers.RecipeTweak;
 
-import java.util.ArrayList;
-
 //this is a custom liquid
 public abstract class ALiquid extends ALocalizedData {
     String color;

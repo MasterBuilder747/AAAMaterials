@@ -17,7 +17,7 @@ public class GMGas extends AGMLiquid<MGas> {
                  GRecipeTweak tweak, GRegistry registry, GLiquidRegistry liquids, GOreDictRegistry ores,
                  GMachine machine, GMachineMatter matter, GMachineData data,
                  GMaterial material, GPartGroup partGroup) {
-        super(5, filename, isReg,
+        super(6, filename, isReg,
                 tweak, registry, liquids, ores,
                 machine, matter, data,
                 material, partGroup);
@@ -25,11 +25,12 @@ public class GMGas extends AGMLiquid<MGas> {
 
     @Override
     protected void readMaterialParameters(Material m, String[] s) {
-        //int density, int luminosity, int temperature, int viscosity, boolean vaporize
+        //String key, int density, int luminosity, int temperature, int viscosity, boolean vaporize
         objects.add(new MGas(
                 getRecipeTweak("MGas"), getItems(), getLiquids(), getOres(),
                 getMachineRegistry(), getMatterRegistry(), getDataRegistry(),
                 m,
-                Integer.parseInt(s[0]), Integer.parseInt(s[1]), Integer.parseInt(s[2]), Integer.parseInt(s[3]), Boolean.parseBoolean(s[4])));
+                s[0], Integer.parseInt(s[1]), Integer.parseInt(s[2]), Integer.parseInt(s[3]), Integer.parseInt(s[4]),
+                Boolean.parseBoolean(s[5])));
     }
 }

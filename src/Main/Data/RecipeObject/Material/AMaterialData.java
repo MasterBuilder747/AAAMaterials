@@ -56,16 +56,6 @@ public abstract class AMaterialData extends ARecipeObject {
     }
 
     //keys
-    public void addKeys(String[] keys, Registry[] regs, boolean allowDupes) {
-        if (regs.length != keys.length) error("registries length must be equal to keys length when adding to material " + m.NAME);
-        for (int i = 0; i < regs.length; i++) {
-            if (!allowDupes) {
-                if (!m.is(keys[i])) {
-                    m.keys.add(new RegistryData(keys[i], regs[i]));
-                }
-            } else m.keys.add(new RegistryData(keys[i], regs[i]));
-        }
-    }
     public void addKey(String key, Registry reg) {
         m.keys.add(new RegistryData(key, reg));
     }
@@ -86,6 +76,16 @@ public abstract class AMaterialData extends ARecipeObject {
             this.addRegistryData(key, r);
         } else {
             error(key, this.NAME);
+        }
+    }
+    public void addKeys(String[] keys, Registry[] regs, boolean allowDupes) {
+        if (regs.length != keys.length) error("registries length must be equal to keys length when adding to material " + m.NAME);
+        for (int i = 0; i < regs.length; i++) {
+            if (!allowDupes) {
+                if (!m.is(keys[i])) {
+                    m.keys.add(new RegistryData(keys[i], regs[i]));
+                }
+            } else m.keys.add(new RegistryData(keys[i], regs[i]));
         }
     }
     //marks the existing registryData as a tooltip exclusion for this object
@@ -118,6 +118,10 @@ public abstract class AMaterialData extends ARecipeObject {
     public String getUnlocalizedByKey(String key) { //externally called if needed (eg, stone)
         return this.get(key).getFullUnlocalizedName();
     }
+
+    //liquid keys
+
+
     //logic
     protected boolean is(String key) {
         try {

@@ -1,6 +1,8 @@
 package Main.Data;
 
+import Main.Data.GameData.LiquidRegistry;
 import Main.Data.GameData.Registry;
+import Main.Data.RecipeObject.LiquidRegistryData;
 import Main.Data.RecipeObject.Localized.LFood;
 import Main.Data.RecipeObject.Material.*;
 import Main.Data.RecipeObject.Material.Composition.AChemicalComposition;
@@ -26,7 +28,10 @@ public class Material extends AData {
     public String state; //default state of the material, determines other states
 
     //every registry key is now unified for the material itself
+    //items
     public ArrayList<RegistryData> keys = new ArrayList<>();
+    //liquids
+    public ArrayList<LiquidRegistryData> liquids = new ArrayList<>();
 
     //Material Part data, initializes to null if not registered, otherwise when building,
     //these will be read and used for various material parts and recipe generation:
@@ -97,6 +102,29 @@ public class Material extends AData {
     public boolean is(String s) {
         try {
             getRegistryData(s);
+        } catch (IllegalArgumentException e) {
+            return false;
+        }
+        return true;
+    }
+
+    //liquid keys
+    public LiquidRegistryData getLiquidData(String s) {
+        if (liquids.isEmpty()) {
+            return null;
+        }
+        for (LiquidRegistryData l : liquids) {
+            if (l.key.equals(s)) return l;
+        }
+        throw new IllegalArgumentException("Unknown liquid key " + s + " for material " + NAME);
+    }
+    public LiquidRegistry getLiquid(String s) {
+        if (liquids.isEmpty()) return null;
+        return getLiquidData(s).l;
+    }
+    public boolean isLiquid(String s) {
+        try {
+            getLiquidData(s);
         } catch (IllegalArgumentException e) {
             return false;
         }
