@@ -29,18 +29,15 @@ public class TinkerCastable extends ATinkers {
 
     @Override
     protected String buildSpecificRecipe() {
-        TCPart[] tcParts = this.getEnabledTCParts();
-        StringBuilder sb = new StringBuilder();
-
         //add each tinkers part to the keys before doing recipes
+        TCPart[] tcParts = this.getEnabledTCParts();
         for (TCPart p : tcParts) {
-            //Registry r = getByNBT(p.getUnlocalizedName(), "{Material:\"\"" + this.NAME+ "_cot\"\"}");
-            Registry r = getByNBT("OsmiumPickaxeHead", "{Material:\"\"" + this.NAME+ "_cot\"\"}");
-            //Registry r = get
+            Registry r = getByNBT(p.getRegistry().getFullUnlocalizedName(), "{Material:\"\"" + this.NAME+ "_cot\"\"}");
             addKey(p.NAME, r);
         }
 
         //recipes
+        StringBuilder sb = new StringBuilder();
         //melting
         int i = 0;
         for (TCPart p : tcParts) {

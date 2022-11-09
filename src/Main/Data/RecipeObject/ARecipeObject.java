@@ -245,10 +245,11 @@ public abstract class ARecipeObject extends AData {
         error(key, "item registry", this.NAME);
         return null;
     }
+    //requires unlocalized name (registry name)
     protected Registry getByNBT(String name, String nbt) {
         for (Registry o : this.items) {
             //mod:registry:meta, nbt
-            if (o.getLocalizedName().equals(name) && o.nbt.equals(nbt)) {
+            if (o.getFullUnlocalizedName().equals(name) && o.nbt.equals(nbt)) {
                 return o;
             }
         }
