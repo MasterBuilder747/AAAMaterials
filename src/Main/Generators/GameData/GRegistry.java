@@ -92,7 +92,6 @@ public class GRegistry extends AGGameData<Registry> {
             if (i != s.length-1) sb.append(",");
         }
         String rs = sb.toString();
-        System.out.println(rs);
         //handle oredict and nbt here
         //"", ""
         if (!rs.equals("\"\",\"\"")) {
@@ -106,7 +105,7 @@ public class GRegistry extends AGGameData<Registry> {
             r.setOre(ores);
             i+=3;
             if (!Util.isOut(rs, i+1)) {
-                String nbt = rs.substring(i);
+                String nbt = rs.substring(i, rs.length()-1);
                 r.setNBT(nbt);
             }
         }
