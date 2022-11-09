@@ -26,7 +26,6 @@ public class GMLiquid extends AGMLiquid<MLiquid> {
 
     @Override
     protected void readMaterialParameters(Material m, String[] s) {
-        Util.printArray(s);
         //String key, int density, int luminosity, int temperature, int viscosity, boolean vaporize
         objects.add(new MLiquid(
                 getRecipeTweak("MLiquid"), getItems(), getLiquids(), getOres(),

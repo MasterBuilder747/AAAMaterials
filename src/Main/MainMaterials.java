@@ -46,6 +46,9 @@ public class MainMaterials {
     public final static boolean REG = false;
 
     public static void main(String[] args) throws IOException {
+        Stopwatch w = new Stopwatch();
+        w.start();
+
         //config tweaker (no requirements)
         //however, each data file must have its data populated manually before registering
         GConfigTweak config = new GConfigTweak("configstotweak");
@@ -270,5 +273,9 @@ public class MainMaterials {
         bw = new BufferedWriter(fw);
         bw.write(biome.genSeasons());
         bw.close();
+
+        w.stop();
+        System.out.println();
+        System.out.println("Material loading completed in " + w.getSec() + " sec, " + w.getMillis() + " ms");
     }
 }

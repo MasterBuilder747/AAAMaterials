@@ -45,6 +45,9 @@ public class MainRecipes {
     public final static boolean REG = true;
 
     public static void main(String[] args) throws IOException {
+        Stopwatch w = new Stopwatch();
+        w.start();
+
         //after registering all custom items in game, use /tellme [command params here] to get .csv dump
         //then format the dump file to be more readable
         //every item registry name must be matched in the data
@@ -218,5 +221,9 @@ public class MainRecipes {
         bw.close();
 
         Util.splitFiles(sb.toString(), header, initialCode, Util.HOME + Util.DEPLOY+"scripts/recipes/recipes");
+
+        w.stop();
+        System.out.println();
+        System.out.println("Recipe loading completed in " + w.getSec() + " sec, " + w.getMillis() + " ms");
     }
 }

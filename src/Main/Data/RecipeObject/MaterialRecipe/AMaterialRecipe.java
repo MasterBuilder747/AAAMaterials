@@ -6,7 +6,6 @@ import Main.Data.MachineResource.Machine.Machine;
 import Main.Data.MachineResource.MachineData;
 import Main.Data.MachineResource.MachineMatter;
 import Main.Data.RecipeObject.ARecipeObject;
-import Main.Data.RecipeObject.RegistryData;
 import Main.Data.Tweakers.RecipeTweak;
 import Main.Util;
 
