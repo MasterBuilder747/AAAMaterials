@@ -106,6 +106,7 @@ public class GRegistry extends AGGameData<Registry> {
             i+=3;
             if (!Util.isOut(rs, i+1)) {
                 String nbt = rs.substring(i, rs.length()-1);
+                nbt = nbt.replace("\"\"", "\"");
                 r.setNBT(nbt);
             }
         }

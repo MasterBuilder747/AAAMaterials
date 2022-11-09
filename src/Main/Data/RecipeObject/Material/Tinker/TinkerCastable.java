@@ -32,25 +32,24 @@ public class TinkerCastable extends ATinkers {
         //add each tinkers part to the keys before doing recipes
         TCPart[] tcParts = this.getEnabledTCParts();
         for (TCPart p : tcParts) {
-            Registry r = getByNBT(p.getRegistry().getFullUnlocalizedName(), "{Material:\"\"" + this.NAME+ "_cot\"\"}");
+            Registry r = getByNBT(p.r.getFullUnlocalizedName(), "{Material:\"" + this.NAME+ "_cot\"}");
             addKey(p.NAME, r);
         }
 
         //recipes
         StringBuilder sb = new StringBuilder();
-        //melting
+        //melting of TiC parts into the appropriate molten liquid amount
         int i = 0;
         for (TCPart p : tcParts) {
             sb.append(
                 addRecipe(
                     i, "melting", 1, (int)(p.amount * 60), 0.5,
                     "+red*100", "-orange*100", 100, 100,
-                    "<>"+p.getTCPartBracket(), "-", "-", "^molten(" + (int)(p.amount * 144 * this.meltingMultiplier) + ")"
+                    "<>"+p.getBracket(), "-", "-", "^molten(" + (int)(p.amount * 144 * this.meltingMultiplier) + ")"
                 )
             );
             i++;
         }
-
         //casting
         //machine
         return sb.toString();

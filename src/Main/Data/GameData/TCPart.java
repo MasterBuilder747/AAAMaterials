@@ -3,7 +3,7 @@ package Main.Data.GameData;
 public class TCPart extends AGameData {
     public String type;
     public double amount;
-    Registry r;
+    public Registry r;
     String m; //name of the material
 
     //key
@@ -15,7 +15,7 @@ public class TCPart extends AGameData {
     }
     public void addMaterial(String m) {
         this.m = m;
-        r.setNBT("{Material:\"\""+this.m+"_cot\"\"}");
+        r.setNBT("{Material:\""+this.m+"_cot\"}");
     }
 
     @Override
@@ -26,14 +26,6 @@ public class TCPart extends AGameData {
     public String getUnlocalizedName() {
         return this.registryName;
     }
-
-    public String getTCPartBracket() {
-        return this.registryName.substring(1, this.registryName.length()-1)+":"+this.amount;
-    }
-    public Registry getRegistry() {
-        return r;
-    }
-
     @Override
     public void print() {
         System.out.println(this.NAME + "; " + this.r.getNBTBracket() + "; " + this.type + "; " + this.amount);
