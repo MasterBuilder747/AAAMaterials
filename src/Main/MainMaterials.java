@@ -68,8 +68,6 @@ public class MainMaterials {
         liquids.registerMaterials();
         GEntityRegistry entities = new GEntityRegistry("entityregistry");
         entities.registerMaterials();
-        GMobRegistry mobs = new GMobRegistry("mobregistry", entities);
-        mobs.registerMaterials();
         GBiomeRegistry biomes = new GBiomeRegistry("biomeregistry");
         biomes.registerMaterials();
         GBiome biome = new GBiome("biome", biomes);

@@ -66,8 +66,6 @@ public class MainRecipes {
         liquids.registerRecipes();
         GEntityRegistry entities = new GEntityRegistry("entityregistry");
         entities.registerRecipes();
-        GMobRegistry mobs = new GMobRegistry("mobregistry", entities);
-        mobs.registerRecipes();
         GBiomeRegistry biomes = new GBiomeRegistry("biomeregistry");
         biomes.registerRecipes();
         GBiome biome = new GBiome("biome", biomes);
