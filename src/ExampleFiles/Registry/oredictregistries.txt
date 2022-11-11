@@ -1,2 +1,2 @@
-/generated from tellme:
+/generated with /tellme dump-csv oredictionary-by-key
 /"OreDict Key","ItemStacks"

@@ -1,1 +1,2 @@
-/
+/material, int density, int luminosity, int temperature, int viscosity, boolean vaporize
+/ex: hydrogen, 6000, 5, 1000, 6000, false

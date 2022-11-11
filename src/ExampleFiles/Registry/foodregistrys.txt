@@ -1,2 +1,2 @@
-/generated from tellme:
+/generated with /tellme dump-csv food-items
 /"Mod name","Registry name","Item ID","Meta/dmg","Subtypes","Display name","Hunger","Saturation","Ore Dict keys"

@@ -1,2 +1,2 @@
-/generated from tellme:
+/generated with /tellme dump-csv fluids
 /"Name","Density","Temperature","Viscosity","Luminosity","Rarity","isGaseous","Block"

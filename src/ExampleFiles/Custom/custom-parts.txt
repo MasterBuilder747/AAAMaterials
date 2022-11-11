@@ -1,4 +1,6 @@
-//name, localizedName, oreDict, bool isExistingPart, bool hasOverlay, int moltenMetalAmount(mB)
+//name, localizedName, oreDict, bool isExistingPart, bool hasOverlay, int moltenMetalAmount(mB) //for solid amounts: convert using decimal*144
 /%s is required and denotes the material name, only needed if localized name
 /- denotes a space
+/Note that this will only work on Stone variants, rock subtypes need to be handled
+/format: oreAmountName-dimensionOreType-%s-Ore
 /ex: ingot, %s-Ingot, ingot, true, false, 144

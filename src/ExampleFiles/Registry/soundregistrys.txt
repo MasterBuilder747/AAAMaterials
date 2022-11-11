@@ -1,2 +1,2 @@
-/generated from tellme:
+/generated with /tellme dump-csv soundevents
 /"Registry name","ID"

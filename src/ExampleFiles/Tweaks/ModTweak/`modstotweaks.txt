@@ -1,0 +1,2 @@
+/list of mods to tweak, separated by linebreak, must match mod's internal registry name
+/ex: comforts

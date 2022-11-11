@@ -1,2 +1,2 @@
-/generated from tellme:
+/generated with /tellme dump-csv entities
 /"Mod name","Registry name","Entity class name","ID"

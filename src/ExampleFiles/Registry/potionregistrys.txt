@@ -1,2 +1,2 @@
-/generated from tellme:
+/generated with /tellme dump-csv potions
 /"Mod name","Registry name","Potion Name","ID","Liquid color","Is bad","Is beneficial"

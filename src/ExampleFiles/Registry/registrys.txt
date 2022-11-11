@@ -1,2 +1,2 @@
-/generated from tellme dump-csv items
-/"Mod name","Registry name","Item ID","Meta/dmg","Subtypes","Display name","Ore Dict keys"
+/generated with /tellme dump-csv items-with-nbt
+/"Mod name","Registry name","Item ID","Meta/dmg","Subtypes","Display name","Ore Dict keys","NBT"

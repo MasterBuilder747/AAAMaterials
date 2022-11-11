@@ -1,0 +1,54 @@
+/name (recipe key), mod:itemRegistry, type, double amountMultiplier(144 * x)
+/mod: not needed for tconstruct
+/mods:
+/types: shard, armor, head, tool (rod/extra), bow, string, feather, shaft, arrow, other
+/this is used to change the amounts too
+/note that we can change these costs when it comes to casting and crafting material costs
+/shard is a special type that is only added if automatic part crafting recipes are added
+/tool
+shard, shard, shard, 0.5
+sharpeningKit, sharpening_kit, tool, 2
+pickaxeHead, pick_head, head, 3
+shovelHead, shovel_head, head, 1
+axeHead, axe_head, head, 3
+axeBroadHead, broad_axe_head, head, 8
+swordHead, sword_blade, head, 2
+swordLargeHead, large_sword_blade, head, 6
+hammerHead, hammer_head, head, 8
+excavatorHead, excavator_head, head, 8
+kamaHead, kama_head, head, 2
+scytheHead, scythe_head, head, 8
+panHead, pan_head, head, 5
+signHead, sign_head, head, 3
+plateToolLarge, large_plate, tool, 8
+toolRod, tool_rod, tool, 0.5
+toolToughRod, tough_tool_rod, tool, 2.5
+binding, binding, tool, 1
+bindingTough, tough_binding, tool, 3
+guardWide, wide_guard, tool, 1
+guardHand, hand_guard, tool, 1
+guardCross, cross_guard, tool, 1
+knifeHead, knife_blade, tool, 2
+/bow (also requires head only)
+bowlimb, bow_limb, bow, 3
+/string
+bowString, bow_string, string, 4
+/feather
+arrowFletching, fletching, feather, 2
+/shaft
+arrowShaft, arrow_shaft, shaft, 2
+/arrowHead (requires head only)
+arrowHead, arrow_head, arrow, 2
+/armor
+helmetCore, conarm:helmet_core, armor, 5
+chestCore, conarm:chest_core, armor, 8
+legCore, conarm:leggings_core, armor, 7
+bootCore, conarm:boots_core, armor, 4
+trim, conarm:armor_trim, armor, 1
+plates, conarm:armor_plate, armor, 4
+polishKit, conarm:polishing_kit, armor, 2
+/other
+/laserPipe, plustic:pipe_piece, other, 4
+/batteryCell, plustic:battery_cell, other, 3
+/laserMedium, plustic:laser_medium, other, 3
+bladeLight, tinkers_reforged:light_blade, other, 3

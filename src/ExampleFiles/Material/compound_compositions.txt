@@ -1,0 +1,7 @@
+//material, Composition[String], boolean isDefaultComposition, boolean isMixing, boolean isCentrifuge, boolean isChemReact, boolean isElectrolyze
+//putting a composition(material using that composition) into a composition:
+//ex: H2(SO4) where SO4 is sulfuric acid (default material composition, if specified)
+//overriding default material composition in a composition:
+/ex1: sulfuric diamond: S[diamond]2 //brackets indicate the name of the material to override, composition of it not needed
+/ex2: bronze, SnCu3, true, false, false, false, false
+/ex3: aluminum_brass, Al2[brass]3[bronze]4, true, false, false, false, false

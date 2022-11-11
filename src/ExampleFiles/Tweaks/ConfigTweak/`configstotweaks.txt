@@ -1,0 +1,2 @@
+/filetoread, configfolder (- for root config folder), filetowrite
+/ex: tweakersConstruct, -, tweakersconstruct

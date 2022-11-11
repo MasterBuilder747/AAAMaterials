@@ -1,2 +1,2 @@
-/generated from tellme:
+/generated with /tellme dump-csv biomes
 /"ID","Registry name","Biome name","temp.","temp cat","rain","snow","oceanic","BiomeType","BiomeDictionary.Type","Valid for"

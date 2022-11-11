@@ -1,0 +1,2 @@
+/list of recipe objects to tweak
+/ex: Material.Solid.Gem

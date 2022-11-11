@@ -1,0 +1,28 @@
+//required parameters
+//material, bool addAutomaticCastingRecipes, icon/oreDict(not including material, eg: ingot = ingotOsmium), String[;] MaterialItems{I_OSyntaxItem=amountNeeded=amountMatched}, (null if not needed)
+//Type head, Type handle_extra, Type bow, Type string, Type shaft, Type feather, Type armor
+//Type syntax = type: param1; param2... (semicolon separated)
+//to disable a type = type:false
+//trait array syntax: String[.] trait1. trait2. ...; (period separated)
+//doubles can be written as ints
+//partTypes =
+//tool:
+/add arrowHead only (do not need head and handle stats, only head) =
+/arrowHead stats = int headDurability; double miningSpeed; double attackDamage; int harvestLevel; String[.] headTraits,
+/OR
+/add head stats = int headDurability; double miningSpeed; double attackDamage; int harvestLevel; String[.] headTraits; bool addArrow;
+/OR/AND
+/handle-extra stats =
+/handle stats = double handleModifier; int handleDurability; String[.] handleTraits;
+/extra stats = int extraDurability; String[.] extraTraits,
+//bow: double drawSpeed; double range; double bonusDamage; String[.] bowTraits,
+//string: double stringModifier; String[.] bowstringTraits,
+//shaft: double arrowModifier; int bonusAmmo; String[.] shaftTraits,
+//feather: double accuracy; double fletchingModifier; String[.] fletchingTraits,
+//armor:
+/armorStats = double coreDurability; double defense; double armorModifier; double platesDurability; double toughness; double armorExtraDurability;
+/armorTraits = String[.] coreTraits; String[.] trimTraits; String[.] platesTraits
+//NOTES:
+/if adding castable, molten is required, but oredictionary is not
+/arrowHead and bowLimb require head stats (only)
+/ex: osmium, false, ingot, null, head: 100; 5; 5; 3; []; true, handle_extra: 1; 10; []; 10; [], bow: 1; 1; 1; [], string: 1; [], shaft: 1; 1; [], feather: 1; 1; [], armor: 10; 10; 1; 10; 10; 10; []; []; []

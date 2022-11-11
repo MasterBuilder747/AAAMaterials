@@ -1,0 +1,2 @@
+/material, ElementComposition[String] {Must be a singular element, amount optional}, boolean isDefaultComposition, boolean isDiatomic
+/ex: osmium, Os, true, false

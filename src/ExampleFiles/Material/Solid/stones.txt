@@ -1,2 +1,3 @@
 /materialName, bool addPebble, bool isSedimentary, bool noSlab
+/stoneTypes: vanilla, igneous, metamorphic, sedimentary, custom
 /ex: stone, true, false, false
