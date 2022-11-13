@@ -274,6 +274,6 @@ public class MainMaterials {
 
         w.stop();
         System.out.println();
-        System.out.println("Material loading completed in " + w.getSec() + " sec, " + w.getMillis() + " ms");
+        System.out.println("Material loading completed in " + w.getSec() + " sec, " + Util.round(w.getMillis()-(w.getSec() * 1000), 2) + " ms");
     }
 }

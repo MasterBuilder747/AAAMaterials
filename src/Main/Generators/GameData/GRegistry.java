@@ -1,6 +1,7 @@
 package Main.Generators.GameData;
 
 import Main.Data.GameData.Registry;
+import Main.Generators.GeneratorException;
 import Main.Util;
 
 import java.io.BufferedReader;
@@ -21,8 +22,16 @@ public class GRegistry extends AGGameData<Registry> {
         error("Unknown CoT item from " + filename + "s.txt: " + s, true);
         return null;
     }
+    public Registry getByRegistryNameLine(String s, String filename, int line) {
+        for (Registry o : objects) {
+            if (o.getFullUnlocalizedName().equals(s)) {
+                return o;
+            }
+        }
+        throw new GeneratorException("Unknown item with registry name " + s + " in the registry", filename, line);
+    }
 
-    public Registry getNonCTRegistry(String s) {
+    public Registry getByRegistryName(String s) {
         for (Registry o : objects) {
             if (o.NAME.equals(s)) {
                 return o;

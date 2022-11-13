@@ -12,10 +12,11 @@ public class GFoodRegistry extends AGGameData<FoodRegistry> {
 
     @Override
     protected void readGameData(String[] s) {
-        //TODO: get special characters to work!
+        //TODO: fix bug with commas in the local name:
+        //"Pam's HarvestCraft","harvestcraft:earlgreyteaitem",7101,0,"false","Tea, Earl Grey, Hot",2,1.2,"foodEarlgreytea"
 
         //"Mod name","Registry name","Item ID","Meta/dmg","Subtypes","Display name","Hunger","Saturation","Ore Dict keys"
-        if(!this.registry.is(s[5])) error("Unknown item " + s[5] + " in the registry"); //special characters do not work here, either ignore them or handle it
-        objects.add(new FoodRegistry(this.registry.getNonCTRegistry(s[5]), parseInt(s[6]), parseDouble(s[7])));
+        String registryName = s[1]+":"+s[3];
+        objects.add(new FoodRegistry(this.registry.getByRegistryNameLine(registryName, filename, line), parseInt(s[6]), parseDouble(s[7])));
     }
 }

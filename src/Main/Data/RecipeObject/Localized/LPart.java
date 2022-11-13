@@ -6,8 +6,6 @@ import Main.Data.MachineResource.MachineData;
 import Main.Data.MachineResource.MachineMatter;
 import Main.Data.Tweakers.RecipeTweak;
 
-import java.util.ArrayList;
-
 public class LPart extends ALocalizedData {
     //this defines a material part to be used in materials
     String type;

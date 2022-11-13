@@ -218,10 +218,10 @@ public class MainRecipes {
         }
         bw.close();
 
-        Util.splitFiles(sb.toString(), header, initialCode, Util.HOME + Util.DEPLOY+"scripts/recipes/recipes");
+        Util.splitFiles(sb.toString(), header, initialCode, Util.HOME + Util.DEPLOY+"scripts/recipes/recipes", false);
 
         w.stop();
         System.out.println();
-        System.out.println("Recipe loading completed in " + w.getSec() + " sec, " + w.getMillis() + " ms");
+        System.out.println("Recipe loading completed in " + w.getSec() + " sec, " + Util.round(w.getMillis()-(w.getSec() * 1000), 2) + " ms");
     }
 }

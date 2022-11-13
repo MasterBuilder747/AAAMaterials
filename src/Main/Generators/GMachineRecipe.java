@@ -148,7 +148,7 @@ public class GMachineRecipe extends AGenerator<CustomMachineRecipe> {
         } else {
             //localized name
             i = i.replace("-", ""); //dash is for readability, spaces are not needed for searching by localized name in the registry
-            Registry reg = this.registry.getNonCTRegistry(i);
+            Registry reg = this.registry.getByRegistryName(i);
             item = reg.getFullUnlocalizedName();
         }
         return item;

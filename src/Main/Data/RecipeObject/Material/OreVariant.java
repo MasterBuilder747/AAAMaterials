@@ -11,8 +11,6 @@ import Main.Data.RecipeObject.Material.Solid.Stone;
 import Main.Data.Tweakers.RecipeTweak;
 import Main.Util;
 
-import java.util.ArrayList;
-
 public class OreVariant extends AMaterialData {
     //comma-separated
     //name is the material name
@@ -84,15 +82,18 @@ public class OreVariant extends AMaterialData {
                 for (int i = 0; i < recipes.length; i++) {
                     String r = recipes[i];
                     String[] p = Util.split(r, ",");
+                    int j = 0;
                     for (Stone s : this.stones) {
                         //can add custom parameters if needed
                         sb.append(
                             addRecipe(
                                 i, p[0], parseInt(p[1]), parseInt(p[2]), parseDouble(p[3]),
                                 p[4], p[5], parseInt(p[6]), parseInt(p[7]),
-                                getStoneData(p[8], s), getStoneData(p[9], s), getStoneData(p[10], s), getStoneData(p[11], s)
+                                getStoneData(p[8], s), getStoneData(p[9], s), getStoneData(p[10], s), getStoneData(p[11], s),
+                                "tweaker"+j
                             )
                         );
+                        j++;
                     }
                 }
                 return sb.toString();

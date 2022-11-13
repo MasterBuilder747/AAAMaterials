@@ -67,7 +67,7 @@ public class GWood extends AGMSolid<Wood> {
                 case 21 -> test += "BarkWall";
             }
             if (this.registry.is(test)) {
-                registries.add(this.registry.getNonCTRegistry(test));
+                registries.add(this.registry.getByRegistryName(test));
             } else {
                 error("wood type " + test + " for material " + m.NAME + " is not in the registry");
             }

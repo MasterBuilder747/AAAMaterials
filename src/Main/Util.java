@@ -42,7 +42,7 @@ public class Util {
         return s.substring(i1, i2+1);
     }
 
-    public static void splitFiles(String code, String header, String initialCode, String filePath) throws IOException {
+    public static void splitFiles(String code, String header, String initialCode, String filePath, boolean checkDupeVars) throws IOException {
         //Split code into multiple files
         //recipes[N].zs
         ArrayList<String> sbs = new ArrayList<>();
@@ -53,20 +53,38 @@ public class Util {
 
         sb = new StringBuilder();
         sb2 = new StringBuilder();
-        int i = 0;
-        while (i < prs.length) {
-            int line = 0;
-            while (line < 500 && i < prs.length) {
-                sb2.append(prs[i]).append("\n");
-                if (prs[i].endsWith(".build();")) {
+
+        ArrayList<String> vars = new ArrayList<>();
+
+        int line = 0;
+        int fileNo = 0;
+        while (line < prs.length) {
+            int methodNo = 0;
+            while (methodNo < 500 && line < prs.length) {
+                if (checkDupeVars) {
+                    //check for duplicate variables (this process is super slow, disable unless issues on game load)
+                    if (prs[line].endsWith(".build();")) {
+                        String varName = prs[line].substring(0, prs[line].indexOf("."));
+                        for (String ss : vars) {
+                            if (ss.equals(varName)) {
+                                throw new IllegalArgumentException("File " + fileNo + ": duplicate var name: " + varName);
+                            }
+                        }
+                        vars.add(varName);
+                        System.out.println(varName); //keep enabled to see progress
+                    }
+                }
+                sb2.append(prs[line]).append("\n");
+                if (prs[line].endsWith(".build();")) {
                     sb.append(sb2).append("\n");
                     sb2 = new StringBuilder();
-                    line++;
+                    methodNo++;
                 }
-                i++;
+                line++;
             }
             sbs.add(sb.toString());
             sb = new StringBuilder();
+            fileNo++;
         }
 
         //write each file
@@ -162,6 +180,12 @@ public class Util {
         return true;
     }
 
+    //this only cuts off, does not round up
+    public static double round(double d, int decimalPlaces) {
+        int mult = (int)(Math.pow(10, decimalPlaces));
+        int dd = (int)(mult * d);
+        return (double)dd/mult;
+    }
 
     //chars
     public static int amountOfChar(String s, char chr) {

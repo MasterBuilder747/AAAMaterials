@@ -22,15 +22,11 @@ public class Ore extends AMSolid {
 
     //for generation of the ore
     //order: stone, nether, end, other planets?
-    int stoneChunkChance;
-    int netherChunkChance;
-    int endChunkChance;
-    int bedrockChunkChance;
-    int bedrockDimension;
-    int stoneMinHeight;
-    int netherMinHeight;
-    int endMinHeight;
+    int stoneChunkChance, stoneMinHeight;
     String biome;
+    int netherChunkChance, netherMinHeight;
+    int endChunkChance, endMinHeight;
+    int bedrockHeight, bedrockChunkChance, bedrockDimension;
 
     //1. generate CoT ore blocks using parttype
     //2. load the game
@@ -156,10 +152,11 @@ public class Ore extends AMSolid {
         this.endMinHeight = minHeight;
         this.endChunkChance = chunkChance;
     }
-    public void addBedrockGen(Registry denseBedrock, int bedrockChunkChance, int bedrockDimension) {
+    public void addBedrockGen(Registry denseBedrock, int bedrockHeight, int bedrockChunkChance, int bedrockDimension) {
         this.addRegistryData("denseBedrock", denseBedrock);
         this.bedrockChunkChance = bedrockChunkChance;
         this.bedrockDimension = bedrockDimension;
+        this.bedrockHeight = bedrockHeight;
     }
 
     //oregen
@@ -185,8 +182,8 @@ public class Ore extends AMSolid {
                     values.add(new Value("json", this.genBedrockOreGenerator(block)));
                     values.add(new Value("int", String.valueOf(this.bedrockChunkChance))); //get custom value here
                     values.add(new Value("json", this.genClusterCount()));
-                    values.add(new Value("int", "0"));
-                    values.add(new Value("int", "0"));
+                    values.add(new Value("int", String.valueOf(this.bedrockHeight)));
+                    values.add(new Value("int", String.valueOf(this.bedrockHeight)));
                     values.add(new Value("bool", "false"));
                     values.add(new Value("str", "all"));
                     values.add(new Value("json", this.genDimensionGen(block)));

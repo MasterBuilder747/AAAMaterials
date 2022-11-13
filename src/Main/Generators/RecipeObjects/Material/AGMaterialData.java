@@ -70,8 +70,8 @@ public abstract class AGMaterialData<M extends AMaterialData> extends AGRecipeOb
     //this is called after genPartGroups
     protected M updateRegistryKeys(M r) {
         if (this.isReg) {
-            String[] names = r.localizedPartNames.toArray(new String[0]);
             String[] ores = r.getEnabledOredicts();
+            String[] names = r.localizedPartNames.toArray(new String[0]);
             Registry[] regs = getRegistries(names);
             r.addAllRegistryDatas(ores, regs);
             //r.addMaterialKeys(ores, regs, true);

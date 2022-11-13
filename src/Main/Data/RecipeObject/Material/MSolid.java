@@ -40,7 +40,7 @@ public class MSolid extends AMaterialData {
         */
         if (this.altName != null) {
             sb.append("var ").append(this.altName);
-            sb.append(" = MaterialSystem.getMaterialBuilder().setName(\"").append(Util.toUpper(Util.toUpper(this.altName))).append(" ").append("\").setColor(Color.fromHex(\"").append(this.m.color).append("\")).build();\n");
+            sb.append(" = MaterialSystem.getMaterialBuilder().setName(\"").append(Util.toUpper(Util.toUpper(this.altName))).append("\").setColor(Color.fromHex(\"").append(this.m.color).append("\")).build();\n");
             sb.append(this.genAltPartGroups(new String[]{this.altName, this.altName, this.altName}));
         } else {
             sb.append(this.genPartGroups());

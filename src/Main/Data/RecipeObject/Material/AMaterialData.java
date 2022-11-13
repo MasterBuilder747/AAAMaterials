@@ -18,9 +18,10 @@ import java.util.Arrays;
 
 public abstract class AMaterialData extends ARecipeObject {
     protected Material m; //in case basic data is needed
-    protected PartGroup[] partGroups;
-    protected boolean[] enablePartGroups;
-    public ArrayList<String> localizedPartNames;
+    protected PartGroup[] partGroups; //all the known partGroups to be added by this child object, do not use
+    private boolean[] enablePartGroups; //used internally to get only enabled partGroups
+    public ArrayList<String> localizedPartNames; //the localName that is specific to the material to be used for searching for the registry
+    public ArrayList<PartGroup> enabledPartGroups; //each partGroup that is enabled for this material
 
     public AMaterialData(String type,
                          RecipeTweak tweak, Registry[] items, String[] liquids, String[] ores,
@@ -31,6 +32,7 @@ public abstract class AMaterialData extends ARecipeObject {
                 machines, matters, data);
         this.m = m;
         this.localizedPartNames = new ArrayList<>();
+        this.enabledPartGroups = new ArrayList<>();
     }
 
     @Override
@@ -169,9 +171,10 @@ public abstract class AMaterialData extends ARecipeObject {
     private void setPartGroupsReg() {
         for (int i = 0; i < partGroups.length; i++) {
             if (this.enablePartGroups[i]) {
+                this.enabledPartGroups.add(partGroups[i]);
                 for (LPart p : partGroups[i].getParts()) {
-                    this.localizedPartNames.add(p.baseRegistryName.replace("%s", m.LOCALNAME.replace(" ", "")));
                     //some materials have space in their localName, remove it to allow the registry to find the item
+                    this.localizedPartNames.add(p.baseRegistryName.replace("%s", m.LOCALNAME.replace(" ", "")));
                 }
             }
         }
@@ -180,14 +183,15 @@ public abstract class AMaterialData extends ARecipeObject {
     private void setPartGroupsReg(String variant) {
         for (int i = 0; i < partGroups.length; i++) {
             if (this.enablePartGroups[i]) {
+                this.enabledPartGroups.add(partGroups[i]);
                 for (LPart p : partGroups[i].getParts()) {
-                    this.localizedPartNames.add(p.baseRegistryName.replace("%s", variant + m.LOCALNAME.replace(" ", "")));
                     //some materials have space in their localName, remove it to allow the registry to find the item
+                    this.localizedPartNames.add(p.baseRegistryName.replace("%s", variant + m.LOCALNAME.replace(" ", "")));
                 }
             }
         }
     }
-    public LPart[] getEnabledParts() {
+    public LPart[] getLocalizedPartNames() {
         ArrayList<LPart> parts = new ArrayList<>();
         for (int i = 0; i < this.partGroups.length; i++) {
             if (this.enablePartGroups[i]) {
@@ -198,7 +202,7 @@ public abstract class AMaterialData extends ARecipeObject {
     }
     public String[] getEnabledOredicts() {
         ArrayList<String> outs = new ArrayList<>();
-        LPart[] parts = this.getEnabledParts();
+        LPart[] parts = this.getLocalizedPartNames();
         for (LPart p : parts) {
             outs.add(p.oreDict);
         }
@@ -207,12 +211,14 @@ public abstract class AMaterialData extends ARecipeObject {
     //append a custom key based on the block variant
     public String[] getEnabledOredicts(String variant) {
         ArrayList<String> outs = new ArrayList<>();
-        LPart[] parts = this.getEnabledParts();
+        LPart[] parts = this.getLocalizedPartNames();
         for (LPart p : parts) {
             outs.add(variant+"_"+p.oreDict);
         }
         return outs.toArray(new String[0]);
     }
+
+    //set partGroups
     public void setPartGroups(PartGroup[] partGroups, boolean[] enablePartGroups) {
         this.partGroups = partGroups;
         this.enablePartGroups = enablePartGroups;
@@ -241,12 +247,9 @@ public abstract class AMaterialData extends ARecipeObject {
         this.enablePartGroups = new boolean[]{true};
         this.setPartGroupsReg(variant);
     }
+
     public boolean[] getEnablePartGroups() {
         return this.enablePartGroups;
-    }
-
-    public Material getMat() {
-        return this.m;
     }
 
     protected String genPartGroups() {

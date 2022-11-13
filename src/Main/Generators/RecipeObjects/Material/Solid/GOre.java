@@ -7,7 +7,6 @@ import Main.Data.RecipeObject.Material.Solid.Ore;
 import Main.Data.RecipeObject.Material.OreVariant;
 import Main.Data.OreType;
 import Main.Data.GameData.Registry;
-import Main.Data.RecipeObject.RegistryData;
 import Main.Generators.GMaterial;
 import Main.Generators.GPartGroup;
 import Main.Generators.GameData.GLiquidRegistry;
@@ -181,7 +180,8 @@ public class GOre extends AGMSolid<Ore> {
                         Registry ore = this.oreRegistryCheck("ore", block, m.NAME);
                         Registry poor = this.oreRegistryCheck("poor", block, m.NAME);
                         Registry dense = this.oreRegistryCheck("dense", block, m.NAME);
-                        o.addStoneGen(ore, poor, dense, parseInt(gens[0]), parseInt(gens[1]), gens[2]);
+                        String biome = gens[2].replace("-", ":");
+                        o.addStoneGen(ore, poor, dense, parseInt(gens[0]), parseInt(gens[1]), biome);
                     }
                     case "nether" -> {
                         if (gens.length != 2)
@@ -200,10 +200,10 @@ public class GOre extends AGMSolid<Ore> {
                         o.addEndGen(ore, poor, dense, parseInt(gens[0]), parseInt(gens[1]));
                     }
                     case "bedrock" -> {
-                        if (gens.length != 2)
-                            error("Two parameters are required for bedrock gen: the chunk chance and the dimension to gen in, for material " + m.NAME);
+                        if (gens.length != 3)
+                            error("Three parameters are required for bedrock gen: the y level, the chunk chance, and the dimension to gen in, for material " + m.NAME);
                         Registry dense = this.oreRegistryCheck("dense", block, m.NAME);
-                        o.addBedrockGen(dense, parseInt(gens[0]), parseInt(gens[1]));
+                        o.addBedrockGen(dense, parseInt(gens[0]), parseInt(gens[1]), parseInt(gens[2]));
                     }
                 }
             }

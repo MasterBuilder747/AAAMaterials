@@ -45,7 +45,8 @@ public class TinkerCastable extends ATinkers {
                 addRecipe(
                     i, "melting", 1, (int)(p.amount * 60), 0.5,
                     "+red*100", "-orange*100", 100, 100,
-                    "<>"+p.getBracket(), "-", "-", "^molten(" + (int)(p.amount * 144 * this.meltingMultiplier) + ")"
+                    "<>"+p.getBracket(), "-", "-", "^molten(" + (int)(p.amount * 144 * this.meltingMultiplier) + ")",
+                    "code"
                 )
             );
             i++;

@@ -64,7 +64,8 @@ public abstract class ARecipeObject extends AData {
                     addRecipe(
                         i, p[0], parseInt(p[1]), parseInt(p[2]), parseDouble(p[3]),
                         p[4], p[5], parseInt(p[6]), parseInt(p[7]),
-                        p[8], p[9], p[10], p[11]
+                        p[8], p[9], p[10], p[11],
+                        "tweaker"
                     )
                 );
             }
@@ -82,7 +83,8 @@ public abstract class ARecipeObject extends AData {
     protected String addRecipe(
             int num, String machine, int tier, int time, double powerMultiplier,
             String matterIn, String matterOut, int dataAmt, int chemAmt,
-            String iInput, String iOutput, String lInput, String lOutput
+            String iInput, String iOutput, String lInput, String lOutput,
+            String var2 //need an additional custom var for uniqueness between user and coded recipes
     ) {
         AMaterialRecipe r;
         r = constructRecipe(machine);
@@ -90,7 +92,7 @@ public abstract class ARecipeObject extends AData {
             error("Unknown machine: " + machine);
             return null;
         } else {
-            String recipeVariable = this.NAME/*+iOutput.replace("-", "_")*/+this.type+num+this.customVar;
+            String recipeVariable = this.NAME/*+iOutput.replace("-", "_")*/+this.type+num+this.customVar+var2;
             r.createRecipe(recipeVariable, time, tier, powerMultiplier, 0, this.getDataLiquid());
             //IO
             String[] iInputs = parseRecipeIO(iInput,false);
