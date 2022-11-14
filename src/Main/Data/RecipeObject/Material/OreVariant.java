@@ -7,6 +7,7 @@ import Main.Data.MachineResource.MachineMatter;
 import Main.Data.Material;
 import Main.Data.OreType;
 import Main.Data.PartGroup;
+import Main.Data.RecipeObject.Material.Composition.AChemicalComposition;
 import Main.Data.RecipeObject.Material.Solid.Stone;
 import Main.Data.Tweakers.RecipeTweak;
 import Main.Util;
@@ -74,6 +75,17 @@ public class OreVariant extends AMaterialData {
     }
 
     @Override
+    public String buildRecipe() {
+        String b = buildAdditionalRecipes();
+        if (b != null) return b;
+        return "";
+    }
+    @Override
+    protected String buildAdditionalRecipes() {
+        //do not add composition tooltips here, already handled in Ore
+        return buildSpecificRecipe();
+    }
+    @Override
     protected String buildSpecificRecipe() {
         if (this.block.equals("stone")) {
             StringBuilder sb = new StringBuilder();
@@ -85,14 +97,12 @@ public class OreVariant extends AMaterialData {
                     int j = 0;
                     for (Stone s : this.stones) {
                         //can add custom parameters if needed
-                        sb.append(
-                            addRecipe(
-                                i, p[0], parseInt(p[1]), parseInt(p[2]), parseDouble(p[3]),
-                                p[4], p[5], parseInt(p[6]), parseInt(p[7]),
-                                getStoneData(p[8], s), getStoneData(p[9], s), getStoneData(p[10], s), getStoneData(p[11], s),
-                                "tweaker"+j
-                            )
-                        );
+                        sb.append(addRecipe(
+                            i, p[0], parseInt(p[1]), parseInt(p[2]), parseDouble(p[3]),
+                            p[4], p[5], parseInt(p[6]), parseInt(p[7]),
+                            getStoneData(p[8], s), getStoneData(p[9], s), getStoneData(p[10], s), getStoneData(p[11], s),
+                            "tweaker"+j
+                        ));
                         j++;
                     }
                 }
