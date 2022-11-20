@@ -113,7 +113,7 @@ public abstract class AMaterialData extends ARecipeObject {
         error(key, this.NAME);
         return null;
     }
-    protected Registry get(String key) {
+    public Registry get(String key) {
         return this.getRegistryData(key).r;
     }
     @Override
@@ -121,7 +121,7 @@ public abstract class AMaterialData extends ARecipeObject {
         return this.get(key).getFullUnlocalizedName();
     }
 
-    //liquid keys
+    //TODO: liquid keys
 
 
     //logic

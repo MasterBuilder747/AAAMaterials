@@ -74,6 +74,8 @@ public class MainRecipes {
         foods.registerRecipes();
         GSoundRegistry sounds = new GSoundRegistry("soundregistry");
         sounds.registerRecipes();
+        GDimensionRegistry dimension = new GDimensionRegistry("dimensionregistrie");
+        dimension.registerRecipes();
         //TiC registries
         GTCTraitRegistry tcTraits = new GTCTraitRegistry("TCTraitRegistrie");
         tcTraits.registerRecipes();
@@ -167,6 +169,8 @@ public class MainRecipes {
         //7. ore system
         GOre ore = new GOre("ore", REG, tweak, registry, liquids, oreDict, machine, matter, data, material, partGroup, mSolid, stone);
         sb.append(ore.registerRecipes());
+        GOreVein veins = new GOreVein("oreVein", ore, dimension, biomes);
+        veins.registerMaterials();
 
         //8. Tinkers system
         GTinkerCastable tCastable = new GTinkerCastable("TinkerCastable", REG, tweak, registry, liquids, oreDict, machine, matter, data, material, partGroup, tcParts, tcTraits, alloy, metal, plastic, rubber);

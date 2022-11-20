@@ -10,7 +10,7 @@ import Main.Data.Tweakers.RecipeTweak;
 import java.util.ArrayList;
 
 public class Stone extends AMSolid {
-    String type; //does not have cobblestone registered for UB
+    public String type; //does not have cobblestone registered for UB
     boolean noSlab; //only applied to Conglomerate...?
     public boolean oreStone; //is this a stone that encases an ore?
 

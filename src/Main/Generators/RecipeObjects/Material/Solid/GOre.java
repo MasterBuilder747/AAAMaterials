@@ -25,6 +25,7 @@ import java.util.ArrayList;
 
 public class GOre extends AGMSolid<Ore> {
     GStone stones;
+
     public GOre(String filename, boolean isReg,
                 GRecipeTweak tweak, GRegistry registry, GLiquidRegistry liquids, GOreDictRegistry ores,
                 GMachine machine, GMachineMatter matter, GMachineData data,
@@ -41,33 +42,11 @@ public class GOre extends AGMSolid<Ore> {
 
     @Override
     protected void readSolidParameters(Material m, String[] s, MSolid solid) {
-        //HOW TO HANDLE VARIANTS:
-        //make a new material for netherrack, end, and bedrock, default will be stone
-        //do separate code blocks for these in the same way
-        //by changing the material name, we can now distinguish them in tellMe
-        //name is: [Variant amount] [Material] Ore
-        //ex: Lumium ore, Dense Lumium Ore, [Nether Lumium] Ore, Dense [Bedrock Lumium] Ore
-
-        //ex:
-        //false,
-        //stone:
-        // ore; 4; 6; 2:
-        // poor; 4; 6; 2:
-        // dense; 4; 9; 2:
-        // int chunkChance; int minHeight; String biome,
-        //nether:
-        // ore; 4; 6; 2:
-        // poor; 4; 6; 2:
-        // dense; 4; 9; 2:
-        // int chunkChance; int minHeight,
-        //end:
-        // ore; 4; 6; 2:
-        // poor; 4; 6; 2:
-        // dense; 4; 9; 2:
-        // int chunkChance; int minHeight,
-        //bedrock:
-        // dense; 4; 9; 2:
-        // int bedrockChunkChance
+        //material, enableGen,
+        //stone: poor; 4; 6; 2: ore; 4; 6; 2: dense; 4; 9; 2,
+        //nether: poor; 4; 6; 2: ore; 4; 6; 2: dense; 4; 9; 2,
+        //end: poor; 4; 6; 2: ore; 4; 6; 2: dense; 4; 9; 2,
+        //bedrock
 
         //configure ore gen here
         Ore o = new Ore(
@@ -81,6 +60,7 @@ public class GOre extends AGMSolid<Ore> {
                 "dustFine", "dustFineSmall", "dustFineTiny",
                 "powder", "powderSmall", "powderTiny"
         });
+
         String[] blocks = new String[s.length-1]; //includes each ore variant
         System.arraycopy(s, 1, blocks, 0, blocks.length);
         ArrayList<OreVariant> oreVariants = new ArrayList<>();
@@ -94,29 +74,18 @@ public class GOre extends AGMSolid<Ore> {
             //ores.txt now requires certain amounts of attributes if such block variants are present:
             //parse the line
             String[] ore_props = null;
-            String gen_props = null;
             if (block.equals("stone") || block.equals("nether") || block.equals("end")) {
-                if (ores.length != 4)
-                    error("stone/nether/end ore attributes requires 4 sections: ore properties, poor ore properties, dense ore properties, and ore gen properties");
+                if (ores.length != 3)
+                    error("stone/nether/end ore attributes requires 3 sections: ore properties, poor ore properties, dense ore properties, and ore gen properties");
                 ore_props = new String[3];
                 ore_props[0] = ores[0]; //ore
                 ore_props[1] = ores[1]; //poor
                 ore_props[2] = ores[2]; //dense
-                gen_props = ores[3]; //oregen
             } else if (block.equals("bedrock")) {
-                if (ores.length != 2)
-                    error("bedrock attributes requires 2 sections: dense ore properties and ore gen properties");
                 ore_props = new String[1];
-                ore_props[0] = ores[0]; //dense
-                gen_props = ores[1]; //oregen
+                ore_props[0] = "dense; -1; 3600000; -1";
             } else {
                 error("invalid or no ore blocks specified for material " + m.NAME);
-            }
-            String[] gens = null;
-            if (gen_props == null) {
-                error("ore generation not specified for material " + m.NAME);
-            } else {
-                gens = Util.split(gen_props, ";");
             }
 
             //handle block's variant(s)' blockData(s)
@@ -125,11 +94,14 @@ public class GOre extends AGMSolid<Ore> {
             for (String prop : ore_props) {
                 String[] attributes = Util.split(prop, ";");
                 String type_name = attributes[0]; //ore, poor, dense
-                LBlock b;
+                if (attributes.length != 4) {
+                    error("block properties require 4 parameters: ore_type; hardness; resistance; miningLevel");
+                }
                 String tool = "pickaxe";
                 if (block.equals("bedrock")) {
                     tool = "none";
                 }
+                LBlock b;
                 b = new LBlock(
                         block,
                         getRecipeTweak("LBlock"), getItems(), getLiquids(), getOres(),
@@ -143,7 +115,6 @@ public class GOre extends AGMSolid<Ore> {
                     types.add(new OreType(block+"_"+m.NAME, type_name, b));
                 }
             }
-
             //create oreVariant to be added to ore
             OreVariant ov = new OreVariant(
                     getRecipeTweak("OreVariant"), getItems(), getLiquids(), getOres(),
@@ -170,46 +141,29 @@ public class GOre extends AGMSolid<Ore> {
                     ov.addAllRegistryDatas(ores2, getRegistries(regs));
                 }
             }
-            //handle block's oreGen, use these registries for variants to access as well for recipes
             if (o.enableGen) {
-                assert gens != null;
+                String blockName = Util.toUpper(block);
                 switch (block) {
-                    case "stone" -> {
-                        if (gens.length != 3)
-                            error("3 stone ore gen attributes required: int chunkChance; int minHeight; String biome for material " + m.NAME);
-                        Registry ore = this.oreRegistryCheck("ore", block, m.NAME);
+                    case "stone","nether","end" -> {
                         Registry poor = this.oreRegistryCheck("poor", block, m.NAME);
-                        Registry dense = this.oreRegistryCheck("dense", block, m.NAME);
-                        String biome = gens[2].replace("-", ":");
-                        o.addStoneGen(ore, poor, dense, parseInt(gens[0]), parseInt(gens[1]), biome);
-                    }
-                    case "nether" -> {
-                        if (gens.length != 2)
-                            error("2 nether ore gen attributes required: int chunkChance; int minHeight for material " + m.NAME);
+                        o.addRegistryData("poor"+blockName, poor);
                         Registry ore = this.oreRegistryCheck("ore", block, m.NAME);
-                        Registry poor = this.oreRegistryCheck("poor", block, m.NAME);
+                        o.addRegistryData("ore"+blockName, ore);
                         Registry dense = this.oreRegistryCheck("dense", block, m.NAME);
-                        o.addNetherGen(ore, poor, dense, parseInt(gens[0]), parseInt(gens[1]));
-                    }
-                    case "end" -> {
-                        if (gens.length != 2)
-                            error("2 end ore gen attributes required: int chunkChance; int minHeight for material " + m.NAME);
-                        Registry ore = this.oreRegistryCheck("ore", block, m.NAME);
-                        Registry poor = this.oreRegistryCheck("poor", block, m.NAME);
-                        Registry dense = this.oreRegistryCheck("dense", block, m.NAME);
-                        o.addEndGen(ore, poor, dense, parseInt(gens[0]), parseInt(gens[1]));
+                        o.addRegistryData("dense"+blockName, dense);
                     }
                     case "bedrock" -> {
-                        if (gens.length != 3)
-                            error("Three parameters are required for bedrock gen: the y level, the chunk chance, and the dimension to gen in, for material " + m.NAME);
                         Registry dense = this.oreRegistryCheck("dense", block, m.NAME);
-                        o.addBedrockGen(dense, parseInt(gens[0]), parseInt(gens[1]), parseInt(gens[2]));
+                        o.addRegistryData("dense"+blockName, dense);
                     }
                 }
             }
+            if (!o.enableGen && block.equals("stone")) {
+                //enableGen is only for adding stone sub variants now
+                warn("Checks are not enabled for stone sub variants of ore for material " + m.NAME);
+            }
             oreVariants.add(ov);
         }
-        if (!o.enableGen) warn("Checks are not enabled for worldgen of ore for material " + m.NAME);
         o.addVariants(oreVariants.toArray(new OreVariant[0]));
         objects.add(o);
     }
@@ -228,25 +182,6 @@ public class GOre extends AGMSolid<Ore> {
         }
         Builder b = new Builder(jsons.toArray(new JsonObject[0]));
         return b.print(true);
-    }
-
-    public String genCWJson() {
-        StringBuilder sb = new StringBuilder();
-        sb.append("{\n");
-        sb.append("\"populate\": {\n");
-        for (int i = 0; i < this.objects.size(); i++) {
-            Ore ore = this.objects.get(i);
-            if (ore.enableGen) {
-                if (i != 0) {
-                    sb.append(",");
-                }
-                sb.append(ore.generateCWJson());
-            }
-            sb.append("\n");
-        }
-        sb.append("}");
-        sb.append("\n}");
-        return sb.toString();
     }
     private Registry oreRegistryCheck(String variant, String block, String material) {
         String var1 = "";

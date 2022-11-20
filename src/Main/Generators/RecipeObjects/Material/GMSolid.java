@@ -25,6 +25,8 @@ public class GMSolid extends AGMaterialData<MSolid> {
     @Override
     protected void readMaterialParameters(Material m, String[] s) {
         //bool addDust, bool addFineDust, bool addPowder, String customName(for other states)[= for none]
+
+        //TODO: fix alternate names for recipes
         MSolid sol = new MSolid(
                 getRecipeTweak("MSolid"), getItems(), getLiquids(), getOres(),
                 getMachineRegistry(), getMatterRegistry(), getDataRegistry(),

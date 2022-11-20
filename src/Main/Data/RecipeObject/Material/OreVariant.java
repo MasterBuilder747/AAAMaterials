@@ -7,7 +7,6 @@ import Main.Data.MachineResource.MachineMatter;
 import Main.Data.Material;
 import Main.Data.OreType;
 import Main.Data.PartGroup;
-import Main.Data.RecipeObject.Material.Composition.AChemicalComposition;
 import Main.Data.RecipeObject.Material.Solid.Stone;
 import Main.Data.Tweakers.RecipeTweak;
 import Main.Util;
@@ -38,11 +37,6 @@ public class OreVariant extends AMaterialData {
     public void addStoneVariants(Stone[] stones) {
         //only applies to stone block type
         this.stones = stones;
-        for (Stone s : this.stones) {
-            this.addRegistryData(s.NAME+"ore", this.getItemRegistry(Util.toUpper(s.NAME)+Util.toUpper(this.NAME)+"Ore"));
-            this.addRegistryData(s.NAME+"poor", this.getItemRegistry(Util.toUpper(s.NAME)+"Poor"+Util.toUpper(this.NAME)+"Ore"));
-            this.addRegistryData(s.NAME+"dense", this.getItemRegistry(Util.toUpper(s.NAME)+"Dense"+Util.toUpper(this.NAME)+"Ore"));
-        }
     }
 
     @Override
@@ -76,6 +70,17 @@ public class OreVariant extends AMaterialData {
 
     @Override
     public String buildRecipe() {
+        //add each stone ore key
+        if (this.block.equals("stone")) {
+            if (this.stones == null) error("stones is null for material " + this.m.NAME);
+            for (Stone s : this.stones) {
+                if (!s.type.equals("vanilla") && !s.type.equals("custom")) {
+                    this.addRegistryData(s.NAME + "ore", this.getItemRegistry(Util.toUpper(s.NAME) + Util.toUpper(this.NAME) + "Ore"));
+                    this.addRegistryData(s.NAME + "poor", this.getItemRegistry(Util.toUpper(s.NAME) + "Poor" + Util.toUpper(this.NAME) + "Ore"));
+                    this.addRegistryData(s.NAME + "dense", this.getItemRegistry(Util.toUpper(s.NAME) + "Dense" + Util.toUpper(this.NAME) + "Ore"));
+                }
+            }
+        }
         String b = buildAdditionalRecipes();
         if (b != null) return b;
         return "";

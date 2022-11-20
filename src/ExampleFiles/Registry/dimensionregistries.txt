@@ -1,0 +1,2 @@
+/generated with /tellme dump-csv dimensions
+/"ID","DimensionType ID","Name","shouldLoadSpawn","Currently loaded","WorldProvider class"

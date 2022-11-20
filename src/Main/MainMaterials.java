@@ -76,6 +76,8 @@ public class MainMaterials {
         foods.registerMaterials();
         GSoundRegistry sounds = new GSoundRegistry("soundregistry");
         sounds.registerMaterials();
+        GDimensionRegistry dimension = new GDimensionRegistry("dimensionregistrie");
+        dimension.registerMaterials();
         //TiC
         GTCTraitRegistry tcTraits = new GTCTraitRegistry("TCTraitRegistrie");
         tcTraits.registerMaterials();
@@ -184,6 +186,8 @@ public class MainMaterials {
         //7. ore system
         GOre ore = new GOre("ore", REG, tweak, registry, liquids, oreDict, machine, matter, data, material, partGroup, mSolid, stone);
         bw.write(ore.registerMaterials());
+        GOreVein veins = new GOreVein("oreVein", ore, dimension, biomes);
+        veins.registerMaterials();
 
         //8. Tinkers system
         GTinkerCastable tCastable = new GTinkerCastable("TinkerCastable", REG, tweak, registry, liquids, oreDict, machine, matter, data, material, partGroup, tcParts, tcTraits, alloy, metal, plastic, rubber);
@@ -257,7 +261,7 @@ public class MainMaterials {
         //cofh world gen .json file
         fw = new FileWriter(Util.HOME + Util.DEPLOY + "config/cofh/world/01_aaaores.json");
         bw = new BufferedWriter(fw);
-        bw.write(ore.genCWJson());
+        bw.write(veins.genCWJson());
         bw.close();
 
         //underground biomes ore .json file

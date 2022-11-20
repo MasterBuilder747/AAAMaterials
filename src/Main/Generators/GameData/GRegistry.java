@@ -9,7 +9,7 @@ import java.io.IOException;
 
 public class GRegistry extends AGGameData<Registry> {
     public GRegistry(String filename) {
-        super(-1, filename, 7);
+        super(-1, filename, 8);
     }
 
     @Override

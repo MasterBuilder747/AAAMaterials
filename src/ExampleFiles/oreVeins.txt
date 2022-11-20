@@ -1,0 +1,17 @@
+//vein recommended naming: MostCommonOre_MaterialBlockType
+//syntax for all veins except bedrock:
+//veinName, int dimId, biome[all], blockMaterialType, //stone, nether, end
+//boolean enabled, boolean retrogen,
+//String distribution, String generatorType, //fractal or uniform, large-vein or cluster
+//int clusterSize, int chunkChance, int clusterCountMin, int clusterCountMax,
+//int minHeight, int veinHeight, int veinDiameter, int vertDensity, int horDensity,
+//ore1: int poorWeight1: int oreWeight1: int denseWeight1;
+//ore2: int poorWeight2: int oreWeight2: int denseWeight2;...
+//syntax for only bedrock veins:
+//veinName, int dimId, biome[all], bedrock,
+//boolean enabled, boolean retrogen,
+//String distribution, String generatorType, //fractal or uniform, large-vein or cluster
+//int clusterSize, int chunkChance, int clusterCountMin, int clusterCountMax,
+//int minHeight, int maxHeight, OreMaterialName
+/ex1: bauxite_stone, 0, plains, stone, true, false, fractal, large-vein, 2000, 15, 1, 1, 20, 128, 400, 100, 100, bauxite: 30: 60: 10
+/ex2: bauxite_bedrock, 0, all, bedrock, true, false, uniform, cluster, 1, 7, 1, 1, 0, 0, bauxite

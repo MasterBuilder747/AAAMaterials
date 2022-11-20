@@ -10,6 +10,10 @@ public abstract class AGameData extends AData {
         this.registryName = registryName;
     }
 
+    public String getRegistryName() {
+        return registryName;
+    }
+
     @Override
     public String buildMaterial() {
         return null;

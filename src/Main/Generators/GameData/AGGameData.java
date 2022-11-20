@@ -50,5 +50,18 @@ public abstract class AGGameData<G extends AGameData> extends AGenerator<G> {
         readGameData(ss.toArray(new String[0]));
     }
 
+    public G getByRegistry(String reg) {
+        for (G g: objects) {
+            if (g.getRegistryName().equals(reg)) {
+                return g;
+            }
+        }
+        error("Unknown GameData " + reg);
+        return null;
+    }
+    public void checkRegistry(String reg) {
+        getByRegistry(reg);
+    }
+
     protected abstract void readGameData(String[] s);
 }
