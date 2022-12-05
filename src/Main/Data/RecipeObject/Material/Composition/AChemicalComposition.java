@@ -61,6 +61,10 @@ public abstract class AChemicalComposition extends AMaterialData {
         return this.composition;
     }
 
+    public String getSymbol() {
+        return this.symbol;
+    }
+
     public Element getE() {
         if (this.isElement) {
             return this.composition.getE();

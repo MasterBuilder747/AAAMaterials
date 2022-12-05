@@ -22,10 +22,7 @@ import Main.Generators.RecipeObjects.Material.GMSolid;
 import Main.Generators.RecipeObjects.Material.Liquid.GMGas;
 import Main.Generators.RecipeObjects.Material.Liquid.GMLiquid;
 import Main.Generators.RecipeObjects.Material.Liquid.GMPlasma;
-import Main.Generators.RecipeObjects.Material.Solid.GGem;
-import Main.Generators.RecipeObjects.Material.Solid.GOre;
-import Main.Generators.RecipeObjects.Material.Solid.GStone;
-import Main.Generators.RecipeObjects.Material.Solid.GWood;
+import Main.Generators.RecipeObjects.Material.Solid.*;
 import Main.Generators.RecipeObjects.Material.Solid.Malleable.GAlloy;
 import Main.Generators.RecipeObjects.Material.Solid.Malleable.GMetal;
 import Main.Generators.RecipeObjects.Material.Solid.Malleable.GPlastic;
@@ -87,18 +84,17 @@ public class MainRecipes {
         //machine resources
         GMachine machine = new GMachine("machine", liquids);
         machine.registerRecipes();
-        //machine.print();
         GMachineData data = new GMachineData("data");
         data.registerRecipes();
         GMachineMatter matter = new GMachineMatter("matter");
         matter.registerRecipes();
 
         StringBuilder sb = new StringBuilder();
-        //0. RecipeTweakers
+        //RecipeTweakers
         GRecipeTweak tweak = new GRecipeTweak("recipeobjectstotweak");
         tweak.registerRecipes();
 
-        //1. custom content not using the material system
+        //custom content not using the material system
         GBlock block = new GBlock("block", REG, tweak, registry, liquids, oreDict, machine, matter, data);
         sb.append(block.registerRecipes());
         GItem item = new GItem("item", REG, tweak, registry, liquids, oreDict, machine, matter, data);
@@ -112,7 +108,7 @@ public class MainRecipes {
         GPlasma plasma = new GPlasma("plasma", REG, tweak, registry, liquids, oreDict, machine, matter, data);
         sb.append(plasma.registerRecipes());
 
-        //2. any established content needed for the material system
+        //any established content needed for the material system
         GPart part = new GPart("part", REG, tweak, registry, liquids, oreDict, machine, matter, data); //this is localized
         sb.append(part.registerRecipes());
         GPartGroup partGroup = new GPartGroup("partgroup", part);
@@ -120,16 +116,15 @@ public class MainRecipes {
         GElement element = new GElement("element");
         sb.append(element.registerRecipes());
 
-        //3. the materials
+        //materials
         GMaterial material = new GMaterial("`material");
         sb.append(material.registerRecipes());
-        //material compositions
         GMoleculeComposition molecule = new GMoleculeComposition("molecule", REG, tweak, registry, liquids, oreDict, machine, matter, data, material, partGroup, element);
         sb.append(molecule.registerRecipes());
         GCompoundComposition compound = new GCompoundComposition("compound", REG, tweak, registry, liquids, oreDict, machine, matter, data, material, partGroup, molecule);
         sb.append(compound.registerRecipes());
 
-        //4. material states
+        //material states
         GMSolid mSolid = new GMSolid("solid", REG, tweak, registry, liquids, oreDict, machine, matter, data, material, partGroup);
         sb.append(mSolid.registerRecipes());
         GMLiquid mLiquid = new GMLiquid("liquid", REG, tweak, registry, liquids, oreDict, machine, matter, data, material, partGroup);
@@ -139,21 +134,17 @@ public class MainRecipes {
         GMPlasma mPlasma = new GMPlasma("plasma", REG, tweak, registry, liquids, oreDict, machine, matter, data, material, partGroup);
         sb.append(mPlasma.registerRecipes());
 
-        //5. material compositions, material parts must be added after this!!!
-        //GComposition
-        //        CMolecule molecule = new CMolecule("moleculeComposition", element);
-        //        sb.append(molecule.register());
-        //        GCompound compound = new GCompound("compoundComposition", element);
-        //        sb.append(compound.register());
-
-        //6. all other material data (unless there are some other requirements later)
-        //naturals
-        //String filename, GMachine machine, GRegistry registry, GMaterial material, GPartGroup partGroup, GMSolid solid, boolean isReg
+        //material datas
+        //solid material datas
         GWood wood = new GWood("wood", REG, tweak, registry, liquids, oreDict, machine, matter, data, material, partGroup, mSolid);
         sb.append(wood.registerRecipes());
         GStone stone = new GStone("stone", REG, tweak, registry, liquids, oreDict, machine, matter, data, material, partGroup, mSolid);
         sb.append(stone.registerRecipes());
-        //malleables: need liquid as well
+        GGem gem = new GGem("gem", REG, tweak, registry, liquids, oreDict, machine, matter, data, material, partGroup, mSolid);
+        sb.append(gem.registerRecipes());
+        GNuclear nuclear = new GNuclear("nuclear", REG, tweak, registry, liquids, oreDict, machine, matter, data, material, partGroup, mSolid, molecule);
+        sb.append(nuclear.registerRecipes());
+        //liquid+solid material datas
         GMetal metal = new GMetal("metal", REG, tweak, registry, liquids, oreDict, machine, matter, data, material, partGroup, mSolid, mLiquid);
         sb.append(metal.registerRecipes());
         GAlloy alloy = new GAlloy("alloy", REG, tweak, registry, liquids, oreDict, machine, matter, data, material, partGroup, mSolid, mLiquid);
@@ -162,17 +153,7 @@ public class MainRecipes {
         sb.append(plastic.registerRecipes());
         GRubber rubber = new GRubber("rubber", REG, tweak, registry, liquids, oreDict, machine, matter, data, material, partGroup, mSolid, mLiquid);
         sb.append(rubber.registerRecipes());
-        //gems: no liquids
-        GGem gem = new GGem("gem", REG, tweak, registry, liquids, oreDict, machine, matter, data, material, partGroup, mSolid);
-        sb.append(gem.registerRecipes());
-
-        //7. ore system
-        GOre ore = new GOre("ore", REG, tweak, registry, liquids, oreDict, machine, matter, data, material, partGroup, mSolid, stone);
-        sb.append(ore.registerRecipes());
-        GOreVein veins = new GOreVein("oreVein", ore, dimension, biomes);
-        veins.registerMaterials();
-
-        //8. Tinkers system
+        //tinkers material datas
         GTinkerCastable tCastable = new GTinkerCastable("TinkerCastable", REG, tweak, registry, liquids, oreDict, machine, matter, data, material, partGroup, tcParts, tcTraits, alloy, metal, plastic, rubber);
         sb.append(tCastable.registerRecipes());
         GTinkerCraftable tCraftable = new GTinkerCraftable("TinkerCraftable", REG, tweak, registry, liquids, oreDict, machine, matter, data, material, partGroup, tcParts, tcTraits);
@@ -180,7 +161,13 @@ public class MainRecipes {
         GTinkerCustom tCustom = new GTinkerCustom("TinkerCustom", REG, tweak, registry, liquids, oreDict, machine, matter, data, material, partGroup, tcParts, tcTraits);
         sb.append(tCustom.registerRecipes());
 
-        //9. custom machine recipes, only used in MainRecipes
+        //ore system
+        GOre ore = new GOre("ore", REG, tweak, registry, liquids, oreDict, machine, matter, data, material, partGroup, mSolid, stone);
+        sb.append(ore.registerRecipes());
+        GOreVein veins = new GOreVein("oreVein", ore, dimension, biomes);
+        veins.registerMaterials();
+
+        //custom machine recipes, only used in MainRecipes
         GMachineRecipe recipe = new GMachineRecipe("recipe", registry, liquids, oreDict, machine, data, matter);
         sb.append(recipe.registerRecipes());
 

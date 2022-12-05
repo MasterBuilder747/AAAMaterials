@@ -62,11 +62,4 @@ public abstract class AGMSolid <S extends AMSolid> extends AGMaterialData<S> {
         readSolidParameters(m, s, sol);
     }
     protected abstract void readSolidParameters(Material m, String[] s, MSolid solid);
-
-    public S updateSolids(S s, MSolid sol) {
-        for (RegistryData r : sol.getKeysArray()) {
-            s.addRegistryData(r.key, r.r);
-        }
-        return s;
-    }
 }

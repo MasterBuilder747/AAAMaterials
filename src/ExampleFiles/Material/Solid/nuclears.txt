@@ -1,0 +1,5 @@
+/material,atomic num,isotopeNum,isIsomer,isIsotope,abund (-1=trace; -10=syn),half life (d),half life (y),mode(s),product(s) (most to least common decay)
+/ex: nitrogen_13,7,13,false,true,-10.00000,6.92014E-03,0.00000E+00,b+,C-13
+/ex2: neon_22,10,22,false,true,0.09250,0.00000E+00,0.00000E+00,,
+/ex3: flerovium_287,114,287,false,true,-10.00000,6.25000E-06,0.00000E+00,a;e,Cn-283;Nh-287
+/ex4: flerovium_284,114,284,false,true,-10.00000,28.93519E-09,0.00000E+00,sf,

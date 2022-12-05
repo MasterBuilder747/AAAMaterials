@@ -12,6 +12,7 @@ public class GMaterial extends AGenerator<Material> {
     @Override
     protected void readLine(BufferedReader br, String[] s) throws IOException {
         //unlocalizedName, localizedName, HEXColor, defaultState
-        objects.add(new Material(s[0], s[1].replace("-", " "), s[2], s[3]));
+        String localName = s[1].replace("-", " ").replace("*", "-");
+        objects.add(new Material(s[0], localName, s[2], s[3]));
     }
 }

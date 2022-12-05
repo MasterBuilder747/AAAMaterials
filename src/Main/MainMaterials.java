@@ -113,8 +113,8 @@ public class MainMaterials {
 
                 """);
 
-        //LOAD ORDER for .zs:
-        //1. required machine resources for machine recipes
+        //.zs
+        //required machine resources for machine recipes
         GMachine machine = new GMachine("machine", liquids);
         machine.registerMaterials(); //this doesn't write anything, but we will use this data (a lot)
         GMachineData data = new GMachineData("data");
@@ -122,7 +122,7 @@ public class MainMaterials {
         GMachineMatter matter = new GMachineMatter("matter");
         bw.write(matter.registerMaterials());
 
-        //2. custom content not using the material system
+        //custom content not using the material system
         GBlock block = new GBlock("block", REG, tweak, registry, liquids, oreDict, machine, matter, data);
         bw.write(block.registerMaterials());
         GItem item = new GItem("item", REG, tweak, registry, liquids, oreDict, machine, matter, data);
@@ -136,7 +136,7 @@ public class MainMaterials {
         GPlasma plasma = new GPlasma("plasma", REG, tweak, registry, liquids, oreDict, machine, matter, data);
         bw.write(plasma.registerMaterials());
 
-        //3. any established content needed for the material system
+        //any established content needed for the material system
         GPart part = new GPart("part", REG, tweak, registry, liquids, oreDict, machine, matter, data); //this is localized
         bw.write(part.registerMaterials());
         GPartGroup partGroup = new GPartGroup("partgroup", part);
@@ -144,16 +144,15 @@ public class MainMaterials {
         GElement element = new GElement("element");
         bw.write(element.registerMaterials());
 
-        //4. the materials
+        //materials
         GMaterial material = new GMaterial("`material");
         bw.write(material.registerMaterials());
-        //material compositions
         GMoleculeComposition molecule = new GMoleculeComposition("molecule", REG, tweak, registry, liquids, oreDict, machine, matter, data, material, partGroup, element);
         bw.write(molecule.registerMaterials());
         GCompoundComposition compound = new GCompoundComposition("compound", REG, tweak, registry, liquids, oreDict, machine, matter, data, material, partGroup, molecule);
         bw.write(compound.registerMaterials());
 
-        //5. material states
+        //material states
         GMSolid mSolid = new GMSolid("solid", REG, tweak, registry, liquids, oreDict, machine, matter, data, material, partGroup);
         bw.write(mSolid.registerMaterials());
         GMLiquid mLiquid = new GMLiquid("liquid", REG, tweak, registry, liquids, oreDict, machine, matter, data, material, partGroup);
@@ -163,14 +162,17 @@ public class MainMaterials {
         GMPlasma mPlasma = new GMPlasma("plasma", REG, tweak, registry, liquids, oreDict, machine, matter, data, material, partGroup);
         bw.write(mPlasma.registerMaterials());
 
-        //6. all other material data (unless there are some other requirements later)
-        //naturals
-        //String filename, GMachine machine, GRegistry registry, GMaterial material, GPartGroup partGroup, GMSolid solid, boolean isReg
+        //material datas
+        //solid material datas
         GWood wood = new GWood("wood", REG, tweak, registry, liquids, oreDict, machine, matter, data, material, partGroup, mSolid);
         bw.write(wood.registerMaterials());
         GStone stone = new GStone("stone", REG, tweak, registry, liquids, oreDict, machine, matter, data, material, partGroup, mSolid);
         bw.write(stone.registerMaterials());
-        //malleables: need liquid as well
+        GGem gem = new GGem("gem", REG, tweak, registry, liquids, oreDict, machine, matter, data, material, partGroup, mSolid);
+        bw.write(gem.registerMaterials());
+        GNuclear nuclear = new GNuclear("nuclear", REG, tweak, registry, liquids, oreDict, machine, matter, data, material, partGroup, mSolid, molecule);
+        bw.write(nuclear.registerMaterials());
+        //liquid+solid material datas
         GMetal metal = new GMetal("metal", REG, tweak, registry, liquids, oreDict, machine, matter, data, material, partGroup, mSolid, mLiquid);
         bw.write(metal.registerMaterials());
         GAlloy alloy = new GAlloy("alloy", REG, tweak, registry, liquids, oreDict, machine, matter, data, material, partGroup, mSolid, mLiquid);
@@ -179,17 +181,7 @@ public class MainMaterials {
         bw.write(plastic.registerMaterials());
         GRubber rubber = new GRubber("rubber", REG, tweak, registry, liquids, oreDict, machine, matter, data, material, partGroup, mSolid, mLiquid);
         bw.write(rubber.registerMaterials());
-        //gems: no liquids
-        GGem gem = new GGem("gem", REG, tweak, registry, liquids, oreDict, machine, matter, data, material, partGroup, mSolid);
-        bw.write(gem.registerMaterials());
-
-        //7. ore system
-        GOre ore = new GOre("ore", REG, tweak, registry, liquids, oreDict, machine, matter, data, material, partGroup, mSolid, stone);
-        bw.write(ore.registerMaterials());
-        GOreVein veins = new GOreVein("oreVein", ore, dimension, biomes);
-        veins.registerMaterials();
-
-        //8. Tinkers system
+        //tinkers material datas
         GTinkerCastable tCastable = new GTinkerCastable("TinkerCastable", REG, tweak, registry, liquids, oreDict, machine, matter, data, material, partGroup, tcParts, tcTraits, alloy, metal, plastic, rubber);
         bw.write(tCastable.registerMaterials());
         GTinkerCraftable tCraftable = new GTinkerCraftable("TinkerCraftable", REG, tweak, registry, liquids, oreDict, machine, matter, data, material, partGroup, tcParts, tcTraits);
@@ -208,12 +200,18 @@ public class MainMaterials {
         ticParams.add(
                 new ConfigParam("string[]", "armorStats",
                         castableArmorStats+
-                        craftableArmorStats +
-                        tCustom.exportArmorStats()
+                                craftableArmorStats +
+                                tCustom.exportArmorStats()
                 )
         );
 
-        //9. finish
+        //ore system
+        GOre ore = new GOre("ore", REG, tweak, registry, liquids, oreDict, machine, matter, data, material, partGroup, mSolid, stone);
+        bw.write(ore.registerMaterials());
+        GOreVein veins = new GOreVein("oreVein", ore, dimension, biomes);
+        veins.registerMaterials();
+
+        //finish .zs
         bw.close();
 
 

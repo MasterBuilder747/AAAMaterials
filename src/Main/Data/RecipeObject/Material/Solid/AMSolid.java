@@ -8,8 +8,6 @@ import Main.Data.Material;
 import Main.Data.RecipeObject.Material.AMaterialData;
 import Main.Data.Tweakers.RecipeTweak;
 
-import java.util.ArrayList;
-
 public abstract class AMSolid extends AMaterialData {
     public AMSolid(String type,
                    RecipeTweak tweak, Registry[] items, String[] liquids, String[] ores,

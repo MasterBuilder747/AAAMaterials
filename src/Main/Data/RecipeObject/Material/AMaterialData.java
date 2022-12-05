@@ -57,6 +57,10 @@ public abstract class AMaterialData extends ARecipeObject {
         }
     }
 
+    public Material getMaterial() {
+        return this.m;
+    }
+
     //keys
     public void addKey(String key, Registry reg) {
         m.keys.add(new RegistryData(key, reg));

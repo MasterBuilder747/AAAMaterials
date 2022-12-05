@@ -22,7 +22,7 @@ public class GMoleculeComposition extends AGChemicalComposition<MoleculeComposit
                                 GMachine machine, GMachineMatter matter, GMachineData data,
                                 GMaterial material, GPartGroup partGroup,
                                 GElement element) {
-        super(3, filename, isReg,
+        super(4, filename, isReg,
                 tweak, registry, liquids, ores,
                 machine, data, matter,
                 material, partGroup,
@@ -40,7 +40,8 @@ public class GMoleculeComposition extends AGChemicalComposition<MoleculeComposit
                 getRecipeTweak("MoleculeComposition"), getItems(), getLiquids(), getOres(),
                 getMachineRegistry(), getMatterRegistry(), getDataRegistry(),
                 m,
-                c, parseBoolean(s[1]), parseBoolean(s[2]));
+                c, parseBoolean(s[1]),
+                parseBoolean(s[2]), parseInt(s[3]));
         m.addComposition(comp);
         objects.add(comp);
         //this.material.replace(m.NAME, m); //apparently this isn't needed, somehow GMaterial gets updated (yeah java is weird)

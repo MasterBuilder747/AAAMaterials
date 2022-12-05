@@ -1,2 +1,2 @@
-/material, ElementComposition[String] {Must be a singular element, amount optional}, boolean isDefaultComposition, boolean isDiatomic
+/material, ElementComposition[String] {Must be a singular element, amount optional}, boolean isDefaultComposition, boolean isDiatomic, int charge
 /ex: osmium, Os, true, false
