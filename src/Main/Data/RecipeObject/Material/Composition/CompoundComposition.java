@@ -8,8 +8,6 @@ import Main.Data.MachineResource.MachineMatter;
 import Main.Data.Material;
 import Main.Data.Tweakers.RecipeTweak;
 
-import java.util.ArrayList;
-
 public class CompoundComposition extends AChemicalComposition {
     /* TODO:
     1. integrate this into abstract class
@@ -51,13 +49,13 @@ public class CompoundComposition extends AChemicalComposition {
     public CompoundComposition(RecipeTweak tweak, Registry[] items, String[] liquids, String[] ores,
                                Machine[] machines, MachineMatter[] matters, MachineData data,
                                Material m,
-                               Composition c, boolean isDefault,
+                               Composition c, int charge, boolean isDefault,
                                boolean isMixing, boolean isCentrifuge, boolean isChemReact, boolean isElectrolyze) {
         super("CompoundComposition",
                 tweak, items, liquids, ores,
                 machines, matters, data,
                 m,
-                c, isDefault, false);
+                c, charge, isDefault, false);
         this.isMixing = isMixing;
         this.isChemReact = isChemReact;
         this.isCentrifuge = isCentrifuge;

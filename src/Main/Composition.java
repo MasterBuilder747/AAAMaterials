@@ -83,6 +83,7 @@ public class Composition {
         }
     }
 
+    //only uase this for tooltips, do NOT use this for searching as it could contain ? for unknown material compositions
     public String toString() {
         //outputs the entire tooltip
         //UTF-8 characters:
@@ -95,9 +96,13 @@ public class Composition {
             }
         }
         if (this.m != null) {
-            sb.append("(");
-            sb.append(this.m.getComp().getCComp().toString());
-            sb.append(")");
+            if (this.m.getComp() == null) {
+                sb.append("?");
+            } else {
+                sb.append("(");
+                sb.append(this.m.getComp().getCComp().toString());
+                sb.append(")");
+            }
             if (this.amount > 1) {
                 sb.append(this.amount);
             }

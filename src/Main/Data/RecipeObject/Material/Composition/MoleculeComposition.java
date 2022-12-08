@@ -12,8 +12,6 @@ public class MoleculeComposition extends AChemicalComposition {
     boolean isDiatomic; //this is handled later in recipes
     //(aka, whenever a breaking reaction occurs, if this is returned by itself, the amount must be even)
 
-    int charge;
-
     public MoleculeComposition(RecipeTweak tweak, Registry[] items, String[] liquids, String[] ores,
                                Machine[] machines, MachineMatter[] matters, MachineData data,
                                Material m,
@@ -22,9 +20,8 @@ public class MoleculeComposition extends AChemicalComposition {
         super("MoleculeComposition", tweak, items, liquids, ores,
                 machines, matters, data,
                 m,
-                c, isDefault, true);
+                c, charge, isDefault, true);
         this.isDiatomic = isDiatomic;
-        this.charge = charge;
     }
 
     @Override

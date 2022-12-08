@@ -1,2 +1,2 @@
-/boolean isVanilla
-/ex: oak, true
+/material, boolean isVanilla
+oak, true

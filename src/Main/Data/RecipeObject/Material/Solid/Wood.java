@@ -7,8 +7,6 @@ import Main.Data.Material;
 import Main.Data.GameData.Registry;
 import Main.Data.Tweakers.RecipeTweak;
 
-import java.util.ArrayList;
-
 public class Wood extends AMSolid {
     boolean isVanilla; //for quark integration
 

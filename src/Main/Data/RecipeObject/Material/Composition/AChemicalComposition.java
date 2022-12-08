@@ -11,8 +11,6 @@ import Main.Data.RecipeObject.Material.AMaterialData;
 import Main.Data.RecipeObject.RegistryData;
 import Main.Data.Tweakers.RecipeTweak;
 
-import java.util.ArrayList;
-
 //defines a chemical composition to be applied to the material
 //convention:
 //single element: E, Ex
@@ -25,6 +23,7 @@ import java.util.ArrayList;
 //-s solid, -l liquid -g gas, -p plasma, etc... (letter not needed (but can be shown) for default state of material)
 public abstract class AChemicalComposition extends AMaterialData {
     Composition composition; //a string of defined element(s) and their count(s) in a string with special syntax
+    int charge;
     boolean isDefault;  //is this the default composition that is associated with this material?
                         //If so, then when a chemical composition is specified, it returns this material
     //multiple materials can be assigned to one composition, but is this material the one that gets outputted in a separation/combination recipe?
@@ -36,12 +35,13 @@ public abstract class AChemicalComposition extends AMaterialData {
                                 RecipeTweak tweak, Registry[] items, String[] liquids, String[] ores,
                                 Machine[] machines, MachineMatter[] matters, MachineData data,
                                 Material m,
-                                Composition c, boolean isDefault, boolean isElement) {
+                                Composition c, int charge, boolean isDefault, boolean isElement) {
         super(type,
                 tweak, items, liquids, ores,
                 machines, matters, data,
                 m);
         this.composition = c;
+        this.charge = charge;
         this.isDefault = isDefault;
         this.symbol = c.toString();
         this.isElement = isElement;
