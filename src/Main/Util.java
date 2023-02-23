@@ -6,6 +6,7 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.Locale;
 
 public class Util {
@@ -100,6 +101,81 @@ public class Util {
             bw.write(sbs.get(j));
             bw.close();
         }
+    }
+    public static void splitMatFiles(String code, String filePath, String filename, int priority) throws IOException {
+        //Split code into multiple files
+        //materials[N].zs
+        ArrayList<String> mats = new ArrayList<>();
+        String[] codes = split(code, "\n");
+        for (String s : codes) {
+            if (!s.isEmpty() && !s.startsWith("#")) {
+                if (s.startsWith("var ")) {
+                    mats.add(s.substring(4, s.indexOf(" ", 4)));
+                } else {
+                    break;
+                }
+            }
+        }
+        HashMap<String, String> matMap = new HashMap<>();
+        for (String s : mats) {
+            StringBuilder sb = new StringBuilder();
+            for (String ss : codes) {
+                if (ss.startsWith("var " + s + " ") || ss.startsWith(s + ".")) {
+                    sb.append(ss);
+                    sb.append("\n");
+                }
+            }
+            matMap.put(s, sb.toString());
+        }
+        //write each file
+        FileWriter fw;
+        BufferedWriter bw;
+        int j = 0;
+        for (int i = 0; i < mats.size(); i++) {
+            fw = new FileWriter(Util.HOME + Util.DEPLOY + filePath + filename + j + ".zs");
+            bw = new BufferedWriter(fw);
+            bw.write(writeHeader(filename, priority, j));
+            int counter = 0;
+            while (i < mats.size() && counter < 500) {
+                bw.write(matMap.get(mats.get(i)));
+                counter++;
+                i++;
+            }
+            bw.close();
+            i--;
+            j++;
+        }
+    }
+    //file headers
+    public static String writeHeader(String fileName, int priority) {
+        return """
+                #loader contenttweaker
+                import mods.contenttweaker.Material;
+                import mods.contenttweaker.MaterialSystem;
+                import mods.contenttweaker.PartBuilder;
+                import mods.contenttweaker.VanillaFactory;
+                import mods.contenttweaker.Block;
+                import mods.contenttweaker.Color;
+                
+                """ + "# priority " + priority + "\n\n# " +
+                fileName.toUpperCase() + " FILE\n" +
+                "# ============================================\n\n"
+                ;
+    }
+    public static String writeHeader(String fileName, int priority, int num) {
+        return """
+                #loader contenttweaker
+                import mods.contenttweaker.Material;
+                import mods.contenttweaker.MaterialSystem;
+                import mods.contenttweaker.PartBuilder;
+                import mods.contenttweaker.VanillaFactory;
+                import mods.contenttweaker.Block;
+                import mods.contenttweaker.Color;
+                
+                """ + "# priority " + priority + "\n\n# " +
+                fileName.toUpperCase() + " FILE " + num + "\n" +
+                "# ============================================\n\n"
+                ;
     }
 
     //print array

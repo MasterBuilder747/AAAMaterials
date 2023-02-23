@@ -165,7 +165,7 @@ public class MainRecipes {
         GOre ore = new GOre("ore", REG, tweak, registry, liquids, oreDict, machine, matter, data, material, partGroup, mSolid, stone);
         sb.append(ore.registerRecipes());
         GOreVein veins = new GOreVein("oreVein", ore, dimension, biomes);
-        veins.registerMaterials();
+        veins.registerRecipes();
 
         //custom machine recipes, only used in MainRecipes
         GMachineRecipe recipe = new GMachineRecipe("recipe", registry, liquids, oreDict, machine, data, matter);

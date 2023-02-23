@@ -5,9 +5,7 @@ import Main.Parameter.ParameterException;
 import Main.Stopwatch;
 import Main.Util;
 
-import java.io.BufferedReader;
-import java.io.FileReader;
-import java.io.IOException;
+import java.io.*;
 import java.util.ArrayList;
 
 public abstract class AGenerator<D extends AData> {
@@ -35,28 +33,22 @@ public abstract class AGenerator<D extends AData> {
     }
 
     public String registerMaterials() throws IOException {
-        return load(false);
-    }
-    public String registerRecipes() throws IOException {
-        return load(true);
-    }
-    private String load(boolean isRecipe) throws IOException {
         Stopwatch w = new Stopwatch();
         System.out.print("Loading " + this.filename + "s.txt... ");
         w.start();
-        populateObjects(); //reads the file and populates objects
+        //read
+        populateObjects();
+        //write
         StringBuilder sb = new StringBuilder();
         String test;
         if (objects.size() > 0) {
-            if (isRecipe) test = objects.get(0).buildRecipe();
-            else test = objects.get(0).buildMaterial();
+            test = objects.get(0).buildMaterial();
             if (test != null) {
                 sb.append(appendHeader());
                 sb.append(test);
                 if (objects.size() > 1) {
                     for (int i = 1; i < objects.size(); i++) {
-                        if (isRecipe) sb.append(objects.get(i).buildRecipe());
-                        else sb.append(objects.get(i).buildMaterial());
+                        sb.append(objects.get(i).buildMaterial());
                     }
                 }
                 sb.append("\n");
@@ -66,6 +58,69 @@ public abstract class AGenerator<D extends AData> {
         System.out.println("completed in " + w.getMillis() + " ms");
         return sb.toString();
     }
+
+    //split each materialData script code into separate files
+    public void registerFiles(String path, String filename, String label,
+                              int priority, int threshold) throws IOException {
+        Stopwatch w = new Stopwatch();
+        System.out.print("Loading " + this.filename + "s.txt... ");
+        w.start();
+        //read
+        populateObjects();
+        //write
+        String test;
+        if (objects.size() > 0) {
+            test = objects.get(0).buildMaterial();
+            if (test != null) {
+                int j = 0;
+                for (int i = 0; i < objects.size(); i++) {
+                    //split each materials.zs file to a limited buffer depending on the material
+                    FileWriter fw = new FileWriter(Util.HOME + Util.DEPLOY + "scripts/" + path + filename + j + ".zs");
+                    BufferedWriter bw = new BufferedWriter(fw);
+                    bw.write(Util.writeHeader(label, priority, j));
+                    bw.write(appendHeader());
+                    int counter = 0;
+                    while (i < objects.size() && counter < threshold) {
+                        bw.write(objects.get(i).buildMaterial());
+                        counter++;
+                        i++;
+                    }
+                    i--;
+                    bw.close();
+                    j++;
+                }
+            }
+        }
+        w.stop();
+        System.out.println("completed in " + w.getMillis() + " ms");
+    }
+    public String registerRecipes() throws IOException {
+        Stopwatch w = new Stopwatch();
+        System.out.print("Loading " + this.filename + "s.txt... ");
+        w.start();
+        //read
+        populateObjects();
+        //write
+        StringBuilder sb = new StringBuilder();
+        String test;
+        if (objects.size() > 0) {
+            test = objects.get(0).buildRecipe();
+            if (test != null) {
+                sb.append(appendHeader());
+                sb.append(test);
+                if (objects.size() > 1) {
+                    for (int i = 1; i < objects.size(); i++) {
+                        sb.append(objects.get(i).buildRecipe());
+                    }
+                }
+                sb.append("\n");
+            }
+        }
+        w.stop();
+        System.out.println("completed in " + w.getMillis() + " ms");
+        return sb.toString();
+    }
+
     private String appendHeader() {
         return "# -"+this.filename+"s\n";
     }

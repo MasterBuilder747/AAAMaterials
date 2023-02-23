@@ -92,37 +92,24 @@ public class MainMaterials {
         modTweaks.registerMaterials();
         GRecipeTweak tweak = null; //placeholder for constructors
 
-        //materials.zs
-        FileWriter fw = new FileWriter(Util.HOME + Util.DEPLOY + "scripts/materials" + ".zs");
-        BufferedWriter bw = new BufferedWriter(fw);
+        //start writing files
 
-        //script header
-        bw.write("""
-                #loader contenttweaker
-                import mods.contenttweaker.Material;
-                import mods.contenttweaker.MaterialSystem;
-                import mods.contenttweaker.PartBuilder;
-                import mods.contenttweaker.VanillaFactory;
-                import mods.contenttweaker.Block;
-                import mods.contenttweaker.Color;
-                
-                #priority 900
-                
-                # MATERIALS FILE
-                # ============================================
-
-                """);
-
-        //.zs
         //required machine resources for machine recipes
+        FileWriter fw = new FileWriter(Util.HOME + Util.DEPLOY + "scripts/materials/machine-resources" + ".zs");
+        BufferedWriter bw = new BufferedWriter(fw);
+        bw.write(Util.writeHeader("machine resources", 900));
         GMachine machine = new GMachine("machine", liquids);
         machine.registerMaterials(); //this doesn't write anything, but we will use this data (a lot)
         GMachineData data = new GMachineData("data");
         bw.write(data.registerMaterials());
         GMachineMatter matter = new GMachineMatter("matter");
         bw.write(matter.registerMaterials());
+        bw.close();
 
         //custom content not using the material system
+        fw = new FileWriter(Util.HOME + Util.DEPLOY + "scripts/materials/materials-custom" + ".zs");
+        bw = new BufferedWriter(fw);
+        bw.write(Util.writeHeader("custom materials", 900));
         GBlock block = new GBlock("block", REG, tweak, registry, liquids, oreDict, machine, matter, data);
         bw.write(block.registerMaterials());
         GItem item = new GItem("item", REG, tweak, registry, liquids, oreDict, machine, matter, data);
@@ -135,59 +122,69 @@ public class MainMaterials {
         bw.write(gas.registerMaterials());
         GPlasma plasma = new GPlasma("plasma", REG, tweak, registry, liquids, oreDict, machine, matter, data);
         bw.write(plasma.registerMaterials());
+        bw.close();
 
         //any established content needed for the material system
+        fw = new FileWriter(Util.HOME + Util.DEPLOY + "scripts/materials/material-parts" + ".zs");
+        bw = new BufferedWriter(fw);
+        bw.write(Util.writeHeader("material parts", 900));
         GPart part = new GPart("part", REG, tweak, registry, liquids, oreDict, machine, matter, data); //this is localized
         bw.write(part.registerMaterials());
         GPartGroup partGroup = new GPartGroup("partgroup", part);
         bw.write(partGroup.registerMaterials());
         GElement element = new GElement("element");
-        bw.write(element.registerMaterials());
+        element.registerMaterials();
+        bw.close();
 
-        //materials
+        //base material data
+        StringBuilder sb = new StringBuilder();
         GMaterial material = new GMaterial("`material");
-        bw.write(material.registerMaterials());
+        sb.append(material.registerMaterials());
         GMoleculeComposition molecule = new GMoleculeComposition("molecule", REG, tweak, registry, liquids, oreDict, machine, matter, data, material, partGroup, element);
-        bw.write(molecule.registerMaterials());
+        molecule.registerMaterials();
         GCompoundComposition compound = new GCompoundComposition("compound", REG, tweak, registry, liquids, oreDict, machine, matter, data, material, partGroup, molecule);
-        bw.write(compound.registerMaterials());
-
-        //material states
-        GMSolid mSolid = new GMSolid("solid", REG, tweak, registry, liquids, oreDict, machine, matter, data, material, partGroup);
-        bw.write(mSolid.registerMaterials());
-        GMLiquid mLiquid = new GMLiquid("liquid", REG, tweak, registry, liquids, oreDict, machine, matter, data, material, partGroup);
-        bw.write(mLiquid.registerMaterials());
-        GMGas mGas = new GMGas("gase", REG, tweak, registry, liquids, oreDict, machine, matter, data, material, partGroup);
-        bw.write(mGas.registerMaterials());
-        GMPlasma mPlasma = new GMPlasma("plasma", REG, tweak, registry, liquids, oreDict, machine, matter, data, material, partGroup);
-        bw.write(mPlasma.registerMaterials());
+        compound.registerMaterials();
 
         //material datas
+        //material states
+        int datasPriority = 700;
+        GMSolid mSolid = new GMSolid("solid", REG, tweak, registry, liquids, oreDict, machine, matter, data, material, partGroup);
+        sb.append(mSolid.registerMaterials());
+        GMLiquid mLiquid = new GMLiquid("liquid", REG, tweak, registry, liquids, oreDict, machine, matter, data, material, partGroup);
+        mLiquid.registerFiles("materials/materialDatas/", "liquids", "liquids", datasPriority, 1000);
+        GMGas mGas = new GMGas("gase", REG, tweak, registry, liquids, oreDict, machine, matter, data, material, partGroup);
+        mGas.registerFiles("materials/materialDatas/", "gases", "gases", datasPriority, 1000);
+        GMPlasma mPlasma = new GMPlasma("plasma", REG, tweak, registry, liquids, oreDict, machine, matter, data, material, partGroup);
+        mPlasma.registerFiles("materials/materialDatas/", "plasmas", "plasma", datasPriority, 1000);
+
         //solid material datas
         GWood wood = new GWood("wood", REG, tweak, registry, liquids, oreDict, machine, matter, data, material, partGroup, mSolid);
-        bw.write(wood.registerMaterials());
+        sb.append(wood.registerMaterials());
         GStone stone = new GStone("stone", REG, tweak, registry, liquids, oreDict, machine, matter, data, material, partGroup, mSolid);
-        bw.write(stone.registerMaterials());
+        sb.append(stone.registerMaterials());
         GGem gem = new GGem("gem", REG, tweak, registry, liquids, oreDict, machine, matter, data, material, partGroup, mSolid);
-        bw.write(gem.registerMaterials());
+        sb.append(gem.registerMaterials());
         GNuclear nuclear = new GNuclear("nuclear", REG, tweak, registry, liquids, oreDict, machine, matter, data, material, partGroup, mSolid, molecule);
-        bw.write(nuclear.registerMaterials());
+        sb.append(nuclear.registerMaterials());
+
         //liquid+solid material datas
         GMetal metal = new GMetal("metal", REG, tweak, registry, liquids, oreDict, machine, matter, data, material, partGroup, mSolid, mLiquid);
-        bw.write(metal.registerMaterials());
+        sb.append(metal.registerMaterials());
         GAlloy alloy = new GAlloy("alloy", REG, tweak, registry, liquids, oreDict, machine, matter, data, material, partGroup, mSolid, mLiquid);
-        bw.write(alloy.registerMaterials());
+        sb.append(alloy.registerMaterials());
         GPlastic plastic = new GPlastic("plastic", REG, tweak, registry, liquids, oreDict, machine, matter, data, material, partGroup, mSolid, mLiquid);
-        bw.write(plastic.registerMaterials());
+        sb.append(plastic.registerMaterials());
         GRubber rubber = new GRubber("rubber", REG, tweak, registry, liquids, oreDict, machine, matter, data, material, partGroup, mSolid, mLiquid);
-        bw.write(rubber.registerMaterials());
+        sb.append(rubber.registerMaterials());
+
         //tinkers material datas
+        int ticPriority = 600;
         GTinkerCastable tCastable = new GTinkerCastable("TinkerCastable", REG, tweak, registry, liquids, oreDict, machine, matter, data, material, partGroup, tcParts, tcTraits, alloy, metal, plastic, rubber);
-        bw.write(tCastable.registerMaterials());
+        tCastable.registerFiles("materials/materialDatas/", "tCastables", "tinkers castable", ticPriority, 1000);
         GTinkerCraftable tCraftable = new GTinkerCraftable("TinkerCraftable", REG, tweak, registry, liquids, oreDict, machine, matter, data, material, partGroup, tcParts, tcTraits);
-        bw.write(tCraftable.registerMaterials());
+        tCraftable.registerFiles("materials/materialDatas/", "tCraftables", "tinkers craftable", ticPriority, 1000);
         GTinkerCustom tCustom = new GTinkerCustom("TinkerCustom", REG, tweak, registry, liquids, oreDict, machine, matter, data, material, partGroup, tcParts, tcTraits);
-        bw.write(tCustom.registerMaterials());
+        tCustom.registerFiles("materials/materialDatas/", "tCustoms", "tinkers custom", ticPriority, 1000);
         //export armor stats to config
         String castableArmorStats = tCastable.exportArmorStats();
         if (!castableArmorStats.equals("")) {
@@ -207,13 +204,13 @@ public class MainMaterials {
 
         //ore system
         GOre ore = new GOre("ore", REG, tweak, registry, liquids, oreDict, machine, matter, data, material, partGroup, mSolid, stone);
-        bw.write(ore.registerMaterials());
+        sb.append(ore.registerMaterials());
         GOreVein veins = new GOreVein("oreVein", ore, dimension, biomes);
         veins.registerMaterials();
 
-        //finish .zs
-        bw.close();
-
+        //split materialData files
+        String matDataCode = sb.toString();
+        Util.splitMatFiles(matDataCode, "scripts/materials/materialDatas/", "materials", 600);
 
         //LOCALIZATION
         //CoT .lang file

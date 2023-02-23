@@ -7,12 +7,12 @@ import java.io.*;
 
 public class GMaterial extends AGenerator<Material> {
     public GMaterial(String filename) {
-        super(4, filename);
+        super(5, filename);
     }
 
     @Override
     protected void readLine(BufferedReader br, String[] s) throws IOException {
-        ///name, local-Name (* is -) (; is comma) &special syntax, hexColor, defaultState[solid, liquid, gas]
+        ///name, local-Name (* is -) (; is comma) &special syntax, hexColor, bool hasEffect, defaultState[solid, liquid, gas]
         String localName = s[1];
         if (localName.startsWith("&")) {
             //&1_1_3_trichloropropene
@@ -61,6 +61,6 @@ public class GMaterial extends AGenerator<Material> {
         } else {
             localName = localName.replace("-", " ").replace("*", "-");
         }
-        objects.add(new Material(s[0], localName.replace(";", ","), s[2], s[3]));
+        objects.add(new Material(s[0], localName.replace(";", ","), s[2], parseBoolean(s[3]), s[4]));
     }
 }

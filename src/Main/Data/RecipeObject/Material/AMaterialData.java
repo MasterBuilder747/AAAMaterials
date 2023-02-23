@@ -260,7 +260,16 @@ public abstract class AMaterialData extends ARecipeObject {
         StringBuilder sb = new StringBuilder();
         for (int i = 0; i < this.partGroups.length; i++) {
             if (this.enablePartGroups[i]) {
-                sb.append(this.buildPart(this.partGroups[i]));
+                sb.append(this.buildPart(this.partGroups[i], true));
+            }
+        }
+        return sb.toString();
+    }
+    protected String genPartGroups(boolean newline) {
+        StringBuilder sb = new StringBuilder();
+        for (int i = 0; i < this.partGroups.length; i++) {
+            if (this.enablePartGroups[i]) {
+                sb.append(this.buildPart(this.partGroups[i], newline));
             }
         }
         return sb.toString();
@@ -275,10 +284,13 @@ public abstract class AMaterialData extends ARecipeObject {
         return sb.toString();
     }
 
-    protected String buildPart(PartGroup partGroup) {
-        return this.m.NAME + ".registerParts(" + partGroup.NAME + ");\n";
+    protected String buildPart(PartGroup partGroup, boolean newline) {
+        return this.m.NAME + ".registerParts(" + partGroup.NAME + ");" + ((newline) ? "\n" : " ");
     }
     protected String buildAltPart(String name, PartGroup partGroup) {
         return name + ".registerParts(" + partGroup.NAME + ");\n";
+    }
+    protected String buildAltPart(String name, PartGroup partGroup, boolean newline) {
+        return name + ".registerParts(" + partGroup.NAME + "); " + ((newline) ? "\n" : " ");
     }
 }

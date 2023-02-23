@@ -38,12 +38,11 @@ public class PartGroup extends AData {
     @Override
     public String buildMaterial() {
         StringBuilder sb = new StringBuilder();
-        sb.append("var "); sb.append(this.NAME); sb.append(" = [");
+        sb.append("global "); sb.append(this.NAME); sb.append(" as string[] = [");
         for(int i = 0; i < this.LParts.length-1; i++) {
             sb.append("\""); sb.append(this.LParts[i].NAME); sb.append("\""); sb.append(", ");
         }
-        sb.append("\""); sb.append(this.LParts[this.LParts.length-1].NAME); sb.append("\""); sb.append("] as string[];\n");
-
+        sb.append("\""); sb.append(this.LParts[this.LParts.length-1].NAME); sb.append("\""); sb.append("];\n");
         return sb.toString();
     }
 

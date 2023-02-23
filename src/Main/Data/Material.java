@@ -26,6 +26,7 @@ public class Material extends AData {
     public final String LOCALNAME;
     public String color; //HEX000 required
     public String state; //default state of the material, determines other states
+    public boolean hasEffect; //adds enchantment effect for all parts, for special materials
 
     //every registry key is now unified for the material itself
     //items
@@ -78,10 +79,11 @@ public class Material extends AData {
     ATinkers tinkers; //allows this material to have tinker's armor and tool materials, recipe only
     //Chicken chicken; //skyblock pack?
 
-    public Material(String name, String localName, String color, String state) {
+    public Material(String name, String localName, String color, boolean hasEffect, String state) {
         super(name);
         this.LOCALNAME = localName;
         this.color = color;
+        this.hasEffect = hasEffect;
         this.state = state;
     }
 
@@ -147,8 +149,12 @@ public class Material extends AData {
 
     @Override
     public String buildMaterial() {
-        //even if non-solid, still need this in case it does have a solid form
-        return "var " + this.NAME + " = MaterialSystem.getMaterialBuilder().setName(\"" + this.LOCALNAME + "\")" + ".setColor(Color.fromHex(\"" + this.color + "\"))" + ".build();\n";
+        /*return "global " + this.NAME + " as Material = MaterialSystem.getMaterialBuilder().setName(\"" + this.LOCALNAME + "\")" +
+                ".setColor(Color.fromHex(\"" + this.color + "\"))" +
+                ".setHasEffect(" + this.hasEffect + ").build();\n";
+
+         */
+        return "var " + this.NAME + " = createMat(\"" + this.LOCALNAME + "\", \"" + this.color + "\", " + this.hasEffect + ");\n";
     }
 
     @Override

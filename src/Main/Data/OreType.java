@@ -31,22 +31,22 @@ public class OreType extends AData {
         String var = this.NAME + Util.toUpper(this.b.NAME) + Util.toUpper(this.type);
         sb.append("var ").append(var).append(" = ").append(this.NAME).append(".registerPart(\"").append(this.type);
         if (this.type.equals("ore")) {
-            sb.append("\").getData();\n");
+            sb.append("\").getData(); ");
         } else {
-            sb.append("_ore\").getData();\n");
+            sb.append("_ore\").getData(); ");
         }
         sb.append(var).append(".addDataValue(\"variants\",\"minecraft:").append(this.b.NAME);
         if (this.b.NAME.equals("nether")) {
-            sb.append("rack\");\n");
+            sb.append("rack\"); ");
         } else if (this.b.NAME.equals("end")) {
-            sb.append("_stone\");\n");
+            sb.append("_stone\"); ");
         } else {
-            sb.append("\");\n");
+            sb.append("\"); ");
         }
-        sb.append(var).append(".addDataValue(\"hardness\",\"").append(this.b.hardness).append("\");\n");
-        sb.append(var).append(".addDataValue(\"resistance\",\"").append(this.b.resistance).append("\");\n");
-        sb.append(var).append(".addDataValue(\"harvestLevel\",\"").append(this.b.miningLevel).append("\");\n");
-        sb.append(var).append(".addDataValue(\"harvestTool\",\"").append(this.b.tool).append("\");\n");
+        sb.append(var).append(".addDataValue(\"hardness\",\"").append(this.b.hardness).append("\"); ");
+        sb.append(var).append(".addDataValue(\"resistance\",\"").append(this.b.resistance).append("\"); ");
+        sb.append(var).append(".addDataValue(\"harvestLevel\",\"").append(this.b.miningLevel).append("\"); ");
+        sb.append(var).append(".addDataValue(\"harvestTool\",\"").append(this.b.tool).append("\"); ");
         return sb.toString();
     }
 

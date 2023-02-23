@@ -1,2 +1,2 @@
-//name, local-Name (* is -) (; is comma) &special syntax, hexColor, defaultState[solid, liquid, gas]
-mercury, Mercury, 8c8280, liquid
+//name, local-Name (* is -) (; is comma) &special syntax, hexColor, bool hasEffect, defaultState[solid, liquid, gas]
+mercury, Mercury, 8c8280, false, liquid
