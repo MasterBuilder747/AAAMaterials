@@ -223,6 +223,62 @@ public class Util {
         return out;
     }
 
+    //unicaode
+    public static String intToSubscript(int a) {
+        //UTF-8 characters:
+        //0-9: \u2080-\u2089
+        String out = null;
+        //assume a is 0 or above
+        if (a > -1) {
+            StringBuilder sb = new StringBuilder();
+            String s = Integer.toString(a);
+            for (int i = 0; i < s.length(); i++) {
+                char add = s.charAt(i);
+                switch (add) {
+                    case '0' -> sb.append("₀");
+                    case '1' -> sb.append("₁");
+                    case '2' -> sb.append("₂");
+                    case '3' -> sb.append("₃");
+                    case '4' -> sb.append("₄");
+                    case '5' -> sb.append("₅");
+                    case '6' -> sb.append("₆");
+                    case '7' -> sb.append("₇");
+                    case '8' -> sb.append("₈");
+                    case '9' -> sb.append("₉");
+                }
+            }
+            out = sb.toString();
+        }
+        return out;
+    }
+    public static String intToSuperscript(int a) {
+        //UTF-8 characters:
+        //0-9: \u2070-\u2079 //exceptions with 1-3
+        String out = null;
+        //assume a is 0 or above
+        if (a > -1) {
+            StringBuilder sb = new StringBuilder();
+            String s = Integer.toString(a);
+            for (int i = 0; i < s.length(); i++) {
+                char add = s.charAt(i);
+                switch (add) {
+                    case '0' -> sb.append("⁰");
+                    case '1' -> sb.append("¹"); // \u00b6
+                    case '2' -> sb.append("²"); // \u00b2
+                    case '3' -> sb.append("³"); // \u00b3
+                    case '4' -> sb.append("⁴");
+                    case '5' -> sb.append("⁵");
+                    case '6' -> sb.append("⁶");
+                    case '7' -> sb.append("⁷");
+                    case '8' -> sb.append("⁸");
+                    case '9' -> sb.append("⁹");
+                }
+            }
+            out = sb.toString();
+        }
+        return out;
+    }
+
     //define a list of characters to replcae and what to replace them with
     //be aware that this updates per character, so if a replaced character is a replacement later, then it will be affected as well
     public static String replaces(String s, String[] toReplaces, String[] replacements) {

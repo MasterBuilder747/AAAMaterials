@@ -2,10 +2,10 @@ package Main.Generators;
 
 import Main.Data.GameData.Registry;
 import Main.Data.OreVein;
-import Main.Data.RecipeObject.Material.Solid.Ore;
+import Main.Data.RecipeObject.MaterialData.Solid.Ore;
 import Main.Generators.GameData.GBiomeRegistry;
 import Main.Generators.GameData.GDimensionRegistry;
-import Main.Generators.RecipeObjects.Material.Solid.GOre;
+import Main.Generators.RecipeObjects.MaterialData.Solid.GOre;
 import Main.Util;
 
 import java.io.BufferedReader;

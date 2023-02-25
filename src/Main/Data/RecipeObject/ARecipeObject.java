@@ -5,7 +5,7 @@ import Main.Data.GameData.Registry;
 import Main.Data.MachineResource.Machine.Machine;
 import Main.Data.MachineResource.MachineData;
 import Main.Data.MachineResource.MachineMatter;
-import Main.Data.RecipeObject.Material.AMaterialData;
+import Main.Data.RecipeObject.MaterialData.AMaterialData;
 import Main.Data.RecipeObject.MaterialRecipe.*;
 import Main.Data.Tweakers.RecipeTweak;
 import Main.Generators.GeneratorException;

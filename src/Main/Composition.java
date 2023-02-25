@@ -12,8 +12,9 @@ public class Composition {
     //used primarily to generate a tooltip for every item
     int amount;
     //the stored current element/compound, printed/used in recipe, either/or
-    Element e;
-    Material m;
+    Element e; //can be null, results in a placeholder element for minerals
+    Material m; //can be null, results in a ? to represent no composition
+    Replacement r; //for the mineral replacement system, uses the composition system
 
     public Composition comp; //the next one in the linked list
 
@@ -33,9 +34,20 @@ public class Composition {
         this.m = m;
         this.amount = amount;
     }
+    public Composition(Replacement r) {
+        this.r = r;
+        this.amount = 1;
+    }
+    public Composition(Replacement r, int amount) {
+        this.r = r;
+        this.amount = amount;
+    }
 
     public void add(Composition c) {
         this.comp = c;
+    }
+    public void addR(Replacement r) {
+        this.r = r;
     }
 
     public Element getE() {
@@ -83,33 +95,38 @@ public class Composition {
         }
     }
 
-    //only uase this for tooltips, do NOT use this for searching as it could contain ? for unknown material compositions
+    //only use this for tooltips, do NOT use this for searching for compound compositions
+    //as it could contain ? for unknown material compositions, \u0000 for placeholder element
+    //but note that this IS used for searching for molecule compositions
+    @Override
     public String toString() {
         //outputs the entire tooltip
-        //UTF-8 characters:
-        //0-9: \u2080-\u2089
         StringBuilder sb = new StringBuilder();
         if (this.e != null) {
             sb.append(this.e.symbol);
-            if (this.amount > 1) {
-                sb.append(this.amount);
+            if (this.amount > 1) sb.append(Util.intToSubscript(this.amount));
+        } else {
+            //{@;Mg;[hydroxide]}2Mg5Si8O22[hydroxide]2
+            //(■,Mg,OH)₂Mg₅Si₈O₂₂(OH)₂
+            if (this.m == null && this.r == null) {
+                //null element is a vacancy defect
+                sb.append("■"); // \u25a0
+                if (this.amount > 1) sb.append(Util.intToSubscript(this.amount));
             }
         }
         if (this.m != null) {
             if (this.m.getComp() == null) {
+                //material has no composition
                 sb.append("?");
             } else {
                 sb.append("(");
                 sb.append(this.m.getComp().getCComp().toString());
                 sb.append(")");
             }
-            if (this.amount > 1) {
-                sb.append(this.amount);
-            }
+            if (this.amount > 1) sb.append(Util.intToSubscript(this.amount));
         }
-        if (this.comp != null) {
-            sb.append(this.comp);
-        }
+        if (this.r != null) sb.append(r);
+        if (this.comp != null) sb.append(this.comp);
         return sb.toString();
     }
 }
