@@ -29,7 +29,7 @@ public class MoleculeComposition extends AChemicalComposition {
 
     @Override
     public String generateTooltip() {
-        return (this.isotope > 0) ? Util.intToSuperscript(this.isotope) : "" + this.symbol;
+        return ((this.isotope > 0) ? Util.intToSuperscript(this.isotope) : "") + this.symbol;
     }
 
     @Override
@@ -41,5 +41,4 @@ public class MoleculeComposition extends AChemicalComposition {
     protected String buildSpecificRecipe() {
         return null;
     }
-
 }
