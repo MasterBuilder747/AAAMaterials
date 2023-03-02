@@ -43,7 +43,7 @@ public class Util {
         return s.substring(i1, i2+1);
     }
 
-    public static void splitFiles(String code, String header, String initialCode, String filePath, boolean checkDupeVars) throws IOException {
+    public static void splitRecipeFiles(String code, String initialCode, String filePath, boolean checkDupeVars) throws IOException {
         //Split code into multiple files
         //recipes[N].zs
         ArrayList<String> sbs = new ArrayList<>();
@@ -94,7 +94,7 @@ public class Util {
         for (int j = 0; j < sbs.size(); j++) {
             fw = new FileWriter(filePath + j + ".zs");
             bw = new BufferedWriter(fw);
-            bw.write(header);
+            bw.write(writeHeader("recipes", j, 0, new String[]{"modularmachinery"}, false, null));
             if (j == 0) {
                 bw.write(initialCode);
             }
@@ -134,7 +134,7 @@ public class Util {
         for (int i = 0; i < mats.size(); i++) {
             fw = new FileWriter(Util.HOME + Util.DEPLOY + filePath + filename + j + ".zs");
             bw = new BufferedWriter(fw);
-            bw.write(writeHeader(filename, priority, j));
+            bw.write(writeHeader(filename, j, priority, null, true, new String[]{"mods.contenttweaker.MaterialSystem", "mods.contenttweaker.Color"}));
             int counter = 0;
             while (i < mats.size() && counter < 500) {
                 bw.write(matMap.get(mats.get(i)));
@@ -146,36 +146,61 @@ public class Util {
             j++;
         }
     }
-    //file headers
-    public static String writeHeader(String fileName, int priority) {
-        return """
-                #loader contenttweaker
-                import mods.contenttweaker.Material;
-                import mods.contenttweaker.MaterialSystem;
-                import mods.contenttweaker.PartBuilder;
-                import mods.contenttweaker.VanillaFactory;
-                import mods.contenttweaker.Block;
-                import mods.contenttweaker.Color;
-                
-                """ + "# priority " + priority + "\n\n# " +
-                fileName.toUpperCase() + " FILE\n" +
-                "# ============================================\n\n"
-                ;
+    public static void splitFiles(String code, String filePath, String filename, int priority, int threshold,
+                                  String[] mods, boolean isCoTFile, String[] imports) throws IOException {
+        //Given each line is the same one code segment that is separable, split code into multiple files
+        String[] codes = split(code, "\n");
+        FileWriter fw;
+        BufferedWriter bw;
+        int j = 0;
+        for (int i = 0; i < codes.length; i++) {
+            fw = new FileWriter(Util.HOME + Util.DEPLOY + filePath + filename + j + ".zs");
+            bw = new BufferedWriter(fw);
+            bw.write(writeHeader(filename, j, priority, mods, isCoTFile, imports));
+            int counter = 0;
+            while (i < codes.length && counter < threshold) {
+                bw.write(codes[i]);
+                bw.write("\n");
+                counter++;
+                i++;
+            }
+            bw.close();
+            i--;
+            j++;
+        }
     }
-    public static String writeHeader(String fileName, int priority, int num) {
-        return """
-                #loader contenttweaker
-                import mods.contenttweaker.Material;
-                import mods.contenttweaker.MaterialSystem;
-                import mods.contenttweaker.PartBuilder;
-                import mods.contenttweaker.VanillaFactory;
-                import mods.contenttweaker.Block;
-                import mods.contenttweaker.Color;
-                
-                """ + "# priority " + priority + "\n\n# " +
-                fileName.toUpperCase() + " FILE " + num + "\n" +
-                "# ============================================\n\n"
-                ;
+    //file header
+    public static String writeHeader(String fileName, int num, int priority, String[] mods, boolean isCoTFile, String[] imports) {
+        StringBuilder sb = new StringBuilder();
+        if (isCoTFile) {
+            String cot = "#loader contenttweaker\n\n";
+            sb.append(cot);
+        }
+        if (imports != null) {
+            for (String s : imports) {
+                sb.append("import ");
+                sb.append(s);
+                sb.append(";\n");
+            }
+            sb.append("\n");
+        }
+        if (priority > -1) sb.append("#priority ").append(priority).append("\n\n");
+        if (mods != null) {
+            for (String s : mods) {
+                sb.append("#modloaded ");
+                sb.append(s);
+                sb.append("\n");
+            }
+            sb.append("\n");
+        }
+        sb.append("# ").append(fileName.toUpperCase()).append(" FILE");
+        if (num > -1) {
+            sb.append(" ").append(num);
+        }
+        sb.append("\n");
+        sb.append("# ============================================\n\n");
+
+        return sb.toString();
     }
 
     //print array

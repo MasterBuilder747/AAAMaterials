@@ -1,47 +1,23 @@
 package Main.Generators.GameData;
 
 import Main.Data.GameData.OreDict;
-import Main.Data.GameData.Registry;
-import Main.Util;
-
-import java.util.ArrayList;
 
 public class GOreDictRegistry extends AGGameData<OreDict> {
     GRegistry registry;
 
     public GOreDictRegistry(String filename, GRegistry registry) {
-        super(-1, filename, -1);
+        super(-1, filename);
         this.registry = registry;
     }
 
     @Override
     protected void readGameData(String[] s) {
-        String[] toReplace = {
-                "[",
-                "]",
-                "@",
-                "-",
-                "'",
-                "32767"
-        };
-        String[] replacements = {
-                "",
-                "",
-                ":",
-                ",",
-                "",
-                "0"
-        };
-        /*
-        String itemList = Util.replaces(s[1], toReplace, replacements);
-        String[] regs = Util.split(itemList, ";");
-        ArrayList<Registry> registries = new ArrayList<>();
-        for (String r : regs) {
-            String[] i = Util.split(r, ",");
-            Registry item = this.registry.getUnlocalized(i[0]);
-            registries.add(item);
-        }
-        */
+        //OreDict Key,ItemStacks
+        //arrow,[minecraft:arrow@0 - 'Iron Arrow' - <no NBT>];
+        // [minecraft:spectral_arrow@0 - 'Spectral Arrow' - <no NBT>];
+        // [minecraft:tipped_arrow@0 - 'Uncraftable Tipped Arrow' - <no NBT>]
+        //TODO: special oredict parsing for ItemStacks
+
         objects.add(new OreDict(s[0]));
     }
 }

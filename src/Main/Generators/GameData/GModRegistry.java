@@ -12,7 +12,7 @@ public class GModRegistry extends AGGameData<ModRegistry> {
     GJeiCategory cats;
 
     public GModRegistry(String filename, GRegistry registry, GJeiCategory cats) {
-        super(2, filename, -1);
+        super(2, filename);
         this.registry = registry;
         this.cats = cats;
     }
@@ -21,7 +21,7 @@ public class GModRegistry extends AGGameData<ModRegistry> {
     protected void readGameData(String[] s) {
         ModRegistry m = new ModRegistry(s[0], s[1]);
         //registries
-        //"ModID","Mod name"
+        //ModID,Mod name
         ArrayList<Registry> regs = new ArrayList<>();
         for (Registry r : this.registry.getObjects()) {
             if (r.mod.equals(m.getUnlocalizedName())) {

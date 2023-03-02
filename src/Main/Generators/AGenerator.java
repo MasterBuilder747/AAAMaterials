@@ -17,6 +17,7 @@ public abstract class AGenerator<D extends AData> {
     protected String[] s;
     protected final int PARAMS; //-1 means ignore
     protected final String SUBFOLDER; //optional subfolder for user specified files for organization
+    protected boolean noReplace;
     //protected int numParams
 
     public AGenerator(int PARAMS, String filename) {
@@ -77,7 +78,7 @@ public abstract class AGenerator<D extends AData> {
                     //split each materials.zs file to a limited buffer depending on the material
                     FileWriter fw = new FileWriter(Util.HOME + Util.DEPLOY + "scripts/" + path + filename + j + ".zs");
                     BufferedWriter bw = new BufferedWriter(fw);
-                    bw.write(Util.writeHeader(label, priority, j));
+                    bw.write(Util.writeHeader(label, j, priority, null, true, null));
                     bw.write(appendHeader());
                     int counter = 0;
                     while (i < objects.size() && counter < threshold) {
@@ -131,18 +132,20 @@ public abstract class AGenerator<D extends AData> {
         fr.close();
     }
     private void readFile(BufferedReader br) throws IOException {
+        s1 = br.readLine(); //ignore the first line as it is considered the file header
         while (true) {
             s1 = br.readLine();
             if (s1 != null) {
                 if (s1.charAt(0) != '/') { //commented out line, ignored
-                    s = Util.split(s1.replace(" ", ""), ",");
-                    if (s.length == this.PARAMS) {
-                        readLine(br, s);
+                    if (!noReplace) {
+                        s = Util.split(s1.replace(" ", ""), ",");
+                        checkParams(s.length);
                     } else {
-                        //-1 denotes any amount of parameters, so no checking is needed
-                        if (this.PARAMS != -1) error(s.length + " is the incorrect amount of parameters. Expected " + PARAMS);
-                        readLine(br, s);
+                        //parse the entire string as is in the first index of the array
+                        s = new String[1];
+                        s[0] = s1;
                     }
+                    readLine(br, s);
                 }
             } else {
                 break;
@@ -209,6 +212,10 @@ public abstract class AGenerator<D extends AData> {
     }
 
     //parameter validation
+    protected void checkParams(int s) {
+        //-1 denotes any amount of parameters, so no checking is needed
+        if (s != PARAMS && PARAMS != -1) error(s + " is the incorrect amount of parameters. Expected " + PARAMS);
+    }
     private void paramError(String s, String type) {
         throw new ParameterException(s, type, this.filename, this.line);
     }

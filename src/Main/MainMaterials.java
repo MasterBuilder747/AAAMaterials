@@ -92,12 +92,12 @@ public class MainMaterials {
         modTweaks.registerMaterials();
         GRecipeTweak tweak = null; //placeholder for constructors
 
-        //start writing files
+        //start writing files:
 
-        //required machine resources for machine recipes
+        //machine resources
         FileWriter fw = new FileWriter(Util.HOME + Util.DEPLOY + "scripts/materials/machine-resources" + ".zs");
         BufferedWriter bw = new BufferedWriter(fw);
-        bw.write(Util.writeHeader("machine resources", 900));
+        bw.write(Util.writeHeader("machine resources", -1,900, null, true, null));
         GMachine machine = new GMachine("machine", liquids);
         machine.registerMaterials(); //this doesn't write anything, but we will use this data (a lot)
         GMachineData data = new GMachineData("data");
@@ -106,10 +106,10 @@ public class MainMaterials {
         bw.write(matter.registerMaterials());
         bw.close();
 
-        //custom content not using the material system
+        //custom content
         fw = new FileWriter(Util.HOME + Util.DEPLOY + "scripts/materials/materials-custom" + ".zs");
         bw = new BufferedWriter(fw);
-        bw.write(Util.writeHeader("custom materials", 900));
+        bw.write(Util.writeHeader("custom materials", -1, 900, null, true, null));
         GBlock block = new GBlock("block", REG, tweak, registry, liquids, oreDict, machine, matter, data);
         bw.write(block.registerMaterials());
         GItem item = new GItem("item", REG, tweak, registry, liquids, oreDict, machine, matter, data);
@@ -124,10 +124,10 @@ public class MainMaterials {
         bw.write(plasma.registerMaterials());
         bw.close();
 
-        //any established content needed for the material system
+        //material parts
         fw = new FileWriter(Util.HOME + Util.DEPLOY + "scripts/materials/material-parts" + ".zs");
         bw = new BufferedWriter(fw);
-        bw.write(Util.writeHeader("material parts", 900));
+        bw.write(Util.writeHeader("material parts", -1, 900, null, true, new String[]{"mods.contenttweaker.PartBuilder"}));
         GPart part = new GPart("part", REG, tweak, registry, liquids, oreDict, machine, matter, data); //this is localized
         bw.write(part.registerMaterials());
         GPartGroup partGroup = new GPartGroup("partgroup", part);
@@ -208,11 +208,12 @@ public class MainMaterials {
         GOreVein veins = new GOreVein("oreVein", ore, dimension, biomes);
         veins.registerMaterials();
 
-        //split materialData files
-        String matDataCode = sb.toString();
-        Util.splitMatFiles(matDataCode, "scripts/materials/materialDatas/", "materials", 600);
+        //start writing files:
 
-        //LOCALIZATION
+        //write and split materialData files
+        String matDataCode = sb.toString();
+        Util.splitMatFiles(matDataCode, "scripts/materials/materialDefinitions/", "materials", 600);
+
         //CoT .lang file
         fw = new FileWriter(Util.HOME + Util.DEPLOY + "resources/contenttweaker/lang/en_us.lang");
         bw = new BufferedWriter(fw);
@@ -234,8 +235,6 @@ public class MainMaterials {
         //close
         bw.close();
 
-
-        //CONFIGS
         //write config files
         config.addData("tweakersConstruct", ticParams.toArray(new ConfigParam[0]));
         config.registerMaterials();

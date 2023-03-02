@@ -171,45 +171,30 @@ public class MainRecipes {
         GMachineRecipe recipe = new GMachineRecipe("recipe", registry, liquids, oreDict, machine, data, matter);
         sb.append(recipe.registerRecipes());
 
-        //script header
-        String header = """
-                #priority 0
-                
-                #modloaded modularmachinery
-                
-                # RECIPES FILE
-                # ============================================
-
-                """;
-
         //HARDCODED MACHINE RESOURCE RECIPES GO HERE (don't repeat it)
         String initialCode = "";
 
-        //tooltip code is now written to a separate file
+        //separate the recipe code from the tooltip code
         String[] codes = Util.split(sb.toString(), "\n");
         sb = new StringBuilder();
-        FileWriter fw = new FileWriter(Util.HOME + Util.DEPLOY+"scripts/tooltips.zs");
-        BufferedWriter bw = new BufferedWriter(fw);
-        String tooltipHeader = """
-                #priority 0
-                
-                # TOOLTIPS FILE
-                # ============================================
-
-                """;
-        bw.write(tooltipHeader);
+        StringBuilder sb2 = new StringBuilder();
         for (String s : codes) {
             if (s.contains(".addTooltip")) {
-                bw.write(s); //tooltip code
-                bw.write("\n");
+                sb2.append(s); //tooltip code
+                sb2.append("\n");
             } else {
                 sb.append(s); //machine recipe code
                 sb.append("\n");
             }
         }
-        bw.close();
 
-        Util.splitFiles(sb.toString(), header, initialCode, Util.HOME + Util.DEPLOY+"scripts/recipes/recipes", false);
+        //start writing files:
+
+        //write the tooltip files
+        Util.splitFiles(sb2.toString(), "scripts/tooltips/", "tooltips", 0, 1000, null, false, null);
+
+        //split the recipe code into files
+        Util.splitRecipeFiles(sb.toString(), initialCode, Util.HOME + Util.DEPLOY+"scripts/recipes/recipes", false);
 
         w.stop();
         System.out.println();
