@@ -26,11 +26,17 @@ public class GMGas extends AGMLiquid<MGas> {
     @Override
     protected void readMaterialParameters(Material m, String[] s) {
         //String key, int density, int luminosity, int temperature, int viscosity, boolean vaporize
-        objects.add(new MGas(
+        MGas gas = new MGas(
                 getRecipeTweak("MGas"), getItems(), getLiquids(), getOres(),
                 getMachineRegistry(), getMatterRegistry(), getDataRegistry(),
                 m,
                 s[0], Integer.parseInt(s[1]), Integer.parseInt(s[2]), Integer.parseInt(s[3]), Integer.parseInt(s[4]),
-                Boolean.parseBoolean(s[5])));
+                Boolean.parseBoolean(s[5]));
+        gas.setTooltipExclusions(new String[]{
+                "dust", "dustSmall", "dustTiny",
+                "dustFine", "dustFineSmall", "dustFineTiny",
+                "powder", "powderSmall", "powderTiny"
+        });
+        objects.add(gas);
     }
 }

@@ -29,7 +29,13 @@ public class MoleculeComposition extends AChemicalComposition {
 
     @Override
     public String generateTooltip() {
-        return ((this.isotope > 0) ? Util.intToSuperscript(this.isotope) : "") + this.symbol;
+        return ((this.isotope > 0) ? Util.intToSuperscript(this.isotope) : "") + composition.toString();
+    }
+
+    @Override
+    public void print() {
+        System.out.println(this.m.NAME + ", " + composition.isMoleculeCharge + ": " + composition);
+        //this.m.getComp().getCComp().printIngredients();
     }
 
     @Override

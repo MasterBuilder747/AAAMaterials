@@ -41,9 +41,9 @@ public abstract class AChemicalComposition extends AMaterialData {
                 machines, matters, data,
                 m);
         this.composition = c;
+        this.symbol = c.toSymbol();
         this.charge = charge;
         this.isDefault = isDefault;
-        this.symbol = c.toString();
         this.isElement = isElement;
     }
 
@@ -51,33 +51,26 @@ public abstract class AChemicalComposition extends AMaterialData {
         StringBuilder sb = new StringBuilder();
         for(RegistryData d : registries) {
             if (!d.isTooltipExclusion) {
-                sb.append(d.r.getBracket()).append(".addTooltip(\"").append(this.symbol).append("\");\n");
+                sb.append(d.r.getBracket()).append(".addTooltip(\"").append(generateTooltip()).append("\");\n");
             }
         }
         return sb.toString();
     }
 
+    //gets
     public Composition getCComp() {
         return this.composition;
     }
-
-    public abstract String generateTooltip();
     public String getSymbol() {
         return this.symbol;
     }
-
+    public abstract String generateTooltip();
     public Element getE() {
         if (this.isElement) {
             return this.composition.getE();
         } else {
             throw new IllegalArgumentException("No element for composition " + this);
         }
-    }
-
-    @Override
-    public void print() {
-        System.out.println(this.m.NAME + ": " + this.symbol);
-        //this.m.getComp().getCComp().printIngredients();
     }
 
     @Override

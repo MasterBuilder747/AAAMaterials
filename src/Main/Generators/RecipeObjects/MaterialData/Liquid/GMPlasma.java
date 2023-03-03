@@ -26,15 +26,19 @@ public class GMPlasma extends AGMLiquid<MPlasma> {
     @Override
     protected void readMaterialParameters(Material m, String[] s) {
         //int density, int luminosity, int temperature, int viscosity, boolean vaporize
-        objects.add(
-                new MPlasma(
+        MPlasma plasma = new MPlasma(
                     getRecipeTweak("MPlasma"),
                     getItems(), getLiquids(), getOres(),
                     getMachineRegistry(), getMatterRegistry(), getDataRegistry(),
                     m,
                     s[0], Integer.parseInt(s[1]), Integer.parseInt(s[2]), Integer.parseInt(s[3]), Integer.parseInt(s[4]),
                     Boolean.parseBoolean(s[5])
-                )
         );
+        plasma.setTooltipExclusions(new String[]{
+                "dust", "dustSmall", "dustTiny",
+                "dustFine", "dustFineSmall", "dustFineTiny",
+                "powder", "powderSmall", "powderTiny"
+        });
+        objects.add(plasma);
     }
 }

@@ -43,7 +43,9 @@ public abstract class AMaterialData extends ARecipeObject {
         if (r != null) sb.append(r);
 
         AChemicalComposition comp = m.getComp();
-        if (comp != null) sb.append(comp.addTooltips(this.getKeysArray()));
+        if (comp != null) {
+            sb.append(comp.addTooltips(this.getKeysArray()));
+        }
 
         if (r == null && comp == null) return "";
         return sb.toString();

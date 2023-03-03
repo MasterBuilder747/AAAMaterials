@@ -40,7 +40,7 @@ public class GNuclear extends AGMSolid<Nuclear> {
         //material, atomic num, isotopeNum, isIsomer, isIsotope, abund (-1=trace; -10=syn), half life (d), half life (y), mode(s), product(s) (most to least common decay)
         //uranium, 92, 238, false, false, 0.99274, 1.63194E+12, 4.46800E+09, sf;a;2b-, ;Th-234;Pu-238
         if (s.length < 7) error("minimum parameter size is 7");
-        Nuclear n = new Nuclear(
+        Nuclear nuclear = new Nuclear(
                 getRecipeTweak("Nuclear"), getItems(), getLiquids(), getOres(),
                 getMachineRegistry(), getMatterRegistry(), getDataRegistry(),
                 m,
@@ -49,7 +49,7 @@ public class GNuclear extends AGMSolid<Nuclear> {
         if (s.length > 7) {
             String[] modes = Util.split(s[7], ";");
             if (modes.length == 1 && (modes[0].equals("sf") || modes[0].equals("y"))) {
-                n.addDecay(modes, new Nuclear[]{null});
+                nuclear.addDecay(modes, new Nuclear[]{null});
             } else {
                 String[] products = Util.split(s[8], ";");
                 ArrayList<Nuclear> nuclears = new ArrayList<>();
@@ -81,10 +81,15 @@ public class GNuclear extends AGMSolid<Nuclear> {
                     }
                 }
                 if (modes.length != nuclears.size()) error("Decay mode and product sizes much be the same");
-                n.addDecay(modes, nuclears.toArray(new Nuclear[0]));
+                nuclear.addDecay(modes, nuclears.toArray(new Nuclear[0]));
             }
         }
-        objects.add(n);
+        nuclear.setTooltipExclusions(new String[]{
+                "dust", "dustSmall", "dustTiny",
+                "dustFine", "dustFineSmall", "dustFineTiny",
+                "powder", "powderSmall", "powderTiny"
+        });
+        objects.add(nuclear);
     }
 
     public Nuclear getIsotope(String s) {

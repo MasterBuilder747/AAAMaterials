@@ -15,6 +15,8 @@ public class Composition {
     Element e; //can be null, results in a placeholder element for minerals
     Material m; //can be null, results in a ? to represent no composition
     Replacement r; //for the mineral replacement system, uses the composition system
+    public boolean isMoleculeCharge; //don't show parenthesis for this material's comp
+    int charge;
 
     public Composition comp; //the next one in the linked list
 
@@ -48,6 +50,10 @@ public class Composition {
     }
     public void addR(Replacement r) {
         this.r = r;
+    }
+    public void setMoleculeCharge(int charge) {
+        this.isMoleculeCharge = true;
+        this.charge = charge;
     }
 
     public Element getE() {
@@ -96,7 +102,7 @@ public class Composition {
     }
 
     //only use this for tooltips, do NOT use this for searching for compound compositions
-    //as it could contain ? for unknown material compositions, \u0000 for placeholder element
+    //as it could contain ? for unknown material compositions, \u25a0 for placeholder element
     //but note that this IS used for searching for molecule compositions
     @Override
     public String toString() {
@@ -104,6 +110,14 @@ public class Composition {
         StringBuilder sb = new StringBuilder();
         if (this.e != null) {
             sb.append(this.e.symbol);
+            if (isMoleculeCharge) {
+                sb.append(Util.intToSuperscript(Math.abs(this.charge)));
+                if (this.charge > 0) {
+                    sb.append("⁺"); // \u207a
+                } else {
+                    sb.append("⁻"); // \u207b
+                }
+            }
             if (this.amount > 1) sb.append(Util.intToSubscript(this.amount));
         } else {
             //{@;Mg;[hydroxide]}2Mg5Si8O22[hydroxide]2
@@ -119,11 +133,49 @@ public class Composition {
                 //material has no composition
                 sb.append("?");
             } else {
-                sb.append("(");
-                sb.append(this.m.getComp().getCComp().toString());
-                sb.append(")");
+                if (this.m.getComp().getCComp().isMoleculeCharge) {
+                    sb.append(this.m.getComp().getCComp().toString());
+                } else {
+                    sb.append("(");
+                    sb.append(this.m.getComp().getCComp().toString());
+                    sb.append(")");
+                }
             }
             if (this.amount > 1) sb.append(Util.intToSubscript(this.amount));
+        }
+        if (this.r != null) sb.append(r);
+        if (this.comp != null) sb.append(this.comp);
+        return sb.toString();
+    }
+    public String toSymbol() {
+        //outputs the entire tooltip without unicode, to be used by GNuclear
+        StringBuilder sb = new StringBuilder();
+        if (this.e != null) {
+            sb.append(this.e.symbol);
+            if (this.amount > 1) sb.append(this.amount);
+        } else {
+            //{@;Mg;[hydroxide]}2Mg5Si8O22[hydroxide]2
+            //(■,Mg,OH)₂Mg₅Si₈O₂₂(OH)₂
+            if (this.m == null && this.r == null) {
+                //null element is a vacancy defect
+                sb.append("■"); // \u25a0
+                if (this.amount > 1) sb.append(this.amount);
+            }
+        }
+        if (this.m != null) {
+            if (this.m.getComp() == null) {
+                //material has no composition
+                sb.append("?");
+            } else {
+                if (this.isMoleculeCharge) {
+                    sb.append(this.m.getComp().getCComp().toString());
+                } else {
+                    sb.append("(");
+                    sb.append(this.m.getComp().getCComp().toString());
+                    sb.append(")");
+                }
+            }
+            if (this.amount > 1) sb.append(this.amount);
         }
         if (this.r != null) sb.append(r);
         if (this.comp != null) sb.append(this.comp);

@@ -33,15 +33,17 @@ public class GMoleculeComposition extends AGChemicalComposition<MoleculeComposit
     @Override
     protected void readMaterialParameters(Material m, String[] s) {
         //material,
-        //element, boolean isDefaultMaterialForElement, boolean isDiatomic
+        //material,Comp,isDefault,isDiatomic,charge,isotope
         Element e = element.get(s[0]);
         Composition c = new Composition(e);
+        int charge = parseInt(s[3]);
+        if (charge != 0) c.setMoleculeCharge(charge);
         MoleculeComposition comp = new MoleculeComposition(
                 getRecipeTweak("MoleculeComposition"), getItems(), getLiquids(), getOres(),
                 getMachineRegistry(), getMatterRegistry(), getDataRegistry(),
                 m,
                 c, parseBoolean(s[1]),
-                parseBoolean(s[2]), parseInt(s[3]), parseInt(s[4]));
+                parseBoolean(s[2]), charge, parseInt(s[4]));
         m.addComposition(comp);
         objects.add(comp);
         //this.material.replace(m.NAME, m); //apparently this isn't needed, somehow GMaterial gets updated (yeah java is weird)

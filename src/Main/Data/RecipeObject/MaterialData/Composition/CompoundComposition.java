@@ -59,7 +59,13 @@ public class CompoundComposition extends AChemicalComposition {
 
     @Override
     public String generateTooltip() {
-        return this.symbol;
+        return composition.toString();
+    }
+
+    @Override
+    public void print() {
+        System.out.println(this.m.NAME + ": " + composition);
+        //this.m.getComp().getCComp().printIngredients();
     }
 
     @Override
