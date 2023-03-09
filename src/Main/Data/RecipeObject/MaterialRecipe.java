@@ -1,25 +1,22 @@
-package Main.Data.RecipeObject.MaterialRecipe;
+package Main.Data.RecipeObject;
 
 import Main.Data.GameData.Registry;
 import Main.Data.MachineRecipe.CustomMachineRecipe;
-import Main.Data.MachineResource.Machine.Machine;
+import Main.Data.Machine;
 import Main.Data.MachineResource.MachineData;
 import Main.Data.MachineResource.MachineMatter;
-import Main.Data.RecipeObject.ARecipeObject;
 import Main.Data.Tweakers.RecipeTweak;
 import Main.Util;
 
-import java.util.ArrayList;
-
-public abstract class AMaterialRecipe extends ARecipeObject {
+public class MaterialRecipe extends ARecipeObject {
     //machine recipe that gets automatically added per recipe object
     CustomMachineRecipe recipe;
     String machineName;
 
-    public AMaterialRecipe(String NAME, String type,
-                           RecipeTweak tweak, Registry[] items, String[] liquids, String[] ores,
-                           Machine[] machines, MachineMatter[] matters, MachineData data,
-                           String machineName) {
+    public MaterialRecipe(String NAME, String type,
+                          RecipeTweak tweak, Registry[] items, String[] liquids, String[] ores,
+                          Machine[] machines, MachineMatter[] matters, MachineData data,
+                          String machineName) {
         super(NAME, type,
                 tweak, items, liquids, ores,
                 machines, matters, data);

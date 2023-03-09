@@ -2,7 +2,7 @@ package Main.Data.RecipeObject.MaterialData.Liquid;
 
 import Main.Data.GameData.LiquidRegistry;
 import Main.Data.GameData.Registry;
-import Main.Data.MachineResource.Machine.Machine;
+import Main.Data.Machine;
 import Main.Data.MachineResource.MachineData;
 import Main.Data.MachineResource.MachineMatter;
 import Main.Data.RecipeObject.LiquidRegistryData;
@@ -19,13 +19,11 @@ public abstract class AMLiquid extends AMaterialData {
     public AMLiquid(String type,
                     RecipeTweak tweak, Registry[] items, String[] liquids, String[] ores,
                     Machine[] machines, MachineMatter[] matters, MachineData data,
-                    Material m,
-                    String key) {
+                    Material m) {
         super(type,
                 tweak, items, liquids, ores,
                 machines, matters, data,
                 m);
-        this.key = key;
     }
 
     @Override

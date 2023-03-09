@@ -1,7 +1,7 @@
 package Main.Data.RecipeObject.MaterialData;
 
 import Main.Data.GameData.Registry;
-import Main.Data.MachineResource.Machine.Machine;
+import Main.Data.Machine;
 import Main.Data.MachineResource.MachineData;
 import Main.Data.MachineResource.MachineMatter;
 import Main.Data.Material;
@@ -64,8 +64,8 @@ public abstract class AMaterialData extends ARecipeObject {
     }
 
     //keys
-    public void addKey(String key, Registry reg) {
-        m.keys.add(new RegistryData(key, reg));
+    public void addRegistryData(String key, Registry r) {
+        this.m.keys.add(new RegistryData(key, r));
     }
     public void addAllRegistryDatas(String[] keys, Registry[] regs) {
         if (keys.length != regs.length) error("Keys and registries need to be the same length for recipeObject named " + this.NAME);
@@ -73,20 +73,7 @@ public abstract class AMaterialData extends ARecipeObject {
             this.addRegistryData(keys[i], regs[i]);
         }
     }
-    public void addRegistryData(String key, Registry r) {
-        this.m.keys.add(new RegistryData(key, r));
-    }
-    //replaces the existing key with a new registry
-    protected void change(String key, Registry r) {
-        RegistryData mat = this.getRegistryData(key);
-        if (mat != null) {
-            this.m.keys.remove(mat);
-            this.addRegistryData(key, r);
-        } else {
-            error(key, this.NAME);
-        }
-    }
-    public void addKeys(String[] keys, Registry[] regs, boolean allowDupes) {
+    public void addRegistries(String[] keys, Registry[] regs, boolean allowDupes) {
         if (regs.length != keys.length) error("registries length must be equal to keys length when adding to material " + m.NAME);
         for (int i = 0; i < regs.length; i++) {
             if (!allowDupes) {
@@ -94,6 +81,15 @@ public abstract class AMaterialData extends ARecipeObject {
                     m.keys.add(new RegistryData(keys[i], regs[i]));
                 }
             } else m.keys.add(new RegistryData(keys[i], regs[i]));
+        }
+    }
+    protected void change(String key, Registry r) {
+        RegistryData mat = this.getRegistryData(key);
+        if (mat != null) {
+            this.m.keys.remove(mat);
+            this.addRegistryData(key, r);
+        } else {
+            error(key, this.NAME);
         }
     }
     //marks the existing registryData as a tooltip exclusion for this object
@@ -206,7 +202,7 @@ public abstract class AMaterialData extends ARecipeObject {
         }
         return parts.toArray(new LPart[0]);
     }
-    public String[] getEnabledOredicts() {
+    public String[] getKeys() {
         ArrayList<String> outs = new ArrayList<>();
         LPart[] parts = this.getLocalizedPartNames();
         for (LPart p : parts) {

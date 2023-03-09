@@ -1,0 +1,5 @@
+//machineName, local-Name, hexColor, int minVoltage, boolean isEnergyIn, boolean isEnergyOut,
+//int itemInputAmounts, int itemOutputAmounts, int liquidInputAmounts, int liquidOutputAmounts
+//liquid IO will be automatically added for machine resources
+//use default for hexColor to use the machine color
+test, Test2-Machine, default, 1, true, false, 1, 1, 1, 1

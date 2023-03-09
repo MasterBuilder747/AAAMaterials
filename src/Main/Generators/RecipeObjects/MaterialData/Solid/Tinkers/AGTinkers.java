@@ -7,7 +7,7 @@ import Main.Generators.GPartGroup;
 import Main.Generators.GameData.*;
 import Main.Generators.GameData.Tinker.GTCPartRegistry;
 import Main.Generators.GameData.Tinker.GTCTraitRegistry;
-import Main.Generators.MachineResource.GMachine;
+import Main.Generators.GMachine;
 import Main.Generators.MachineResource.GMachineData;
 import Main.Generators.MachineResource.GMachineMatter;
 import Main.Generators.RecipeObjects.MaterialData.AGMaterialData;

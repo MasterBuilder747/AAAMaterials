@@ -1,7 +1,7 @@
 package Main.Data.RecipeObject.MaterialData.Liquid;
 
 import Main.Data.GameData.Registry;
-import Main.Data.MachineResource.Machine.Machine;
+import Main.Data.Machine;
 import Main.Data.MachineResource.MachineData;
 import Main.Data.MachineResource.MachineMatter;
 import Main.Data.RecipeObject.Localized.Liquid.LMolten;
@@ -12,12 +12,16 @@ public class MLiquid extends AMLiquid {
     public MLiquid(RecipeTweak tweak, Registry[] items, String[] liquids, String[] ores,
                    Machine[] machines, MachineMatter[] matters, MachineData data,
                    Material m,
-                   String key, int density, int luminosity, int temperature, int viscosity, boolean vaporize) {
+                   int density, int luminosity, int temperature, int viscosity, boolean vaporize) {
         super("MLiquid",
                 tweak, items, liquids, ores,
                 machines, matters, data,
-                m,
-                key);
+                m);
+        switch(m.state) {
+            case "solid" -> this.key = "molten";
+            case "liquid" -> this.key = "liquid";
+            case "gas" -> this.key = "gas";
+        }
         String localName = null;
         String name = null;
         if (m.state.equals("solid")) {

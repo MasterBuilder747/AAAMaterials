@@ -2,7 +2,7 @@ package Main.Data.RecipeObject.MaterialData.Composition;
 
 import Main.Composition;
 import Main.Data.GameData.Registry;
-import Main.Data.MachineResource.Machine.Machine;
+import Main.Data.Machine;
 import Main.Data.MachineResource.MachineData;
 import Main.Data.MachineResource.MachineMatter;
 import Main.Data.Material;

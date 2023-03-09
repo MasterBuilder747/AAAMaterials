@@ -19,7 +19,7 @@ import Main.Generators.RecipeObjects.Localized.Liquid.GGas;
 import Main.Generators.RecipeObjects.Localized.Liquid.GLiquid;
 import Main.Generators.RecipeObjects.Localized.Liquid.GMolten;
 import Main.Generators.RecipeObjects.Localized.Liquid.GPlasma;
-import Main.Generators.MachineResource.GMachine;
+import Main.Generators.GMachine;
 import Main.Generators.MachineResource.GMachineData;
 import Main.Generators.MachineResource.GMachineMatter;
 import Main.Generators.RecipeObjects.MaterialData.Composition.GCompoundComposition;
@@ -43,19 +43,14 @@ public class MainMaterials {
     //1 the .zs script file (one giant one)
     //2 the .json file for undergroundbiome ore registry
     //3 the .lang file for localization
+    //4 the pack's .cfg files to be created via code
     public final static boolean REG = false;
 
     public static void main(String[] args) throws IOException {
         Stopwatch w = new Stopwatch();
         w.start();
 
-        //config tweaker (no requirements)
-        //however, each data file must have its data populated manually before registering
-        GConfigTweak config = new GConfigTweak("configstotweak");
-        //config param arrays
-        ArrayList<ConfigParam> ticParams = new ArrayList<>();
-
-        //gamedata registries: most will not be needed
+        //registries
         GRegistry registry = new GRegistry("registry");
         registry.registerMaterials();
         GJeiCategory jeiC = new GJeiCategory("JEICategorie");
@@ -83,27 +78,30 @@ public class MainMaterials {
         tcTraits.registerMaterials();
         GTCPartRegistry tcParts = new GTCPartRegistry("TCPartRegistrie");
         tcParts.registerMaterials();
+        ArrayList<ConfigParam> ticParams = new ArrayList<>();
         ticParams.add(new ConfigParam("string[]", "toolParts", tcParts.exportPartTweaks()));
         GTCMaterialRegistry tcMaterials = new GTCMaterialRegistry("TCMaterialRegistrie");
         tcMaterials.registerMaterials();
 
-        //tweakers
+        //mod tweakers
         GModTweak modTweaks = new GModTweak("modstotweak", mods);
         modTweaks.registerMaterials();
         GRecipeTweak tweak = null; //placeholder for constructors
 
         //start writing files:
 
-        //machine resources
+        //machines
         FileWriter fw = new FileWriter(Util.HOME + Util.DEPLOY + "scripts/materials/machine-resources" + ".zs");
         BufferedWriter bw = new BufferedWriter(fw);
         bw.write(Util.writeHeader("machine resources", -1,900, null, true, null));
-        GMachine machine = new GMachine("machine", liquids);
-        machine.registerMaterials(); //this doesn't write anything, but we will use this data (a lot)
         GMachineData data = new GMachineData("data");
         bw.write(data.registerMaterials());
         GMachineMatter matter = new GMachineMatter("matter");
         bw.write(matter.registerMaterials());
+        GMachine machine = new GMachine("machine");
+        machine.registerMaterials();
+        GMachineGroup machineGroup = new GMachineGroup("machineGroup", machine);
+        machineGroup.registerMaterials();
         bw.close();
 
         //custom content
@@ -236,6 +234,7 @@ public class MainMaterials {
         bw.close();
 
         //write config files
+        GConfigTweak config = new GConfigTweak("configstotweak");
         config.addData("tweakersConstruct", ticParams.toArray(new ConfigParam[0]));
         config.registerMaterials();
 

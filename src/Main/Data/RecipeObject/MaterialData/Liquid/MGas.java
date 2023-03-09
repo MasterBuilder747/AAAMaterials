@@ -1,7 +1,7 @@
 package Main.Data.RecipeObject.MaterialData.Liquid;
 
 import Main.Data.GameData.Registry;
-import Main.Data.MachineResource.Machine.Machine;
+import Main.Data.Machine;
 import Main.Data.MachineResource.MachineData;
 import Main.Data.MachineResource.MachineMatter;
 import Main.Data.RecipeObject.Localized.Liquid.LGas;
@@ -12,12 +12,16 @@ public class MGas extends AMLiquid {
     public MGas(RecipeTweak tweak, Registry[] items, String[] liquids, String[] ores,
                 Machine[] machines, MachineMatter[] matters, MachineData data,
                 Material m,
-                String key, int density, int luminosity, int temperature, int viscosity, boolean vaporize) {
+                int density, int luminosity, int temperature, int viscosity, boolean vaporize) {
         super("mGas",
                 tweak, items, liquids, ores,
                 machines, matters, data,
-                m,
-                key);
+                m);
+        switch(m.state) {
+            case "solid" -> this.key = "gas";
+            case "liquid" -> this.key = "gas";
+            case "gas" -> this.key = "gas";
+        }
         this.l = new LGas(
                 m.NAME +"_gas",
                 tweak, items, liquids, ores,

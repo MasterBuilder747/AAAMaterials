@@ -1,1 +1,1 @@
-/material,String key,int density,int luminosity,int temperature,int viscosity,boolean vaporize
+/material, int density, int luminosity, int temperature, int viscosity, boolean vaporize

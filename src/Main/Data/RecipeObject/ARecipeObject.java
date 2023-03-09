@@ -2,11 +2,10 @@ package Main.Data.RecipeObject;
 
 import Main.Data.AData;
 import Main.Data.GameData.Registry;
-import Main.Data.MachineResource.Machine.Machine;
+import Main.Data.Machine;
 import Main.Data.MachineResource.MachineData;
 import Main.Data.MachineResource.MachineMatter;
 import Main.Data.RecipeObject.MaterialData.AMaterialData;
-import Main.Data.RecipeObject.MaterialRecipe.*;
 import Main.Data.Tweakers.RecipeTweak;
 import Main.Generators.GeneratorException;
 import Main.Parameter.ParameterException;
@@ -84,8 +83,8 @@ public abstract class ARecipeObject extends AData {
             String iInput, String iOutput, String lInput, String lOutput,
             String var2 //need an additional custom var for uniqueness between user and coded recipes
     ) {
-        AMaterialRecipe r;
-        r = constructRecipe(machine);
+        MaterialRecipe r;
+        r = constructRecipe();
         if (r == null) {
             error("Unknown machine: " + machine);
             return null;
@@ -192,25 +191,12 @@ public abstract class ARecipeObject extends AData {
     protected abstract String getUnlocalizedByKey(String key);
     protected abstract String customItemKey(String key);
     protected abstract String customLiquidKey(String key);
-    
-    //change this api later, make it user defined
-    private AMaterialRecipe constructRecipe(String recipeType) {
-        switch (recipeType) {
-            case "coiller" -> {return new CoillerRecipe(this.tweak, this.items, this.liquids, this.ores, this.machines, this.matters, this.dataLiquid);}
-            case "bender" -> {return new HeatedBenderRecipe(this.tweak, this.items, this.liquids, this.ores, this.machines, this.matters, this.dataLiquid);}
-            case "cut" -> {return new LaserCutterRecipe(this.tweak, this.items, this.liquids, this.ores, this.machines, this.matters, this.dataLiquid);}
-            case "lathe" -> {return new LatheRecipe(this.tweak, this.items, this.liquids, this.ores, this.machines, this.matters, this.dataLiquid);}
-            case "mLathe" -> {return new MicroLatheRecipe(this.tweak, this.items, this.liquids, this.ores, this.machines, this.matters, this.dataLiquid);}
-            case "press" -> {return new PressRecipe(this.tweak, this.items, this.liquids, this.ores, this.machines, this.matters, this.dataLiquid);}
-            case "pulverize" -> {return new PulverizeRecipe(this.tweak, this.items, this.liquids, this.ores, this.machines, this.matters, this.dataLiquid);}
-            case "sharpen" -> {return new SharpenRecipe(this.tweak, this.items, this.liquids, this.ores, this.machines, this.matters, this.dataLiquid);}
-            case "smelt" -> {return new SmeltingRecipe(this.tweak, this.items, this.liquids, this.ores, this.machines, this.matters, this.dataLiquid);}
-            case "wiremill" -> {return new WiremillRecipe(this.tweak, this.items, this.liquids, this.ores, this.machines, this.matters, this.dataLiquid);}
-            case "welder" -> {return new WelderRecipe(this.tweak, this.items, this.liquids, this.ores, this.machines, this.matters, this.dataLiquid);}
-            case "melting" -> {return new MeltingRecipe(this.tweak, this.items, this.liquids, this.ores, this.machines, this.matters, this.dataLiquid);}
-            case "metalAssembler" -> {return new MetalAssemblerRecipe(this.tweak, this.items, this.liquids, this.ores, this.machines, this.matters, this.dataLiquid);}
-        }
-        return null;
+
+    private MaterialRecipe constructRecipe() {
+        return new MaterialRecipe("recipe", "Recipe",
+                this.tweak, this.items, this.liquids, this.ores,
+                this.machines, this.matters, this.dataLiquid,
+                "basic");
     }
 
     //registries

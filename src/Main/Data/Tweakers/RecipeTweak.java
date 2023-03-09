@@ -5,7 +5,6 @@ import Main.Generators.GeneratorException;
 import java.io.BufferedWriter;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Arrays;
 
 public class RecipeTweak extends ATweaker {
     //this holds one line for each recipe syntax, comma separated (IO is colon separated),
@@ -29,6 +28,7 @@ public class RecipeTweak extends ATweaker {
         //depends on voltage tier: int dataAmt, int chemAmt,
         //optional: String input, String output, String lInput, String lOutput
         StringBuilder sb = new StringBuilder();
+        //NOTE: all machine resources are required, since every recipe overcharges to the highest tier
         sb.append(s[0]); //machine
         sb.append(",");
         int tier = parseInt(s[1]);
@@ -42,19 +42,11 @@ public class RecipeTweak extends ATweaker {
         sb.append(",");
         sb.append(s[5]); //matterOut
         sb.append(",");
-        if (tier < 13) {
-            if (s[6].equals("-")) throw new GeneratorException("Data amount required for voltage tiers 12 and below");
-            sb.append(parseInt(s[6])); //dataAmt
-        } else {
-            sb.append("-1");
-        }
+        if (s[6].equals("-")) throw new GeneratorException("Data amount required for voltage tiers 12 and below");
+        sb.append(parseInt(s[6])); //dataAmt
         sb.append(",");
-        if (tier < 9) {
-            if (s[7].equals("-")) throw new GeneratorException("Chemical amount required for voltage tiers 8 and below");
-            sb.append(parseInt(s[7])); //chemAmt
-        } else {
-            sb.append("-1");
-        }
+        if (s[7].equals("-")) throw new GeneratorException("Chemical amount required for voltage tiers 8 and below");
+        sb.append(parseInt(s[7])); //chemAmt
         //8-11: String input, String output, String lInput, String lOutput
         //validations are internally handled in ARecipeObject
         // - indicates no I/O of that type

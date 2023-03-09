@@ -11,6 +11,20 @@ public class GRegistry extends AGGameData<Registry> {
     }
 
     @Override
+    protected void readGameData(String[] s) {
+        //-Mod name,Registry name,-Item ID,Meta/dmg,-Subtypes,Display name,Ore Dict keys,...,NBT
+        //NOTE: meta is always stored per item! Meta is required when searching!
+        String mod = s[1].substring(0, s[1].indexOf(":"));
+        String reg = s[1].substring(s[1].indexOf(":")+1);
+        int meta = parseInt(s[3]);
+        String localName = s[5].replace(" ", "");
+        Registry r = new Registry(mod, reg, meta, localName);
+        r.setOre(Util.split(s[6], ","));
+        if (!s[7].isEmpty()) r.nbt = s[7];
+        objects.add(r);
+    }
+
+    @Override
     public Registry get(String s) {
         for (Registry o : objects) {
             if (o.NAME.equals(s) && o.mod.equals("contenttweaker")) {
@@ -67,20 +81,6 @@ public class GRegistry extends AGGameData<Registry> {
         }
         error(filename + "\"s.txt: Unknown item of name " + s + " containing NBT data of " + nbt, true);
         return null;
-    }
-    
-    @Override
-    protected void readGameData(String[] s) {
-        //-Mod name,Registry name,-Item ID,Meta/dmg,-Subtypes,Display name,Ore Dict keys,...,NBT
-        //NOTE: meta is always stored per item! Meta is required when searching!
-        String mod = s[1].substring(0, s[1].indexOf(":"));
-        String reg = s[1].substring(s[1].indexOf(":")+1);
-        int meta = parseInt(s[3]);
-        String localName = s[5].replace(" ", "");
-        Registry r = new Registry(mod, reg, meta, localName);
-        r.setOre(Util.split(s[6], ","));
-        if (!s[7].isEmpty()) r.nbt = s[7];
-        objects.add(r);
     }
 
     //requires meta, no brackets

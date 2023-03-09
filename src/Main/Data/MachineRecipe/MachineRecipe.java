@@ -1,6 +1,6 @@
 package Main.Data.MachineRecipe;
 
-import Main.Data.MachineResource.Machine.Machine;
+import Main.Data.Machine;
 
 public class MachineRecipe extends ARecipe {
     //this adds everything that is needed for a machine recipe
@@ -37,7 +37,8 @@ public class MachineRecipe extends ARecipe {
     }
 
     private String buildChemicals() {
-        return this.NAME+".addFluidInput(<liquid:" + this.machine.chemical + "> * "+this.chemicalAmount+");\n";
+        return null;
+        //return this.NAME+".addFluidInput(<liquid:" + this.machine.chemical + "> * "+this.chemicalAmount+");\n";
     }
     //later on, there will be multiple tiers of data (depending on the amount of machine tiers of data generators)
     private String buildData() {

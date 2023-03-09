@@ -396,4 +396,16 @@ public class Util {
         }
         return true;
     }
+    public static boolean validateHEX(String s) {
+        for (char c : s.toCharArray()) {
+            if (c == '.') return false;
+            if (!isNumeric(String.valueOf(c))) {
+                switch (c) {
+                    case 'A', 'a', 'B', 'b', 'C', 'c', 'D', 'd', 'E', 'e', 'F', 'f' -> {}
+                    default -> { return false; }
+                }
+            }
+        }
+        return true;
+    }
 }

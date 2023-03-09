@@ -1,7 +1,7 @@
 package Main.Data.MachineRecipe;
 
 import Main.Data.AData;
-import Main.Data.MachineResource.Machine.Machine;
+import Main.Data.Machine;
 import Main.Generators.GeneratorException;
 
 public abstract class ARecipe extends AData {

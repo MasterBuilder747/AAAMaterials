@@ -1,12 +1,10 @@
 package Main.Data.RecipeObject.Localized.Liquid;
 
 import Main.Data.GameData.Registry;
-import Main.Data.MachineResource.Machine.Machine;
+import Main.Data.Machine;
 import Main.Data.MachineResource.MachineData;
 import Main.Data.MachineResource.MachineMatter;
 import Main.Data.Tweakers.RecipeTweak;
-
-import java.util.ArrayList;
 
 public class LQGP extends ALiquid {
     //stands for Quark-Gluon Plasma, only used for Infinity for now, custom only

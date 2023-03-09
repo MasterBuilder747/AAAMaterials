@@ -61,6 +61,11 @@ public class GMaterial extends AGenerator<Material> {
         } else {
             localName = localName.replace("-", " ").replace("*", "-");
         }
-        objects.add(new Material(s[0], localName.replace(";", ","), s[2], parseBoolean(s[3]), s[4]));
+        String state = s[4];
+        switch (state) {
+            case "solid", "liquid", "gas" -> {}
+            default -> error("Unknown state: " + state);
+        }
+        objects.add(new Material(s[0], localName.replace(";", ","), validateColor(s[2]), parseBoolean(s[3]), state));
     }
 }

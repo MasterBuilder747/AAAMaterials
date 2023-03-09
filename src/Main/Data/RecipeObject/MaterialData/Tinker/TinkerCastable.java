@@ -2,7 +2,7 @@ package Main.Data.RecipeObject.MaterialData.Tinker;
 
 import Main.Data.GameData.Registry;
 import Main.Data.GameData.TCPart;
-import Main.Data.MachineResource.Machine.Machine;
+import Main.Data.Machine;
 import Main.Data.MachineResource.MachineData;
 import Main.Data.MachineResource.MachineMatter;
 import Main.Data.Material;
@@ -33,7 +33,7 @@ public class TinkerCastable extends ATinkers {
         TCPart[] tcParts = this.getEnabledTCParts();
         for (TCPart p : tcParts) {
             Registry r = getByNBT(p.r.getFullUnlocalizedName(), "{Material:\"" + this.NAME+ "_cot\"}");
-            addKey(p.NAME, r);
+            addRegistryData(p.NAME, r);
         }
 
         //recipes

@@ -1,0 +1,6 @@
+//machineName, local-Name, hexColors[], int minVoltage, boolean isEnergyIn, boolean isEnergyOut,
+//int[] itemInputAmounts, int[] itemOutputAmounts, int[] liquidInputAmounts, int[] liquidOutputAmounts
+//arrays are from least to greatest machine tier (basic, advanced, industrial, ultimate)
+//liquid IO will be automatically added for machine resources
+//use default for hexColor to use machine colors
+machine, Test-Machine, default, 1, true, false, 1;1;1;1, 1;1;1;1, 1;1;1;1, 1;1;1;1

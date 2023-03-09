@@ -9,7 +9,7 @@ import Main.Generators.GameData.Tinker.GTCTraitRegistry;
 import Main.Generators.RecipeObjects.Localized.GBlock;
 import Main.Generators.RecipeObjects.Localized.GItem;
 import Main.Generators.RecipeObjects.Localized.GPart;
-import Main.Generators.MachineResource.GMachine;
+import Main.Generators.GMachine;
 import Main.Generators.MachineResource.GMachineData;
 import Main.Generators.MachineResource.GMachineMatter;
 import Main.Generators.RecipeObjects.Localized.Liquid.GGas;
@@ -32,8 +32,6 @@ import Main.Generators.RecipeObjects.MaterialData.Solid.Tinkers.GTinkerCraftable
 import Main.Generators.RecipeObjects.MaterialData.Solid.Tinkers.GTinkerCustom;
 import Main.Generators.Tweakers.GRecipeTweak;
 
-import java.io.BufferedWriter;
-import java.io.FileWriter;
 import java.io.IOException;
 
 public class MainRecipes {
@@ -82,12 +80,14 @@ public class MainRecipes {
         tcMaterials.registerRecipes();
 
         //machine resources
-        GMachine machine = new GMachine("machine", liquids);
-        machine.registerRecipes();
         GMachineData data = new GMachineData("data");
         data.registerRecipes();
         GMachineMatter matter = new GMachineMatter("matter");
         matter.registerRecipes();
+        GMachine machine = new GMachine("machine");
+        machine.registerRecipes();
+        GMachineGroup machineGroup = new GMachineGroup("machineGroup", machine);
+        machineGroup.registerRecipes();
 
         StringBuilder sb = new StringBuilder();
         //RecipeTweakers

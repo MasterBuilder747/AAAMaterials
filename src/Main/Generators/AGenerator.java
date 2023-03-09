@@ -247,4 +247,42 @@ public abstract class AGenerator<D extends AData> {
         }
         return out;
     }
+    protected String validateColor(String s) {
+        if (!Util.validateHEX(s)) error("invalid color format: " + s);
+        else return s;
+        return null;
+    }
+    protected String[] parseArray(String s, String delimiter) {
+        if (s.isEmpty()) return null;
+        return Util.split(s, delimiter);
+    }
+    protected String[] parseColorArray(String s, String delimiter) {
+        String[] out = Util.split(s, delimiter);
+        for (String s1 : out) if (!Util.validateHEX(s1)) error("invalid color format: " + s1);
+        return out;
+    }
+    protected int[] parseIntArray(String s, String delimiter) {
+        String[] ss = parseArray(s, delimiter);
+        int[] out = new int[ss.length];
+        for (int i = 0; i < ss.length; i++) {
+            out[i] = parseInt(ss[i]);
+        }
+        return out;
+    }
+    protected boolean[] parseBoolArray(String s, String delimiter) {
+        String[] ss = parseArray(s, delimiter);
+        boolean[] out = new boolean[ss.length];
+        for (int i = 0; i < ss.length; i++) {
+            out[i] = parseBoolean(ss[i]);
+        }
+        return out;
+    }
+    protected double[] parseDoubleArray(String s, String delimiter) {
+        String[] ss = parseArray(s, delimiter);
+        double[] out = new double[ss.length];
+        for (int i = 0; i < ss.length; i++) {
+            out[i] = parseDouble(ss[i]);
+        }
+        return out;
+    }
 }

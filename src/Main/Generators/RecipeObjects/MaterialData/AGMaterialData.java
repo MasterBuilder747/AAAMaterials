@@ -9,7 +9,7 @@ import Main.Generators.GPartGroup;
 import Main.Generators.GameData.GLiquidRegistry;
 import Main.Generators.GameData.GOreDictRegistry;
 import Main.Generators.GameData.GRegistry;
-import Main.Generators.MachineResource.GMachine;
+import Main.Generators.GMachine;
 import Main.Generators.MachineResource.GMachineData;
 import Main.Generators.MachineResource.GMachineMatter;
 import Main.Generators.RecipeObjects.AGRecipeObject;
@@ -70,11 +70,10 @@ public abstract class AGMaterialData<M extends AMaterialData> extends AGRecipeOb
     //this is called after genPartGroups
     protected M updateRegistryKeys(M r) {
         if (this.isReg) {
-            String[] ores = r.getEnabledOredicts();
+            String[] keys = r.getKeys();
             String[] names = r.localizedPartNames.toArray(new String[0]);
             Registry[] regs = getRegistries(names);
-            r.addAllRegistryDatas(ores, regs);
-            //r.addMaterialKeys(ores, regs, true);
+            r.addAllRegistryDatas(keys, regs);
         }
         return r;
     }
