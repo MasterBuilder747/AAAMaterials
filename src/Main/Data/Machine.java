@@ -1,15 +1,23 @@
 package Main.Data;
 
+import Main.Util;
+
 public class Machine extends AData {
     String localName;
     String color;
-    int minVoltage;
-    int itemInputs;
-    int itemOutputs;
-    int liquidInputs;
-    int liquidOutputs;
-    boolean hasEnergyInput;
-    boolean hasEnergyOutput;
+    public int minVoltage;
+    public int itemInputs; //this is calculated based off of the total IO blocks
+    public int itemOutputs; //this is calculated based off of the total IO blocks
+    public int liquidInputs; //this is calculated based off of the total IO blocks
+    public int liquidOutputs; //this is calculated based off of the total IO blocks
+    public int[] itemInputBlockAmounts; //number of item slots for the machine IO chests
+    public int[] itemOutputBlockAmounts;
+    //note that items can split their IO across multiple IOs
+    public int[] liquidInputBlockAmounts; //amount of buckets and how many of the tiers of IO tanks
+    public int[] liquidOutputBlockAmounts;
+    //liquids cannot split their IO across tanks automatically (could do it manually via recipes, if a free tank is open)
+    public boolean hasEnergyInput; //min voltage tier is what determines the energy hatch tier
+    public boolean hasEnergyOutput;
 
     /*
     IMPORTANT NOTES:
@@ -24,6 +32,25 @@ public class Machine extends AData {
     -ticks are required for every recipe
     -can only have one tank per fluid IO, ex: you cannot split a 2000mB liquid output to 2 1000mB outputs
     */
+
+    /*
+    Specification:
+    "registryname": "basic",
+    "localizedname": "basic",
+	"color": "bdbdbd",
+	"requires-blueprint": false,
+    "parts": [
+        {
+            "x": -1,
+            "y": 0,
+            "z": 0,
+            "elements": [
+                "modularmachinery:blockoutputbus@6"
+            ]
+        },...
+    ]
+
+     */
 
     //VARIABLES:
     /*
@@ -85,26 +112,32 @@ public class Machine extends AData {
 
     //this is a blueprint for the requirements of some machine, used for recipe validation
     public Machine(String name, String localName, String color, int minVoltage,
-                   int itemInputs, int itemOutputs,
-                   int liquidInputs, int liquidOutputs,
+                   int[] itemInputBlockAmounts, int[] itemOutputBlockAmounts,
+                   int[] liquidInputBlockAmounts, int[] liquidOutputBlockAmounts,
                    boolean hasEnergyInput, boolean hasEnergyOutput) {
         super(name);
         this.localName = localName;
         this.color = color;
         this.minVoltage = minVoltage;
-        this.itemInputs = itemInputs;
-        this.itemOutputs = itemOutputs;
-        this.liquidInputs = liquidInputs;
-        this.liquidOutputs = liquidOutputs;
+        this.itemInputBlockAmounts = itemInputBlockAmounts; //7 tiers: 0:tiny-1; 1:small-4; 2:normal-6; 3-reinforced-9; 4:big-12; 5:huge-16; 6:ludicrous-32
+        this.itemOutputBlockAmounts = itemOutputBlockAmounts;
+        this.liquidInputBlockAmounts = liquidInputBlockAmounts; //8 tiers, in buckets (1000mB ea): 0:tiny-1; 1:small-2; 3:normal-4; 4:reinforced-8; 5:big-16; 6:huge-32; 7:ludicrous-64; 8:vacuum-2147484
+        this.liquidOutputBlockAmounts = liquidOutputBlockAmounts;
         this.hasEnergyInput = hasEnergyInput;
         this.hasEnergyOutput = hasEnergyOutput;
+        this.itemInputs = Util.sumOfArr(this.itemInputBlockAmounts);
+        this.itemOutputs = Util.sumOfArr(this.itemOutputBlockAmounts);
+        this.liquidInputs = Util.sumOfArr(this.liquidInputBlockAmounts);
+        this.liquidOutputs = Util.sumOfArr(this.liquidOutputBlockAmounts);
     }
 
     @Override
     public void print() {
         System.out.println(this.localName + ", v: " + this.minVoltage +
-                "; i: " + this.itemInputs + "," + this.itemOutputs +
-                "  l: " + this.liquidInputs + "," + this.liquidOutputs);
+                "; ItemIO: intot = " + this.itemInputs + ": " + Util.printArrayTxt(Util.toStringArr(this.itemInputBlockAmounts)) + ", " +
+                "outtot = " + this.itemOutputs + ": " + Util.printArrayTxt(Util.toStringArr(this.itemOutputBlockAmounts)) +
+                "; LiquidIO: intot = " + this.liquidInputs + ": " + Util.printArrayTxt(Util.toStringArr(this.liquidInputBlockAmounts)) + ", " +
+                "outtot = " + this.liquidOutputs + ": " + Util.printArrayTxt(Util.toStringArr(this.liquidOutputBlockAmounts)));
     }
 
     @Override

@@ -204,11 +204,55 @@ public class Util {
     }
 
     //print array
+    public static String printArrayTxt(String[] a) {
+        return Arrays.toString(a);
+    }
     public static void printArray(String[] a) {
-        System.out.println(Arrays.toString(a));
+        System.out.println(printArrayTxt(a));
+    }
+    public static String getArrayOut(String[] a) {
+        return Arrays.toString(a);
     }
     public static void printArray(ArrayList<String> a) {
         System.out.println(a.toString());
+    }
+
+    //array conversions to string
+    public static String[] toStringArr(int[] a) {
+        String[] out = new String[a.length];
+        for (int i = 0; i < a.length; i++) {
+            out[i] = String.valueOf(a[i]);
+        }
+        return out;
+    }
+    public static String[] toStringArr(boolean[] a) {
+        String[] out = new String[a.length];
+        for (int i = 0; i < a.length; i++) {
+            out[i] = String.valueOf(a[i]);
+        }
+        return out;
+    }
+    public static String[] toStringArr(double[] a) {
+        String[] out = new String[a.length];
+        for (int i = 0; i < a.length; i++) {
+            out[i] = String.valueOf(a[i]);
+        }
+        return out;
+    }
+    public static String[] toStringArr(char[] a) {
+        String[] out = new String[a.length];
+        for (int i = 0; i < a.length; i++) {
+            out[i] = String.valueOf(a[i]);
+        }
+        return out;
+    }
+
+    public static int sumOfArr(int[] a) {
+        int out = 0;
+        for (int i : a) {
+            out+=i;
+        }
+        return out;
     }
 
     //classes

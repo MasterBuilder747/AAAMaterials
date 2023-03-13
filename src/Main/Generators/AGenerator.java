@@ -191,7 +191,7 @@ public abstract class AGenerator<D extends AData> {
         return false;
     }
     public void print() {
-        System.out.println(this.filename +":");
+        System.out.println("Printing " + this.filename +"s (" + this.objects.size() + "):");
         for (D o : objects) {
             o.print();
         }

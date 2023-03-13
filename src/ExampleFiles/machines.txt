@@ -1,5 +1,8 @@
 //machineName, local-Name, hexColor, int minVoltage, boolean isEnergyIn, boolean isEnergyOut,
-//int itemInputAmounts, int itemOutputAmounts, int liquidInputAmounts, int liquidOutputAmounts
+//int itemInputSlotAmount, int itemOutputSlotAmount, int liquidInputAmounts, int liquidOutputAmounts
 //liquid IO will be automatically added for machine resources
 //use default for hexColor to use the machine color
-test, Test2-Machine, default, 1, true, false, 1, 1, 1, 1
+//itemIO: 7 tiers: 0:tiny-1; 1:small-4; 2:normal-6; 3-reinforced-9; 4:big-12; 5:huge-16; 6:ludicrous-32
+//liquidIO: 8 tiers, in buckets (1000mB ea): 0:tiny-1; 1:small-2; 3:normal-4; 4:reinforced-8; 5:big-16; 6:huge-32; 7:ludicrous-64; 8:vacuum-2147484
+//amount*tierAmount(note that this is just a label to distinguish the tier's amount of IO, but it isn't required)
+basic, basic, default, 1, true, false, 1*1;0*4;0*6;0*9;0*12;0*16;0*32, 1*1;0*4;0*6;0*9;0*12;0*16;0*32, 1*1;0*2;0*4;0*8;0*16;0*32;0*64;0*2147484, 1*1;0*2;0*4;0*8;0*16;0*32;0*64;0*2147484
