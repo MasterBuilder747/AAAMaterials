@@ -1,6 +1,6 @@
 package Main.Generators.RecipeObjects.MaterialData.Composition;
 
-import Main.Composition;
+import Main.Data.RecipeObject.MaterialData.Composition.Composition;
 import Main.Data.RecipeObject.MaterialData.Composition.AChemicalComposition;
 import Main.Generators.GMaterial;
 import Main.Generators.GPartGroup;
@@ -30,7 +30,7 @@ public abstract class AGChemicalComposition<C extends AChemicalComposition> exte
         this.isSingular = isSingular;
     }
 
-    public static Composition buildComposition(ArrayList<Composition> comps) {
+    protected static Composition buildComposition(ArrayList<Composition> comps) {
         Composition out = comps.get(0);
         Composition hop;
         if (comps.size() > 1) {

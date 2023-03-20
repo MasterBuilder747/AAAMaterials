@@ -1,6 +1,5 @@
 package Main.Data.RecipeObject.MaterialData.Composition;
 
-import Main.Composition;
 import Main.Data.GameData.Registry;
 import Main.Data.Machine;
 import Main.Data.MachineResource.MachineData;
@@ -41,16 +40,19 @@ public class CompoundComposition extends AChemicalComposition {
     boolean isChemReact; //chemically combine
     boolean isElectrolyze; //chemically separate
 
+    String subType; //more characterization for recipes
+
     public CompoundComposition(RecipeTweak tweak, Registry[] items, String[] liquids, String[] ores,
                                Machine[] machines, MachineMatter[] matters, MachineData data,
                                Material m,
-                               Composition c, int charge, boolean isDefault,
-                               boolean isMixing, boolean isCentrifuge, boolean isChemReact, boolean isElectrolyze) {
+                               Composition c, String compType, int charge, boolean isDefault,
+                               String subType, boolean isMixing, boolean isCentrifuge, boolean isChemReact, boolean isElectrolyze) {
         super("CompoundComposition",
                 tweak, items, liquids, ores,
                 machines, matters, data,
                 m,
-                c, charge, isDefault, false);
+                c, compType, charge, isDefault, false);
+        this.subType = subType;
         this.isMixing = isMixing;
         this.isChemReact = isChemReact;
         this.isCentrifuge = isCentrifuge;
@@ -58,13 +60,18 @@ public class CompoundComposition extends AChemicalComposition {
     }
 
     @Override
+    protected void setSymbol() {
+        this.symbol = this.composition.toSymbol();
+    }
+
+    @Override
     public String generateTooltip() {
-        return composition.toString();
+        return composition.toTooltip();
     }
 
     @Override
     public void print() {
-        System.out.println(this.m.NAME + ": " + composition);
+        System.out.println(this.m.NAME + " (" + composition.charge + "): " + composition);
         //this.m.getComp().getCComp().printIngredients();
     }
 

@@ -1,6 +1,5 @@
 package Main.Data.RecipeObject.MaterialData.Composition;
 
-import Main.Composition;
 import Main.Data.GameData.Registry;
 import Main.Data.Machine;
 import Main.Data.MachineResource.MachineData;
@@ -14,27 +13,67 @@ public class MoleculeComposition extends AChemicalComposition {
     boolean isDiatomic; //this is handled later in recipes
     //(aka, whenever a breaking reaction occurs, if this is returned by itself, the amount must be even)
 
+    //metastability support
+    int mValue; //the displayed m value in the tooltip and the name, applies to some isotopes too
+    boolean isMetastable; //this is not the same as isotopes with m value, this does not display its m value
+    int metaPwr = 0; //the amount of power in keV needed to achieve the metastability of this molecule
+
+    public String symbolWCharge; //ex: Am3+
+
     public MoleculeComposition(RecipeTweak tweak, Registry[] items, String[] liquids, String[] ores,
                                Machine[] machines, MachineMatter[] matters, MachineData data,
                                Material m,
-                               Composition c, boolean isDefault,
-                               boolean isDiatomic, int charge, int isotope) {
+                               Composition c, int charge, boolean isDefault,
+                               String type, boolean isDiatomic, int isotope, int mValue) {
         super("MoleculeComposition", tweak, items, liquids, ores,
                 machines, matters, data,
                 m,
-                c, charge, isDefault, true);
+                c, type, charge, isDefault, true);
         this.isDiatomic = isDiatomic;
         this.isotope = isotope;
+        this.mValue = mValue;
+    }
+    public void setMetastability(int metaPwr) {
+        this.isMetastable = true;
+        this.metaPwr = metaPwr;
+    }
+
+    @Override
+    protected void setSymbol() {
+        this.symbol = this.composition.toSymbolNoCharge()+
+                (
+                    (this.isotope > 0) ? ("-"+this.isotope) +
+                            ((this.mValue != -1) ? "m" +
+                                ((mValue > 0) ? mValue : "")
+                            : "")
+                    : ""
+                );
+        this.symbolWCharge = this.composition.toSymbol()+
+                (
+                        (this.isotope > 0) ? ("-"+this.isotope) +
+                                ((this.mValue != -1) ? "m" +
+                                        ((mValue > 0) ? mValue : "")
+                                        : "")
+                                : ""
+                );
     }
 
     @Override
     public String generateTooltip() {
-        return ((this.isotope > 0) ? Util.intToSuperscript(this.isotope) : "") + composition.toString();
+        return ((this.isotope > 0) ? Util.intToSuperscript(this.isotope) : "") +
+                ((this.mValue == -1) ? "" :
+                        ("ᵐ" + ((this.mValue > 0) ? Util.intToSuperscript(this.mValue) : ""))) + // \u1d50
+                composition.toTooltip();
+    }
+
+    @Override
+    protected String buildSpecificRecipe() {
+        return null;
     }
 
     @Override
     public void print() {
-        System.out.println(this.m.NAME + ", " + composition.isMoleculeCharge + ": " + composition);
+        System.out.println(this.m.NAME + ", (" + this.charge + "): " + composition.toSymbolNoCharge());
         //this.m.getComp().getCComp().printIngredients();
     }
 
@@ -43,8 +82,4 @@ public class MoleculeComposition extends AChemicalComposition {
         return null;
     }
 
-    @Override
-    protected String buildSpecificRecipe() {
-        return null;
-    }
 }

@@ -52,7 +52,7 @@ public class Nuclear extends AMSolid {
 
     @Override
     public void print() {
-
+        System.out.println(m.getComp().symbol+"-"+this.isotopeNum);
     }
     @Override
     protected String customItemKey(String key) {

@@ -1,5 +1,7 @@
 package Main;
 
+import Main.Data.RecipeObject.MaterialData.Composition.Composition;
+
 //internal class for the composition system that allows for replacements in a composition
 public class Replacement {
     Composition[] comps;

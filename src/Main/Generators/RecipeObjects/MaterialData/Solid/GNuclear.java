@@ -46,6 +46,8 @@ public class GNuclear extends AGMSolid<Nuclear> {
                 m,
                 parseInt(s[0]), parseInt(s[1]), parseBoolean(s[2]), parseBoolean(s[3]), parseDouble(s[4]), new EDecimal(s[5])
         );
+        if (m.getComp() == null) error("Material " + m.NAME + " does not have a composition");
+        if (!m.getComp().isMolecule) error("Nuclear material " + m.NAME + "'s composition " + m.getComp().symbol + " is not a molecule composition");
         if (s.length > 7) {
             String[] modes = Util.split(s[7], ";");
             if (modes.length == 1 && (modes[0].equals("sf") || modes[0].equals("y"))) {
@@ -109,7 +111,7 @@ public class GNuclear extends AGMSolid<Nuclear> {
         }
         String sym = s.substring(0, s.indexOf("-"));
         for (Nuclear n : this.objects) {
-            if (n.getMaterial().getComp().getSymbol().equals(sym) && n.isotopeNum == iso) {
+            if (n.getMaterial().getComp().symbol.equals(sym) && n.isotopeNum == iso) {
                 if (isIsomer) {
                     if (n.isIsomer) return n;
                 } else {

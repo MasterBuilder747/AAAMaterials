@@ -1,6 +1,5 @@
 package Main.Data.RecipeObject.MaterialData.Composition;
 
-import Main.Composition;
 import Main.Data.Element;
 import Main.Data.GameData.Registry;
 import Main.Data.Machine;
@@ -23,29 +22,33 @@ import Main.Data.Tweakers.RecipeTweak;
 //-s solid, -l liquid -g gas, -p plasma, etc... (letter not needed (but can be shown) for default state of material)
 public abstract class AChemicalComposition extends AMaterialData {
     Composition composition; //a string of defined element(s) and their count(s) in a string with special syntax
-    int charge;
-    boolean isDefault;  //is this the default composition that is associated with this material?
+    public int charge;
+    public boolean isDefault;  //is this the default composition that is associated with this material?
                         //If so, then when a chemical composition is specified, it returns this material
     //multiple materials can be assigned to one composition, but is this material the one that gets outputted in a separation/combination recipe?
-    String symbol; //the chemical symbol, shown as tooltip for all parts
+    public String symbol; //the chemical symbol, for searching
     //this is loaded after all parts have been added so that the tooltip can
-    boolean isElement; //for handling getting the element rather than the composition
+    public boolean isMolecule; //for handling getting the element rather than the composition
+    public String compType; //this determines properties for the composition
 
     public AChemicalComposition(String type,
                                 RecipeTweak tweak, Registry[] items, String[] liquids, String[] ores,
                                 Machine[] machines, MachineMatter[] matters, MachineData data,
                                 Material m,
-                                Composition c, int charge, boolean isDefault, boolean isElement) {
+                                Composition c, String compType, int charge, boolean isDefault, boolean isMolecule) {
         super(type,
                 tweak, items, liquids, ores,
                 machines, matters, data,
                 m);
         this.composition = c;
-        this.symbol = c.toSymbol();
+        this.compType = compType;
         this.charge = charge;
         this.isDefault = isDefault;
-        this.isElement = isElement;
+        this.isMolecule = isMolecule;
+        this.setSymbol();
     }
+
+    abstract protected void setSymbol();
 
     public String addTooltips(RegistryData[] registries) {
         StringBuilder sb = new StringBuilder();
@@ -57,16 +60,13 @@ public abstract class AChemicalComposition extends AMaterialData {
         return sb.toString();
     }
 
-    //gets
-    public Composition getCComp() {
+    Composition getCComp() {
         return this.composition;
     }
-    public String getSymbol() {
-        return this.symbol;
-    }
+
     public abstract String generateTooltip();
     public Element getE() {
-        if (this.isElement) {
+        if (this.isMolecule) {
             return this.composition.getE();
         } else {
             throw new IllegalArgumentException("No element for composition " + this);

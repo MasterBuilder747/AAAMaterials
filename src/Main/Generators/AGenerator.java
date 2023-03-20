@@ -133,6 +133,7 @@ public abstract class AGenerator<D extends AData> {
     }
     private void readFile(BufferedReader br) throws IOException {
         s1 = br.readLine(); //ignore the first line as it is considered the file header
+        line++;
         while (true) {
             s1 = br.readLine();
             if (s1 != null) {
@@ -200,6 +201,9 @@ public abstract class AGenerator<D extends AData> {
     //exceptions
     protected void error(String s, boolean o) throws GeneratorException {
         throw new GeneratorException(s);
+    }
+    protected void error(String s, boolean o, int line) throws GeneratorException {
+        throw new GeneratorException(s+" at line " + line);
     }
     protected void error(String s) throws GeneratorException {
         throw new GeneratorException(s, this.filename, this.line);

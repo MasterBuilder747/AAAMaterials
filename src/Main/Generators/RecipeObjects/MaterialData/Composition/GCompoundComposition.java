@@ -1,9 +1,10 @@
 package Main.Generators.RecipeObjects.MaterialData.Composition;
 
-import Main.Composition;
+import Main.Data.RecipeObject.MaterialData.Composition.Composition;
 import Main.Data.Element;
 import Main.Data.Material;
 import Main.Data.RecipeObject.MaterialData.Composition.CompoundComposition;
+import Main.Data.RecipeObject.MaterialData.Composition.MoleculeComposition;
 import Main.Generators.GMaterial;
 import Main.Generators.GPartGroup;
 import Main.Generators.GameData.GLiquidRegistry;
@@ -16,6 +17,7 @@ import Main.Generators.Tweakers.GRecipeTweak;
 import Main.Replacement;
 import Main.Util;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 public class GCompoundComposition extends AGChemicalComposition<CompoundComposition> {
@@ -26,7 +28,7 @@ public class GCompoundComposition extends AGChemicalComposition<CompoundComposit
                                 GMachine machine, GMachineMatter matter, GMachineData data,
                                 GMaterial material, GPartGroup partGroup,
                                 GMoleculeComposition molecule) {
-        super(7, filename, isReg,
+        super(9, filename, isReg,
                 tweak, registry, liquids, ores,
                 machine, data, matter,
                 material, partGroup,
@@ -36,25 +38,30 @@ public class GCompoundComposition extends AGChemicalComposition<CompoundComposit
 
     @Override
     protected void readMaterialParameters(Material m, String[] s) {
-        CompoundComposition comp;
-        Composition c;
-        String compStr = s[0];
-        c = createMaterialCompoundComp(compStr);
         //material,
-        //Composition,charge,isDefault,
+        //Composition,type,subtype,charge_override,isDefault,
         //isMixing,isCentrifuge,isChemReact,isElectrolyze
-        comp = new CompoundComposition(
+        String compStr = s[0];
+        ArrayList<Composition> comps = createMaterialCompoundComp(compStr);
+        Composition c = buildComposition(comps);
+        String type = s[1];
+        String subtype = s[2];
+        String chargeo = s[3];
+        int charge;
+        if (chargeo.equals("default")) charge = c.calculateCharge();
+        else charge = parseInt(chargeo);
+        CompoundComposition comp = new CompoundComposition(
                 getRecipeTweak("CompoundComposition"), getItems(), getLiquids(), getOres(),
                 getMachineRegistry(), getMatterRegistry(), getDataRegistry(),
                 m,
-                c, parseInt(s[1]), parseBoolean(s[2]),
-                parseBoolean(s[3]), parseBoolean(s[4]), parseBoolean(s[5]), parseBoolean(s[6]));
+                c, type, charge, parseBoolean(s[4]),
+                subtype, parseBoolean(s[5]), parseBoolean(s[6]), parseBoolean(s[7]), parseBoolean(s[8]));
         m.addComposition(comp);
         objects.add(comp);
     }
 
     //{@;Mg}2Mg5Si8O22[hydroxide]2
-    private Composition createMaterialCompoundComp(String s) {
+    private ArrayList<Composition> createMaterialCompoundComp(String s) {
         if (s.length() < 1) error("No composition specified!");
         ArrayList<Composition> comps = new ArrayList<>();
         boolean debug = false;
@@ -67,8 +74,7 @@ public class GCompoundComposition extends AGChemicalComposition<CompoundComposit
                 assert mat != null;
                 boolean checkComp = mat.charAt(1) != '!';
                 Material m = material.get(mat.substring(((checkComp) ? 1 : 2), mat.length() - 1));
-                if (checkComp)
-                    if (m.getComp() == null) error("Material " + m.NAME + " does not have a composition at index " + i);
+                if (checkComp && m.getComp() == null) error("Material " + m.NAME + " does not have a composition at index " + i);
                 i += mat.length() - 1;
                 if (!Util.isOut(s, i + 1)) {
                     String s1 = String.valueOf(s.charAt(i + 1));
@@ -81,16 +87,22 @@ public class GCompoundComposition extends AGChemicalComposition<CompoundComposit
                             i++;
                         }
                         i--;
-                        Composition cc = new Composition(m, parseInt(sb.toString()));
+                        int charge = 0;
+                        if (m.getComp() != null) charge = m.getComp().charge;
+                        Composition cc = new Composition(m, parseInt(sb.toString()), charge);
                         comps.add(cc);
                     } else {
                         //[material][Symbol]
-                        Composition cc = new Composition(m);
+                        int charge = 0;
+                        if (m.getComp() != null) charge = m.getComp().charge;
+                        Composition cc = new Composition(m, 1, charge);
                         comps.add(cc);
                     }
                 } else {
                     //[material][Empty]
-                    Composition cc = new Composition(m);
+                    int charge = 0;
+                    if (m.getComp() != null) charge = m.getComp().charge;
+                    Composition cc = new Composition(m, 1, charge);
                     comps.add(cc);
                     break;
                 }
@@ -109,7 +121,7 @@ public class GCompoundComposition extends AGChemicalComposition<CompoundComposit
                         compsr.add(new Composition((Element) null));
                     } else {
                         if (debug) System.out.println(sr);
-                        compsr.add(createMaterialCompoundComp(sr));
+                        compsr.add(buildComposition(createMaterialCompoundComp(sr)));
                     }
                 }
                 i--;
@@ -130,7 +142,6 @@ public class GCompoundComposition extends AGChemicalComposition<CompoundComposit
                 Replacement r = new Replacement(compsr.toArray(new Composition[0]), rAmt);
                 comps.add(new Composition(r));
             } else if (Util.isUppercase(s0)) {
-                //KNa2{Fe;Mn;Al}2Li3Si12O30
                 for (int k = i; k < s.length(); k++) {
                     s0 = String.valueOf(s.charAt(k));
                     if (debug) System.out.println("s0: " + s0);
@@ -141,14 +152,16 @@ public class GCompoundComposition extends AGChemicalComposition<CompoundComposit
                     i++;
                     if (Util.isOut(s, k + 1)) {
                         //Symbol[Empty]
-                        comps.add(new Composition(molecule.getMole(s0).getE()));
+                        MoleculeComposition mole = molecule.getMole(s0, line);
+                        comps.add(new Composition(mole.getE(), 1, mole.charge));
                         break;
                     } else {
                         String s1 = String.valueOf(s.charAt(k + 1));
                         if (debug) System.out.println("s1: " + s1);
                         if (s1.equals("{") || s1.equals("[")) {
                             //Symbol[ or Symbol{
-                            comps.add(new Composition(molecule.getMole(s0).getE()));
+                            MoleculeComposition mole = molecule.getMole(s0, line);
+                            comps.add(new Composition(mole.getE(), 1, mole.charge));
                             i--;
                             break;
                         }
@@ -162,7 +175,8 @@ public class GCompoundComposition extends AGChemicalComposition<CompoundComposit
                                 k++;
                                 i++;
                             }
-                            comps.add(new Composition(molecule.getMole(s0).getE(), parseInt(sb.toString())));
+                            MoleculeComposition mole = molecule.getMole(s0, line);
+                            comps.add(new Composition(mole.getE(), parseInt(sb.toString()), mole.charge));
                             i--;
                             k--;
                             if (s.charAt(k) == '{' || s.charAt(k) == '[') {
@@ -172,24 +186,28 @@ public class GCompoundComposition extends AGChemicalComposition<CompoundComposit
                             if (!Util.isUppercase(s1)) {
                                 if (Util.isOut(s, k + 2)) {
                                     //Symbol_symbol[Empty]
-                                    comps.add(new Composition(molecule.getMole(s0 + s1).getE()));
+                                    MoleculeComposition mole = molecule.getMole(s0 + s1, line);
+                                    comps.add(new Composition(mole.getE(), 1, mole.charge));
                                     break;
                                 } else {
                                     String s2 = String.valueOf(s.charAt(k + 2));
                                     if (debug) System.out.println("s2: " + s2);
                                     if (s2.equals("{") || s2.equals("[")) {
                                         //Symbol_symbol[ or //Symbol_symbol{
-                                        comps.add(new Composition(molecule.getMole(s0 + s1).getE()));
+                                        MoleculeComposition mole = molecule.getMole(s0 + s1, line);
+                                        comps.add(new Composition(mole.getE(), 1, mole.charge));
                                         break;
                                     }
                                     if (Util.isOut(s, k + 3)) {
-                                        if (!Util.isNumeric(s2))  {
+                                        if (!Util.isNumeric(s2)) {
                                             //Symbol_symbol[Symbol][Empty]
-                                            comps.add(new Composition(molecule.getMole(s0 + s1).getE()));
+                                            MoleculeComposition mole = molecule.getMole(s0 + s1, line);
+                                            comps.add(new Composition(mole.getE(), 1, mole.charge));
                                             i++;
                                         } else {
                                             //Symbol_symbolNumber[Empty]
-                                            comps.add(new Composition(molecule.getMole(s0 + s1).getE(), parseInt(s2)));
+                                            MoleculeComposition mole = molecule.getMole(s0 + s1, line);
+                                            comps.add(new Composition(mole.getE(), parseInt(s2), mole.charge));
                                             i+=2;
                                         }
                                         break;
@@ -199,7 +217,8 @@ public class GCompoundComposition extends AGChemicalComposition<CompoundComposit
                                             if (debug) System.out.println("s3: " + s3);
                                             if (s3.equals("{") || s3.equals("[")) {
                                                 //Symbol_symbolNumber[ or //Symbol_symbolNumber{
-                                                comps.add(new Composition(molecule.getMole(s0 + s1).getE(), parseInt(s2)));
+                                                MoleculeComposition mole = molecule.getMole(s0 + s1, line);
+                                                comps.add(new Composition(mole.getE(), parseInt(s2), mole.charge));
                                                 i++;
                                                 break;
                                             }
@@ -212,18 +231,21 @@ public class GCompoundComposition extends AGChemicalComposition<CompoundComposit
                                                     k++;
                                                     i++;
                                                 }
-                                                comps.add(new Composition(molecule.getMole(s0 + s1).getE(), parseInt(sb.toString())));
+                                                MoleculeComposition mole = molecule.getMole(s0 + s1, line);
+                                                comps.add(new Composition(mole.getE(), parseInt(sb.toString()), mole.charge));
                                                 k--;
                                                 i--;
                                             } else {
                                                 //Symbol_symbolNumber[Symbol]
-                                                comps.add(new Composition(molecule.getMole(s0 + s1).getE(), parseInt(s2)));
+                                                MoleculeComposition mole = molecule.getMole(s0 + s1, line);
+                                                comps.add(new Composition(mole.getE(), parseInt(s2), mole.charge));
                                                 k += 2;
                                             }
                                             i += 2;
                                         } else {
                                             //Symbol_symbol[Symbol]
-                                            comps.add(new Composition(molecule.getMole(s0 + s1).getE()));
+                                            MoleculeComposition mole = molecule.getMole(s0 + s1, line);
+                                            comps.add(new Composition(mole.getE(), 1, mole.charge));
                                             k++;
                                             i++;
                                         }
@@ -231,7 +253,8 @@ public class GCompoundComposition extends AGChemicalComposition<CompoundComposit
                                 }
                             } else {
                                 //Symbol[_Symbol]
-                                comps.add(new Composition(molecule.getMole(s0).getE()));
+                                MoleculeComposition mole = molecule.getMole(s0, line);
+                                comps.add(new Composition(mole.getE(), 1, mole.charge));
                             }
                         }
                     }
@@ -246,6 +269,6 @@ public class GCompoundComposition extends AGChemicalComposition<CompoundComposit
                 error("character \"" + s0 + "\" is an invalid character at index " + i);
             }
         }
-        return buildComposition(comps);
+        return comps;
     }
 }

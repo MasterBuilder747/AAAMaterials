@@ -11,6 +11,11 @@ public class Element extends AData {
     //Abundance in crust,Solar Abundance,Abundance in Meteors,Abundance in Ocean,Year Discovered
     public int atomicNumber;
     public String symbol;
+    public String group; //reactive, noble, alkali, alkaline, metalloid, post, rare, transition, nuclear, platinum, stable, synthetic
+    public int neutrons;
+
+    public int[] levels; //amount of electrons per energy level (1-7)
+
     //name
     public double weight; //negative values are isotopes
     public String state; //C, at room temp, 20C
