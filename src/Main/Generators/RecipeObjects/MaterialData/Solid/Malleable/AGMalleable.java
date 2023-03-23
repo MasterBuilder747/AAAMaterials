@@ -4,6 +4,7 @@ import Main.Data.Material;
 import Main.Data.RecipeObject.MaterialData.Liquid.MLiquid;
 import Main.Data.RecipeObject.MaterialData.MSolid;
 import Main.Data.RecipeObject.MaterialData.Solid.Malleable.AMalleable;
+import Main.Data.RecipeObject.RegistryData;
 import Main.Generators.GMaterial;
 import Main.Generators.GPartGroup;
 import Main.Generators.GameData.GLiquidRegistry;
@@ -34,11 +35,11 @@ public abstract class AGMalleable <M extends AMalleable> extends AGMSolid<M> {
         this.liquid = liquid;
     }
     @Override
-    protected void readSolidParameters(Material m, String[] s, MSolid solid) {
+    protected void readSolidParameters(Material m, String[] s, MSolid solid, RegistryData[] exclusions) {
         //the second parameter always adds molten liquid
         if (!this.liquid.is(m.NAME)) error("Material " + m.NAME + " must have a liquid form in order to be malleable");
-        setMalleableParts(m, s, this.liquid.get(m.NAME), solid);
+        setMalleableParts(m, s, this.liquid.get(m.NAME), solid, exclusions);
     }
 
-    protected abstract void setMalleableParts(Material m, String[] s, MLiquid liquid, MSolid solid);
+    protected abstract void setMalleableParts(Material m, String[] s, MLiquid liquid, MSolid solid, RegistryData[] exclusions);
 }

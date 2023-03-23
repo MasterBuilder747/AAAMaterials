@@ -4,6 +4,7 @@ import Main.Data.GameData.Registry;
 import Main.Data.RecipeObject.MaterialData.AMaterialData;
 import Main.Data.Material;
 import Main.Data.PartGroup;
+import Main.Data.RecipeObject.RegistryData;
 import Main.Generators.GMaterial;
 import Main.Generators.GPartGroup;
 import Main.Generators.GameData.GLiquidRegistry;
@@ -14,6 +15,7 @@ import Main.Generators.MachineResource.GMachineData;
 import Main.Generators.MachineResource.GMachineMatter;
 import Main.Generators.RecipeObjects.AGRecipeObject;
 import Main.Generators.Tweakers.GRecipeTweak;
+import Main.Util;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -49,12 +51,28 @@ public abstract class AGMaterialData<M extends AMaterialData> extends AGRecipeOb
     //first parameter is always the material name, this is checked for existence
     //all other parameters added are read per each child class
     protected void readLine(BufferedReader br, String[] s) throws IOException {
-        if (!this.material.is(s[0])) error("Unknown material " + s[0]);
+        String m = s[0];
+        RegistryData[] exclusions = null;
+        //@iron;ingot>minecraft:iron_ingot;nugget>minecraft:iron_nugget, ...
+        if (m.startsWith("@")) {
+            String[] ms = Util.split(m.substring(1), ";");
+            ArrayList<RegistryData> rDataExs = new ArrayList<>();
+            for (int i = 1; i < ms.length; i++) {
+                String s0 = ms[i];
+                String key = s0.substring(0, s0.indexOf(">"));
+                String reg = s0.substring(s0.indexOf(">")+1);
+                Registry r = this.registry.getByMod(reg);
+                rDataExs.add(new RegistryData(key, r));
+            }
+            m = ms[0];
+            exclusions = rDataExs.toArray(new RegistryData[0]);
+        }
         String[] ss = new String[s.length-1];
         System.arraycopy(s, 1, ss, 0, ss.length);
-        readMaterialParameters(this.material.get(s[0]), ss);
+        Material mat = this.material.get(m);
+        readMaterialParameters(mat, ss, exclusions);
     }
-    protected abstract void readMaterialParameters(Material m, String[] s);
+    protected abstract void readMaterialParameters(Material m, String[] s, RegistryData[] exclusions);
 
     protected PartGroup[] genPartGroups(String[] partGroupNames) {
         ArrayList<PartGroup> partGroups = new ArrayList<>();
@@ -77,11 +95,6 @@ public abstract class AGMaterialData<M extends AMaterialData> extends AGRecipeOb
         }
         return r;
     }
-
-    protected void refreshMaterial(Material m) {
-        this.material.replace(m);
-    }
-
     protected Registry[] getRegistries(String[] registries) {
         ArrayList<Registry> regs = new ArrayList<>();
         for (String s : registries) {

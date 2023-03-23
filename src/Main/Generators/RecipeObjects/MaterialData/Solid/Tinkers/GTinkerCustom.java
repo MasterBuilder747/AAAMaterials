@@ -2,6 +2,7 @@ package Main.Generators.RecipeObjects.MaterialData.Solid.Tinkers;
 
 import Main.Data.Material;
 import Main.Data.RecipeObject.MaterialData.Tinker.TinkerCustom;
+import Main.Data.RecipeObject.RegistryData;
 import Main.Generators.GMaterial;
 import Main.Generators.GPartGroup;
 import Main.Generators.GameData.*;
@@ -30,7 +31,7 @@ public class GTinkerCustom extends AGTinkers<TinkerCustom> {
     }
 
     @Override
-    protected TinkerCustom readTinkerParameters(Material m, String[] s) {
+    protected TinkerCustom readTinkerParameters(Material m, String[] s, RegistryData[] exclusions) {
         //material, bool addAutomaticCraftbleRecipes, bool addAutomaticCastingRecipes, icon/oreDict,
         return new TinkerCustom(
                 getRecipeTweak("TinkerCustom"), getItems(), getLiquids(), getOres(),

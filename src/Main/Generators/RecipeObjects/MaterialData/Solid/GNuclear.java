@@ -3,6 +3,7 @@ package Main.Generators.RecipeObjects.MaterialData.Solid;
 import Main.Data.Material;
 import Main.Data.RecipeObject.MaterialData.MSolid;
 import Main.Data.RecipeObject.MaterialData.Solid.Nuclear;
+import Main.Data.RecipeObject.RegistryData;
 import Main.EDecimal;
 import Main.Generators.GMaterial;
 import Main.Generators.GPartGroup;
@@ -36,7 +37,7 @@ public class GNuclear extends AGMSolid<Nuclear> {
     }
 
     @Override
-    protected void readSolidParameters(Material m, String[] s, MSolid solid) {
+    protected void readSolidParameters(Material m, String[] s, MSolid solid, RegistryData[] exclusions) {
         //material, atomic num, isotopeNum, isIsomer, isIsotope, abund (-1=trace; -10=syn), half life (d), half life (y), mode(s), product(s) (most to least common decay)
         //uranium, 92, 238, false, false, 0.99274, 1.63194E+12, 4.46800E+09, sf;a;2b-, ;Th-234;Pu-238
         if (s.length < 7) error("minimum parameter size is 7");
@@ -86,11 +87,6 @@ public class GNuclear extends AGMSolid<Nuclear> {
                 nuclear.addDecay(modes, nuclears.toArray(new Nuclear[0]));
             }
         }
-        nuclear.setTooltipExclusions(new String[]{
-                "dust", "dustSmall", "dustTiny",
-                "dustFine", "dustFineSmall", "dustFineTiny",
-                "powder", "powderSmall", "powderTiny"
-        });
         objects.add(nuclear);
     }
 

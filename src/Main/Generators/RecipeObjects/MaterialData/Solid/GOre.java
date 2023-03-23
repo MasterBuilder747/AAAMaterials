@@ -1,12 +1,15 @@
 package Main.Generators.RecipeObjects.MaterialData.Solid;
 
+import Main.Data.PartGroup;
 import Main.Data.RecipeObject.Localized.LBlock;
 import Main.Data.Material;
+import Main.Data.RecipeObject.Localized.LPart;
 import Main.Data.RecipeObject.MaterialData.MSolid;
 import Main.Data.RecipeObject.MaterialData.Solid.Ore;
 import Main.Data.RecipeObject.MaterialData.OreVariant;
 import Main.Data.OreType;
 import Main.Data.GameData.Registry;
+import Main.Data.RecipeObject.RegistryData;
 import Main.Generators.GMaterial;
 import Main.Generators.GPartGroup;
 import Main.Generators.GameData.GLiquidRegistry;
@@ -22,6 +25,7 @@ import Main.Json.JsonObject;
 import Main.Util;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 
 public class GOre extends AGMSolid<Ore> {
     GStone stones;
@@ -41,7 +45,7 @@ public class GOre extends AGMSolid<Ore> {
     }
 
     @Override
-    protected void readSolidParameters(Material m, String[] s, MSolid solid) {
+    protected void readSolidParameters(Material m, String[] s, MSolid solid, RegistryData[] exclusions) {
         //material, enableGen,
         //stone: poor; 4; 6; 2: ore; 4; 6; 2: dense; 4; 9; 2,
         //nether: poor; 4; 6; 2: ore; 4; 6; 2: dense; 4; 9; 2,
@@ -55,15 +59,9 @@ public class GOre extends AGMSolid<Ore> {
                 m,
                 Boolean.parseBoolean(s[0])
         );
-        o.setTooltipExclusions(new String[]{
-                "dust", "dustSmall", "dustTiny",
-                "dustFine", "dustFineSmall", "dustFineTiny",
-                "powder", "powderSmall", "powderTiny"
-        });
 
         String[] blocks = new String[s.length-1]; //includes each ore variant
         System.arraycopy(s, 1, blocks, 0, blocks.length);
-        ArrayList<OreVariant> oreVariants = new ArrayList<>();
         for (String variant : blocks) {
             String[] s2 = Util.split(variant, ":");
             String block = s2[0]; //the name of the ore block
@@ -122,12 +120,6 @@ public class GOre extends AGMSolid<Ore> {
                     m,
                     block, types.toArray(new OreType[0]), this.partGroup.getPart("ore")
             );
-            ov.setTooltipExclusions(new String[]{
-                    "dust", "dustSmall", "dustTiny",
-                    "dustFine", "dustFineSmall", "dustFineTiny",
-                    "powder", "powderSmall", "powderTiny",
-                    "ore", "orePoor", "oreDense"
-            });
             if (block.equals("stone")) {
                 ov.setPartGroupTrue(genPartGroup("ore"));
                 ov.addStoneVariants(this.stones.getOreStones());
@@ -162,9 +154,17 @@ public class GOre extends AGMSolid<Ore> {
                 //enableGen is only for adding stone sub variants now
                 warn("Checks are not enabled for stone sub variants of ore for material " + m.NAME);
             }
-            oreVariants.add(ov);
+            o.addVariant(ov);
         }
-        o.addVariants(oreVariants.toArray(new OreVariant[0]));
+        for (String variant : blocks) {
+            String[] s2 = Util.split(variant, ":");
+            String block = s2[0]; //the name of the ore block
+            PartGroup oreParts = partGroup.getPart("ore");
+            for (LPart p : oreParts.getParts()) {
+                o.setTooltipInclusion(block + "_" + p.oreDict);
+            }
+        }
+        o.printKeysWithExclusions();
         objects.add(o);
     }
 

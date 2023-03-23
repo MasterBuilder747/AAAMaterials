@@ -4,6 +4,7 @@ import Main.Data.RecipeObject.MaterialData.Composition.Composition;
 import Main.Data.Element;
 import Main.Data.Material;
 import Main.Data.RecipeObject.MaterialData.Composition.MoleculeComposition;
+import Main.Data.RecipeObject.RegistryData;
 import Main.Generators.GElement;
 import Main.Generators.GMaterial;
 import Main.Generators.GPartGroup;
@@ -32,7 +33,7 @@ public class GMoleculeComposition extends AGChemicalComposition<MoleculeComposit
     }
 
     @Override
-    protected void readMaterialParameters(Material m, String[] s) {
+    protected void readMaterialParameters(Material m, String[] s, RegistryData[] exclusions) {
         //Comp,type,isDefault,isDiatomic,Charge,Isotope
         Element e = element.get(s[0]);
         Composition c = new Composition(e);

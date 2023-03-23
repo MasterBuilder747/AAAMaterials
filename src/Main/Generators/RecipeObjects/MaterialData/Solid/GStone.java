@@ -4,6 +4,7 @@ import Main.Data.Material;
 import Main.Data.RecipeObject.MaterialData.MSolid;
 import Main.Data.RecipeObject.MaterialData.Solid.Stone;
 import Main.Data.GameData.Registry;
+import Main.Data.RecipeObject.RegistryData;
 import Main.Generators.GMaterial;
 import Main.Generators.GPartGroup;
 import Main.Generators.GameData.GLiquidRegistry;
@@ -31,7 +32,7 @@ public class GStone extends AGMSolid<Stone> {
     }
 
     @Override
-    protected void readSolidParameters(Material m, String[] s, MSolid solid) {
+    protected void readSolidParameters(Material m, String[] s, MSolid solid, RegistryData[] exclusions) {
         //bool addPebble, bool isSedimentary
         /*
         UB parts, for all 24 stones:
@@ -181,11 +182,6 @@ public class GStone extends AGMSolid<Stone> {
         } else {
             //custom
         }
-        st.setTooltipExclusions(new String[]{
-                "dust", "dustSmall", "dustTiny",
-                "dustFine", "dustFineSmall", "dustFineTiny",
-                "powder", "powderSmall", "powderTiny"
-        });
         st.setPartGroup(genPartGroup("stone"), addPebble);
         st.addVariants(registries.toArray(new Registry[0]));
         st = updateRegistryKeys(st);

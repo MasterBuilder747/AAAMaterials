@@ -6,6 +6,7 @@ import Main.Data.RecipeObject.MaterialData.Solid.Malleable.Metal;
 import Main.Data.RecipeObject.MaterialData.Solid.Malleable.Plastic;
 import Main.Data.RecipeObject.MaterialData.Solid.Malleable.Rubber;
 import Main.Data.RecipeObject.MaterialData.Tinker.TinkerCastable;
+import Main.Data.RecipeObject.RegistryData;
 import Main.Generators.GMaterial;
 import Main.Generators.GPartGroup;
 import Main.Generators.GameData.*;
@@ -49,7 +50,7 @@ public class GTinkerCastable extends AGTinkers<TinkerCastable> {
     }
 
     @Override
-    protected TinkerCastable readTinkerParameters(Material m, String[] s) {
+    protected TinkerCastable readTinkerParameters(Material m, String[] s, RegistryData[] exclusions) {
         //check if material is a malleable, must check each child registry of AGMalleable
         Alloy a = alloy.getNoError(m.NAME);
         Metal mm = null;

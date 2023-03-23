@@ -5,6 +5,7 @@ import Main.Data.Element;
 import Main.Data.Material;
 import Main.Data.RecipeObject.MaterialData.Composition.CompoundComposition;
 import Main.Data.RecipeObject.MaterialData.Composition.MoleculeComposition;
+import Main.Data.RecipeObject.RegistryData;
 import Main.Generators.GMaterial;
 import Main.Generators.GPartGroup;
 import Main.Generators.GameData.GLiquidRegistry;
@@ -37,7 +38,7 @@ public class GCompoundComposition extends AGChemicalComposition<CompoundComposit
     }
 
     @Override
-    protected void readMaterialParameters(Material m, String[] s) {
+    protected void readMaterialParameters(Material m, String[] s, RegistryData[] exclusions) {
         //material,
         //Composition,type,subtype,charge_override,isDefault,
         //isMixing,isCentrifuge,isChemReact,isElectrolyze

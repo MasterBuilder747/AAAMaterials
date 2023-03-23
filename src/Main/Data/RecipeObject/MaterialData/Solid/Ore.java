@@ -4,6 +4,7 @@ import Main.Data.Machine;
 import Main.Data.MachineResource.MachineData;
 import Main.Data.MachineResource.MachineMatter;
 import Main.Data.Material;
+import Main.Data.RecipeObject.MaterialData.Composition.AChemicalComposition;
 import Main.Data.RecipeObject.MaterialData.OreVariant;
 import Main.Data.GameData.Registry;
 import Main.Data.Tweakers.RecipeTweak;
@@ -11,11 +12,13 @@ import Main.Json.JsonObject;
 import Main.Json.Value;
 import Main.Util;
 
+import java.util.ArrayList;
+
 public class Ore extends AMSolid {
     //generates ores and its components for a specified material
     //Also handles generation (2 files)
     public boolean enableGen;
-    OreVariant[] variants; //name of the blocks themselves
+    ArrayList<OreVariant> variants; //name of the blocks themselves
 
     //1. generate CoT ore blocks using parttype
     //2. load the game
@@ -38,6 +41,7 @@ public class Ore extends AMSolid {
                 machines, matters, data,
                 m);
         this.enableGen = enableGen;
+        this.variants = new ArrayList<>();
     }
 
     @Override
@@ -57,8 +61,7 @@ public class Ore extends AMSolid {
         //append additional tooltips for additional parts added by ore variants
         StringBuilder sb = new StringBuilder();
         for (OreVariant variant : this.variants) {
-            //remove later, handle blocktypes later
-            if (!variant.block.equals("bedrock")) sb.append(variant.buildRecipe());
+            sb.append(variant.buildRecipe());
         }
         return sb.toString();
     }
@@ -71,8 +74,8 @@ public class Ore extends AMSolid {
         return null;
     }
 
-    public void addVariants(OreVariant[] variants) {
-        this.variants = variants;
+    public void addVariant(OreVariant variant) {
+        this.variants.add(variant);
     }
 
     //every ore needs 3 json objects, so this returns that in an array

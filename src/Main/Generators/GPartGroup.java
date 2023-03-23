@@ -38,10 +38,10 @@ public class GPartGroup extends AGenerator<PartGroup> {
                 error("Unknown part " + part);
             }
         }
-        objects.add(new PartGroup(name+"_parts", partgroup.toArray(new LPart[0])));
+        objects.add(new PartGroup("parts_"+name, partgroup.toArray(new LPart[0])));
     }
 
     public PartGroup getPart(String s) {
-        return this.get(s+"_parts");
+        return this.get("parts_"+s);
     }
 }

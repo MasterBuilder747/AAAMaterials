@@ -2,6 +2,7 @@ package Main.Generators.RecipeObjects.MaterialData.Liquid;
 
 import Main.Data.RecipeObject.MaterialData.Liquid.MGas;
 import Main.Data.Material;
+import Main.Data.RecipeObject.RegistryData;
 import Main.Generators.GMaterial;
 import Main.Generators.GPartGroup;
 import Main.Generators.GameData.GLiquidRegistry;
@@ -24,7 +25,7 @@ public class GMGas extends AGMLiquid<MGas> {
     }
 
     @Override
-    protected void readMaterialParameters(Material m, String[] s) {
+    protected void readMaterialParameters(Material m, String[] s, RegistryData[] exclusions) {
         //String key, int density, int luminosity, int temperature, int viscosity, boolean vaporize
         MGas gas = new MGas(
                 getRecipeTweak("MGas"), getItems(), getLiquids(), getOres(),
@@ -32,11 +33,6 @@ public class GMGas extends AGMLiquid<MGas> {
                 m,
                 Integer.parseInt(s[0]), Integer.parseInt(s[1]), Integer.parseInt(s[2]), Integer.parseInt(s[3]),
                 Boolean.parseBoolean(s[4]));
-        gas.setTooltipExclusions(new String[]{
-                "dust", "dustSmall", "dustTiny",
-                "dustFine", "dustFineSmall", "dustFineTiny",
-                "powder", "powderSmall", "powderTiny"
-        });
         objects.add(gas);
     }
 }

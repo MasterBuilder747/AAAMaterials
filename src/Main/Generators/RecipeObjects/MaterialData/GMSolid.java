@@ -2,6 +2,7 @@ package Main.Generators.RecipeObjects.MaterialData;
 
 import Main.Data.Material;
 import Main.Data.RecipeObject.MaterialData.MSolid;
+import Main.Data.RecipeObject.RegistryData;
 import Main.Generators.GMaterial;
 import Main.Generators.GPartGroup;
 import Main.Generators.GameData.GLiquidRegistry;
@@ -23,7 +24,7 @@ public class GMSolid extends AGMaterialData<MSolid> {
     }
 
     @Override
-    protected void readMaterialParameters(Material m, String[] s) {
+    protected void readMaterialParameters(Material m, String[] s, RegistryData[] exclusions) {
         //bool addDust, bool addFineDust, bool addPowder, String customName(for other states)[= for none]
 
         //TODO: fix alternate names for recipes

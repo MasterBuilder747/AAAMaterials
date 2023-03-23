@@ -2,6 +2,7 @@ package Main.Generators.RecipeObjects.MaterialData.Solid.Tinkers;
 
 import Main.Data.Material;
 import Main.Data.RecipeObject.MaterialData.Tinker.TinkerCraftable;
+import Main.Data.RecipeObject.RegistryData;
 import Main.Generators.GMaterial;
 import Main.Generators.GPartGroup;
 import Main.Generators.GameData.*;
@@ -29,7 +30,7 @@ public class GTinkerCraftable extends AGTinkers<TinkerCraftable> {
     }
 
     @Override
-    protected TinkerCraftable readTinkerParameters(Material m, String[] s) {
+    protected TinkerCraftable readTinkerParameters(Material m, String[] s, RegistryData[] exclusions) {
         //material, icon/oreDict(not including material, eg: ingot = ingotOsmium),
         return new TinkerCraftable(
                 getRecipeTweak("TinkerCraftable"), getItems(), getLiquids(), getOres(),

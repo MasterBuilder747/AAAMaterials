@@ -4,6 +4,7 @@ import Main.Data.RecipeObject.MaterialData.Liquid.MLiquid;
 import Main.Data.RecipeObject.MaterialData.MSolid;
 import Main.Data.RecipeObject.MaterialData.Solid.Malleable.Rubber;
 import Main.Data.Material;
+import Main.Data.RecipeObject.RegistryData;
 import Main.Generators.GMaterial;
 import Main.Generators.GPartGroup;
 import Main.Generators.GameData.GLiquidRegistry;
@@ -33,7 +34,7 @@ public class GRubber extends AGMalleable<Rubber> {
     }
 
     @Override
-    protected void setMalleableParts(Material m, String[] s, MLiquid molten, MSolid solid) {
+    protected void setMalleableParts(Material m, String[] s, MLiquid molten, MSolid solid, RegistryData[] exclusions) {
         Rubber rubber = new Rubber(
                 getRecipeTweak("Rubber"), getRecipeTweak("AMalleable"),
                 getItems(), getLiquids(), getOres(),
@@ -44,11 +45,6 @@ public class GRubber extends AGMalleable<Rubber> {
                 this.genPartGroups(new String[]{
                         "scrap", "plate", "smelt", "rod", "beam", "conductive", "machine", "special_plate", "coiled_rod", "blast", "assembled"
                 }));
-        rubber.setTooltipExclusions(new String[]{
-                "dust", "dustSmall", "dustTiny",
-                "dustFine", "dustFineSmall", "dustFineTiny",
-                "powder", "powderSmall", "powderTiny"
-        });
         rubber = updateRegistryKeys(rubber);
         objects.add(rubber);
     }

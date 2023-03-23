@@ -61,18 +61,17 @@ public abstract class AMalleable extends AMSolid {
     @Override
     protected String buildSpecificRecipe() {
         StringBuilder sb = new StringBuilder();
+        LPart[] parts = this.getPartsWithOverrides();
         int i = 0;
-        for (PartGroup pg : this.enabledPartGroups) {
-            for (LPart p : pg.getParts()) {
-                if (p.amount > 0) {
-                    sb.append(addRecipe(
-                            i, "melting", 1, (int)((p.amount / 144f) * 100), 0.5,
-                            "+red*100", "-orange*100", 100, 100,
-                            p.oreDict, "-", "-", "^molten(" + (int)(p.amount * this.meltingMultiplier) + ")",
-                            "code"
-                        ));
-                    i++;
-                }
+        for (LPart p : parts) {
+            if (p.amount > 0) {
+                sb.append(addRecipe(
+                        i, "melting", 1, (int)((p.amount / 144f) * 100), 0.5,
+                        "+red*100", "-orange*100", 100, 100,
+                        p.oreDict, "-", "-", "^molten(" + (int)(p.amount * this.meltingMultiplier) + ")",
+                        "code"
+                ));
+                i++;
             }
         }
         return sb + buildATweaker() + buildPartRecipes();

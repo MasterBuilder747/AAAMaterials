@@ -4,6 +4,7 @@ import Main.Data.RecipeObject.MaterialData.Liquid.MLiquid;
 import Main.Data.RecipeObject.MaterialData.MSolid;
 import Main.Data.RecipeObject.MaterialData.Solid.Malleable.Alloy;
 import Main.Data.Material;
+import Main.Data.RecipeObject.RegistryData;
 import Main.Generators.GMaterial;
 import Main.Generators.GPartGroup;
 import Main.Generators.GameData.GLiquidRegistry;
@@ -33,7 +34,7 @@ public class GAlloy extends AGMalleable<Alloy> {
     }
 
     @Override
-    protected void setMalleableParts(Material m, String[] s, MLiquid molten, MSolid solid) {
+    protected void setMalleableParts(Material m, String[] s, MLiquid molten, MSolid solid, RegistryData[] exclusions) {
         //addSmelt, addMachine, addBlast, addConductive
         Alloy alloy = new Alloy(
                 getRecipeTweak("Alloy"), getRecipeTweak("AMalleable"),
@@ -42,11 +43,6 @@ public class GAlloy extends AGMalleable<Alloy> {
                 m,
                 molten);
         boolean smelt = Boolean.parseBoolean(s[0]);
-        alloy.setTooltipExclusions(new String[]{
-                "dust", "dustSmall", "dustTiny",
-                "dustFine", "dustFineSmall", "dustFineTiny",
-                "powder", "powderSmall", "powderTiny"
-        });
         alloy.setPartGroups(
                 this.genPartGroups(
                         new String[]{"scrap", "plate", "smelt", "rod", "beam", "conductive", "machine", "special_plate", "coiled_rod", "blast", "assembled"}

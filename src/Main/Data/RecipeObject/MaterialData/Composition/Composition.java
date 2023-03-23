@@ -118,12 +118,12 @@ public class Composition {
     //only use this for tooltips, do NOT use this for searching for compound compositions
     //as it could contain ? for unknown material compositions, \u25a0 for placeholder element
     //but note that this IS used for searching for molecule compositions
-    public String toTooltip() {
+    public String toTooltip(boolean isCharge) {
         //outputs the entire tooltip
         StringBuilder sb = new StringBuilder();
         if (this.e != null) {
             sb.append(this.e.symbol);
-            if (isMolecule) {
+            if (isMolecule && isCharge) {
                 sb.append(Util.intToSuperscript(Math.abs(this.charge)));
                 if (this.charge > 0) {
                     sb.append("⁺"); // \u207a
@@ -147,17 +147,17 @@ public class Composition {
                 sb.append("?");
             } else {
                 if (this.m.getComp().getCComp().isMolecule) {
-                    sb.append(this.m.getComp().getCComp().toTooltip());
+                    sb.append(this.m.getComp().getCComp().toTooltip(isCharge));
                 } else {
                     sb.append("(");
-                    sb.append(this.m.getComp().getCComp().toTooltip());
+                    sb.append(this.m.getComp().getCComp().toTooltip(isCharge));
                     sb.append(")");
                 }
             }
             if (this.amount > 1) sb.append(Util.intToSubscript(this.amount));
         }
         if (this.r != null) sb.append(r);
-        if (this.comp != null) sb.append(this.comp.toTooltip());
+        if (this.comp != null) sb.append(this.comp.toTooltip(isCharge));
         return sb.toString();
     }
     //outputs the entire tooltip without unicode, to be used for searching, this is stored

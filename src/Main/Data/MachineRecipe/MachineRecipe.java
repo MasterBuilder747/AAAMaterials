@@ -37,7 +37,7 @@ public class MachineRecipe extends ARecipe {
     }
 
     private String buildChemicals() {
-        return null;
+        return ""; //chemical resources are no longer machine-dependent
         //return this.NAME+".addFluidInput(<liquid:" + this.machine.chemical + "> * "+this.chemicalAmount+");\n";
     }
     //later on, there will be multiple tiers of data (depending on the amount of machine tiers of data generators)

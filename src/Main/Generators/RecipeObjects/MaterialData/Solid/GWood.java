@@ -4,6 +4,7 @@ import Main.Data.Material;
 import Main.Data.RecipeObject.MaterialData.MSolid;
 import Main.Data.RecipeObject.MaterialData.Solid.Wood;
 import Main.Data.GameData.Registry;
+import Main.Data.RecipeObject.RegistryData;
 import Main.Generators.GMaterial;
 import Main.Generators.GPartGroup;
 import Main.Generators.GameData.GLiquidRegistry;
@@ -31,7 +32,7 @@ public class GWood extends AGMSolid<Wood> {
     }
 
     @Override
-    protected void readSolidParameters(Material m, String[] s, MSolid solid) {
+    protected void readSolidParameters(Material m, String[] s, MSolid solid, RegistryData[] exclusions) {
         //boolean isVanilla
         boolean isVanilla = parseBoolean(s[0]);
         Wood w = new Wood(

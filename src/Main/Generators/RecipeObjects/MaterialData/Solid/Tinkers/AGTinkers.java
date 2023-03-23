@@ -2,6 +2,7 @@ package Main.Generators.RecipeObjects.MaterialData.Solid.Tinkers;
 
 import Main.Data.Material;
 import Main.Data.RecipeObject.MaterialData.Tinker.ATinkers;
+import Main.Data.RecipeObject.RegistryData;
 import Main.Generators.GMaterial;
 import Main.Generators.GPartGroup;
 import Main.Generators.GameData.*;
@@ -53,8 +54,8 @@ public abstract class AGTinkers <T extends ATinkers> extends AGMaterialData<T> {
     }
 
     @Override
-    protected void readMaterialParameters(Material m, String[] s) {
-        T t = readTinkerParameters(m, s);
+    protected void readMaterialParameters(Material m, String[] s, RegistryData[] exclusions) {
+        T t = readTinkerParameters(m, s, exclusions);
 
         if (isReg && !s[2].equals("null")) {
             String[] mItems = handleItemArray(s[2]);
@@ -180,7 +181,7 @@ public abstract class AGTinkers <T extends ATinkers> extends AGMaterialData<T> {
         }
         objects.add(t);
     }
-    protected abstract T readTinkerParameters(Material m, String[] s);
+    protected abstract T readTinkerParameters(Material m, String[] s, RegistryData[] exclusions);
 
     //export armorStats to config file after registration
     public String exportArmorStats() {

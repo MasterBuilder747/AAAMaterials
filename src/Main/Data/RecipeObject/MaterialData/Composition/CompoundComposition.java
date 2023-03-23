@@ -66,7 +66,7 @@ public class CompoundComposition extends AChemicalComposition {
 
     @Override
     public String generateTooltip() {
-        return composition.toTooltip();
+        return composition.toTooltip(false);
     }
 
     @Override

@@ -53,13 +53,11 @@ public class GRegistry extends AGGameData<Registry> {
         return null;
     }
 
-    public Registry getByMod(String s, String mod) {
+    public Registry getByMod(String reg) {
         for (Registry o : objects) {
-            if (o.NAME.equals(s) && o.mod.equals(mod)) {
-                return o;
-            }
+            if (o.getUnlocalizedName().equals(reg)) return o;
         }
-        error("Unknown item from mod " + mod + " from " + filename + "s.txt: " + s, true);
+        error("Unknown item from " + filename + "s.txt: " + reg, true);
         return null;
     }
 

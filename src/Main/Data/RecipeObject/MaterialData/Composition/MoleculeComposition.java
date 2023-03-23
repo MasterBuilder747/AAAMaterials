@@ -40,7 +40,8 @@ public class MoleculeComposition extends AChemicalComposition {
 
     @Override
     protected void setSymbol() {
-        this.symbol = this.composition.toSymbolNoCharge()+
+        this.symbol = (this.type.contains("element")) ?
+                this.composition.toSymbolNoCharge() : this.composition.toSymbol() +
                 (
                     (this.isotope > 0) ? ("-"+this.isotope) +
                             ((this.mValue != -1) ? "m" +
@@ -48,22 +49,14 @@ public class MoleculeComposition extends AChemicalComposition {
                             : "")
                     : ""
                 );
-        this.symbolWCharge = this.composition.toSymbol()+
-                (
-                        (this.isotope > 0) ? ("-"+this.isotope) +
-                                ((this.mValue != -1) ? "m" +
-                                        ((mValue > 0) ? mValue : "")
-                                        : "")
-                                : ""
-                );
     }
 
     @Override
     public String generateTooltip() {
         return ((this.isotope > 0) ? Util.intToSuperscript(this.isotope) : "") +
-                ((this.mValue == -1) ? "" :
-                        ("ᵐ" + ((this.mValue > 0) ? Util.intToSuperscript(this.mValue) : ""))) + // \u1d50
-                composition.toTooltip();
+                    ((this.mValue == -1) ? "" :
+                            ("ᵐ" + ((this.mValue > 0) ? Util.intToSuperscript(this.mValue) : ""))) + // \u1d50
+                    composition.toTooltip(this.type.contains("element"));
     }
 
     @Override

@@ -4,6 +4,7 @@ import Main.Data.RecipeObject.MaterialData.Liquid.MLiquid;
 import Main.Data.RecipeObject.MaterialData.MSolid;
 import Main.Data.RecipeObject.MaterialData.Solid.Malleable.Metal;
 import Main.Data.Material;
+import Main.Data.RecipeObject.RegistryData;
 import Main.Generators.GMaterial;
 import Main.Generators.GPartGroup;
 import Main.Generators.GameData.GLiquidRegistry;
@@ -33,25 +34,24 @@ public class GMetal extends AGMalleable<Metal> {
     }
 
     @Override
-    protected void setMalleableParts(Material m, String[] s, MLiquid molten, MSolid solid) {
+    protected void setMalleableParts(Material m, String[] s, MLiquid molten, MSolid solid, RegistryData[] exclusions) {
         Metal metal = new Metal(
                 getRecipeTweak("Metal"), getRecipeTweak("AMalleable"),
                 getItems(), getLiquids(), getOres(),
                 getMachineRegistry(), getMatterRegistry(), getDataRegistry(),
                 m,
                 molten);
-        boolean smelt = Boolean.parseBoolean(s[0]);
-        metal.setTooltipExclusions(new String[]{
-                "dust", "dustSmall", "dustTiny",
-                "dustFine", "dustFineSmall", "dustFineTiny",
-                "powder", "powderSmall", "powderTiny"
-        });
         //addSmelt, addMachine, addBlast, addConductive
+        boolean addSmelt = Boolean.parseBoolean(s[0]);
+        boolean addMachine = Boolean.parseBoolean(s[1]);
+        boolean addBlast = Boolean.parseBoolean(s[2]);
+        boolean addConductive = Boolean.parseBoolean(s[3]);
         metal.setPartGroups(
                 this.genPartGroups(
-                new String[]{"scrap", "plate", "smelt", "rod", "beam", "special_plate", "coiled_rod",  "assembled", "machine", "blast", "conductive"}),
-                new boolean[]{smelt, smelt, smelt, smelt, smelt, smelt, smelt, smelt, Boolean.parseBoolean(s[1]), Boolean.parseBoolean(s[2]), Boolean.parseBoolean(s[3])}
+                new String[]{"smelt", "blast", "plate", "special_plate", "rod", "beam", "coiled_rod", "conductive", "machine", "assembled", "scrap"}),
+                new boolean[]{addSmelt, addBlast, addSmelt, addSmelt, addSmelt, addSmelt, addSmelt, addConductive, addMachine, addSmelt, addSmelt}
         );
+        if (exclusions != null) metal.setPartExclusions(exclusions);
         metal = updateRegistryKeys(metal);
         objects.add(metal);
     }

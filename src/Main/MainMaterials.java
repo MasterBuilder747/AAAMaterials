@@ -123,9 +123,9 @@ public class MainMaterials {
         bw.close();
 
         //material parts
-        fw = new FileWriter(Util.HOME + Util.DEPLOY + "scripts/materials/material-parts" + ".zs");
+        fw = new FileWriter(Util.HOME + Util.DEPLOY + "scripts/materials/material-parts.zs");
         bw = new BufferedWriter(fw);
-        bw.write(Util.writeHeader("material parts", -1, 900, null, true, new String[]{"mods.contenttweaker.PartBuilder"}));
+        bw.write(Util.writeHeader("material parts", -1, 900, null, true, new String[]{"mods.contenttweaker.PartBuilder","mods.contenttweaker.Part"}));
         GPart part = new GPart("part", REG, tweak, registry, liquids, oreDict, machine, matter, data); //this is localized
         bw.write(part.registerMaterials());
         GPartGroup partGroup = new GPartGroup("partgroup", part);
