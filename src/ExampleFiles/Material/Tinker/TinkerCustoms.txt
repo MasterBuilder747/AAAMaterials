@@ -1,6 +1,6 @@
 //required parameters
-//material, bool addAutomaticCraftbleRecipes, bool addAutomaticCastingRecipes, icon/oreDict(not including material, eg: ingot = ingotOsmium),
-//Type tool, Type bow, Type string, Type shaft, Type feather, Type armor
+//material, bool addAutomaticCraftableRecipes, bool addAutomaticCastingRecipes, icon/oreDict(not including material, eg: ingot = ingotOsmium),
+//Type head, Type bow, Type string, Type shaft, Type feather, Type armor
 //Type syntax = type: param1; param2... (semicolon separated)
 //to disable a type = type:false
 //trait array syntax: String[.] trait1. trait2. ...; (period separated)
@@ -25,4 +25,4 @@
 /oredictionary allowed for that oredict item to be used in crafting (if castable)
 /if adding castable, molten is required, but oredictionary is not
 /arrowHead and bowLimb require head stats (only)
-/ex: osmium, true, false, ingot, tool: 100; 5; 5; 3; autosmelt; true; 1; 10; []; 10; [], bow: 1; 1; 1; [], string: 1; [], shaft: 1; 1; [], feather: 1; 1; [], armor: 10; 10; 1; 10; 10; 10; []; []; []
+nickel, false, true, ingot, head: 100; 5; 5; 3; []; true, handle_extra: 1; 10; []; 10; [], bow: 1; 1; 1; [], string: 1; [], shaft: 1; 1; [], feather: 1; 1; [], armor: 10; 10; 1; 10; 10; 10; []; []; []

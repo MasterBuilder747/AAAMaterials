@@ -211,6 +211,9 @@ public abstract class AGenerator<D extends AData> {
     protected void error(String s, int line) throws GeneratorException {
         throw new GeneratorException(s, this.filename, line);
     }
+    protected void error(String s, String filename, int line) throws GeneratorException {
+        throw new GeneratorException(s, filename, line);
+    }
     protected void warn(String s) {
         System.out.println("Warning in file " + this.filename+"s.txt: " + s + " at line " + this.line);
     }

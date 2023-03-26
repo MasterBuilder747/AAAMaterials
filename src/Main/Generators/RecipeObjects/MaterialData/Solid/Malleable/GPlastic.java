@@ -41,7 +41,7 @@ public class GPlastic extends AGMalleable<Plastic> {
                 getMachineRegistry(), getMatterRegistry(), getDataRegistry(),
                 m,
                 molten, parseDouble(s[0]));
-        plastic.setPartGroupsTrue(
+        plastic.setPartGroupsTrue(exclusions,
                 this.genPartGroups(new String[]{
                         "scrap", "plate", "smelt", "rod", "beam", "conductive", "machine", "special_plate", "coiled_rod", "blast", "assembled"
                 }));

@@ -37,7 +37,7 @@ public class GTinkerCastable extends AGTinkers<TinkerCastable> {
             GAlloy alloy, GMetal metal, GPlastic plastic, GRubber rubber
     ) {
         super(
-            10, filename, isReg,
+            7+3, filename, isReg,
             tweak, registry, liquids, ores,
             machine, matter, data,
             material, partGroup,
@@ -69,7 +69,6 @@ public class GTinkerCastable extends AGTinkers<TinkerCastable> {
 
         String molten = null;
         double meltingMultiplier = -1;
-        String ore = s[1];
         if (a != null) {
             molten = a.getMoltenBracket();
             meltingMultiplier = a.getMelting();
@@ -87,11 +86,13 @@ public class GTinkerCastable extends AGTinkers<TinkerCastable> {
             meltingMultiplier = r.getMelting();
         }
         //material, bool addAutomaticCastingRecipes, icon/oreDict,
+        boolean isCasting = parseBoolean(s[0]);
+        String ore = s[1];
         return new TinkerCastable(
                 getRecipeTweak("TinkerCastable"), getItems(), getLiquids(), getOres(),
                 getMachineRegistry(), getMatterRegistry(), getDataRegistry(),
                 m,
-                false, parseBoolean(s[0]), ore, ore, parts.getPartRegistry(),
+                false, isCasting, ore, ore, parts.getPartRegistry(),
                 molten, meltingMultiplier
         );
     }

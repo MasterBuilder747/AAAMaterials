@@ -13,7 +13,8 @@ public class TinkerCustom extends ATinkers {
             RecipeTweak tweak, Registry[] items, String[] liquids, String[] ores,
             Machine[] machines, MachineMatter[] matters, MachineData data,
             Material m,
-            boolean craftable, boolean castable, String icon, String oreDict, TCPart[] parts
+            boolean craftable, boolean castable, String icon, String oreDict, TCPart[] parts,
+            String molten
     ) {
         super(
                 tweak, items, liquids, ores,
@@ -21,6 +22,7 @@ public class TinkerCustom extends ATinkers {
                 m,
                 craftable, castable, icon, oreDict, parts
         );
+        this.molten = molten;
     }
 
     @Override

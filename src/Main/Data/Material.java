@@ -143,7 +143,7 @@ public class Material extends AData {
     public void printKeys() {
         System.out.println("Material keys for " + NAME + ":");
         for (RegistryData d : keys) {
-            System.out.println(d.key + " = " + d.r.getFullUnlocalizedName());
+            System.out.println(d.key + " = " + d.r.getUnlocalizedNameWithMeta());
         }
     }
 

@@ -12,6 +12,9 @@ import Main.Data.Tweakers.RecipeTweak;
 import Main.Util;
 
 public class OreVariant extends AMaterialData {
+    //NOTE: OreVariants do NOT create the tooltips for its material,
+    //Ore handles that, due to the keys being replaced for each variant
+
     //comma-separated
     //name is the material name
     OreType[] oreTypes;
@@ -75,24 +78,20 @@ public class OreVariant extends AMaterialData {
             if (this.stones == null) error("stones is null for material " + this.m.NAME);
             for (Stone s : this.stones) {
                 if (!s.type.equals("vanilla") && !s.type.equals("custom")) {
-                    this.addRegistryData(s.NAME + "ore", this.getItemRegistry(Util.toUpper(s.NAME) + Util.toUpper(this.NAME) + "Ore"));
-                    this.addRegistryData(s.NAME + "poor", this.getItemRegistry(Util.toUpper(s.NAME) + "Poor" + Util.toUpper(this.NAME) + "Ore"));
-                    this.addRegistryData(s.NAME + "dense", this.getItemRegistry(Util.toUpper(s.NAME) + "Dense" + Util.toUpper(this.NAME) + "Ore"));
+                    this.addRegistryData(s.NAME + "ore", this.getItemRegistry(Util.toUpper(s.NAME) + " " + Util.toUpper(this.NAME) + " Ore"));
+                    this.addRegistryData(s.NAME + "poor", this.getItemRegistry(Util.toUpper(s.NAME) + " Poor " + Util.toUpper(this.NAME) + " Ore"));
+                    this.addRegistryData(s.NAME + "dense", this.getItemRegistry(Util.toUpper(s.NAME) + " Dense " + Util.toUpper(this.NAME) + " Ore"));
                 }
             }
         }
-        String b = buildAdditionalRecipes();
+        String b = buildSpecificRecipe();
         if (b != null) return b;
         return "";
     }
     @Override
-    protected String buildAdditionalRecipes() {
-        //do not add composition tooltips here, already handled in Ore
-        return buildSpecificRecipe();
-    }
-    @Override
     protected String buildSpecificRecipe() {
         if (this.block.equals("stone")) {
+            //printNames();
             StringBuilder sb = new StringBuilder();
             if (this.tweak != null) {
                 String[] recipes = this.tweak.getRecipes();
@@ -131,7 +130,8 @@ public class OreVariant extends AMaterialData {
                     if (sss.startsWith("<>")) { //use normal key (non-variant)
                         sb.append(sss.substring(2));
                     } else {
-                        sb.append(block).append("_").append(sss);
+                        if (!block.equals("stone")) sb.append(block).append("_");
+                        sb.append(sss);
                     }
                 }
                 if (i != ss.length-1) sb.append("; ");
@@ -142,7 +142,12 @@ public class OreVariant extends AMaterialData {
         } else if (s.equals("-")) {
             return s;
         } else {
-            return this.block+"_"+s;
+            //variant part key
+            if (this.block.equals("stone")) {
+                return s;
+            } else {
+                return this.block+"_"+s;
+            }
         }
     }
 

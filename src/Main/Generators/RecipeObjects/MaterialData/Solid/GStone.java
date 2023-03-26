@@ -92,36 +92,32 @@ public class GStone extends AGMSolid<Stone> {
                 String test = m.LOCALNAME;
                 switch (i) {
                     //sed has no cobblestone!
-                    case 1 -> test += "MonsterEgg";
-                    case 2 -> test += "Cobblestone";
-                    case 3 -> test += "Bricks";
-                    case 4 -> test += "Gravel";
-                    case 5 -> test += "Sand";
-                    case 6 -> test += "Sandstone";
-                    case 7 -> test = "Smooth" + test + "Sandstone";
-                    case 8 -> test = "Chiseled" + test + "Sandstone";
-                    case 9 -> test += "Clay";
-                    case 10 -> test += "OvergrownStone";
-                    case 11 -> test = "Snowy" + test + "OvergrownStone";
-                    case 12 -> test = "Mossy" + test + "Cobblestone";
-                    case 13 -> test += "Speleothem";
-                    case 14 -> test += "Slab";
-                    case 15 -> test += "CobblestoneSlab";
-                    case 16 -> test += "BrickSlab";
-                    case 17 -> test += "Button";
-                    case 18 -> test += "CobblestoneButton";
-                    case 19 -> test += "Wall";
-                    case 20 -> test += "CobblestoneWall";
-                    case 21 -> test += "BrickWall";
-                    case 22 -> test += "Stairs";
-                    case 23 -> test += "CobblestoneStairs";
-                    case 24 -> test += "BrickStairs";
+                    case 1 -> test += " Monster Egg";
+                    case 2 -> test += " Cobblestone";
+                    case 3 -> test += " Bricks";
+                    case 4 -> test += " Gravel";
+                    case 5 -> test += " Sand";
+                    case 6 -> test += " Sandstone";
+                    case 7 -> test = "Smooth " + test + " Sandstone";
+                    case 8 -> test = "Chiseled " + test + " Sandstone";
+                    case 9 -> test += " Clay";
+                    case 10 -> test += " Overgrown Stone";
+                    case 11 -> test = "Snowy " + test + " Overgrown Stone";
+                    case 12 -> test = "Mossy " + test + " Cobblestone";
+                    case 13 -> test += " Speleothem";
+                    case 14 -> test += " Slab";
+                    case 15 -> test += " Cobblestone Slab";
+                    case 16 -> test += " Brick Slab";
+                    case 17 -> test += " Button";
+                    case 18 -> test += " Cobblestone Button";
+                    case 19 -> test += " Wall";
+                    case 20 -> test += " Cobblestone Wall";
+                    case 21 -> test += " Brick Wall";
+                    case 22 -> test += " Stairs";
+                    case 23 -> test += " Cobblestone Stairs";
+                    case 24 -> test += " Brick Stairs";
                 }
-                if (this.registry.is(test)) {
-                    registries.add(this.registry.getByRegistryName(test));
-                } else {
-                    error("stone type " + test + " for material " + m.NAME + " is not in the registry");
-                }
+                registries.add(this.registry.getByLocalizedName(test, this.filename, this.line));
             }
         } else if (type == 3) {
             if (!noSlab) {
@@ -129,52 +125,44 @@ public class GStone extends AGMSolid<Stone> {
                     String test = m.LOCALNAME;
                     switch (i) {
                         //sed has no cobblestone!
-                        case 1 -> test += "MonsterEgg";
-                        case 2 -> test += "Gravel";
-                        case 3 -> test += "Sand";
-                        case 4 -> test += "Sandstone";
-                        case 5 -> test = "Smooth" + test + "Sandstone";
-                        case 6 -> test = "Chiseled" + test + "Sandstone";
-                        case 7 -> test += "Clay";
-                        case 8 -> test += "OvergrownStone";
-                        case 9 -> test = "Snowy" + test + "OvergrownStone";
-                        case 10 -> test += "Speleothem";
-                        case 11 -> test += "Slab";
-                        case 12 -> test += "Button";
-                        case 13 -> test += "Wall";
-                        case 14 -> test += "Stairs";
-                        case 15 -> test = "Mossy" + test;
+                        case 1 -> test += " Monster Egg";
+                        case 2 -> test += " Gravel";
+                        case 3 -> test += " Sand";
+                        case 4 -> test += " Sandstone";
+                        case 5 -> test = "Smooth " + test + " Sandstone";
+                        case 6 -> test = "Chiseled " + test + " Sandstone";
+                        case 7 -> test += " Clay";
+                        case 8 -> test += " Overgrown Stone";
+                        case 9 -> test = "Snowy " + test + " Overgrown Stone";
+                        case 10 -> test += " Speleothem";
+                        case 11 -> test += " Slab";
+                        case 12 -> test += " Button";
+                        case 13 -> test += " Wall";
+                        case 14 -> test += " Stairs";
+                        case 15 -> test = "Mossy " + test;
                     }
-                    if (this.registry.is(test)) {
-                        registries.add(this.registry.getByRegistryName(test));
-                    } else {
-                        error("stone type " + test + " for material " + m.NAME + " is not in the registry");
-                    }
+                    registries.add(this.registry.getByLocalizedName(test, this.filename, this.line));
                 }
             } else {
                 for (int i = 0; i < 15; i++) {
                     String test = m.LOCALNAME;
                     switch (i) {
-                        case 1 -> test += "MonsterEgg";
-                        case 2 -> test += "Gravel";
-                        case 3 -> test += "Sand";
-                        case 4 -> test += "Sandstone";
-                        case 5 -> test = "Smooth" + test + "Sandstone";
-                        case 6 -> test = "Chiseled" + test + "Sandstone";
-                        case 7 -> test += "Clay";
-                        case 8 -> test += "OvergrownStone";
-                        case 9 -> test = "Snowy" + test + "OvergrownStone";
-                        case 10 -> test += "Speleothem";
-                        case 11 -> test += "Button";
-                        case 12 -> test += "Wall";
-                        case 13 -> test += "Stairs";
-                        case 14 -> test = "Mossy" + test;
+                        case 1 -> test += " Monster Egg";
+                        case 2 -> test += " Gravel";
+                        case 3 -> test += " Sand";
+                        case 4 -> test += " Sandstone";
+                        case 5 -> test = "Smooth " + test + " Sandstone";
+                        case 6 -> test = "Chiseled " + test + " Sandstone";
+                        case 7 -> test += " Clay";
+                        case 8 -> test += " Overgrown Stone";
+                        case 9 -> test = "Snowy " + test + " Overgrown Stone";
+                        case 10 -> test += " Speleothem";
+                        case 11 -> test += " Button";
+                        case 12 -> test += " Wall";
+                        case 13 -> test += " Stairs";
+                        case 14 -> test = "Mossy " + test;
                     }
-                    if (this.registry.is(test)) {
-                        registries.add(this.registry.getByRegistryName(test));
-                    } else {
-                        error("stone type " + test + " for material " + m.NAME + " is not in the registry");
-                    }
+                    registries.add(this.registry.getByLocalizedName(test, this.filename, this.line));
                 }
             }
         } else if (type == 0) {
@@ -182,7 +170,7 @@ public class GStone extends AGMSolid<Stone> {
         } else {
             //custom
         }
-        st.setPartGroup(genPartGroup("stone"), addPebble);
+        st.setPartGroup(exclusions, genPartGroup("stone"), addPebble);
         st.addVariants(registries.toArray(new Registry[0]));
         st = updateRegistryKeys(st);
         objects.add(st);

@@ -44,36 +44,32 @@ public class GWood extends AGMSolid<Wood> {
         for (int i = 0; i < 22; i++) {
             String test = m.LOCALNAME.replace(" ", "");
             switch (i) {
-                case 0 -> test += "Wood";
-                case 1 -> test += "WoodPlanks";
-                case 2 -> test += "Sapling";
-                case 3 -> test += "WoodStairs";
-                case 4 -> test += "WoodSlab";
-                case 5 -> test += "Fence";
-                case 6 -> test += "FenceGate";
-                case 7 -> test += "Door";
-                case 8 -> test += "Boat";
-                case 9 -> test += "Leaves";
-                case 10 -> test += "Button";
-                case 11 -> test += "PressurePlate";
-                case 12 -> test += "Bark";
-                case 13 -> test = "Carved" + test + "Wood";
-                case 14 -> test += "Bookshelf";
-                case 15 -> test += "Chest";
-                case 16 -> test += "TrappedChest";
-                case 17 -> test += "LeafCarpet";
-                case 18 -> test = "Vertical" + test + "WoodPlanks";
-                case 19 -> test += "BarkSlab";
-                case 20 -> test += "BarkStairs";
-                case 21 -> test += "BarkWall";
+                case 0 -> test += " Wood";
+                case 1 -> test += " Wood Planks";
+                case 2 -> test += " Sapling";
+                case 3 -> test += " Wood Stairs";
+                case 4 -> test += " Wood Slab";
+                case 5 -> test += " Fence";
+                case 6 -> test += " Fence Gate";
+                case 7 -> test += " Door";
+                case 8 -> test += " Boat";
+                case 9 -> test += " Leaves";
+                case 10 -> test += " Button";
+                case 11 -> test += " Pressure Plate";
+                case 12 -> test += " Bark";
+                case 13 -> test = "Carved " + test + " Wood";
+                case 14 -> test += " Bookshelf";
+                case 15 -> test += " Chest";
+                case 16 -> test += " Trapped Chest";
+                case 17 -> test += " Leaf Carpet";
+                case 18 -> test = "Vertical " + test + " Wood Planks";
+                case 19 -> test += " Bark Slab";
+                case 20 -> test += " Bark Stairs";
+                case 21 -> test += " Bark Wall";
             }
-            if (this.registry.is(test)) {
-                registries.add(this.registry.getByRegistryName(test));
-            } else {
-                error("wood type " + test + " for material " + m.NAME + " is not in the registry");
-            }
+            registries.add(this.registry.getByLocalizedName(test, this.filename, this.line));
         }
-        w.setPartGroupTrue(genPartGroup("wood"));
+        w.setPartGroupTrue(exclusions, genPartGroup("wood"));
         w.addVariants(registries.toArray(new Registry[0]));
         objects.add(w);
     }

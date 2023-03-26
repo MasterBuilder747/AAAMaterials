@@ -209,10 +209,10 @@ public abstract class ATinkers extends AMaterialData {
     //writes to TwC config file
     public String exportArmorStats() {
         //MaterialID:CoreDurability:Defense:Modifier:PlatesDurability:Toughness:ExtraDurability
-        //iron:12.0:15.0:0.85:5.0:0.0:3.5
+        //cot_iron:12.0:15.0:0.85:5.0:0.0:3.5
         if (isArmor) {
             return "\t\t" +
-                    m.NAME + "_cot:" +
+                    "cot_" + m.NAME + ":" +
                     handleDouble(coreDurability) + ":" +
                     handleDouble(defense) + ":" +
                     handleDouble(armorModifier) + ":" +
@@ -303,7 +303,7 @@ public abstract class ATinkers extends AMaterialData {
     }
     public String getMatItemsCode() {
         //we have to hardcode the icon because it cannot be obtained from the material phase
-        String iconNew = "<item:"+m.get(icon).getFullUnlocalizedName()+">";
+        String iconNew = "<item:"+m.get(icon).getUnlocalizedNameWithMeta()+">";
         return "Add to materials.zs: genTCMaterial(..." +
                 //string name, string localName, string color, bool craftable, bool castable, IItemStack icon, IOreDictEntry ore, ILiquidStack liquid,
                 ", " + iconNew + ", <ore:" + oreDict + Util.toUpper(m.NAME) + ">, " + molten + ", " +
@@ -335,7 +335,7 @@ public abstract class ATinkers extends AMaterialData {
         String iconNew = "<item:contenttweaker:" + m.NAME + "_"+ icon + ":0>";
         return "genTCMaterial(" +
                 //string name, string localName, string color, bool craftable, bool castable, IItemStack icon, IOreDictEntry ore, ILiquidStack liquid,
-                "\"" + m.NAME + "_cot\", \"" + Util.toUpper(m.NAME) + "\", \"" + m.color + "\", " + craftable + ", " + castable + ", " + iconNew + ", <ore:" + oreDict + Util.toUpper(m.NAME) + ">, " + molten + ", " +
+                "\"cot_" + m.NAME + "\", \"" + Util.toUpper(m.NAME) + "\", \"" + m.color + "\", " + craftable + ", " + castable + ", " + iconNew + ", <ore:" + oreDict + Util.toUpper(m.NAME) + ">, " + molten + ", " +
                 //IItemStack[] items, int[] amtsNeeded, int[] amtsMatched,
                 createItemArray(matItems) + ", " + createArray(amountNeeded) + ", " + createArray(amountMatched) + ", " +
                 //Tools

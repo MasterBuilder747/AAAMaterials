@@ -3,57 +3,45 @@ package Main.Data.GameData;
 import java.util.Arrays;
 
 public class Registry extends AGameData {
-    //"-Mod name","Registry name","-Item ID","Meta/dmg","-Subtypes","Display name","Ore Dict keys","NBT"
-    //-not read
-
     //the general definition of an item or block in-game that is mapped to something here
-    //used only in the recipe stage
-    public String mod; //the mod name
+    public String mod;
+    public int meta;
+    public String localName;
     public String[] ore; //oreDict(s), could be null if there aren't any
-    public int meta; //any metadata
-    public String nbt; //nbt data, for now this is a string but this can be parsed later on if needed
+    public String nbt; //nbt data, could be null
 
-    public Registry(String mod, String registry, int meta, String localName) {
-        super(localName, registry);
-        this.mod = mod;
+    //fullRegistry = mod:registryName
+    public Registry(String fullRegistry, int meta, String localName) {
+        super(fullRegistry, fullRegistry.substring(fullRegistry.indexOf(":")+1));
+        this.mod = fullRegistry.substring(0, fullRegistry.indexOf(":"));
+        this.meta = meta;
+        this.localName = localName;
+    }
+    //for tinker parts
+    public Registry(String fullRegistry, int meta) {
+        super(fullRegistry, fullRegistry.substring(fullRegistry.indexOf(":")+1));
+        this.mod = fullRegistry.substring(0, fullRegistry.indexOf(":"));
         this.meta = meta;
     }
-    //for tinker parts with no NBT
-    public Registry(String mod, String registry, int meta) {
-        super(registry, registry);
-        this.mod = mod;
-        this.meta = meta;
+    @Override
+    public String getUnlocalizedName() { return this.NAME; }
+    public String getUnlocalizedNameWithMeta() {
+        return this.NAME + ":" + this.meta;
     }
-    public void setOre(String[] ore) {
-        this.ore = ore;
-    }
-    public void setNBT(String nbt) {
-        this.nbt = nbt;
-    }
-    public String getNBTBracket() {
-        return "<"+getFullUnlocalizedName()+">.withTag("+nbt+")";
-    }
-
     public String getLocalizedName() {
-        return this.NAME;
+        return this.localName;
     }
-
     @Override
-    public String getUnlocalizedName() { return this.mod + ":" + this.registryName; }
-
-    public String getFullUnlocalizedName() {
-        return this.mod + ":" + this.registryName + ":" + this.meta;
+    public String getBracket() { return "<" + this.getUnlocalizedNameWithMeta() + ">"; }
+    public String getNBTBracket() {
+        return this.getBracket()+ ".withTag("+nbt+")";
     }
-
-    @Override
-    public String getBracket() { return "<" + this.getFullUnlocalizedName() + ">"; }
 
     @Override
     public void print() {
-        //System.out.println(this.buildMaterial());
         String nbtt;
         if(nbt == null) nbtt = "";
         else nbtt = nbt;
-        System.out.println(this.mod + ":" + this.registryName + ":" + this.meta + ", \"" + this.NAME + "\", ore(s):" + Arrays.toString(this.ore) + ", " + "NBT data: " + nbtt);
+        System.out.println(this.NAME + ":" + this.meta + ", \"" + this.NAME + "\", ore(s):" + Arrays.toString(this.ore) + ", " + "NBT data: " + nbtt);
     }
 }

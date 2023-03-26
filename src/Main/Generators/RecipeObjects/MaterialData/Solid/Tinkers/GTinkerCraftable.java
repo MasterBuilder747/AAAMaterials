@@ -21,7 +21,7 @@ public class GTinkerCraftable extends AGTinkers<TinkerCraftable> {
             GMaterial material, GPartGroup partGroup,
             GTCPartRegistry parts, GTCTraitRegistry traits
     ) {
-        super(9, filename, isReg,
+        super(7+3, filename, isReg,
             tweak, registry, liquids, ores,
             machine, matter, data,
             material, partGroup,
@@ -31,12 +31,14 @@ public class GTinkerCraftable extends AGTinkers<TinkerCraftable> {
 
     @Override
     protected TinkerCraftable readTinkerParameters(Material m, String[] s, RegistryData[] exclusions) {
-        //material, icon/oreDict(not including material, eg: ingot = ingotOsmium),
+        //material, bool addAutomaticCraftingRecipes, icon/oreDict(not including material, eg: ingot = ingotOsmium),
+        boolean isCrafting = parseBoolean(s[0]);
+        String ore = s[1];
         return new TinkerCraftable(
                 getRecipeTweak("TinkerCraftable"), getItems(), getLiquids(), getOres(),
                 getMachineRegistry(), getMatterRegistry(), getDataRegistry(),
                 m,
-                true, s[0], s[0], parts.getPartRegistry()
+                isCrafting, ore, ore, parts.getPartRegistry()
         );
     }
 }

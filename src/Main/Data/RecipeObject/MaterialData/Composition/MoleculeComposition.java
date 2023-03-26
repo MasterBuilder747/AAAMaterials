@@ -40,7 +40,7 @@ public class MoleculeComposition extends AChemicalComposition {
 
     @Override
     protected void setSymbol() {
-        this.symbol = (this.type.contains("element")) ?
+        this.symbol = (this.compType.contains("element")) ?
                 this.composition.toSymbolNoCharge() : this.composition.toSymbol() +
                 (
                     (this.isotope > 0) ? ("-"+this.isotope) +

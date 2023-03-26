@@ -65,7 +65,7 @@ public abstract class AGTinkers <T extends ATinkers> extends AGMaterialData<T> {
             for (String mat : mItems) {
                 String[] mm = Util.split(mat, "=");
                 //<item:mod:registry:meta>
-                String itemMat = "<item:" + m.get(mm[0]).getFullUnlocalizedName() + ">";
+                String itemMat = "<item:" + m.get(mm[0]).getUnlocalizedNameWithMeta() + ">";
                 matItems.add(itemMat);
                 amountNeeded.add(parseInt(mm[1]));
                 amountMatched.add(parseInt(mm[2]));

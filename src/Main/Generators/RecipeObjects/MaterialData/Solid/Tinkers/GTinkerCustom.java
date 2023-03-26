@@ -22,7 +22,7 @@ public class GTinkerCustom extends AGTinkers<TinkerCustom> {
             GTCPartRegistry parts, GTCTraitRegistry traits
     ) {
         super(
-            11, filename, isReg,
+            7+5, filename, isReg,
             tweak, registry, liquids, ores,
             machine, matter, data,
             material, partGroup,
@@ -32,12 +32,23 @@ public class GTinkerCustom extends AGTinkers<TinkerCustom> {
 
     @Override
     protected TinkerCustom readTinkerParameters(Material m, String[] s, RegistryData[] exclusions) {
-        //material, bool addAutomaticCraftbleRecipes, bool addAutomaticCastingRecipes, icon/oreDict,
+        //material, bool addAutomaticCraftableRecipes, bool addAutomaticCastingRecipes, icon/oreDict, amtSyntax, liquid
+        boolean isCrafting = parseBoolean(s[0]);
+        boolean isCasting = parseBoolean(s[1]);
+        String ore = s[3];
+        String molten = s[4];
+        if (isCasting && molten.equals("null")) {
+            error("Cannot have a null liquid, must provide one");
+        }
+        if (!molten.equals("null")) {
+            molten = "<liquid:"+molten+">";
+        }
         return new TinkerCustom(
                 getRecipeTweak("TinkerCustom"), getItems(), getLiquids(), getOres(),
                 getMachineRegistry(), getMatterRegistry(), getDataRegistry(),
                 m,
-                parseBoolean(s[0]), parseBoolean(s[1]), s[2], s[2], parts.getPartRegistry()
+                isCrafting, isCasting, ore, ore, parts.getPartRegistry(),
+                molten
         );
     }
 }

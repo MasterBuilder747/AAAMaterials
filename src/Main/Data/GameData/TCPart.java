@@ -8,14 +8,14 @@ public class TCPart extends AGameData {
 
     //key
     public TCPart(String key, Registry r, String type, double amount) {
-        super(key, r.getFullUnlocalizedName());
+        super(key, r.getUnlocalizedNameWithMeta());
         this.r = r;
         this.type = type;
         this.amount = amount;
     }
     public void addMaterial(String m) {
         this.m = m;
-        r.setNBT("{Material:\""+this.m+"_cot\"}");
+        r.nbt = "{Material:\"cot_"+this.m+"\"}";
     }
 
     @Override

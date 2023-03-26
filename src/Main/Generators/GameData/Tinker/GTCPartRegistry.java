@@ -14,19 +14,11 @@ public class GTCPartRegistry extends AGenerator<TCPart> {
 
     @Override
     protected void readLine(BufferedReader br, String[] s) throws IOException {
-        String item = s[1];
-        String mod;
-        String registry;
-        if (item.contains(":")) {
-            mod = item.substring(0, item.indexOf(":"));
-            registry = item.substring(item.indexOf(":")+1);
-        } else {
-            mod = "tconstruct";
-            registry = item;
-        }
         //name, itemStack, type, amount
+        String registry = s[1];;
+        if (!registry.contains(":")) registry = "tconstruct:"+registry;
         //note that this is the general TiC part with NO NBT data, this does not exist in the item registry!
-        Registry r = new Registry(mod, registry, 0);
+        Registry r = new Registry(registry, 0);
         objects.add(new TCPart(s[0], r, s[2], parseDouble(s[3])));
     }
 

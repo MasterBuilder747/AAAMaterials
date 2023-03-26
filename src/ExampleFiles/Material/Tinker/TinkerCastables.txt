@@ -1,5 +1,6 @@
 //required parameters
-//material, bool addAutomaticCastingRecipes, icon/oreDict(not including material, eg: ingot = ingotOsmium), String[;] MaterialItems{I_OSyntaxItem=amountNeeded=amountMatched}, (null if not needed)
+//material, bool addAutomaticCastingRecipes, icon/oreDict(not including material: eg: ingot = ingotOsmium),
+//String[;] MaterialItems{I_OSyntaxItem=amountNeeded=amountMatched}, (null if not needed)
 //Type head, Type handle_extra, Type bow, Type string, Type shaft, Type feather, Type armor
 //Type syntax = type: param1; param2... (semicolon separated)
 //to disable a type = type:false
@@ -25,4 +26,4 @@
 //NOTES:
 /if adding castable, molten is required, but oredictionary is not
 /arrowHead and bowLimb require head stats (only)
-/ex: osmium, false, ingot, null, head: 100; 5; 5; 3; []; true, handle_extra: 1; 10; []; 10; [], bow: 1; 1; 1; [], string: 1; [], shaft: 1; 1; [], feather: 1; 1; [], armor: 10; 10; 1; 10; 10; 10; []; []; []
+invar, true, ingot, null, head: 100; 5; 5; 3; []; true, handle_extra: 1; 10; []; 10; [], bow: 1; 1; 1; [], string: 1; [], shaft: 1; 1; [], feather: 1; 1; [], armor: 10; 10; 1; 10; 10; 10; []; []; []

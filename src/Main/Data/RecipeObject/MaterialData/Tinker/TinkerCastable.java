@@ -32,7 +32,7 @@ public class TinkerCastable extends ATinkers {
         //add each tinkers part to the keys before doing recipes
         TCPart[] tcParts = this.getEnabledTCParts();
         for (TCPart p : tcParts) {
-            Registry r = getByNBT(p.r.getFullUnlocalizedName(), "{Material:\"" + this.NAME+ "_cot\"}");
+            Registry r = getByNBT(p.r.getUnlocalizedNameWithMeta(), "{Material:\"cot_" + this.NAME+ "\"}");
             addRegistryData(p.NAME, r);
         }
 

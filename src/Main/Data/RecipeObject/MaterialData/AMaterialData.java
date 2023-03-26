@@ -21,7 +21,7 @@ public abstract class AMaterialData extends ARecipeObject {
     private boolean[] enablePartGroups; //used internally to get only enabled partGroups
     private boolean[] isPartGroupOverride; //do we have any part overrides in the partGroup?
     protected boolean[][] partOverrides; //if so, what parts are excluded from being loaded?
-    public ArrayList<String> localizedPartNames; //the localName that is specific to the material to be used for searching for the registry
+    public ArrayList<String> partRegistryNames; //the registry name that is specific to the material to be used for searching for the registry
     public ArrayList<PartGroup> enabledPartGroups; //each partGroup that is enabled for this material
 
     public AMaterialData(String type,
@@ -32,7 +32,7 @@ public abstract class AMaterialData extends ARecipeObject {
                 tweak, items, liquids, ores,
                 machines, matters, data);
         this.m = m;
-        this.localizedPartNames = new ArrayList<>();
+        this.partRegistryNames = new ArrayList<>();
         this.enabledPartGroups = new ArrayList<>();
         //for any existing key, exclude it from having an additional tooltip
         for (RegistryData r : m.keys) r.isTooltipExclusion = true;
@@ -45,7 +45,7 @@ public abstract class AMaterialData extends ARecipeObject {
         String r = buildSpecificRecipe();
         if (r != null) sb.append(r);
 
-        AChemicalComposition comp = m.getComp();
+        AChemicalComposition comp = this.m.getComp();
         if (comp != null) {
             sb.append(comp.addTooltips(this.getKeysArray()));
         }
@@ -93,26 +93,6 @@ public abstract class AMaterialData extends ARecipeObject {
             }
         }
     }
-    public void setPartExclusions(RegistryData[] regs) {
-        for (RegistryData rd : regs) {
-            String key = rd.key;
-            boolean bk = false;
-            for (int i = 0; i < this.partGroups.length; i++) {
-                for (int j = 0; j < partGroups[i].getParts().length; j++) {
-                    if (partGroups[i].getParts()[j].NAME.equals(key)) {
-                        this.partOverrides[i][j] = true;
-                        this.isPartGroupOverride[i] = true;
-                        this.localizedPartNames.remove(partGroups[i].getParts()[j]
-                                .baseRegistryName.replace("%s", m.LOCALNAME.replace(" ", "")));
-                        bk = true;
-                        break;
-                    }
-                }
-                if (bk) break;
-            }
-            if (!bk) error("invalid key override " + key + " for material " + this.NAME);
-        }
-    }
     public void addAllRegistryDatas(String[] keys, Registry[] regs) {
         if (keys.length != regs.length) error("Keys and registries need to be the same length for recipeObject named " + this.NAME);
         for (int i = 0; i < keys.length; i++) {
@@ -157,7 +137,7 @@ public abstract class AMaterialData extends ARecipeObject {
     }
     @Override
     public String getUnlocalizedByKey(String key) { //externally called if needed (eg, stone)
-        return this.get(key).getFullUnlocalizedName();
+        return this.get(key).getUnlocalizedNameWithMeta();
     }
 
     //TODO: liquid keys
@@ -176,7 +156,7 @@ public abstract class AMaterialData extends ARecipeObject {
     public void printNames() {
         System.out.println("Keys for " + this.NAME + ":");
         for (RegistryData r : this.m.keys) {
-            System.out.println(r.key + " = " + r.r.NAME);
+            System.out.println(r.key + " = " + r.r.NAME + ":" + r.r.meta);
         }
         System.out.println();
     }
@@ -210,39 +190,6 @@ public abstract class AMaterialData extends ARecipeObject {
             System.out.println(k.key + ": " + k.isTooltipExclusion);
         }
     }
-
-    //call this to get each localized registry name to be used for finding the registries
-    private void setPartGroupsReg() {
-        this.isPartGroupOverride = new boolean[enablePartGroups.length];
-        this.partOverrides = new boolean[enablePartGroups.length][];
-        for (int i = 0; i < partGroups.length; i++) {
-            this.partOverrides[i] = new boolean[partGroups[i].getParts().length];
-            if (this.enablePartGroups[i]) {
-                this.enabledPartGroups.add(partGroups[i]);
-                for (int j = 0; j < partGroups[i].getParts().length; j++) {
-                    //some materials have space in their localName, remove it to allow the registry to find the item
-                    this.localizedPartNames.add(partGroups[i].getParts()[j]
-                            .baseRegistryName.replace("%s", m.LOCALNAME.replace(" ", "")));
-                }
-            }
-        }
-    }
-    //for the ore system
-    private void setPartGroupsReg(String variant) {
-        this.isPartGroupOverride = new boolean[enablePartGroups.length];
-        this.partOverrides = new boolean[enablePartGroups.length][];
-        for (int i = 0; i < partGroups.length; i++) {
-            this.partOverrides[i] = new boolean[partGroups[i].getParts().length];
-            if (this.enablePartGroups[i]) {
-                this.enabledPartGroups.add(partGroups[i]);
-                for (int j = 0; j < partGroups[i].getParts().length; j++) {
-                    //some materials have space in their localName, remove it to allow the registry to find the item
-                    this.localizedPartNames.add(partGroups[i].getParts()[j]
-                            .baseRegistryName.replace("%s", variant + m.LOCALNAME.replace(" ", "")));
-                }
-            }
-        }
-    }
     public String[] getKeys() {
         ArrayList<String> outs = new ArrayList<>();
         LPart[] parts = this.getPartsWithOverrides();
@@ -252,7 +199,7 @@ public abstract class AMaterialData extends ARecipeObject {
         return outs.toArray(new String[0]);
     }
     //append a custom key based on the block variant
-    public String[] getEnabledOredicts(String variant) {
+    public String[] getKeys(String variant) {
         ArrayList<String> outs = new ArrayList<>();
         LPart[] parts = this.getPartsWithOverrides();
         for (LPart p : parts) {
@@ -262,33 +209,84 @@ public abstract class AMaterialData extends ARecipeObject {
     }
 
     //set partGroups
-    public void setPartGroups(PartGroup[] partGroups, boolean[] enablePartGroups) {
+    public void setPartGroups(RegistryData[] exclusions, PartGroup[] partGroups, boolean[] enablePartGroups) {
         this.partGroups = partGroups;
         this.enablePartGroups = enablePartGroups;
-        this.setPartGroupsReg();
+        this.setPartGroupsReg(exclusions);
     }
-    public void setPartGroup(PartGroup partGroup, boolean enablePartGroup) {
+    public void setPartGroup(RegistryData[] exclusions, PartGroup partGroup, boolean enablePartGroup) {
         this.partGroups = new PartGroup[]{partGroup};
         this.enablePartGroups = new boolean[]{enablePartGroup};
-        this.setPartGroupsReg();
+        this.setPartGroupsReg(exclusions);
     }
-    public void setPartGroupsTrue(PartGroup[] partGroup) {
+    public void setPartGroupsTrue(RegistryData[] exclusions, PartGroup[] partGroup) {
         this.partGroups = partGroup;
         this.enablePartGroups = new boolean[partGroup.length];
         for (int i = 0; i < partGroups.length; i++) {
             this.enablePartGroups[i] = true;
         }
-        this.setPartGroupsReg();
+        this.setPartGroupsReg(exclusions);
     }
-    public void setPartGroupTrue(PartGroup partGroup) {
+    public void setPartGroupTrue(RegistryData[] exclusions, PartGroup partGroup) {
         this.partGroups = new PartGroup[]{partGroup};
         this.enablePartGroups = new boolean[]{true};
-        this.setPartGroupsReg();
+        this.setPartGroupsReg(exclusions);
     }
-    public void setPartGroupTrueCustom(PartGroup partGroup, String variant) {
+    public void setPartGroupTrueCustom(RegistryData[] exclusions, String block, PartGroup partGroup) {
         this.partGroups = new PartGroup[]{partGroup};
         this.enablePartGroups = new boolean[]{true};
-        this.setPartGroupsReg(variant);
+        this.setPartGroupsReg(exclusions, block);
+    }
+    //call this to get each unlocalized registry name to be used for finding the registries
+    private void setPartGroupsReg(RegistryData[] exclusions) {
+        this.isPartGroupOverride = new boolean[enablePartGroups.length];
+        this.partOverrides = new boolean[enablePartGroups.length][];
+        for (int i = 0; i < partGroups.length; i++) {
+            this.partOverrides[i] = new boolean[partGroups[i].getParts().length];
+            if (this.enablePartGroups[i]) {
+                this.enabledPartGroups.add(partGroups[i]);
+                for (int j = 0; j < partGroups[i].getParts().length; j++) {
+                    LPart p = partGroups[i].getParts()[j];
+                    boolean isAdd = true;
+                    if (exclusions != null) {
+                        for (RegistryData r : exclusions) {
+                            if (p.oreDict.equals(r.key)) {
+                                this.partOverrides[i][j] = true;
+                                this.isPartGroupOverride[i] = true;
+                                isAdd = false;
+                                break;
+                            }
+                        }
+                    }
+                    if (isAdd) this.partRegistryNames.add(this.m.NAME+"_"+p.NAME);
+                }
+            }
+        }
+    }
+    private void setPartGroupsReg(RegistryData[] exclusions, String block) {
+        this.isPartGroupOverride = new boolean[enablePartGroups.length];
+        this.partOverrides = new boolean[enablePartGroups.length][];
+        for (int i = 0; i < partGroups.length; i++) {
+            this.partOverrides[i] = new boolean[partGroups[i].getParts().length];
+            if (this.enablePartGroups[i]) {
+                this.enabledPartGroups.add(partGroups[i]);
+                for (int j = 0; j < partGroups[i].getParts().length; j++) {
+                    LPart p = partGroups[i].getParts()[j];
+                    boolean isAdd = true;
+                    if (exclusions != null) {
+                        for (RegistryData r : exclusions) {
+                            if (p.oreDict.equals(r.key)) {
+                                this.partOverrides[i][j] = true;
+                                this.isPartGroupOverride[i] = true;
+                                isAdd = false;
+                                break;
+                            }
+                        }
+                    }
+                    if (isAdd) this.partRegistryNames.add(block+"_"+this.m.NAME+"_"+p.NAME);
+                }
+            }
+        }
     }
 
     public boolean[] getEnablePartGroups() {

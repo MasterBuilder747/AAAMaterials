@@ -61,7 +61,7 @@ public abstract class AGMaterialData<M extends AMaterialData> extends AGRecipeOb
                 String s0 = ms[i];
                 String key = s0.substring(0, s0.indexOf(">"));
                 String reg = s0.substring(s0.indexOf(">")+1);
-                Registry r = this.registry.getByMod(reg);
+                Registry r = this.registry.getByMod(reg, this.filename, this.line);
                 rDataExs.add(new RegistryData(key, r));
             }
             m = ms[0];
@@ -89,7 +89,7 @@ public abstract class AGMaterialData<M extends AMaterialData> extends AGRecipeOb
     protected M updateRegistryKeys(M r) {
         if (this.isReg) {
             String[] keys = r.getKeys();
-            String[] names = r.localizedPartNames.toArray(new String[0]);
+            String[] names = r.partRegistryNames.toArray(new String[0]);
             Registry[] regs = getRegistries(names);
             r.addAllRegistryDatas(keys, regs);
         }

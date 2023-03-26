@@ -25,7 +25,6 @@ import Main.Json.JsonObject;
 import Main.Util;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 
 public class GOre extends AGMSolid<Ore> {
     GStone stones;
@@ -121,18 +120,26 @@ public class GOre extends AGMSolid<Ore> {
                     block, types.toArray(new OreType[0]), this.partGroup.getPart("ore")
             );
             if (block.equals("stone")) {
-                ov.setPartGroupTrue(genPartGroup("ore"));
+                //populate partRegistryNames
+                ov.setPartGroupTrue(exclusions, genPartGroup("ore"));
                 ov.addStoneVariants(this.stones.getOreStones());
-            } else if (block.equals("nether") || block.equals("end")) {
-                ov.setPartGroupTrueCustom(genPartGroup("ore"), Util.toUpper(block));
-            }
-            if (!block.equals("bedrock")) {
+                //update the item keys
                 if (this.isReg) {
-                    String[] regs = ov.localizedPartNames.toArray(new String[0]);
-                    String[] ores2 = ov.getEnabledOredicts(block);
+                    String[] regs = ov.partRegistryNames.toArray(new String[0]);
+                    String[] ores2 = ov.getKeys();
+                    ov.addAllRegistryDatas(ores2, getRegistries(regs));
+                }
+            } else if (block.equals("nether") || block.equals("end")) {
+                //populate partRegistryNames
+                ov.setPartGroupTrueCustom(exclusions, block, genPartGroup("ore"));
+                //update the item keys
+                if (this.isReg) {
+                    String[] regs = ov.partRegistryNames.toArray(new String[0]);
+                    String[] ores2 = ov.getKeys(block);
                     ov.addAllRegistryDatas(ores2, getRegistries(regs));
                 }
             }
+            //update the block keys
             if (o.enableGen) {
                 String blockName = Util.toUpper(block);
                 switch (block) {
@@ -156,15 +163,19 @@ public class GOre extends AGMSolid<Ore> {
             }
             o.addVariant(ov);
         }
+        //manually override the keys for this material that were screwed up from OreVariants
         for (String variant : blocks) {
             String[] s2 = Util.split(variant, ":");
             String block = s2[0]; //the name of the ore block
             PartGroup oreParts = partGroup.getPart("ore");
             for (LPart p : oreParts.getParts()) {
-                o.setTooltipInclusion(block + "_" + p.oreDict);
+                if (block.equals("stone")) {
+                    o.setTooltipInclusion(p.oreDict);
+                } else {
+                    o.setTooltipInclusion(block + "_" + p.oreDict);
+                }
             }
         }
-        o.printKeysWithExclusions();
         objects.add(o);
     }
 
@@ -187,18 +198,13 @@ public class GOre extends AGMSolid<Ore> {
         String var1 = "";
         String blk1 = "";
         if (!variant.equals("ore")) {
-            var1 = Util.toUpper(variant);
+            var1 = Util.toUpper(variant) + " ";
         }
         if (!block.equals("stone")) {
-            blk1 = Util.toUpper(block);
+            blk1 = Util.toUpper(block) + " ";
         }
-        String check = var1+blk1+Util.toUpper(material)+"Ore";
+        String check = var1+blk1+Util.toUpper(material)+" Ore";
 
-        if (this.registry.is(check)) {
-            return this.registry.get(check);
-        } else {
-            error(Util.toUpper(variant)+" "+Util.toUpper(block)+" "+Util.toUpper(material) + " Ore does not exist in the registry");
-        }
-        return null;
+        return this.registry.getByLocalizedName(check, this.filename, this.line);
     }
 }

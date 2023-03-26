@@ -51,13 +51,13 @@ public class MainMaterials {
         w.start();
 
         //registries
-        GRegistry registry = new GRegistry("registry");
-        registry.registerMaterials();
-        GJeiCategory jeiC = new GJeiCategory("JEICategorie");
-        jeiC.registerMaterials();
-        GModRegistry mods = new GModRegistry("modregistrie", registry, jeiC);
+        GModRegistry mods = new GModRegistry("modregistrie");
         mods.registerMaterials();
-        GOreDictRegistry oreDict = new GOreDictRegistry("oredictregistrie", registry);
+        GJeiCategory jeiC = new GJeiCategory("JEICategorie", mods);
+        jeiC.registerMaterials();
+        GRegistry registry = new GRegistry("registry", mods);
+        registry.registerMaterials();
+        GOreDictRegistry oreDict = new GOreDictRegistry("oredictregistrie");
         oreDict.registerMaterials(); //needs a lot of work parsing in order to use
         GLiquidRegistry liquids = new GLiquidRegistry("liquidregistrie");
         liquids.registerMaterials();

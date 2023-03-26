@@ -49,13 +49,13 @@ public class MainRecipes {
         //text files are still read in the same way, but now they will also have item registry ids associated with them to be used in recipes
 
         //gamedata registries: required
-        GRegistry registry = new GRegistry("registry");
-        registry.registerRecipes();
-        GJeiCategory jeiC = new GJeiCategory("JEICategorie");
-        jeiC.registerRecipes();
-        GModRegistry mods = new GModRegistry("modregistrie", registry, jeiC);
+        GModRegistry mods = new GModRegistry("modregistrie");
         mods.registerRecipes();
-        GOreDictRegistry oreDict = new GOreDictRegistry("oredictregistrie", registry);
+        GJeiCategory jeiC = new GJeiCategory("JEICategorie", mods);
+        jeiC.registerRecipes();
+        GRegistry registry = new GRegistry("registry", mods);
+        registry.registerRecipes();
+        GOreDictRegistry oreDict = new GOreDictRegistry("oredictregistrie");
         oreDict.registerRecipes(); //needs a lot of work parsing in order to use
         GLiquidRegistry liquids = new GLiquidRegistry("liquidregistrie");
         liquids.registerRecipes();

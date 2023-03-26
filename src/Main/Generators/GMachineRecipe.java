@@ -98,11 +98,11 @@ public class GMachineRecipe extends AGenerator<CustomMachineRecipe> {
 
     private String[] handleIO(String[] objects, boolean liquid) {
         //external syntax:
-        //12.5%Iron-Ingot*10 //finds the first mod's first item that has this localized name, no meta
-        //12.5%minecraft:Iron-Ingot*10 //meta not needed
+        //12.5%minecraft:iron_ingot*10 //meta 0
+        //12.5%minecraft:wool:2*10 //meta 2
+        //12.5%@Iron-Ingot*10 //finds the first mod's first item that has this localized name, no meta
+        //12.5%@minecraft:Iron-Ingot*10 //finds the mod, then the localized name
         //12.5%#ingotIron*10 //finds the first entry in the oredict registry
-        //12.5%@minecraft:iron_ingot*10 //meta 0
-        //12.5%@minecraft:wool:2*10
         ArrayList<String> outs = new ArrayList<>();
         for (String i : objects) {
             //check if there is a chance and/or an amount
@@ -137,18 +137,18 @@ public class GMachineRecipe extends AGenerator<CustomMachineRecipe> {
             OreDict ore = this.oredict.get(i.substring(1));
             item = ore.getUnlocalizedName();
         } else if (i.startsWith("@")) {
+            //localized name
+            i = i.replace("-", ""); //dash is for readability, spaces are not needed for searching by localized name in the registry
+            Registry reg = this.registry.getByLocalizedName(i, this.filename, this.line);
+            item = reg.getUnlocalizedNameWithMeta();
+        } else {
             //registry name (unlocalized name)
             //meta is required
             int amt = Util.amountOfChar(i, ':');
             if (amt == 1) i += ":0"; //mod:item:0
             else if (amt != 2) error("At least one colon is required to specify the mod for the unlocalized name for string " + i.substring(1));
-            Registry reg = this.registry.getUnlocalized(i.substring(1));
-            item = reg.getFullUnlocalizedName();
-        } else {
-            //localized name
-            i = i.replace("-", ""); //dash is for readability, spaces are not needed for searching by localized name in the registry
-            Registry reg = this.registry.getByRegistryName(i);
-            item = reg.getFullUnlocalizedName();
+            Registry reg = this.registry.getByMetaColonSyntax(i.substring(1), this.filename, this.line);
+            item = reg.getUnlocalizedNameWithMeta();
         }
         return item;
     }

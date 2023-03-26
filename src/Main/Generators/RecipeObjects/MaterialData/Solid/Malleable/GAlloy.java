@@ -43,7 +43,7 @@ public class GAlloy extends AGMalleable<Alloy> {
                 m,
                 molten);
         boolean smelt = Boolean.parseBoolean(s[0]);
-        alloy.setPartGroups(
+        alloy.setPartGroups(exclusions,
                 this.genPartGroups(
                         new String[]{"scrap", "plate", "smelt", "rod", "beam", "conductive", "machine", "special_plate", "coiled_rod", "blast", "assembled"}
                 ),

@@ -34,7 +34,7 @@ public class GGem extends AGMSolid<Gem>{
                 getRecipeTweak("Gem"), getItems(), getLiquids(), getOres(),
                 getMachineRegistry(), getMatterRegistry(), getDataRegistry(),
                 m);
-        g.setPartGroupTrue(genPartGroup("gem"));
+        g.setPartGroupTrue(exclusions, genPartGroup("gem"));
         g = updateRegistryKeys(g);
         objects.add(g);
     }
