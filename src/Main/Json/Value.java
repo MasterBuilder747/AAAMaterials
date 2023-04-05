@@ -4,7 +4,7 @@ import Main.Util;
 
 public class Value {
     String value;
-    String type; //str, bool, double, arr, json
+    String type; //str, json, non-int (any value is fine other than str and json)
 
     public Value(String value) {
         this.type = "str";

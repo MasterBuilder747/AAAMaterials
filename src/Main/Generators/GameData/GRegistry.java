@@ -16,13 +16,14 @@ public class GRegistry extends AGGameData<Registry> {
 
     @Override
     protected void readGameData(String[] s) {
-        //-Mod name,Registry name,-Item ID,Meta/dmg,-Subtypes,Display name,Ore Dict keys,...,NBT
+        //-Mod name,Registry name,-Item ID,Meta/dmg,Subtypes,Display name,Ore Dict keys,...,NBT
         //NOTE: meta is always stored per item! Meta is required when searching!
         String reg = s[1];
         String mod = reg.substring(0, reg.indexOf(":"));
         int meta = parseInt(s[3]);
-        String localName = s[5];//.replace(" ", "");
-        Registry r = new Registry(reg, meta, localName);
+        boolean isMetaData = parseBoolean(s[4]);
+        String localName = s[5];
+        Registry r = new Registry(reg, meta, isMetaData, localName);
         r.ore = Util.split(s[6], ",");
         if (!s[7].isEmpty()) r.nbt = s[7];
 

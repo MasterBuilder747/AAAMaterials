@@ -1,0 +1,2 @@
+"Block registry name","BlockState properties"
+"advancedmortars:mortar","variant=DIAMOND"

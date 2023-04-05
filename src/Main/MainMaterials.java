@@ -3,6 +3,7 @@ package Main;
 import Main.Data.Tweakers.Config.ConfigParam;
 import Main.Generators.*;
 import Main.Generators.GameData.*;
+import Main.Generators.GameData.Other.GBlockstateMeta;
 import Main.Generators.GameData.Other.GJeiCategory;
 import Main.Generators.GameData.Tinker.GTCMaterialRegistry;
 import Main.Generators.GameData.Tinker.GTCPartRegistry;
@@ -57,8 +58,12 @@ public class MainMaterials {
         jeiC.registerMaterials();
         GRegistry registry = new GRegistry("registry", mods);
         registry.registerMaterials();
+        GBlockstateRegistry blockStates = new GBlockstateRegistry("blockstateregistrie");
+        blockStates.registerMaterials();
+        GBlockstateMeta blockMetas = new GBlockstateMeta("blockstatesToMeta");
+        blockMetas.registerMaterials();
         GOreDictRegistry oreDict = new GOreDictRegistry("oredictregistrie");
-        oreDict.registerMaterials(); //needs a lot of work parsing in order to use
+        oreDict.registerMaterials();
         GLiquidRegistry liquids = new GLiquidRegistry("liquidregistrie");
         liquids.registerMaterials();
         GEntityRegistry entities = new GEntityRegistry("entityregistry");
@@ -98,9 +103,9 @@ public class MainMaterials {
         bw.write(data.registerMaterials());
         GMachineMatter matter = new GMachineMatter("matter");
         bw.write(matter.registerMaterials());
-        GMachine machine = new GMachine("machine");
+        GMachine machine = new GMachine("machine", registry, blockMetas);
         machine.registerMaterials();
-        GMachineGroup machineGroup = new GMachineGroup("machineGroup", machine);
+        GMachineGroup machineGroup = new GMachineGroup("machineGroup", machine, registry, blockMetas);
         machineGroup.registerMaterials();
         bw.close();
 

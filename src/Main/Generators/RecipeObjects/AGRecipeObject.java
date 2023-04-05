@@ -3,7 +3,7 @@ package Main.Generators.RecipeObjects;
 import Main.Data.GameData.LiquidRegistry;
 import Main.Data.GameData.OreDict;
 import Main.Data.GameData.Registry;
-import Main.Data.Machine;
+import Main.Data.Machine.Machine;
 import Main.Data.MachineResource.MachineData;
 import Main.Data.MachineResource.MachineMatter;
 import Main.Data.RecipeObject.ARecipeObject;

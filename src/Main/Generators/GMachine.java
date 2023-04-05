@@ -1,21 +1,28 @@
 package Main.Generators;
 
-import Main.Data.Machine;
-import Main.Util;
+import Main.Data.GameData.Other.BlockstateMeta;
+import Main.Data.GameData.Registry;
+import Main.Data.Machine.Machine;
+import Main.Generators.GameData.GRegistry;
+import Main.Generators.GameData.Other.GBlockstateMeta;
 
 import java.io.BufferedReader;
 import java.io.IOException;
 
 public class GMachine extends AGenerator<Machine> {
+    GRegistry registry;
+    GBlockstateMeta blockMetas;
 
-    public GMachine(String filename) {
-        super(10, filename);
+    public GMachine(String filename, GRegistry registry, GBlockstateMeta blockMetas) {
+        super(5, filename);
+        this.registry = registry;
+        this.blockMetas = blockMetas;
     }
 
     @Override
     protected void readLine(BufferedReader br, String[] s) throws IOException {
-        ///machineName, local-Name, hexColor, int minVoltage, boolean isEnergyIn, boolean isEnergyOut,
-        //int itemInputSlotAmount, int itemOutputSlotAmount, int liquidInputAmounts, int liquidOutputAmounts
+        //machineName, local-Name, hexColor, boolean reqBlueprint, int minVoltage
+        String name = s[0];
         String localName = s[1].replace("-", " ");
         String color = s[2];
         if (color.equals("default")) {
@@ -23,39 +30,14 @@ public class GMachine extends AGenerator<Machine> {
         } else {
             color = validateColor(color);
         }
+        boolean reqBlueprint = parseBoolean(s[3]);
+        int minVoltage = parseInt(s[4]);
 
-        int[] itemIns = parseIOArray(Util.split(s[6], ";"), 7);
-        int[] itemOuts = parseIOArray(Util.split(s[7], ";"), 7);
-        int[] liquidIns = parseIOArray(Util.split(s[8], ";"), 8);
-        int[] liquidOuts = parseIOArray(Util.split(s[9], ";"), 8);
-
-        //String name, String localName, String color, int minVoltage,
-        //int itemInputs, int itemOutputs,
-        //int liquidInputs, int liquidOutputs,
-        //boolean hasEnergyInput, boolean hasEnergyOutput
-        objects.add(new Machine(
-                s[0], localName, color, parseInt(s[3]),
-                itemIns, itemOuts,
-                liquidIns, liquidOuts,
-                parseBoolean(s[4]), parseBoolean(s[5])
-        ));
-    }
-
-    //1*1;0*4;0*6;0*9;0*12;0*16;0*32, 1*1;0*4;0*6;0*9;0*12;0*16;0*32, 1*1;0*2;0*4;0*8;0*16;0*32;0*64;8*2147484, 1*1;0*2;0*4;0*8;0*16;0*32;0*64;8*2147484
-    private int[] parseIOArray(String[] io, int size) {
-        if (io.length != size) error("invalid length " + io.length  + " for IO array, expected " + size + " for array: " + Util.getArrayOut(io));
-        int[] out = new int[size];
-        for (int i = 0; i < size; i++) {
-            out[i] = parseIOAmt(io[i]);
-        }
-        return out;
-    }
-
-    private int parseIOAmt(String io) {
-        if (io.contains("*")) {
-            return parseInt(io.substring(0, io.indexOf("*")));
-        } else {
-            return parseInt(io);
-        }
+        Machine machine = new Machine(
+                name, localName, color, minVoltage, reqBlueprint,
+                this.registry.getObjects().toArray(new Registry[0]),
+                this.blockMetas.getObjects().toArray(new BlockstateMeta[0])
+        );
+        objects.add(machine);
     }
 }

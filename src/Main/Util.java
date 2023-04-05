@@ -1,9 +1,10 @@
 package Main;
 
+import org.json.JSONArray;
+import org.json.JSONObject;
+
 import java.awt.*;
-import java.io.BufferedWriter;
-import java.io.FileWriter;
-import java.io.IOException;
+import java.io.*;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
@@ -203,6 +204,27 @@ public class Util {
         return sb.toString();
     }
 
+    //read entire file at path into one string
+    public static String fileToString(String filePath, boolean removeWhitespace, boolean removeNewlines) throws IOException {
+        FileReader fr = new FileReader(filePath);
+        BufferedReader br = new BufferedReader(fr);
+        StringBuilder sb = new StringBuilder();
+        while (true) {
+            String s = br.readLine();
+            if (s == null) break;
+            if (removeWhitespace) s = s.replace(" ", "").replace("\t", "");
+            sb.append(s);
+            if (!removeNewlines) sb.append("\n");
+        }
+        return sb.toString();
+    }
+
+    //jsonObjects
+    public static String[] jsonArrToArray(JSONObject json, String key) {
+        String s = json.getJSONArray(key).toString();
+        return split(s.substring(1, s.length()-1), ",");
+    }
+
     //print array
     public static String printArrayTxt(String[] a) {
         return Arrays.toString(a);
@@ -288,6 +310,13 @@ public class Util {
         int[] out = new int[a.size()];
         for (int i = 0; i < a.size(); i++) {
             out[i] = a.get(i);
+        }
+        return out;
+    }
+    public static int[] toIntArray(String[] a) {
+        int[] out = new int[a.length];
+        for (int i = 0; i < a.length; i++) {
+            out[i] = Integer.parseInt(a[i]);
         }
         return out;
     }

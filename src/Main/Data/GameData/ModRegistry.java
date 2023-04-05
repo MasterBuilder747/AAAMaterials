@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 public class ModRegistry extends AGameData {
     ArrayList<Registry> items;
-    ArrayList <JCategory> jeiCats;
+    ArrayList <JEICategory> jeiCats;
     public ModRegistry(String name, String registryName) {
         super(name, registryName);
         items = new ArrayList<>();
@@ -13,7 +13,7 @@ public class ModRegistry extends AGameData {
     public void addItem(Registry item) {
         this.items.add(item);
     }
-    public void addJEICat(JCategory jeiCat) {
+    public void addJEICat(JEICategory jeiCat) {
         this.jeiCats.add(jeiCat);
     }
 
@@ -34,7 +34,7 @@ public class ModRegistry extends AGameData {
             System.out.println(" No categories");
         } else {
             System.out.println();
-            for (JCategory j : this.jeiCats) {
+            for (JEICategory j : this.jeiCats) {
                 j.print();
             }
         }

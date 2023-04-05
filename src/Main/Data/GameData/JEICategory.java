@@ -1,7 +1,7 @@
 package Main.Data.GameData;
 
-public class JCategory extends AGameData {
-    public JCategory(String name, String registryName) {
+public class JEICategory extends AGameData {
+    public JEICategory(String name, String registryName) {
         super(name, registryName);
     }
 

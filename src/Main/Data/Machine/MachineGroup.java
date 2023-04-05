@@ -1,47 +1,41 @@
-package Main.Data;
+package Main.Data.Machine;
 
+import Main.Data.AData;
+import Main.Data.GameData.Other.BlockstateMeta;
+import Main.Data.GameData.Registry;
 import Main.Util;
 
 public class MachineGroup extends AData {
     String localName;
     String[] colors; //null if default
+    boolean[] reqBlueprints;
     int minVoltage;
-    int[][] itemInputs;
-    int[][] itemOutputs;
-    int[][] liquidInputs;
-    int[][] liquidOutputs;
-    boolean hasEnergyInput;
-    boolean hasEnergyOutput;
+    Registry[] registries;
+    BlockstateMeta[] blockMetas;
 
     public Machine basic;
     public Machine advanced;
     public Machine industrial;
     public Machine ultimate; //cannot be null, every group has at least one ult tier
 
-    //machineName, local-Name, hexColors[], boolean isEnergyIn, boolean isEnergyOut, int minVoltage,
-    //int[][] itemInputAmounts, int[][] itemOutputAmounts, int[][] liquidInputAmounts, int[][] liquidOutputAmounts
-    //array is from least to greatest machine tier
-    public MachineGroup(String name, String localName, String[] colors,
-                        boolean hasEnergyInput, boolean hasEnergyOutput, int minVoltage,
-                        int[][] itemInputs, int[][] itemOutputs,
-                        int[][] liquidInputs, int[][] liquidOutputs
+    //arrays are from least to greatest machine tier
+    public MachineGroup(String name, String localName, String[] colors, boolean[] reqBlueprints, int minVoltage,
+                        Registry[] registries, BlockstateMeta[] blockMetas
     ) {
         super(name);
         this.localName = localName;
         this.colors = colors;
+        this.reqBlueprints = reqBlueprints;
         this.minVoltage = minVoltage;
-        this.itemInputs = itemInputs;
-        this.itemOutputs = itemOutputs;
-        this.liquidInputs = liquidInputs;
-        this.liquidOutputs = liquidOutputs;
-        this.hasEnergyInput = hasEnergyInput;
-        this.hasEnergyOutput = hasEnergyOutput;
+        this.registries = registries;
+        this.blockMetas = blockMetas;
         buildMachines();
     }
     private void buildMachines() {
         int voltage;
         if (minVoltage > 12) voltage = this.minVoltage;
         else voltage = 13;
+
         this.ultimate = createMachine("ultimate", voltage, 3);
 
         if (minVoltage > 8) voltage = this.minVoltage;
@@ -57,15 +51,18 @@ public class MachineGroup extends AData {
 
     @Override
     public String buildMaterial() {
+        if (basic != null) this.basic.buildMaterial();
+        if (advanced != null) this.advanced.buildMaterial();
+        if (industrial != null) this.industrial.buildMaterial();
+        if (ultimate != null) this.ultimate.buildMaterial();
         return null;
     }
 
     private Machine createMachine(String tierName, int voltage, int index) {
         return new Machine(
-                this.NAME+"_"+tierName, Util.toUpper(tierName)+" "+this.localName, this.colors[index], voltage,
-                getTierArr(this.itemInputs, index), getTierArr(this.itemOutputs, index),
-                getTierArr(this.liquidInputs, index), getTierArr(this.liquidOutputs, index),
-                this.hasEnergyInput, this.hasEnergyOutput
+                this.NAME+"_"+tierName, Util.toUpper(tierName)+" "+this.localName,
+                this.colors[index], voltage, this.reqBlueprints[index],
+                this.registries, this.blockMetas
         );
     }
 

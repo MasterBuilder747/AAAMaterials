@@ -1,7 +1,7 @@
 package Main.Data.MachineRecipe;
 
 import Main.Data.AData;
-import Main.Data.Machine;
+import Main.Data.Machine.Machine;
 
 public class CustomMachineRecipe extends AData {
     //generates a set of machine recipes for each machine tier

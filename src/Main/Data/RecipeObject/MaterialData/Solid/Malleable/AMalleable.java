@@ -1,10 +1,9 @@
 package Main.Data.RecipeObject.MaterialData.Solid.Malleable;
 
 import Main.Data.GameData.Registry;
-import Main.Data.Machine;
+import Main.Data.Machine.Machine;
 import Main.Data.MachineResource.MachineData;
 import Main.Data.MachineResource.MachineMatter;
-import Main.Data.PartGroup;
 import Main.Data.RecipeObject.Localized.LPart;
 import Main.Data.RecipeObject.MaterialData.Solid.AMSolid;
 import Main.Data.RecipeObject.MaterialData.Liquid.MLiquid;

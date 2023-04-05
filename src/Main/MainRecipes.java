@@ -2,6 +2,7 @@ package Main;
 
 import Main.Generators.*;
 import Main.Generators.GameData.*;
+import Main.Generators.GameData.Other.GBlockstateMeta;
 import Main.Generators.GameData.Other.GJeiCategory;
 import Main.Generators.GameData.Tinker.GTCMaterialRegistry;
 import Main.Generators.GameData.Tinker.GTCPartRegistry;
@@ -55,6 +56,10 @@ public class MainRecipes {
         jeiC.registerRecipes();
         GRegistry registry = new GRegistry("registry", mods);
         registry.registerRecipes();
+        GBlockstateRegistry blockStates = new GBlockstateRegistry("blockstateregistrie");
+        blockStates.registerRecipes();
+        GBlockstateMeta blockMetas = new GBlockstateMeta("blockstatesToMeta");
+        blockMetas.registerRecipes();
         GOreDictRegistry oreDict = new GOreDictRegistry("oredictregistrie");
         oreDict.registerRecipes(); //needs a lot of work parsing in order to use
         GLiquidRegistry liquids = new GLiquidRegistry("liquidregistrie");
@@ -84,9 +89,9 @@ public class MainRecipes {
         data.registerRecipes();
         GMachineMatter matter = new GMachineMatter("matter");
         matter.registerRecipes();
-        GMachine machine = new GMachine("machine");
+        GMachine machine = new GMachine("machine", registry, blockMetas);
         machine.registerRecipes();
-        GMachineGroup machineGroup = new GMachineGroup("machineGroup", machine);
+        GMachineGroup machineGroup = new GMachineGroup("machineGroup", machine, registry, blockMetas);
         machineGroup.registerRecipes();
 
         StringBuilder sb = new StringBuilder();

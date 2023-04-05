@@ -1,6 +1,6 @@
 package Main.Data.MachineRecipe;
 
-import Main.Data.Machine;
+import Main.Data.Machine.Machine;
 
 public class MachineRecipe extends ARecipe {
     //this adds everything that is needed for a machine recipe

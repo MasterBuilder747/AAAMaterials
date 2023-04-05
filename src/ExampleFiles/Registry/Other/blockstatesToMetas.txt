@@ -1,0 +1,54 @@
+/blockRegistry, int[] metas, blockstateKey, String[] values
+/default metas is 0-values.length
+/put *n to indicate values from 0-n
+//NOTE: you can add more when needed, these are at least required for the API to work with most structures
+//if you use a block in a structure that has metadata and isn't on this list, add it here
+//when adding, look at blockstateregistries.txt (do /tellme dump-csv blockstates-by-state) as a reference, and add all states for that block
+//IMPORTANT: the name of the values (not the keys) that are displayed there are NOT always correct, 
+//you must scan the block that you want to add in-game with the strucutre block and use that property's key's value's name that distinguishes its metadata from its other types
+//ex: modularmachinery has block IO tiers' blockstate property keys that are in all caps on the registry file, but not in the structure file, use those instead
+/minecraft
+/colors
+minecraft:carpet, default, color, white;orange;magenta;light_blue;yellow;lime;pink;gray;silver;cyan;purple;blue;brown;green;red;black
+minecraft:concrete, default, color, white;orange;magenta;light_blue;yellow;lime;pink;gray;silver;cyan;purple;blue;brown;green;red;black
+minecraft:concrete_powder, default, color, white;orange;magenta;light_blue;yellow;lime;pink;gray;silver;cyan;purple;blue;brown;green;red;black
+minecraft:stained_glass, default, color, white;orange;magenta;light_blue;yellow;lime;pink;gray;silver;cyan;purple;blue;brown;green;red;black
+minecraft:stained_glass_pane, default, color, white;orange;magenta;light_blue;yellow;lime;pink;gray;silver;cyan;purple;blue;brown;green;red;black
+minecraft:stained_hardened_clay, default, color, white;orange;magenta;light_blue;yellow;lime;pink;gray;silver;cyan;purple;blue;brown;green;red;black
+minecraft:wool, default, color, white;orange;magenta;light_blue;yellow;lime;pink;gray;silver;cyan;purple;blue;brown;green;red;black
+/woods
+minecraft:leaves, default, variant, oak;spruce;birch;jungle
+minecraft:leaves2, default, variant, acacia;dark_oak
+minecraft:log, default, variant, oak;spruce;birch;jungle
+minecraft:log2, default, variant, acacia;dark_oak
+minecraft:planks, default, variant, oak;spruce;birch;jungle;acacia;dark_oak
+minecraft:sapling, default, type, oak;spruce;birch;jungle;acacia;dark_oak
+minecraft:wooden_slab, default, variant, oak;spruce;birch;jungle;acacia;dark_oak
+/other variants
+minecraft:dirt, default, variant, dirt;coarse_dirt;podzol
+minecraft:double_plant, default, variant, sunflower;syringa;double_grass;double_fern;double_rose;paeonia
+minecraft:prismarine, default, variant, prismarine_bricks;dark_prismarine
+minecraft:quartz_block, default, variant, default;chiseled;lines
+minecraft:sand, default, variant, sand;red_sand
+minecraft:sandstone, default, variant, sandstone;chiseled_sandstone;smooth_sandstone
+minecraft:stone, default, variant, stone;granite;smooth_granite;diorite;smooth_diorite;andesite;smooth_andesite
+minecraft:stone_slab, 0;1;3;4;5;6;7, variant, stone;sandstone;cobblestone;brick;stone_brick;nether_brick;quartz
+minecraft:stonebrick, default, variant, stonebrick;mossy_stonebrick;cracked_stonebrick;chiseled_stonebrick
+/mossy
+minecraft:cobblestone_wall, default, variant, cobblestone;mossy_cobblestone
+minecraft:monster_egg, default, variant, stone;cobblestone;stone_brick;mossy_stone;cracked_brick;chiseled_brick
+/other
+minecraft:anvil, default, damage, *2
+minecraft:red_flower, default, type, poppy;blue_orchid;allium;houstonia;red_tulip;orange_tulip;white_tulip;pink_tulip;oxeye_daisy
+minecraft:red_sandstone, default, type, red_sandstone;chiseled_red_sandstone;smooth_red_sandstone
+minecraft:sponge, default, wet, false;true
+minecraft:tallgrass, 1;2, type, tall_grass;fern
+/
+/modularmachinery
+modularmachinery:blockcasing, default, casing, plain;vent;firebox;gearbox;reinforced;circuitry
+modularmachinery:blockenergyinputhatch, default, size, tiny;small;normal;reinforced;big;huge;ludicrous;ultimate
+modularmachinery:blockenergyoutputhatch, default, size, tiny;small;normal;reinforced;big;huge;ludicrous;ultimate
+modularmachinery:blockfluidinputhatch, default, size, tiny;small;normal;reinforced;big;huge;ludicrous;vacuum
+modularmachinery:blockfluidoutputhatch, default, size, tiny;small;normal;reinforced;big;huge;ludicrous;vacuum
+modularmachinery:blockinputbus, default, size, tiny;small;normal;reinforced;big;huge;ludicrous
+modularmachinery:blockoutputbus, default, size, tiny;small;normal;reinforced;big;huge;ludicrous

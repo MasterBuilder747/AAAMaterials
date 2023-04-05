@@ -1,6 +1,10 @@
 package Main.Generators;
 
-import Main.Data.MachineGroup;
+import Main.Data.GameData.Other.BlockstateMeta;
+import Main.Data.GameData.Registry;
+import Main.Data.Machine.MachineGroup;
+import Main.Generators.GameData.GRegistry;
+import Main.Generators.GameData.Other.GBlockstateMeta;
 import Main.Util;
 
 import java.io.BufferedReader;
@@ -8,28 +12,30 @@ import java.io.IOException;
 
 public class GMachineGroup extends AGenerator<MachineGroup> {
     GMachine machine;
+    GRegistry registry;
+    GBlockstateMeta blockMetas;
 
-    public GMachineGroup(String filename, GMachine machine) {
-        super(10, filename);
+    public GMachineGroup(String filename, GMachine machine, GRegistry registry, GBlockstateMeta blockMetas) {
+        super(5, filename);
         this.machine = machine;
+        this.registry = registry;
+        this.blockMetas = blockMetas;
     }
 
     @Override
     protected void readLine(BufferedReader br, String[] s) throws IOException {
-        //machineName, local-Name, hexColors[], int minVoltage, boolean isEnergyIn, boolean isEnergyOut,
-        //int[][] itemInputAmounts, int[][] itemOutputAmounts, int[][] liquidInputAmounts, int[][] liquidOutputAmounts
+        //machineName, local-Name, hexColors[], boolean[] reqBlueprints, int minVoltage
+        String name = s[0];
         String localName = s[1].replace("-", " ");
-        int minVoltage = parseInt(s[3]);
-        boolean eIn = parseBoolean(s[4]);
-        boolean eOut = parseBoolean(s[5]);
-
+        boolean[] reqBlueprints = parseBoolArray(s[3], ";");
+        int minVoltage = parseInt(s[4]);
         String[] colors = parseColors(minVoltage, s[2]);
-        int[][] iIn = parseIO(s[6], minVoltage, 7);
-        int[][] iOut = parseIO(s[7], minVoltage, 7);
-        int[][] lIn = parseIO(s[8], minVoltage, 8);
-        int[][] lOut = parseIO(s[9], minVoltage, 8);
 
-        MachineGroup mg = new MachineGroup(s[0], localName, colors, eIn, eOut, minVoltage, iIn, iOut, lIn, lOut);
+        MachineGroup mg = new MachineGroup(
+                name, localName, colors, reqBlueprints, minVoltage,
+                this.registry.getObjects().toArray(new Registry[0]),
+                this.blockMetas.getObjects().toArray(new BlockstateMeta[0])
+        );
         objects.add(mg);
         if (mg.basic != null) machine.objects.add(mg.basic);
         if (mg.advanced != null) machine.objects.add(mg.advanced);
@@ -37,10 +43,6 @@ public class GMachineGroup extends AGenerator<MachineGroup> {
         if (mg.ultimate != null) machine.objects.add(mg.ultimate);
     }
 
-    //1:1:1:1*1;0:0:0:0*4;0:0:0:0*6;0:0:0:0*9;0:0:0:0*12;0:0:0:0*16;0:0:0:0*32,
-    //1:1:1:1*1;0:0:0:0*4;0:0:0:0*6;0:0:0:0*9;0:0:0:0*12;0:0:0:0*16;0:0:0:0*32,
-    //1:1:1:1*1;0:0:0:0*2;0:0:0:0*4;0:0:0:0*8;0*16;0:0:0:0*32;0:0:0:0*64;0:0:0:0*2147484,
-    //1:1:1:1*1;0:0:0:0*2;0:0:0:0*4;0:0:0:0*8;0*16;0:0:0:0*32;0:0:0:0*64;0:0:0:0*2147484
     private int[][] parseIO(String ios, int min, int size) {
         String[] ios2 = Util.split(ios, ";");
         if (ios2.length != size) error("invalid array size " + ios2.length + ", expected " + size + " for array " + ios);
@@ -109,7 +111,6 @@ public class GMachineGroup extends AGenerator<MachineGroup> {
         }
         return out;
     }
-
     private boolean validateArrSize(int min, int size) {
         if (min > 0 && min < 5) return size == 4;
         if (min > 4 && min < 9) return size == 3;

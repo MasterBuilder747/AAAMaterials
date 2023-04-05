@@ -1,7 +1,7 @@
 package Main.Data.RecipeObject.MaterialData.Liquid;
 
 import Main.Data.GameData.Registry;
-import Main.Data.Machine;
+import Main.Data.Machine.Machine;
 import Main.Data.MachineResource.MachineData;
 import Main.Data.MachineResource.MachineMatter;
 import Main.Data.RecipeObject.Localized.Liquid.LGas;

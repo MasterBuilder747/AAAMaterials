@@ -9,13 +9,15 @@ public class Registry extends AGameData {
     public String localName;
     public String[] ore; //oreDict(s), could be null if there aren't any
     public String nbt; //nbt data, could be null
+    public boolean isMetaData; //if there is metadata or not (otherwise default is 0)
 
     //fullRegistry = mod:registryName
-    public Registry(String fullRegistry, int meta, String localName) {
+    public Registry(String fullRegistry, int meta, boolean isMetaData, String localName) {
         super(fullRegistry, fullRegistry.substring(fullRegistry.indexOf(":")+1));
         this.mod = fullRegistry.substring(0, fullRegistry.indexOf(":"));
         this.meta = meta;
         this.localName = localName;
+        this.isMetaData = isMetaData;
     }
     //for tinker parts
     public Registry(String fullRegistry, int meta) {
