@@ -1,6 +1,6 @@
 package Main.Generators.MachineResource;
 
-import Main.Data.MachineResource.AMachineResource;
+import Main.Data.Recipe.AMachineResource;
 import Main.Generators.AGenerator;
 
 public abstract class AGMachineResource <R extends AMachineResource> extends AGenerator<R> {

@@ -1,16 +1,16 @@
 package Main.Data.RecipeObject;
 
 import Main.Data.GameData.Registry;
-import Main.Data.MachineRecipe.CustomMachineRecipe;
 import Main.Data.Machine.Machine;
-import Main.Data.MachineResource.MachineData;
-import Main.Data.MachineResource.MachineMatter;
+import Main.Data.Recipe.MachineData;
+import Main.Data.Recipe.MachineMatter;
+import Main.Data.Recipe.MachineRecipe;
 import Main.Data.Tweakers.RecipeTweak;
 import Main.Util;
 
 public class MaterialRecipe extends ARecipeObject {
     //machine recipe that gets automatically added per recipe object
-    CustomMachineRecipe recipe;
+    MachineRecipe recipe;
     String machineName;
 
     public MaterialRecipe(String NAME, String type,
@@ -24,19 +24,20 @@ public class MaterialRecipe extends ARecipeObject {
     }
 
     public void createRecipe(String name, int time, int tier, double powerMultiplier, int priority, String data) {
-        this.recipe = new CustomMachineRecipe(name+Util.toUpper(this.NAME), getMachine(this.machineName), time, tier, powerMultiplier, priority, data);
+        //this.recipe = new MachineRecipe(name+Util.toUpper(this.NAME), getMachine(this.machineName), time, tier, powerMultiplier, priority, data);
     }
     public void updateIO(String[] itemInputs, String[] liquidInputs, String[] itemOutputs, String[] liquidOutputs) {
-        this.recipe.setInputs(itemInputs, liquidInputs);
-        this.recipe.setOutputs(itemOutputs, liquidOutputs);
+        //this.recipe.setInputs(itemInputs, liquidInputs);
+        //this.recipe.setOutputs(itemOutputs, liquidOutputs);
     }
     public void setMachineResources(int chemicalAmount, int dataAmount, String matterIn, String matterOut) {
-        this.recipe.setMachineResources(chemicalAmount, dataAmount, matterIn, matterOut);
+        //this.recipe.setMachineResources(chemicalAmount, dataAmount, matterIn, matterOut);
     }
 
     @Override
     public String buildRecipe() {
-        return this.recipe.buildRecipe();
+        return "";
+        //return this.recipe.buildRecipe();
     }
 
     @Override

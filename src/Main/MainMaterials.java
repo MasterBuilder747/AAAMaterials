@@ -96,16 +96,16 @@ public class MainMaterials {
         //start writing files:
 
         //machines
-        FileWriter fw = new FileWriter(Util.HOME + Util.DEPLOY + "scripts/materials/machine-resources" + ".zs");
+        FileWriter fw = new FileWriter(Util.HOME + Util.DEPLOY + "scripts/materials/machine-resources.zs");
         BufferedWriter bw = new BufferedWriter(fw);
         bw.write(Util.writeHeader("machine resources", -1,900, null, true, null));
         GMachineData data = new GMachineData("data");
         bw.write(data.registerMaterials());
         GMachineMatter matter = new GMachineMatter("matter");
         bw.write(matter.registerMaterials());
-        GMachine machine = new GMachine("machine", registry, blockMetas);
+        GMachine machine = new GMachine("machine", registry, liquids, blockMetas);
         machine.registerMaterials();
-        GMachineGroup machineGroup = new GMachineGroup("machineGroup", machine, registry, blockMetas);
+        GMachineGroup machineGroup = new GMachineGroup("machineGroup", machine, registry, liquids, blockMetas);
         machineGroup.registerMaterials();
         bw.close();
 

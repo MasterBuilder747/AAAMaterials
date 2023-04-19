@@ -10,6 +10,7 @@ public class MachineGroup extends AData {
     String[] colors; //null if default
     boolean[] reqBlueprints;
     int minVoltage;
+    String[] chemicals;
     Registry[] registries;
     BlockstateMeta[] blockMetas;
 
@@ -19,7 +20,7 @@ public class MachineGroup extends AData {
     public Machine ultimate; //cannot be null, every group has at least one ult tier
 
     //arrays are from least to greatest machine tier
-    public MachineGroup(String name, String localName, String[] colors, boolean[] reqBlueprints, int minVoltage,
+    public MachineGroup(String name, String localName, String[] colors, boolean[] reqBlueprints, int minVoltage, String[] chemicals,
                         Registry[] registries, BlockstateMeta[] blockMetas
     ) {
         super(name);
@@ -27,6 +28,7 @@ public class MachineGroup extends AData {
         this.colors = colors;
         this.reqBlueprints = reqBlueprints;
         this.minVoltage = minVoltage;
+        this.chemicals = chemicals;
         this.registries = registries;
         this.blockMetas = blockMetas;
         buildMachines();
@@ -61,7 +63,7 @@ public class MachineGroup extends AData {
     private Machine createMachine(String tierName, int voltage, int index) {
         return new Machine(
                 this.NAME+"_"+tierName, Util.toUpper(tierName)+" "+this.localName,
-                this.colors[index], voltage, this.reqBlueprints[index],
+                this.colors[index], voltage, this.reqBlueprints[index], this.chemicals[index],
                 this.registries, this.blockMetas
         );
     }

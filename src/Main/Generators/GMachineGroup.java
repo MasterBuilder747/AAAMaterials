@@ -3,6 +3,7 @@ package Main.Generators;
 import Main.Data.GameData.Other.BlockstateMeta;
 import Main.Data.GameData.Registry;
 import Main.Data.Machine.MachineGroup;
+import Main.Generators.GameData.GLiquidRegistry;
 import Main.Generators.GameData.GRegistry;
 import Main.Generators.GameData.Other.GBlockstateMeta;
 import Main.Util;
@@ -13,26 +14,34 @@ import java.io.IOException;
 public class GMachineGroup extends AGenerator<MachineGroup> {
     GMachine machine;
     GRegistry registry;
+    GLiquidRegistry liquids;
     GBlockstateMeta blockMetas;
 
-    public GMachineGroup(String filename, GMachine machine, GRegistry registry, GBlockstateMeta blockMetas) {
-        super(5, filename);
+    public GMachineGroup(String filename, GMachine machine, GRegistry registry, GLiquidRegistry liquids, GBlockstateMeta blockMetas) {
+        super(6, filename);
         this.machine = machine;
         this.registry = registry;
+        this.liquids = liquids;
         this.blockMetas = blockMetas;
     }
 
     @Override
     protected void readLine(BufferedReader br, String[] s) throws IOException {
-        //machineName, local-Name, hexColors[], boolean[] reqBlueprints, int minVoltage
+        //machineName, local-Name, hexColors[], boolean[] reqBlueprints, chemicals[], int minVoltage
         String name = s[0];
         String localName = s[1].replace("-", " ");
         boolean[] reqBlueprints = parseBoolArray(s[3], ";");
-        int minVoltage = parseInt(s[4]);
+        String[] chemicals = parseArray(s[4], ";");
+        int minVoltage = parseInt(s[5]);
         String[] colors = parseColors(minVoltage, s[2]);
+        validateArrSize(s[4], minVoltage, chemicals.length);
+        if (minVoltage < 5 && !chemicals[0].equals("none")) error("basic machines do not have a chemical");
+        for (String l : chemicals) {
+            if (!l.equals("none")) this.liquids.get(l);
+        }
 
         MachineGroup mg = new MachineGroup(
-                name, localName, colors, reqBlueprints, minVoltage,
+                name, localName, colors, reqBlueprints, minVoltage, chemicals,
                 this.registry.getObjects().toArray(new Registry[0]),
                 this.blockMetas.getObjects().toArray(new BlockstateMeta[0])
         );
@@ -43,6 +52,7 @@ public class GMachineGroup extends AGenerator<MachineGroup> {
         if (mg.ultimate != null) machine.objects.add(mg.ultimate);
     }
 
+    @Deprecated
     private int[][] parseIO(String ios, int min, int size) {
         String[] ios2 = Util.split(ios, ";");
         if (ios2.length != size) error("invalid array size " + ios2.length + ", expected " + size + " for array " + ios);
@@ -55,7 +65,7 @@ public class GMachineGroup extends AGenerator<MachineGroup> {
             } else {
                 a = parseIntArray(io, ":");
             }
-            if (!validateArrSize(min, a.length)) error("invalid size of array " + io + " for min voltage of " + min);
+            validateArrSize(io, min, a.length);
             int[] out = new int[4];
             switch (a.length) {
                 case 1 -> out[3] = a[0]; //ultimate IO
@@ -89,7 +99,7 @@ public class GMachineGroup extends AGenerator<MachineGroup> {
             out[3] = "ff0000"; //ultimate IO
         } else {
             String[] a = parseColorArray(c, ";");
-            if (!validateArrSize(min, a.length)) error("invalid size of array " + c + " for min voltage of " + min);
+            validateArrSize(c, min, a.length);
             switch (a.length) {
                 case 1 -> out[3] = a[0]; //ultimate IO
                 case 2 -> {
@@ -111,11 +121,13 @@ public class GMachineGroup extends AGenerator<MachineGroup> {
         }
         return out;
     }
-    private boolean validateArrSize(int min, int size) {
-        if (min > 0 && min < 5) return size == 4;
-        if (min > 4 && min < 9) return size == 3;
-        if (min > 8 && min < 13) return size == 2;
-        if (min > 12 && min < 17) return size == 1;
-        return false;
+    private void validateArrSize(String arr, int min, int size) {
+        if (min > 0 && min < 5) if (size != 4) sizeError(arr, min, size);
+        if (min > 4 && min < 9) if (size != 3) sizeError(arr, min, size);
+        if (min > 8 && min < 13) if (size != 2) sizeError(arr, min, size);
+        if (min > 12 && min < 17) if (size != 1) sizeError(arr, min, size);
+    }
+    private void sizeError(String arr, int min, int size) {
+        error("invalid size " + size + " for array " + arr + " of min voltage of " + min);
     }
 }

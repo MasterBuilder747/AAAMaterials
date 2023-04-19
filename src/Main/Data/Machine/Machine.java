@@ -24,21 +24,25 @@ public class Machine extends AData {
     public String localName;
     public String color;
     public boolean reqBlueprint;
-    public int minVoltage;
+    public int voltage;
     //these are inputted
-    public int[] itemInputBlockAmounts; //number of item slots for the machine IO chests
-    public int[] itemOutputBlockAmounts;
+    int[] itemInputBlockAmounts; //number of item slots for the machine IO chests
+    int[] itemOutputBlockAmounts;
     //note that items can split their IO across multiple IOs
-    public int[] liquidInputBlockAmounts; //amount of buckets and how many of the tiers of IO tanks
-    public int[] liquidOutputBlockAmounts;
+    int[] liquidInputBlockAmounts; //amount of buckets and how many of the tiers of IO tanks
+    int[] liquidOutputBlockAmounts;
     //liquids cannot split their IO across tanks automatically (could do it manually via recipes, if a free tank is open)
     //these are calculated
     public int itemInputs; //total number of item stacks. These are 64 each
     public int itemOutputs;
     public int liquidInputs; //total number of liquid IO blocks, they have to be the same size
     public int liquidOutputs;
-    public int energyInTier; //1-8
-    public int energyOutTier; //1-8
+    public int liquidInputMaxSize; //the size of this liquid IO hatch in mB
+    public int liquidOutputMaxSize;
+    int energyInTier; //1-8
+    int energyOutTier; //1-8
+
+    public String chemical; //machine-specific chemical liquid to use (eg. <liquid:NAME>), this is always an input
 
     /*
     IMPORTANT NOTES:
@@ -56,15 +60,16 @@ public class Machine extends AData {
 
     //this is a blueprint for the requirements of some machine, used for recipe validation
     public Machine(
-            String name, String localName, String color, 
-            int minVoltage, boolean reqBlueprint,
+            String name, String localName, String color,
+            int voltage, boolean reqBlueprint, String chemical,
             Registry[] registries, BlockstateMeta[] blockMetas
     ) {
         super(name);
         this.localName = localName;
         this.color = color;
         this.reqBlueprint = reqBlueprint;
-        this.minVoltage = minVoltage;
+        this.chemical = chemical;
+        this.voltage = voltage;
         this.registries = registries;
         this.blockMetas = blockMetas;
         this.itemInputBlockAmounts = new int[7];
@@ -169,16 +174,6 @@ public class Machine extends AData {
         }
         //update the amounts data
         this.updateIOs();
-
-        //TODO:
-        //optionally create block replacements or multiple blocks in one space
-        //add in the recipe block modifiers in the json if needed
-
-        //for recipes: we can do dim, height, weather, etc checking using:
-        //https://github.com/friendlyhj/ModularController/wiki/ModularController-(en_us)
-        //https://docs.blamejared.com/1.12/en/Vanilla/World/IWorld
-        //https://docs.blamejared.com/1.12/en/Vanilla/World/IBlockPos
-        //https://docs.blamejared.com/1.12/en/Vanilla/World/IFacing
 
         //regarding controllers in game:
         //with modular controller, it auto-assembles based off of the controller, not the blueprint!
@@ -319,17 +314,38 @@ public class Machine extends AData {
                 case 6 -> this.itemOutputs += (this.itemOutputBlockAmounts[i] * 32);
             }
         }
-        //8 tiers: 0:tiny-1; 1:small-2; 2:normal-4; 3:reinforced-8; 4:big-16; 5:huge-32; 6:ludicrous-64; 7:vacuum-2147484
-        for (int l : this.liquidInputBlockAmounts) {
-            this.liquidInputs += l;
+        //8 tiers: 0:tiny-1000; 1:small-2000; 2:normal-4000; 3:reinforced-8000; 4:big-16000; 5:huge-32000; 6:ludicrous-64000; 7:vacuum-2147483647
+        //^ these values may change!
+        int lTierCount = 0;
+        int lTier = -1;
+        for (int i = 0; i < this.liquidInputBlockAmounts.length; i++) {
+            if (lTierCount == 0) {
+                int lAmount = this.liquidInputBlockAmounts[i];
+                lTierCount = this.liquidInputs;
+                this.liquidInputs += lAmount;
+                if (lAmount != 0) lTier = i;
+            } else {
+                error("cannot have liquid input hatches with different sizes");
+            }
         }
-        for (int l : this.liquidOutputBlockAmounts) {
-            this.liquidOutputs += l;
+        this.liquidInputMaxSize = getLiquidSize(lTier);
+        lTierCount = 0;
+        for (int i = 0; i < this.liquidOutputBlockAmounts.length; i++) {
+            if (lTierCount == 0) {
+                int lAmount = this.liquidOutputBlockAmounts[i];
+                lTierCount = this.liquidOutputs;
+                this.liquidOutputs += lAmount;
+                if (lAmount != 0) lTier = i;
+            } else {
+                error("cannot have liquid input hatches with different sizes");
+            }
         }
+        this.liquidOutputMaxSize = getLiquidSize(lTier);
+
         //8 tiers, 0: disabled, 1:tiny; 2:small; 3:normal;  4:reinforced;   5:big;  6:huge; 7:ludicrous;    8:ultimate
         //voltage tier:   0;    1-2;    3-4;     5-6        7-8             9-10    11-12   13-14           15-16
         //validate the voltage tier here, since it needs to be inputted by the user
-        if (this.minVoltage == 0) {
+        if (this.voltage == 0) {
             if (this.energyInTier != 0 || this.energyOutTier != 0) {
                 error("A voltage tier of 0 means no energy IO blocks are allowed in the structure");
             }
@@ -338,17 +354,57 @@ public class Machine extends AData {
             if (this.energyInTier == 0 && this.energyOutTier == 0) error("Must have some energy IO block for some non-zero voltage tier");
             if (this.energyInTier != 0) {
                 int energyInTier = this.energyInTier * 2;
-                if (this.minVoltage != energyInTier && this.minVoltage != energyInTier - 1) {
-                    error("Energy input tier of " + this.energyInTier + " does not correspond to the minimum voltage of " + this.minVoltage);
+                if (this.voltage != energyInTier && this.voltage != energyInTier - 1) {
+                    error("Energy input tier of " + this.energyInTier + " does not correspond to the voltage of " + this.voltage);
                 }
             }
             if (this.energyOutTier != 0) {
                 int energyOutTier = this.energyOutTier * 2;
-                if (this.minVoltage != energyOutTier && this.minVoltage != energyOutTier - 1) {
-                    error("Energy output tier of " + this.energyOutTier + " does not correspond to the minimum voltage of " + this.minVoltage);
+                if (this.voltage != energyOutTier && this.voltage != energyOutTier - 1) {
+                    error("Energy output tier of " + this.energyOutTier + " does not correspond to the voltage of " + this.voltage);
                 }
             }
         }
+    }
+
+    private int getLiquidSize(int tier) {
+        //8 tiers: 0:tiny-1000; 1:small-2000; 2:normal-4000; 3:reinforced-8000; 4:big-16000; 5:huge-32000; 6:ludicrous-64000; 7:vacuum-2147483647
+        //^ these values may change!
+        return switch (tier) {
+            case 0 -> 1000;
+            case 1 -> 2000;
+            case 2 -> 4000;
+            case 3 -> 8000;
+            case 4 -> 16000;
+            case 5 -> 32000;
+            case 6 -> 64000;
+            case 7 -> 2147483647;
+            default -> -1;
+        };
+    }
+    public long getMaxVoltage(int tier) {
+        return switch (tier) {
+            case 1  -> 8L;
+            case 2  -> 32L; //tiny
+            case 3  -> 128L;
+            case 4  -> 512L; //small
+            case 5  -> 2048L;
+            case 6  -> 8192L; //normal
+            case 7  -> 32_768L;
+            case 8  -> 131_072L; //reinforced
+            case 9  -> 524_288L;
+            case 10 -> 2_097_152L; //big
+            case 11 -> 8_388_608L;
+            case 12 -> 33_554_432L; //huge
+            case 13 -> 134_217_728L;
+            case 14 -> 536_870_912L; //ludicrous
+            case 15 -> 2_000_000_000L; //or 2.1?
+            case 16 -> 12_884_901_882L; //ultimate
+            default -> 0; //disabled
+        };
+    }
+    public long getMaxVoltage() {
+        return getMaxVoltage(this.voltage);
     }
     
     private void error(String msg) {
@@ -357,7 +413,7 @@ public class Machine extends AData {
 
     @Override
     public void print() {
-        System.out.println(this.localName + ", v: " + this.minVoltage +
+        System.out.println(this.localName + ", v: " + this.voltage +
                 "; ItemIO: intot = " + this.itemInputs + ": " + Util.printArrayTxt(Util.toStringArr(this.itemInputBlockAmounts)) + ", " +
                 "outtot = " + this.itemOutputs + ": " + Util.printArrayTxt(Util.toStringArr(this.itemOutputBlockAmounts)) +
                 "; LiquidIO: intot = " + this.liquidInputs + ": " + Util.printArrayTxt(Util.toStringArr(this.liquidInputBlockAmounts)) + ", " +

@@ -1,6 +1,6 @@
 package Main.Generators.MachineResource;
 
-import Main.Data.MachineResource.MachineData;
+import Main.Data.Recipe.MachineData;
 
 import java.io.BufferedReader;
 import java.io.IOException;

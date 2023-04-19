@@ -1,4 +1,4 @@
-package Main.Data.MachineResource;
+package Main.Data.Recipe;
 
 import Main.Data.RecipeObject.Localized.Liquid.ALiquid;
 
@@ -15,8 +15,14 @@ public class MachineMatter extends AMachineResource {
     public String getPos() {
         return this.pos.getBracket();
     }
+    public String getPosName() {
+        return this.pos.NAME;
+    }
     public String getNeg() {
         return this.neg.getBracket();
+    }
+    public String getNegName() {
+        return this.neg.NAME;
     }
 
     @Override

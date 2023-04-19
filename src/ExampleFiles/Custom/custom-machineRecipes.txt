@@ -1,0 +1,18 @@
+//this now adds one custom recipe, it is up to the user to ensure that machine resources are used, this is NOT checked!
+//0-3: machine, int inputVoltageTier*double powerMultiplier(from 0 to 1);outputVoltageTier*outputMultiplier, int timeInTicks, int priority,
+//4-7: itemIns[], liquidIns[], itemOuts[], liquidOuts[]
+//a voltage tier of 0 means no energy io
+//[]means semicolon(;) separated strings
+//put NONE for any IO if there are no ios
+//item IOs:
+//12.5%#ingotIron*10 //finds the first entry in the oredict registry
+//12.5%@Iron-Ingot*10 //finds the first mod's first item that has this localized name, no meta
+//12.5%@minecraft:Iron-Ingot*10 //meta not needed, - for space in localizedName
+//12.5%minecraft:iron_ingot*10 //meta 0
+//12.5%minecraft:wool:2*10
+//liquid IOs:
+//5.5%water*1000
+//10.3%&CHEM*60 //the machine-specific chemical, must put &CHEM
+//10.3%$data*60 //data liquid name
+//10.3%[-/+]red*60 //matter's liquid name
+/basic, 1*0.5;0*0, 20, 0, 5%#ingotIron*10;@Yellow-Wool, &CHEM*60, NONE, 10%-red*100

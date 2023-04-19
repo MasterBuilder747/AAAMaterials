@@ -1,3 +1,4 @@
-/colorName, localizedColorName, hexColor
+/liquidName, localizedColorName, hexColor
 /see data object for hardcoded liquid attributes
-/ex: white, White, ffffff
+/positive and negative liquids are automatically registered for each
+/white, White, ffffff

@@ -1,4 +1,4 @@
-package Main.Data.MachineResource;
+package Main.Data.Recipe;
 
 import Main.Data.RecipeObject.Localized.Liquid.LLiquid;
 
@@ -20,6 +20,9 @@ public class MachineData extends AMachineResource {
 
     public String getData() {
         return this.data.getBracket();
+    }
+    public String getDataName() {
+        return this.data.NAME;
     }
 
     @Override

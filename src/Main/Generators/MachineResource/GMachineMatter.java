@@ -1,7 +1,7 @@
 package Main.Generators.MachineResource;
 
 import Main.Data.RecipeObject.Localized.Liquid.LPlasma;
-import Main.Data.MachineResource.MachineMatter;
+import Main.Data.Recipe.MachineMatter;
 
 import java.io.BufferedReader;
 import java.io.IOException;

@@ -245,12 +245,30 @@ public abstract class AGenerator<D extends AData> {
         }
         return out;
     }
+    protected long parseLong(String s) {
+        long out = 0;
+        try {
+            out = Long.parseLong(s);
+        } catch (NumberFormatException e) {
+            this.paramError(s, "long");
+        }
+        return out;
+    }
     protected double parseDouble(String s) {
         double out = 0;
         try {
             out = Double.parseDouble(s);
         } catch (NumberFormatException e) {
             this.paramError(s, "double");
+        }
+        return out;
+    }
+    protected float parseFloat(String s) {
+        float out = 0;
+        try {
+            out = Float.parseFloat(s);
+        } catch (NumberFormatException e) {
+            this.paramError(s, "float");
         }
         return out;
     }

@@ -89,12 +89,16 @@ public class MainRecipes {
         data.registerRecipes();
         GMachineMatter matter = new GMachineMatter("matter");
         matter.registerRecipes();
-        GMachine machine = new GMachine("machine", registry, blockMetas);
+        GMachine machine = new GMachine("machine", registry, liquids, blockMetas);
         machine.registerRecipes();
-        GMachineGroup machineGroup = new GMachineGroup("machineGroup", machine, registry, blockMetas);
+        GMachineGroup machineGroup = new GMachineGroup("machineGroup", machine, registry, liquids, blockMetas);
         machineGroup.registerRecipes();
 
         StringBuilder sb = new StringBuilder();
+        //custom machine recipes, only used in MainRecipes
+        GCustomMachineRecipe machineRecipe = new GCustomMachineRecipe("machineRecipe", registry, liquids, oreDict, machine, data, matter);
+        sb.append(machineRecipe.registerRecipes());
+
         //RecipeTweakers
         GRecipeTweak tweak = new GRecipeTweak("recipeobjectstotweak");
         tweak.registerRecipes();
@@ -171,10 +175,6 @@ public class MainRecipes {
         sb.append(ore.registerRecipes());
         GOreVein veins = new GOreVein("oreVein", ore, dimension, biomes);
         veins.registerRecipes();
-
-        //custom machine recipes, only used in MainRecipes
-        GMachineRecipe recipe = new GMachineRecipe("recipe", registry, liquids, oreDict, machine, data, matter);
-        sb.append(recipe.registerRecipes());
 
         //HARDCODED MACHINE RESOURCE RECIPES GO HERE (don't repeat it)
         String initialCode = "";

@@ -1,8 +1,8 @@
 package Main.Data.RecipeObject.MaterialData.Solid;
 
 import Main.Data.Machine.Machine;
-import Main.Data.MachineResource.MachineData;
-import Main.Data.MachineResource.MachineMatter;
+import Main.Data.Recipe.MachineData;
+import Main.Data.Recipe.MachineMatter;
 import Main.Data.Material;
 import Main.Data.RecipeObject.MaterialData.OreVariant;
 import Main.Data.GameData.Registry;

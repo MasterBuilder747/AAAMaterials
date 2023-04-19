@@ -1,4 +1,5 @@
-//machineName, local-Name, hexColors[], boolean[] reqBlueprints, int minVoltage
+//machineName, local-Name, hexColors[], boolean[] reqBlueprints, chemicals[], int minVoltage
+//put none for each chemical that isn't needed (basic tier does not need chemical, is always none)
 //arrays are from least to greatest machine tier (basic, advanced, industrial, ultimate)
 //use default for hexColor to use machine colors
-machine, Test-Machine, default, true;true;true;true, 1
+machine, Test-Machine, default, true;true;true;true, none;none;none;none, 1

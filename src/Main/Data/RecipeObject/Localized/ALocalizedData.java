@@ -2,8 +2,8 @@ package Main.Data.RecipeObject.Localized;
 
 import Main.Data.GameData.Registry;
 import Main.Data.Machine.Machine;
-import Main.Data.MachineResource.MachineData;
-import Main.Data.MachineResource.MachineMatter;
+import Main.Data.Recipe.MachineData;
+import Main.Data.Recipe.MachineMatter;
 import Main.Data.RecipeObject.ARecipeObject;
 import Main.Data.Tweakers.RecipeTweak;
 
