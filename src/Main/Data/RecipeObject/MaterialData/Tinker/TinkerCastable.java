@@ -12,16 +12,21 @@ public class TinkerCastable extends ATinkers {
     double meltingMultiplier;
 
     public TinkerCastable(
-            RecipeTweak tweak, Registry[] items, String[] liquids, String[] ores,
-            Machine[] machines, MachineMatter[] matters, MachineData data,
+            RecipeTweak tweak, int minVoltage, double powerMultiplierIn, double powerMultiplierOut,
+            int baseTime, double[] tickDecMultipliers,
+            Registry[] items, String[] liquids, String[] ores,
+            Machine[] machines, MachineMatter[] matters, MachineData[] datas,
             Material m,
             boolean craftable, boolean castable, String icon, String oreDict, TCPart[] parts,
-            String molten, double meltingMultiplier) {
-        super(
-            tweak, items, liquids, ores,
-            machines, matters, data,
-            m,
-            craftable, castable, icon, oreDict, parts
+            String molten, double meltingMultiplier
+    ) {
+        super("TinkerCastable",
+                tweak, minVoltage, powerMultiplierIn, powerMultiplierOut,
+                baseTime, tickDecMultipliers,
+                items, liquids, ores,
+                machines, matters, datas,
+                m,
+                craftable, castable, icon, oreDict, parts
         );
         this.molten = molten;
         this.meltingMultiplier = meltingMultiplier;
@@ -41,6 +46,7 @@ public class TinkerCastable extends ATinkers {
         //melting of TiC parts into the appropriate molten liquid amount
         int i = 0;
         for (TCPart p : tcParts) {
+            /*
             sb.append(
                 addRecipe(
                     i, "melting", 1, (int)(p.amount * 60), 0.5,
@@ -50,6 +56,8 @@ public class TinkerCastable extends ATinkers {
                 )
             );
             i++;
+
+             */
         }
         //casting
         //machine

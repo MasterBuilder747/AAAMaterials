@@ -43,13 +43,13 @@ public class CompoundComposition extends AChemicalComposition {
     String subType; //more characterization for recipes
 
     public CompoundComposition(RecipeTweak tweak, Registry[] items, String[] liquids, String[] ores,
-                               Machine[] machines, MachineMatter[] matters, MachineData data,
+                               Machine[] machines, MachineMatter[] matters, MachineData[] datas,
                                Material m,
                                Composition c, String compType, int charge, boolean isDefault,
                                String subType, boolean isMixing, boolean isCentrifuge, boolean isChemReact, boolean isElectrolyze) {
         super("CompoundComposition",
                 tweak, items, liquids, ores,
-                machines, matters, data,
+                machines, matters, datas,
                 m,
                 c, compType, charge, isDefault, false);
         this.subType = subType;
@@ -75,13 +75,9 @@ public class CompoundComposition extends AChemicalComposition {
         //this.m.getComp().getCComp().printIngredients();
     }
 
+    //compositions do not support recipes as they do not add any material parts
     @Override
     public String buildMaterial() {
-        return null;
-    }
-
-    @Override
-    protected String buildSpecificRecipe() {
         return null;
     }
 }

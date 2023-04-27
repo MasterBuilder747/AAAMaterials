@@ -15,11 +15,14 @@ public abstract class ALocalizedData extends ARecipeObject {
 
     public ALocalizedData(String NAME, String type,
                           RecipeTweak tweak, Registry[] items, String[] liquids, String[] ores,
-                          Machine[] machines, MachineMatter[] matters, MachineData data,
+                          Machine[] machines, MachineMatter[] matters, MachineData[] datas,
                           String localName) {
+        //this does not use the new recipe system's tweakers, instead put reasonable defaults in case we do for now
         super(NAME, type,
-                tweak, items, liquids, ores,
-                machines, matters, data);
+                tweak, 1, 1, 1,
+                20, new double[]{0.05, 0.05, 0.05, 0.05, 0.05, 0.05, 0.05, 0.05, 0.05, 0.05, 0.05, 0.052, 0.054, 0.055, 0.06},
+                items, liquids, ores,
+                machines, matters, datas);
         this.localName = localName;
     }
 

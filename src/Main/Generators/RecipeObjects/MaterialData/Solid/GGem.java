@@ -29,9 +29,13 @@ public class GGem extends AGMSolid<Gem>{
     }
 
     @Override
-    protected void readSolidParameters(Material m, String[] s, MSolid solid, RegistryData[] exclusions) {
+    protected void readSolidParameters(int minVoltage, double inMultiplier, double outMultiplier, int baseTime, double[] tickDecMulti,
+                                       Material m, String[] s, MSolid solid, RegistryData[] exclusions) {
         Gem g = new Gem(
-                getRecipeTweak("Gem"), getItems(), getLiquids(), getOres(),
+                getRecipeTweak("Gem"),
+                minVoltage, inMultiplier, outMultiplier,
+                baseTime, tickDecMulti,
+                getItems(), getLiquids(), getOres(),
                 getMachineRegistry(), getMatterRegistry(), getDataRegistry(),
                 m);
         g.setPartGroupTrue(exclusions, genPartGroup("gem"));

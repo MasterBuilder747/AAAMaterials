@@ -100,7 +100,7 @@ public class MainRecipes {
         sb.append(machineRecipe.registerRecipes());
 
         //RecipeTweakers
-        GRecipeTweak tweak = new GRecipeTweak("recipeobjectstotweak");
+        GRecipeTweak tweak = new GRecipeTweak("recipeobjectstotweak", machine);
         tweak.registerRecipes();
 
         //custom content not using the material system

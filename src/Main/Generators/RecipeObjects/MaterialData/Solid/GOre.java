@@ -35,7 +35,7 @@ public class GOre extends AGMSolid<Ore> {
                 GMaterial material, GPartGroup partGroup,
                 GMSolid solid,
                 GStone stones) {
-        super(-2, filename, isReg,
+        super(5, filename, isReg,
                 tweak, registry, liquids, ores,
                 machine, matter, data,
                 material, partGroup,
@@ -44,7 +44,8 @@ public class GOre extends AGMSolid<Ore> {
     }
 
     @Override
-    protected void readSolidParameters(Material m, String[] s, MSolid solid, RegistryData[] exclusions) {
+    protected void readSolidParameters(int minVoltage, double inMultiplier, double outMultiplier, int baseTime, double[] tickDecMulti,
+                                       Material m, String[] s, MSolid solid, RegistryData[] exclusions) {
         //material, enableGen,
         //stone: poor; 4; 6; 2: ore; 4; 6; 2: dense; 4; 9; 2,
         //nether: poor; 4; 6; 2: ore; 4; 6; 2: dense; 4; 9; 2,
@@ -53,7 +54,10 @@ public class GOre extends AGMSolid<Ore> {
 
         //configure ore gen here
         Ore o = new Ore(
-                getRecipeTweak("Ore"), getItems(), getLiquids(), getOres(),
+                getRecipeTweak("Ore"),
+                minVoltage, inMultiplier, outMultiplier,
+                baseTime, tickDecMulti,
+                getItems(), getLiquids(), getOres(),
                 getMachineRegistry(), getMatterRegistry(), getDataRegistry(),
                 m,
                 Boolean.parseBoolean(s[0])
@@ -114,7 +118,10 @@ public class GOre extends AGMSolid<Ore> {
             }
             //create oreVariant to be added to ore
             OreVariant ov = new OreVariant(
-                    getRecipeTweak("OreVariant"), getItems(), getLiquids(), getOres(),
+                    getRecipeTweak("OreVariant"),
+                    minVoltage, inMultiplier, outMultiplier,
+                    baseTime, tickDecMulti,
+                    getItems(), getLiquids(), getOres(),
                     getMachineRegistry(), getMatterRegistry(), getDataRegistry(),
                     m,
                     block, types.toArray(new OreType[0]), this.partGroup.getPart("ore")

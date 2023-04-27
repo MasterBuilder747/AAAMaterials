@@ -9,13 +9,17 @@ import Main.Data.Material;
 import Main.Data.Tweakers.RecipeTweak;
 
 public class MGas extends AMLiquid {
-    public MGas(RecipeTweak tweak, Registry[] items, String[] liquids, String[] ores,
-                Machine[] machines, MachineMatter[] matters, MachineData data,
+    public MGas(RecipeTweak tweak, int minVoltage, double powerMultiplierIn, double powerMultiplierOut,
+                int baseTime, double[] tickDecMultipliers,
+                Registry[] items, String[] liquids, String[] ores,
+                Machine[] machines, MachineMatter[] matters, MachineData[] datas,
                 Material m,
                 int density, int luminosity, int temperature, int viscosity, boolean vaporize) {
         super("mGas",
-                tweak, items, liquids, ores,
-                machines, matters, data,
+                tweak, minVoltage, powerMultiplierIn, powerMultiplierOut,
+                baseTime, tickDecMultipliers,
+                items, liquids, ores,
+                machines, matters, datas,
                 m);
         switch(m.state) {
             case "solid" -> this.key = "gas";
@@ -25,7 +29,7 @@ public class MGas extends AMLiquid {
         this.l = new LGas(
                 m.NAME +"_gas",
                 tweak, items, liquids, ores,
-                machines, matters, data,
+                machines, matters, datas,
                 m.LOCALNAME+" Gas",
                 m.color, true, vaporize,
                 density, luminosity, temperature, viscosity

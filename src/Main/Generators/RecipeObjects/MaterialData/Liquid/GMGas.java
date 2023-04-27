@@ -25,10 +25,14 @@ public class GMGas extends AGMLiquid<MGas> {
     }
 
     @Override
-    protected void readMaterialParameters(Material m, String[] s, RegistryData[] exclusions) {
+    protected void readMaterialParameters(int minVoltage, double inMultiplier, double outMultiplier, int baseTime, double[] tickDecMulti,
+                                          Material m, String[] s, RegistryData[] exclusions) {
         //String key, int density, int luminosity, int temperature, int viscosity, boolean vaporize
         MGas gas = new MGas(
-                getRecipeTweak("MGas"), getItems(), getLiquids(), getOres(),
+                getRecipeTweak("MGas"),
+                minVoltage, inMultiplier, outMultiplier,
+                baseTime, tickDecMulti,
+                getItems(), getLiquids(), getOres(),
                 getMachineRegistry(), getMatterRegistry(), getDataRegistry(),
                 m,
                 Integer.parseInt(s[0]), Integer.parseInt(s[1]), Integer.parseInt(s[2]), Integer.parseInt(s[3]),

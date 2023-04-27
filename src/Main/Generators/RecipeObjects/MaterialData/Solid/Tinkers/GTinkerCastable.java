@@ -50,7 +50,8 @@ public class GTinkerCastable extends AGTinkers<TinkerCastable> {
     }
 
     @Override
-    protected TinkerCastable readTinkerParameters(Material m, String[] s, RegistryData[] exclusions) {
+    protected TinkerCastable readTinkerParameters(int minVoltage, double inMultiplier, double outMultiplier, int baseTime, double[] tickDecMulti,
+                                                  Material m, String[] s, RegistryData[] exclusions) {
         //check if material is a malleable, must check each child registry of AGMalleable
         Alloy a = alloy.getNoError(m.NAME);
         Metal mm = null;
@@ -89,7 +90,10 @@ public class GTinkerCastable extends AGTinkers<TinkerCastable> {
         boolean isCasting = parseBoolean(s[0]);
         String ore = s[1];
         return new TinkerCastable(
-                getRecipeTweak("TinkerCastable"), getItems(), getLiquids(), getOres(),
+                getRecipeTweak("TinkerCastable"),
+                minVoltage, inMultiplier, outMultiplier,
+                baseTime, tickDecMulti,
+                getItems(), getLiquids(), getOres(),
                 getMachineRegistry(), getMatterRegistry(), getDataRegistry(),
                 m,
                 false, isCasting, ore, ore, parts.getPartRegistry(),

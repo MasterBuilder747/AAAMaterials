@@ -22,13 +22,17 @@ public class OreVariant extends AMaterialData {
     PartGroup oreParts;
     Stone[] stones;
 
-    public OreVariant(RecipeTweak tweak, Registry[] items, String[] liquids, String[] ores,
-                      Machine[] machines, MachineMatter[] matters, MachineData data,
+    public OreVariant(RecipeTweak tweak, int minVoltage, double powerMultiplierIn, double powerMultiplierOut,
+                      int baseTime, double[] tickDecMultipliers,
+                      Registry[] items, String[] liquids, String[] ores,
+                      Machine[] machines, MachineMatter[] matters, MachineData[] datas,
                       Material m,
                       String block, OreType[] oreTypes, PartGroup oreParts) {
         super("OreVariant",
-                tweak, items, liquids, ores,
-                machines, matters, data,
+                tweak, minVoltage, powerMultiplierIn, powerMultiplierOut,
+                baseTime, tickDecMultipliers,
+                items, liquids, ores,
+                machines, matters, datas,
                 m);
         this.block = block;
         this.oreTypes = oreTypes;
@@ -77,7 +81,7 @@ public class OreVariant extends AMaterialData {
         if (this.block.equals("stone")) {
             if (this.stones == null) error("stones is null for material " + this.m.NAME);
             for (Stone s : this.stones) {
-                if (!s.type.equals("vanilla") && !s.type.equals("custom")) {
+                if (!s.stoneType.equals("vanilla") && !s.stoneType.equals("custom")) {
                     this.addRegistryData(s.NAME + "ore", this.getItemRegistry(Util.toUpper(s.NAME) + " " + Util.toUpper(this.NAME) + " Ore"));
                     this.addRegistryData(s.NAME + "poor", this.getItemRegistry(Util.toUpper(s.NAME) + " Poor " + Util.toUpper(this.NAME) + " Ore"));
                     this.addRegistryData(s.NAME + "dense", this.getItemRegistry(Util.toUpper(s.NAME) + " Dense " + Util.toUpper(this.NAME) + " Ore"));
@@ -93,6 +97,7 @@ public class OreVariant extends AMaterialData {
         if (this.block.equals("stone")) {
             //printNames();
             StringBuilder sb = new StringBuilder();
+            /*
             if (this.tweak != null) {
                 String[] recipes = this.tweak.getRecipes();
                 for (int i = 0; i < recipes.length; i++) {
@@ -102,9 +107,7 @@ public class OreVariant extends AMaterialData {
                     for (Stone s : this.stones) {
                         //can add custom parameters if needed
                         sb.append(addRecipe(
-                            i, p[0], parseInt(p[1]), parseInt(p[2]), parseDouble(p[3]),
-                            p[4], p[5], parseInt(p[6]), parseInt(p[7]),
-                            getStoneData(p[8], s), getStoneData(p[9], s), getStoneData(p[10], s), getStoneData(p[11], s),
+                            i,
                             "tweaker"+j
                         ));
                         j++;
@@ -112,6 +115,8 @@ public class OreVariant extends AMaterialData {
                 }
                 return sb.toString();
             }
+
+             */
         }
         return null;
     }

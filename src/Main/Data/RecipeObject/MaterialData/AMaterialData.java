@@ -25,12 +25,17 @@ public abstract class AMaterialData extends ARecipeObject {
     public ArrayList<PartGroup> enabledPartGroups; //each partGroup that is enabled for this material
 
     public AMaterialData(String type,
-                         RecipeTweak tweak, Registry[] items, String[] liquids, String[] ores,
-                         Machine[] machines, MachineMatter[] matters, MachineData data,
+                         RecipeTweak tweak, int minVoltage, double powerMultiplierIn, double powerMultiplierOut,
+                         int baseTime, double[] tickDecMultipliers,
+                         Registry[] items, String[] liquids, String[] ores,
+                         Machine[] machines, MachineMatter[] matters, MachineData[] datas,
                          Material m) {
         super(m.NAME, type,
-                tweak, items, liquids, ores,
-                machines, matters, data);
+                tweak, minVoltage, powerMultiplierIn, powerMultiplierOut,
+                baseTime, tickDecMultipliers,
+                items, liquids, ores,
+                machines, matters, datas
+        );
         this.m = m;
         this.partRegistryNames = new ArrayList<>();
         this.enabledPartGroups = new ArrayList<>();

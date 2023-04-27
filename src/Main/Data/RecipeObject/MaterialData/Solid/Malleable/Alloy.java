@@ -10,13 +10,17 @@ import Main.Data.Tweakers.RecipeTweak;
 
 //data > material > malleable > alloy
 public class Alloy extends AMalleable {
-    public Alloy(RecipeTweak tweak, RecipeTweak aTweak, Registry[] items, String[] liquids, String[] ores,
-                 Machine[] machines, MachineMatter[] matters, MachineData data,
+    public Alloy(RecipeTweak tweak, int minVoltage, double powerMultiplierIn, double powerMultiplierOut,
+                 int baseTime, double[] tickDecMultipliers,
+                 Registry[] items, String[] liquids, String[] ores,
+                 Machine[] machines, MachineMatter[] matters, MachineData[] datas,
                  Material m,
                  MLiquid molten) {
         super("Alloy",
-                tweak, aTweak, items, liquids, ores,
-                machines, matters, data,
+                tweak, minVoltage, powerMultiplierIn, powerMultiplierOut,
+                baseTime, tickDecMultipliers,
+                items, liquids, ores,
+                machines, matters, datas,
                 m,
                 molten, 1);
     }

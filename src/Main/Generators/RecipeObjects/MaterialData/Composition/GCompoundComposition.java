@@ -18,6 +18,7 @@ import Main.Generators.Tweakers.GRecipeTweak;
 import Main.Replacement;
 import Main.Util;
 
+import java.io.BufferedReader;
 import java.lang.reflect.Array;
 import java.util.ArrayList;
 
@@ -38,7 +39,7 @@ public class GCompoundComposition extends AGChemicalComposition<CompoundComposit
     }
 
     @Override
-    protected void readMaterialParameters(Material m, String[] s, RegistryData[] exclusions) {
+    protected void readChemCompParameters(Material m, String[] s) {
         //material,
         //Composition,type,subtype,charge_override,isDefault,
         //isMixing,isCentrifuge,isChemReact,isElectrolyze

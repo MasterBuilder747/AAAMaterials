@@ -11,13 +11,17 @@ import Main.Data.Tweakers.RecipeTweak;
 //data > material > malleable > metal
 public class Metal extends AMalleable {
     //this is a malleable metal, which means that it can be molded into different metal parts
-    public Metal(RecipeTweak tweak, RecipeTweak aTweak, Registry[] items, String[] liquids, String[] ores,
-                 Machine[] machines, MachineMatter[] matters, MachineData data,
+    public Metal(RecipeTweak tweak, int minVoltage, double powerMultiplierIn, double powerMultiplierOut,
+                 int baseTime, double[] tickDecMultipliers,
+                 Registry[] items, String[] liquids, String[] ores,
+                 Machine[] machines, MachineMatter[] matters, MachineData[] datas,
                  Material m,
                  MLiquid molten) {
         super("Metal",
-                tweak, aTweak, items, liquids, ores,
-                machines, matters, data,
+                tweak, minVoltage, powerMultiplierIn, powerMultiplierOut,
+                baseTime, tickDecMultipliers,
+                items, liquids, ores,
+                machines, matters, datas,
                 m,
                 molten, 1);
     }

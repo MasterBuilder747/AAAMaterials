@@ -30,12 +30,16 @@ public class GTinkerCraftable extends AGTinkers<TinkerCraftable> {
     }
 
     @Override
-    protected TinkerCraftable readTinkerParameters(Material m, String[] s, RegistryData[] exclusions) {
+    protected TinkerCraftable readTinkerParameters(int minVoltage, double inMultiplier, double outMultiplier, int baseTime, double[] tickDecMulti,
+                                                   Material m, String[] s, RegistryData[] exclusions) {
         //material, bool addAutomaticCraftingRecipes, icon/oreDict(not including material, eg: ingot = ingotOsmium),
         boolean isCrafting = parseBoolean(s[0]);
         String ore = s[1];
         return new TinkerCraftable(
-                getRecipeTweak("TinkerCraftable"), getItems(), getLiquids(), getOres(),
+                getRecipeTweak("TinkerCraftable"),
+                minVoltage, inMultiplier, outMultiplier,
+                baseTime, tickDecMulti,
+                getItems(), getLiquids(), getOres(),
                 getMachineRegistry(), getMatterRegistry(), getDataRegistry(),
                 m,
                 isCrafting, ore, ore, parts.getPartRegistry()

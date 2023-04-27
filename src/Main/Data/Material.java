@@ -4,7 +4,6 @@ import Main.Data.GameData.LiquidRegistry;
 import Main.Data.GameData.Registry;
 import Main.Data.RecipeObject.LiquidRegistryData;
 import Main.Data.RecipeObject.Localized.LFood;
-import Main.Data.RecipeObject.MaterialData.*;
 import Main.Data.RecipeObject.MaterialData.Composition.AChemicalComposition;
 import Main.Data.RecipeObject.MaterialData.Liquid.*;
 import Main.Data.Recipe.MachineData;
@@ -39,7 +38,7 @@ public class Material extends AData {
     AChemicalComposition comp; //Chemical tooltip, breaking and forming composition recipes, if it has one
 
     //states
-    MSolid MSolid;
+    Main.Data.RecipeObject.MaterialData.MSolid MSolid;
     MLiquid liquid; //standalone liquid (usually chemical), may allow changing of state (if not default state)
     MGas gas; //standalone gas (usually chemical), may allow changing of state (if not default state)
     MPlasma plasma; //standalone gas (usually chemical), may allow changing of state (usually made in fusion)

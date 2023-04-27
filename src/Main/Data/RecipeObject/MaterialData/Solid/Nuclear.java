@@ -20,13 +20,17 @@ public class Nuclear extends AMSolid {
 
     //material, atomic num, isotopeNum, isIsomer, isIsotope, abund (-1=trace; -10=syn), half life (d), half life (y), mode(s), product(s) (most to least common decay)
     //uranium, 92, 238, false, false, 0.99274, 1.63194E+12, 4.46800E+09, sf;a;2b-, ;Th-234;Pu-238
-    public Nuclear(RecipeTweak tweak, Registry[] items, String[] liquids, String[] ores,
-                   Machine[] machines, MachineMatter[] matters, MachineData data,
+    public Nuclear(RecipeTweak tweak, int minVoltage, double powerMultiplierIn, double powerMultiplierOut,
+                   int baseTime, double[] tickDecMultipliers,
+                   Registry[] items, String[] liquids, String[] ores,
+                   Machine[] machines, MachineMatter[] matters, MachineData[] datas,
                    Material m,
                    int atomicNum, int isotopeNum, boolean isIsomer, boolean isIsotope, double abundance, EDecimal halfLife) {
         super("Nuclear",
-                tweak, items, liquids, ores,
-                machines, matters, data,
+                tweak, minVoltage, powerMultiplierIn, powerMultiplierOut,
+                baseTime, tickDecMultipliers,
+                items, liquids, ores,
+                machines, matters, datas,
                 m);
         this.atomicNum = atomicNum;
         this.isotopeNum = isotopeNum;

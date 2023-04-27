@@ -9,13 +9,17 @@ import Main.Data.Material;
 import Main.Data.Tweakers.RecipeTweak;
 
 public class MLiquid extends AMLiquid {
-    public MLiquid(RecipeTweak tweak, Registry[] items, String[] liquids, String[] ores,
-                   Machine[] machines, MachineMatter[] matters, MachineData data,
+    public MLiquid(RecipeTweak tweak, int minVoltage, double powerMultiplierIn, double powerMultiplierOut,
+                   int baseTime, double[] tickDecMultipliers,
+                   Registry[] items, String[] liquids, String[] ores,
+                   Machine[] machines, MachineMatter[] matters, MachineData[] datas,
                    Material m,
                    int density, int luminosity, int temperature, int viscosity, boolean vaporize) {
         super("MLiquid",
-                tweak, items, liquids, ores,
-                machines, matters, data,
+                tweak, minVoltage, powerMultiplierIn, powerMultiplierOut,
+                baseTime, tickDecMultipliers,
+                items, liquids, ores,
+                machines, matters, datas,
                 m);
         switch(m.state) {
             case "solid" -> this.key = "molten";
@@ -36,7 +40,7 @@ public class MLiquid extends AMLiquid {
         this.l = new LMolten(
                 name,
                 tweak, items, liquids, ores,
-                machines, matters, data,
+                machines, matters, datas,
                 localName,
                 m.color, true, vaporize,
                 density, luminosity, temperature, viscosity);

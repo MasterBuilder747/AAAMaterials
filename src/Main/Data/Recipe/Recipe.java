@@ -387,5 +387,17 @@ public class Recipe extends AData {
         return null;
     }
     @Override
-    public void print() {}
+    public void print() {
+        System.out.println(this.NAME + ", " + this.machine.NAME + ", " + this.time + "t, priority " + this.priority);
+        System.out.println("Energy in: " + this.energyIn);
+        System.out.println("Energy out " + this.energyOut);
+        System.out.println("Item Inputs:");
+        for (String s : this.itemInputs) System.out.println(s);
+        System.out.println("Liquid Inputs:");
+        for (String s : this.liquidInputs) System.out.println(s);
+        System.out.println("Item Outputs:");
+        for (String s : this.itemOutputs) System.out.println(s);
+        System.out.println("Liquid Outputs:");
+        for (String s : this.liquidOutputs) System.out.println(s);
+    }
 }

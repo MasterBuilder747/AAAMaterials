@@ -10,15 +10,20 @@ import Main.Data.Tweakers.RecipeTweak;
 
 public class TinkerCustom extends ATinkers {
     public TinkerCustom(
-            RecipeTweak tweak, Registry[] items, String[] liquids, String[] ores,
-            Machine[] machines, MachineMatter[] matters, MachineData data,
+            RecipeTweak tweak, int minVoltage, double powerMultiplierIn, double powerMultiplierOut,
+            int baseTime, double[] tickDecMultipliers,
+            Registry[] items, String[] liquids, String[] ores,
+            Machine[] machines, MachineMatter[] matters, MachineData[] datas,
             Material m,
             boolean craftable, boolean castable, String icon, String oreDict, TCPart[] parts,
             String molten
     ) {
         super(
-                tweak, items, liquids, ores,
-                machines, matters, data,
+                "TinkerCustom",
+                tweak, minVoltage, powerMultiplierIn, powerMultiplierOut,
+                baseTime, tickDecMultipliers,
+                items, liquids, ores,
+                machines, matters, datas,
                 m,
                 craftable, castable, icon, oreDict, parts
         );

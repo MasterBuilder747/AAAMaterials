@@ -17,12 +17,12 @@ public class LBlock extends ALocalizedData {
 
     public LBlock(String NAME,
                   RecipeTweak tweak, Registry[] items, String[] liquids, String[] ores,
-                  Machine[] machines, MachineMatter[] matters, MachineData data,
+                  Machine[] machines, MachineMatter[] matters, MachineData[] datas,
                   String localName,
                   String material, int hardness, int resistance, int miningLevel, String tool) {
         super(NAME, "LBlock",
                 tweak, items, liquids, ores,
-                machines, matters, data,
+                machines, matters, datas,
                 localName);
         this.material = material;
         this.hardness = hardness;
@@ -33,11 +33,11 @@ public class LBlock extends ALocalizedData {
     //for ore variants
     public LBlock(String NAME,
                   RecipeTweak tweak, Registry[] items, String[] liquids, String[] ores,
-                  Machine[] machines, MachineMatter[] matters, MachineData data,
+                  Machine[] machines, MachineMatter[] matters, MachineData[] datas,
                   String material, String tool) {
         super(NAME, "LBlock",
                 tweak, items, liquids, ores,
-                machines, matters, data,
+                machines, matters, datas,
                 NAME);
         this.material = material;
         this.tool = tool;

@@ -12,10 +12,10 @@ import Main.Generators.Tweakers.GRecipeTweak;
 
 //these are custom defined liquids
 public abstract class AGLiquid<L extends ALiquid> extends AGLocal<L> {
-    public AGLiquid(int params, String filename, boolean isReg,
+    public AGLiquid(int PARAMS, String filename, boolean isReg,
                     GRecipeTweak tweak, GRegistry registry, GLiquidRegistry liquids, GOreDictRegistry ores,
                     GMachine machine, GMachineMatter matter, GMachineData data) {
-        super(params, filename, "Liquid", isReg,
+        super(PARAMS, filename, "Liquid", isReg,
                 tweak, registry, liquids, ores,
                 machine, matter, data);
     }

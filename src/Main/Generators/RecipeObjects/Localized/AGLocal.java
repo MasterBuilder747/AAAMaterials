@@ -15,23 +15,26 @@ import java.io.IOException;
 
 public abstract class AGLocal<L extends ALocalizedData> extends AGRecipeObject<L> {
     //a variant of Generator that implements localized data
-    public AGLocal(int params, String filename, boolean isReg,
+    public AGLocal(int PARAMS, String filename, boolean isReg,
                    GRecipeTweak tweak, GRegistry registry, GLiquidRegistry liquids, GOreDictRegistry ores,
                    GMachine machine, GMachineMatter matter, GMachineData data) {
-        super(params+2, "custom-"+filename, "Custom", isReg,
+        super((PARAMS-4)+2, "custom-"+filename, "Custom", isReg,
                 tweak, registry, liquids, ores,
                 machine, matter, data);
     }
-    public AGLocal(int params, String filename, String localFolder, boolean isReg,
+    public AGLocal(int PARAMS, String filename, String localFolder, boolean isReg,
                    GRecipeTweak tweak, GRegistry registry, GLiquidRegistry liquids, GOreDictRegistry ores,
                    GMachine machine, GMachineMatter matter, GMachineData data) {
-        super(params+2, "custom-"+filename, "Custom/"+localFolder, isReg,
+        super((PARAMS-4)+2, "custom-"+filename, "Custom/"+localFolder, isReg,
                 tweak, registry, liquids, ores,
                 machine, matter, data);
     }
 
     @Override
     protected void readLine(BufferedReader br, String[] s) throws IOException {
+        //NOTE: we are NOT adding the new recipe system that AGMaterialData uses
+        //instead, use the custom recipe system for these!
+
         //String name, String localName //first 2 parameters
         //a dash "-" indicates a space in localName
         String[] ss = new String[s.length-2];
@@ -44,8 +47,10 @@ public abstract class AGLocal<L extends ALocalizedData> extends AGRecipeObject<L
             addParameters(name, local, null);
         }
     }
-
     protected abstract void addParameters(String name, String localName, String[] s);
+    @Override
+    protected void readRecipeParameters(int minVoltage, double inMultiplier, double outMultiplier, int baseTime, double[] tickDecMulti,
+                                        BufferedReader br, String[] s) {}
 
     //this writes to the CoT .lang file
     public String localize() {

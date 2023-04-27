@@ -12,13 +12,13 @@ public class LQGP extends ALiquid {
     //genFluid("iron_qgp", "ff3000", 100, true, 0, 100000, 20, true, "contenttweaker:fluids/gas", "contenttweaker:fluids/gas_flowing", <blockmaterial:water>);
     public LQGP(String NAME,
                 RecipeTweak tweak, Registry[] items, String[] liquids, String[] ores,
-                Machine[] machines, MachineMatter[] matters, MachineData data,
+                Machine[] machines, MachineMatter[] matters, MachineData[] datas,
                 String localName,
                 String color, boolean isMaterial, boolean vaporize,
                 int density, int luminosity, int temperature, int viscosity) {
         super(NAME,"LQGP",
                 tweak, items, liquids, ores,
-                machines, matters, data,
+                machines, matters, datas,
                 localName,
                 color, isMaterial, true, vaporize,
                 density, luminosity, temperature, viscosity);

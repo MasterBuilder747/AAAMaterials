@@ -13,8 +13,8 @@ import Main.Generators.GameData.GRegistry;
 import Main.Generators.GMachine;
 import Main.Generators.MachineResource.GMachineData;
 import Main.Generators.MachineResource.GMachineMatter;
-import Main.Generators.RecipeObjects.MaterialData.Composition.GMoleculeComposition;
 import Main.Generators.RecipeObjects.MaterialData.GMSolid;
+import Main.Generators.RecipeObjects.MaterialData.Composition.GMoleculeComposition;
 import Main.Generators.Tweakers.GRecipeTweak;
 import Main.Util;
 
@@ -28,7 +28,7 @@ public class GNuclear extends AGMSolid<Nuclear> {
                     GMachine machine, GMachineMatter matter, GMachineData data,
                     GMaterial material, GPartGroup partGroup,
                     GMSolid solid, GMoleculeComposition moles) {
-        super(-2, filename, isReg,
+        super(7, filename, isReg,
                 tweak, registry, liquids, ores,
                 machine, matter, data,
                 material, partGroup,
@@ -37,12 +37,16 @@ public class GNuclear extends AGMSolid<Nuclear> {
     }
 
     @Override
-    protected void readSolidParameters(Material m, String[] s, MSolid solid, RegistryData[] exclusions) {
+    protected void readSolidParameters(int minVoltage, double inMultiplier, double outMultiplier, int baseTime, double[] tickDecMulti,
+                                       Material m, String[] s, MSolid solid, RegistryData[] exclusions) {
         //material, atomic num, isotopeNum, isIsomer, isIsotope, abund (-1=trace; -10=syn), half life (d), half life (y), mode(s), product(s) (most to least common decay)
         //uranium, 92, 238, false, false, 0.99274, 1.63194E+12, 4.46800E+09, sf;a;2b-, ;Th-234;Pu-238
         if (s.length < 7) error("minimum parameter size is 7");
         Nuclear nuclear = new Nuclear(
-                getRecipeTweak("Nuclear"), getItems(), getLiquids(), getOres(),
+                getRecipeTweak("Nuclear"),
+                minVoltage, inMultiplier, outMultiplier,
+                baseTime, tickDecMulti,
+                getItems(), getLiquids(), getOres(),
                 getMachineRegistry(), getMatterRegistry(), getDataRegistry(),
                 m,
                 parseInt(s[0]), parseInt(s[1]), parseBoolean(s[2]), parseBoolean(s[3]), parseDouble(s[4]), new EDecimal(s[5])

@@ -11,20 +11,19 @@ import Main.Util;
 public class MSolid extends AMaterialData {
     String altName;
 
-    public MSolid(RecipeTweak tweak, Registry[] items, String[] liquids, String[] ores,
-                  Machine[] machines, MachineMatter[] matters, MachineData data,
+    public MSolid(RecipeTweak tweak, int minVoltage, double powerMultiplierIn, double powerMultiplierOut,
+                  int baseTime, double[] tickDecMultipliers, Registry[] items, String[] liquids, String[] ores,
+                  Machine[] machines, MachineMatter[] matters, MachineData[] datas,
                   Material m) {
         super("MSolid",
-                tweak, items, liquids, ores,
-                machines, matters, data,
+                tweak, minVoltage, powerMultiplierIn, powerMultiplierOut,
+                baseTime, tickDecMultipliers, items, liquids, ores,
+                machines, matters, datas,
                 m);
     }
     public void addAltName(String altName) {
         this.altName = altName;
     }
-
-    @Override
-    public void print() {}
 
     @Override
     public String buildMaterial() {
@@ -55,6 +54,8 @@ public class MSolid extends AMaterialData {
         return sb.toString();
     }
 
+    @Override
+    public void print() {}
     @Override
     protected String customItemKey(String key) {
         return null;

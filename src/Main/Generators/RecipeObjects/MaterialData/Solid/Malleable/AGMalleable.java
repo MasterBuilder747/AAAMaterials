@@ -35,11 +35,16 @@ public abstract class AGMalleable <M extends AMalleable> extends AGMSolid<M> {
         this.liquid = liquid;
     }
     @Override
-    protected void readSolidParameters(Material m, String[] s, MSolid solid, RegistryData[] exclusions) {
+    protected void readSolidParameters(int minVoltage, double inMultiplier, double outMultiplier, int baseTime, double[] tickDecMulti,
+                                       Material m, String[] s, MSolid solid, RegistryData[] exclusions) {
         //the second parameter always adds molten liquid
         if (!this.liquid.is(m.NAME)) error("Material " + m.NAME + " must have a liquid form in order to be malleable");
-        setMalleableParts(m, s, this.liquid.get(m.NAME), solid, exclusions);
+        setMalleableParts(
+                minVoltage, inMultiplier, outMultiplier, baseTime, tickDecMulti,
+                m, s, this.liquid.get(m.NAME), solid, exclusions
+        );
     }
 
-    protected abstract void setMalleableParts(Material m, String[] s, MLiquid liquid, MSolid solid, RegistryData[] exclusions);
+    protected abstract void setMalleableParts(int minVoltage, double inMultiplier, double outMultiplier, int baseTime, double[] tickDecMulti,
+                                              Material m, String[] s, MLiquid liquid, MSolid solid, RegistryData[] exclusions);
 }

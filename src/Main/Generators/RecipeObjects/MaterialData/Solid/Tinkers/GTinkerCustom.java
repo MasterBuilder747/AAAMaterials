@@ -31,7 +31,8 @@ public class GTinkerCustom extends AGTinkers<TinkerCustom> {
     }
 
     @Override
-    protected TinkerCustom readTinkerParameters(Material m, String[] s, RegistryData[] exclusions) {
+    protected TinkerCustom readTinkerParameters(int minVoltage, double inMultiplier, double outMultiplier, int baseTime, double[] tickDecMulti,
+                                                Material m, String[] s, RegistryData[] exclusions) {
         //material, bool addAutomaticCraftableRecipes, bool addAutomaticCastingRecipes, icon/oreDict, amtSyntax, liquid
         boolean isCrafting = parseBoolean(s[0]);
         boolean isCasting = parseBoolean(s[1]);
@@ -44,7 +45,10 @@ public class GTinkerCustom extends AGTinkers<TinkerCustom> {
             molten = "<liquid:"+molten+">";
         }
         return new TinkerCustom(
-                getRecipeTweak("TinkerCustom"), getItems(), getLiquids(), getOres(),
+                getRecipeTweak("TinkerCustom"),
+                minVoltage, inMultiplier, outMultiplier,
+                baseTime, tickDecMulti,
+                getItems(), getLiquids(), getOres(),
                 getMachineRegistry(), getMatterRegistry(), getDataRegistry(),
                 m,
                 isCrafting, isCasting, ore, ore, parts.getPartRegistry(),

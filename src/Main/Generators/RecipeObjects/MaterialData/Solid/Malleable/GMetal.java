@@ -34,9 +34,12 @@ public class GMetal extends AGMalleable<Metal> {
     }
 
     @Override
-    protected void setMalleableParts(Material m, String[] s, MLiquid molten, MSolid solid, RegistryData[] exclusions) {
+    protected void setMalleableParts(int minVoltage, double inMultiplier, double outMultiplier, int baseTime, double[] tickDecMulti,
+                                     Material m, String[] s, MLiquid molten, MSolid solid, RegistryData[] exclusions) {
         Metal metal = new Metal(
-                getRecipeTweak("Metal"), getRecipeTweak("AMalleable"),
+                getRecipeTweak("Metal"), //getRecipeTweak("AMalleable"),
+                minVoltage, inMultiplier, outMultiplier,
+                baseTime, tickDecMulti,
                 getItems(), getLiquids(), getOres(),
                 getMachineRegistry(), getMatterRegistry(), getDataRegistry(),
                 m,

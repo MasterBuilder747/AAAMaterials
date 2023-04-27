@@ -32,7 +32,8 @@ public class GStone extends AGMSolid<Stone> {
     }
 
     @Override
-    protected void readSolidParameters(Material m, String[] s, MSolid solid, RegistryData[] exclusions) {
+    protected void readSolidParameters(int minVoltage, double inMultiplier, double outMultiplier, int baseTime, double[] tickDecMulti,
+                                       Material m, String[] s, MSolid solid, RegistryData[] exclusions) {
         //bool addPebble, bool isSedimentary
         /*
         UB parts, for all 24 stones:
@@ -80,7 +81,10 @@ public class GStone extends AGMSolid<Stone> {
         boolean noSlab = parseBoolean(s[3]);
 
         Stone st = new Stone(
-                getRecipeTweak("Stone"), getItems(), getLiquids(), getOres(),
+                getRecipeTweak("Stone"),
+                minVoltage, inMultiplier, outMultiplier,
+                baseTime, tickDecMulti,
+                getItems(), getLiquids(), getOres(),
                 getMachineRegistry(), getMatterRegistry(), getDataRegistry(),
                 m,
                 typeOre, noSlab, isOreStone

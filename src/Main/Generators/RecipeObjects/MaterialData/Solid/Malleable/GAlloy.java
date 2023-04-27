@@ -34,10 +34,13 @@ public class GAlloy extends AGMalleable<Alloy> {
     }
 
     @Override
-    protected void setMalleableParts(Material m, String[] s, MLiquid molten, MSolid solid, RegistryData[] exclusions) {
+    protected void setMalleableParts(int minVoltage, double inMultiplier, double outMultiplier, int baseTime, double[] tickDecMulti,
+                                     Material m, String[] s, MLiquid molten, MSolid solid, RegistryData[] exclusions) {
         //addSmelt, addMachine, addBlast, addConductive
         Alloy alloy = new Alloy(
-                getRecipeTweak("Alloy"), getRecipeTweak("AMalleable"),
+                getRecipeTweak("Alloy"), //getRecipeTweak("AMalleable"),
+                minVoltage, inMultiplier, outMultiplier,
+                baseTime, tickDecMulti,
                 getItems(), getLiquids(), getOres(),
                 getMachineRegistry(), getMatterRegistry(), getDataRegistry(),
                 m,

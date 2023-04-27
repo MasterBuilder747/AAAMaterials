@@ -31,13 +31,17 @@ public class Ore extends AMSolid {
     //<undergroundbiomes:metamorphic_stone_contenttweaker_sub_block_holder_0_9:[0-7]>
     //<undergroundbiomes:sedimentary_stone_contenttweaker_sub_block_holder_0_9:[0-7]>
 
-    public Ore(RecipeTweak tweak, Registry[] items, String[] liquids, String[] ores,
-               Machine[] machines, MachineMatter[] matters, MachineData data,
+    public Ore(RecipeTweak tweak, int minVoltage, double powerMultiplierIn, double powerMultiplierOut,
+               int baseTime, double[] tickDecMultipliers,
+               Registry[] items, String[] liquids, String[] ores,
+               Machine[] machines, MachineMatter[] matters, MachineData[] datas,
                Material m,
                boolean enableGen) {
         super("Ore",
-                tweak, items, liquids, ores,
-                machines, matters, data,
+                tweak, minVoltage, powerMultiplierIn, powerMultiplierOut,
+                baseTime, tickDecMultipliers,
+                items, liquids, ores,
+                machines, matters, datas,
                 m);
         this.enableGen = enableGen;
         this.variants = new ArrayList<>();

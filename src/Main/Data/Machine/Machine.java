@@ -382,6 +382,7 @@ public class Machine extends AData {
             default -> -1;
         };
     }
+
     public long getMaxVoltage(int tier) {
         return switch (tier) {
             case 1  -> 8L;

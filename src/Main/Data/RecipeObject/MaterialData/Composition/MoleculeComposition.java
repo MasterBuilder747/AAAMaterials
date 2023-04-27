@@ -21,14 +21,15 @@ public class MoleculeComposition extends AChemicalComposition {
     public String symbolWCharge; //ex: Am3+
 
     public MoleculeComposition(RecipeTweak tweak, Registry[] items, String[] liquids, String[] ores,
-                               Machine[] machines, MachineMatter[] matters, MachineData data,
+                               Machine[] machines, MachineMatter[] matters, MachineData[] datas,
                                Material m,
-                               Composition c, int charge, boolean isDefault,
-                               String type, boolean isDiatomic, int isotope, int mValue) {
-        super("MoleculeComposition", tweak, items, liquids, ores,
-                machines, matters, data,
+                               Composition c, String compType, int charge, boolean isDefault,
+                               boolean isDiatomic, int isotope, int mValue) {
+        super("MoleculeComposition",
+                tweak, items, liquids, ores,
+                machines, matters, datas,
                 m,
-                c, type, charge, isDefault, true);
+                c, compType, charge, isDefault, true);
         this.isDiatomic = isDiatomic;
         this.isotope = isotope;
         this.mValue = mValue;
@@ -57,11 +58,6 @@ public class MoleculeComposition extends AChemicalComposition {
                     ((this.mValue == -1) ? "" :
                             ("ᵐ" + ((this.mValue > 0) ? Util.intToSuperscript(this.mValue) : ""))) + // \u1d50
                     composition.toTooltip(this.type.contains("element"));
-    }
-
-    @Override
-    protected String buildSpecificRecipe() {
-        return null;
     }
 
     @Override

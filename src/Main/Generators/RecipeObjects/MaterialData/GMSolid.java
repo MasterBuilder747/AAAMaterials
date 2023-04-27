@@ -11,6 +11,7 @@ import Main.Generators.GameData.GRegistry;
 import Main.Generators.GMachine;
 import Main.Generators.MachineResource.GMachineData;
 import Main.Generators.MachineResource.GMachineMatter;
+import Main.Generators.RecipeObjects.MaterialData.AGMaterialData;
 import Main.Generators.Tweakers.GRecipeTweak;
 
 public class GMSolid extends AGMaterialData<MSolid> {
@@ -24,12 +25,16 @@ public class GMSolid extends AGMaterialData<MSolid> {
     }
 
     @Override
-    protected void readMaterialParameters(Material m, String[] s, RegistryData[] exclusions) {
+    protected void readMaterialParameters(int minVoltage, double inMultiplier, double outMultiplier, int baseTime, double[] tickDecMulti,
+                                          Material m, String[] s, RegistryData[] exclusions) {
         //bool addDust, bool addFineDust, bool addPowder, String customName(for other states)[= for none]
 
         //TODO: fix alternate names for recipes
         MSolid sol = new MSolid(
-                getRecipeTweak("MSolid"), getItems(), getLiquids(), getOres(),
+                getRecipeTweak("MSolid"),
+                minVoltage, inMultiplier, outMultiplier,
+                baseTime, tickDecMulti,
+                getItems(), getLiquids(), getOres(),
                 getMachineRegistry(), getMatterRegistry(), getDataRegistry(),
                 m
         );

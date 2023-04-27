@@ -18,7 +18,6 @@ import Main.Generators.Tweakers.GRecipeTweak;
 import Main.Util;
 
 import java.io.BufferedReader;
-import java.io.IOException;
 import java.util.ArrayList;
 
 public abstract class AGMaterialData<M extends AMaterialData> extends AGRecipeObject<M> {
@@ -26,21 +25,21 @@ public abstract class AGMaterialData<M extends AMaterialData> extends AGRecipeOb
     protected GMaterial material; //required for passing material data through
 
     //material data that is stored to indicate what is registered for a given material
-    public AGMaterialData(int params, String filename, boolean isReg,
+    public AGMaterialData(int PARAMS, String filename, boolean isReg,
                           GRecipeTweak tweak, GRegistry registry, GLiquidRegistry liquids, GOreDictRegistry ores,
                           GMachine machine, GMachineMatter matter, GMachineData data,
                           GMaterial material, GPartGroup partGroup) {
-        super(params+1, filename, "Material", isReg,
+        super(PARAMS+1, filename, "Material", isReg,
                 tweak, registry, liquids, ores,
                 machine, matter, data);
         this.material = material;
         this.partGroup = partGroup;
     }
-    public AGMaterialData(int params, String filename, String materialFolder, boolean isReg,
+    public AGMaterialData(int PARAMS, String filename, String materialFolder, boolean isReg,
                           GRecipeTweak tweak, GRegistry registry, GLiquidRegistry liquids, GOreDictRegistry ores,
                           GMachine machine, GMachineMatter matter, GMachineData data,
                           GMaterial material, GPartGroup partGroup) {
-        super(params+1, filename, "Material/"+materialFolder, isReg,
+        super(PARAMS+1, filename, "Material/"+materialFolder, isReg,
                 tweak, registry, liquids, ores,
                 machine, matter, data);
         this.material = material;
@@ -50,10 +49,11 @@ public abstract class AGMaterialData<M extends AMaterialData> extends AGRecipeOb
     @Override
     //first parameter is always the material name, this is checked for existence
     //all other parameters added are read per each child class
-    protected void readLine(BufferedReader br, String[] s) throws IOException {
+    protected void readRecipeParameters(int minVoltage, double inMultiplier, double outMultiplier, int baseTime, double[] tickDecMulti,
+                                        BufferedReader br, String[] s) {
         String m = s[0];
         RegistryData[] exclusions = null;
-        //@iron;ingot>minecraft:iron_ingot;nugget>minecraft:iron_nugget, ...
+        //recipeParams..., @iron;ingot>minecraft:iron_ingot;nugget>minecraft:iron_nugget, ...
         if (m.startsWith("@")) {
             String[] ms = Util.split(m.substring(1), ";");
             ArrayList<RegistryData> rDataExs = new ArrayList<>();
@@ -70,9 +70,10 @@ public abstract class AGMaterialData<M extends AMaterialData> extends AGRecipeOb
         String[] ss = new String[s.length-1];
         System.arraycopy(s, 1, ss, 0, ss.length);
         Material mat = this.material.get(m);
-        readMaterialParameters(mat, ss, exclusions);
+        readMaterialParameters(minVoltage, inMultiplier, outMultiplier, baseTime, tickDecMulti, mat, ss, exclusions);
     }
-    protected abstract void readMaterialParameters(Material m, String[] s, RegistryData[] exclusions);
+    protected abstract void readMaterialParameters(int minVoltage, double inMultiplier, double outMultiplier, int baseTime, double[] tickDecMulti,
+                                                   Material m, String[] s, RegistryData[] exclusions);
 
     protected PartGroup[] genPartGroups(String[] partGroupNames) {
         ArrayList<PartGroup> partGroups = new ArrayList<>();

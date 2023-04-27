@@ -12,8 +12,8 @@ import Main.Generators.GameData.GRegistry;
 import Main.Generators.GMachine;
 import Main.Generators.MachineResource.GMachineData;
 import Main.Generators.MachineResource.GMachineMatter;
-import Main.Generators.RecipeObjects.MaterialData.AGMaterialData;
 import Main.Generators.RecipeObjects.MaterialData.GMSolid;
+import Main.Generators.RecipeObjects.MaterialData.AGMaterialData;
 import Main.Generators.Tweakers.GRecipeTweak;
 
 public abstract class AGMSolid <S extends AMSolid> extends AGMaterialData<S> {
@@ -52,14 +52,16 @@ public abstract class AGMSolid <S extends AMSolid> extends AGMaterialData<S> {
     }
 
     @Override
-    protected void readMaterialParameters(Material m, String[] s, RegistryData[] exclusions) {
+    protected void readMaterialParameters(int minVoltage, double inMultiplier, double outMultiplier, int baseTime, double[] tickDecMulti,
+                                          Material m, String[] s, RegistryData[] exclusions) {
         if (!this.solid.is(m.NAME)) error("Material " + m.NAME + " must have a solid form");
         MSolid sol = this.solid.get(m.NAME);
         boolean[] bools = sol.getEnablePartGroups();
         if (this.isDust) if (!bools[0]) error("Material " + m.NAME + "'s solid state must have dust parts");
         if (this.isFineDust) if(!bools[1]) error("Material " + m.NAME + "'s solid state must have fine dust parts");
         if (this.isPowder) if (!bools[2]) error("Material " + m.NAME + "'s solid state must have powder parts");
-        readSolidParameters(m, s, sol, exclusions);
+        readSolidParameters(minVoltage, inMultiplier, outMultiplier, baseTime, tickDecMulti, m, s, sol, exclusions);
     }
-    protected abstract void readSolidParameters(Material m, String[] s, MSolid solid, RegistryData[] exclusions);
+    protected abstract void readSolidParameters(int minVoltage, double inMultiplier, double outMultiplier, int baseTime, double[] tickDecMulti,
+                                                Material m, String[] s, MSolid solid, RegistryData[] exclusions);
 }

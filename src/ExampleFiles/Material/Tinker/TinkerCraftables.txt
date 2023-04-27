@@ -25,4 +25,4 @@
 //NOTES:
 /oredictionary allowed for that oredict item to be used in crafting (if castable)
 /arrowHead and bowLimb require head stats (only)
-ruby, true, gem, head: 100; 5; 5; 3; []; true, handle_extra: 1; 10; []; 10; [], bow: 1; 1; 1; [], string: 1; [], shaft: 1; 1; [], feather: 1; 1; [], armor: 10; 10; 1; 10; 10; 10; []; []; []
+/ruby, true, gem, head: 100; 5; 5; 3; []; true, handle_extra: 1; 10; []; 10; [], bow: 1; 1; 1; [], string: 1; [], shaft: 1; 1; [], feather: 1; 1; [], armor: 10; 10; 1; 10; 10; 10; []; []; []

@@ -8,19 +8,23 @@ import Main.Data.GameData.Registry;
 import Main.Data.Tweakers.RecipeTweak;
 
 public class Stone extends AMSolid {
-    public String type; //does not have cobblestone registered for UB
+    public String stoneType; //does not have cobblestone registered for UB
     boolean noSlab; //only applied to Conglomerate...?
     public boolean oreStone; //is this a stone that encases an ore?
 
-    public Stone(RecipeTweak tweak, Registry[] items, String[] liquids, String[] ores,
-                 Machine[] machines, MachineMatter[] matters, MachineData data,
+    public Stone(RecipeTweak tweak, int minVoltage, double powerMultiplierIn, double powerMultiplierOut,
+                 int baseTime, double[] tickDecMultipliers,
+                 Registry[] items, String[] liquids, String[] ores,
+                 Machine[] machines, MachineMatter[] matters, MachineData[] datas,
                  Material m,
-                 String type, boolean noSlab, boolean oreStone) {
+                 String stoneType, boolean noSlab, boolean oreStone) {
         super("Stone",
-                tweak, items, liquids, ores,
-                machines, matters, data,
+                tweak, minVoltage, powerMultiplierIn, powerMultiplierOut,
+                baseTime, tickDecMultipliers,
+                items, liquids, ores,
+                machines, matters, datas,
                 m);
-        this.type = type;
+        this.stoneType = stoneType;
         this.noSlab = noSlab;
         this.oreStone = oreStone;
     }
@@ -58,7 +62,7 @@ public class Stone extends AMSolid {
         23 cobblestone,
         24 brick)
         */
-        switch (this.type) {
+        switch (this.stoneType) {
             case "igneous", "metamorphic":
                 //size = 25
                 this.addRegistryData("stone", registries[0]);

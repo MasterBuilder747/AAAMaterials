@@ -42,7 +42,7 @@ public class GCustomMachineRecipe extends AGenerator<MachineRecipe> {
         //0-3: machine, int inputVoltageTier*double powerMultiplier(from 0 to 1);outputVoltageTier*outputMultiplier, int timeInTicks, int priority,
         //4-7: itemIns[], liquidIns[], itemOuts[], liquidOuts[]
 
-        //basic, 1*0.5;0, 20, 5%#ingotIron*10;@Yellow-Wool, &CHEM*60;10%water*10, minecraft:gold_ingot, 10%-red*100
+        //basic, 1*0.5;0, 20, 0, 5%#ingotIron*10;@Yellow-Wool, &CHEM*60;10%water*10, minecraft:gold_ingot, 10%-red*100
         Machine m = this.machine.get(s[0]);
         String[] voltages = parseArray(s[1], ";");
         int time = parseInt(s[2]);
@@ -73,7 +73,7 @@ public class GCustomMachineRecipe extends AGenerator<MachineRecipe> {
         else energyIn = convertEnergyTier(m.getMaxVoltage(tierIn), inMultiplier);
         long energyOut;
         if (tierIn == 0) energyOut = 0;
-        else energyOut = convertEnergyTier(m.getMaxVoltage(tierOut), inMultiplier);
+        else energyOut = convertEnergyTier(m.getMaxVoltage(tierOut), outMultiplier);
 
         MachineRecipe r = new MachineRecipe("custom"+s[0]+line, m, time, priority, energyIn, energyOut);
         //ios

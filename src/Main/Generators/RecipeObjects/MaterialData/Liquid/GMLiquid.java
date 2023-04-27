@@ -25,10 +25,14 @@ public class GMLiquid extends AGMLiquid<MLiquid> {
     }
 
     @Override
-    protected void readMaterialParameters(Material m, String[] s, RegistryData[] exclusions) {
+    protected void readMaterialParameters(int minVoltage, double inMultiplier, double outMultiplier, int baseTime, double[] tickDecMulti,
+                                          Material m, String[] s, RegistryData[] exclusions) {
         //int density, int luminosity, int temperature, int viscosity, boolean vaporize
         MLiquid liquid = new MLiquid(
-                getRecipeTweak("MLiquid"), getItems(), getLiquids(), getOres(),
+                getRecipeTweak("MLiquid"),
+                minVoltage, inMultiplier, outMultiplier,
+                baseTime, tickDecMulti,
+                getItems(), getLiquids(), getOres(),
                 getMachineRegistry(), getMatterRegistry(), getDataRegistry(),
                 m,
                 Integer.parseInt(s[0]), Integer.parseInt(s[1]), Integer.parseInt(s[2]), Integer.parseInt(s[3]),

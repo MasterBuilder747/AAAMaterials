@@ -1,8 +1,0 @@
-//required: String machine, int tier, int time, double powerMultiplier, String matterIn, String matterOut,
-//depends on voltage tier: int dataAmt, int chemAmt,
-//optional (some I/O is required): String input(i1; i2), String output(o1; o2), String lInput(l1; l2), String lOutput(g1; g2)
-//put a - to indicate no IO / machine resources
-//for IO: by default the oredict key is used, to use the actual item, put an @ sign before the registry name
-//chance:@registryName*amount
-//chance:partName*amount
-/ex: pulverize, 1, 100, 0.5, +red*100, -orange*100, 100, 100, gem, dust, -, -

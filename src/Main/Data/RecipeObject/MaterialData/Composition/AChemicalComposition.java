@@ -33,13 +33,16 @@ public abstract class AChemicalComposition extends AMaterialData {
 
     public AChemicalComposition(String type,
                                 RecipeTweak tweak, Registry[] items, String[] liquids, String[] ores,
-                                Machine[] machines, MachineMatter[] matters, MachineData data,
+                                Machine[] machines, MachineMatter[] matters, MachineData[] datas,
                                 Material m,
                                 Composition c, String compType, int charge, boolean isDefault, boolean isMolecule) {
         super(type,
-                tweak, items, liquids, ores,
-                machines, matters, data,
-                m);
+                tweak, 1, 1, 1,
+                20, new double[]{0.05, 0.05, 0.05, 0.05, 0.05, 0.05, 0.05, 0.05, 0.05, 0.05, 0.05, 0.052, 0.054, 0.055, 0.06},
+                items, liquids, ores,
+                machines, matters, datas,
+                m
+        );
         this.composition = c;
         this.compType = compType;
         this.charge = charge;
@@ -73,6 +76,10 @@ public abstract class AChemicalComposition extends AMaterialData {
         }
     }
 
+    @Override
+    protected String buildSpecificRecipe() {
+        return null;
+    }
     @Override
     protected String customItemKey(String key) {
         return null;

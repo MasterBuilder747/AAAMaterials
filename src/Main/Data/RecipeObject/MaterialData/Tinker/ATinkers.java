@@ -64,12 +64,18 @@ public abstract class ATinkers extends AMaterialData {
     String molten; //liquidStack being used, but it won't be added to the function, only used in recipes (includes: <liquid:MOLTEN_REGISTRY>)
     TCPart[] parts; //part registry for recipes
 
-    public ATinkers(RecipeTweak tweak, Registry[] items, String[] liquids, String[] ores,
-                    Machine[] machines, MachineMatter[] matters, MachineData data,
+    public ATinkers(String type,
+                    RecipeTweak tweak, int minVoltage, double powerMultiplierIn, double powerMultiplierOut,
+                    int baseTime, double[] tickDecMultipliers,
+                    Registry[] items, String[] liquids, String[] ores,
+                    Machine[] machines, MachineMatter[] matters, MachineData[] datas,
                     Material m,
                     boolean craftable, boolean castable, String icon, String oreDict, TCPart[] parts) {
-        super("Tinker", tweak, items, liquids, ores,
-                machines, matters, data,
+        super(type,
+                tweak, minVoltage, powerMultiplierIn, powerMultiplierOut,
+                baseTime, tickDecMultipliers,
+                items, liquids, ores,
+                machines, matters, datas,
                 m);
         this.craftable = craftable;
         this.castable = castable;

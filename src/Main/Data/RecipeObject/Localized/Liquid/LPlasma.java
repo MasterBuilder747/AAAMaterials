@@ -11,13 +11,13 @@ public class LPlasma extends ALiquid {
     //genFluid("iron_plasma", "ff2000", 100, true, 0, 10000, 100, true, "contenttweaker:fluids/plasma", "contenttweaker:fluids/plasma_flowing", <blockmaterial:lava>);
     public LPlasma(String NAME,
                    RecipeTweak tweak, Registry[] items, String[] liquids, String[] ores,
-                   Machine[] machines, MachineMatter[] matters, MachineData data,
+                   Machine[] machines, MachineMatter[] matters, MachineData[] datas,
                    String localName,
                    String color, boolean isMaterial, boolean vaporize,
                    int density, int luminosity, int temperature, int viscosity) {
         super(NAME, "LPlasma",
                 tweak, items, liquids, ores,
-                machines, matters, data,
+                machines, matters, datas,
                 localName,
                 color, isMaterial, false, vaporize,
                 density, luminosity, temperature, viscosity);

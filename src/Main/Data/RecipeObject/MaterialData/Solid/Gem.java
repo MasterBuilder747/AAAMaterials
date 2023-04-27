@@ -15,12 +15,16 @@ public class Gem extends AMSolid {
     //gem prospecting info goes here
     //this requires rocks and ores to be implemented first
 
-    public Gem(RecipeTweak tweak, Registry[] items, String[] liquids, String[] ores,
-               Machine[] machines, MachineMatter[] matters, MachineData data,
+    public Gem(RecipeTweak tweak, int minVoltage, double powerMultiplierIn, double powerMultiplierOut,
+               int baseTime, double[] tickDecMultipliers,
+               Registry[] items, String[] liquids, String[] ores,
+               Machine[] machines, MachineMatter[] matters, MachineData[] datas,
                Material m) {
         super("Gem",
-                tweak, items, liquids, ores,
-                machines, matters, data,
+                tweak, minVoltage, powerMultiplierIn, powerMultiplierOut,
+                baseTime, tickDecMultipliers,
+                items, liquids, ores,
+                machines, matters, datas,
                 m);
     }
 

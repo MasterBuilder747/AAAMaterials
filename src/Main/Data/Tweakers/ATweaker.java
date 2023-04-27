@@ -99,6 +99,38 @@ public abstract class ATweaker extends AData {
         }
         return out;
     }
+    protected String[] parseArray(String s, String delimiter) {
+        if (s.isEmpty()) return null;
+        return Util.split(s, delimiter);
+    }
+    protected int[] parseIntArray(String s, String delimiter) {
+        String[] ss = parseArray(s, delimiter);
+        int[] out = new int[ss.length];
+        for (int i = 0; i < ss.length; i++) {
+            out[i] = parseInt(ss[i]);
+        }
+        return out;
+    }
+    protected boolean[] parseBoolArray(String s, String delimiter) {
+        String[] ss = parseArray(s, delimiter);
+        boolean[] out = new boolean[ss.length];
+        for (int i = 0; i < ss.length; i++) {
+            out[i] = parseBoolean(ss[i]);
+        }
+        return out;
+    }
+    protected double[] parseDoubleArray(String s, String delimiter) {
+        String[] ss = parseArray(s, delimiter);
+        double[] out = new double[ss.length];
+        for (int i = 0; i < ss.length; i++) {
+            out[i] = parseDouble(ss[i]);
+        }
+        return out;
+    }
+
+    protected void error(String msg) {
+        throw new IllegalArgumentException(NAME+".txt: " + msg + " at line " + line);
+    }
 
     @Override
     public String buildMaterial() {

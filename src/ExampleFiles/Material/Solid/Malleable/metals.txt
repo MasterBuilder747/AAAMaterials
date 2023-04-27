@@ -1,2 +1,6 @@
-/material, addSmelt, addMachine, addBlast, addConductive
-/ex: lithium, true, true, false, false
+/int minVoltage, double powerMultiplierIn;powerMultiplierOut, int baseTime, double[] tickDecMultipliers[16-minVoltage+1],
+//material,addSmelt,addMachine,addBlast,addConductive
+//add @ to do part overrides for any materialData, then add the material,
+//followed by repeating syntax for each part added: materialPart>modid:itemRegistry;..., other parameters
+/ex1: 1, 1;0, 20, 0.05;0.05;0.05;0.05;0.05;0.05;0.05;0.05;0.05;0.05;0.05;0.052;0.054;0.055;0.06, @iron;ingot>minecraft:iron_ingot;nugget>minecraft:iron_nugget, true, true, true, true
+/ex2: 1, 1;0, 20, 0.05;0.05;0.05;0.05;0.05;0.05;0.05;0.05;0.05;0.05;0.05;0.052;0.054;0.055;0.06, nickel, true, true, true, true

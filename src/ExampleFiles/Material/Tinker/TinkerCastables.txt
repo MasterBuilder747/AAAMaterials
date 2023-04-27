@@ -26,4 +26,4 @@
 //NOTES:
 /if adding castable, molten is required, but oredictionary is not
 /arrowHead and bowLimb require head stats (only)
-invar, true, ingot, null, head: 100; 5; 5; 3; []; true, handle_extra: 1; 10; []; 10; [], bow: 1; 1; 1; [], string: 1; [], shaft: 1; 1; [], feather: 1; 1; [], armor: 10; 10; 1; 10; 10; 10; []; []; []
+/ex: 1, 1;0, 20, 0.05;0.05;0.05;0.05;0.05;0.05;0.05;0.05;0.05;0.05;0.05;0.052;0.054;0.055;0.06, invar, true, ingot, null, head: 100; 5; 5; 3; []; true, handle_extra: 1; 10; []; 10; [], bow: 1; 1; 1; [], string: 1; [], shaft: 1; 1; [], feather: 1; 1; [], armor: 10; 10; 1; 10; 10; 10; []; []; []

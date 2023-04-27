@@ -1,6 +1,6 @@
 package Main.Data.Tweakers;
 
-import Main.Generators.GeneratorException;
+import Main.Generators.GMachine;
 
 import java.io.BufferedWriter;
 import java.io.IOException;
@@ -9,67 +9,39 @@ import java.util.ArrayList;
 public class RecipeTweak extends ATweaker {
     //this holds one line for each recipe syntax, comma separated (IO is colon separated),
     //to be put into ARecipeObjects, and then recipes are created and written there
-    ArrayList<String> recipes;
+    GMachine machines;
+    ArrayList<ORecipeTweak> recipes;
 
-    public RecipeTweak(String filename) {
-        super(12, -1, "RecipeTweak", "F" + filename);
+    public RecipeTweak(String filename, GMachine machines) {
+        super(8, -1, "RecipeTweak", "F" + filename);
         this.recipes = new ArrayList<>();
+        this.machines = machines;
     }
-
-    //call this after build()
-    public String[] getRecipes() {
-        return this.recipes.toArray(new String[0]);
-    }
-
     @Override
     protected void readLine(String[] s) throws IOException {
-        //externally handled: int num,
-        //required: String machine, int tier, int time, double powerMultiplier, String matterIn, String matterOut,
-        //depends on voltage tier: int dataAmt, int chemAmt,
-        //optional: String input, String output, String lInput, String lOutput
-        StringBuilder sb = new StringBuilder();
-        //NOTE: all machine resources are required, since every recipe overcharges to the highest tier
-        sb.append(s[0]); //machine
-        sb.append(",");
-        int tier = parseInt(s[1]);
-        sb.append(tier);
-        sb.append(",");
-        sb.append(parseInt(s[2])); //time
-        sb.append(",");
-        sb.append(parseDouble(s[3])); //powerMultiplier
-        sb.append(",");
-        sb.append(s[4]); //matterIn
-        sb.append(",");
-        sb.append(s[5]); //matterOut
-        sb.append(",");
-        if (s[6].equals("-")) throw new GeneratorException("Data amount required for voltage tiers 12 and below");
-        sb.append(parseInt(s[6])); //dataAmt
-        sb.append(",");
-        if (s[7].equals("-")) throw new GeneratorException("Chemical amount required for voltage tiers 8 and below");
-        sb.append(parseInt(s[7])); //chemAmt
-        //8-11: String input, String output, String lInput, String lOutput
-        //validations are internally handled in ARecipeObject
-        // - indicates no I/O of that type
-        sb.append(",");
-        sb.append(s[8]);
-        sb.append(",");
-        sb.append(s[9]);
-        sb.append(",");
-        sb.append(s[10]);
-        sb.append(",");
-        sb.append(s[11]);
-        String out = sb.toString();
-        this.recipes.add(out);
+        //itemInputs[], liquidInputs[], itemOutputs[], liquidOutputs[],
+        //int baseRecipesPerOperation, outputMultipliers[16], int priority
+        String machine = this.machines.get(s[0]).NAME;
+        String iInputs = s[1];
+        String lInputs = s[2];
+        String iOutputs = s[3];
+        String lOutputs = s[4];
+        int baseRecipes = parseInt(s[5]);
+        int[] outputMultipliers = parseIntArray(s[6], ";");
+        if (outputMultipliers.length != 16) error("output multipliers must be size 16");
+        int priority = parseInt(s[7]);
+        recipes.add(new ORecipeTweak(
+                machine,
+                iInputs, lInputs, iOutputs, lOutputs,
+                baseRecipes, outputMultipliers, priority
+        ));
+    }
+    public ORecipeTweak[] getRecipes() {
+        return this.recipes.toArray(new ORecipeTweak[0]);
     }
 
     @Override
-    public void print() {
-        System.out.println(this.NAME + ":");
-        for (String s : this.recipes) {
-            System.out.println(s);
-        }
-    }
-
+    public void print() {}
     @Override
     protected void writeLine(String[] s, BufferedWriter bw) {}
 }

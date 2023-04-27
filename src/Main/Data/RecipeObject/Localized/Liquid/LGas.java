@@ -11,13 +11,13 @@ public class LGas extends ALiquid {
     //genFluid("iron_gas", "ff1000", 100, true, 0, 5000, 200, true, "contenttweaker:fluids/gas", "contenttweaker:fluids/gas_flowing", <blockmaterial:water>);
     public LGas(String NAME,
                 RecipeTweak tweak, Registry[] items, String[] liquids, String[] ores,
-                Machine[] machines, MachineMatter[] matters, MachineData data,
+                Machine[] machines, MachineMatter[] matters, MachineData[] datas,
                 String localName,
                 String color, boolean isMaterial, boolean vaporize,
                 int density, int luminosity, int temperature, int viscosity) {
         super(NAME, "LGas",
                 tweak, items, liquids, ores,
-                machines, matters, data,
+                machines, matters, datas,
                 localName,
                 color, isMaterial, true, vaporize,
                 density, luminosity, temperature, viscosity);

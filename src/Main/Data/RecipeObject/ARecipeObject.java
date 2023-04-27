@@ -6,6 +6,7 @@ import Main.Data.Machine.Machine;
 import Main.Data.Recipe.MachineData;
 import Main.Data.Recipe.MachineMatter;
 import Main.Data.RecipeObject.MaterialData.AMaterialData;
+import Main.Data.Tweakers.ORecipeTweak;
 import Main.Data.Tweakers.RecipeTweak;
 import Main.Generators.GeneratorException;
 import Main.Parameter.ParameterException;
@@ -18,34 +19,44 @@ public abstract class ARecipeObject extends AData {
     protected Registry[] items; //the array of registries that are used for adding recipes and other things, does not associate with keys!
     protected String[] liquids; //the array of liquid brackets (liquid:water1 where water1 is only included)
     protected String[] ores; //the array of ore dictionary entries (ore:ingotIron where ingotIron is only included)
-
     //global machine resources needed by recipes
-    protected Machine[] machines; //registry of known machines are needed for each object's recipes //get the GMachine's arraylist only to reduce RAM usage
-    protected MachineMatter[] matters; //machine resource matter
-    protected MachineData dataLiquid; //the one machine data
+    protected Machine[] machines;
+    protected MachineData[] datas;
+    protected MachineMatter[] matters;
 
     //recipe variables
     protected String type; //unique type for recipe uniqueness and other identifiers
     protected String customVar; //custom variable in recipe for uniqueness if needed
     protected boolean customUserRecipes; //override the custom user recipes for a specific event to the object?
     protected RecipeTweak tweak; //constructs all user defined recipes per object
+    protected int minVoltage;
+    protected int baseTime;
+    protected double[] tickDecMultipliers;
+    protected double powerMultiplierIn;
+    protected double powerMultiplierOut;
 
     public ARecipeObject(String NAME, String type,
-                         RecipeTweak tweak, Registry[] items, String[] liquids, String[] ores,
-                         Machine[] machines, MachineMatter[] matters, MachineData data) {
+                         RecipeTweak tweak, int minVoltage, double powerMultiplierIn, double powerMultiplierOut,
+                         int baseTime, double[] tickDecMultipliers,
+                         Registry[] items, String[] liquids, String[] ores,
+                         Machine[] machines, MachineMatter[] matters, MachineData[] datas) {
         super(NAME);
         this.type = type;
-        
+        this.customVar = "";
+
         this.tweak = tweak;
+        this.minVoltage = minVoltage;
+        this.powerMultiplierIn = powerMultiplierIn;
+        this.powerMultiplierOut = powerMultiplierOut;
+        this.baseTime = baseTime;
+        this.tickDecMultipliers = tickDecMultipliers;
+
         this.items = items;
         this.liquids = liquids;
         this.ores = ores;
-        
         this.machines = machines;
-        this.dataLiquid = data;
+        this.datas = datas;
         this.matters = matters;
-
-        this.customVar = "";
     }
     protected void setCustomVar(String s) {
         this.customVar = s;
@@ -55,14 +66,13 @@ public abstract class ARecipeObject extends AData {
     public String buildRecipe() {
         StringBuilder sb = new StringBuilder();
         if (this.tweak != null && !this.customUserRecipes) {
-            String[] recipes = this.tweak.getRecipes();
+            ORecipeTweak[] recipes = this.tweak.getRecipes();
             for (int i = 0; i < recipes.length; i++) {
-                String r = recipes[i];
-                String[] p = Util.split(r, ",");
                 sb.append(addRecipe(
-                    i, p[0], parseInt(p[1]), parseInt(p[2]), parseDouble(p[3]),
-                    p[4], p[5], parseInt(p[6]), parseInt(p[7]),
-                    p[8], p[9], p[10], p[11],
+                    i, recipes[i].machine, this.baseTime, recipes[i].priority,
+                    this.tickDecMultipliers, recipes[i].baseRecipeAmount, recipes[i].ioMultipliers,
+                    this.minVoltage, this.powerMultiplierIn, this.powerMultiplierOut,
+                    recipes[i].iInput, recipes[i].lInput, recipes[i].iOutput, recipes[i].lOutput,
                     "tweaker"
                 ));
             }
@@ -72,34 +82,33 @@ public abstract class ARecipeObject extends AData {
         return sb.toString();
     }
     protected abstract String buildAdditionalRecipes();
-    
-    //build recipe
-    //required: String machine, int tier, int time, double powerMultiplier, String matterIn, String matterOut,
-    //depends on voltage tier: int dataAmt, int chemAmt,
-    //optional: String input, String output, String lInput, String lOutput
+
     protected String addRecipe(
-            int num, String machine, int tier, int time, double powerMultiplier,
-            String matterIn, String matterOut, int dataAmt, int chemAmt,
-            String iInput, String iOutput, String lInput, String lOutput,
+            int num, String machine, int time, int priority,
+            double[] tickDecMultipliers, int baseRecipeAmount, int[] ioMultipliers,
+            int minVoltage, double powerMultiplierIn, double powerMultiplierOut,
+            String iInput, String lInput, String iOutput, String lOutput,
             String var2 //need an additional custom var for uniqueness between user and coded recipes
     ) {
-        MaterialRecipe r;
-        r = constructRecipe();
-        if (r == null) {
-            error("Unknown machine: " + machine);
-            return null;
-        } else {
-            String recipeVariable = this.NAME/*+iOutput.replace("-", "_")*/+this.type+num+this.customVar+var2;
-            r.createRecipe(recipeVariable, time, tier, powerMultiplier, 0, this.getDataLiquid());
-            //IO
-            String[] iInputs = parseRecipeIO(iInput,false);
-            String[] iOutputs = parseRecipeIO(iOutput,false);
-            String[] lInputs = parseRecipeIO(lInput,true);
-            String[] lOutputs = parseRecipeIO(lOutput,true);
-            r.updateIO(iInputs, lInputs, iOutputs, lOutputs);
-            r.setMachineResources(chemAmt, dataAmt, getMatterIn(matterIn), getMatterOut(matterOut));
-            return r.buildRecipe();
-        }
+        Machine mach = getMachine(machine);
+        RecipeObject r = new RecipeObject("recipe", mach);
+        String recipeVariable = this.NAME/*+iOutput.replace("-", "_")*/+this.type+num+this.customVar+var2;
+        //String name, int time, int priority,
+        //double[] tickDecMultipliers, int baseRecipeAmount, int[] ioMultipliers,
+        //int minVoltage, double powerMultiplierIn, double powerMultiplierOut,
+        //String[] itemInputs, String[] liquidInputs, String[] itemOutputs, String[] liquidOutputs
+        //IO
+        String[] iInputs = parseRecipeIO(iInput,false);
+        String[] lInputs = parseRecipeIO(lInput,true);
+        String[] iOutputs = parseRecipeIO(iOutput,false);
+        String[] lOutputs = parseRecipeIO(lOutput,true);
+        r.createRecipe(
+                recipeVariable, time, priority,
+                tickDecMultipliers, baseRecipeAmount, ioMultipliers,
+                minVoltage, powerMultiplierIn, powerMultiplierOut,
+                iInputs, lInputs, iOutputs, lOutputs
+        );
+        return r.buildRecipe();
     }
     private String[] parseRecipeIO(String sss, boolean liquid) {
         if (sss.equals("-")) return new String[0];
@@ -192,13 +201,6 @@ public abstract class ARecipeObject extends AData {
     protected abstract String customItemKey(String key);
     protected abstract String customLiquidKey(String key);
 
-    private MaterialRecipe constructRecipe() {
-        return new MaterialRecipe("recipe", "Recipe",
-                this.tweak, this.items, this.liquids, this.ores,
-                this.machines, this.matters, this.dataLiquid,
-                "basic");
-    }
-
     //registries
     //item registry
     protected Registry getItemRegistry(String s) {
@@ -274,9 +276,6 @@ public abstract class ARecipeObject extends AData {
         }
         throw new IllegalArgumentException("Unknown machine " + s + " in the machine registry");
     }
-    protected String getDataLiquid() {
-        return this.dataLiquid.getData();
-    }
     private MachineMatter getMatter(String key) {
         for (MachineMatter m : this.matters) {
             if (m.NAME.equals(key)) {
@@ -331,6 +330,26 @@ public abstract class ARecipeObject extends AData {
             out = Double.parseDouble(s);
         } catch (NumberFormatException e) {
             this.paramError(s, "double");
+        }
+        return out;
+    }
+    protected String[] parseArray(String s, String delimiter) {
+        if (s.isEmpty()) return null;
+        return Util.split(s, delimiter);
+    }
+    protected int[] parseIntArray(String s, String delimiter) {
+        String[] ss = parseArray(s, delimiter);
+        int[] out = new int[ss.length];
+        for (int i = 0; i < ss.length; i++) {
+            out[i] = parseInt(ss[i]);
+        }
+        return out;
+    }
+    protected double[] parseDoubleArray(String s, String delimiter) {
+        String[] ss = parseArray(s, delimiter);
+        double[] out = new double[ss.length];
+        for (int i = 0; i < ss.length; i++) {
+            out[i] = parseDouble(ss[i]);
         }
         return out;
     }

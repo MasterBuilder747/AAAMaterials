@@ -32,11 +32,15 @@ public class GWood extends AGMSolid<Wood> {
     }
 
     @Override
-    protected void readSolidParameters(Material m, String[] s, MSolid solid, RegistryData[] exclusions) {
+    protected void readSolidParameters(int minVoltage, double inMultiplier, double outMultiplier, int baseTime, double[] tickDecMulti,
+                                       Material m, String[] s, MSolid solid, RegistryData[] exclusions) {
         //boolean isVanilla
         boolean isVanilla = parseBoolean(s[0]);
         Wood w = new Wood(
-                getRecipeTweak("Wood"), getItems(), getLiquids(), getOres(),
+                getRecipeTweak("Wood"),
+                minVoltage, inMultiplier, outMultiplier,
+                baseTime, tickDecMulti,
+                getItems(), getLiquids(), getOres(),
                 getMachineRegistry(), getMatterRegistry(), getDataRegistry(),
                 m,
                 isVanilla);

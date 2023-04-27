@@ -4,7 +4,6 @@ import Main.Data.RecipeObject.MaterialData.Composition.Composition;
 import Main.Data.Element;
 import Main.Data.Material;
 import Main.Data.RecipeObject.MaterialData.Composition.MoleculeComposition;
-import Main.Data.RecipeObject.RegistryData;
 import Main.Generators.GElement;
 import Main.Generators.GMaterial;
 import Main.Generators.GPartGroup;
@@ -33,15 +32,15 @@ public class GMoleculeComposition extends AGChemicalComposition<MoleculeComposit
     }
 
     @Override
-    protected void readMaterialParameters(Material m, String[] s, RegistryData[] exclusions) {
-        //Comp,type,isDefault,isDiatomic,Charge,Isotope
+    protected void readChemCompParameters(Material m, String[] s) {
+        //Comp,compType,isDefault,isDiatomic,Charge,Isotope
         Element e = element.get(s[0]);
         Composition c = new Composition(e);
         boolean isDiatomic = parseBoolean(s[3]);
         //diatomic support?
         //if (isDiatomic) c = new Composition(e, 2);
         //else c = new Composition(e);
-        String type = s[1];
+        String compType = s[1];
         boolean isDefault = parseBoolean(s[2]);
         int charge = parseInt(s[4]);
         int isotope = parseInt(s[5]);
@@ -61,7 +60,7 @@ public class GMoleculeComposition extends AGChemicalComposition<MoleculeComposit
         */
         int mValue = -1;
         int metaPwr = 0;
-        switch (type) {
+        switch (compType) {
             case "element" -> {
                 if (isotope != 0) typeError(c, "element", "an isotope of 0");
                 if (!isDefault) typeError(c, "element", "a default composition of true");
@@ -85,28 +84,28 @@ public class GMoleculeComposition extends AGChemicalComposition<MoleculeComposit
                 if (!isDefault) typeError(c, "unstable_element", "a default composition of true");
             }
             default -> {
-                if (type.startsWith("isotope")) {
+                if (compType.startsWith("isotope")) {
                     if (isotope == 0) typeError(c, "isotope", "some isotope value");
                     if (isDefault) typeError(c, "isotope", "a default composition of false");
-                    if (type.contains("-")) {
-                        mValue = parseInt(type.substring(type.indexOf("-")+1));
-                        if (mValue < 0) error("mValue must be greater than -1 for type syntax " + type);
+                    if (compType.contains("-")) {
+                        mValue = parseInt(compType.substring(compType.indexOf("-")+1));
+                        if (mValue < 0) error("mValue must be greater than -1 for compType syntax " + compType);
                     }
-                    type = "isotope";
-                } else if (type.startsWith("metastable")) {
+                    compType = "isotope";
+                } else if (compType.startsWith("metastable")) {
                     if (isotope == 0) typeError(c, "metastable", "some isotope value");
                     if (isDefault) typeError(c, "metastable", "a default composition of false");
-                    String[] metaArr = Util.split(type, ";");
+                    String[] metaArr = Util.split(compType, ";");
                     if (metaArr.length != 3)
-                        error("metastable type array " + Util.printArrayTxt(metaArr) + " must be size 3");
+                        error("metastable compType array " + Util.printArrayTxt(metaArr) + " must be size 3");
                     mValue = parseInt(metaArr[1]);
-                    if (mValue < -1) error("mValue must be greater than -1 for type syntax " + type);
+                    if (mValue < -1) error("mValue must be greater than -1 for compType syntax " + compType);
                     metaPwr = parseInt(metaArr[2]);
-                    type = "metastable";
-                } else if (type.equals("special_character")) {
+                    compType = "metastable";
+                } else if (compType.equals("special_character")) {
                     //whatever
                 } else {
-                    error("Unknown type: " + type);
+                    error("Unknown compType: " + compType);
                 }
             }
         }
@@ -114,8 +113,8 @@ public class GMoleculeComposition extends AGChemicalComposition<MoleculeComposit
                 getRecipeTweak("MoleculeComposition"), getItems(), getLiquids(), getOres(),
                 getMachineRegistry(), getMatterRegistry(), getDataRegistry(),
                 m,
-                c, charge, isDefault,
-                type, isDiatomic, isotope, mValue);
+                c, compType, charge, isDefault,
+                isDiatomic, isotope, mValue);
         if (metaPwr != 0) comp.setMetastability(metaPwr);
         m.addComposition(comp);
         objects.add(comp);

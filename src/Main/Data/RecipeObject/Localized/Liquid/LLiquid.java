@@ -10,13 +10,13 @@ import Main.Data.Tweakers.RecipeTweak;
 public class LLiquid extends ALiquid {
     public LLiquid(String NAME,
                    RecipeTweak tweak, Registry[] items, String[] liquids, String[] ores,
-                   Machine[] machines, MachineMatter[] matters, MachineData data,
+                   Machine[] machines, MachineMatter[] matters, MachineData[] datas,
                    String localName,
                    String color, boolean isMaterial, boolean vaporize,
                    int density, int luminosity, int temperature, int viscosity) {
         super(NAME, "LLiquid",
                 tweak, items, liquids, ores,
-                machines, matters, data,
+                machines, matters, datas,
                 localName,
                 color, isMaterial, false, vaporize,
                 density, luminosity, temperature, viscosity);

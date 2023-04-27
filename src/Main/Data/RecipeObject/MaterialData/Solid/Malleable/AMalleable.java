@@ -8,6 +8,7 @@ import Main.Data.RecipeObject.Localized.LPart;
 import Main.Data.RecipeObject.MaterialData.Solid.AMSolid;
 import Main.Data.RecipeObject.MaterialData.Liquid.MLiquid;
 import Main.Data.Material;
+import Main.Data.Tweakers.ORecipeTweak;
 import Main.Data.Tweakers.RecipeTweak;
 import Main.Util;
 
@@ -16,18 +17,20 @@ public abstract class AMalleable extends AMSolid {
     MLiquid molten;
     double meltingMultiplier; //default is 1, but if 0, then recipes won't be generated
     //negative numbers indicate the value of this material, but it cannot be melted
-    RecipeTweak aTweak; //recipe to be added to each child object
 
     public AMalleable(String type,
-                      RecipeTweak tweak, RecipeTweak aTweak, Registry[] items, String[] liquids, String[] ores,
-                      Machine[] machines, MachineMatter[] matters, MachineData data,
+                      RecipeTweak tweak, int minVoltage, double powerMultiplierIn, double powerMultiplierOut,
+                      int baseTime, double[] tickDecMultipliers,
+                      Registry[] items, String[] liquids, String[] ores,
+                      Machine[] machines, MachineMatter[] matters, MachineData[] datas,
                       Material m,
                       MLiquid molten, double meltingMultiplier) {
         super(type,
-                tweak, items, liquids, ores,
-                machines, matters, data,
+                tweak, minVoltage, powerMultiplierIn, powerMultiplierOut,
+                baseTime, tickDecMultipliers,
+                items, liquids, ores,
+                machines, matters, datas,
                 m);
-        this.aTweak = aTweak;
         this.molten = molten;
         this.meltingMultiplier = meltingMultiplier;
     }
@@ -59,11 +62,13 @@ public abstract class AMalleable extends AMSolid {
     protected abstract String buildPartMaterials();
     @Override
     protected String buildSpecificRecipe() {
+        //todo: add abstract tweakers back for AMalleable if needed for such recipes
         StringBuilder sb = new StringBuilder();
         LPart[] parts = this.getPartsWithOverrides();
         int i = 0;
         for (LPart p : parts) {
             if (p.amount > 0) {
+                /*
                 sb.append(addRecipe(
                         i, "melting", 1, (int)((p.amount / 144f) * 100), 0.5,
                         "+red*100", "-orange*100", 100, 100,
@@ -71,18 +76,21 @@ public abstract class AMalleable extends AMSolid {
                         "code"
                 ));
                 i++;
+
+                 */
             }
         }
-        return sb + buildATweaker() + buildPartRecipes();
+        return null;
+        //return sb + buildATweaker() + buildPartRecipes();
     }
     protected abstract String buildPartRecipes();
     protected String buildATweaker() {
         //call this in each child object since the keys have not been loaded yet
         StringBuilder sb = new StringBuilder();
-        if (this.aTweak != null) {
-            String[] recipes = this.aTweak.getRecipes();
+        if (this.tweak != null) {
+            ORecipeTweak[] recipes = this.tweak.getRecipes();
             for (int i = 0; i < recipes.length; i++) {
-                String r = recipes[i];
+                String r = recipes[i].toString();
                 String[] p = Util.split(r, ",");
                 //implement this in the ARecipeObject ATweaker event?
                 //if any of the IO items in this recipe does not have a key, don't add the recipe
@@ -93,6 +101,7 @@ public abstract class AMalleable extends AMSolid {
                 for (String in : iIns) if (!is(in)) doRecipe = false;
                 String[] iOuts = Util.split(p[9], ";");
                 for (String out : iOuts) if (!is(out)) doRecipe = false;
+                /*
                 if (doRecipe) {
                     sb.append(addRecipe(
                         i, p[0], parseInt(p[1]), parseInt(p[2]), parseDouble(p[3]),
@@ -101,6 +110,7 @@ public abstract class AMalleable extends AMSolid {
                         "tweaker"
                     ));
                 }
+                */
             }
         }
         sb.append("\n");

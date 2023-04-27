@@ -8,7 +8,6 @@ import Main.Data.Tweakers.RecipeTweak;
 
 public class LFood extends ALocalizedData {
     //https://docs.blamejared.com/1.12/en/Mods/ContentTweaker/Vanilla/Creatable_Content/ItemFood
-
     int heal;
     double saturation;
     boolean alwaysEdible;
@@ -18,12 +17,12 @@ public class LFood extends ALocalizedData {
 
     public LFood(String NAME,
                  RecipeTweak tweak, Registry[] items, String[] liquids, String[] ores,
-                 Machine[] machines, MachineMatter[] matters, MachineData data,
+                 Machine[] machines, MachineMatter[] matters, MachineData[] datas,
                  String localName,
                  int heal, double saturation, boolean alwaysEdible) {
         super(NAME, "LFood",
                 tweak, items, liquids, ores,
-                machines, matters, data,
+                machines, matters, datas,
                 localName);
         this.heal = heal;
         this.saturation = saturation;

@@ -18,6 +18,8 @@ import Main.Generators.MachineResource.GMachineData;
 import Main.Generators.MachineResource.GMachineMatter;
 import Main.Generators.Tweakers.GRecipeTweak;
 
+import java.io.BufferedReader;
+import java.io.IOException;
 import java.util.ArrayList;
 
 public abstract class AGRecipeObject<R extends ARecipeObject> extends AGenerator<R> {
@@ -35,7 +37,7 @@ public abstract class AGRecipeObject<R extends ARecipeObject> extends AGenerator
     public AGRecipeObject(int PARAMS, String filename, String materialFolder, boolean isReg,
                           GRecipeTweak tweak, GRegistry registry, GLiquidRegistry liquids, GOreDictRegistry ores,
                           GMachine machine, GMachineMatter matter, GMachineData data) {
-        super(PARAMS, filename, materialFolder);
+        super(PARAMS+4, filename, materialFolder);
         this.isReg = isReg;
         this.tweak = tweak;
         this.registry = registry;
@@ -45,6 +47,36 @@ public abstract class AGRecipeObject<R extends ARecipeObject> extends AGenerator
         this.matter = matter;
         this.data = data;
     }
+
+    @Override
+    protected void readLine(BufferedReader br, String[] s) throws IOException {
+        //required for all child objects:
+        //int minVoltage, double powerMultiplierIn;powerMultiplierOut, int baseTime, double[] tickDecMultipliers[16-minVoltage+1]
+        int minVoltage = parseInt(s[0]);
+        if (minVoltage > 16 || minVoltage < 1) error("minVoltage must be between 1 and 16 inclusive");
+
+        String[] voltages = parseArray(s[1], ";");
+        if (voltages.length != 2) error("Voltages parameter must include energy input and output, size 2 array");
+        double inMultiplier = parseDouble(voltages[0]);
+        if (inMultiplier < 0 || inMultiplier > 1) error("Power input multiplier must be between 0 and 1 inclusive");
+        double outMultiplier = parseDouble(voltages[1]);
+        if (outMultiplier < 0 || outMultiplier > 1) error("Power output multiplier must be between 0 and 1");
+
+        int time = parseInt(s[2]);
+        if (time < 1) error("Time must be 1 tick or greater");
+
+        double[] tickMultipliers = parseDoubleArray(s[3], ";");
+        int arrSize;
+        if (minVoltage == 1) arrSize = 15;
+        else arrSize = (16-minVoltage)+1;
+        if (tickMultipliers.length != arrSize)
+            error("tick decrease multipliers is wrong size " + tickMultipliers.length + ", expected " + arrSize);
+        String[] ss = new String[s.length-4];
+        System.arraycopy(s, 4, ss, 0, ss.length);
+        readRecipeParameters(minVoltage, inMultiplier, outMultiplier, time, tickMultipliers, br, ss);
+    }
+    protected abstract void readRecipeParameters(int minVoltage, double inMultiplier, double outMultiplier, int baseTime, double[] tickDecMulti,
+                                                 BufferedReader br, String[] s) throws IOException;
 
     protected RecipeTweak getRecipeTweak(String s) {
         if (this.isReg) {
@@ -79,10 +111,10 @@ public abstract class AGRecipeObject<R extends ARecipeObject> extends AGenerator
     protected Machine[] getMachineRegistry() {
         return this.machine.getObjects().toArray(new Machine[0]);
     }
+    protected MachineData[] getDataRegistry() {
+        return this.data.getObjects().toArray(new MachineData[0]);
+    }
     protected MachineMatter[] getMatterRegistry() {
         return this.matter.getObjects().toArray(new MachineMatter[0]);
-    }
-    protected MachineData getDataRegistry() {
-        return this.data.getObjects().get(0);
     }
 }

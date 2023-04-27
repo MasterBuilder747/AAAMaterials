@@ -14,13 +14,17 @@ public class Rubber extends AMalleable {
     //when melting a part:
     //get some back
     //get no material back
-    public Rubber(RecipeTweak tweak, RecipeTweak aTweak, Registry[] items, String[] liquids, String[] ores,
-                  Machine[] machines, MachineMatter[] matters, MachineData data,
+    public Rubber(RecipeTweak tweak, int minVoltage, double powerMultiplierIn, double powerMultiplierOut,
+                  int baseTime, double[] tickDecMultipliers,
+                  Registry[] items, String[] liquids, String[] ores,
+                  Machine[] machines, MachineMatter[] matters, MachineData[] datas,
                   Material m,
                   MLiquid molten, double meltingMultiplier) {
         super("Rubber",
-                tweak, aTweak, items, liquids, ores,
-                machines, matters, data,
+                tweak, minVoltage, powerMultiplierIn, powerMultiplierOut,
+                baseTime, tickDecMultipliers,
+                items, liquids, ores,
+                machines, matters, datas,
                 m,
                 molten, meltingMultiplier);
     }

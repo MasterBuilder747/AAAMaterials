@@ -34,9 +34,12 @@ public class GRubber extends AGMalleable<Rubber> {
     }
 
     @Override
-    protected void setMalleableParts(Material m, String[] s, MLiquid molten, MSolid solid, RegistryData[] exclusions) {
+    protected void setMalleableParts(int minVoltage, double inMultiplier, double outMultiplier, int baseTime, double[] tickDecMulti,
+                                     Material m, String[] s, MLiquid molten, MSolid solid, RegistryData[] exclusions) {
         Rubber rubber = new Rubber(
-                getRecipeTweak("Rubber"), getRecipeTweak("AMalleable"),
+                getRecipeTweak("Rubber"), //getRecipeTweak("AMalleable"),
+                minVoltage, inMultiplier, outMultiplier,
+                baseTime, tickDecMulti,
                 getItems(), getLiquids(), getOres(),
                 getMachineRegistry(), getMatterRegistry(), getDataRegistry(),
                 m,
