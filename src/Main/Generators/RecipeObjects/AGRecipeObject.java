@@ -4,11 +4,13 @@ import Main.Data.GameData.LiquidRegistry;
 import Main.Data.GameData.OreDict;
 import Main.Data.GameData.Registry;
 import Main.Data.Machine.Machine;
+import Main.Data.Machine.MachineGroup;
 import Main.Data.Recipe.MachineData;
 import Main.Data.Recipe.MachineMatter;
 import Main.Data.RecipeObject.ARecipeObject;
 import Main.Data.Tweakers.RecipeTweak;
 import Main.Generators.AGenerator;
+import Main.Generators.GMachineGroup;
 import Main.Generators.GameData.GLiquidRegistry;
 import Main.Generators.GameData.GOreDictRegistry;
 import Main.Generators.GameData.GRegistry;
@@ -31,12 +33,13 @@ public abstract class AGRecipeObject<R extends ARecipeObject> extends AGenerator
     protected GOreDictRegistry ores;
     //machine resources
     private final GMachine machine;
+    private final GMachineGroup machineGroup;
     protected GMachineMatter matter;
     protected GMachineData data;
 
     public AGRecipeObject(int PARAMS, String filename, String materialFolder, boolean isReg,
                           GRecipeTweak tweak, GRegistry registry, GLiquidRegistry liquids, GOreDictRegistry ores,
-                          GMachine machine, GMachineMatter matter, GMachineData data) {
+                          GMachine machine, GMachineGroup machineGroup, GMachineMatter matter, GMachineData data) {
         super(PARAMS+4, filename, materialFolder);
         this.isReg = isReg;
         this.tweak = tweak;
@@ -44,6 +47,7 @@ public abstract class AGRecipeObject<R extends ARecipeObject> extends AGenerator
         this.liquids = liquids;
         this.ores = ores;
         this.machine = machine;
+        this.machineGroup = machineGroup;
         this.matter = matter;
         this.data = data;
     }
@@ -110,6 +114,9 @@ public abstract class AGRecipeObject<R extends ARecipeObject> extends AGenerator
     }
     protected Machine[] getMachineRegistry() {
         return this.machine.getObjects().toArray(new Machine[0]);
+    }
+    protected MachineGroup[] getMachineGroupRegistry() {
+        return this.machineGroup.getObjects().toArray(new MachineGroup[0]);
     }
     protected MachineData[] getDataRegistry() {
         return this.data.getObjects().toArray(new MachineData[0]);

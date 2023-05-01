@@ -6,6 +6,7 @@ import Main.Data.Material;
 import Main.Data.RecipeObject.MaterialData.Composition.CompoundComposition;
 import Main.Data.RecipeObject.MaterialData.Composition.MoleculeComposition;
 import Main.Data.RecipeObject.RegistryData;
+import Main.Generators.GMachineGroup;
 import Main.Generators.GMaterial;
 import Main.Generators.GPartGroup;
 import Main.Generators.GameData.GLiquidRegistry;
@@ -27,12 +28,12 @@ public class GCompoundComposition extends AGChemicalComposition<CompoundComposit
 
     public GCompoundComposition(String filename, boolean isReg,
                                 GRecipeTweak tweak, GRegistry registry, GLiquidRegistry liquids, GOreDictRegistry ores,
-                                GMachine machine, GMachineMatter matter, GMachineData data,
+                                GMachine machine, GMachineGroup machineGroup, GMachineMatter matter, GMachineData data,
                                 GMaterial material, GPartGroup partGroup,
                                 GMoleculeComposition molecule) {
         super(9, filename, isReg,
                 tweak, registry, liquids, ores,
-                machine, data, matter,
+                machine, machineGroup, data, matter,
                 material, partGroup,
                 false);
         this.molecule = molecule;
@@ -54,7 +55,7 @@ public class GCompoundComposition extends AGChemicalComposition<CompoundComposit
         else charge = parseInt(chargeo);
         CompoundComposition comp = new CompoundComposition(
                 getRecipeTweak("CompoundComposition"), getItems(), getLiquids(), getOres(),
-                getMachineRegistry(), getMatterRegistry(), getDataRegistry(),
+                getMachineRegistry(), getMachineGroupRegistry(), getMatterRegistry(), getDataRegistry(),
                 m,
                 c, type, charge, parseBoolean(s[4]),
                 subtype, parseBoolean(s[5]), parseBoolean(s[6]), parseBoolean(s[7]), parseBoolean(s[8]));

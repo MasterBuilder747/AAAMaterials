@@ -24,7 +24,7 @@ public class Machine extends AData {
     public String localName;
     public String color;
     public boolean reqBlueprint;
-    public int voltage;
+    public int maxVoltage;
     //these are inputted
     int[] itemInputBlockAmounts; //number of item slots for the machine IO chests
     int[] itemOutputBlockAmounts;
@@ -44,6 +44,8 @@ public class Machine extends AData {
 
     public String chemical; //machine-specific chemical liquid to use (eg. <liquid:NAME>), this is always an input
 
+    String tierOverride; //this will override the energyIO blocks to be the tier that this is (to be used by MachineGroup)
+
     /*
     IMPORTANT NOTES:
 
@@ -61,15 +63,15 @@ public class Machine extends AData {
     //this is a blueprint for the requirements of some machine, used for recipe validation
     public Machine(
             String name, String localName, String color,
-            int voltage, boolean reqBlueprint, String chemical,
-            Registry[] registries, BlockstateMeta[] blockMetas
+            int maxVoltage, boolean reqBlueprint, String chemical,
+            Registry[] registries, BlockstateMeta[] blockMetas, String tierOverride
     ) {
         super(name);
         this.localName = localName;
         this.color = color;
         this.reqBlueprint = reqBlueprint;
         this.chemical = chemical;
-        this.voltage = voltage;
+        this.maxVoltage = maxVoltage;
         this.registries = registries;
         this.blockMetas = blockMetas;
         this.itemInputBlockAmounts = new int[7];
@@ -83,6 +85,7 @@ public class Machine extends AData {
         this.itemOutputs = 0;
         this.liquidInputs = 0;
         this.liquidOutputs = 0;
+        this.tierOverride = tierOverride;
         try {
             writeMachineJson();
         } catch (IOException e) {
@@ -161,8 +164,10 @@ public class Machine extends AData {
                     this.updateIOData("liquid", false, meta);
                 } else if (reg.startsWith("modularmachinery:blockenergyin")) {
                     this.updateIOData("energy", true, meta);
+                    reg = applyTierOverride(reg, "input");
                 } else if (reg.startsWith("modularmachinery:blockenergyout")) {
                     this.updateIOData("energy", false, meta);
+                    reg = applyTierOverride(reg, "output");
                 }
                 mBlockList.add(new MachineBlock(
                         reg,
@@ -208,7 +213,17 @@ public class Machine extends AData {
         br.write(jo.print());
         br.close();
     }
-
+    private String applyTierOverride(String reg, String type) {
+        if (this.tierOverride != null) {
+            switch (this.tierOverride) {
+                case "basic" -> reg = "modularmachinery:blockenergy"+type+"hatch@0,modularmachinery:blockenergy"+type+"hatch@1";
+                case "advanced" -> reg = "modularmachinery:blockenergy"+type+"hatch@2,modularmachinery:blockenergy"+type+"hatch@3";
+                case "industrial" -> reg = "modularmachinery:blockenergy"+type+"hatch@4,modularmachinery:blockenergy"+type+"hatch@5";
+                case "ultimate" -> reg = "modularmachinery:blockenergy"+type+"hatch@6,modularmachinery:blockenergy"+type+"hatch@7";
+            }
+        }
+        return reg;
+    }
     private String getBlockRegistry(String s, Map<String, Object> props) {
         //so many layers
         for (Registry r : this.registries) {
@@ -289,6 +304,23 @@ public class Machine extends AData {
             }
         }
     }
+    private void updateIODataEnergy(boolean isIn, int meta) {
+        //TODO: add tier overrides to allow for overriding of multiple energy IO hatches! (tiny and small for basic, etc)....
+        //8 tiers, 0: disabled, 1:tiny; 2:small; 3:normal; 4:reinforced; 5:big; 6:huge; 7:ludicrous; 8:ultimate
+        if (isIn) {
+            if (this.energyInTier == 0) {
+                this.energyInTier = meta+1;
+            } else {
+                error("Multiple energy inputs are not allowed");
+            }
+        } else {
+            if (this.energyOutTier == 0) {
+                this.energyOutTier = meta+1;
+            } else {
+                error("Multiple energy outputs are not allowed");
+            }
+        }
+    }
 
     private void updateIOs() {
         //7 tiers: 0:tiny-1; 1:small-4; 2:normal-6; 3-reinforced-9; 4:big-12; 5:huge-16; 6:ludicrous-32
@@ -345,7 +377,7 @@ public class Machine extends AData {
         //8 tiers, 0: disabled, 1:tiny; 2:small; 3:normal;  4:reinforced;   5:big;  6:huge; 7:ludicrous;    8:ultimate
         //voltage tier:   0;    1-2;    3-4;     5-6        7-8             9-10    11-12   13-14           15-16
         //validate the voltage tier here, since it needs to be inputted by the user
-        if (this.voltage == 0) {
+        if (this.maxVoltage == 0) {
             if (this.energyInTier != 0 || this.energyOutTier != 0) {
                 error("A voltage tier of 0 means no energy IO blocks are allowed in the structure");
             }
@@ -354,14 +386,14 @@ public class Machine extends AData {
             if (this.energyInTier == 0 && this.energyOutTier == 0) error("Must have some energy IO block for some non-zero voltage tier");
             if (this.energyInTier != 0) {
                 int energyInTier = this.energyInTier * 2;
-                if (this.voltage != energyInTier && this.voltage != energyInTier - 1) {
-                    error("Energy input tier of " + this.energyInTier + " does not correspond to the voltage of " + this.voltage);
+                if (this.maxVoltage != energyInTier && this.maxVoltage != energyInTier - 1) {
+                    error("Energy input tier of " + this.energyInTier + " does not correspond to the voltage of " + this.maxVoltage);
                 }
             }
             if (this.energyOutTier != 0) {
                 int energyOutTier = this.energyOutTier * 2;
-                if (this.voltage != energyOutTier && this.voltage != energyOutTier - 1) {
-                    error("Energy output tier of " + this.energyOutTier + " does not correspond to the voltage of " + this.voltage);
+                if (this.maxVoltage != energyOutTier && this.maxVoltage != energyOutTier - 1) {
+                    error("Energy output tier of " + this.energyOutTier + " does not correspond to the voltage of " + this.maxVoltage);
                 }
             }
         }
@@ -383,29 +415,8 @@ public class Machine extends AData {
         };
     }
 
-    public long getMaxVoltage(int tier) {
-        return switch (tier) {
-            case 1  -> 8L;
-            case 2  -> 32L; //tiny
-            case 3  -> 128L;
-            case 4  -> 512L; //small
-            case 5  -> 2048L;
-            case 6  -> 8192L; //normal
-            case 7  -> 32_768L;
-            case 8  -> 131_072L; //reinforced
-            case 9  -> 524_288L;
-            case 10 -> 2_097_152L; //big
-            case 11 -> 8_388_608L;
-            case 12 -> 33_554_432L; //huge
-            case 13 -> 134_217_728L;
-            case 14 -> 536_870_912L; //ludicrous
-            case 15 -> 2_000_000_000L; //or 2.1?
-            case 16 -> 12_884_901_882L; //ultimate
-            default -> 0; //disabled
-        };
-    }
     public long getMaxVoltage() {
-        return getMaxVoltage(this.voltage);
+        return Util.getVoltage(this.maxVoltage);
     }
     
     private void error(String msg) {
@@ -414,7 +425,7 @@ public class Machine extends AData {
 
     @Override
     public void print() {
-        System.out.println(this.localName + ", v: " + this.voltage +
+        System.out.println(this.localName + ", v: " + this.maxVoltage +
                 "; ItemIO: intot = " + this.itemInputs + ": " + Util.printArrayTxt(Util.toStringArr(this.itemInputBlockAmounts)) + ", " +
                 "outtot = " + this.itemOutputs + ": " + Util.printArrayTxt(Util.toStringArr(this.itemOutputBlockAmounts)) +
                 "; LiquidIO: intot = " + this.liquidInputs + ": " + Util.printArrayTxt(Util.toStringArr(this.liquidInputBlockAmounts)) + ", " +

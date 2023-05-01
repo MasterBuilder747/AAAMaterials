@@ -28,7 +28,7 @@ public class MachineBlock {
                         new Value("int", String.valueOf(this.x)),
                         new Value("int", String.valueOf(this.y)),
                         new Value("int", String.valueOf(this.z)),
-                        new Value(String.valueOf(this.registryName))
+                        new Value("arr", "str", this.registryName)
                 }
         );
     }

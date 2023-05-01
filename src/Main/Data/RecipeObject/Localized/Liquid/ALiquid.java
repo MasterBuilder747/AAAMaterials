@@ -2,6 +2,7 @@ package Main.Data.RecipeObject.Localized.Liquid;
 
 import Main.Data.GameData.Registry;
 import Main.Data.Machine.Machine;
+import Main.Data.Machine.MachineGroup;
 import Main.Data.Recipe.MachineData;
 import Main.Data.Recipe.MachineMatter;
 import Main.Data.RecipeObject.Localized.ALocalizedData;
@@ -20,13 +21,13 @@ public abstract class ALiquid extends ALocalizedData {
     //IMPORTANT NOTE: Machine resources always set machines to null, since their recipes are hardcoded!
     public ALiquid(String NAME, String type,
                    RecipeTweak tweak, Registry[] items, String[] liquids, String[] ores,
-                   Machine[] machines, MachineMatter[] matters, MachineData[] datas,
+                   Machine[] machines, MachineGroup[] machineGroups, MachineMatter[] matters, MachineData[] datas,
                    String localName,
                    String color, boolean isMaterial, boolean gas, boolean vaporize,
                    int density, int luminosity, int temperature, int viscosity) {
         super("cot"+(isMaterial ? "m" : "c")+"_"+NAME, type,
                 tweak, items, liquids, ores,
-                machines, matters, datas,
+                machines, machineGroups, matters, datas,
                 localName);
         this.color = color;
         this.gas = gas;

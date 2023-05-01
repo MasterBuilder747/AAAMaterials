@@ -2,6 +2,7 @@ package Main.Data.RecipeObject.Localized;
 
 import Main.Data.GameData.Registry;
 import Main.Data.Machine.Machine;
+import Main.Data.Machine.MachineGroup;
 import Main.Data.Recipe.MachineData;
 import Main.Data.Recipe.MachineMatter;
 import Main.Data.Tweakers.RecipeTweak;
@@ -17,12 +18,12 @@ public class LFood extends ALocalizedData {
 
     public LFood(String NAME,
                  RecipeTweak tweak, Registry[] items, String[] liquids, String[] ores,
-                 Machine[] machines, MachineMatter[] matters, MachineData[] datas,
+                 Machine[] machines, MachineGroup[] machineGroups, MachineMatter[] matters, MachineData[] datas,
                  String localName,
                  int heal, double saturation, boolean alwaysEdible) {
         super(NAME, "LFood",
                 tweak, items, liquids, ores,
-                machines, matters, datas,
+                machines, machineGroups, matters, datas,
                 localName);
         this.heal = heal;
         this.saturation = saturation;

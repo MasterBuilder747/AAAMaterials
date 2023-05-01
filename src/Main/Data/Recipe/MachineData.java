@@ -12,7 +12,7 @@ public class MachineData extends AMachineResource {
         this.data = new LLiquid(
                 name,
                 null, null, null, null,
-                null, null, null,
+                null, null, null, null,
                 localName,
                 color, false, vaporize,
                 density, luminosity, temperature, viscosity);

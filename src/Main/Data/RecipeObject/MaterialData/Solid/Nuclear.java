@@ -2,6 +2,7 @@ package Main.Data.RecipeObject.MaterialData.Solid;
 
 import Main.Data.GameData.Registry;
 import Main.Data.Machine.Machine;
+import Main.Data.Machine.MachineGroup;
 import Main.Data.Recipe.MachineData;
 import Main.Data.Recipe.MachineMatter;
 import Main.Data.Material;
@@ -23,14 +24,14 @@ public class Nuclear extends AMSolid {
     public Nuclear(RecipeTweak tweak, int minVoltage, double powerMultiplierIn, double powerMultiplierOut,
                    int baseTime, double[] tickDecMultipliers,
                    Registry[] items, String[] liquids, String[] ores,
-                   Machine[] machines, MachineMatter[] matters, MachineData[] datas,
+                   Machine[] machines, MachineGroup[] machineGroups, MachineMatter[] matters, MachineData[] datas,
                    Material m,
                    int atomicNum, int isotopeNum, boolean isIsomer, boolean isIsotope, double abundance, EDecimal halfLife) {
         super("Nuclear",
                 tweak, minVoltage, powerMultiplierIn, powerMultiplierOut,
                 baseTime, tickDecMultipliers,
                 items, liquids, ores,
-                machines, matters, datas,
+                machines, machineGroups, matters, datas,
                 m);
         this.atomicNum = atomicNum;
         this.isotopeNum = isotopeNum;

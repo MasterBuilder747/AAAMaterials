@@ -5,6 +5,7 @@ import Main.Data.RecipeObject.MaterialData.MSolid;
 import Main.Data.RecipeObject.MaterialData.Solid.Nuclear;
 import Main.Data.RecipeObject.RegistryData;
 import Main.EDecimal;
+import Main.Generators.GMachineGroup;
 import Main.Generators.GMaterial;
 import Main.Generators.GPartGroup;
 import Main.Generators.GameData.GLiquidRegistry;
@@ -25,12 +26,12 @@ public class GNuclear extends AGMSolid<Nuclear> {
 
     public GNuclear(String filename, boolean isReg,
                     GRecipeTweak tweak, GRegistry registry, GLiquidRegistry liquids, GOreDictRegistry ores,
-                    GMachine machine, GMachineMatter matter, GMachineData data,
+                    GMachine machine, GMachineGroup machineGroup, GMachineMatter matter, GMachineData data,
                     GMaterial material, GPartGroup partGroup,
                     GMSolid solid, GMoleculeComposition moles) {
         super(7, filename, isReg,
                 tweak, registry, liquids, ores,
-                machine, matter, data,
+                machine, machineGroup, matter, data,
                 material, partGroup,
                 solid, true, false, false);
         this.moles = moles;
@@ -47,7 +48,7 @@ public class GNuclear extends AGMSolid<Nuclear> {
                 minVoltage, inMultiplier, outMultiplier,
                 baseTime, tickDecMulti,
                 getItems(), getLiquids(), getOres(),
-                getMachineRegistry(), getMatterRegistry(), getDataRegistry(),
+                getMachineRegistry(), getMachineGroupRegistry(), getMatterRegistry(), getDataRegistry(),
                 m,
                 parseInt(s[0]), parseInt(s[1]), parseBoolean(s[2]), parseBoolean(s[3]), parseDouble(s[4]), new EDecimal(s[5])
         );

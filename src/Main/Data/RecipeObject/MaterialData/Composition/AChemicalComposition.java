@@ -3,6 +3,7 @@ package Main.Data.RecipeObject.MaterialData.Composition;
 import Main.Data.Element;
 import Main.Data.GameData.Registry;
 import Main.Data.Machine.Machine;
+import Main.Data.Machine.MachineGroup;
 import Main.Data.Recipe.MachineData;
 import Main.Data.Recipe.MachineMatter;
 import Main.Data.Material;
@@ -33,14 +34,14 @@ public abstract class AChemicalComposition extends AMaterialData {
 
     public AChemicalComposition(String type,
                                 RecipeTweak tweak, Registry[] items, String[] liquids, String[] ores,
-                                Machine[] machines, MachineMatter[] matters, MachineData[] datas,
+                                Machine[] machines, MachineGroup[] machineGroups, MachineMatter[] matters, MachineData[] datas,
                                 Material m,
                                 Composition c, String compType, int charge, boolean isDefault, boolean isMolecule) {
         super(type,
                 tweak, 1, 1, 1,
                 20, new double[]{0.05, 0.05, 0.05, 0.05, 0.05, 0.05, 0.05, 0.05, 0.05, 0.05, 0.05, 0.052, 0.054, 0.055, 0.06},
                 items, liquids, ores,
-                machines, matters, datas,
+                machines, machineGroups, matters, datas,
                 m
         );
         this.composition = c;

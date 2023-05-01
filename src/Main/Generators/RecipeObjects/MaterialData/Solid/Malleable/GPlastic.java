@@ -5,6 +5,7 @@ import Main.Data.RecipeObject.MaterialData.MSolid;
 import Main.Data.RecipeObject.MaterialData.Solid.Malleable.Plastic;
 import Main.Data.Material;
 import Main.Data.RecipeObject.RegistryData;
+import Main.Generators.GMachineGroup;
 import Main.Generators.GMaterial;
 import Main.Generators.GPartGroup;
 import Main.Generators.GameData.GLiquidRegistry;
@@ -21,13 +22,13 @@ public class GPlastic extends AGMalleable<Plastic> {
     public GPlastic(
             String filename, boolean isReg,
             GRecipeTweak tweak, GRegistry registry, GLiquidRegistry liquids, GOreDictRegistry ores,
-            GMachine machine, GMachineMatter matter, GMachineData data,
+            GMachine machine, GMachineGroup machineGroup, GMachineMatter matter, GMachineData data,
             GMaterial material, GPartGroup partGroup,
             GMSolid solid, GMLiquid liquid
     ) {
         super(1, filename, isReg,
                 tweak, registry, liquids, ores,
-                machine, matter, data,
+                machine, machineGroup, matter, data,
                 material, partGroup,
                 solid, true, false, false,
                 liquid);
@@ -41,7 +42,7 @@ public class GPlastic extends AGMalleable<Plastic> {
                 minVoltage, inMultiplier, outMultiplier,
                 baseTime, tickDecMulti,
                 getItems(), getLiquids(), getOres(),
-                getMachineRegistry(), getMatterRegistry(), getDataRegistry(),
+                getMachineRegistry(), getMachineGroupRegistry(), getMatterRegistry(), getDataRegistry(),
                 m,
                 molten, parseDouble(s[0]));
         plastic.setPartGroupsTrue(exclusions,

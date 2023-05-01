@@ -306,6 +306,7 @@ public class Util {
         return s.split(regex+"\\s*");
     }
 
+    //Arrays
     public static int[] toIntArray(ArrayList<Integer> a) {
         int[] out = new int[a.size()];
         for (int i = 0; i < a.size(); i++) {
@@ -319,6 +320,29 @@ public class Util {
             out[i] = Integer.parseInt(a[i]);
         }
         return out;
+    }
+
+    //voltages
+    public static long getVoltage(int tier) {
+        return switch (tier) {
+            case 1  -> 8L;
+            case 2  -> 32L; //tiny
+            case 3  -> 128L;
+            case 4  -> 512L; //small
+            case 5  -> 2048L;
+            case 6  -> 8192L; //normal
+            case 7  -> 32_768L;
+            case 8  -> 131_072L; //reinforced
+            case 9  -> 524_288L;
+            case 10 -> 2_097_152L; //big
+            case 11 -> 8_388_608L;
+            case 12 -> 33_554_432L; //huge
+            case 13 -> 134_217_728L;
+            case 14 -> 536_870_912L; //ludicrous
+            case 15 -> 2_000_000_000L; //or 2.1?
+            case 16 -> 12_884_901_882L; //ultimate
+            default -> 0; //disabled
+        };
     }
 
     //unicaode

@@ -1,4 +1,4 @@
-//machineName, local-Name, hexColor, boolean reqBlueprint, int minVoltage, chemical (put none if no chemical)
+//machineName, local-Name, hexColor, boolean reqBlueprint, int maxVoltage, String chemical (put none if no chemical)
 //minVoltage of 0 means there is no energyIO
 //use default for hexColor to use the machine color
 //amount*tierAmount(note that this is just a label to distinguish the tier's amount of IO, but it isn't required)

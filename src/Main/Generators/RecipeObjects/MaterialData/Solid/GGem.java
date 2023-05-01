@@ -4,6 +4,7 @@ import Main.Data.RecipeObject.MaterialData.MSolid;
 import Main.Data.RecipeObject.MaterialData.Solid.Gem;
 import Main.Data.Material;
 import Main.Data.RecipeObject.RegistryData;
+import Main.Generators.GMachineGroup;
 import Main.Generators.GMaterial;
 import Main.Generators.GPartGroup;
 import Main.Generators.GameData.GLiquidRegistry;
@@ -18,12 +19,12 @@ import Main.Generators.Tweakers.GRecipeTweak;
 public class GGem extends AGMSolid<Gem>{
     public GGem(String filename, boolean isReg,
                 GRecipeTweak tweak, GRegistry registry, GLiquidRegistry liquids, GOreDictRegistry ores,
-                GMachine machine, GMachineMatter matter, GMachineData data,
+                GMachine machine, GMachineGroup machineGroup, GMachineMatter matter, GMachineData data,
                 GMaterial material, GPartGroup partGroup,
                 GMSolid solid) {
         super(0, filename, isReg,
                 tweak, registry, liquids, ores,
-                machine, matter, data,
+                machine, machineGroup, matter, data,
                 material, partGroup,
                 solid, true, false, false);
     }
@@ -36,7 +37,7 @@ public class GGem extends AGMSolid<Gem>{
                 minVoltage, inMultiplier, outMultiplier,
                 baseTime, tickDecMulti,
                 getItems(), getLiquids(), getOres(),
-                getMachineRegistry(), getMatterRegistry(), getDataRegistry(),
+                getMachineRegistry(), getMachineGroupRegistry(), getMatterRegistry(), getDataRegistry(),
                 m);
         g.setPartGroupTrue(exclusions, genPartGroup("gem"));
         g = updateRegistryKeys(g);

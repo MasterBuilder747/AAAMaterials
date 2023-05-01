@@ -4,13 +4,10 @@ import Main.Data.RecipeObject.MaterialData.Composition.Composition;
 import Main.Data.Element;
 import Main.Data.Material;
 import Main.Data.RecipeObject.MaterialData.Composition.MoleculeComposition;
-import Main.Generators.GElement;
-import Main.Generators.GMaterial;
-import Main.Generators.GPartGroup;
+import Main.Generators.*;
 import Main.Generators.GameData.GLiquidRegistry;
 import Main.Generators.GameData.GOreDictRegistry;
 import Main.Generators.GameData.GRegistry;
-import Main.Generators.GMachine;
 import Main.Generators.MachineResource.GMachineData;
 import Main.Generators.MachineResource.GMachineMatter;
 import Main.Generators.Tweakers.GRecipeTweak;
@@ -20,12 +17,12 @@ public class GMoleculeComposition extends AGChemicalComposition<MoleculeComposit
     GElement element;
     public GMoleculeComposition(String filename, boolean isReg,
                                 GRecipeTweak tweak, GRegistry registry, GLiquidRegistry liquids, GOreDictRegistry ores,
-                                GMachine machine, GMachineMatter matter, GMachineData data,
+                                GMachine machine, GMachineGroup machineGroup, GMachineMatter matter, GMachineData data,
                                 GMaterial material, GPartGroup partGroup,
                                 GElement element) {
         super(6, filename, isReg,
                 tweak, registry, liquids, ores,
-                machine, data, matter,
+                machine, machineGroup, data, matter,
                 material, partGroup,
                 true);
         this.element = element;
@@ -111,7 +108,7 @@ public class GMoleculeComposition extends AGChemicalComposition<MoleculeComposit
         }
         MoleculeComposition comp = new MoleculeComposition(
                 getRecipeTweak("MoleculeComposition"), getItems(), getLiquids(), getOres(),
-                getMachineRegistry(), getMatterRegistry(), getDataRegistry(),
+                getMachineRegistry(), getMachineGroupRegistry(), getMatterRegistry(), getDataRegistry(),
                 m,
                 c, compType, charge, isDefault,
                 isDiatomic, isotope, mValue);

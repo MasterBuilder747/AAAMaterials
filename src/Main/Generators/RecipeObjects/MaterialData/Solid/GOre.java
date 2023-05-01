@@ -10,6 +10,7 @@ import Main.Data.RecipeObject.MaterialData.OreVariant;
 import Main.Data.OreType;
 import Main.Data.GameData.Registry;
 import Main.Data.RecipeObject.RegistryData;
+import Main.Generators.GMachineGroup;
 import Main.Generators.GMaterial;
 import Main.Generators.GPartGroup;
 import Main.Generators.GameData.GLiquidRegistry;
@@ -31,13 +32,13 @@ public class GOre extends AGMSolid<Ore> {
 
     public GOre(String filename, boolean isReg,
                 GRecipeTweak tweak, GRegistry registry, GLiquidRegistry liquids, GOreDictRegistry ores,
-                GMachine machine, GMachineMatter matter, GMachineData data,
+                GMachine machine, GMachineGroup machineGroup, GMachineMatter matter, GMachineData data,
                 GMaterial material, GPartGroup partGroup,
                 GMSolid solid,
                 GStone stones) {
         super(5, filename, isReg,
                 tweak, registry, liquids, ores,
-                machine, matter, data,
+                machine, machineGroup, matter, data,
                 material, partGroup,
                 solid, true, false, false);
         this.stones = stones;
@@ -58,7 +59,7 @@ public class GOre extends AGMSolid<Ore> {
                 minVoltage, inMultiplier, outMultiplier,
                 baseTime, tickDecMulti,
                 getItems(), getLiquids(), getOres(),
-                getMachineRegistry(), getMatterRegistry(), getDataRegistry(),
+                getMachineRegistry(), getMachineGroupRegistry(), getMatterRegistry(), getDataRegistry(),
                 m,
                 Boolean.parseBoolean(s[0])
         );
@@ -106,7 +107,7 @@ public class GOre extends AGMSolid<Ore> {
                 b = new LBlock(
                         block,
                         getRecipeTweak("LBlock"), getItems(), getLiquids(), getOres(),
-                        getMachineRegistry(), getMatterRegistry(), getDataRegistry(),
+                        getMachineRegistry(), getMachineGroupRegistry(), getMatterRegistry(), getDataRegistry(),
                         "rock", tool
                 );
                 b.setAttributes(parseInt(attributes[1]), parseInt(attributes[2]), parseInt(attributes[3]));
@@ -122,7 +123,7 @@ public class GOre extends AGMSolid<Ore> {
                     minVoltage, inMultiplier, outMultiplier,
                     baseTime, tickDecMulti,
                     getItems(), getLiquids(), getOres(),
-                    getMachineRegistry(), getMatterRegistry(), getDataRegistry(),
+                    getMachineRegistry(), getMachineGroupRegistry(), getMatterRegistry(), getDataRegistry(),
                     m,
                     block, types.toArray(new OreType[0]), this.partGroup.getPart("ore")
             );

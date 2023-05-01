@@ -5,6 +5,7 @@ import Main.Data.RecipeObject.MaterialData.AMaterialData;
 import Main.Data.Material;
 import Main.Data.PartGroup;
 import Main.Data.RecipeObject.RegistryData;
+import Main.Generators.GMachineGroup;
 import Main.Generators.GMaterial;
 import Main.Generators.GPartGroup;
 import Main.Generators.GameData.GLiquidRegistry;
@@ -27,21 +28,21 @@ public abstract class AGMaterialData<M extends AMaterialData> extends AGRecipeOb
     //material data that is stored to indicate what is registered for a given material
     public AGMaterialData(int PARAMS, String filename, boolean isReg,
                           GRecipeTweak tweak, GRegistry registry, GLiquidRegistry liquids, GOreDictRegistry ores,
-                          GMachine machine, GMachineMatter matter, GMachineData data,
+                          GMachine machine, GMachineGroup machineGroup, GMachineMatter matter, GMachineData data,
                           GMaterial material, GPartGroup partGroup) {
         super(PARAMS+1, filename, "Material", isReg,
                 tweak, registry, liquids, ores,
-                machine, matter, data);
+                machine, machineGroup, matter, data);
         this.material = material;
         this.partGroup = partGroup;
     }
     public AGMaterialData(int PARAMS, String filename, String materialFolder, boolean isReg,
                           GRecipeTweak tweak, GRegistry registry, GLiquidRegistry liquids, GOreDictRegistry ores,
-                          GMachine machine, GMachineMatter matter, GMachineData data,
+                          GMachine machine, GMachineGroup machineGroup, GMachineMatter matter, GMachineData data,
                           GMaterial material, GPartGroup partGroup) {
         super(PARAMS+1, filename, "Material/"+materialFolder, isReg,
                 tweak, registry, liquids, ores,
-                machine, matter, data);
+                machine, machineGroup, matter, data);
         this.material = material;
         this.partGroup = partGroup;
     }

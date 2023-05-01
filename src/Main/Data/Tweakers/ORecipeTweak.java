@@ -1,6 +1,8 @@
 package Main.Data.Tweakers;
 
 public class ORecipeTweak {
+    public boolean isMachineGroup;
+
     public String machine;
     public String iInput;
     public String lInput;
@@ -10,9 +12,10 @@ public class ORecipeTweak {
     public int[] ioMultipliers;
     public int priority;
 
-    ORecipeTweak(String machine,
+    ORecipeTweak(String machine, boolean isMachineGroup,
                  String iInput, String lInput, String iOutput, String lOutput,
                  int baseRecipeAmount, int[] ioMultipliers, int priority) {
+        this.isMachineGroup = isMachineGroup;
         this.machine = machine;
         this.iInput = iInput;
         this.iOutput = iOutput;

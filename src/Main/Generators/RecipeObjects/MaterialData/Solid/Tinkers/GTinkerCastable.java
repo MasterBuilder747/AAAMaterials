@@ -7,6 +7,7 @@ import Main.Data.RecipeObject.MaterialData.Solid.Malleable.Plastic;
 import Main.Data.RecipeObject.MaterialData.Solid.Malleable.Rubber;
 import Main.Data.RecipeObject.MaterialData.Tinker.TinkerCastable;
 import Main.Data.RecipeObject.RegistryData;
+import Main.Generators.GMachineGroup;
 import Main.Generators.GMaterial;
 import Main.Generators.GPartGroup;
 import Main.Generators.GameData.*;
@@ -31,7 +32,7 @@ public class GTinkerCastable extends AGTinkers<TinkerCastable> {
     public GTinkerCastable(
             String filename, boolean isReg,
             GRecipeTweak tweak, GRegistry registry, GLiquidRegistry liquids, GOreDictRegistry ores,
-            GMachine machine, GMachineMatter matter, GMachineData data,
+            GMachine machine, GMachineGroup machineGroup, GMachineMatter matter, GMachineData data,
             GMaterial material, GPartGroup partGroup,
             GTCPartRegistry parts, GTCTraitRegistry traits,
             GAlloy alloy, GMetal metal, GPlastic plastic, GRubber rubber
@@ -39,7 +40,7 @@ public class GTinkerCastable extends AGTinkers<TinkerCastable> {
         super(
             7+3, filename, isReg,
             tweak, registry, liquids, ores,
-            machine, matter, data,
+            machine, machineGroup, matter, data,
             material, partGroup,
             parts, traits
         );
@@ -94,7 +95,7 @@ public class GTinkerCastable extends AGTinkers<TinkerCastable> {
                 minVoltage, inMultiplier, outMultiplier,
                 baseTime, tickDecMulti,
                 getItems(), getLiquids(), getOres(),
-                getMachineRegistry(), getMatterRegistry(), getDataRegistry(),
+                getMachineRegistry(), getMachineGroupRegistry(), getMatterRegistry(), getDataRegistry(),
                 m,
                 false, isCasting, ore, ore, parts.getPartRegistry(),
                 molten, meltingMultiplier

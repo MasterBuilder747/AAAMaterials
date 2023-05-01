@@ -2,6 +2,7 @@ package Main.Data.RecipeObject.MaterialData.Solid.Malleable;
 
 import Main.Data.GameData.Registry;
 import Main.Data.Machine.Machine;
+import Main.Data.Machine.MachineGroup;
 import Main.Data.Recipe.MachineData;
 import Main.Data.Recipe.MachineMatter;
 import Main.Data.RecipeObject.MaterialData.Liquid.MLiquid;
@@ -13,14 +14,14 @@ public class Alloy extends AMalleable {
     public Alloy(RecipeTweak tweak, int minVoltage, double powerMultiplierIn, double powerMultiplierOut,
                  int baseTime, double[] tickDecMultipliers,
                  Registry[] items, String[] liquids, String[] ores,
-                 Machine[] machines, MachineMatter[] matters, MachineData[] datas,
+                 Machine[] machines, MachineGroup[] machineGroups, MachineMatter[] matters, MachineData[] datas,
                  Material m,
                  MLiquid molten) {
         super("Alloy",
                 tweak, minVoltage, powerMultiplierIn, powerMultiplierOut,
                 baseTime, tickDecMultipliers,
                 items, liquids, ores,
-                machines, matters, datas,
+                machines, machineGroups, matters, datas,
                 m,
                 molten, 1);
     }

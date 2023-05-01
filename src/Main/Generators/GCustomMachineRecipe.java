@@ -57,8 +57,8 @@ public class GCustomMachineRecipe extends AGenerator<MachineRecipe> {
         int tierOut = parseInt(energyOutSyntax.substring(0, energyOutSyntax.indexOf("*")));
         double inMultiplier = parseDouble(energyInSyntax.substring(energyInSyntax.indexOf("*")+1));
         double outMultiplier = parseDouble(energyOutSyntax.substring(energyOutSyntax.indexOf("*")+1));
-        if (tierIn > m.voltage) error("Voltage tier input " + tierIn + " is greater than machine " + m.NAME + " can handle, expected at most " + m.voltage);
-        if (tierOut > m.voltage) error("Voltage tier output " + tierOut + " is greater than machine " + m.NAME + " can handle, expected at most " + m.voltage);
+        if (tierIn > m.maxVoltage) error("Voltage tier input " + tierIn + " is greater than machine " + m.NAME + " can handle, expected at most " + m.maxVoltage);
+        if (tierOut > m.maxVoltage) error("Voltage tier output " + tierOut + " is greater than machine " + m.NAME + " can handle, expected at most " + m.maxVoltage);
         if (tierIn < 0 || tierIn > 16) {
             error("Voltage input tier must be between 0 and 16 inclusive");
         }
@@ -70,10 +70,10 @@ public class GCustomMachineRecipe extends AGenerator<MachineRecipe> {
 
         long energyIn;
         if (tierIn == 0) energyIn = 0;
-        else energyIn = convertEnergyTier(m.getMaxVoltage(tierIn), inMultiplier);
+        else energyIn = convertEnergyTier(Util.getVoltage(tierIn), inMultiplier);
         long energyOut;
         if (tierIn == 0) energyOut = 0;
-        else energyOut = convertEnergyTier(m.getMaxVoltage(tierOut), outMultiplier);
+        else energyOut = convertEnergyTier(Util.getVoltage(tierOut), outMultiplier);
 
         MachineRecipe r = new MachineRecipe("custom"+s[0]+line, m, time, priority, energyIn, energyOut);
         //ios

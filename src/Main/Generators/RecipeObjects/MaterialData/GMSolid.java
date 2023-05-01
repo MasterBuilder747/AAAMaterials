@@ -3,6 +3,7 @@ package Main.Generators.RecipeObjects.MaterialData;
 import Main.Data.Material;
 import Main.Data.RecipeObject.MaterialData.MSolid;
 import Main.Data.RecipeObject.RegistryData;
+import Main.Generators.GMachineGroup;
 import Main.Generators.GMaterial;
 import Main.Generators.GPartGroup;
 import Main.Generators.GameData.GLiquidRegistry;
@@ -17,11 +18,11 @@ import Main.Generators.Tweakers.GRecipeTweak;
 public class GMSolid extends AGMaterialData<MSolid> {
     public GMSolid(String filename, boolean isReg,
                    GRecipeTweak tweak, GRegistry registry, GLiquidRegistry liquids, GOreDictRegistry ores,
-                   GMachine machine, GMachineMatter matter, GMachineData data,
+                   GMachine machine, GMachineGroup machineGroup, GMachineMatter matter, GMachineData data,
                    GMaterial material, GPartGroup partGroup) {
         super(4, filename, isReg,
                 tweak, registry, liquids, ores,
-                machine, matter, data, material, partGroup);
+                machine, machineGroup, matter, data, material, partGroup);
     }
 
     @Override
@@ -35,7 +36,7 @@ public class GMSolid extends AGMaterialData<MSolid> {
                 minVoltage, inMultiplier, outMultiplier,
                 baseTime, tickDecMulti,
                 getItems(), getLiquids(), getOres(),
-                getMachineRegistry(), getMatterRegistry(), getDataRegistry(),
+                getMachineRegistry(), getMachineGroupRegistry(), getMatterRegistry(), getDataRegistry(),
                 m
         );
         sol.setPartGroups(exclusions, genPartGroups(new String[]{"dust", "fine", "powder"}),

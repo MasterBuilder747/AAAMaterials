@@ -3,6 +3,7 @@ package Main.Generators.RecipeObjects.MaterialData.Solid.Tinkers;
 import Main.Data.Material;
 import Main.Data.RecipeObject.MaterialData.Tinker.TinkerCraftable;
 import Main.Data.RecipeObject.RegistryData;
+import Main.Generators.GMachineGroup;
 import Main.Generators.GMaterial;
 import Main.Generators.GPartGroup;
 import Main.Generators.GameData.*;
@@ -17,13 +18,13 @@ public class GTinkerCraftable extends AGTinkers<TinkerCraftable> {
     public GTinkerCraftable(
             String filename, boolean isReg,
             GRecipeTweak tweak, GRegistry registry, GLiquidRegistry liquids, GOreDictRegistry ores,
-            GMachine machine, GMachineMatter matter, GMachineData data,
+            GMachine machine, GMachineGroup machineGroup, GMachineMatter matter, GMachineData data,
             GMaterial material, GPartGroup partGroup,
             GTCPartRegistry parts, GTCTraitRegistry traits
     ) {
         super(7+3, filename, isReg,
             tweak, registry, liquids, ores,
-            machine, matter, data,
+            machine, machineGroup, matter, data,
             material, partGroup,
             parts, traits
         );
@@ -40,7 +41,7 @@ public class GTinkerCraftable extends AGTinkers<TinkerCraftable> {
                 minVoltage, inMultiplier, outMultiplier,
                 baseTime, tickDecMulti,
                 getItems(), getLiquids(), getOres(),
-                getMachineRegistry(), getMatterRegistry(), getDataRegistry(),
+                getMachineRegistry(), getMachineGroupRegistry(), getMatterRegistry(), getDataRegistry(),
                 m,
                 isCrafting, ore, ore, parts.getPartRegistry()
         );

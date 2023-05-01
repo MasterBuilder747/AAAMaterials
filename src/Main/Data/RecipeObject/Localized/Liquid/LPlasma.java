@@ -2,6 +2,7 @@ package Main.Data.RecipeObject.Localized.Liquid;
 
 import Main.Data.GameData.Registry;
 import Main.Data.Machine.Machine;
+import Main.Data.Machine.MachineGroup;
 import Main.Data.Recipe.MachineData;
 import Main.Data.Recipe.MachineMatter;
 import Main.Data.Tweakers.RecipeTweak;
@@ -11,13 +12,13 @@ public class LPlasma extends ALiquid {
     //genFluid("iron_plasma", "ff2000", 100, true, 0, 10000, 100, true, "contenttweaker:fluids/plasma", "contenttweaker:fluids/plasma_flowing", <blockmaterial:lava>);
     public LPlasma(String NAME,
                    RecipeTweak tweak, Registry[] items, String[] liquids, String[] ores,
-                   Machine[] machines, MachineMatter[] matters, MachineData[] datas,
+                   Machine[] machines, MachineGroup[] machineGroups, MachineMatter[] matters, MachineData[] datas,
                    String localName,
                    String color, boolean isMaterial, boolean vaporize,
                    int density, int luminosity, int temperature, int viscosity) {
         super(NAME, "LPlasma",
                 tweak, items, liquids, ores,
-                machines, matters, datas,
+                machines, machineGroups, matters, datas,
                 localName,
                 color, isMaterial, false, vaporize,
                 density, luminosity, temperature, viscosity);

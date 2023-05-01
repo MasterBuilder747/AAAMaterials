@@ -3,8 +3,10 @@ package Main.Data.RecipeObject;
 import Main.Data.AData;
 import Main.Data.GameData.Registry;
 import Main.Data.Machine.Machine;
+import Main.Data.Machine.MachineGroup;
 import Main.Data.Recipe.MachineData;
 import Main.Data.Recipe.MachineMatter;
+import Main.Data.Recipe.MachineRecipe;
 import Main.Data.RecipeObject.MaterialData.AMaterialData;
 import Main.Data.Tweakers.ORecipeTweak;
 import Main.Data.Tweakers.RecipeTweak;
@@ -21,6 +23,7 @@ public abstract class ARecipeObject extends AData {
     protected String[] ores; //the array of ore dictionary entries (ore:ingotIron where ingotIron is only included)
     //global machine resources needed by recipes
     protected Machine[] machines;
+    protected MachineGroup[] machineGroups;
     protected MachineData[] datas;
     protected MachineMatter[] matters;
 
@@ -39,7 +42,7 @@ public abstract class ARecipeObject extends AData {
                          RecipeTweak tweak, int minVoltage, double powerMultiplierIn, double powerMultiplierOut,
                          int baseTime, double[] tickDecMultipliers,
                          Registry[] items, String[] liquids, String[] ores,
-                         Machine[] machines, MachineMatter[] matters, MachineData[] datas) {
+                         Machine[] machines, MachineGroup[] machineGroups, MachineMatter[] matters, MachineData[] datas) {
         super(NAME);
         this.type = type;
         this.customVar = "";
@@ -55,6 +58,7 @@ public abstract class ARecipeObject extends AData {
         this.liquids = liquids;
         this.ores = ores;
         this.machines = machines;
+        this.machineGroups = machineGroups;
         this.datas = datas;
         this.matters = matters;
     }
@@ -69,7 +73,7 @@ public abstract class ARecipeObject extends AData {
             ORecipeTweak[] recipes = this.tweak.getRecipes();
             for (int i = 0; i < recipes.length; i++) {
                 sb.append(addRecipe(
-                    i, recipes[i].machine, this.baseTime, recipes[i].priority,
+                    i, recipes[i].machine, recipes[i].isMachineGroup, this.baseTime, recipes[i].priority,
                     this.tickDecMultipliers, recipes[i].baseRecipeAmount, recipes[i].ioMultipliers,
                     this.minVoltage, this.powerMultiplierIn, this.powerMultiplierOut,
                     recipes[i].iInput, recipes[i].lInput, recipes[i].iOutput, recipes[i].lOutput,
@@ -84,14 +88,22 @@ public abstract class ARecipeObject extends AData {
     protected abstract String buildAdditionalRecipes();
 
     protected String addRecipe(
-            int num, String machine, int time, int priority,
+            int num, String machine, boolean isMachineGroup, int time, int priority,
             double[] tickDecMultipliers, int baseRecipeAmount, int[] ioMultipliers,
             int minVoltage, double powerMultiplierIn, double powerMultiplierOut,
             String iInput, String lInput, String iOutput, String lOutput,
             String var2 //need an additional custom var for uniqueness between user and coded recipes
     ) {
-        Machine mach = getMachine(machine);
-        RecipeObject r = new RecipeObject("recipe", mach);
+        RecipeObject r;
+        if (isMachineGroup) {
+            r = new RecipeObject("recipe", getMachineGroup(machine));
+        } else {
+            Machine mach = getMachine(machine);
+            if (minVoltage > mach.maxVoltage)
+                error("MachineGroup " + machine + " can only go to voltage " + mach.maxVoltage +
+                        ", " + minVoltage + " is too large for it to handle");
+            r = new RecipeObject("recipe", mach);
+        }
         String recipeVariable = this.NAME/*+iOutput.replace("-", "_")*/+this.type+num+this.customVar+var2;
         //String name, int time, int priority,
         //double[] tickDecMultipliers, int baseRecipeAmount, int[] ioMultipliers,
@@ -270,6 +282,14 @@ public abstract class ARecipeObject extends AData {
     //get machine resources
     protected Machine getMachine(String s) {
         for (Machine m : this.machines) {
+            if (m.NAME.equals(s)) {
+                return m;
+            }
+        }
+        throw new IllegalArgumentException("Unknown machine " + s + " in the machine registry");
+    }
+    protected MachineGroup getMachineGroup(String s) {
+        for (MachineGroup m : this.machineGroups) {
             if (m.NAME.equals(s)) {
                 return m;
             }

@@ -43,7 +43,8 @@ public class GMachine extends AGenerator<Machine> {
         Machine machine = new Machine(
                 name, localName, color, voltage, reqBlueprint, chemical,
                 this.registry.getObjects().toArray(new Registry[0]),
-                this.blockMetas.getObjects().toArray(new BlockstateMeta[0])
+                this.blockMetas.getObjects().toArray(new BlockstateMeta[0]),
+                null
         );
         objects.add(machine);
     }

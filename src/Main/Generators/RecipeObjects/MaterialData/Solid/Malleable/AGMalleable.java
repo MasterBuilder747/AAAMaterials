@@ -5,6 +5,7 @@ import Main.Data.RecipeObject.MaterialData.Liquid.MLiquid;
 import Main.Data.RecipeObject.MaterialData.MSolid;
 import Main.Data.RecipeObject.MaterialData.Solid.Malleable.AMalleable;
 import Main.Data.RecipeObject.RegistryData;
+import Main.Generators.GMachineGroup;
 import Main.Generators.GMaterial;
 import Main.Generators.GPartGroup;
 import Main.Generators.GameData.GLiquidRegistry;
@@ -23,13 +24,13 @@ public abstract class AGMalleable <M extends AMalleable> extends AGMSolid<M> {
 
     public AGMalleable(int params, String filename, boolean isReg,
                        GRecipeTweak tweak, GRegistry registry, GLiquidRegistry liquids, GOreDictRegistry ores,
-                       GMachine machine, GMachineMatter matter, GMachineData data,
+                       GMachine machine, GMachineGroup machineGroup, GMachineMatter matter, GMachineData data,
                        GMaterial material, GPartGroup partGroup,
                        GMSolid solid, boolean isDust, boolean isFineDust, boolean isPowder,
                        GMLiquid liquid) {
         super(params, filename, "Malleable", isReg,
                 tweak, registry, liquids, ores,
-                machine, matter, data,
+                machine, machineGroup, matter, data,
                 material, partGroup,
                 solid, isDust, isFineDust, isPowder);
         this.liquid = liquid;

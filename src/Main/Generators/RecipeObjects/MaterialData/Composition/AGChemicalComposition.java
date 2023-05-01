@@ -5,6 +5,7 @@ import Main.Data.RecipeObject.MaterialData.Composition.AChemicalComposition;
 import Main.Data.RecipeObject.MaterialData.Composition.Composition;
 import Main.Data.RecipeObject.RegistryData;
 import Main.Generators.GMachine;
+import Main.Generators.GMachineGroup;
 import Main.Generators.GMaterial;
 import Main.Generators.GPartGroup;
 import Main.Generators.GameData.GLiquidRegistry;
@@ -23,12 +24,12 @@ public abstract class AGChemicalComposition<C extends AChemicalComposition> exte
 
     public AGChemicalComposition(int PARAMS, String filename, boolean isReg,
                                  GRecipeTweak tweak, GRegistry registry, GLiquidRegistry liquids, GOreDictRegistry ores,
-                                 GMachine machine, GMachineData data, GMachineMatter matter,
+                                 GMachine machine, GMachineGroup machineGroup, GMachineData data, GMachineMatter matter,
                                  GMaterial material, GPartGroup partGroup,
                                  boolean isSingular) {
         super(PARAMS-4, filename + "_composition", isReg,
                 tweak, registry, liquids, ores,
-                machine, matter, data,
+                machine, machineGroup, matter, data,
                 material, partGroup);
         this.isSingular = isSingular;
     }

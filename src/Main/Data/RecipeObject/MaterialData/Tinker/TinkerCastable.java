@@ -3,6 +3,7 @@ package Main.Data.RecipeObject.MaterialData.Tinker;
 import Main.Data.GameData.Registry;
 import Main.Data.GameData.TCPart;
 import Main.Data.Machine.Machine;
+import Main.Data.Machine.MachineGroup;
 import Main.Data.Recipe.MachineData;
 import Main.Data.Recipe.MachineMatter;
 import Main.Data.Material;
@@ -15,7 +16,7 @@ public class TinkerCastable extends ATinkers {
             RecipeTweak tweak, int minVoltage, double powerMultiplierIn, double powerMultiplierOut,
             int baseTime, double[] tickDecMultipliers,
             Registry[] items, String[] liquids, String[] ores,
-            Machine[] machines, MachineMatter[] matters, MachineData[] datas,
+            Machine[] machines, MachineGroup[] machineGroups, MachineMatter[] matters, MachineData[] datas,
             Material m,
             boolean craftable, boolean castable, String icon, String oreDict, TCPart[] parts,
             String molten, double meltingMultiplier
@@ -24,7 +25,7 @@ public class TinkerCastable extends ATinkers {
                 tweak, minVoltage, powerMultiplierIn, powerMultiplierOut,
                 baseTime, tickDecMultipliers,
                 items, liquids, ores,
-                machines, matters, datas,
+                machines, machineGroups, matters, datas,
                 m,
                 craftable, castable, icon, oreDict, parts
         );

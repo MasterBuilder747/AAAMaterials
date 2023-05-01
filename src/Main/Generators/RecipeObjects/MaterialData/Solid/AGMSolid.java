@@ -4,6 +4,7 @@ import Main.Data.RecipeObject.MaterialData.Solid.AMSolid;
 import Main.Data.Material;
 import Main.Data.RecipeObject.MaterialData.MSolid;
 import Main.Data.RecipeObject.RegistryData;
+import Main.Generators.GMachineGroup;
 import Main.Generators.GMaterial;
 import Main.Generators.GPartGroup;
 import Main.Generators.GameData.GLiquidRegistry;
@@ -24,12 +25,12 @@ public abstract class AGMSolid <S extends AMSolid> extends AGMaterialData<S> {
 
     public AGMSolid(int params, String filename, boolean isReg,
                     GRecipeTweak tweak, GRegistry registry, GLiquidRegistry liquids, GOreDictRegistry ores,
-                    GMachine machine, GMachineMatter matter, GMachineData data,
+                    GMachine machine, GMachineGroup machineGroup, GMachineMatter matter, GMachineData data,
                     GMaterial material, GPartGroup partGroup,
                     GMSolid solid, boolean isDust, boolean isFineDust, boolean isPowder) {
         super(params, filename, "Solid", isReg,
                 tweak, registry, liquids, ores,
-                machine, matter, data,
+                machine, machineGroup, matter, data,
                 material, partGroup);
         this.solid = solid;
         this.isDust = isDust;
@@ -38,12 +39,12 @@ public abstract class AGMSolid <S extends AMSolid> extends AGMaterialData<S> {
     }
     public AGMSolid(int params, String filename, String solidFolder, boolean isReg,
                     GRecipeTweak tweak, GRegistry registry, GLiquidRegistry liquids, GOreDictRegistry ores,
-                    GMachine machine, GMachineMatter matter, GMachineData data,
+                    GMachine machine, GMachineGroup machineGroup, GMachineMatter matter, GMachineData data,
                     GMaterial material, GPartGroup partGroup,
                     GMSolid solid, boolean isDust, boolean isFineDust, boolean isPowder) {
         super(params, filename, "Solid/"+solidFolder, isReg,
                 tweak, registry, liquids, ores,
-                machine, matter, data,
+                machine, machineGroup, matter, data,
                 material, partGroup);
         this.solid = solid;
         this.isDust = isDust;

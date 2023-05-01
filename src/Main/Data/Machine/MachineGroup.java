@@ -34,21 +34,21 @@ public class MachineGroup extends AData {
         buildMachines();
     }
     private void buildMachines() {
-        int voltage;
-        if (minVoltage > 12) voltage = this.minVoltage;
-        else voltage = 13;
+        int maxVoltage;
+        if (minVoltage > 12) maxVoltage = this.minVoltage;
+        else maxVoltage = 16;
 
-        this.ultimate = createMachine("ultimate", voltage, 3);
+        this.ultimate = createMachine("ultimate", maxVoltage, 3);
 
-        if (minVoltage > 8) voltage = this.minVoltage;
-        else voltage = 9;
-        if (minVoltage < 13) this.industrial = createMachine("industrial", voltage, 2);
+        if (minVoltage > 8) maxVoltage = this.minVoltage;
+        else maxVoltage = 12;
+        if (minVoltage < 13) this.industrial = createMachine("industrial", maxVoltage, 2);
 
-        if (minVoltage > 4) voltage = this.minVoltage;
-        else voltage = 5;
-        if (minVoltage < 9) this.advanced = createMachine("advanced", voltage, 1);
+        if (minVoltage > 4) maxVoltage = this.minVoltage;
+        else maxVoltage = 8;
+        if (minVoltage < 9) this.advanced = createMachine("advanced", maxVoltage, 1);
 
-        if (minVoltage < 5) this.basic = createMachine("basic", this.minVoltage, 0);
+        if (minVoltage < 5) this.basic = createMachine("basic", 4, 0);
     }
 
     @Override
@@ -60,11 +60,11 @@ public class MachineGroup extends AData {
         return null;
     }
 
-    private Machine createMachine(String tierName, int voltage, int index) {
+    private Machine createMachine(String tierName, int maxVoltage, int index) {
         return new Machine(
                 this.NAME+"_"+tierName, Util.toUpper(tierName)+" "+this.localName,
-                this.colors[index], voltage, this.reqBlueprints[index], this.chemicals[index],
-                this.registries, this.blockMetas
+                this.colors[index], maxVoltage, this.reqBlueprints[index], this.chemicals[index],
+                this.registries, this.blockMetas, tierName
         );
     }
 
