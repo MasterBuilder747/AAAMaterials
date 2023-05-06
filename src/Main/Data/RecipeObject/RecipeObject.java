@@ -117,6 +117,7 @@ public class RecipeObject extends AData {
         r.liquidInputs = generateIOAmounts(liquidInputs, baseRecipeAmount, ioMultiplier);
         r.itemOutputs = generateIOAmounts(itemOutputs, baseRecipeAmount, ioMultiplier);
         r.liquidOutputs = generateIOAmounts(liquidOutputs, baseRecipeAmount, ioMultiplier);
+        r.setVoltageUpgradeItem(minVoltage);
         if (chemAmount > 0 && machine.chemical != null) {
             r.liquidInputs.add(generateIOAmount(machine.chemical+"*"+chemAmount, baseRecipeAmount, ioMultiplier));
         }
@@ -151,6 +152,7 @@ public class RecipeObject extends AData {
             r.liquidInputs = generateIOAmounts(liquidInputs, baseRecipeAmount, ioMultiplier);
             r.itemOutputs = generateIOAmounts(itemOutputs, baseRecipeAmount, ioMultiplier);
             r.liquidOutputs = generateIOAmounts(liquidOutputs, baseRecipeAmount, ioMultiplier);
+            r.setVoltageUpgradeItem(i+1);
             if (chemAmount > 0 && machine.chemical != null) {
                 r.liquidInputs.add(generateIOAmount(machine.chemical+"*"+chemAmount, baseRecipeAmount, ioMultiplier));
             }

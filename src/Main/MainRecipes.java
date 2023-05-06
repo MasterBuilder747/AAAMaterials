@@ -198,7 +198,7 @@ public class MainRecipes {
         Util.splitFiles(sb2.toString(), "scripts/tooltips/", "tooltips", 0, 1000, null, false, null);
 
         //split the recipe code into files
-        Util.splitRecipeFiles(sb.toString(), initialCode, Util.HOME + Util.DEPLOY+"scripts/recipes/recipes", false);
+        Util.splitRecipeFiles(sb.toString(), initialCode, Util.HOME + Util.DEPLOY+"scripts/recipes/recipes", 400, false);
 
         w.stop();
         System.out.println();

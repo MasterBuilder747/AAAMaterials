@@ -97,7 +97,7 @@ public class GMachineGroup extends AGenerator<MachineGroup> {
         if (c.equals("default")) {
             //these are the hardcoded default machine colors
             out[0] = "77736D"; //basic IO
-            out[1] = "3c78d8"; //advanced IO
+            out[1] = "5b82c1"; //advanced IO
             out[2] = "f3f3f3"; //industrial IO
             out[3] = "e6001d"; //ultimate IO
         } else {

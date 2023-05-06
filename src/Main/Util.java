@@ -1,6 +1,5 @@
 package Main;
 
-import org.json.JSONArray;
 import org.json.JSONObject;
 
 import java.awt.*;
@@ -44,7 +43,7 @@ public class Util {
         return s.substring(i1, i2+1);
     }
 
-    public static void splitRecipeFiles(String code, String initialCode, String filePath, boolean checkDupeVars) throws IOException {
+    public static void splitRecipeFiles(String code, String initialCode, String filePath, int threshold, boolean checkDupeVars) throws IOException {
         //Split code into multiple files
         //recipes[N].zs
         ArrayList<String> sbs = new ArrayList<>();
@@ -62,7 +61,7 @@ public class Util {
         int fileNo = 0;
         while (line < prs.length) {
             int methodNo = 0;
-            while (methodNo < 500 && line < prs.length) {
+            while (methodNo < threshold && line < prs.length) {
                 if (checkDupeVars) {
                     //check for duplicate variables (this process is super slow, disable unless issues on game load)
                     if (prs[line].endsWith(".build();")) {
@@ -342,6 +341,27 @@ public class Util {
             case 15 -> 2_000_000_000L; //or 2.1?
             case 16 -> 12_884_901_882L; //ultimate
             default -> 0; //disabled
+        };
+    }
+    public static String getVoltageAbb(int tier) {
+        return switch (tier) {
+            case 1  -> "lv";
+            case 2  -> "mv";
+            case 3  -> "hv";
+            case 4  -> "ev";
+            case 5  -> "iv";
+            case 6  -> "luv";
+            case 7  -> "zpv";
+            case 8  -> "uv";
+            case 9  -> "umv";
+            case 10 -> "uhv";
+            case 11 -> "uev";
+            case 12 -> "uiv";
+            case 13 -> "ulv";
+            case 14 -> "uzv";
+            case 15 -> "uuu";
+            case 16 -> "inf";
+            default -> null;
         };
     }
 

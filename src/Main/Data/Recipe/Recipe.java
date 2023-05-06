@@ -50,6 +50,9 @@ public class Recipe extends AData {
         }
         this.liquidInputs.add(sb.toString());
     }
+    public void setVoltageUpgradeItem(int voltage) {
+        this.itemInputs.add("0%contenttweaker:"+Util.getVoltageAbb(voltage)+"_upgrade");
+    }
 
     private void genJson() throws IOException {
         //1 file per recipe

@@ -1,2 +1,19 @@
 /name, localizedName
-/ex: iron_singularity, iron-Singularity
+//recipe voltage tier upgrades
+//do not change these names!
+lv_upgrade, Low-Voltage-Upgrade-(LV)
+mv_upgrade, Medium-Voltage-Upgrade-(MV)
+hv_upgrade, High-Voltage-Upgrade-(HV)
+ev_upgrade, Extreme-Voltage-Upgrade-(EV)
+iv_upgrade, Insane-Voltage-Upgrade-(IV)
+luv_upgrade, Ludicrous-Voltage-Upgrade-(LuV)
+zpv_upgrade, Zero-Point-Voltage-Upgrade-(ZPV)
+uv_upgrade, Ultimate-Voltage-Upgrade-(UV)
+umv_upgrade, Ultimate-Medium-Voltage-Upgrade-(UMV)
+uhv_upgrade, Ultimate-High-Voltage-Upgrade-(UHV)
+uev_upgrade, Ultimate-Extreme-Voltage-Upgrade-(UEV)
+uiv_upgrade, Ultimate-Insane-Voltage-Upgrade-(UIV)
+ulv_upgrade, Ultimate-Ludicrous-Voltage-Upgrade-(ULV)
+uzv_upgrade, Ultimate-Zero-Point-Voltage-Upgrade-(UZV)
+uuu_upgrade, Universal-Ultra-Ultimate-Voltage-Upgrade-(UUU)
+inf_upgrade, Infinity-Voltage-Upgrade-(INF)

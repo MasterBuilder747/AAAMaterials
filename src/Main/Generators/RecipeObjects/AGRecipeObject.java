@@ -86,7 +86,7 @@ public abstract class AGRecipeObject<R extends ARecipeObject> extends AGenerator
         } else if (matInS.startsWith("+")) {
             matterIn = matIn.pos;
         } else error("must include matter input polarity as the first character");
-        String matOutS = s[6];
+        String matOutS = s[7];
         MachineMatter matOut = this.matters.get(matOutS.substring(1));
         LPlasma matterOut = null;
         if (matOutS.startsWith("-")) {
