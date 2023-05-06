@@ -47,7 +47,7 @@ public class GRegistry extends AGGameData<Registry> {
                 return o;
             }
         }
-        error("Unknown Non-CoT item from " + filename + "s.txt: " + s, true);
+        error("Unknown item from " + filename + "s.txt: " + s, true);
         return null;
     }
     public Registry getByMod(String reg, String filename, int line) {
@@ -55,6 +55,23 @@ public class GRegistry extends AGGameData<Registry> {
             if (o.NAME.equals(reg)) return o;
         }
         error("Unknown item from the registry: " + reg, filename, line);
+        return null;
+    }
+    public Registry getByMeta(String reg) {
+        int meta = -1;
+        String[] metas = Util.split(reg, ":");
+        if (metas.length == 3) {
+            meta = parseInt(metas[2]);
+            reg = metas[0]+":"+metas[1];
+        } else {
+            error("No meta defined: " + reg);
+        }
+        for (Registry o : objects) {
+            if (o.NAME.equals(reg) && o.meta == meta) {
+                return o;
+            }
+        }
+        error("Unknown item by meta in the registry: " + reg + ":" + meta, filename, line);
         return null;
     }
     public Registry getByMeta(String reg, int meta, String filename, int line) {

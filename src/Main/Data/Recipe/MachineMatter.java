@@ -1,28 +1,15 @@
 package Main.Data.Recipe;
 
-import Main.Data.RecipeObject.Localized.Liquid.ALiquid;
+import Main.Data.RecipeObject.Localized.Liquid.LPlasma;
 
 public class MachineMatter extends AMachineResource {
-    ALiquid pos;
-    ALiquid neg;
+    public LPlasma pos;
+    public LPlasma neg;
 
-    public MachineMatter(String color, ALiquid pos, ALiquid neg) {
+    public MachineMatter(String color, LPlasma pos, LPlasma neg) {
         super(color);
         this.pos = pos;
         this.neg = neg;
-    }
-
-    public String getPos() {
-        return this.pos.getBracket();
-    }
-    public String getPosName() {
-        return this.pos.NAME;
-    }
-    public String getNeg() {
-        return this.neg.getBracket();
-    }
-    public String getNegName() {
-        return this.neg.NAME;
     }
 
     @Override

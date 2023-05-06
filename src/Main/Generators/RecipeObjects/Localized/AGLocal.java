@@ -1,11 +1,13 @@
 package Main.Generators.RecipeObjects.Localized;
 
 import Main.Data.RecipeObject.Localized.ALocalizedData;
+import Main.Data.RecipeObject.Localized.Liquid.LLiquid;
+import Main.Data.RecipeObject.Localized.Liquid.LPlasma;
+import Main.Generators.GMachine;
 import Main.Generators.GMachineGroup;
 import Main.Generators.GameData.GLiquidRegistry;
 import Main.Generators.GameData.GOreDictRegistry;
 import Main.Generators.GameData.GRegistry;
-import Main.Generators.GMachine;
 import Main.Generators.MachineResource.GMachineData;
 import Main.Generators.MachineResource.GMachineMatter;
 import Main.Generators.RecipeObjects.AGRecipeObject;
@@ -18,17 +20,17 @@ public abstract class AGLocal<L extends ALocalizedData> extends AGRecipeObject<L
     //a variant of Generator that implements localized data
     public AGLocal(int PARAMS, String filename, boolean isReg,
                    GRecipeTweak tweak, GRegistry registry, GLiquidRegistry liquids, GOreDictRegistry ores,
-                   GMachine machine, GMachineGroup machineGroup, GMachineMatter matter, GMachineData data) {
-        super((PARAMS-4)+2, "custom-"+filename, "Custom", isReg,
+                   GMachine machine, GMachineGroup machineGroup, GMachineData data, GMachineMatter matter) {
+        super((PARAMS-8)+2, "custom-"+filename, "Custom", isReg,
                 tweak, registry, liquids, ores,
-                machine, machineGroup, matter, data);
+                machine, machineGroup, data, matter);
     }
     public AGLocal(int PARAMS, String filename, String localFolder, boolean isReg,
                    GRecipeTweak tweak, GRegistry registry, GLiquidRegistry liquids, GOreDictRegistry ores,
-                   GMachine machine, GMachineGroup machineGroup, GMachineMatter matter, GMachineData data) {
-        super((PARAMS-4)+2, "custom-"+filename, "Custom/"+localFolder, isReg,
+                   GMachine machine, GMachineGroup machineGroup, GMachineData data, GMachineMatter matter) {
+        super((PARAMS-8)+2, "custom-"+filename, "Custom/"+localFolder, isReg,
                 tweak, registry, liquids, ores,
-                machine, machineGroup, matter, data);
+                machine, machineGroup, data, matter);
     }
 
     @Override
@@ -51,6 +53,7 @@ public abstract class AGLocal<L extends ALocalizedData> extends AGRecipeObject<L
     protected abstract void addParameters(String name, String localName, String[] s);
     @Override
     protected void readRecipeParameters(int minVoltage, double inMultiplier, double outMultiplier, int baseTime, double[] tickDecMulti,
+                                        LLiquid data, LPlasma matterIn, LPlasma matterOut,
                                         BufferedReader br, String[] s) {}
 
     //this writes to the CoT .lang file

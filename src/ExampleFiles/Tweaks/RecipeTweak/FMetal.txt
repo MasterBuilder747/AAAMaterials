@@ -1,6 +1,7 @@
 //machine,
 //itemInputs[], liquidInputs[], itemOutputs[], liquidOutputs[],
-//int baseRecipesPerOperation, int[] outputMultipliers[16], int priority
+//int baseRecipesPerOperation, int[] outputMultipliers[16], int priority,
+//int chemAmount, int dataAmount, int matterInAmount, int matterOutAmount
 //baseRecipesPerOperation is non-zero
 //outputMultipliers must be size 16, non-zero
 //optional (some I/O is required): String input(i1; i2), String output(o1; o2), String lInput(l1; l2), String lOutput(g1; g2)
@@ -10,4 +11,5 @@
 //chance%partName*amount
 //parts
 //create a chiselable item that can indicate the recipe for the same item inputs
-/ex: basic, ingot, -, plate, -, 1, 1;1;1;1;1;1;1;1;2;2;2;2;2;2;2;2, 1
+//use $ before the machine's name to use a MachineGroup instead
+/ex: $machine, ingot, -, plate, -, 1, 1;2;3;4;5;6;7;8;9;10;11;12;13;14;15;16, 0, 100, 100, 100, 100

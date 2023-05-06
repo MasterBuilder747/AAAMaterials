@@ -4,9 +4,9 @@ import Main.Data.GameData.Registry;
 import Main.Data.GameData.TCPart;
 import Main.Data.Machine.Machine;
 import Main.Data.Machine.MachineGroup;
-import Main.Data.Recipe.MachineData;
-import Main.Data.Recipe.MachineMatter;
 import Main.Data.Material;
+import Main.Data.RecipeObject.Localized.Liquid.LLiquid;
+import Main.Data.RecipeObject.Localized.Liquid.LPlasma;
 import Main.Data.RecipeObject.MaterialData.AMaterialData;
 import Main.Data.Tweakers.RecipeTweak;
 import Main.Util;
@@ -67,16 +67,16 @@ public abstract class ATinkers extends AMaterialData {
 
     public ATinkers(String type,
                     RecipeTweak tweak, int minVoltage, double powerMultiplierIn, double powerMultiplierOut,
-                    int baseTime, double[] tickDecMultipliers,
+                    int baseTime, double[] tickDecMultipliers, LLiquid data, LPlasma matterIn, LPlasma matterOut,
                     Registry[] items, String[] liquids, String[] ores,
-                    Machine[] machines, MachineGroup[] machineGroups, MachineMatter[] matters, MachineData[] datas,
+                    Machine[] machines, MachineGroup[] machineGroups,
                     Material m,
                     boolean craftable, boolean castable, String icon, String oreDict, TCPart[] parts) {
         super(type,
                 tweak, minVoltage, powerMultiplierIn, powerMultiplierOut,
-                baseTime, tickDecMultipliers,
+                baseTime, tickDecMultipliers, data, matterIn, matterOut,
                 items, liquids, ores,
-                machines, machineGroups, matters, datas,
+                machines, machineGroups,
                 m);
         this.craftable = craftable;
         this.castable = castable;

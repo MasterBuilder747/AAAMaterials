@@ -114,13 +114,13 @@ public class GCustomMachineRecipe extends AGenerator<MachineRecipe> {
                     //10.3%$data*60 //data liquid name
                     String dataIO = ss.substring(1);
                     MachineData dataa = this.data.get(dataIO);
-                    if (isInput) r.setResourceInput(dataa.getDataName(), amount, chance);
-                    else r.setResourceOutput(dataa.getDataName(), amount, chance);
+                    if (isInput) r.setResourceInput(dataa.data.NAME, amount, chance);
+                    else r.setResourceOutput(dataa.data.NAME, amount, chance);
                 } else if (ss.startsWith("-") || ss.startsWith("+")) {
                     //10.3%[-/+]red*60 //matter's liquid name
                     MachineMatter matterIO = this.matter.get(ss.substring(1));
-                    if (isInput) r.setResourceInput(matterIO.getNegName(), amount, chance);
-                    else r.setResourceOutput(matterIO.getPosName(), amount, chance);
+                    if (isInput) r.setResourceInput(matterIO.neg.NAME, amount, chance);
+                    else r.setResourceOutput(matterIO.pos.NAME, amount, chance);
                 } else {
                     //5.5%water*1000
                     StringBuilder sb = new StringBuilder();

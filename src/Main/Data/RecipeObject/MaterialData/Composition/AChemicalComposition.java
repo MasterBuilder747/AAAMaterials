@@ -4,8 +4,6 @@ import Main.Data.Element;
 import Main.Data.GameData.Registry;
 import Main.Data.Machine.Machine;
 import Main.Data.Machine.MachineGroup;
-import Main.Data.Recipe.MachineData;
-import Main.Data.Recipe.MachineMatter;
 import Main.Data.Material;
 import Main.Data.RecipeObject.MaterialData.AMaterialData;
 import Main.Data.RecipeObject.RegistryData;
@@ -22,6 +20,8 @@ import Main.Data.Tweakers.RecipeTweak;
 //photosynthesis: CO2-g + H2O > C6H12O6-s + O2-g => 6*CO2-g + 6*H2O [sun] > C6H12O6-s + 6O2-g
 //-s solid, -l liquid -g gas, -p plasma, etc... (letter not needed (but can be shown) for default state of material)
 public abstract class AChemicalComposition extends AMaterialData {
+    //recipe system is disabled here
+
     Composition composition; //a string of defined element(s) and their count(s) in a string with special syntax
     public int charge;
     public boolean isDefault;  //is this the default composition that is associated with this material?
@@ -34,14 +34,15 @@ public abstract class AChemicalComposition extends AMaterialData {
 
     public AChemicalComposition(String type,
                                 RecipeTweak tweak, Registry[] items, String[] liquids, String[] ores,
-                                Machine[] machines, MachineGroup[] machineGroups, MachineMatter[] matters, MachineData[] datas,
+                                Machine[] machines, MachineGroup[] machineGroups,
                                 Material m,
                                 Composition c, String compType, int charge, boolean isDefault, boolean isMolecule) {
         super(type,
-                tweak, 1, 1, 1,
+                tweak, 1, 0, 0,
                 20, new double[]{0.05, 0.05, 0.05, 0.05, 0.05, 0.05, 0.05, 0.05, 0.05, 0.05, 0.05, 0.052, 0.054, 0.055, 0.06},
+                null, null, null,
                 items, liquids, ores,
-                machines, machineGroups, matters, datas,
+                machines, machineGroups,
                 m
         );
         this.composition = c;
@@ -51,7 +52,6 @@ public abstract class AChemicalComposition extends AMaterialData {
         this.isMolecule = isMolecule;
         this.setSymbol();
     }
-
     abstract protected void setSymbol();
 
     public String addTooltips(RegistryData[] registries) {
@@ -78,18 +78,14 @@ public abstract class AChemicalComposition extends AMaterialData {
     }
 
     @Override
-    protected String buildSpecificRecipe() {
-        return null;
-    }
-    @Override
-    protected String customItemKey(String key) {
-        return null;
-    }
-    @Override
-    protected String customLiquidKey(String key) {return null;}
-
-    @Override
     public String toString() {
         return this.symbol;
     }
+
+    @Override
+    protected String buildSpecificRecipe() {return null;}
+    @Override
+    protected String customItemKey(String key) {return null;}
+    @Override
+    protected String customLiquidKey(String key) {return null;}
 }

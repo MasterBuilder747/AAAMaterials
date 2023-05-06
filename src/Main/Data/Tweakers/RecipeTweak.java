@@ -15,15 +15,14 @@ public class RecipeTweak extends ATweaker {
     ArrayList<ORecipeTweak> recipes;
 
     public RecipeTweak(String filename, GMachine machines, GMachineGroup machineGroups) {
-        super(8, -1, "RecipeTweak", "F" + filename);
+        super(12, -1, "RecipeTweak", "F" + filename);
         this.recipes = new ArrayList<>();
         this.machines = machines;
         this.machineGroups = machineGroups;
     }
     @Override
     protected void readLine(String[] s) throws IOException {
-        //itemInputs[], liquidInputs[], itemOutputs[], liquidOutputs[],
-        //int baseRecipesPerOperation, outputMultipliers[16], int priority
+        //machine,
         String machine = s[0];
         boolean isMachineGroup;
         if (machine.startsWith("$")) {
@@ -33,18 +32,30 @@ public class RecipeTweak extends ATweaker {
             isMachineGroup = false;
             machine = this.machines.get(machine).NAME;
         }
+
+        //itemInputs[], liquidInputs[], itemOutputs[], liquidOutputs[],
         String iInputs = s[1];
         String lInputs = s[2];
         String iOutputs = s[3];
         String lOutputs = s[4];
+
+        //int baseRecipesPerOperation, outputMultipliers[16], int priority,
         int baseRecipes = parseInt(s[5]);
         int[] outputMultipliers = parseIntArray(s[6], ";");
         if (outputMultipliers.length != 16) error("output multipliers must be size 16");
         int priority = parseInt(s[7]);
+
+        //int chemAmount, int dataAmount, int matterInAmount, int matterOutAmount
+        int chemAmount = parseInt(s[8]);
+        int dataAmount = parseInt(s[9]);
+        int matterInAmount = parseInt(s[10]);
+        int matterOutAmount = parseInt(s[11]);
+
         recipes.add(new ORecipeTweak(
                 machine, isMachineGroup,
                 iInputs, lInputs, iOutputs, lOutputs,
-                baseRecipes, outputMultipliers, priority
+                baseRecipes, outputMultipliers, priority,
+                chemAmount, dataAmount, matterInAmount, matterOutAmount
         ));
     }
     public ORecipeTweak[] getRecipes() {

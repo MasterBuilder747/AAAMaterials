@@ -3,18 +3,19 @@ package Main.Data.RecipeObject.MaterialData;
 import Main.Data.GameData.Registry;
 import Main.Data.Machine.Machine;
 import Main.Data.Machine.MachineGroup;
-import Main.Data.Recipe.MachineData;
-import Main.Data.Recipe.MachineMatter;
 import Main.Data.Material;
 import Main.Data.PartGroup;
 import Main.Data.RecipeObject.ARecipeObject;
 import Main.Data.RecipeObject.Localized.LPart;
+import Main.Data.RecipeObject.Localized.Liquid.LLiquid;
+import Main.Data.RecipeObject.Localized.Liquid.LPlasma;
 import Main.Data.RecipeObject.MaterialData.Composition.AChemicalComposition;
 import Main.Data.RecipeObject.RecipeObjectException;
 import Main.Data.RecipeObject.RegistryData;
 import Main.Data.Tweakers.RecipeTweak;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 
 public abstract class AMaterialData extends ARecipeObject {
     protected Material m; //in case basic data is needed
@@ -27,15 +28,15 @@ public abstract class AMaterialData extends ARecipeObject {
 
     public AMaterialData(String type,
                          RecipeTweak tweak, int minVoltage, double powerMultiplierIn, double powerMultiplierOut,
-                         int baseTime, double[] tickDecMultipliers,
+                         int baseTime, double[] tickDecMultipliers, LLiquid data, LPlasma matterIn, LPlasma matterOut,
                          Registry[] items, String[] liquids, String[] ores,
-                         Machine[] machines, MachineGroup[] machineGroups, MachineMatter[] matters, MachineData[] datas,
+                         Machine[] machines, MachineGroup[] machineGroups,
                          Material m) {
         super(m.NAME, type,
                 tweak, minVoltage, powerMultiplierIn, powerMultiplierOut,
-                baseTime, tickDecMultipliers,
+                baseTime, tickDecMultipliers, data, matterIn, matterOut,
                 items, liquids, ores,
-                machines, machineGroups, matters, datas
+                machines, machineGroups
         );
         this.m = m;
         this.partRegistryNames = new ArrayList<>();
@@ -65,9 +66,7 @@ public abstract class AMaterialData extends ARecipeObject {
         ArrayList<LPart> out = new ArrayList<>();
         for (int i = 0; i < this.partGroups.length; i++) {
             if (this.enablePartGroups[i]) {
-                for (int j = 0; j < partGroups[i].getParts().length; j++) {
-                    if (!this.partOverrides[i][j]) out.add(partGroups[i].getParts()[j]);
-                }
+                out.addAll(Arrays.asList(partGroups[i].getParts()));
             }
         }
         return out.toArray(new LPart[0]);
@@ -110,9 +109,9 @@ public abstract class AMaterialData extends ARecipeObject {
         for (int i = 0; i < regs.length; i++) {
             if (!allowDupes) {
                 if (!m.is(keys[i])) {
-                    m.keys.add(new RegistryData(keys[i], regs[i]));
+                    this.addRegistryData(keys[i], regs[i]);
                 }
-            } else m.keys.add(new RegistryData(keys[i], regs[i]));
+            } else this.addRegistryData(keys[i], regs[i]);
         }
     }
     //marks the existing registryData as a tooltip inclusion for this object
@@ -253,18 +252,19 @@ public abstract class AMaterialData extends ARecipeObject {
                 this.enabledPartGroups.add(partGroups[i]);
                 for (int j = 0; j < partGroups[i].getParts().length; j++) {
                     LPart p = partGroups[i].getParts()[j];
-                    boolean isAdd = true;
+                    String addName = null;
                     if (exclusions != null) {
                         for (RegistryData r : exclusions) {
                             if (p.oreDict.equals(r.key)) {
                                 this.partOverrides[i][j] = true;
                                 this.isPartGroupOverride[i] = true;
-                                isAdd = false;
+                                addName = r.r.getUnlocalizedNameWithMeta();
                                 break;
                             }
                         }
                     }
-                    if (isAdd) this.partRegistryNames.add(this.m.NAME+"_"+p.NAME);
+                    if (addName == null) this.partRegistryNames.add(this.m.NAME+"_"+p.NAME);
+                    else this.partRegistryNames.add("@"+addName);
                 }
             }
         }
@@ -278,18 +278,19 @@ public abstract class AMaterialData extends ARecipeObject {
                 this.enabledPartGroups.add(partGroups[i]);
                 for (int j = 0; j < partGroups[i].getParts().length; j++) {
                     LPart p = partGroups[i].getParts()[j];
-                    boolean isAdd = true;
+                    String addName = null;
                     if (exclusions != null) {
                         for (RegistryData r : exclusions) {
                             if (p.oreDict.equals(r.key)) {
                                 this.partOverrides[i][j] = true;
                                 this.isPartGroupOverride[i] = true;
-                                isAdd = false;
+                                addName = r.r.getUnlocalizedNameWithMeta();
                                 break;
                             }
                         }
                     }
-                    if (isAdd) this.partRegistryNames.add(block+"_"+this.m.NAME+"_"+p.NAME);
+                    if (addName == null) this.partRegistryNames.add(block+"_"+this.m.NAME+"_"+p.NAME);
+                    else this.partRegistryNames.add("@"+addName);
                 }
             }
         }

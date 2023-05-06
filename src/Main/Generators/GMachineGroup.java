@@ -34,10 +34,13 @@ public class GMachineGroup extends AGenerator<MachineGroup> {
         String[] chemicals = parseArray(s[4], ";");
         int minVoltage = parseInt(s[5]);
         String[] colors = parseColors(minVoltage, s[2]);
+        //bug with putting NONE in as the liquid
         validateArrSize(s[4], minVoltage, chemicals.length);
         if (minVoltage < 5 && !chemicals[0].equals("none")) error("basic machines do not have a chemical");
-        for (String l : chemicals) {
-            if (!l.equals("none")) this.liquids.get(l);
+        for (int i = 0; i < chemicals.length; i++) {
+            if (!chemicals[i].equals("none")) {
+                this.liquids.get(chemicals[i]);
+            } else chemicals[i] = null;
         }
 
         MachineGroup mg = new MachineGroup(
@@ -96,7 +99,7 @@ public class GMachineGroup extends AGenerator<MachineGroup> {
             out[0] = "77736D"; //basic IO
             out[1] = "3c78d8"; //advanced IO
             out[2] = "f3f3f3"; //industrial IO
-            out[3] = "ff0000"; //ultimate IO
+            out[3] = "e6001d"; //ultimate IO
         } else {
             String[] a = parseColorArray(c, ";");
             validateArrSize(c, min, a.length);

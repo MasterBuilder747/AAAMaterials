@@ -3,8 +3,6 @@ package Main.Data.RecipeObject.Localized;
 import Main.Data.GameData.Registry;
 import Main.Data.Machine.Machine;
 import Main.Data.Machine.MachineGroup;
-import Main.Data.Recipe.MachineData;
-import Main.Data.Recipe.MachineMatter;
 import Main.Data.Tweakers.RecipeTweak;
 
 public class LBlock extends ALocalizedData {
@@ -18,12 +16,12 @@ public class LBlock extends ALocalizedData {
 
     public LBlock(String NAME,
                   RecipeTweak tweak, Registry[] items, String[] liquids, String[] ores,
-                  Machine[] machines, MachineGroup[] machineGroups, MachineMatter[] matters, MachineData[] datas,
+                  Machine[] machines, MachineGroup[] machineGroups,
                   String localName,
                   String material, int hardness, int resistance, int miningLevel, String tool) {
         super(NAME, "LBlock",
                 tweak, items, liquids, ores,
-                machines, machineGroups, matters, datas,
+                machines, machineGroups,
                 localName);
         this.material = material;
         this.hardness = hardness;
@@ -34,11 +32,11 @@ public class LBlock extends ALocalizedData {
     //for ore variants
     public LBlock(String NAME,
                   RecipeTweak tweak, Registry[] items, String[] liquids, String[] ores,
-                  Machine[] machines, MachineGroup[] machineGroups,  MachineMatter[] matters, MachineData[] datas,
+                  Machine[] machines, MachineGroup[] machineGroups,
                   String material, String tool) {
         super(NAME, "LBlock",
                 tweak, items, liquids, ores,
-                machines, machineGroups, matters, datas,
+                machines, machineGroups,
                 NAME);
         this.material = material;
         this.tool = tool;

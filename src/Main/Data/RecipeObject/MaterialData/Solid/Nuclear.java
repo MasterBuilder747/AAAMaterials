@@ -3,9 +3,9 @@ package Main.Data.RecipeObject.MaterialData.Solid;
 import Main.Data.GameData.Registry;
 import Main.Data.Machine.Machine;
 import Main.Data.Machine.MachineGroup;
-import Main.Data.Recipe.MachineData;
-import Main.Data.Recipe.MachineMatter;
 import Main.Data.Material;
+import Main.Data.RecipeObject.Localized.Liquid.LLiquid;
+import Main.Data.RecipeObject.Localized.Liquid.LPlasma;
 import Main.Data.Tweakers.RecipeTweak;
 import Main.EDecimal;
 
@@ -22,16 +22,16 @@ public class Nuclear extends AMSolid {
     //material, atomic num, isotopeNum, isIsomer, isIsotope, abund (-1=trace; -10=syn), half life (d), half life (y), mode(s), product(s) (most to least common decay)
     //uranium, 92, 238, false, false, 0.99274, 1.63194E+12, 4.46800E+09, sf;a;2b-, ;Th-234;Pu-238
     public Nuclear(RecipeTweak tweak, int minVoltage, double powerMultiplierIn, double powerMultiplierOut,
-                   int baseTime, double[] tickDecMultipliers,
+                   int baseTime, double[] tickDecMultipliers, LLiquid data, LPlasma matterIn, LPlasma matterOut,
                    Registry[] items, String[] liquids, String[] ores,
-                   Machine[] machines, MachineGroup[] machineGroups, MachineMatter[] matters, MachineData[] datas,
+                   Machine[] machines, MachineGroup[] machineGroups,
                    Material m,
                    int atomicNum, int isotopeNum, boolean isIsomer, boolean isIsotope, double abundance, EDecimal halfLife) {
         super("Nuclear",
                 tweak, minVoltage, powerMultiplierIn, powerMultiplierOut,
-                baseTime, tickDecMultipliers,
+                baseTime, tickDecMultipliers, data, matterIn, matterOut,
                 items, liquids, ores,
-                machines, machineGroups, matters, datas,
+                machines, machineGroups,
                 m);
         this.atomicNum = atomicNum;
         this.isotopeNum = isotopeNum;

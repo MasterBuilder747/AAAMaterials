@@ -1,17 +1,19 @@
 package Main.Generators.RecipeObjects.MaterialData;
 
 import Main.Data.GameData.Registry;
-import Main.Data.RecipeObject.MaterialData.AMaterialData;
 import Main.Data.Material;
 import Main.Data.PartGroup;
+import Main.Data.RecipeObject.Localized.Liquid.LLiquid;
+import Main.Data.RecipeObject.Localized.Liquid.LPlasma;
+import Main.Data.RecipeObject.MaterialData.AMaterialData;
 import Main.Data.RecipeObject.RegistryData;
+import Main.Generators.GMachine;
 import Main.Generators.GMachineGroup;
 import Main.Generators.GMaterial;
 import Main.Generators.GPartGroup;
 import Main.Generators.GameData.GLiquidRegistry;
 import Main.Generators.GameData.GOreDictRegistry;
 import Main.Generators.GameData.GRegistry;
-import Main.Generators.GMachine;
 import Main.Generators.MachineResource.GMachineData;
 import Main.Generators.MachineResource.GMachineMatter;
 import Main.Generators.RecipeObjects.AGRecipeObject;
@@ -28,21 +30,21 @@ public abstract class AGMaterialData<M extends AMaterialData> extends AGRecipeOb
     //material data that is stored to indicate what is registered for a given material
     public AGMaterialData(int PARAMS, String filename, boolean isReg,
                           GRecipeTweak tweak, GRegistry registry, GLiquidRegistry liquids, GOreDictRegistry ores,
-                          GMachine machine, GMachineGroup machineGroup, GMachineMatter matter, GMachineData data,
+                          GMachine machine, GMachineGroup machineGroup, GMachineData data, GMachineMatter matter,
                           GMaterial material, GPartGroup partGroup) {
         super(PARAMS+1, filename, "Material", isReg,
                 tweak, registry, liquids, ores,
-                machine, machineGroup, matter, data);
+                machine, machineGroup, data, matter);
         this.material = material;
         this.partGroup = partGroup;
     }
     public AGMaterialData(int PARAMS, String filename, String materialFolder, boolean isReg,
                           GRecipeTweak tweak, GRegistry registry, GLiquidRegistry liquids, GOreDictRegistry ores,
-                          GMachine machine, GMachineGroup machineGroup, GMachineMatter matter, GMachineData data,
+                          GMachine machine, GMachineGroup machineGroup, GMachineData data, GMachineMatter matter,
                           GMaterial material, GPartGroup partGroup) {
         super(PARAMS+1, filename, "Material/"+materialFolder, isReg,
                 tweak, registry, liquids, ores,
-                machine, machineGroup, matter, data);
+                machine, machineGroup, data, matter);
         this.material = material;
         this.partGroup = partGroup;
     }
@@ -51,6 +53,7 @@ public abstract class AGMaterialData<M extends AMaterialData> extends AGRecipeOb
     //first parameter is always the material name, this is checked for existence
     //all other parameters added are read per each child class
     protected void readRecipeParameters(int minVoltage, double inMultiplier, double outMultiplier, int baseTime, double[] tickDecMulti,
+                                        LLiquid data, LPlasma matterIn, LPlasma matterOut,
                                         BufferedReader br, String[] s) {
         String m = s[0];
         RegistryData[] exclusions = null;
@@ -62,7 +65,7 @@ public abstract class AGMaterialData<M extends AMaterialData> extends AGRecipeOb
                 String s0 = ms[i];
                 String key = s0.substring(0, s0.indexOf(">"));
                 String reg = s0.substring(s0.indexOf(">")+1);
-                Registry r = this.registry.getByMod(reg, this.filename, this.line);
+                Registry r = this.registry.getByMeta(reg);
                 rDataExs.add(new RegistryData(key, r));
             }
             m = ms[0];
@@ -71,9 +74,11 @@ public abstract class AGMaterialData<M extends AMaterialData> extends AGRecipeOb
         String[] ss = new String[s.length-1];
         System.arraycopy(s, 1, ss, 0, ss.length);
         Material mat = this.material.get(m);
-        readMaterialParameters(minVoltage, inMultiplier, outMultiplier, baseTime, tickDecMulti, mat, ss, exclusions);
+        readMaterialParameters(minVoltage, inMultiplier, outMultiplier,
+                baseTime, tickDecMulti, data, matterIn, matterOut, mat, ss, exclusions);
     }
     protected abstract void readMaterialParameters(int minVoltage, double inMultiplier, double outMultiplier, int baseTime, double[] tickDecMulti,
+                                                   LLiquid data, LPlasma matterIn, LPlasma matterOut,
                                                    Material m, String[] s, RegistryData[] exclusions);
 
     protected PartGroup[] genPartGroups(String[] partGroupNames) {
@@ -100,7 +105,9 @@ public abstract class AGMaterialData<M extends AMaterialData> extends AGRecipeOb
     protected Registry[] getRegistries(String[] registries) {
         ArrayList<Registry> regs = new ArrayList<>();
         for (String s : registries) {
-            regs.add(registry.get(s));
+            if (s.startsWith("@")) {
+                regs.add(registry.getByMeta(s.substring(1)));
+            } else regs.add(registry.get(s));
         }
         return regs.toArray(new Registry[0]);
     }

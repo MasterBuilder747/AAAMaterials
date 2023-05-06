@@ -1,21 +1,23 @@
 package Main.Generators.RecipeObjects.MaterialData.Solid;
 
 import Main.Data.Material;
+import Main.Data.RecipeObject.Localized.Liquid.LLiquid;
+import Main.Data.RecipeObject.Localized.Liquid.LPlasma;
 import Main.Data.RecipeObject.MaterialData.MSolid;
 import Main.Data.RecipeObject.MaterialData.Solid.Nuclear;
 import Main.Data.RecipeObject.RegistryData;
 import Main.EDecimal;
+import Main.Generators.GMachine;
 import Main.Generators.GMachineGroup;
 import Main.Generators.GMaterial;
 import Main.Generators.GPartGroup;
 import Main.Generators.GameData.GLiquidRegistry;
 import Main.Generators.GameData.GOreDictRegistry;
 import Main.Generators.GameData.GRegistry;
-import Main.Generators.GMachine;
 import Main.Generators.MachineResource.GMachineData;
 import Main.Generators.MachineResource.GMachineMatter;
-import Main.Generators.RecipeObjects.MaterialData.GMSolid;
 import Main.Generators.RecipeObjects.MaterialData.Composition.GMoleculeComposition;
+import Main.Generators.RecipeObjects.MaterialData.GMSolid;
 import Main.Generators.Tweakers.GRecipeTweak;
 import Main.Util;
 
@@ -26,12 +28,12 @@ public class GNuclear extends AGMSolid<Nuclear> {
 
     public GNuclear(String filename, boolean isReg,
                     GRecipeTweak tweak, GRegistry registry, GLiquidRegistry liquids, GOreDictRegistry ores,
-                    GMachine machine, GMachineGroup machineGroup, GMachineMatter matter, GMachineData data,
+                    GMachine machine, GMachineGroup machineGroup, GMachineData data, GMachineMatter matter,
                     GMaterial material, GPartGroup partGroup,
                     GMSolid solid, GMoleculeComposition moles) {
         super(7, filename, isReg,
                 tweak, registry, liquids, ores,
-                machine, machineGroup, matter, data,
+                machine, machineGroup, data, matter,
                 material, partGroup,
                 solid, true, false, false);
         this.moles = moles;
@@ -39,6 +41,7 @@ public class GNuclear extends AGMSolid<Nuclear> {
 
     @Override
     protected void readSolidParameters(int minVoltage, double inMultiplier, double outMultiplier, int baseTime, double[] tickDecMulti,
+                                       LLiquid data, LPlasma matterIn, LPlasma matterOut,
                                        Material m, String[] s, MSolid solid, RegistryData[] exclusions) {
         //material, atomic num, isotopeNum, isIsomer, isIsotope, abund (-1=trace; -10=syn), half life (d), half life (y), mode(s), product(s) (most to least common decay)
         //uranium, 92, 238, false, false, 0.99274, 1.63194E+12, 4.46800E+09, sf;a;2b-, ;Th-234;Pu-238
@@ -47,8 +50,9 @@ public class GNuclear extends AGMSolid<Nuclear> {
                 getRecipeTweak("Nuclear"),
                 minVoltage, inMultiplier, outMultiplier,
                 baseTime, tickDecMulti,
+                data, matterIn, matterOut,
                 getItems(), getLiquids(), getOres(),
-                getMachineRegistry(), getMachineGroupRegistry(), getMatterRegistry(), getDataRegistry(),
+                getMachineRegistry(), getMachineGroupRegistry(),
                 m,
                 parseInt(s[0]), parseInt(s[1]), parseBoolean(s[2]), parseBoolean(s[3]), parseDouble(s[4]), new EDecimal(s[5])
         );

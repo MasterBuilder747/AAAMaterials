@@ -1,26 +1,23 @@
 package Main.Generators.RecipeObjects.MaterialData.Composition;
 
-import Main.Data.RecipeObject.MaterialData.Composition.Composition;
 import Main.Data.Element;
 import Main.Data.Material;
+import Main.Data.RecipeObject.MaterialData.Composition.Composition;
 import Main.Data.RecipeObject.MaterialData.Composition.CompoundComposition;
 import Main.Data.RecipeObject.MaterialData.Composition.MoleculeComposition;
-import Main.Data.RecipeObject.RegistryData;
+import Main.Generators.GMachine;
 import Main.Generators.GMachineGroup;
 import Main.Generators.GMaterial;
 import Main.Generators.GPartGroup;
 import Main.Generators.GameData.GLiquidRegistry;
 import Main.Generators.GameData.GOreDictRegistry;
 import Main.Generators.GameData.GRegistry;
-import Main.Generators.GMachine;
 import Main.Generators.MachineResource.GMachineData;
 import Main.Generators.MachineResource.GMachineMatter;
 import Main.Generators.Tweakers.GRecipeTweak;
 import Main.Replacement;
 import Main.Util;
 
-import java.io.BufferedReader;
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 public class GCompoundComposition extends AGChemicalComposition<CompoundComposition> {
@@ -28,7 +25,7 @@ public class GCompoundComposition extends AGChemicalComposition<CompoundComposit
 
     public GCompoundComposition(String filename, boolean isReg,
                                 GRecipeTweak tweak, GRegistry registry, GLiquidRegistry liquids, GOreDictRegistry ores,
-                                GMachine machine, GMachineGroup machineGroup, GMachineMatter matter, GMachineData data,
+                                GMachine machine, GMachineGroup machineGroup, GMachineData data, GMachineMatter matter,
                                 GMaterial material, GPartGroup partGroup,
                                 GMoleculeComposition molecule) {
         super(9, filename, isReg,
@@ -55,7 +52,7 @@ public class GCompoundComposition extends AGChemicalComposition<CompoundComposit
         else charge = parseInt(chargeo);
         CompoundComposition comp = new CompoundComposition(
                 getRecipeTweak("CompoundComposition"), getItems(), getLiquids(), getOres(),
-                getMachineRegistry(), getMachineGroupRegistry(), getMatterRegistry(), getDataRegistry(),
+                getMachineRegistry(), getMachineGroupRegistry(),
                 m,
                 c, type, charge, parseBoolean(s[4]),
                 subtype, parseBoolean(s[5]), parseBoolean(s[6]), parseBoolean(s[7]), parseBoolean(s[8]));

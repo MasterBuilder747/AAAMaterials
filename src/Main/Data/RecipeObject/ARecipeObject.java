@@ -4,9 +4,8 @@ import Main.Data.AData;
 import Main.Data.GameData.Registry;
 import Main.Data.Machine.Machine;
 import Main.Data.Machine.MachineGroup;
-import Main.Data.Recipe.MachineData;
-import Main.Data.Recipe.MachineMatter;
-import Main.Data.Recipe.MachineRecipe;
+import Main.Data.RecipeObject.Localized.Liquid.LLiquid;
+import Main.Data.RecipeObject.Localized.Liquid.LPlasma;
 import Main.Data.RecipeObject.MaterialData.AMaterialData;
 import Main.Data.Tweakers.ORecipeTweak;
 import Main.Data.Tweakers.RecipeTweak;
@@ -21,11 +20,13 @@ public abstract class ARecipeObject extends AData {
     protected Registry[] items; //the array of registries that are used for adding recipes and other things, does not associate with keys!
     protected String[] liquids; //the array of liquid brackets (liquid:water1 where water1 is only included)
     protected String[] ores; //the array of ore dictionary entries (ore:ingotIron where ingotIron is only included)
-    //global machine resources needed by recipes
     protected Machine[] machines;
     protected MachineGroup[] machineGroups;
-    protected MachineData[] datas;
-    protected MachineMatter[] matters;
+
+    //machine resources used in recipes
+    protected LLiquid data;
+    protected LPlasma matterIn;
+    protected LPlasma matterOut;
 
     //recipe variables
     protected String type; //unique type for recipe uniqueness and other identifiers
@@ -40,9 +41,9 @@ public abstract class ARecipeObject extends AData {
 
     public ARecipeObject(String NAME, String type,
                          RecipeTweak tweak, int minVoltage, double powerMultiplierIn, double powerMultiplierOut,
-                         int baseTime, double[] tickDecMultipliers,
+                         int baseTime, double[] tickDecMultipliers, LLiquid data, LPlasma matterIn, LPlasma matterOut,
                          Registry[] items, String[] liquids, String[] ores,
-                         Machine[] machines, MachineGroup[] machineGroups, MachineMatter[] matters, MachineData[] datas) {
+                         Machine[] machines, MachineGroup[] machineGroups) {
         super(NAME);
         this.type = type;
         this.customVar = "";
@@ -53,14 +54,15 @@ public abstract class ARecipeObject extends AData {
         this.powerMultiplierOut = powerMultiplierOut;
         this.baseTime = baseTime;
         this.tickDecMultipliers = tickDecMultipliers;
+        this.data = data;
+        this.matterIn = matterIn;
+        this.matterOut = matterOut;
 
         this.items = items;
         this.liquids = liquids;
         this.ores = ores;
         this.machines = machines;
         this.machineGroups = machineGroups;
-        this.datas = datas;
-        this.matters = matters;
     }
     protected void setCustomVar(String s) {
         this.customVar = s;
@@ -77,7 +79,8 @@ public abstract class ARecipeObject extends AData {
                     this.tickDecMultipliers, recipes[i].baseRecipeAmount, recipes[i].ioMultipliers,
                     this.minVoltage, this.powerMultiplierIn, this.powerMultiplierOut,
                     recipes[i].iInput, recipes[i].lInput, recipes[i].iOutput, recipes[i].lOutput,
-                    "tweaker"
+                    "tweaker", recipes[i].chemAmount, this.data.NAME+"*"+recipes[i].dataAmount,
+                        this.matterIn.NAME+"*"+recipes[i].matInAmount, this.matterOut.NAME+"*"+recipes[i].matOutAmount
                 ));
             }
         }
@@ -92,7 +95,8 @@ public abstract class ARecipeObject extends AData {
             double[] tickDecMultipliers, int baseRecipeAmount, int[] ioMultipliers,
             int minVoltage, double powerMultiplierIn, double powerMultiplierOut,
             String iInput, String lInput, String iOutput, String lOutput,
-            String var2 //need an additional custom var for uniqueness between user and coded recipes
+            String var2, //need an additional custom var for uniqueness between user and coded recipes
+            int chemAmount, String data, String matIn, String matOut
     ) {
         RecipeObject r;
         if (isMachineGroup) {
@@ -118,7 +122,8 @@ public abstract class ARecipeObject extends AData {
                 recipeVariable, time, priority,
                 tickDecMultipliers, baseRecipeAmount, ioMultipliers,
                 minVoltage, powerMultiplierIn, powerMultiplierOut,
-                iInputs, lInputs, iOutputs, lOutputs
+                iInputs, lInputs, iOutputs, lOutputs,
+                chemAmount, data, matIn, matOut
         );
         return r.buildRecipe();
     }
@@ -279,7 +284,7 @@ public abstract class ARecipeObject extends AData {
         return null;
     }
 
-    //get machine resources
+    //get machine
     protected Machine getMachine(String s) {
         for (Machine m : this.machines) {
             if (m.NAME.equals(s)) {
@@ -295,43 +300,6 @@ public abstract class ARecipeObject extends AData {
             }
         }
         throw new IllegalArgumentException("Unknown machine " + s + " in the machine registry");
-    }
-    private MachineMatter getMatter(String key) {
-        for (MachineMatter m : this.matters) {
-            if (m.NAME.equals(key)) {
-                return m;
-            }
-        }
-        error(key, "matter", this.NAME);
-        return null;
-    }
-    protected String getMatterIn(String s) {
-        if (!s.contains("*")) throw new IllegalArgumentException("Must specify an amount of matter input denoted after a *");
-        int inAmount = Integer.parseInt(s.substring(s.indexOf("*")+1));
-        if (inAmount < 1) throw new IllegalArgumentException("Matter amount must greater than 0");
-        String matterIn;
-        if (s.startsWith("-")) {
-            matterIn = getMatter(s.substring(1, s.indexOf("*"))).getNeg();
-        } else if (s.startsWith("+")) {
-            matterIn = getMatter(s.substring(1, s.indexOf("*"))).getPos();
-        } else {
-            throw new IllegalArgumentException("Matter input must start with - or + to indicate positive or negative matter IO");
-        }
-        return matterIn + " * " + inAmount;
-    }
-    protected String getMatterOut(String s) {
-        if (!s.contains("*")) throw new IllegalArgumentException("Must specify an amount of matter output denoted after a *");
-        int outAmount = Integer.parseInt(s.substring(s.indexOf("*")+1));
-        if (outAmount < 1) throw new IllegalArgumentException("Matter amount must greater than 0");
-        String matterOut;
-        if (s.startsWith("-")) {
-            matterOut = getMatter(s.substring(1, s.indexOf("*"))).getNeg();
-        } else if (s.startsWith("+")) {
-            matterOut = getMatter(s.substring(1, s.indexOf("*"))).getPos();
-        } else {
-            throw new IllegalArgumentException("Matter output must start with - or + to indicate positive or negative matter IO");
-        }
-        return matterOut + " * " + outAmount;
     }
     
     //generator utilities

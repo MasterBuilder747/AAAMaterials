@@ -1,22 +1,24 @@
 package Main.Generators.RecipeObjects.MaterialData.Solid;
 
+import Main.Data.GameData.Registry;
+import Main.Data.Material;
+import Main.Data.OreType;
 import Main.Data.PartGroup;
 import Main.Data.RecipeObject.Localized.LBlock;
-import Main.Data.Material;
 import Main.Data.RecipeObject.Localized.LPart;
+import Main.Data.RecipeObject.Localized.Liquid.LLiquid;
+import Main.Data.RecipeObject.Localized.Liquid.LPlasma;
 import Main.Data.RecipeObject.MaterialData.MSolid;
-import Main.Data.RecipeObject.MaterialData.Solid.Ore;
 import Main.Data.RecipeObject.MaterialData.OreVariant;
-import Main.Data.OreType;
-import Main.Data.GameData.Registry;
+import Main.Data.RecipeObject.MaterialData.Solid.Ore;
 import Main.Data.RecipeObject.RegistryData;
+import Main.Generators.GMachine;
 import Main.Generators.GMachineGroup;
 import Main.Generators.GMaterial;
 import Main.Generators.GPartGroup;
 import Main.Generators.GameData.GLiquidRegistry;
 import Main.Generators.GameData.GOreDictRegistry;
 import Main.Generators.GameData.GRegistry;
-import Main.Generators.GMachine;
 import Main.Generators.MachineResource.GMachineData;
 import Main.Generators.MachineResource.GMachineMatter;
 import Main.Generators.RecipeObjects.MaterialData.GMSolid;
@@ -32,13 +34,13 @@ public class GOre extends AGMSolid<Ore> {
 
     public GOre(String filename, boolean isReg,
                 GRecipeTweak tweak, GRegistry registry, GLiquidRegistry liquids, GOreDictRegistry ores,
-                GMachine machine, GMachineGroup machineGroup, GMachineMatter matter, GMachineData data,
+                GMachine machine, GMachineGroup machineGroup, GMachineData data, GMachineMatter matter,
                 GMaterial material, GPartGroup partGroup,
                 GMSolid solid,
                 GStone stones) {
         super(5, filename, isReg,
                 tweak, registry, liquids, ores,
-                machine, machineGroup, matter, data,
+                machine, machineGroup, data, matter,
                 material, partGroup,
                 solid, true, false, false);
         this.stones = stones;
@@ -46,6 +48,7 @@ public class GOre extends AGMSolid<Ore> {
 
     @Override
     protected void readSolidParameters(int minVoltage, double inMultiplier, double outMultiplier, int baseTime, double[] tickDecMulti,
+                                       LLiquid data, LPlasma matterIn, LPlasma matterOut,
                                        Material m, String[] s, MSolid solid, RegistryData[] exclusions) {
         //material, enableGen,
         //stone: poor; 4; 6; 2: ore; 4; 6; 2: dense; 4; 9; 2,
@@ -58,8 +61,9 @@ public class GOre extends AGMSolid<Ore> {
                 getRecipeTweak("Ore"),
                 minVoltage, inMultiplier, outMultiplier,
                 baseTime, tickDecMulti,
+                data, matterIn, matterOut,
                 getItems(), getLiquids(), getOres(),
-                getMachineRegistry(), getMachineGroupRegistry(), getMatterRegistry(), getDataRegistry(),
+                getMachineRegistry(), getMachineGroupRegistry(),
                 m,
                 Boolean.parseBoolean(s[0])
         );
@@ -107,7 +111,7 @@ public class GOre extends AGMSolid<Ore> {
                 b = new LBlock(
                         block,
                         getRecipeTweak("LBlock"), getItems(), getLiquids(), getOres(),
-                        getMachineRegistry(), getMachineGroupRegistry(), getMatterRegistry(), getDataRegistry(),
+                        getMachineRegistry(), getMachineGroupRegistry(),
                         "rock", tool
                 );
                 b.setAttributes(parseInt(attributes[1]), parseInt(attributes[2]), parseInt(attributes[3]));
@@ -122,8 +126,9 @@ public class GOre extends AGMSolid<Ore> {
                     getRecipeTweak("OreVariant"),
                     minVoltage, inMultiplier, outMultiplier,
                     baseTime, tickDecMulti,
+                    data, matterIn, matterOut,
                     getItems(), getLiquids(), getOres(),
-                    getMachineRegistry(), getMachineGroupRegistry(), getMatterRegistry(), getDataRegistry(),
+                    getMachineRegistry(), getMachineGroupRegistry(),
                     m,
                     block, types.toArray(new OreType[0]), this.partGroup.getPart("ore")
             );

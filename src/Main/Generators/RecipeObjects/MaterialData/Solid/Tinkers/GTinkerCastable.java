@@ -1,19 +1,23 @@
 package Main.Generators.RecipeObjects.MaterialData.Solid.Tinkers;
 
 import Main.Data.Material;
+import Main.Data.RecipeObject.Localized.Liquid.LLiquid;
+import Main.Data.RecipeObject.Localized.Liquid.LPlasma;
 import Main.Data.RecipeObject.MaterialData.Solid.Malleable.Alloy;
 import Main.Data.RecipeObject.MaterialData.Solid.Malleable.Metal;
 import Main.Data.RecipeObject.MaterialData.Solid.Malleable.Plastic;
 import Main.Data.RecipeObject.MaterialData.Solid.Malleable.Rubber;
 import Main.Data.RecipeObject.MaterialData.Tinker.TinkerCastable;
 import Main.Data.RecipeObject.RegistryData;
+import Main.Generators.GMachine;
 import Main.Generators.GMachineGroup;
 import Main.Generators.GMaterial;
 import Main.Generators.GPartGroup;
-import Main.Generators.GameData.*;
+import Main.Generators.GameData.GLiquidRegistry;
+import Main.Generators.GameData.GOreDictRegistry;
+import Main.Generators.GameData.GRegistry;
 import Main.Generators.GameData.Tinker.GTCPartRegistry;
 import Main.Generators.GameData.Tinker.GTCTraitRegistry;
-import Main.Generators.GMachine;
 import Main.Generators.MachineResource.GMachineData;
 import Main.Generators.MachineResource.GMachineMatter;
 import Main.Generators.RecipeObjects.MaterialData.Solid.Malleable.GAlloy;
@@ -32,7 +36,7 @@ public class GTinkerCastable extends AGTinkers<TinkerCastable> {
     public GTinkerCastable(
             String filename, boolean isReg,
             GRecipeTweak tweak, GRegistry registry, GLiquidRegistry liquids, GOreDictRegistry ores,
-            GMachine machine, GMachineGroup machineGroup, GMachineMatter matter, GMachineData data,
+            GMachine machine, GMachineGroup machineGroup, GMachineData data, GMachineMatter matter,
             GMaterial material, GPartGroup partGroup,
             GTCPartRegistry parts, GTCTraitRegistry traits,
             GAlloy alloy, GMetal metal, GPlastic plastic, GRubber rubber
@@ -40,7 +44,7 @@ public class GTinkerCastable extends AGTinkers<TinkerCastable> {
         super(
             7+3, filename, isReg,
             tweak, registry, liquids, ores,
-            machine, machineGroup, matter, data,
+            machine, machineGroup, data, matter,
             material, partGroup,
             parts, traits
         );
@@ -52,6 +56,7 @@ public class GTinkerCastable extends AGTinkers<TinkerCastable> {
 
     @Override
     protected TinkerCastable readTinkerParameters(int minVoltage, double inMultiplier, double outMultiplier, int baseTime, double[] tickDecMulti,
+                                                  LLiquid data, LPlasma matterIn, LPlasma matterOut,
                                                   Material m, String[] s, RegistryData[] exclusions) {
         //check if material is a malleable, must check each child registry of AGMalleable
         Alloy a = alloy.getNoError(m.NAME);
@@ -94,8 +99,9 @@ public class GTinkerCastable extends AGTinkers<TinkerCastable> {
                 getRecipeTweak("TinkerCastable"),
                 minVoltage, inMultiplier, outMultiplier,
                 baseTime, tickDecMulti,
+                data, matterIn, matterOut,
                 getItems(), getLiquids(), getOres(),
-                getMachineRegistry(), getMachineGroupRegistry(), getMatterRegistry(), getDataRegistry(),
+                getMachineRegistry(), getMachineGroupRegistry(),
                 m,
                 false, isCasting, ore, ore, parts.getPartRegistry(),
                 molten, meltingMultiplier

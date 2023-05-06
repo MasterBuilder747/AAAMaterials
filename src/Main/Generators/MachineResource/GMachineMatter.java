@@ -1,7 +1,7 @@
 package Main.Generators.MachineResource;
 
-import Main.Data.RecipeObject.Localized.Liquid.LPlasma;
 import Main.Data.Recipe.MachineMatter;
+import Main.Data.RecipeObject.Localized.Liquid.LPlasma;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -21,13 +21,13 @@ public class GMachineMatter extends AGMachineResource<MachineMatter> {
                 //recipes for matter liquids have to be hardcoded!
                 new LPlasma("pos_"+s[0]+"_matter",
                         null, null, null, null,
-                        null, null, null, null,
+                        null, null,
                         "Positive "+localName+" Matter",
                         validateColor(s[2]), false, false,
                         1000, 15, 15000, 10000),
                 new LPlasma("neg_"+s[0]+"_matter",
                         null, null, null, null,
-                        null, null, null, null,
+                        null, null,
                         "Negative "+localName+" Matter",
                         validateColor(s[2]), false, false,
                         1000, 15, 15000, 10000)

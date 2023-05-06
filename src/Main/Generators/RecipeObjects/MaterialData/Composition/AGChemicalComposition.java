@@ -1,6 +1,8 @@
 package Main.Generators.RecipeObjects.MaterialData.Composition;
 
 import Main.Data.Material;
+import Main.Data.RecipeObject.Localized.Liquid.LLiquid;
+import Main.Data.RecipeObject.Localized.Liquid.LPlasma;
 import Main.Data.RecipeObject.MaterialData.Composition.AChemicalComposition;
 import Main.Data.RecipeObject.MaterialData.Composition.Composition;
 import Main.Data.RecipeObject.RegistryData;
@@ -27,9 +29,9 @@ public abstract class AGChemicalComposition<C extends AChemicalComposition> exte
                                  GMachine machine, GMachineGroup machineGroup, GMachineData data, GMachineMatter matter,
                                  GMaterial material, GPartGroup partGroup,
                                  boolean isSingular) {
-        super(PARAMS-4, filename + "_composition", isReg,
+        super(PARAMS-8, filename + "_composition", isReg,
                 tweak, registry, liquids, ores,
-                machine, machineGroup, matter, data,
+                machine, machineGroup, data, matter,
                 material, partGroup);
         this.isSingular = isSingular;
     }
@@ -63,5 +65,6 @@ public abstract class AGChemicalComposition<C extends AChemicalComposition> exte
 
     @Override
     protected void readMaterialParameters(int minVoltage, double inMultiplier, double outMultiplier, int baseTime, double[] tickDecMulti,
+                                          LLiquid data, LPlasma matterIn, LPlasma matterOut,
                                           Material m, String[] s, RegistryData[] exclusions) {}
 }

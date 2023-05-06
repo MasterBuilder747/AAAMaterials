@@ -3,18 +3,16 @@ package Main.Data.RecipeObject.Localized;
 import Main.Data.GameData.Registry;
 import Main.Data.Machine.Machine;
 import Main.Data.Machine.MachineGroup;
-import Main.Data.Recipe.MachineData;
-import Main.Data.Recipe.MachineMatter;
 import Main.Data.Tweakers.RecipeTweak;
 
 public class LItem extends ALocalizedData {
     public LItem(String NAME,
                  RecipeTweak tweak, Registry[] items, String[] liquids, String[] ores,
-                 Machine[] machines, MachineGroup[] machineGroups, MachineMatter[] matters, MachineData[] datas,
+                 Machine[] machines, MachineGroup[] machineGroups,
                  String localName) {
         super(NAME, "LItem",
                 tweak, items, liquids, ores,
-                machines, machineGroups, matters, datas,
+                machines, machineGroups,
                 localName);
     }
 

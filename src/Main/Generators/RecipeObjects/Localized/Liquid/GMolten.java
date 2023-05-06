@@ -1,11 +1,11 @@
 package Main.Generators.RecipeObjects.Localized.Liquid;
 
 import Main.Data.RecipeObject.Localized.Liquid.LMolten;
+import Main.Generators.GMachine;
 import Main.Generators.GMachineGroup;
 import Main.Generators.GameData.GLiquidRegistry;
 import Main.Generators.GameData.GOreDictRegistry;
 import Main.Generators.GameData.GRegistry;
-import Main.Generators.GMachine;
 import Main.Generators.MachineResource.GMachineData;
 import Main.Generators.MachineResource.GMachineMatter;
 import Main.Generators.Tweakers.GRecipeTweak;
@@ -13,10 +13,10 @@ import Main.Generators.Tweakers.GRecipeTweak;
 public class GMolten extends AGLiquid<LMolten> {
     public GMolten(String filename, boolean isReg,
                    GRecipeTweak tweak, GRegistry registry, GLiquidRegistry liquids, GOreDictRegistry ores,
-                   GMachine machine, GMachineGroup machineGroup, GMachineMatter matter, GMachineData data) {
+                   GMachine machine, GMachineGroup machineGroup, GMachineData data, GMachineMatter matter) {
         super(6, filename, isReg,
                 tweak, registry, liquids, ores,
-                machine, machineGroup, matter, data);
+                machine, machineGroup, data, matter);
     }
 
     @Override
@@ -26,7 +26,7 @@ public class GMolten extends AGLiquid<LMolten> {
                 new LMolten(
                     name,
                     getRecipeTweak("LMolten"), getItems(), getLiquids(), getOres(),
-                    getMachineRegistry(), getMachineGroupRegistry(), getMatterRegistry(), getDataRegistry(),
+                    getMachineRegistry(), getMachineGroupRegistry(),
                     localName,
                     s[0], false, parseBoolean(s[5]),
                     parseInt(s[1]), parseInt(s[2]), parseInt(s[3]), parseInt(s[4])

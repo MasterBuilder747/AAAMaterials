@@ -3,8 +3,6 @@ package Main.Data.RecipeObject.MaterialData.Composition;
 import Main.Data.GameData.Registry;
 import Main.Data.Machine.Machine;
 import Main.Data.Machine.MachineGroup;
-import Main.Data.Recipe.MachineData;
-import Main.Data.Recipe.MachineMatter;
 import Main.Data.Material;
 import Main.Data.Tweakers.RecipeTweak;
 
@@ -44,13 +42,13 @@ public class CompoundComposition extends AChemicalComposition {
     String subType; //more characterization for recipes
 
     public CompoundComposition(RecipeTweak tweak, Registry[] items, String[] liquids, String[] ores,
-                               Machine[] machines, MachineGroup[] machineGroups, MachineMatter[] matters, MachineData[] datas,
+                               Machine[] machines, MachineGroup[] machineGroups,
                                Material m,
                                Composition c, String compType, int charge, boolean isDefault,
                                String subType, boolean isMixing, boolean isCentrifuge, boolean isChemReact, boolean isElectrolyze) {
         super("CompoundComposition",
                 tweak, items, liquids, ores,
-                machines, machineGroups, matters, datas,
+                machines, machineGroups,
                 m,
                 c, compType, charge, isDefault, false);
         this.subType = subType;
