@@ -143,7 +143,7 @@ public abstract class ARecipeObject extends AData {
             int amount = 1;
             if (s.contains("*")) {
                 amount = Integer.parseInt(s.substring(s.indexOf("*")+1));
-                if (amount < 2) throw new GeneratorException("Amount must be greater than 1 for amount " + amount);
+                if (amount < 1) throw new GeneratorException("Amount must be greater than 0 for amount " + amount);
                 s = s.substring(0, s.indexOf("*"));
             }
             StringBuilder sb = new StringBuilder();
@@ -164,7 +164,7 @@ public abstract class ARecipeObject extends AData {
             out = null;
             if (c != null) out = c;
             else error("No custom keys exists for object of type " + this.type);
-        } else out = getLiquid(liquid);
+        } else out = getLiquidRegistry(liquid);
         return out;
     }
     private String handleItem(String item) {
@@ -263,7 +263,7 @@ public abstract class ARecipeObject extends AData {
     }
 
     //liquid registry
-    protected String getLiquid(String key) {
+    protected String getLiquidRegistry(String key) {
         for (String l : this.liquids) {
             if (l.equals(key)) {
                 return l;

@@ -1,11 +1,13 @@
 package Main.Data.RecipeObject.MaterialData;
 
+import Main.Data.GameData.LiquidRegistry;
 import Main.Data.GameData.Registry;
 import Main.Data.Machine.Machine;
 import Main.Data.Machine.MachineGroup;
 import Main.Data.Material;
 import Main.Data.PartGroup;
 import Main.Data.RecipeObject.ARecipeObject;
+import Main.Data.RecipeObject.LiquidRegistryData;
 import Main.Data.RecipeObject.Localized.LPart;
 import Main.Data.RecipeObject.Localized.Liquid.LLiquid;
 import Main.Data.RecipeObject.Localized.Liquid.LPlasma;
@@ -62,30 +64,6 @@ public abstract class AMaterialData extends ARecipeObject {
     }
     protected abstract String buildSpecificRecipe();
 
-    protected LPart[] getPartsWithOverrides() {
-        ArrayList<LPart> out = new ArrayList<>();
-        for (int i = 0; i < this.partGroups.length; i++) {
-            if (this.enablePartGroups[i]) {
-                out.addAll(Arrays.asList(partGroups[i].getParts()));
-            }
-        }
-        return out.toArray(new LPart[0]);
-    }
-
-    protected PartGroup getPartGroup(String s) {
-        for (PartGroup p : this.partGroups) {
-            if (p.NAME.equals(s)) {
-                return p;
-            }
-        }
-        error(s, this.NAME);
-        return null;
-    }
-
-    public Material getMaterial() {
-        return this.m;
-    }
-
     //keys
     public void addRegistryData(String key, Registry r) {
         this.m.keys.add(new RegistryData(key, r));
@@ -123,7 +101,27 @@ public abstract class AMaterialData extends ARecipeObject {
             }
         }
     }
-    //return the whole array
+    //liquid keys
+    public void addLiquidKey(String key, LiquidRegistry l) {
+        this.m.liquids.add(new LiquidRegistryData(key, l));
+    }
+    public void addLiquidKey(LiquidRegistryData l) {
+        this.m.liquids.add(l);
+    }
+    public LiquidRegistryData getLiquidKey(String key) {
+        for (LiquidRegistryData l : this.m.liquids) {
+            if (l.key.equals(key)) return l;
+        }
+        error("Unknown liquid key: " + key + " for material " + this.m.NAME);
+        return null;
+    }
+
+
+    //gets
+    public Material getMaterial() {
+        return this.m;
+    }
+
     public RegistryData[] getKeysArray() {
         return this.m.keys.toArray(new RegistryData[0]);
     }
@@ -144,9 +142,38 @@ public abstract class AMaterialData extends ARecipeObject {
     public String getUnlocalizedByKey(String key) { //externally called if needed (eg, stone)
         return this.get(key).getUnlocalizedNameWithMeta();
     }
+    protected LPart[] getPartsWithOverrides() {
+        ArrayList<LPart> out = new ArrayList<>();
+        for (int i = 0; i < this.partGroups.length; i++) {
+            if (this.enablePartGroups[i]) {
+                out.addAll(Arrays.asList(partGroups[i].getParts()));
+            }
+        }
+        return out.toArray(new LPart[0]);
+    }
 
-    //TODO: liquid keys
+    protected PartGroup getPartGroup(String s) {
+        for (PartGroup p : this.partGroups) {
+            if (p.NAME.equals(s)) {
+                return p;
+            }
+        }
+        error(s, this.NAME);
+        return null;
+    }
 
+    protected String buildPart(PartGroup partGroup, boolean newline) {
+        return this.m.NAME + ".registerParts(" + partGroup.NAME + ");" + ((newline) ? "\n" : " ");
+    }
+    protected String buildAltPart(String name, PartGroup partGroup) {
+        return name + ".registerParts(" + partGroup.NAME + ");\n";
+    }
+    protected String buildAltPart(String name, PartGroup partGroup, boolean newline) {
+        return name + ".registerParts(" + partGroup.NAME + "); " + ((newline) ? "\n" : " ");
+    }
+    protected String buildPartOverride(LPart p, boolean newline) {
+        return this.m.NAME + ".registerPart(part_" + p.NAME + ");" + ((newline) ? "\n" : " ");
+    }
 
     //logic
     protected boolean is(String key) {
@@ -157,44 +184,7 @@ public abstract class AMaterialData extends ARecipeObject {
         }
         return true;
     }
-    //print methods
-    public void printNames() {
-        System.out.println("Keys for " + this.NAME + ":");
-        for (RegistryData r : this.m.keys) {
-            System.out.println(r.key + " = " + r.r.NAME + ":" + r.r.meta);
-        }
-        System.out.println();
-    }
-    protected void printDatas() {
-        System.out.print("[");
-        for (RegistryData r : this.m.keys) {
-            System.out.print(r.r.NAME+", ");
-        }
-        System.out.println("]");
-    }
-    public void printBrackets() {
-        System.out.println("Keys for " + m.NAME + ":");
-        for (RegistryData r : this.m.keys) {
-            System.out.println(r.key + " = " + r.r.getBracket());
-        }
-        System.out.println();
-    }
-    public void printAll() {
-        System.out.println("Keys for RecipeObject of type " + this.type + ":");
-        for (RegistryData r : this.m.keys) {
-            System.out.print(r.key + " = ");
-            r.r.print();
-        }
-        System.out.println();
-    }
-    public void printAmount() {
-        System.out.println("Amount of keys: " + this.m.keys.size());
-    }
-    public void printKeysWithExclusions() {
-        for (RegistryData k : m.keys) {
-            System.out.println(k.key + ": " + k.isTooltipExclusion);
-        }
-    }
+    //keys
     public String[] getKeys() {
         ArrayList<String> outs = new ArrayList<>();
         LPart[] parts = this.getPartsWithOverrides();
@@ -337,16 +327,48 @@ public abstract class AMaterialData extends ARecipeObject {
         return sb.toString();
     }
 
-    protected String buildPart(PartGroup partGroup, boolean newline) {
-        return this.m.NAME + ".registerParts(" + partGroup.NAME + ");" + ((newline) ? "\n" : " ");
+    //print methods
+    public void printNames() {
+        System.out.println("Keys for " + this.NAME + ":");
+        for (RegistryData r : this.m.keys) {
+            System.out.println(r.key + " = " + r.r.NAME + ":" + r.r.meta);
+        }
+        System.out.println();
     }
-    protected String buildAltPart(String name, PartGroup partGroup) {
-        return name + ".registerParts(" + partGroup.NAME + ");\n";
+    protected void printDatas() {
+        System.out.print("[");
+        for (RegistryData r : this.m.keys) {
+            System.out.print(r.r.NAME+", ");
+        }
+        System.out.println("]");
     }
-    protected String buildAltPart(String name, PartGroup partGroup, boolean newline) {
-        return name + ".registerParts(" + partGroup.NAME + "); " + ((newline) ? "\n" : " ");
+    public void printBrackets() {
+        System.out.println("Keys for " + m.NAME + ":");
+        for (RegistryData r : this.m.keys) {
+            System.out.println(r.key + " = " + r.r.getBracket());
+        }
+        System.out.println();
     }
-    protected String buildPartOverride(LPart p, boolean newline) {
-        return this.m.NAME + ".registerPart(part_" + p.NAME + ");" + ((newline) ? "\n" : " ");
+    public void printAll() {
+        System.out.println("Keys for RecipeObject of type " + this.type + ":");
+        for (RegistryData r : this.m.keys) {
+            System.out.print(r.key + " = ");
+            r.r.print();
+        }
+        System.out.println();
+    }
+    public void printAmount() {
+        System.out.println("Amount of keys: " + this.m.keys.size());
+    }
+    public void printKeysWithExclusions() {
+        for (RegistryData k : m.keys) {
+            System.out.println(k.key + ": " + k.isTooltipExclusion);
+        }
+    }
+    //liquid print methods
+    public void printLiquidNames() {
+        System.out.println("Liquid keys for " + this.NAME + " (" + this.m.liquids.size() + "):");
+        for (LiquidRegistryData r : this.m.liquids) r.print();
+        System.out.println();
     }
 }

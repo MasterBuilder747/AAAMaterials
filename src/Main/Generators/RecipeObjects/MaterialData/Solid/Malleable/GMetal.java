@@ -59,7 +59,7 @@ public class GMetal extends AGMalleable<Metal> {
                 new String[]{"smelt", "blast", "plate", "special_plate", "rod", "beam", "coiled_rod", "conductive", "machine", "assembled", "scrap"}),
                 new boolean[]{addSmelt, addBlast, addSmelt, addSmelt, addSmelt, addSmelt, addSmelt, addConductive, addMachine, addSmelt, addSmelt}
         );
-        metal = updateRegistryKeys(metal);
+        updateRegistryKeys(metal);
         objects.add(metal);
     }
 }

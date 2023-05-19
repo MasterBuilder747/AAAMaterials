@@ -9,15 +9,14 @@ import Main.Generators.GameData.GRegistry;
 import Main.Generators.MachineResource.GMachineData;
 import Main.Generators.MachineResource.GMachineMatter;
 import Main.Generators.RecipeObjects.Localized.AGLocal;
-import Main.Generators.Tweakers.GRecipeTweak;
 
 //these are custom defined liquids
 public abstract class AGLiquid<L extends ALiquid> extends AGLocal<L> {
     public AGLiquid(int PARAMS, String filename, boolean isReg,
-                    GRecipeTweak tweak, GRegistry registry, GLiquidRegistry liquids, GOreDictRegistry ores,
+                    GRegistry registry, GLiquidRegistry liquids, GOreDictRegistry ores,
                     GMachine machine, GMachineGroup machineGroup, GMachineData data, GMachineMatter matter) {
         super(PARAMS, filename, "Liquid", isReg,
-                tweak, registry, liquids, ores,
+                registry, liquids, ores,
                 machine, machineGroup, data, matter);
     }
 }

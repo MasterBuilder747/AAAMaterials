@@ -110,7 +110,7 @@ public class GOre extends AGMSolid<Ore> {
                 LBlock b;
                 b = new LBlock(
                         block,
-                        getRecipeTweak("LBlock"), getItems(), getLiquids(), getOres(),
+                        getItems(), getLiquids(), getOres(),
                         getMachineRegistry(), getMachineGroupRegistry(),
                         "rock", tool
                 );

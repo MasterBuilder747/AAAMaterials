@@ -4,12 +4,11 @@ import Main.Data.GameData.Registry;
 import Main.Data.Machine.Machine;
 import Main.Data.Machine.MachineGroup;
 import Main.Data.Material;
-import Main.Data.Tweakers.RecipeTweak;
 import Main.Util;
 
 public class MoleculeComposition extends AChemicalComposition {
     int isotope; //the nuclear isotope value, for display reasons, not functional, use 0 if default
-    boolean isDiatomic; //this is handled later in recipes
+    public boolean isDiatomic; //this is handled later in recipes
     //(aka, whenever a breaking reaction occurs, if this is returned by itself, the amount must be even)
 
     //metastability support
@@ -19,13 +18,13 @@ public class MoleculeComposition extends AChemicalComposition {
 
     public String symbolWCharge; //ex: Am3+
 
-    public MoleculeComposition(RecipeTweak tweak, Registry[] items, String[] liquids, String[] ores,
+    public MoleculeComposition(Registry[] items, String[] liquids, String[] ores,
                                Machine[] machines, MachineGroup[] machineGroups,
                                Material m,
                                Composition c, String compType, int charge, boolean isDefault,
                                boolean isDiatomic, int isotope, int mValue) {
         super("MoleculeComposition",
-                tweak, items, liquids, ores,
+                items, liquids, ores,
                 machines, machineGroups,
                 m,
                 c, compType, charge, isDefault, true);
@@ -66,8 +65,13 @@ public class MoleculeComposition extends AChemicalComposition {
     }
 
     @Override
-    public String buildMaterial() {
+    protected String buildSpecificRecipe() {
+        //any recipes needed for molecules, code only, no user recipes
         return null;
     }
 
+    @Override
+    public String buildMaterial() {
+        return null;
+    }
 }

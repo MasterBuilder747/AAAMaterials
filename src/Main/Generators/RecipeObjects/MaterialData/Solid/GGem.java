@@ -44,7 +44,7 @@ public class GGem extends AGMSolid<Gem>{
                 getMachineRegistry(), getMachineGroupRegistry(),
                 m);
         g.setPartGroupTrue(exclusions, genPartGroup("gem"));
-        g = updateRegistryKeys(g);
+        updateRegistryKeys(g);
         objects.add(g);
     }
 }

@@ -2,17 +2,22 @@ package Main.Data;
 
 import Main.Data.GameData.LiquidRegistry;
 import Main.Data.GameData.Registry;
+import Main.Data.Recipe.MachineData;
+import Main.Data.Recipe.MachineMatter;
 import Main.Data.RecipeObject.LiquidRegistryData;
 import Main.Data.RecipeObject.Localized.LFood;
 import Main.Data.RecipeObject.MaterialData.Composition.AChemicalComposition;
-import Main.Data.RecipeObject.MaterialData.Liquid.*;
-import Main.Data.Recipe.MachineData;
-import Main.Data.Recipe.MachineMatter;
-import Main.Data.RecipeObject.MaterialData.Solid.*;
+import Main.Data.RecipeObject.MaterialData.Liquid.MGas;
+import Main.Data.RecipeObject.MaterialData.Liquid.MLiquid;
+import Main.Data.RecipeObject.MaterialData.Liquid.MPlasma;
+import Main.Data.RecipeObject.MaterialData.Solid.Gem;
 import Main.Data.RecipeObject.MaterialData.Solid.Malleable.Alloy;
 import Main.Data.RecipeObject.MaterialData.Solid.Malleable.Metal;
 import Main.Data.RecipeObject.MaterialData.Solid.Malleable.Plastic;
 import Main.Data.RecipeObject.MaterialData.Solid.Malleable.Rubber;
+import Main.Data.RecipeObject.MaterialData.Solid.Ore;
+import Main.Data.RecipeObject.MaterialData.Solid.Stone;
+import Main.Data.RecipeObject.MaterialData.Solid.Wood;
 import Main.Data.RecipeObject.MaterialData.Tinker.ATinkers;
 import Main.Data.RecipeObject.RegistryData;
 
@@ -86,18 +91,43 @@ public class Material extends AData {
         this.state = state;
     }
 
+    //states
+    public String getState(String s) {
+        switch (s) {
+            case "solid" -> {
+                if (this.is("dust")) {
+                    return this.get("dust").getUnlocalizedNameWithMeta();
+                } else error("No solid state found");
+            }
+            case "liquid" -> {
+                if (this.isLiquid("liquid")) {
+                        return this.getLiquid("liquid").NAME;
+                    } else error("No liquid state found");
+                }
+            case "gas" -> {
+                if (this.isLiquid("gas")) {
+                    return this.getLiquid("gas").NAME;
+                } else error("No gaseous state found");
+            }
+            default -> error("Unknown state: " + s);
+        }
+        return null;
+    }
+    public String getDefaultState() {
+        return this.getState(this.state);
+    }
     //keys
     public RegistryData getRegistryData(String s) {
         if (keys.isEmpty()) {
-            return null;
+            error("No keys exist");
         }
         for (RegistryData d : keys) {
             if (d.key.equals(s)) return d;
         }
-        throw new IllegalArgumentException("Unknown key " + s + " for material " + NAME);
+        error("Unknown liquid key " + s);
+        return null;
     }
     public Registry get(String s) {
-        if (keys.isEmpty()) return null;
         return getRegistryData(s).r;
     }
     public boolean is(String s) {
@@ -111,16 +141,14 @@ public class Material extends AData {
 
     //liquid keys
     public LiquidRegistryData getLiquidData(String s) {
-        if (liquids.isEmpty()) {
-            return null;
-        }
+        if (liquids.isEmpty()) error("No liquid keys found");
         for (LiquidRegistryData l : liquids) {
             if (l.key.equals(s)) return l;
         }
-        throw new IllegalArgumentException("Unknown liquid key " + s + " for material " + NAME);
+        error("Unknown liquid key " + s);
+        return null;
     }
     public LiquidRegistry getLiquid(String s) {
-        if (liquids.isEmpty()) return null;
         return getLiquidData(s).l;
     }
     public boolean isLiquid(String s) {
@@ -144,6 +172,10 @@ public class Material extends AData {
         for (RegistryData d : keys) {
             System.out.println(d.key + " = " + d.r.getUnlocalizedNameWithMeta());
         }
+    }
+
+    private void error(String msg) {
+        throw new IllegalArgumentException(msg + " for material " + this.NAME);
     }
 
     @Override

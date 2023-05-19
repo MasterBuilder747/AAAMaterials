@@ -7,7 +7,6 @@ import Main.Data.Machine.MachineGroup;
 import Main.Data.Material;
 import Main.Data.RecipeObject.MaterialData.AMaterialData;
 import Main.Data.RecipeObject.RegistryData;
-import Main.Data.Tweakers.RecipeTweak;
 
 //defines a chemical composition to be applied to the material
 //convention:
@@ -33,12 +32,12 @@ public abstract class AChemicalComposition extends AMaterialData {
     public String compType; //this determines properties for the composition
 
     public AChemicalComposition(String type,
-                                RecipeTweak tweak, Registry[] items, String[] liquids, String[] ores,
+                                Registry[] items, String[] liquids, String[] ores,
                                 Machine[] machines, MachineGroup[] machineGroups,
                                 Material m,
                                 Composition c, String compType, int charge, boolean isDefault, boolean isMolecule) {
         super(type,
-                tweak, 1, 0, 0,
+                null, 1, 0, 0,
                 20, new double[]{0.05, 0.05, 0.05, 0.05, 0.05, 0.05, 0.05, 0.05, 0.05, 0.05, 0.05, 0.052, 0.054, 0.055, 0.06},
                 null, null, null,
                 items, liquids, ores,
@@ -78,12 +77,15 @@ public abstract class AChemicalComposition extends AMaterialData {
     }
 
     @Override
+    public String buildRecipe() {
+        return buildSpecificRecipe();
+    }
+
+    @Override
     public String toString() {
         return this.symbol;
     }
 
-    @Override
-    protected String buildSpecificRecipe() {return null;}
     @Override
     protected String customItemKey(String key) {return null;}
     @Override

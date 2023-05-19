@@ -53,7 +53,7 @@ public class GRubber extends AGMalleable<Rubber> {
                 this.genPartGroups(new String[]{
                         "scrap", "plate", "smelt", "rod", "beam", "conductive", "machine", "special_plate", "coiled_rod", "blast", "assembled"
                 }));
-        rubber = updateRegistryKeys(rubber);
+        updateRegistryKeys(rubber);
         objects.add(rubber);
     }
 }

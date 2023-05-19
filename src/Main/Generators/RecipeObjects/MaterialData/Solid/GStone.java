@@ -181,7 +181,7 @@ public class GStone extends AGMSolid<Stone> {
         }
         st.setPartGroup(exclusions, genPartGroup("stone"), addPebble);
         st.addVariants(registries.toArray(new Registry[0]));
-        st = updateRegistryKeys(st);
+        updateRegistryKeys(st);
         objects.add(st);
     }
 

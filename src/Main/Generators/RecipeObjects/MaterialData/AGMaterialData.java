@@ -93,14 +93,13 @@ public abstract class AGMaterialData<M extends AMaterialData> extends AGRecipeOb
     }
 
     //this is called after genPartGroups
-    protected M updateRegistryKeys(M r) {
+    protected void updateRegistryKeys(M r) {
         if (this.isReg) {
             String[] keys = r.getKeys();
             String[] names = r.partRegistryNames.toArray(new String[0]);
             Registry[] regs = getRegistries(names);
             r.addAllRegistryDatas(keys, regs);
         }
-        return r;
     }
     protected Registry[] getRegistries(String[] registries) {
         ArrayList<Registry> regs = new ArrayList<>();

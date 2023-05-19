@@ -10,4 +10,9 @@ public class LiquidRegistryData {
         this.key = key;
         this.l = l;
     }
+
+    public void print() {
+        System.out.print(this.key + ": ");
+        this.l.print();
+    }
 }

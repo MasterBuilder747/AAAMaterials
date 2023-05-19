@@ -1,11 +1,9 @@
 package Main.Data.RecipeObject.MaterialData.Liquid;
 
-import Main.Data.GameData.LiquidRegistry;
 import Main.Data.GameData.Registry;
 import Main.Data.Machine.Machine;
 import Main.Data.Machine.MachineGroup;
 import Main.Data.Material;
-import Main.Data.RecipeObject.LiquidRegistryData;
 import Main.Data.RecipeObject.Localized.Liquid.ALiquid;
 import Main.Data.RecipeObject.Localized.Liquid.LLiquid;
 import Main.Data.RecipeObject.Localized.Liquid.LPlasma;
@@ -14,8 +12,8 @@ import Main.Data.Tweakers.RecipeTweak;
 
 public abstract class AMLiquid extends AMaterialData {
     //be aware that you cannot call any methods that are specific to children of ALiquid, only ALiquid itself
+    //note that you use the recipe system here but not inside the ALiquids themselves
     ALiquid l;
-    String key; //liquid registry key
 
     public AMLiquid(String type,
                     RecipeTweak tweak, int minVoltage, double powerMultiplierIn, double powerMultiplierOut,
@@ -31,19 +29,6 @@ public abstract class AMLiquid extends AMaterialData {
                 m);
     }
 
-    @Override
-    public String buildMaterial() {
-        //TODO: add liquid parts (and keys to Material)
-        return l.buildMaterial();
-    }
-
-    @Override
-    protected String buildSpecificRecipe() {
-        String liq = getLiquid(l.NAME);
-        m.liquids.add(new LiquidRegistryData(key, new LiquidRegistry(liq)));
-        return null;
-    }
-
     public String getBracket() {
         return this.l.getBracket();
     }
@@ -57,9 +42,20 @@ public abstract class AMLiquid extends AMaterialData {
     }
 
     @Override
+    public String buildMaterial() {
+        return l.buildMaterial();
+    }
+
+    @Override
+    protected String buildSpecificRecipe() {
+        return null;
+    }
+    @Override
     protected String customItemKey(String key) {
         return null;
     }
     @Override
-    protected String customLiquidKey(String key) {return null;}
+    protected String customLiquidKey(String key) {
+        return null;
+    }
 }

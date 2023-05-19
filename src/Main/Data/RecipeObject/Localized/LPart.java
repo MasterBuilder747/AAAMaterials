@@ -3,7 +3,6 @@ package Main.Data.RecipeObject.Localized;
 import Main.Data.GameData.Registry;
 import Main.Data.Machine.Machine;
 import Main.Data.Machine.MachineGroup;
-import Main.Data.Tweakers.RecipeTweak;
 
 public class LPart extends ALocalizedData {
     //this defines a material part to be used in materials
@@ -17,12 +16,12 @@ public class LPart extends ALocalizedData {
     //this part already exists in contentTweaker
     //to be used in a PartGroup
     public LPart(String NAME,
-                 RecipeTweak tweak, Registry[] items, String[] liquids, String[] ores,
+                 Registry[] items, String[] liquids, String[] ores,
                  Machine[] machines, MachineGroup[] machineGroups,
                  String localName,
                  String oreDict, int amount) {
         super(NAME, "LPart",
-                tweak, items, liquids, ores,
+                items, liquids, ores,
                 machines, machineGroups,
                 localName);
         this.exists = true;
@@ -32,12 +31,12 @@ public class LPart extends ALocalizedData {
     }
     //custom part
     public LPart(String NAME,
-                 RecipeTweak tweak, Registry[] items, String[] liquids, String[] ores,
+                 Registry[] items, String[] liquids, String[] ores,
                  Machine[] machines, MachineGroup[] machineGroups,
                  String localName,
                  String  oreDict, boolean hasOverlay, int amount) {
         super(NAME, "LPart",
-                tweak, items, liquids, ores,
+                items, liquids, ores,
                 machines, machineGroups,
                 localName);
         this.type = "item"; //default
@@ -74,10 +73,5 @@ public class LPart extends ALocalizedData {
                 throw new IllegalArgumentException("Part " + this.NAME + " does not contain a \"%s\" to denote the material name for localization");
             }
         } else return "";
-    }
-
-    @Override
-    protected String buildAdditionalRecipes() {
-        return null;
     }
 }

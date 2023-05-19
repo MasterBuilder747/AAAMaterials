@@ -1,5 +1,6 @@
 package Main.Data.RecipeObject.MaterialData.Liquid;
 
+import Main.Data.GameData.LiquidRegistry;
 import Main.Data.GameData.Registry;
 import Main.Data.Machine.Machine;
 import Main.Data.Machine.MachineGroup;
@@ -22,19 +23,15 @@ public class MGas extends AMLiquid {
                 items, liquids, ores,
                 machines, machineGroups,
                 m);
-        switch(m.state) {
-            case "solid" -> this.key = "gas";
-            case "liquid" -> this.key = "gas";
-            case "gas" -> this.key = "gas";
-        }
         this.l = new LGas(
                 m.NAME +"_gas",
-                tweak, items, liquids, ores,
+                items, liquids, ores,
                 machines, machineGroups,
                 m.LOCALNAME+" Gas",
                 m.color, true, vaporize,
                 density, luminosity, temperature, viscosity
         );
+        addLiquidKey("gas", new LiquidRegistry(l));
     }
 
     @Override

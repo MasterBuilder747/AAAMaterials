@@ -11,7 +11,6 @@ import Main.Generators.GameData.GRegistry;
 import Main.Generators.MachineResource.GMachineData;
 import Main.Generators.MachineResource.GMachineMatter;
 import Main.Generators.RecipeObjects.AGRecipeObject;
-import Main.Generators.Tweakers.GRecipeTweak;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -19,23 +18,23 @@ import java.io.IOException;
 public abstract class AGLocal<L extends ALocalizedData> extends AGRecipeObject<L> {
     //a variant of Generator that implements localized data
     public AGLocal(int PARAMS, String filename, boolean isReg,
-                   GRecipeTweak tweak, GRegistry registry, GLiquidRegistry liquids, GOreDictRegistry ores,
+                   GRegistry registry, GLiquidRegistry liquids, GOreDictRegistry ores,
                    GMachine machine, GMachineGroup machineGroup, GMachineData data, GMachineMatter matter) {
         super((PARAMS-8)+2, "custom-"+filename, "Custom", isReg,
-                tweak, registry, liquids, ores,
+                null, registry, liquids, ores,
                 machine, machineGroup, data, matter);
     }
     public AGLocal(int PARAMS, String filename, String localFolder, boolean isReg,
-                   GRecipeTweak tweak, GRegistry registry, GLiquidRegistry liquids, GOreDictRegistry ores,
+                   GRegistry registry, GLiquidRegistry liquids, GOreDictRegistry ores,
                    GMachine machine, GMachineGroup machineGroup, GMachineData data, GMachineMatter matter) {
         super((PARAMS-8)+2, "custom-"+filename, "Custom/"+localFolder, isReg,
-                tweak, registry, liquids, ores,
+                null, registry, liquids, ores,
                 machine, machineGroup, data, matter);
     }
 
     @Override
     protected void readLine(BufferedReader br, String[] s) throws IOException {
-        //NOTE: we are NOT adding the new recipe system that AGMaterialData uses
+        //NOTE: we are NOT using the recipe system that AGMaterialData uses
         //instead, use the custom recipe system for these!
 
         //String name, String localName //first 2 parameters

@@ -46,7 +46,7 @@ public class GMSolid extends AGMaterialData<MSolid> {
         sol.setPartGroups(exclusions, genPartGroups(new String[]{"dust", "fine", "powder"}),
                 new boolean[]{Boolean.parseBoolean(s[0]), Boolean.parseBoolean(s[1]), Boolean.parseBoolean(s[2])});
         if (!s[3].equals("=")) sol.addAltName(s[3]);
-        sol = updateRegistryKeys(sol);
+        updateRegistryKeys(sol);
         objects.add(sol);
     }
 }

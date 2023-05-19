@@ -3,7 +3,6 @@ package Main.Data.RecipeObject.Localized;
 import Main.Data.GameData.Registry;
 import Main.Data.Machine.Machine;
 import Main.Data.Machine.MachineGroup;
-import Main.Data.Tweakers.RecipeTweak;
 
 public class LFood extends ALocalizedData {
     //https://docs.blamejared.com/1.12/en/Mods/ContentTweaker/Vanilla/Creatable_Content/ItemFood
@@ -15,12 +14,12 @@ public class LFood extends ALocalizedData {
     String type; //milk, meat, nut, cheese, oil, citrus, nonCitrus, vegetable, grain, seed, legume, yogurt, bread, pasta
 
     public LFood(String NAME,
-                 RecipeTweak tweak, Registry[] items, String[] liquids, String[] ores,
+                 Registry[] items, String[] liquids, String[] ores,
                  Machine[] machines, MachineGroup[] machineGroups,
                  String localName,
                  int heal, double saturation, boolean alwaysEdible) {
         super(NAME, "LFood",
-                tweak, items, liquids, ores,
+                items, liquids, ores,
                 machines, machineGroups,
                 localName);
         this.heal = heal;
@@ -39,12 +38,5 @@ public class LFood extends ALocalizedData {
     }
 
     @Override
-    protected String buildAdditionalRecipes() {
-        return null;
-    }
-
-    @Override
-    public void print() {
-
-    }
+    public void print() {}
 }

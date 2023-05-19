@@ -10,18 +10,17 @@ import Main.Generators.GameData.GOreDictRegistry;
 import Main.Generators.GameData.GRegistry;
 import Main.Generators.MachineResource.GMachineData;
 import Main.Generators.MachineResource.GMachineMatter;
-import Main.Generators.Tweakers.GRecipeTweak;
 import Main.Util;
 
 public class GMoleculeComposition extends AGChemicalComposition<MoleculeComposition> {
     GElement element;
     public GMoleculeComposition(String filename, boolean isReg,
-                                GRecipeTweak tweak, GRegistry registry, GLiquidRegistry liquids, GOreDictRegistry ores,
+                                GRegistry registry, GLiquidRegistry liquids, GOreDictRegistry ores,
                                 GMachine machine, GMachineGroup machineGroup, GMachineData data, GMachineMatter matter,
                                 GMaterial material, GPartGroup partGroup,
                                 GElement element) {
         super(6, filename, isReg,
-                tweak, registry, liquids, ores,
+                registry, liquids, ores,
                 machine, machineGroup, data, matter,
                 material, partGroup,
                 true);
@@ -107,7 +106,7 @@ public class GMoleculeComposition extends AGChemicalComposition<MoleculeComposit
             }
         }
         MoleculeComposition comp = new MoleculeComposition(
-                getRecipeTweak("MoleculeComposition"), getItems(), getLiquids(), getOres(),
+                getItems(), getLiquids(), getOres(),
                 getMachineRegistry(), getMachineGroupRegistry(),
                 m,
                 c, compType, charge, isDefault,

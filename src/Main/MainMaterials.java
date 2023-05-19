@@ -92,7 +92,6 @@ public class MainMaterials {
         //mod tweakers
         GModTweak modTweaks = new GModTweak("modstotweak", mods);
         modTweaks.registerMaterials();
-        GRecipeTweak tweak = null; //placeholder for constructors
 
         //start writing files:
 
@@ -114,17 +113,17 @@ public class MainMaterials {
         fw = new FileWriter(Util.HOME + Util.DEPLOY + "scripts/materials/materials-custom" + ".zs");
         bw = new BufferedWriter(fw);
         bw.write(Util.writeHeader("custom materials", -1, 900, null, true, null));
-        GBlock block = new GBlock("block", REG, tweak, registry, liquids, oreDict, machine, machineGroup, data, matter);
+        GBlock block = new GBlock("block", REG, registry, liquids, oreDict, machine, machineGroup, data, matter);
         bw.write(block.registerMaterials());
-        GItem item = new GItem("item", REG, tweak, registry, liquids, oreDict, machine, machineGroup, data, matter);
+        GItem item = new GItem("item", REG, registry, liquids, oreDict, machine, machineGroup, data, matter);
         bw.write(item.registerMaterials());
-        GLiquid liquid = new GLiquid("liquid", REG, tweak, registry, liquids, oreDict, machine, machineGroup, data, matter);
+        GLiquid liquid = new GLiquid("liquid", REG, registry, liquids, oreDict, machine, machineGroup, data, matter);
         bw.write(liquid.registerMaterials());
-        GMolten molten = new GMolten("molten", REG, tweak, registry, liquids, oreDict, machine, machineGroup, data, matter);
+        GMolten molten = new GMolten("molten", REG, registry, liquids, oreDict, machine, machineGroup, data, matter);
         bw.write(molten.registerMaterials());
-        GGas gas = new GGas("gase", REG, tweak, registry, liquids, oreDict, machine, machineGroup, data, matter);
+        GGas gas = new GGas("gase", REG, registry, liquids, oreDict, machine, machineGroup, data, matter);
         bw.write(gas.registerMaterials());
-        GPlasma plasma = new GPlasma("plasma", REG, tweak, registry, liquids, oreDict, machine, machineGroup, data, matter);
+        GPlasma plasma = new GPlasma("plasma", REG, registry, liquids, oreDict, machine, machineGroup, data, matter);
         bw.write(plasma.registerMaterials());
         bw.close();
 
@@ -132,7 +131,7 @@ public class MainMaterials {
         fw = new FileWriter(Util.HOME + Util.DEPLOY + "scripts/materials/material-parts.zs");
         bw = new BufferedWriter(fw);
         bw.write(Util.writeHeader("material parts", -1, 900, null, true, new String[]{"mods.contenttweaker.PartBuilder","mods.contenttweaker.Part"}));
-        GPart part = new GPart("part", REG, tweak, registry, liquids, oreDict, machine, machineGroup, data, matter); //this is localized
+        GPart part = new GPart("part", REG, registry, liquids, oreDict, machine, machineGroup, data, matter); //this is localized
         bw.write(part.registerMaterials());
         GPartGroup partGroup = new GPartGroup("partgroup", part);
         bw.write(partGroup.registerMaterials());
@@ -144,10 +143,12 @@ public class MainMaterials {
         StringBuilder sb = new StringBuilder();
         GMaterial material = new GMaterial("`material");
         sb.append(material.registerMaterials());
-        GMoleculeComposition molecule = new GMoleculeComposition("molecule", REG, tweak, registry, liquids, oreDict, machine, machineGroup, data, matter, material, partGroup, element);
+        GMoleculeComposition molecule = new GMoleculeComposition("molecule", REG, registry, liquids, oreDict, machine, machineGroup, data, matter, material, partGroup, element);
         molecule.registerMaterials();
-        GCompoundComposition compound = new GCompoundComposition("compound", REG, tweak, registry, liquids, oreDict, machine, machineGroup, data, matter, material, partGroup, molecule);
+        GCompoundComposition compound = new GCompoundComposition("compound", REG, registry, liquids, oreDict, machine, machineGroup, data, matter, material, partGroup, molecule);
         compound.registerMaterials();
+
+        GRecipeTweak tweak = null; //placeholder for constructors
 
         //material datas
         //material states

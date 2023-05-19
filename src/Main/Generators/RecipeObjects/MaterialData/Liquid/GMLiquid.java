@@ -1,10 +1,10 @@
 package Main.Generators.RecipeObjects.MaterialData.Liquid;
 
 import Main.Data.Material;
+import Main.Data.RecipeObject.LiquidRegistryData;
 import Main.Data.RecipeObject.Localized.Liquid.LLiquid;
 import Main.Data.RecipeObject.Localized.Liquid.LPlasma;
 import Main.Data.RecipeObject.MaterialData.Liquid.MLiquid;
-import Main.Data.RecipeObject.RegistryData;
 import Main.Generators.GMachine;
 import Main.Generators.GMachineGroup;
 import Main.Generators.GMaterial;
@@ -28,9 +28,9 @@ public class GMLiquid extends AGMLiquid<MLiquid> {
     }
 
     @Override
-    protected void readMaterialParameters(int minVoltage, double inMultiplier, double outMultiplier, int baseTime, double[] tickDecMulti,
+    protected void readLiquidParameters(int minVoltage, double inMultiplier, double outMultiplier, int baseTime, double[] tickDecMulti,
                                           LLiquid data, LPlasma matterIn, LPlasma matterOut,
-                                          Material m, String[] s, RegistryData[] exclusions) {
+                                          Material m, String[] s, LiquidRegistryData[] exclusions) {
         //int density, int luminosity, int temperature, int viscosity, boolean vaporize
         MLiquid liquid = new MLiquid(
                 getRecipeTweak("MLiquid"),
@@ -42,6 +42,7 @@ public class GMLiquid extends AGMLiquid<MLiquid> {
                 m,
                 Integer.parseInt(s[0]), Integer.parseInt(s[1]), Integer.parseInt(s[2]), Integer.parseInt(s[3]),
                 Boolean.parseBoolean(s[4]));
+        setLiquidOverrides(liquid, exclusions);
         objects.add(liquid);
     }
 }

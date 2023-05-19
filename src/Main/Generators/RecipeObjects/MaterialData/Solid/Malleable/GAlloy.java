@@ -57,7 +57,7 @@ public class GAlloy extends AGMalleable<Alloy> {
                 ),
                 new boolean[]{smelt, smelt, smelt, smelt, smelt, Boolean.parseBoolean(s[3]), Boolean.parseBoolean(s[1]), smelt, smelt, Boolean.parseBoolean(s[2]), smelt}
         );
-        alloy = updateRegistryKeys(alloy);
+        updateRegistryKeys(alloy);
         objects.add(alloy);
     }
 }

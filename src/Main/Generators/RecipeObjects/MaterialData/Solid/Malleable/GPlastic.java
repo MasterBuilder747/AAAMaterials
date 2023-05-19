@@ -53,7 +53,7 @@ public class GPlastic extends AGMalleable<Plastic> {
                 this.genPartGroups(new String[]{
                         "scrap", "plate", "smelt", "rod", "beam", "conductive", "machine", "special_plate", "coiled_rod", "blast", "assembled"
                 }));
-        plastic = updateRegistryKeys(plastic);
+        updateRegistryKeys(plastic);
         objects.add(plastic);
     }
 }

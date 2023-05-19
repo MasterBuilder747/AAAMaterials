@@ -3,7 +3,6 @@ package Main.Data.RecipeObject.Localized;
 import Main.Data.GameData.Registry;
 import Main.Data.Machine.Machine;
 import Main.Data.Machine.MachineGroup;
-import Main.Data.Tweakers.RecipeTweak;
 
 public class LBlock extends ALocalizedData {
     //defines block properties for one block
@@ -15,12 +14,12 @@ public class LBlock extends ALocalizedData {
     String material;
 
     public LBlock(String NAME,
-                  RecipeTweak tweak, Registry[] items, String[] liquids, String[] ores,
+                  Registry[] items, String[] liquids, String[] ores,
                   Machine[] machines, MachineGroup[] machineGroups,
                   String localName,
                   String material, int hardness, int resistance, int miningLevel, String tool) {
         super(NAME, "LBlock",
-                tweak, items, liquids, ores,
+                items, liquids, ores,
                 machines, machineGroups,
                 localName);
         this.material = material;
@@ -31,11 +30,11 @@ public class LBlock extends ALocalizedData {
     }
     //for ore variants
     public LBlock(String NAME,
-                  RecipeTweak tweak, Registry[] items, String[] liquids, String[] ores,
+                  Registry[] items, String[] liquids, String[] ores,
                   Machine[] machines, MachineGroup[] machineGroups,
                   String material, String tool) {
         super(NAME, "LBlock",
-                tweak, items, liquids, ores,
+                items, liquids, ores,
                 machines, machineGroups,
                 NAME);
         this.material = material;
@@ -63,10 +62,5 @@ public class LBlock extends ALocalizedData {
     //tile.contenttweaker.[name].name=[localName]
     public String localize() {
         return "tile.contenttweaker." + this.NAME + ".name=" + this.localName + "\n";
-    }
-
-    @Override
-    protected String buildAdditionalRecipes() {
-        return null;
     }
 }

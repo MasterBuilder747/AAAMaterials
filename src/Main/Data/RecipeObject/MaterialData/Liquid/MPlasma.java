@@ -1,5 +1,6 @@
 package Main.Data.RecipeObject.MaterialData.Liquid;
 
+import Main.Data.GameData.LiquidRegistry;
 import Main.Data.GameData.Registry;
 import Main.Data.Machine.Machine;
 import Main.Data.Machine.MachineGroup;
@@ -21,20 +22,15 @@ public class MPlasma extends AMLiquid {
                 items, liquids, ores,
                 machines, machineGroups,
                 m);
-        this.l = new LPlasma( m.NAME +"_plasma",
-                tweak, items, liquids, ores,
+        this.l = new LPlasma(m.NAME +"_plasma",
+                items, liquids, ores,
                 machines, machineGroups,
                 m.LOCALNAME+" Plasma",
                 m.color, true, vaporize,
                 density, luminosity, temperature, viscosity);
-        switch(m.state) {
-            case "solid" -> this.key = "plasma";
-            case "liquid" -> this.key = "plasma";
-            case "gas" -> this.key = "plasma";
-        }
+        addLiquidKey("plasma", new LiquidRegistry(l));
     }
 
     @Override
-    public void print() {
-    }
+    public void print() {}
 }

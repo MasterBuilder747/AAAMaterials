@@ -8,14 +8,13 @@ import Main.Generators.GameData.GOreDictRegistry;
 import Main.Generators.GameData.GRegistry;
 import Main.Generators.MachineResource.GMachineData;
 import Main.Generators.MachineResource.GMachineMatter;
-import Main.Generators.Tweakers.GRecipeTweak;
 
 public class GPlasma extends AGLiquid<LPlasma> {
     public GPlasma(String filename, boolean isReg,
-                   GRecipeTweak tweak, GRegistry registry, GLiquidRegistry liquids, GOreDictRegistry ores,
+                   GRegistry registry, GLiquidRegistry liquids, GOreDictRegistry ores,
                    GMachine machine, GMachineGroup machineGroup, GMachineData data, GMachineMatter matter) {
         super(6, filename, isReg,
-                tweak, registry, liquids, ores,
+                registry, liquids, ores,
                 machine, machineGroup, data, matter);
     }
 
@@ -25,7 +24,7 @@ public class GPlasma extends AGLiquid<LPlasma> {
         objects.add(
                 new LPlasma(
                     name,
-                    getRecipeTweak("LPlasma"), getItems(), getLiquids(), getOres(),
+                    getItems(), getLiquids(), getOres(),
                     getMachineRegistry(), getMachineGroupRegistry(),
                     localName,
                     s[0], false, parseBoolean(s[5]),

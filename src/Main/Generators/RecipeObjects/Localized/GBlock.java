@@ -8,14 +8,13 @@ import Main.Generators.GameData.GOreDictRegistry;
 import Main.Generators.GameData.GRegistry;
 import Main.Generators.MachineResource.GMachineData;
 import Main.Generators.MachineResource.GMachineMatter;
-import Main.Generators.Tweakers.GRecipeTweak;
 
 public class GBlock extends AGLocal<LBlock> {
     public GBlock(String filename, boolean isReg,
-                  GRecipeTweak tweak, GRegistry registry, GLiquidRegistry liquids, GOreDictRegistry ores,
+                  GRegistry registry, GLiquidRegistry liquids, GOreDictRegistry ores,
                   GMachine machine, GMachineGroup machineGroup, GMachineData data, GMachineMatter matter) {
         super(5, filename, isReg,
-                tweak, registry, liquids, ores,
+                registry, liquids, ores,
                 machine, machineGroup, data, matter);
     }
 
@@ -24,7 +23,7 @@ public class GBlock extends AGLocal<LBlock> {
         //String material, int hardness, int resistance, int miningLevel, String tool
         objects.add(new LBlock(
                 name,
-                getRecipeTweak("LBlock"), getItems(), getLiquids(), getOres(),
+                getItems(), getLiquids(), getOres(),
                 getMachineRegistry(), getMachineGroupRegistry(),
                 localName,
                 s[0], parseInt(s[1]), parseInt(s[2]), parseInt(s[3]), s[4]));

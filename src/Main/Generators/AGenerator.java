@@ -122,10 +122,10 @@ public abstract class AGenerator<D extends AData> {
         return sb.toString();
     }
 
-    private String appendHeader() {
+    protected String appendHeader() {
         return "# -"+this.filename+"s\n";
     }
-    private void populateObjects() throws IOException {
+    protected void populateObjects() throws IOException {
         FileReader fr = new FileReader(Util.HOME + Util.FILES + this.SUBFOLDER + "/" + this.filename.toLowerCase() + "s.txt");
         BufferedReader br = new BufferedReader(fr);
         readFile(br);

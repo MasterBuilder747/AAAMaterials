@@ -14,7 +14,6 @@ import Main.Generators.GameData.GOreDictRegistry;
 import Main.Generators.GameData.GRegistry;
 import Main.Generators.MachineResource.GMachineData;
 import Main.Generators.MachineResource.GMachineMatter;
-import Main.Generators.Tweakers.GRecipeTweak;
 import Main.Replacement;
 import Main.Util;
 
@@ -24,12 +23,12 @@ public class GCompoundComposition extends AGChemicalComposition<CompoundComposit
     GMoleculeComposition molecule;
 
     public GCompoundComposition(String filename, boolean isReg,
-                                GRecipeTweak tweak, GRegistry registry, GLiquidRegistry liquids, GOreDictRegistry ores,
+                                GRegistry registry, GLiquidRegistry liquids, GOreDictRegistry ores,
                                 GMachine machine, GMachineGroup machineGroup, GMachineData data, GMachineMatter matter,
                                 GMaterial material, GPartGroup partGroup,
                                 GMoleculeComposition molecule) {
         super(9, filename, isReg,
-                tweak, registry, liquids, ores,
+                registry, liquids, ores,
                 machine, machineGroup, data, matter,
                 material, partGroup,
                 false);
@@ -51,7 +50,7 @@ public class GCompoundComposition extends AGChemicalComposition<CompoundComposit
         if (chargeo.equals("default")) charge = c.calculateCharge();
         else charge = parseInt(chargeo);
         CompoundComposition comp = new CompoundComposition(
-                getRecipeTweak("CompoundComposition"), getItems(), getLiquids(), getOres(),
+                getItems(), getLiquids(), getOres(),
                 getMachineRegistry(), getMachineGroupRegistry(),
                 m,
                 c, type, charge, parseBoolean(s[4]),
@@ -270,5 +269,13 @@ public class GCompoundComposition extends AGChemicalComposition<CompoundComposit
             }
         }
         return comps;
+    }
+
+    public CompoundComposition getComp(String s, int line) {
+        for (CompoundComposition comp: this.objects) {
+            if (comp.symbol.equals(s) && comp.isDefault) return comp;
+        }
+        error("Unknown composition " + s, line);
+        return null;
     }
 }

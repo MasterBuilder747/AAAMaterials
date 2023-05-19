@@ -1,5 +1,7 @@
 package Main.Data.GameData;
 
+import Main.Data.RecipeObject.Localized.Liquid.ALiquid;
+
 public class LiquidRegistry extends AGameData {
     int density;
     int temperature;
@@ -22,8 +24,13 @@ public class LiquidRegistry extends AGameData {
         this.sourceBlock = sourceBlock;
     }
     //for material liquid keys
-    public LiquidRegistry(String name) {
-        super(name, name);
+    public LiquidRegistry(ALiquid l) {
+        super(l.NAME, l.NAME);
+        this.density = l.density;
+        this.temperature = l.temperature;
+        this.luminosity = l.luminosity;
+        this.viscosity = l.viscosity;
+        this.isGaseous = l.gas;
     }
 
     @Override
@@ -38,6 +45,6 @@ public class LiquidRegistry extends AGameData {
 
     @Override
     public void print() {
-
+        System.out.println(this.NAME);
     }
 }

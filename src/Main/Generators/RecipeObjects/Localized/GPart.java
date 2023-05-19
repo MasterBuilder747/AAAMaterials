@@ -8,14 +8,13 @@ import Main.Generators.GameData.GOreDictRegistry;
 import Main.Generators.GameData.GRegistry;
 import Main.Generators.MachineResource.GMachineData;
 import Main.Generators.MachineResource.GMachineMatter;
-import Main.Generators.Tweakers.GRecipeTweak;
 
 public class GPart extends AGLocal<LPart> {
     public GPart(String filename, boolean isReg,
-                 GRecipeTweak tweak, GRegistry registry, GLiquidRegistry liquids, GOreDictRegistry ores,
+                 GRegistry registry, GLiquidRegistry liquids, GOreDictRegistry ores,
                  GMachine machine, GMachineGroup machineGroup, GMachineData data, GMachineMatter matter) {
         super(4, filename, isReg,
-                tweak, registry, liquids, ores,
+                registry, liquids, ores,
                 machine, machineGroup, data, matter);
     }
 
@@ -28,7 +27,7 @@ public class GPart extends AGLocal<LPart> {
             objects.add(
                     new LPart(
                         name,
-                        getRecipeTweak("LPart"), getItems(), getLiquids(), getOres(),
+                        getItems(), getLiquids(), getOres(),
                         getMachineRegistry(), getMachineGroupRegistry(),
                         localName,
                         s[0], parseInt(s[3])
@@ -39,7 +38,7 @@ public class GPart extends AGLocal<LPart> {
             objects.add(
                     new LPart(
                         name,
-                        getRecipeTweak("LPart"), getItems(), getLiquids(), getOres(),
+                        getItems(), getLiquids(), getOres(),
                         getMachineRegistry(), getMachineGroupRegistry(),
                         localName,
                         s[0], parseBoolean(s[2]), parseInt(s[3])

@@ -4,7 +4,6 @@ import Main.Data.GameData.Registry;
 import Main.Data.Machine.Machine;
 import Main.Data.Machine.MachineGroup;
 import Main.Data.Material;
-import Main.Data.Tweakers.RecipeTweak;
 
 public class CompoundComposition extends AChemicalComposition {
     /* TODO:
@@ -41,13 +40,13 @@ public class CompoundComposition extends AChemicalComposition {
 
     String subType; //more characterization for recipes
 
-    public CompoundComposition(RecipeTweak tweak, Registry[] items, String[] liquids, String[] ores,
+    public CompoundComposition(Registry[] items, String[] liquids, String[] ores,
                                Machine[] machines, MachineGroup[] machineGroups,
                                Material m,
                                Composition c, String compType, int charge, boolean isDefault,
                                String subType, boolean isMixing, boolean isCentrifuge, boolean isChemReact, boolean isElectrolyze) {
         super("CompoundComposition",
-                tweak, items, liquids, ores,
+                items, liquids, ores,
                 machines, machineGroups,
                 m,
                 c, compType, charge, isDefault, false);
@@ -74,7 +73,13 @@ public class CompoundComposition extends AChemicalComposition {
         //this.m.getComp().getCComp().printIngredients();
     }
 
-    //compositions do not support recipes as they do not add any material parts
+    //compositions do not support user recipes as they do not add any material parts
+    @Override
+    protected String buildSpecificRecipe() {
+        //put breaking/forming recipes here, only can use code, no user recipes
+        return null;
+    }
+
     @Override
     public String buildMaterial() {
         return null;

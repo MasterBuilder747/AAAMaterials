@@ -3,18 +3,17 @@ package Main.Data.RecipeObject.Localized.Liquid;
 import Main.Data.GameData.Registry;
 import Main.Data.Machine.Machine;
 import Main.Data.Machine.MachineGroup;
-import Main.Data.Tweakers.RecipeTweak;
 
 //custom liquid
 public class LLiquid extends ALiquid {
     public LLiquid(String NAME,
-                   RecipeTweak tweak, Registry[] items, String[] liquids, String[] ores,
+                   Registry[] items, String[] liquids, String[] ores,
                    Machine[] machines, MachineGroup[] machineGroups,
                    String localName,
                    String color, boolean isMaterial, boolean vaporize,
                    int density, int luminosity, int temperature, int viscosity) {
         super(NAME, "LLiquid",
-                tweak, items, liquids, ores,
+                items, liquids, ores,
                 machines, machineGroups,
                 localName,
                 color, isMaterial, false, vaporize,
@@ -32,10 +31,5 @@ public class LLiquid extends ALiquid {
         return "genLiquid(\"" +
                 this.NAME + "\", \"" + this.color + "\", " + this.density + ", " + this.gas + ", " +
                 this.luminosity + ", " + this.temperature + ", " + this.viscosity + ", " + this.vaporize + ");\n";
-    }
-
-    @Override
-    protected String buildAdditionalRecipes() {
-        return null;
     }
 }
