@@ -102,6 +102,10 @@ public abstract class AMaterialData extends ARecipeObject {
         }
     }
     //liquid keys
+    @Override
+    public String getUnlocalizedLiquidByKey(String key) {
+        return this.getLiquidKey(key).l.getUnlocalizedName();
+    }
     public void addLiquidKey(String key, LiquidRegistry l) {
         this.m.liquids.add(new LiquidRegistryData(key, l));
     }
@@ -140,8 +144,22 @@ public abstract class AMaterialData extends ARecipeObject {
     }
     @Override
     public String getUnlocalizedByKey(String key) { //externally called if needed (eg, stone)
-        return this.get(key).getUnlocalizedNameWithMeta();
+        if (this.isEnabledPart(key)) {
+            return this.get(key).getUnlocalizedNameWithMeta();
+        } else return null;
     }
+    protected boolean isEnabledPart(String key) {
+        //returns if the partGroup that part is a part of is enabled for this MaterialData
+        for (int i = 0; i < this.partGroups.length; i++) {
+            for (LPart p : this.partGroups[i].getParts()) {
+                if (p.oreDict.equals(key)) {
+                    return this.enablePartGroups[i];
+                }
+            }
+        }
+        return false;
+    }
+
     protected LPart[] getPartsWithOverrides() {
         ArrayList<LPart> out = new ArrayList<>();
         for (int i = 0; i < this.partGroups.length; i++) {

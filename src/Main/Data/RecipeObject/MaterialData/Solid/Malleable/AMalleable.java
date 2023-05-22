@@ -9,9 +9,7 @@ import Main.Data.RecipeObject.Localized.Liquid.LLiquid;
 import Main.Data.RecipeObject.Localized.Liquid.LPlasma;
 import Main.Data.RecipeObject.MaterialData.Liquid.MLiquid;
 import Main.Data.RecipeObject.MaterialData.Solid.AMSolid;
-import Main.Data.Tweakers.ORecipeTweak;
 import Main.Data.Tweakers.RecipeTweak;
-import Main.Util;
 
 //data > material > malleable
 public abstract class AMalleable extends AMSolid {
@@ -69,54 +67,20 @@ public abstract class AMalleable extends AMSolid {
         int i = 0;
         for (LPart p : parts) {
             if (p.amount > 0) {
-                /*
                 sb.append(addRecipe(
-                        i, "melting", 1, (int)((p.amount / 144f) * 100), 0.5,
-                        "+red*100", "-orange*100", 100, 100,
-                        p.oreDict, "-", "-", "^molten(" + (int)(p.amount * this.meltingMultiplier) + ")",
-                        "code"
+                        i, "machine", true, this.baseTime, 0,
+                        this.tickDecMultipliers, 1, new int[]{1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1},
+                        this.minVoltage, this.powerMultiplierIn, this.powerMultiplierOut,
+                        p.oreDict, "-", "-", "liquid*"+(int)(p.amount * this.meltingMultiplier),
+                        "code", 50, this.data.NAME+"*25",
+                        this.matterIn.NAME+"*100", this.matterOut.NAME+"*100"
                 ));
                 i++;
-
-                 */
             }
         }
-        return null;
-        //return sb + buildATweaker() + buildPartRecipes();
+        return sb + buildPartRecipes();
     }
     protected abstract String buildPartRecipes();
-    protected String buildATweaker() {
-        //call this in each child object since the keys have not been loaded yet
-        StringBuilder sb = new StringBuilder();
-        if (this.tweak != null) {
-            ORecipeTweak[] recipes = this.tweak.getRecipes();
-            for (int i = 0; i < recipes.length; i++) {
-                String r = recipes[i].toString();
-                String[] p = Util.split(r, ",");
-                //implement this in the ARecipeObject ATweaker event?
-                //if any of the IO items in this recipe does not have a key, don't add the recipe
-                //this is because not every part is added for every instance
-                //this allows for general object-wide recipes without issues
-                boolean doRecipe = true;
-                String[] iIns = Util.split(p[8], ";");
-                for (String in : iIns) if (!is(in)) doRecipe = false;
-                String[] iOuts = Util.split(p[9], ";");
-                for (String out : iOuts) if (!is(out)) doRecipe = false;
-                /*
-                if (doRecipe) {
-                    sb.append(addRecipe(
-                        i, p[0], parseInt(p[1]), parseInt(p[2]), parseDouble(p[3]),
-                        p[4], p[5], parseInt(p[6]), parseInt(p[7]),
-                        p[8], p[9], p[10], p[11],
-                        "tweaker"
-                    ));
-                }
-                */
-            }
-        }
-        sb.append("\n");
-        return sb.toString();
-    }
 
     @Override
     protected String customItemKey(String key) {

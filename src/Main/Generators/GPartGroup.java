@@ -1,11 +1,12 @@
 package Main.Generators;
 
-import Main.Data.RecipeObject.Localized.LPart;
 import Main.Data.PartGroup;
+import Main.Data.RecipeObject.Localized.LPart;
 import Main.Generators.RecipeObjects.Localized.GPart;
 import Main.Util;
 
 import java.io.BufferedReader;
+import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
 
@@ -18,28 +19,39 @@ public class GPartGroup extends AGenerator<PartGroup> {
     }
 
     @Override
-    protected void readLine(BufferedReader br, String[] s) throws IOException {
-        if (!s1.contains(":")) {
-            error("Must contain a \":\" to denote the group name and the parts in that group");
+    protected void populateObjects() throws IOException {
+        FileReader fr = new FileReader(Util.HOME + Util.FILES + this.SUBFOLDER + "/" + this.filename.toLowerCase() + "s.txt");
+        BufferedReader br = new BufferedReader(fr);
+        br.readLine(); //ignore the first line as it is considered the file header
+        line++;
+        while (true) {
+            s1 = br.readLine();
+            String name;
+            if (s1 != null) { //commented out line, ignored
+                s1 = s1.replaceAll(" ", "");
+                if (s1.startsWith("/#")) {
+                    name = s1.substring(2);
+                    ArrayList<LPart> partgroup = new ArrayList<>();
+                    s1 = br.readLine();
+                    s1 = s1.replaceAll(" ", "");
+                    line++;
+                    while (!s1.startsWith("/$")) {
+                        if (s1.charAt(0) != '/') {
+                            partgroup.add(parts.get(s1));
+                        }
+                        s1 = br.readLine();
+                        line++;
+                    }
+                    if (name.isEmpty()) error("bad name for partGroup");
+                    objects.add(new PartGroup("parts_"+name, partgroup.toArray(new LPart[0])));
+                }
+            } else break;
+            line++;
         }
-        //String name: String part1, String part2, ...
-        String trim = s1.replaceAll(" ", "");
-        String name = trim.substring(0, trim.indexOf(":"));
-        String s2 = trim.substring(trim.indexOf(":")+1);
-        String[] partNames = Util.split(s2, ",");
-        if (partNames.length == 0) {
-            error("Empty parts");
-        }
-        ArrayList<LPart> partgroup = new ArrayList<>();
-        for (String part : partNames) {
-            if (parts.is(part)) {
-                partgroup.add(parts.get(part));
-            } else {
-                error("Unknown part " + part);
-            }
-        }
-        objects.add(new PartGroup("parts_"+name, partgroup.toArray(new LPart[0])));
+        fr.close();
     }
+    @Override
+    protected void readLine(BufferedReader br, String[] s) throws IOException {}
 
     public PartGroup getPart(String s) {
         return this.get("parts_"+s);

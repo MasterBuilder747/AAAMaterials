@@ -16,7 +16,11 @@ public abstract class AGGameData<G extends AGameData> extends AGenerator<G> {
     @Override
     protected void readLine(BufferedReader br, String[] s) throws IOException {
         CSVParser pr = new CSVParser();
-        String[] ss = pr.parseLine(s[0]);
+        String read = s[0];
+        if (read.contains("颬\"")) {
+            read = read.replace("颬\"", "颬\",\"");
+        }
+        String[] ss = pr.parseLine(read);
         checkParams(ss.length);
         readGameData(ss);
     }

@@ -6,6 +6,7 @@ import Main.Generators.GMachineGroup;
 import Main.Generators.GMaterial;
 import Main.Generators.GeneratorException;
 import Main.Generators.RecipeObjects.MaterialData.Composition.CompositionRegistry;
+import Main.Stopwatch;
 import Main.Util;
 
 import java.io.*;
@@ -47,6 +48,9 @@ public class RecipeTweak extends ATweaker {
         }
     }
     private void build() throws IOException {
+        Stopwatch w = new Stopwatch();
+        System.out.print("\tLoading RecipeTweaker " + NAME + ".txt...");
+        w.start();
         FileReader fr;
         String path = Util.HOME + "UserFiles/Tweaks/" + this.readFolder + "/" + this.NAME + ".txt";
         try {
@@ -76,12 +80,12 @@ public class RecipeTweak extends ATweaker {
             }
             line++;
         }
+        w.stop();
+        System.out.println("completed in " + w.getMillis() + " ms");
     }
 
     @Override
     protected void readLine(String[] s) throws IOException {
-        System.out.println("\tLoading " + NAME + ".txt...");
-
         //machine,
         String machine = s[0];
         boolean isMachineGroup;
@@ -206,7 +210,7 @@ public class RecipeTweak extends ATweaker {
             } else {
                 ioItem = m.getDefaultState();
             }
-            String append = pct+ioItem+"*"+amount;
+            String append = pct+"&"+ioItem+"*"+amount;
             if (m.state.equals("solid")) {
                 iSb.append(append).append(";");
             } else {

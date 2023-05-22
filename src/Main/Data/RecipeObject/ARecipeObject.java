@@ -118,6 +118,8 @@ public abstract class ARecipeObject extends AData {
         String[] lInputs = parseRecipeIO(lInput,true);
         String[] iOutputs = parseRecipeIO(iOutput,false);
         String[] lOutputs = parseRecipeIO(lOutput,true);
+        //if any IO is null (aka, some io key doesn't exist), then stop the recipe
+        if (iInputs == null || lInputs == null || iOutputs == null || lOutputs == null) return "";
         r.createRecipe(
                 recipeVariable, time, priority,
                 tickDecMultipliers, baseRecipeAmount, ioMultipliers,
@@ -150,7 +152,11 @@ public abstract class ARecipeObject extends AData {
             if (chance != -1) sb.append(chance).append("%");
             //liquid or item?
             if (liquid) sb.append(handleLiquid(s));
-            else sb.append(handleItem(s));
+            else {
+                String item = handleItem(s);
+                if (item == null) return null; //stop the recipe
+                else sb.append(item);
+            }
             if (amount != 1) sb.append("*").append(amount);
             outs.add(sb.toString());
         }
@@ -164,7 +170,13 @@ public abstract class ARecipeObject extends AData {
             out = null;
             if (c != null) out = c;
             else error("No custom keys exists for object of type " + this.type);
-        } else out = getLiquidRegistry(liquid);
+        } else if (liquid.startsWith("&")) {
+            out = getLiquidRegistry(liquid.substring(1));
+        } else {
+            if (this instanceof AMaterialData) ;
+            else error("No liquid keys exist for recipe object " + type);
+            out = getUnlocalizedLiquidByKey(liquid); //if this is null, stop creating the entire recipe
+        }
         return out;
     }
     private String handleItem(String item) {
@@ -197,6 +209,7 @@ public abstract class ARecipeObject extends AData {
                 error("At least one colon is required to specify the mod for the unlocalized name for string " + item.substring(1));
             out = getItemUnlocalized(item.substring(1));
         } else if (item.startsWith("^")) {
+            //todo: handle this later
             //custom item key defined by the child object (abstract or not), if it exists
             String c = customItemKey(item.substring(1));
             if (c != null) out = c;
@@ -209,12 +222,13 @@ public abstract class ARecipeObject extends AData {
             //key, if used by material system
             if (this instanceof AMaterialData) ;
             else error("No keys exist for recipe object " + type);
-            out = getUnlocalizedByKey(item);
+            out = getUnlocalizedByKey(item); //if this is null, stop creating the entire recipe
         }
         //$ is custom symbol
         return out;
     }
     protected abstract String getUnlocalizedByKey(String key);
+    protected abstract String getUnlocalizedLiquidByKey(String key);
     protected abstract String customItemKey(String key);
     protected abstract String customLiquidKey(String key);
 

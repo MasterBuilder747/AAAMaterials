@@ -94,7 +94,7 @@ public class Util {
         for (int j = 0; j < sbs.size(); j++) {
             fw = new FileWriter(filePath + j + ".zs");
             bw = new BufferedWriter(fw);
-            bw.write(writeHeader("recipes", j, 0, new String[]{"modularmachinery"}, false, null));
+            bw.write(writeHeader("recipe", j, 0, new String[]{"modularmachinery"}, false, null));
             if (j == 0) {
                 bw.write(initialCode);
             }

@@ -128,10 +128,6 @@ public abstract class AGenerator<D extends AData> {
     protected void populateObjects() throws IOException {
         FileReader fr = new FileReader(Util.HOME + Util.FILES + this.SUBFOLDER + "/" + this.filename.toLowerCase() + "s.txt");
         BufferedReader br = new BufferedReader(fr);
-        readFile(br);
-        fr.close();
-    }
-    private void readFile(BufferedReader br) throws IOException {
         s1 = br.readLine(); //ignore the first line as it is considered the file header
         line++;
         while (true) {
@@ -148,11 +144,10 @@ public abstract class AGenerator<D extends AData> {
                     }
                     readLine(br, s);
                 }
-            } else {
-                break;
-            }
+            } else break;
             line++;
         }
+        fr.close();
     }
     protected abstract void readLine(BufferedReader br, String[] s) throws IOException; //this populates the arraylist with the specified object
 

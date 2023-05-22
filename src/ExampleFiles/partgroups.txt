@@ -1,2 +1,8 @@
-/name_parts: part1, part2...
-/ex: ore_blocks: ore, poor_ore, dense_ore
+/unlike other files, multiple lines are read per operation, no commas allowed here
+/ex: (the / s are required for # and $)
+/#string
+fiber
+fibers
+dense_fiber
+dense_fibers
+/$

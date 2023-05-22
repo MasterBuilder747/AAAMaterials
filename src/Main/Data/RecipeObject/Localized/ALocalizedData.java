@@ -33,4 +33,5 @@ public abstract class ALocalizedData extends ARecipeObject {
     protected String customLiquidKey(String key) {return null;}
     @Override
     public String getUnlocalizedByKey(String key) {return null;}
+    public String getUnlocalizedLiquidByKey(String key) {return null;}
 }
