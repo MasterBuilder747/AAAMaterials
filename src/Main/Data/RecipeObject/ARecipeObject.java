@@ -29,7 +29,7 @@ public abstract class ARecipeObject extends AData {
     protected LPlasma matterOut;
 
     //recipe variables
-    protected String type; //unique type for recipe uniqueness and other identifiers
+    protected String className; //unique type for recipe uniqueness and other identifiers
     protected String customVar; //custom variable in recipe for uniqueness if needed
     protected boolean customUserRecipes; //override the custom user recipes for a specific event to the object?
     protected RecipeTweak tweak; //constructs all user defined recipes per object
@@ -39,13 +39,13 @@ public abstract class ARecipeObject extends AData {
     protected double powerMultiplierIn;
     protected double powerMultiplierOut;
 
-    public ARecipeObject(String NAME, String type,
+    public ARecipeObject(String NAME, String className,
                          RecipeTweak tweak, int minVoltage, double powerMultiplierIn, double powerMultiplierOut,
                          int baseTime, double[] tickDecMultipliers, LLiquid data, LPlasma matterIn, LPlasma matterOut,
                          Registry[] items, String[] liquids, String[] ores,
                          Machine[] machines, MachineGroup[] machineGroups) {
         super(NAME);
-        this.type = type;
+        this.className = className;
         this.customVar = "";
 
         this.tweak = tweak;
@@ -80,7 +80,7 @@ public abstract class ARecipeObject extends AData {
                     this.minVoltage, this.powerMultiplierIn, this.powerMultiplierOut,
                     recipes[i].iInput, recipes[i].lInput, recipes[i].iOutput, recipes[i].lOutput,
                     "tweaker", recipes[i].chemAmount, this.data.NAME+"*"+recipes[i].dataAmount,
-                        this.matterIn.NAME+"*"+recipes[i].matInAmount, this.matterOut.NAME+"*"+recipes[i].matOutAmount
+                    this.matterIn.NAME+"*"+recipes[i].matInAmount, this.matterOut.NAME+"*"+recipes[i].matOutAmount
                 ));
             }
         }
@@ -108,7 +108,7 @@ public abstract class ARecipeObject extends AData {
                         ", " + minVoltage + " is too large for it to handle");
             r = new RecipeObject("recipe", mach);
         }
-        String recipeVariable = this.NAME/*+iOutput.replace("-", "_")*/+this.type+num+this.customVar+var2;
+        String recipeVariable = this.NAME/*+iOutput.replace("-", "_")*/+this.className +num+this.customVar+var2;
         //String name, int time, int priority,
         //double[] tickDecMultipliers, int baseRecipeAmount, int[] ioMultipliers,
         //int minVoltage, double powerMultiplierIn, double powerMultiplierOut,
@@ -154,7 +154,7 @@ public abstract class ARecipeObject extends AData {
             if (liquid) sb.append(handleLiquid(s));
             else {
                 String item = handleItem(s);
-                if (item == null) return null; //stop the recipe
+                if (item == null) error("Unknown key: " + s); //stop the recipe
                 else sb.append(item);
             }
             if (amount != 1) sb.append("*").append(amount);
@@ -169,12 +169,12 @@ public abstract class ARecipeObject extends AData {
             String c = customLiquidKey(liquid.substring(1));
             out = null;
             if (c != null) out = c;
-            else error("No custom keys exists for object of type " + this.type);
+            else error("No custom keys exists for object of type " + this.className);
         } else if (liquid.startsWith("&")) {
             out = getLiquidRegistry(liquid.substring(1));
         } else {
             if (this instanceof AMaterialData) ;
-            else error("No liquid keys exist for recipe object " + type);
+            else error("No liquid keys exist for recipe object " + className);
             out = getUnlocalizedLiquidByKey(liquid); //if this is null, stop creating the entire recipe
         }
         return out;
@@ -203,17 +203,40 @@ public abstract class ARecipeObject extends AData {
             else out = getItemLocalized(item, mod);
         } else if (item.startsWith("&")) {
             //registry name (unlocalized name)
-            int amt = Util.amountOfChar(item, ':');
-            if (amt == 1) item += ":0"; //mod:item:0
-            else if (amt != 2)
-                error("At least one colon is required to specify the mod for the unlocalized name for string " + item.substring(1));
-            out = getItemUnlocalized(item.substring(1));
+            item = item.substring(1);
+            String[] regs = Util.split(item, ":");
+            switch (regs.length) {
+                //item:0
+                case 1 -> {
+                    //[cot:]item
+                    item += ":0";
+                    out = getItemUnlocalizedCoT(item);
+                }
+                case 2 -> {
+                    if (Util.isNumber(regs[1])) {
+                        //[cot:]item:#
+                        out = getItemUnlocalizedCoT(item);
+                    } else {
+                        //mod:item
+                        item += ":0";
+                        out = getItemUnlocalized(item);
+                    }
+                }
+                case 3 -> {
+                    //mod:item:0
+                    out = getItemUnlocalized(item);
+                }
+                default -> {
+                    error("invalid item syntax: too many colons");
+                    out = null;
+                }
+            }
         } else if (item.startsWith("^")) {
             //todo: handle this later
             //custom item key defined by the child object (abstract or not), if it exists
             String c = customItemKey(item.substring(1));
             if (c != null) out = c;
-            else error("No custom keys exists for object of type " + this.type);
+            else error("No custom keys exists for object of type " + this.className);
             out = null;
         } else if (item.startsWith("<>")) {
             //override and use whatever text is there in the actual recipe code
@@ -221,7 +244,7 @@ public abstract class ARecipeObject extends AData {
         } else {
             //key, if used by material system
             if (this instanceof AMaterialData) ;
-            else error("No keys exist for recipe object " + type);
+            else error("No keys exist for recipe object " + className);
             out = getUnlocalizedByKey(item); //if this is null, stop creating the entire recipe
         }
         //$ is custom symbol
@@ -263,6 +286,10 @@ public abstract class ARecipeObject extends AData {
         }
         error(key, "item registry", this.NAME);
         return null;
+    }
+    protected String getItemUnlocalizedCoT(String key) {
+        key = "contenttweaker:"+key;
+        return getItemUnlocalized(key);
     }
     //requires unlocalized name (registry name)
     protected Registry getByNBT(String name, String nbt) {

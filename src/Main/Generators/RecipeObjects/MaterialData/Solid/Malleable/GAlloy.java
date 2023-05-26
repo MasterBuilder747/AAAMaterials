@@ -10,12 +10,13 @@ import Main.Data.RecipeObject.RegistryData;
 import Main.Generators.GMachine;
 import Main.Generators.GMachineGroup;
 import Main.Generators.GMaterial;
-import Main.Generators.GPartGroup;
 import Main.Generators.GameData.GLiquidRegistry;
 import Main.Generators.GameData.GOreDictRegistry;
 import Main.Generators.GameData.GRegistry;
 import Main.Generators.MachineResource.GMachineData;
 import Main.Generators.MachineResource.GMachineMatter;
+import Main.Generators.PartGroup.GBlockPartGroup;
+import Main.Generators.PartGroup.GPartGroup;
 import Main.Generators.RecipeObjects.MaterialData.GMSolid;
 import Main.Generators.RecipeObjects.MaterialData.Liquid.GMLiquid;
 import Main.Generators.Tweakers.GRecipeTweak;
@@ -25,13 +26,13 @@ public class GAlloy extends AGMalleable<Alloy> {
             String filename, boolean isReg,
             GRecipeTweak tweak, GRegistry registry, GLiquidRegistry liquids, GOreDictRegistry ores,
             GMachine machine, GMachineGroup machineGroup, GMachineData data, GMachineMatter matter,
-            GMaterial material, GPartGroup partGroup,
+            GMaterial material, GPartGroup partGroup, GBlockPartGroup blockPartGroup,
             GMSolid solid, GMLiquid liquid
     ) {
         super(4, filename, isReg,
                 tweak, registry, liquids, ores,
                 machine, machineGroup, data, matter,
-                material, partGroup,
+                material, partGroup, blockPartGroup,
                 solid, true, false, false,
                 liquid);
     }
@@ -39,7 +40,7 @@ public class GAlloy extends AGMalleable<Alloy> {
     @Override
     protected void setMalleableParts(int minVoltage, double inMultiplier, double outMultiplier, int baseTime, double[] tickDecMulti,
                                      LLiquid data, LPlasma matterIn, LPlasma matterOut,
-                                     Material m, String[] s, MLiquid molten, MSolid solid, RegistryData[] exclusions) {
+                                     Material m, String[] s, MLiquid molten, MSolid solid, RegistryData[] exclusions, RegistryData[] blockExclusions) {
         //addSmelt, addMachine, addBlast, addConductive
         Alloy alloy = new Alloy(
                 getRecipeTweak("Alloy"), //getRecipeTweak("AMalleable"),

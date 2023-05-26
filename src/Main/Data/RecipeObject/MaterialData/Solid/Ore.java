@@ -52,6 +52,7 @@ public class Ore extends AMSolid {
     public String buildMaterial() {
         StringBuilder sb = new StringBuilder();
         if (this.partGroups != null) sb.append(this.genPartGroups(false));
+        if (this.blockPartGroups != null) sb.append(this.genBlockPartGroups(false));
         //build block's partGroup variants
         for (OreVariant variant : this.variants) {
             sb.append(variant.buildMaterial());

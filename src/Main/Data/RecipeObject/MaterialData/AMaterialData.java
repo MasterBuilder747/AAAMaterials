@@ -5,12 +5,14 @@ import Main.Data.GameData.Registry;
 import Main.Data.Machine.Machine;
 import Main.Data.Machine.MachineGroup;
 import Main.Data.Material;
-import Main.Data.PartGroup;
+import Main.Data.PartGroup.BlockPartGroup;
+import Main.Data.PartGroup.PartGroup;
 import Main.Data.RecipeObject.ARecipeObject;
 import Main.Data.RecipeObject.LiquidRegistryData;
-import Main.Data.RecipeObject.Localized.LPart;
 import Main.Data.RecipeObject.Localized.Liquid.LLiquid;
 import Main.Data.RecipeObject.Localized.Liquid.LPlasma;
+import Main.Data.RecipeObject.Localized.Part.LBlockPart;
+import Main.Data.RecipeObject.Localized.Part.LPart;
 import Main.Data.RecipeObject.MaterialData.Composition.AChemicalComposition;
 import Main.Data.RecipeObject.RecipeObjectException;
 import Main.Data.RecipeObject.RegistryData;
@@ -22,11 +24,17 @@ import java.util.Arrays;
 public abstract class AMaterialData extends ARecipeObject {
     protected Material m; //in case basic data is needed
     protected PartGroup[] partGroups; //all the known partGroups to be added by this child object
+    protected BlockPartGroup[] blockPartGroups; //all the known blockPartGroups to be added by this child object
     private boolean[] enablePartGroups; //used internally to get only enabled partGroups
+    private boolean[] enableBlockPartGroups; //used internally to get only enabled blockPartGroups
     private boolean[] isPartGroupOverride; //do we have any part overrides in the partGroup?
+    private boolean[] isBlockPartGroupOverride; //do we have any part overrides in the blockPartGroup?
     protected boolean[][] partOverrides; //if so, what parts are excluded from being loaded?
+    protected boolean[][] blockPartOverrides; //if so, what parts are excluded from being loaded?
     public ArrayList<String> partRegistryNames; //the registry name that is specific to the material to be used for searching for the registry
+    public ArrayList<String> blockRegistryNames; //the registry name that is specific to the material to be used for searching for the registry
     public ArrayList<PartGroup> enabledPartGroups; //each partGroup that is enabled for this material
+    public ArrayList<BlockPartGroup> enabledBlockPartGroups; //each blockPartGroup that is enabled for this material
 
     public AMaterialData(String type,
                          RecipeTweak tweak, int minVoltage, double powerMultiplierIn, double powerMultiplierOut,
@@ -42,7 +50,9 @@ public abstract class AMaterialData extends ARecipeObject {
         );
         this.m = m;
         this.partRegistryNames = new ArrayList<>();
+        this.blockRegistryNames = new ArrayList<>();
         this.enabledPartGroups = new ArrayList<>();
+        this.enabledBlockPartGroups = new ArrayList<>();
         //for any existing key, exclude it from having an additional tooltip
         for (RegistryData r : m.keys) r.isTooltipExclusion = true;
     }
@@ -144,7 +154,8 @@ public abstract class AMaterialData extends ARecipeObject {
     }
     @Override
     public String getUnlocalizedByKey(String key) { //externally called if needed (eg, stone)
-        if (this.isEnabledPart(key)) {
+        //this searches through item and block parts, since they are both keys in Material
+        if (this.isEnabledPart(key) || this.isEnabledBlockPart(key)) {
             return this.get(key).getUnlocalizedNameWithMeta();
         } else return null;
     }
@@ -154,6 +165,17 @@ public abstract class AMaterialData extends ARecipeObject {
             for (LPart p : this.partGroups[i].getParts()) {
                 if (p.oreDict.equals(key)) {
                     return this.enablePartGroups[i];
+                }
+            }
+        }
+        return false;
+    }
+    protected boolean isEnabledBlockPart(String key) {
+        //returns if the blockPartGroup that part is a part of is enabled for this MaterialData
+        for (int i = 0; i < this.blockPartGroups.length; i++) {
+            for (LBlockPart p : this.blockPartGroups[i].getParts()) {
+                if (p.oreDict.equals(key)) {
+                    return this.enableBlockPartGroups[i];
                 }
             }
         }
@@ -169,9 +191,27 @@ public abstract class AMaterialData extends ARecipeObject {
         }
         return out.toArray(new LPart[0]);
     }
+    protected LBlockPart[] getBlockPartsWithOverrides() {
+        ArrayList<LBlockPart> out = new ArrayList<>();
+        for (int i = 0; i < this.blockPartGroups.length; i++) {
+            if (this.enableBlockPartGroups[i]) {
+                out.addAll(Arrays.asList(blockPartGroups[i].getParts()));
+            }
+        }
+        return out.toArray(new LBlockPart[0]);
+    }
 
     protected PartGroup getPartGroup(String s) {
         for (PartGroup p : this.partGroups) {
+            if (p.NAME.equals(s)) {
+                return p;
+            }
+        }
+        error(s, this.NAME);
+        return null;
+    }
+    protected BlockPartGroup getBlockPartGroup(String s) {
+        for (BlockPartGroup p : this.blockPartGroups) {
             if (p.NAME.equals(s)) {
                 return p;
             }
@@ -183,14 +223,26 @@ public abstract class AMaterialData extends ARecipeObject {
     protected String buildPart(PartGroup partGroup, boolean newline) {
         return this.m.NAME + ".registerParts(" + partGroup.NAME + ");" + ((newline) ? "\n" : " ");
     }
+    protected String buildBlockPart(BlockPartGroup partGroup, boolean newline) {
+        return this.m.NAME + ".registerParts(" + partGroup.NAME + ");" + ((newline) ? "\n" : " ");
+    }
     protected String buildAltPart(String name, PartGroup partGroup) {
+        return name + ".registerParts(" + partGroup.NAME + ");\n";
+    }
+    protected String buildAltBlockPart(String name, BlockPartGroup partGroup) {
         return name + ".registerParts(" + partGroup.NAME + ");\n";
     }
     protected String buildAltPart(String name, PartGroup partGroup, boolean newline) {
         return name + ".registerParts(" + partGroup.NAME + "); " + ((newline) ? "\n" : " ");
     }
+    protected String buildAltBlockPart(String name, BlockPartGroup partGroup, boolean newline) {
+        return name + ".registerParts(" + partGroup.NAME + "); " + ((newline) ? "\n" : " ");
+    }
     protected String buildPartOverride(LPart p, boolean newline) {
         return this.m.NAME + ".registerPart(part_" + p.NAME + ");" + ((newline) ? "\n" : " ");
+    }
+    protected String buildBlockPartOverride(LBlockPart p, boolean newline) {
+        return this.m.NAME + ".registerPart(block_" + p.NAME + ");" + ((newline) ? "\n" : " ");
     }
 
     //logic
@@ -207,6 +259,14 @@ public abstract class AMaterialData extends ARecipeObject {
         ArrayList<String> outs = new ArrayList<>();
         LPart[] parts = this.getPartsWithOverrides();
         for (LPart p : parts) {
+            outs.add(p.oreDict);
+        }
+        return outs.toArray(new String[0]);
+    }
+    public String[] getBlockKeys() {
+        ArrayList<String> outs = new ArrayList<>();
+        LBlockPart[] parts = this.getBlockPartsWithOverrides();
+        for (LBlockPart p : parts) {
             outs.add(p.oreDict);
         }
         return outs.toArray(new String[0]);
@@ -252,6 +312,11 @@ public abstract class AMaterialData extends ARecipeObject {
     }
     //call this to get each unlocalized registry name to be used for finding the registries
     private void setPartGroupsReg(RegistryData[] exclusions) {
+        setPartGroupsReg(exclusions, null);
+    }
+    private void setPartGroupsReg(RegistryData[] exclusions, String block) {
+        if (block != null) block+="_";
+        else block = "";
         this.isPartGroupOverride = new boolean[enablePartGroups.length];
         this.partOverrides = new boolean[enablePartGroups.length][];
         for (int i = 0; i < partGroups.length; i++) {
@@ -271,34 +336,70 @@ public abstract class AMaterialData extends ARecipeObject {
                             }
                         }
                     }
-                    if (addName == null) this.partRegistryNames.add(this.m.NAME+"_"+p.NAME);
+                    if (addName == null) this.partRegistryNames.add(block+this.m.NAME+"_"+p.NAME);
                     else this.partRegistryNames.add("@"+addName);
                 }
             }
         }
     }
-    private void setPartGroupsReg(RegistryData[] exclusions, String block) {
-        this.isPartGroupOverride = new boolean[enablePartGroups.length];
-        this.partOverrides = new boolean[enablePartGroups.length][];
+
+    //set blockPartGroups
+    public void setBlockPartGroups(RegistryData[] exclusions, BlockPartGroup[] partBlockGroups, boolean[] enableBlockPartGroups) {
+        this.blockPartGroups = partBlockGroups;
+        this.enableBlockPartGroups = enableBlockPartGroups;
+        this.setBlockPartGroupsReg(exclusions);
+    }
+    public void setBlockPartGroup(RegistryData[] exclusions, BlockPartGroup partBlockGroup, boolean enableBlockPartGroup) {
+        this.blockPartGroups = new BlockPartGroup[]{partBlockGroup};
+        this.enableBlockPartGroups = new boolean[]{enableBlockPartGroup};
+        this.setBlockPartGroupsReg(exclusions);
+    }
+    public void setPartGroupsTrue(RegistryData[] exclusions, BlockPartGroup[] blockPartGroups) {
+        this.blockPartGroups = blockPartGroups;
+        this.enableBlockPartGroups = new boolean[blockPartGroups.length];
         for (int i = 0; i < partGroups.length; i++) {
-            this.partOverrides[i] = new boolean[partGroups[i].getParts().length];
-            if (this.enablePartGroups[i]) {
-                this.enabledPartGroups.add(partGroups[i]);
-                for (int j = 0; j < partGroups[i].getParts().length; j++) {
-                    LPart p = partGroups[i].getParts()[j];
+            this.enablePartGroups[i] = true;
+        }
+        this.setBlockPartGroupsReg(exclusions);
+    }
+    public void setPartGroupTrue(RegistryData[] exclusions, BlockPartGroup blockPartGroup) {
+        this.blockPartGroups = new BlockPartGroup[]{blockPartGroup};
+        this.enableBlockPartGroups = new boolean[]{true};
+        this.setBlockPartGroupsReg(exclusions);
+    }
+    public void setPartGroupTrueCustom(RegistryData[] exclusions, String block, BlockPartGroup blockPartGroup) {
+        this.blockPartGroups = new BlockPartGroup[]{blockPartGroup};
+        this.enableBlockPartGroups = new boolean[]{true};
+        this.setBlockPartGroupsReg(exclusions, block);
+    }
+    //call this to get each unlocalized registry name to be used for finding the registries
+    private void setBlockPartGroupsReg(RegistryData[] exclusions) {
+        setBlockPartGroupsReg(exclusions, null);
+    }
+    private void setBlockPartGroupsReg(RegistryData[] exclusions, String block) {
+        if (block != null) block+=" ";
+        else block = "";
+        this.isBlockPartGroupOverride = new boolean[enableBlockPartGroups.length];
+        this.blockPartOverrides = new boolean[enableBlockPartGroups.length][];
+        for (int i = 0; i < blockPartGroups.length; i++) {
+            this.blockPartOverrides[i] = new boolean[blockPartGroups[i].getParts().length];
+            if (this.enableBlockPartGroups[i]) {
+                this.enabledBlockPartGroups.add(blockPartGroups[i]);
+                for (int j = 0; j < blockPartGroups[i].getParts().length; j++) {
+                    LBlockPart p = blockPartGroups[i].getParts()[j];
                     String addName = null;
                     if (exclusions != null) {
                         for (RegistryData r : exclusions) {
                             if (p.oreDict.equals(r.key)) {
-                                this.partOverrides[i][j] = true;
-                                this.isPartGroupOverride[i] = true;
+                                this.blockPartOverrides[i][j] = true;
+                                this.isBlockPartGroupOverride[i] = true;
                                 addName = r.r.getUnlocalizedNameWithMeta();
                                 break;
                             }
                         }
                     }
-                    if (addName == null) this.partRegistryNames.add(block+"_"+this.m.NAME+"_"+p.NAME);
-                    else this.partRegistryNames.add("@"+addName);
+                    if (addName == null) this.blockRegistryNames.add(block+p.getLocalKey(this.m.NAME));
+                    else this.blockRegistryNames.add("@"+addName);
                 }
             }
         }
@@ -306,6 +407,9 @@ public abstract class AMaterialData extends ARecipeObject {
 
     public boolean[] getEnablePartGroups() {
         return this.enablePartGroups;
+    }
+    public boolean[] getEnableBlockPartGroups() {
+        return this.enableBlockPartGroups;
     }
 
     protected String genPartGroups() {
@@ -326,6 +430,24 @@ public abstract class AMaterialData extends ARecipeObject {
         }
         return sb.toString();
     }
+    protected String genBlockPartGroups() {
+        StringBuilder sb = new StringBuilder();
+        for (int i = 0; i < this.blockPartGroups.length; i++) {
+            if (this.enableBlockPartGroups[i]) {
+                if (this.isBlockPartGroupOverride[i]) {
+                    LBlockPart[] parts = this.blockPartGroups[i].getParts();
+                    for (int j = 0; j < parts.length; j++) {
+                        if (!this.blockPartOverrides[i][j]) {
+                            sb.append(this.buildBlockPartOverride(parts[j], true));
+                        }
+                    }
+                } else {
+                    sb.append(this.buildBlockPart(this.blockPartGroups[i], true));
+                }
+            }
+        }
+        return sb.toString();
+    }
     protected String genPartGroups(boolean newline) {
         StringBuilder sb = new StringBuilder();
         for (int i = 0; i < this.partGroups.length; i++) {
@@ -335,11 +457,29 @@ public abstract class AMaterialData extends ARecipeObject {
         }
         return sb.toString();
     }
+    protected String genBlockPartGroups(boolean newline) {
+        StringBuilder sb = new StringBuilder();
+        for (int i = 0; i < this.blockPartGroups.length; i++) {
+            if (this.enableBlockPartGroups[i]) {
+                sb.append(this.buildBlockPart(this.blockPartGroups[i], newline));
+            }
+        }
+        return sb.toString();
+    }
     protected String genAltPartGroups(String[] strings) {
         StringBuilder sb = new StringBuilder();
         for (int i = 0; i < this.partGroups.length; i++) {
             if (this.enablePartGroups[i]) {
                 sb.append(this.buildAltPart(strings[i], this.partGroups[i]));
+            }
+        }
+        return sb.toString();
+    }
+    protected String genAltBlockPartGroups(String[] strings) {
+        StringBuilder sb = new StringBuilder();
+        for (int i = 0; i < this.blockPartGroups.length; i++) {
+            if (this.enableBlockPartGroups[i]) {
+                sb.append(this.buildAltBlockPart(strings[i], this.blockPartGroups[i]));
             }
         }
         return sb.toString();
@@ -368,7 +508,7 @@ public abstract class AMaterialData extends ARecipeObject {
         System.out.println();
     }
     public void printAll() {
-        System.out.println("Keys for RecipeObject of type " + this.type + ":");
+        System.out.println("Keys for RecipeObject of type " + this.className + ":");
         for (RegistryData r : this.m.keys) {
             System.out.print(r.key + " = ");
             r.r.print();

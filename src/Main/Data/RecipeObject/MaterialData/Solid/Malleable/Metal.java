@@ -38,12 +38,21 @@ public class Metal extends AMalleable {
         //4. blast furnace to super hot ingot > cryo freezer/chamber etc using cryo fluid/fuel
         //5. blast furnace to gas since there is no liquid form and it is so hot it is gaseous > gas freezer/etc to ingot/gas shape?
         //6. fusion furnace to plasma > ingot through plasma cooling chamber/etc
+
+        /*
+        //mods.advancedrocketry.PlatePresser.clear();
+        val ironPlate = <libvulpes:productplate>;
+        mods.advancedrocketry.PlatePresser.removeRecipe(ironPlate.withDamage(1));
+        mods.advancedrocketry.PlatePresser.removeRecipe(titaniumPlate.withDamage(1));
+        mods.advancedrocketry.PlatePresser.addRecipe(<minecraft:stone>*1,<minecraft:gold_block>*1);
+        */
+
         return "";
     }
 
     @Override
     protected String buildPartMaterials() {
-        return this.genPartGroups();
+        return this.genPartGroups()+this.genBlockPartGroups();
     }
 
     @Override

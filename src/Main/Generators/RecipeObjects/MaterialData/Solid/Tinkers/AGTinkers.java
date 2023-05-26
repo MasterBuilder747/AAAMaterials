@@ -8,7 +8,6 @@ import Main.Data.RecipeObject.RegistryData;
 import Main.Generators.GMachine;
 import Main.Generators.GMachineGroup;
 import Main.Generators.GMaterial;
-import Main.Generators.GPartGroup;
 import Main.Generators.GameData.GLiquidRegistry;
 import Main.Generators.GameData.GOreDictRegistry;
 import Main.Generators.GameData.GRegistry;
@@ -16,6 +15,8 @@ import Main.Generators.GameData.Tinker.GTCPartRegistry;
 import Main.Generators.GameData.Tinker.GTCTraitRegistry;
 import Main.Generators.MachineResource.GMachineData;
 import Main.Generators.MachineResource.GMachineMatter;
+import Main.Generators.PartGroup.GBlockPartGroup;
+import Main.Generators.PartGroup.GPartGroup;
 import Main.Generators.RecipeObjects.MaterialData.AGMaterialData;
 import Main.Generators.Tweakers.GRecipeTweak;
 import Main.Util;
@@ -47,12 +48,13 @@ public abstract class AGTinkers <T extends ATinkers> extends AGMaterialData<T> {
     public AGTinkers(int params, String filename, boolean isReg,
                      GRecipeTweak tweak, GRegistry registry, GLiquidRegistry liquids, GOreDictRegistry ores,
                      GMachine machine, GMachineGroup machineGroup, GMachineData data, GMachineMatter matter,
-                     GMaterial material, GPartGroup partGroup,
+                     GMaterial material, GPartGroup partGroup, GBlockPartGroup blockPartGroup,
                      GTCPartRegistry parts, GTCTraitRegistry traits) {
         super(params, filename, "Tinker", isReg,
                 tweak, registry, liquids, ores,
                 machine, machineGroup, data, matter,
-                material, partGroup);
+                material, partGroup, blockPartGroup
+        );
         this.parts = parts;
         this.traits = traits;
         this.index = params - 7;
@@ -61,8 +63,8 @@ public abstract class AGTinkers <T extends ATinkers> extends AGMaterialData<T> {
     @Override
     protected void readMaterialParameters(int minVoltage, double inMultiplier, double outMultiplier, int baseTime, double[] tickDecMulti,
                                           LLiquid data, LPlasma matterIn, LPlasma matterOut,
-                                          Material m, String[] s, RegistryData[] exclusions) {
-        T t = readTinkerParameters(minVoltage, inMultiplier, outMultiplier, baseTime, tickDecMulti, data, matterIn, matterOut, m, s, exclusions);
+                                          Material m, String[] s, RegistryData[] exclusions, RegistryData[] blockExclusions) {
+        T t = readTinkerParameters(minVoltage, inMultiplier, outMultiplier, baseTime, tickDecMulti, data, matterIn, matterOut, m, s, exclusions, blockExclusions);
 
         if (isReg && !s[2].equals("null")) {
             String[] mItems = handleItemArray(s[2]);
@@ -190,7 +192,7 @@ public abstract class AGTinkers <T extends ATinkers> extends AGMaterialData<T> {
     }
     protected abstract T readTinkerParameters(int minVoltage, double inMultiplier, double outMultiplier, int baseTime, double[] tickDecMulti,
                                               LLiquid data, LPlasma matterIn, LPlasma matterOut,
-                                              Material m, String[] s, RegistryData[] exclusions);
+                                              Material m, String[] s, RegistryData[] exclusions, RegistryData[] blockExclusions);
 
     //export armorStats to config file after registration
     public String exportArmorStats() {

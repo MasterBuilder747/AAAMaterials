@@ -5,7 +5,7 @@ import Main.Data.Machine.Machine;
 import Main.Data.Machine.MachineGroup;
 import Main.Data.Material;
 import Main.Data.OreType;
-import Main.Data.PartGroup;
+import Main.Data.PartGroup.PartGroup;
 import Main.Data.RecipeObject.Localized.Liquid.LLiquid;
 import Main.Data.RecipeObject.Localized.Liquid.LPlasma;
 import Main.Data.RecipeObject.MaterialData.Solid.Stone;

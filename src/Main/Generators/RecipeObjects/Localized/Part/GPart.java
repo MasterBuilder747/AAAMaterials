@@ -1,6 +1,6 @@
-package Main.Generators.RecipeObjects.Localized;
+package Main.Generators.RecipeObjects.Localized.Part;
 
-import Main.Data.RecipeObject.Localized.LPart;
+import Main.Data.RecipeObject.Localized.Part.LPart;
 import Main.Generators.GMachine;
 import Main.Generators.GMachineGroup;
 import Main.Generators.GameData.GLiquidRegistry;
@@ -9,11 +9,11 @@ import Main.Generators.GameData.GRegistry;
 import Main.Generators.MachineResource.GMachineData;
 import Main.Generators.MachineResource.GMachineMatter;
 
-public class GPart extends AGLocal<LPart> {
+public class GPart extends AGPart<LPart> {
     public GPart(String filename, boolean isReg,
                  GRegistry registry, GLiquidRegistry liquids, GOreDictRegistry ores,
                  GMachine machine, GMachineGroup machineGroup, GMachineData data, GMachineMatter matter) {
-        super(4, filename, isReg,
+        super(filename, isReg,
                 registry, liquids, ores,
                 machine, machineGroup, data, matter);
     }

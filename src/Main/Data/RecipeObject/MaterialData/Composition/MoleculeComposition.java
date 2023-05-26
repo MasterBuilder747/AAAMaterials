@@ -55,7 +55,7 @@ public class MoleculeComposition extends AChemicalComposition {
         return ((this.isotope > 0) ? Util.intToSuperscript(this.isotope) : "") +
                     ((this.mValue == -1) ? "" :
                             ("ᵐ" + ((this.mValue > 0) ? Util.intToSuperscript(this.mValue) : ""))) + // \u1d50
-                    composition.toTooltip(this.type.contains("element"));
+                    composition.toTooltip(this.className.contains("element"));
     }
 
     @Override

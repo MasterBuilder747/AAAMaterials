@@ -2,15 +2,17 @@ package Main.Data.Tweakers;
 
 import Main.Data.GameData.ModRegistry;
 import Main.Generators.GeneratorException;
-import java.io.*;
 
-public class ModTweak extends ATweaker {
+import java.io.BufferedWriter;
+import java.io.IOException;
+
+public class ModRecipeTweak extends ATweaker {
     //this class writes to a unique file for tweaking a mod
-    ModRegistry mod; //this stores all the items from that mod
+    ModRegistry mods; //this stores all the items from that mod
 
-    public ModTweak(ModRegistry mod) {
-        super(-1,3, "ModTweak", mod.getUnlocalizedName(), "scripts/tweaks/", mod.getUnlocalizedName()); //using the registry name of the mod to identify
-        this.mod = mod;
+    public ModRecipeTweak(ModRegistry mods) {
+        super(-1,3, "ModRecipeTweak", mods.getUnlocalizedName(), "scripts/tweaks/", mods.getBracket()); //using the registry name of the mod to identify
+        this.mods = mods;
     }
     @Override
     protected void writeLine(String[] s, BufferedWriter bw) throws IOException {
@@ -22,7 +24,6 @@ public class ModTweak extends ATweaker {
                 import mods.contenttweaker.VanillaFactory;
                 import mods.contenttweaker.Block;
                 import mods.contenttweaker.Color;
-                
                 
                 
                 # ModTweaks file

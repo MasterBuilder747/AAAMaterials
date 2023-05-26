@@ -3,11 +3,11 @@ package Main.Generators.RecipeObjects.MaterialData.Solid;
 import Main.Data.GameData.Registry;
 import Main.Data.Material;
 import Main.Data.OreType;
-import Main.Data.PartGroup;
+import Main.Data.PartGroup.PartGroup;
 import Main.Data.RecipeObject.Localized.LBlock;
-import Main.Data.RecipeObject.Localized.LPart;
 import Main.Data.RecipeObject.Localized.Liquid.LLiquid;
 import Main.Data.RecipeObject.Localized.Liquid.LPlasma;
+import Main.Data.RecipeObject.Localized.Part.LPart;
 import Main.Data.RecipeObject.MaterialData.MSolid;
 import Main.Data.RecipeObject.MaterialData.OreVariant;
 import Main.Data.RecipeObject.MaterialData.Solid.Ore;
@@ -15,12 +15,13 @@ import Main.Data.RecipeObject.RegistryData;
 import Main.Generators.GMachine;
 import Main.Generators.GMachineGroup;
 import Main.Generators.GMaterial;
-import Main.Generators.GPartGroup;
 import Main.Generators.GameData.GLiquidRegistry;
 import Main.Generators.GameData.GOreDictRegistry;
 import Main.Generators.GameData.GRegistry;
 import Main.Generators.MachineResource.GMachineData;
 import Main.Generators.MachineResource.GMachineMatter;
+import Main.Generators.PartGroup.GBlockPartGroup;
+import Main.Generators.PartGroup.GPartGroup;
 import Main.Generators.RecipeObjects.MaterialData.GMSolid;
 import Main.Generators.Tweakers.GRecipeTweak;
 import Main.Json.Builder;
@@ -35,13 +36,13 @@ public class GOre extends AGMSolid<Ore> {
     public GOre(String filename, boolean isReg,
                 GRecipeTweak tweak, GRegistry registry, GLiquidRegistry liquids, GOreDictRegistry ores,
                 GMachine machine, GMachineGroup machineGroup, GMachineData data, GMachineMatter matter,
-                GMaterial material, GPartGroup partGroup,
+                GMaterial material, GPartGroup partGroup, GBlockPartGroup blockPartGroup,
                 GMSolid solid,
                 GStone stones) {
         super(5, filename, isReg,
                 tweak, registry, liquids, ores,
                 machine, machineGroup, data, matter,
-                material, partGroup,
+                material, partGroup, blockPartGroup,
                 solid, true, false, false);
         this.stones = stones;
     }
@@ -49,7 +50,7 @@ public class GOre extends AGMSolid<Ore> {
     @Override
     protected void readSolidParameters(int minVoltage, double inMultiplier, double outMultiplier, int baseTime, double[] tickDecMulti,
                                        LLiquid data, LPlasma matterIn, LPlasma matterOut,
-                                       Material m, String[] s, MSolid solid, RegistryData[] exclusions) {
+                                       Material m, String[] s, MSolid solid, RegistryData[] exclusions, RegistryData[] blockExclusions) {
         //material, enableGen,
         //stone: poor; 4; 6; 2: ore; 4; 6; 2: dense; 4; 9; 2,
         //nether: poor; 4; 6; 2: ore; 4; 6; 2: dense; 4; 9; 2,

@@ -10,12 +10,13 @@ import Main.Data.RecipeObject.RegistryData;
 import Main.Generators.GMachine;
 import Main.Generators.GMachineGroup;
 import Main.Generators.GMaterial;
-import Main.Generators.GPartGroup;
 import Main.Generators.GameData.GLiquidRegistry;
 import Main.Generators.GameData.GOreDictRegistry;
 import Main.Generators.GameData.GRegistry;
 import Main.Generators.MachineResource.GMachineData;
 import Main.Generators.MachineResource.GMachineMatter;
+import Main.Generators.PartGroup.GBlockPartGroup;
+import Main.Generators.PartGroup.GPartGroup;
 import Main.Generators.RecipeObjects.MaterialData.AGMaterialData;
 import Main.Generators.Tweakers.GRecipeTweak;
 import Main.Util;
@@ -27,13 +28,13 @@ public abstract class AGMLiquid <L extends AMLiquid> extends AGMaterialData<L> {
     public AGMLiquid(int params, String filename, boolean isReg,
                      GRecipeTweak tweak, GRegistry registry, GLiquidRegistry liquids, GOreDictRegistry ores,
                      GMachine machine, GMachineGroup machineGroup, GMachineData data, GMachineMatter matter,
-                     GMaterial material, GPartGroup partGroup) {
+                     GMaterial material, GPartGroup partGroup, GBlockPartGroup blockPartGroup) {
         //part groups are only used with solid material datas
         //int params, String filename, GMachine machine, GMaterial material, GPartGroup partGroup, String materialFolder, GRegistry registry, boolean isReg
         super(params, filename, "Liquid", isReg,
                 tweak, registry, liquids, ores,
                 machine, machineGroup, data, matter,
-                material, partGroup);
+                material, partGroup, blockPartGroup);
     }
 
     public String localize() {
@@ -87,5 +88,5 @@ public abstract class AGMLiquid <L extends AMLiquid> extends AGMaterialData<L> {
     @Override
     protected void readMaterialParameters(int minVoltage, double inMultiplier, double outMultiplier, int baseTime, double[] tickDecMulti,
                                                    LLiquid data, LPlasma matterIn, LPlasma matterOut,
-                                                   Material m, String[] s, RegistryData[] exclusions) {}
+                                                   Material m, String[] s, RegistryData[] exclusions, RegistryData[] blockExclusions) {}
 }
