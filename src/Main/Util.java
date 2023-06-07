@@ -25,6 +25,20 @@ public class Util {
         }
         return s.substring(0, 1).toUpperCase(Locale.ROOT) + s.substring(1);
     }
+    //capitalize every first letter of each word
+    public static String toUpperAll(String s) {
+        if (s.equals("")) {
+            throw new IllegalArgumentException("No string specified to uppercase!");
+        }
+        String[] words = split(s, " ");
+        StringBuilder sb = new StringBuilder();
+        for (String w : words) {
+            sb.append(toUpper(w));
+            sb.append(" ");
+        }
+        String out = sb.toString();
+        return out.substring(0, out.length()-1);
+    }
 
     public static String subSymbolString(String s, char c1, char c2, int i) {
         char[] ss = s.toCharArray();
@@ -47,6 +61,7 @@ public class Util {
         //Split code into multiple files
         //recipes[N].zs
         ArrayList<String> sbs = new ArrayList<>();
+        ArrayList<String> sbr = new ArrayList<>();
         StringBuilder sb;
         StringBuilder sb2;
         String[] prs = split(code, "\n");
@@ -87,19 +102,53 @@ public class Util {
             sb = new StringBuilder();
             fileNo++;
         }
-
         //write each file
         FileWriter fw;
         BufferedWriter bw;
+        String filePath1 = filePath + "recipes";
         for (int j = 0; j < sbs.size(); j++) {
-            fw = new FileWriter(filePath + j + ".zs");
+            fw = new FileWriter(filePath1 + j + ".zs");
             bw = new BufferedWriter(fw);
             bw.write(writeHeader("recipe", j, 0, new String[]{"modularmachinery"}, false, null));
-            if (j == 0) {
-                bw.write(initialCode);
-            }
             bw.write(sbs.get(j));
             bw.close();
+        }
+
+        //add the remaining normal code (for crafting, etc)
+        StringBuilder sb3 = new StringBuilder();
+        if (!sb2.isEmpty()) {
+            fileNo = 0;
+            String[] recipes = split(sb2.toString(), "\n");
+            line = 0;
+            while (line < recipes.length) {
+                int recipeNo = 0;
+                while (recipeNo < threshold && line < recipes.length) {
+                    sb3.append(recipes[line]).append("\n");
+                    recipeNo++;
+                    line++;
+                }
+                sbr.add(sb3.toString());
+                sb3 = new StringBuilder();
+                fileNo++;
+            }
+
+            //write each crafting file
+            String filePath2 = filePath + "/otherRecipes/otherRecipes";
+            for (int j = 0; j < sbr.size(); j++) {
+                if (j == 0 && !initialCode.isEmpty()) {
+                    fw = new FileWriter(filePath2 + j + ".zs");
+                    bw = new BufferedWriter(fw);
+                    bw.write(writeHeader("otherRecipe initial code", j, 0, null, false, null));
+                    bw.write(initialCode);
+                    bw.close();
+                } else {
+                    fw = new FileWriter(filePath2 + j + ".zs");
+                    bw = new BufferedWriter(fw);
+                    bw.write(writeHeader("otherRecipe", j, 0, null, false, null));
+                    bw.write(sbr.get(j));
+                    bw.close();
+                }
+            }
         }
     }
     public static void splitMatFiles(String code, String filePath, String filename, int priority) throws IOException {
@@ -266,6 +315,15 @@ public class Util {
             out[i] = String.valueOf(a[i]);
         }
         return out;
+    }
+    public static String arrToString(String[] ss) {
+        StringBuilder sb = new StringBuilder();
+        for (int i = 0; i < ss.length-1; i++) {
+            sb.append(ss[i]);
+            sb.append(", ");
+        }
+        sb.append(ss[ss.length-1]);
+        return sb.toString();
     }
 
     public static int sumOfArr(int[] a) {

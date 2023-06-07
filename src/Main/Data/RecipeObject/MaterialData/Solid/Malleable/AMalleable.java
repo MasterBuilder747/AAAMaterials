@@ -6,6 +6,7 @@ import Main.Data.Machine.MachineGroup;
 import Main.Data.Material;
 import Main.Data.RecipeObject.Localized.Liquid.LLiquid;
 import Main.Data.RecipeObject.Localized.Liquid.LPlasma;
+import Main.Data.RecipeObject.Localized.Part.LBlockPart;
 import Main.Data.RecipeObject.Localized.Part.LPart;
 import Main.Data.RecipeObject.MaterialData.Liquid.MLiquid;
 import Main.Data.RecipeObject.MaterialData.Solid.AMSolid;
@@ -35,10 +36,10 @@ public abstract class AMalleable extends AMSolid {
     }
 
     protected String getMolten() {
-        return this.molten.getUnlocalized();
+        return this.molten.getUnlocalized("molten");
     }
     public String getMoltenBracket() {
-        return this.molten.getBracket();
+        return this.molten.getBracket("molten");
     }
     protected String getMolten(int amount) {
         return getMolten()+"*" + amount;
@@ -61,9 +62,9 @@ public abstract class AMalleable extends AMSolid {
     protected abstract String buildPartMaterials();
     @Override
     protected String buildSpecificRecipe() {
-        //todo: add abstract tweakers back for AMalleable if needed for such recipes
         StringBuilder sb = new StringBuilder();
         LPart[] parts = this.getPartsWithOverrides();
+        LBlockPart[] blockParts = this.getBlockPartsWithOverrides();
         int i = 0;
         for (LPart p : parts) {
             if (p.amount > 0) {
@@ -71,14 +72,32 @@ public abstract class AMalleable extends AMSolid {
                         i, "machine", true, this.baseTime, 0,
                         this.tickDecMultipliers, 1, new int[]{1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1},
                         this.minVoltage, this.powerMultiplierIn, this.powerMultiplierOut,
-                        p.oreDict, "-", "-", "liquid*"+(int)(p.amount * this.meltingMultiplier),
-                        "code", 50, this.data.NAME+"*25",
+                        p.oreDict, "-", "-", "molten*"+(int)(p.amount * this.meltingMultiplier),
+                        "codeMeltingItem", 50, this.data.NAME+"*25",
                         this.matterIn.NAME+"*100", this.matterOut.NAME+"*100"
                 ));
                 i++;
             }
         }
-        return sb + buildPartRecipes();
+        for (LBlockPart p : blockParts) {
+            if (p.amount > 0) {
+                sb.append(addRecipe(
+                        i, "machine", true, this.baseTime, 0,
+                        this.tickDecMultipliers, 1, new int[]{1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1},
+                        this.minVoltage, this.powerMultiplierIn, this.powerMultiplierOut,
+                        p.oreDict, "-", "-", "molten*"+(int)(p.amount * this.meltingMultiplier),
+                        "codeMeltingBlock", 50, this.data.NAME+"*25",
+                        this.matterIn.NAME+"*100", this.matterOut.NAME+"*100"
+                ));
+                i++;
+            }
+        }
+        String addRecipe = buildPartRecipes();
+        if (addRecipe == null) {
+            return sb.toString();
+        } else {
+            return sb + addRecipe;
+        }
     }
     protected abstract String buildPartRecipes();
 

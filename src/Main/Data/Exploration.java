@@ -1,7 +1,5 @@
 package Main.Data;
 
-import Main.Data.AData;
-
 public class Exploration extends AData {
     /*
     this item serves as an exploration item

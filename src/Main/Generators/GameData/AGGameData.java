@@ -9,8 +9,7 @@ import java.io.IOException;
 
 public abstract class AGGameData<G extends AGameData> extends AGenerator<G> {
     public AGGameData(int params, String filename) {
-        super(params, filename, "Registry");
-        noReplace = true;
+        super(params, filename, "Registry", true);
     }
 
     @Override
@@ -26,16 +25,12 @@ public abstract class AGGameData<G extends AGameData> extends AGenerator<G> {
     }
     protected abstract void readGameData(String[] s);
 
-    public G getByRegistry(String reg) {
+    public void checkRegistry(String reg) {
         for (G g: objects) {
             if (g.getRegistryName().equals(reg)) {
-                return g;
+                return;
             }
         }
         error("Unknown GameData " + reg);
-        return null;
-    }
-    public void checkRegistry(String reg) {
-        getByRegistry(reg);
     }
 }

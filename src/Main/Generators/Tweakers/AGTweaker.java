@@ -4,21 +4,16 @@ import Main.Data.Tweakers.ATweaker;
 import Main.Generators.AGenerator;
 import Main.Stopwatch;
 
-import java.io.IOException;
-
 public abstract class AGTweaker<T extends ATweaker> extends AGenerator<T> {
     public AGTweaker(int PARAMS, String filename, String subfolder) {
         super(PARAMS, "`"+filename, "Tweaks/"+subfolder+"/");
     }
 
     @Override
-    public String registerRecipes() throws IOException {
+    public String writeRecipes() {
+        System.out.print("\tWriting RecipeTweaker " + this.filename + ".txt... ");
         Stopwatch w = new Stopwatch();
-        System.out.print("Loading " + this.filename + "s.txt... ");
         w.start();
-        //read
-        populateObjects();
-        //write
         StringBuilder sb = new StringBuilder();
         String test;
         if (objects.size() > 0) {

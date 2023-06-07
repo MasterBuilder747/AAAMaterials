@@ -37,7 +37,7 @@ public class Plastic extends AMalleable {
 
     @Override
     protected String buildPartRecipes() {
-        return "";
+        return null;
     }
 
     @Override

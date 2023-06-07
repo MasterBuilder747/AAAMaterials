@@ -33,10 +33,10 @@ public class CompoundComposition extends AChemicalComposition {
     //H2O, water, distilled_water
     //compositionSyntax syntax: tungsten_steel, *[steel][tungsten], ...
     //chemical molecules use elements in tooltips
-    boolean isMixing; //physical combination
-    boolean isCentrifuge; //physical separation
-    boolean isChemReact; //chemically combine
-    boolean isElectrolyze; //chemically separate
+    public boolean isMixing; //physical combination
+    public boolean isCentrifuge; //physical separation
+    public boolean isChemReact; //chemically combine
+    public boolean isElectrolyze; //chemically separate
 
     String subType; //more characterization for recipes
 
@@ -56,10 +56,11 @@ public class CompoundComposition extends AChemicalComposition {
         this.isCentrifuge = isCentrifuge;
         this.isElectrolyze = isElectrolyze;
     }
+    //compositions do not support user recipes as they do not add any material parts
 
     @Override
     protected void setSymbol() {
-        this.symbol = this.composition.toSymbol();
+        this.symbol = this.composition.toSymbolNoCharge();
     }
 
     @Override
@@ -71,13 +72,6 @@ public class CompoundComposition extends AChemicalComposition {
     public void print() {
         System.out.println(this.m.NAME + " (" + composition.charge + "): " + composition);
         //this.m.getComp().getCComp().printIngredients();
-    }
-
-    //compositions do not support user recipes as they do not add any material parts
-    @Override
-    protected String buildSpecificRecipe() {
-        //put breaking/forming recipes here, only can use code, no user recipes
-        return null;
     }
 
     @Override

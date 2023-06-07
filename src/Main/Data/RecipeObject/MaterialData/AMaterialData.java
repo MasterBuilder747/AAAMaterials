@@ -36,6 +36,10 @@ public abstract class AMaterialData extends ARecipeObject {
     public ArrayList<PartGroup> enabledPartGroups; //each partGroup that is enabled for this material
     public ArrayList<BlockPartGroup> enabledBlockPartGroups; //each blockPartGroup that is enabled for this material
 
+    //only used by MSolid and AMLiquids, but these needs to be in scope when doing recipes
+    protected String altName;
+    protected String altColor;
+
     public AMaterialData(String type,
                          RecipeTweak tweak, int minVoltage, double powerMultiplierIn, double powerMultiplierOut,
                          int baseTime, double[] tickDecMultipliers, LLiquid data, LPlasma matterIn, LPlasma matterOut,
@@ -82,7 +86,7 @@ public abstract class AMaterialData extends ARecipeObject {
     public void setKeyExclusions(RegistryData[] regs, boolean isReg) {
         if (isReg) {
             for (RegistryData rd : regs) {
-                this.getRegistryData(rd.key).r = rd.r;
+                this.getMaterialKey(rd.key).r = rd.r;
             }
         }
     }
@@ -111,11 +115,13 @@ public abstract class AMaterialData extends ARecipeObject {
             }
         }
     }
-    //liquid keys
+
+    //liquid registry
     @Override
     public String getUnlocalizedLiquidByKey(String key) {
         return this.getLiquidKey(key).l.getUnlocalizedName();
     }
+    //liquid keys
     public void addLiquidKey(String key, LiquidRegistry l) {
         this.m.liquids.add(new LiquidRegistryData(key, l));
     }
@@ -130,7 +136,6 @@ public abstract class AMaterialData extends ARecipeObject {
         return null;
     }
 
-
     //gets
     public Material getMaterial() {
         return this.m;
@@ -140,7 +145,7 @@ public abstract class AMaterialData extends ARecipeObject {
         return this.m.keys.toArray(new RegistryData[0]);
     }
     //get
-    protected RegistryData getRegistryData(String key) {
+    protected RegistryData getMaterialKey(String key) {
         for (RegistryData d : this.m.keys) {
             if (d.key.equals(key)) {
                 return d;
@@ -150,12 +155,20 @@ public abstract class AMaterialData extends ARecipeObject {
         return null;
     }
     public Registry get(String key) {
-        return this.getRegistryData(key).r;
+        return this.getMaterialKey(key).r;
+    }
+    public String getBracket(String key) {
+        return this.get(key).getBracket();
+    }
+    protected String parseKeyRecipeBracket(String key) {
+        return this.getBracket(rmAmt(key))+"*"+parseAmt(key);
     }
     @Override
     public String getUnlocalizedByKey(String key) { //externally called if needed (eg, stone)
         //this searches through item and block parts, since they are both keys in Material
-        if (this.isEnabledPart(key) || this.isEnabledBlockPart(key)) {
+        if (this.partGroups != null && this.isEnabledPart(key)) {
+            return this.get(key).getUnlocalizedNameWithMeta();
+        } else if (this.blockPartGroups != null && this.isEnabledBlockPart(key)) {
             return this.get(key).getUnlocalizedNameWithMeta();
         } else return null;
     }
@@ -163,7 +176,7 @@ public abstract class AMaterialData extends ARecipeObject {
         //returns if the partGroup that part is a part of is enabled for this MaterialData
         for (int i = 0; i < this.partGroups.length; i++) {
             for (LPart p : this.partGroups[i].getParts()) {
-                if (p.oreDict.equals(key)) {
+                if (p.oreDict.equals(rmAmt(key))) {
                     return this.enablePartGroups[i];
                 }
             }
@@ -174,7 +187,7 @@ public abstract class AMaterialData extends ARecipeObject {
         //returns if the blockPartGroup that part is a part of is enabled for this MaterialData
         for (int i = 0; i < this.blockPartGroups.length; i++) {
             for (LBlockPart p : this.blockPartGroups[i].getParts()) {
-                if (p.oreDict.equals(key)) {
+                if (p.oreDict.equals(rmAmt(key))) {
                     return this.enableBlockPartGroups[i];
                 }
             }
@@ -248,7 +261,7 @@ public abstract class AMaterialData extends ARecipeObject {
     //logic
     protected boolean is(String key) {
         try {
-            this.getRegistryData(key);
+            this.getMaterialKey(key);
         } catch (RecipeObjectException e) {
             return false;
         }
@@ -336,7 +349,15 @@ public abstract class AMaterialData extends ARecipeObject {
                             }
                         }
                     }
-                    if (addName == null) this.partRegistryNames.add(block+this.m.NAME+"_"+p.NAME);
+                    if (addName == null) {
+                        String add;
+                        if (this instanceof MSolid && this.altName != null) {
+                            add = this.altName;
+                        } else {
+                            add = this.m.NAME;
+                        }
+                        this.partRegistryNames.add(block+add+"_"+p.NAME);
+                    }
                     else this.partRegistryNames.add("@"+addName);
                 }
             }
@@ -483,6 +504,15 @@ public abstract class AMaterialData extends ARecipeObject {
             }
         }
         return sb.toString();
+    }
+
+    //recipes using keys
+    protected String addCraftingShapelessByKey(String[] ins, String out) {
+        ArrayList<String> aIns = new ArrayList<>();
+        for (String in : ins) {
+            aIns.add(getBracket(in));
+        }
+        return addCraftingShapeless(aIns.toArray(new String[0]), getBracket(out));
     }
 
     //print methods

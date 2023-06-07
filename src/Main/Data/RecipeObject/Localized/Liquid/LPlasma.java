@@ -17,14 +17,7 @@ public class LPlasma extends ALiquid {
                 items, liquids, ores,
                 machines, machineGroups,
                 localName,
-                color, isMaterial, false, vaporize,
+                color, isMaterial, "Plasma", false, vaporize,
                 density, luminosity, temperature, viscosity);
-    }
-
-    @Override
-    public String buildMaterial() {
-        return "genPlasma(\"" +
-                this.NAME + "\", \"" + this.color + "\", " + this.density + ", " + this.gas + ", " +
-                this.luminosity + ", " + this.temperature + ", " + this.viscosity + ", " + this.vaporize + ");\n";
     }
 }

@@ -20,6 +20,7 @@ import Main.Generators.PartGroup.GPartGroup;
 import Main.Generators.RecipeObjects.MaterialData.GMSolid;
 import Main.Generators.RecipeObjects.MaterialData.Liquid.GMLiquid;
 import Main.Generators.Tweakers.GRecipeTweak;
+import Main.Util;
 
 public class GMetal extends AGMalleable<Metal> {
     public GMetal(
@@ -29,7 +30,7 @@ public class GMetal extends AGMalleable<Metal> {
             GMaterial material, GPartGroup partGroup, GBlockPartGroup blockPartGroup,
             GMSolid solid, GMLiquid liquid
     ) {
-        super(5, filename, isReg,
+        super(6, filename, isReg,
                 tweak, registry, liquids, ores,
                 machine, machineGroup, data, matter,
                 material, partGroup, blockPartGroup,
@@ -56,6 +57,7 @@ public class GMetal extends AGMalleable<Metal> {
         boolean addBlast = Boolean.parseBoolean(s[2]);
         boolean addConductive = Boolean.parseBoolean(s[3]);
         boolean addSmeltBlock = Boolean.parseBoolean(s[4]);
+        boolean addPresser = Boolean.parseBoolean(s[5]);
         metal.setPartGroups(
                 exclusions,
                 this.genPartGroups(
@@ -68,14 +70,44 @@ public class GMetal extends AGMalleable<Metal> {
         metal.setBlockPartGroups(
                 blockExclusions,
                 this.genBlockPartGroups(
-                        new String[]{"smelt"}
+                        new String[]{"smelt", "presser"}
                 ),
                 new boolean[]{
-                       addSmeltBlock
+                        addSmeltBlock, addPresser
                 }
         );
         updateRegistryKeys(metal);
         updateBlockRegistryKeys(metal);
         objects.add(metal);
+    }
+
+    public String genPresserFile() {
+        StringBuilder sb = new StringBuilder();
+        sb.append("<Recipes useDefault=\"false\">\n");
+        for (Metal m : this.objects) {
+            if (m.presserRecipes != null) {
+                for (String r : m.presserRecipes) {
+                    if (r != null) {
+                        String[] rs = Util.split(r, ",");
+                        String in = rs[0];
+                        String out = rs[1];
+                        /*
+                        <Recipes useDefault="false">
+                            <Recipe timeRequired="0" power ="0">
+                                <input><oreDict>blockTitaniumIridium</oreDict></input>
+                                <output><itemStack>advancedrocketry:productplate;4;1</itemStack></output>
+                            </Recipe>
+                        </Recipes>
+                        */
+                        sb.append("\t<Recipe timeRequired=\"0\" power =\"0\">\n");
+                        sb.append("\t\t<input><itemStack>").append(in).append("</itemStack></input>\n");
+                        sb.append("\t\t<output><itemStack>").append(out).append("</itemStack></output>\n");
+                        sb.append("\t</Recipe>\n");
+                    }
+                }
+            }
+        }
+        sb.append("</Recipes>");
+        return sb.toString();
     }
 }

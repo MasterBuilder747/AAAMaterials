@@ -9,31 +9,33 @@ import Main.Data.RecipeObject.Localized.Liquid.LGas;
 import Main.Data.RecipeObject.Localized.Liquid.LLiquid;
 import Main.Data.RecipeObject.Localized.Liquid.LPlasma;
 import Main.Data.Tweakers.RecipeTweak;
+import Main.Generators.RecipeObjects.MaterialData.Composition.CompositionRegistry;
 
 public class MGas extends AMLiquid {
     public MGas(RecipeTweak tweak, int minVoltage, double powerMultiplierIn, double powerMultiplierOut,
                 int baseTime, double[] tickDecMultipliers,
                 Registry[] items, String[] liquids, String[] ores, LLiquid data, LPlasma matterIn, LPlasma matterOut,
                 Machine[] machines, MachineGroup[] machineGroups,
-                Material m,
-                int density, int luminosity, int temperature, int viscosity, boolean vaporize) {
-        super("mGas",
+                Material m, String[] statesToChangeTo,
+                int density, int luminosity, int temperature, int viscosity, boolean vaporize,
+                CompositionRegistry compReg) {
+        super("MGas",
                 tweak, minVoltage, powerMultiplierIn, powerMultiplierOut,
                 baseTime, tickDecMultipliers, data, matterIn, matterOut,
                 items, liquids, ores,
                 machines, machineGroups,
-                m);
-        this.l = new LGas(
+                m,
+                compReg, "gas");
+        m.scGas = statesToChangeTo;
+        LGas g = new LGas(
                 m.NAME +"_gas",
                 items, liquids, ores,
                 machines, machineGroups,
-                m.LOCALNAME+" Gas",
+                altName == null ? m.LOCALNAME + " Gas" : altName,
                 m.color, true, vaporize,
                 density, luminosity, temperature, viscosity
         );
-        addLiquidKey("gas", new LiquidRegistry(l));
+        addMatLiqKey("gas", g);
+        addLiquidKey("gas", new LiquidRegistry(g));
     }
-
-    @Override
-    public void print() {}
 }

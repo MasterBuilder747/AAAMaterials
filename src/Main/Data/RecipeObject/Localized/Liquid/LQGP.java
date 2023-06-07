@@ -18,14 +18,7 @@ public class LQGP extends ALiquid {
                 items, liquids, ores,
                 machines, machineGroups,
                 localName,
-                color, isMaterial, true, vaporize,
+                color, isMaterial, "Fluid", true, vaporize,
                 density, luminosity, temperature, viscosity);
-    }
-
-    @Override
-    public String buildMaterial() {
-        return "genFluid(\"" +
-                this.NAME + "\", \"" + this.color + "\", " + this.density + ", " + this.gas + ", " +
-                this.luminosity + ", " + this.temperature + ", " + this.viscosity + ", " + this.vaporize + ");\n";
     }
 }

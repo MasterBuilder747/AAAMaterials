@@ -20,13 +20,12 @@ import Main.Data.RecipeObject.RegistryData;
 //-s solid, -l liquid -g gas, -p plasma, etc... (letter not needed (but can be shown) for default state of material)
 public abstract class AChemicalComposition extends AMaterialData {
     //recipe system is disabled here
-
     Composition composition; //a string of defined element(s) and their count(s) in a string with special syntax
     public int charge;
     public boolean isDefault;  //is this the default composition that is associated with this material?
                         //If so, then when a chemical composition is specified, it returns this material
     //multiple materials can be assigned to one composition, but is this material the one that gets outputted in a separation/combination recipe?
-    public String symbol; //the chemical symbol, for searching
+    public String symbol; //the chemical symbol, for searching, without the polarity, but could include the isotope
     //this is loaded after all parts have been added so that the tooltip can
     public boolean isMolecule; //for handling getting the element rather than the composition
     public String compType; //this determines properties for the composition
@@ -77,15 +76,14 @@ public abstract class AChemicalComposition extends AMaterialData {
     }
 
     @Override
-    public String buildRecipe() {
-        return buildSpecificRecipe();
-    }
-
-    @Override
     public String toString() {
         return this.symbol;
     }
 
+    @Override
+    public String buildRecipe() {return "";}
+    @Override
+    protected String buildSpecificRecipe() {return null;}
     @Override
     protected String customItemKey(String key) {return null;}
     @Override

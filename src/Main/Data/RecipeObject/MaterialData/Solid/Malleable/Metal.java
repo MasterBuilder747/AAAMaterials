@@ -9,8 +9,12 @@ import Main.Data.RecipeObject.Localized.Liquid.LPlasma;
 import Main.Data.RecipeObject.MaterialData.Liquid.MLiquid;
 import Main.Data.Tweakers.RecipeTweak;
 
+import java.util.ArrayList;
+
 //data > material > malleable > metal
 public class Metal extends AMalleable {
+    public String[] presserRecipes;
+
     //this is a malleable metal, which means that it can be molded into different metal parts
     public Metal(RecipeTweak tweak, int minVoltage, double powerMultiplierIn, double powerMultiplierOut,
                  int baseTime, double[] tickDecMultipliers, LLiquid data, LPlasma matterIn, LPlasma matterOut,
@@ -39,15 +43,40 @@ public class Metal extends AMalleable {
         //5. blast furnace to gas since there is no liquid form and it is so hot it is gaseous > gas freezer/etc to ingot/gas shape?
         //6. fusion furnace to plasma > ingot through plasma cooling chamber/etc
 
-        /*
-        //mods.advancedrocketry.PlatePresser.clear();
-        val ironPlate = <libvulpes:productplate>;
-        mods.advancedrocketry.PlatePresser.removeRecipe(ironPlate.withDamage(1));
-        mods.advancedrocketry.PlatePresser.removeRecipe(titaniumPlate.withDamage(1));
-        mods.advancedrocketry.PlatePresser.addRecipe(<minecraft:stone>*1,<minecraft:gold_block>*1);
-        */
+        //survival game: for making plates and ingots
+        //block > slab > slabQtr > 6 ingots
+        //9 ingots >{craft}> blockIngot > 4 plates
 
-        return "";
+        //input,output
+        ArrayList<String> presserRs = new ArrayList<>();
+        presserRs.add(addPresserBlockToBlock("block", "slab"));
+        presserRs.add(addPresserBlockToBlock("slab", "slabQtr"));
+        presserRs.add(addPresserBlockToItem("slabQtr", "ingot*6"));
+        presserRs.add(addPresserBlockToItem("blockIngot", "plate*4"));
+        this.presserRecipes = presserRs.toArray(new String[0]);
+
+        return addCraftingShapelessByKey(arrOfSameItem("ingot*9"), "blockIngot");
+    }
+    private String addPresserBlockToBlock(String in, String out) {
+        if (isEnabledBlockPart(in) && isEnabledBlockPart(out)) {
+            return addRecipePresser(in, out);
+        }
+        return null;
+    }
+    private String addPresserBlockToItem(String in, String out) {
+        if (isEnabledBlockPart(in) && isEnabledPart(out)) {
+            return addRecipePresser(in, out);
+        }
+        return null;
+    }
+    private String addRecipePresser(String in, String out) {
+        return parseARItem(rmAmt(in), parseAmt(in))+", "+parseARItem(rmAmt(out), parseAmt(out));
+    }
+
+    private String parseARItem(String s, int amt) {
+        //mod:registry;amt;meta
+        Registry r = get(s);
+        return r.NAME+";"+amt+";"+r.meta;
     }
 
     @Override

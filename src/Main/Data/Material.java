@@ -32,6 +32,14 @@ public class Material extends AData {
     public String state; //default state of the material, determines other states
     public boolean hasEffect; //adds enchantment effect for all parts, for special materials
 
+    //state changes
+    //from this state to what other states?, null if none
+    public String[] scSolid;
+    public String[] scLiquid;
+    public String[] scGas;
+    public String[] scPlasma;
+    public String[] scQGP;
+
     //every registry key is now unified for the material itself
     //items
     public ArrayList<RegistryData> keys = new ArrayList<>();

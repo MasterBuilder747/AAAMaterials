@@ -18,6 +18,7 @@ import Main.Generators.MachineResource.GMachineMatter;
 import Main.Generators.PartGroup.GBlockPartGroup;
 import Main.Generators.PartGroup.GPartGroup;
 import Main.Generators.RecipeObjects.MaterialData.AGMaterialData;
+import Main.Generators.RecipeObjects.MaterialData.Composition.CompositionRegistry;
 import Main.Generators.Tweakers.GRecipeTweak;
 import Main.Util;
 
@@ -25,16 +26,20 @@ import java.io.BufferedReader;
 import java.util.ArrayList;
 
 public abstract class AGMLiquid <L extends AMLiquid> extends AGMaterialData<L> {
-    public AGMLiquid(int params, String filename, boolean isReg,
+    CompositionRegistry compReg;
+
+    public AGMLiquid(String filename, boolean isReg,
                      GRecipeTweak tweak, GRegistry registry, GLiquidRegistry liquids, GOreDictRegistry ores,
                      GMachine machine, GMachineGroup machineGroup, GMachineData data, GMachineMatter matter,
-                     GMaterial material, GPartGroup partGroup, GBlockPartGroup blockPartGroup) {
+                     GMaterial material, GPartGroup partGroup, GBlockPartGroup blockPartGroup,
+                     CompositionRegistry compReg) {
         //part groups are only used with solid material datas
         //int params, String filename, GMachine machine, GMaterial material, GPartGroup partGroup, String materialFolder, GRegistry registry, boolean isReg
-        super(params, filename, "Liquid", isReg,
+        super(7, filename, "Liquid", isReg,
                 tweak, registry, liquids, ores,
                 machine, machineGroup, data, matter,
                 material, partGroup, blockPartGroup);
+        this.compReg = compReg;
     }
 
     public String localize() {
@@ -51,7 +56,7 @@ public abstract class AGMLiquid <L extends AMLiquid> extends AGMaterialData<L> {
                                         BufferedReader br, String[] s) {
         String m = s[0];
         LiquidRegistryData[] exclusions = null;
-        //recipeParams..., @water;liquid>water
+        //materialDataProperties...,@water;liquid>water,...
         if (m.startsWith("@")) {
             String[] ms = Util.split(m.substring(1), ";");
             ArrayList<LiquidRegistryData> rDataExs = new ArrayList<>();
@@ -65,15 +70,48 @@ public abstract class AGMLiquid <L extends AMLiquid> extends AGMaterialData<L> {
             m = ms[0];
             exclusions = rDataExs.toArray(new LiquidRegistryData[0]);
         }
-        String[] ss = new String[s.length-1];
-        System.arraycopy(s, 1, ss, 0, ss.length);
+        String[] ss = new String[s.length-7];
+        System.arraycopy(s, 7, ss, 0, ss.length);
         Material mat = this.material.get(m);
+        //...,altName;altColor,addStateChange,int density,int luminosity,int temperature,int viscosity,boolean vaporize,...
+        String altName = s[1];
+        String altColor = null;
+        if (altName.equals("=")) {
+            altName = null;
+        } else {
+            String[] altSyn = Util.split(altName, ";");
+            if (altSyn.length != 2) error("Alternate name syntax must be size 2: altName;altColor");
+            altName = altSyn[0];
+            altColor = altSyn[1];
+        }
+        String[] statesSyn = null;
+        if (!s[2].equals("=")) {
+            statesSyn = parseArray(s[2], ";");
+            validateStates(statesSyn);
+        }
         readLiquidParameters(minVoltage, inMultiplier, outMultiplier,
-                baseTime, tickDecMulti, data, matterIn, matterOut, mat, ss, exclusions);
+                baseTime, tickDecMulti, data, matterIn, matterOut,
+                mat, ss, exclusions, this.compReg,
+                altName, altColor, statesSyn,
+                /*
+                String NAME,
+                   Registry[] items, String[] liquids, String[] ores,
+                   Machine[] machines, MachineGroup[] machineGroups,
+                   String localName,
+                   String color, boolean isMaterial, boolean vaporize,
+                   int density, int luminosity, int temperature, int viscosity
+                 */
+                new LLiquid(null,
+                        null, null, null,
+                        null, null,
+                        null,
+                        null, false, parseBoolean(s[7]),
+                        parseInt(s[3]), parseInt(s[4]), parseInt(s[5]), parseInt(s[6])));
     }
     protected abstract void readLiquidParameters(int minVoltage, double inMultiplier, double outMultiplier, int baseTime, double[] tickDecMulti,
                                                  LLiquid data, LPlasma matterIn, LPlasma matterOut,
-                                                 Material m, String[] s, LiquidRegistryData[] exclusions);
+                                                 Material m, String[] s, LiquidRegistryData[] exclusions, CompositionRegistry compReg,
+                                                 String altName, String altColor, String[] addStateChange, LLiquid ll);
 
     //call this after the constructor, as it adds the default liquid keys then
     protected void setLiquidOverrides(L l, LiquidRegistryData[] exclusions) {
@@ -81,6 +119,7 @@ public abstract class AGMLiquid <L extends AMLiquid> extends AGMaterialData<L> {
             for (LiquidRegistryData ll : exclusions) {
                 //update the key's value
                 l.getLiquidKey(ll.key).l = ll.l;
+                l.setMaterialExclusion(ll.key);
             }
         }
     }

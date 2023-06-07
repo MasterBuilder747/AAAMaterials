@@ -255,6 +255,48 @@ public abstract class ARecipeObject extends AData {
     protected abstract String customItemKey(String key);
     protected abstract String customLiquidKey(String key);
 
+    //recipe utilities
+    protected int parseAmt(String s) {
+        if (s.contains("*")) {
+            return Integer.parseInt(s.substring(s.indexOf("*")+1));
+        }
+        return 1;
+    }
+    protected String rmAmt(String s) {
+        if (s.contains("*")) return s.substring(0, s.indexOf("*"));
+        else return s;
+    }
+    protected String[] arrOfSameItem(String s) {
+        int amt = parseAmt(s);
+        if (amt == 1) {
+            return new String[]{rmAmt(s)};
+        } else {
+            String[] out = new String[amt];
+            for (int i = 0; i < amt; i++) {
+                out[i] = rmAmt(s);
+            }
+            return out;
+        }
+    }
+    //this assumes you already have the brackets
+    protected String addCraftingShapeless(String[] ins, String out) {
+        //recipes.addShapeless(@optional name,output,inputs,@optional function,@optional action)
+        if (ins.length > 9 || ins.length == 0) error("crafting table cannot hold more than 9 items or none");
+        return "recipes.addShapeless(" + out + ", [" + Util.arrToString(ins) + "]);\n";
+    }
+
+    //states
+    protected String[] getNotState(String s) {
+        String[] states = new String[]{"solid", "liquid", "gas", "plasma", "qgp"};
+        ArrayList<String> outs = new ArrayList<>();
+        for (String state : states) {
+            if (!s.equals(state)) {
+                outs.add(state);
+            }
+        }
+        return outs.toArray(new String[0]);
+    }
+
     //registries
     //item registry
     protected Registry getItemRegistry(String s) {

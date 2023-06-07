@@ -3,7 +3,8 @@ package Main.Generators;
 import Main.Data.Material;
 import Main.Util;
 
-import java.io.*;
+import java.io.BufferedReader;
+import java.io.IOException;
 
 public class GMaterial extends AGenerator<Material> {
     public GMaterial(String filename) {

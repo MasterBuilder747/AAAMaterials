@@ -39,8 +39,9 @@ public class MoleculeComposition extends AChemicalComposition {
 
     @Override
     protected void setSymbol() {
-        this.symbol = (this.compType.contains("element")) ?
-                this.composition.toSymbolNoCharge() : this.composition.toSymbol() +
+        this.symbol = //(this.compType.contains("element")) ?
+                this.composition.toSymbolNoCharge() +
+                //: this.composition.toSymbol() +
                 (
                     (this.isotope > 0) ? ("-"+this.isotope) +
                             ((this.mValue != -1) ? "m" +
@@ -62,12 +63,6 @@ public class MoleculeComposition extends AChemicalComposition {
     public void print() {
         System.out.println(this.m.NAME + ", (" + this.charge + "): " + composition.toSymbolNoCharge());
         //this.m.getComp().getCComp().printIngredients();
-    }
-
-    @Override
-    protected String buildSpecificRecipe() {
-        //any recipes needed for molecules, code only, no user recipes
-        return null;
     }
 
     @Override

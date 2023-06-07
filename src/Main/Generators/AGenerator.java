@@ -32,98 +32,26 @@ public abstract class AGenerator<D extends AData> {
         this.SUBFOLDER = SUBFOLDER;
         objects = new ArrayList<>();
     }
-
-    public String registerMaterials() throws IOException {
+    //for AGGameData
+    public AGenerator(int PARAMS, String filename, String SUBFOLDER, boolean noReplace) {
+        this.PARAMS = PARAMS;
+        this.filename = filename;
+        this.SUBFOLDER = SUBFOLDER;
+        objects = new ArrayList<>();
+        this.noReplace = noReplace;
+    }
+    //construct > readFile > register(write)
+    public void readFile() {
+        System.out.print("Reading file " + this.filename + "s.txt... ");
         Stopwatch w = new Stopwatch();
-        System.out.print("Loading " + this.filename + "s.txt... ");
         w.start();
-        //read
-        populateObjects();
-        //write
-        StringBuilder sb = new StringBuilder();
-        String test;
-        if (objects.size() > 0) {
-            test = objects.get(0).buildMaterial();
-            if (test != null) {
-                sb.append(appendHeader());
-                sb.append(test);
-                if (objects.size() > 1) {
-                    for (int i = 1; i < objects.size(); i++) {
-                        sb.append(objects.get(i).buildMaterial());
-                    }
-                }
-                sb.append("\n");
-            }
+        try {
+            populateObjects();
+        } catch (IOException e) {
+            e.printStackTrace();
         }
         w.stop();
         System.out.println("completed in " + w.getMillis() + " ms");
-        return sb.toString();
-    }
-
-    //split each materialData script code into separate files
-    public void registerFiles(String path, String filename, String label,
-                              int priority, int threshold) throws IOException {
-        Stopwatch w = new Stopwatch();
-        System.out.print("Loading " + this.filename + "s.txt... ");
-        w.start();
-        //read
-        populateObjects();
-        //write
-        String test;
-        if (objects.size() > 0) {
-            test = objects.get(0).buildMaterial();
-            if (test != null) {
-                int j = 0;
-                for (int i = 0; i < objects.size(); i++) {
-                    //split each materials.zs file to a limited buffer depending on the material
-                    FileWriter fw = new FileWriter(Util.HOME + Util.DEPLOY + "scripts/" + path + filename + j + ".zs");
-                    BufferedWriter bw = new BufferedWriter(fw);
-                    bw.write(Util.writeHeader(label, j, priority, null, true, null));
-                    bw.write(appendHeader());
-                    int counter = 0;
-                    while (i < objects.size() && counter < threshold) {
-                        bw.write(objects.get(i).buildMaterial());
-                        counter++;
-                        i++;
-                    }
-                    i--;
-                    bw.close();
-                    j++;
-                }
-            }
-        }
-        w.stop();
-        System.out.println("completed in " + w.getMillis() + " ms");
-    }
-    public String registerRecipes() throws IOException {
-        Stopwatch w = new Stopwatch();
-        System.out.print("Loading " + this.filename + "s.txt... ");
-        w.start();
-        //read
-        populateObjects();
-        //write
-        StringBuilder sb = new StringBuilder();
-        String test;
-        if (objects.size() > 0) {
-            test = objects.get(0).buildRecipe();
-            if (test != null) {
-                sb.append(appendHeader());
-                sb.append(test);
-                if (objects.size() > 1) {
-                    for (int i = 1; i < objects.size(); i++) {
-                        sb.append(objects.get(i).buildRecipe());
-                    }
-                }
-                sb.append("\n");
-            }
-        }
-        w.stop();
-        System.out.println("completed in " + w.getMillis() + " ms");
-        return sb.toString();
-    }
-
-    protected String appendHeader() {
-        return "# -"+this.filename+"s\n";
     }
     protected void populateObjects() throws IOException {
         FileReader fr = new FileReader(Util.HOME + Util.FILES + this.SUBFOLDER + "/" + this.filename.toLowerCase() + "s.txt");
@@ -150,6 +78,88 @@ public abstract class AGenerator<D extends AData> {
         fr.close();
     }
     protected abstract void readLine(BufferedReader br, String[] s) throws IOException; //this populates the arraylist with the specified object
+
+    public String writeMaterials() {
+        StringBuilder sb = new StringBuilder();
+        String test;
+        System.out.print("Writing from " + this.filename + "s.txt... ");
+        Stopwatch w = new Stopwatch();
+        w.start();
+        if (objects.size() > 0) {
+            test = objects.get(0).buildMaterial();
+            if (test != null) {
+                sb.append(appendHeader());
+                sb.append(test);
+                if (objects.size() > 1) {
+                    for (int i = 1; i < objects.size(); i++) {
+                        sb.append(objects.get(i).buildMaterial());
+                    }
+                }
+                sb.append("\n");
+            }
+        }
+        w.stop();
+        System.out.println("completed in " + w.getMillis() + " ms");
+        return sb.toString();
+    }
+    //split each materialData script code into separate files
+    public void writeMaterialFiles(String path, String filename, String label,
+                                   int priority, int threshold) throws IOException {
+        String test;
+        System.out.print("Writing from " + this.filename + "s.txt... ");
+        Stopwatch w = new Stopwatch();
+        w.start();
+        if (objects.size() > 0) {
+            test = objects.get(0).buildMaterial();
+            if (test != null) {
+                int j = 0;
+                for (int i = 0; i < objects.size(); i++) {
+                    //split each materials.zs file to a limited buffer depending on the material
+                    FileWriter fw = new FileWriter(Util.HOME + Util.DEPLOY + "scripts/" + path + filename + j + ".zs");
+                    BufferedWriter bw = new BufferedWriter(fw);
+                    bw.write(Util.writeHeader(label, j, priority, null, true, null));
+                    bw.write(appendHeader());
+                    int counter = 0;
+                    while (i < objects.size() && counter < threshold) {
+                        bw.write(objects.get(i).buildMaterial());
+                        counter++;
+                        i++;
+                    }
+                    i--;
+                    bw.close();
+                    j++;
+                }
+            }
+        }
+        w.stop();
+        System.out.println("completed in " + w.getMillis() + " ms");
+    }
+    public String writeRecipes() {
+        System.out.print("Writing from " + this.filename + "s.txt... ");
+        Stopwatch w = new Stopwatch();
+        w.start();
+        StringBuilder sb = new StringBuilder();
+        String test;
+        if (objects.size() > 0) {
+            test = objects.get(0).buildRecipe();
+            if (test != null) {
+                sb.append(appendHeader());
+                sb.append(test);
+                if (objects.size() > 1) {
+                    for (int i = 1; i < objects.size(); i++) {
+                        sb.append(objects.get(i).buildRecipe());
+                    }
+                }
+                sb.append("\n");
+            }
+        }
+        w.stop();
+        System.out.println("completed in " + w.getMillis() + " ms");
+        return sb.toString();
+    }
+    protected String appendHeader() {
+        return "# -"+this.filename+"s\n";
+    }
 
     //utilities
     public ArrayList<D> getObjects() {
@@ -230,6 +240,16 @@ public abstract class AGenerator<D extends AData> {
         }
         this.paramError(s, "boolean");
         return false;
+    }
+    protected void validateStates(String[] states) {
+        for (String state : states) {
+            switch (state) {
+                case "solid", "liquid", "gas", "plasma", "qgp" -> {
+                    return;
+                }
+                default -> error("Unknown state: " + state);
+            }
+        }
     }
     protected int parseInt(String s) {
         int out = 0;

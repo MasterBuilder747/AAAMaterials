@@ -15,27 +15,37 @@ import Main.Generators.MachineResource.GMachineData;
 import Main.Generators.MachineResource.GMachineMatter;
 import Main.Generators.PartGroup.GBlockPartGroup;
 import Main.Generators.PartGroup.GPartGroup;
+import Main.Generators.RecipeObjects.MaterialData.Composition.CompositionRegistry;
 import Main.Generators.Tweakers.GRecipeTweak;
+import Main.Util;
 
 public class GMSolid extends AGMaterialData<MSolid> {
+    CompositionRegistry compReg;
+
     public GMSolid(String filename, boolean isReg,
                    GRecipeTweak tweak, GRegistry registry, GLiquidRegistry liquids, GOreDictRegistry ores,
                    GMachine machine, GMachineGroup machineGroup, GMachineData data, GMachineMatter matter,
-                   GMaterial material, GPartGroup partGroup, GBlockPartGroup blockPartGroup) {
-        super(4, filename, isReg,
+                   GMaterial material, GPartGroup partGroup, GBlockPartGroup blockPartGroup,
+                   CompositionRegistry compReg) {
+        super(5, filename, isReg,
                 tweak, registry, liquids, ores,
                 machine, machineGroup, data, matter,
                 material, partGroup, blockPartGroup
         );
+        this.compReg = compReg;
     }
 
     @Override
     protected void readMaterialParameters(int minVoltage, double inMultiplier, double outMultiplier, int baseTime, double[] tickDecMulti,
                                           LLiquid data, LPlasma matterIn, LPlasma matterOut,
                                           Material m, String[] s, RegistryData[] exclusions, RegistryData[] blockExclusions) {
-        //bool addDust, bool addFineDust, bool addPowder, String customName(for other states)[= for none]
-
-        //TODO: fix alternate names for recipes
+        //minVoltage,powerMultiplierIn,powerMultiplierOut,baseTime,double[] tickDecMultipliers[16-minVoltage+1],//dataTypeOutput,(-/+)matterInType,(-/+)matterOutType,
+        //material,bool addDust,bool addFineDust,bool addPowder,String[2] altName;altColor(for other states)[use = for no alt name],isStateChange[use = for none]
+        String[] statesSyn = null;
+        if (!s[4].equals("=")) {
+            statesSyn = parseArray(s[4], ";");
+            validateStates(statesSyn);
+        }
         MSolid sol = new MSolid(
                 getRecipeTweak("MSolid"),
                 minVoltage, inMultiplier, outMultiplier,
@@ -43,11 +53,20 @@ public class GMSolid extends AGMaterialData<MSolid> {
                 data, matterIn, matterOut,
                 getItems(), getLiquids(), getOres(),
                 getMachineRegistry(), getMachineGroupRegistry(),
-                m
+                m,
+                compReg,
+                statesSyn
         );
+        if (!s[3].equals("=")) {
+            String[] altSyn = Util.split(s[3], ";");
+            if (altSyn.length != 2) error("Alternate name syntax needs: altName;altHexColor");
+            String altName = altSyn[0];
+            String altColor = altSyn[1];
+            if (!Util.validateHEX(altColor)) error("Wrong color syntax for altColor");
+            sol.addAltName(altName, altColor);
+        }
         sol.setPartGroups(exclusions, genPartGroups(new String[]{"dust", "fine", "powder"}),
-                new boolean[]{Boolean.parseBoolean(s[0]), Boolean.parseBoolean(s[1]), Boolean.parseBoolean(s[2])});
-        if (!s[3].equals("=")) sol.addAltName(s[3]);
+                new boolean[]{parseBoolean(s[0]), parseBoolean(s[1]), parseBoolean(s[2])});
         updateRegistryKeys(sol);
         objects.add(sol);
     }

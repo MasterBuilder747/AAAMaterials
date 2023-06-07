@@ -17,14 +17,7 @@ public class LMolten extends ALiquid {
                 items, liquids, ores,
                 machines, machineGroups,
                 localName,
-                color, isMaterial, false, vaporize,
+                color, isMaterial, "Molten", false, vaporize,
                 density, luminosity, temperature, viscosity);
-    }
-
-    @Override
-    public String buildMaterial() {
-        return "genMolten(\"" +
-                this.NAME + "\", \"" + this.color + "\", " + this.density + ", " + this.gas + ", " +
-                this.luminosity + ", " + this.temperature + ", " + this.viscosity + ", " + this.vaporize + ");\n";
     }
 }
