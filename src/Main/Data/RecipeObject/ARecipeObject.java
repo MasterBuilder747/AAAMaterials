@@ -232,19 +232,14 @@ public abstract class ARecipeObject extends AData {
                 }
             }
         } else if (item.startsWith("^")) {
-            //todo: handle this later
-            //custom item key defined by the child object (abstract or not), if it exists
-            String c = customItemKey(item.substring(1));
-            if (c != null) out = c;
-            else error("No custom keys exists for object of type " + this.className);
-            out = null;
+            out = customItemKey(item.substring(1));
+            if (out == null) error("No custom keys exists for object of type " + this.className);
         } else if (item.startsWith("<>")) {
             //override and use whatever text is there in the actual recipe code
             out = item;
         } else {
             //key, if used by material system
-            if (this instanceof AMaterialData) ;
-            else error("No keys exist for recipe object " + className);
+            if (!(this instanceof AMaterialData)) error("No keys exist for recipe object " + className);
             out = getUnlocalizedByKey(item); //if this is null, stop creating the entire recipe
         }
         //$ is custom symbol

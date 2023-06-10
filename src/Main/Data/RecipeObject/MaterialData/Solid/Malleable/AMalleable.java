@@ -60,36 +60,41 @@ public abstract class AMalleable extends AMSolid {
         return sb.toString();
     }
     protected abstract String buildPartMaterials();
+
     @Override
     protected String buildSpecificRecipe() {
         StringBuilder sb = new StringBuilder();
         LPart[] parts = this.getPartsWithOverrides();
         LBlockPart[] blockParts = this.getBlockPartsWithOverrides();
         int i = 0;
-        for (LPart p : parts) {
-            if (p.amount > 0) {
-                sb.append(addRecipe(
-                        i, "machine", true, this.baseTime, 0,
-                        this.tickDecMultipliers, 1, new int[]{1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1},
-                        this.minVoltage, this.powerMultiplierIn, this.powerMultiplierOut,
-                        p.oreDict, "-", "-", "molten*"+(int)(p.amount * this.meltingMultiplier),
-                        "codeMeltingItem", 50, this.data.NAME+"*25",
-                        this.matterIn.NAME+"*100", this.matterOut.NAME+"*100"
-                ));
-                i++;
+        if (parts != null) {
+            for (LPart p : parts) {
+                if (p.amount > 0) {
+                    sb.append(addRecipe(
+                            i, "machine", true, this.baseTime, 0,
+                            this.tickDecMultipliers, 1, new int[]{1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
+                            this.minVoltage, this.powerMultiplierIn, this.powerMultiplierOut,
+                            p.oreDict, "-", "-", "molten*" + (int) (p.amount * this.meltingMultiplier),
+                            "codeMeltingItem", 50, this.data.NAME + "*25",
+                            this.matterIn.NAME + "*100", this.matterOut.NAME + "*100"
+                    ));
+                    i++;
+                }
             }
         }
-        for (LBlockPart p : blockParts) {
-            if (p.amount > 0) {
-                sb.append(addRecipe(
-                        i, "machine", true, this.baseTime, 0,
-                        this.tickDecMultipliers, 1, new int[]{1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1},
-                        this.minVoltage, this.powerMultiplierIn, this.powerMultiplierOut,
-                        p.oreDict, "-", "-", "molten*"+(int)(p.amount * this.meltingMultiplier),
-                        "codeMeltingBlock", 50, this.data.NAME+"*25",
-                        this.matterIn.NAME+"*100", this.matterOut.NAME+"*100"
-                ));
-                i++;
+        if (blockParts != null) {
+            for (LBlockPart p : blockParts) {
+                if (p.amount > 0) {
+                    sb.append(addRecipe(
+                            i, "machine", true, this.baseTime, 0,
+                            this.tickDecMultipliers, 1, new int[]{1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
+                            this.minVoltage, this.powerMultiplierIn, this.powerMultiplierOut,
+                            p.oreDict, "-", "-", "molten*" + (int) (p.amount * this.meltingMultiplier),
+                            "codeMeltingBlock", 50, this.data.NAME + "*25",
+                            this.matterIn.NAME + "*100", this.matterOut.NAME + "*100"
+                    ));
+                    i++;
+                }
             }
         }
         String addRecipe = buildPartRecipes();

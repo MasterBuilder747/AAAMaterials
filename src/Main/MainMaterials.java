@@ -12,6 +12,7 @@ import Main.Generators.MachineResource.GMachineData;
 import Main.Generators.MachineResource.GMachineMatter;
 import Main.Generators.PartGroup.GBlockPartGroup;
 import Main.Generators.PartGroup.GPartGroup;
+import Main.Generators.PartGroup.GToolPartGroup;
 import Main.Generators.RecipeObjects.Localized.GBlock;
 import Main.Generators.RecipeObjects.Localized.GItem;
 import Main.Generators.RecipeObjects.Localized.Liquid.GGas;
@@ -20,6 +21,7 @@ import Main.Generators.RecipeObjects.Localized.Liquid.GMolten;
 import Main.Generators.RecipeObjects.Localized.Liquid.GPlasma;
 import Main.Generators.RecipeObjects.Localized.Part.GBlockPart;
 import Main.Generators.RecipeObjects.Localized.Part.GPart;
+import Main.Generators.RecipeObjects.Localized.Part.GToolPart;
 import Main.Generators.RecipeObjects.MaterialData.Composition.GCompoundComposition;
 import Main.Generators.RecipeObjects.MaterialData.Composition.GMoleculeComposition;
 import Main.Generators.RecipeObjects.MaterialData.GMSolid;
@@ -27,10 +29,7 @@ import Main.Generators.RecipeObjects.MaterialData.Liquid.GMGas;
 import Main.Generators.RecipeObjects.MaterialData.Liquid.GMLiquid;
 import Main.Generators.RecipeObjects.MaterialData.Liquid.GMPlasma;
 import Main.Generators.RecipeObjects.MaterialData.Solid.*;
-import Main.Generators.RecipeObjects.MaterialData.Solid.Malleable.GAlloy;
-import Main.Generators.RecipeObjects.MaterialData.Solid.Malleable.GMetal;
-import Main.Generators.RecipeObjects.MaterialData.Solid.Malleable.GPlastic;
-import Main.Generators.RecipeObjects.MaterialData.Solid.Malleable.GRubber;
+import Main.Generators.RecipeObjects.MaterialData.Solid.Malleable.*;
 import Main.Generators.RecipeObjects.MaterialData.Solid.Tinkers.GTinkerCastable;
 import Main.Generators.RecipeObjects.MaterialData.Solid.Tinkers.GTinkerCraftable;
 import Main.Generators.RecipeObjects.MaterialData.Solid.Tinkers.GTinkerCustom;
@@ -167,12 +166,21 @@ public class MainMaterials {
         GBlockPart blockPart = new GBlockPart("blockPart", REG, registry, liquids, oreDict, machine, machineGroup, data, matter); //this is localized
         blockPart.readFile();
         bw.write(blockPart.writeMaterials());
+        GToolPart toolPart = new GToolPart("tool", REG, registry, liquids, oreDict, machine, machineGroup, data, matter); //this is localized
+        toolPart.readFile();
+        bw.write(toolPart.writeMaterials());
+        //partGroups
         GPartGroup partGroup = new GPartGroup("partGroup", part);
         partGroup.readFile();
         bw.write(partGroup.writeMaterials());
         GBlockPartGroup blockPartGroup = new GBlockPartGroup("blockPartGroup", blockPart);
         blockPartGroup.readFile();
         bw.write(blockPartGroup.writeMaterials());
+        GToolPartGroup toolGroup = new GToolPartGroup("toolGroup", toolPart);
+        toolGroup.readFile();
+        bw.write(toolGroup.writeMaterials());
+
+        //elements
         GElement element = new GElement("element");
         element.readFile();
         element.writeMaterials();
@@ -183,10 +191,10 @@ public class MainMaterials {
         GMaterial material = new GMaterial("`material");
         material.readFile();
         sb.append(material.writeMaterials());
-        GMoleculeComposition molecule = new GMoleculeComposition("molecule", REG, registry, liquids, oreDict, machine, machineGroup, data, matter, material, partGroup, blockPartGroup, element);
+        GMoleculeComposition molecule = new GMoleculeComposition("molecule", REG, registry, liquids, oreDict, machine, machineGroup, data, matter, material, partGroup, blockPartGroup, toolGroup, element);
         molecule.readFile();
         molecule.writeMaterials();
-        GCompoundComposition compound = new GCompoundComposition("compound", REG, registry, liquids, oreDict, machine, machineGroup, data, matter, material, partGroup, blockPartGroup, molecule);
+        GCompoundComposition compound = new GCompoundComposition("compound", REG, registry, liquids, oreDict, machine, machineGroup, data, matter, material, partGroup, blockPartGroup, toolGroup, molecule);
         compound.readFile();
         compound.writeMaterials();
 
@@ -195,56 +203,59 @@ public class MainMaterials {
         //material datas
         //material states
         int datasPriority = 700;
-        GMSolid mSolid = new GMSolid("solid", REG, tweak, registry, liquids, oreDict, machine, machineGroup, data, matter, material, partGroup, blockPartGroup, null);
+        GMSolid mSolid = new GMSolid("solid", REG, tweak, registry, liquids, oreDict, machine, machineGroup, data, matter, material, partGroup, blockPartGroup, toolGroup, null);
         mSolid.readFile();
         sb.append(mSolid.writeMaterials());
-        GMLiquid mLiquid = new GMLiquid("liquid", REG, tweak, registry, liquids, oreDict, machine, machineGroup, data, matter, material, partGroup, blockPartGroup, null);
+        GMLiquid mLiquid = new GMLiquid("liquid", REG, tweak, registry, liquids, oreDict, machine, machineGroup, data, matter, material, partGroup, blockPartGroup, toolGroup, null);
         mLiquid.readFile();
         mLiquid.writeMaterialFiles("materials/materialDatas/", "liquids", "liquids", datasPriority, 1000);
-        GMGas mGas = new GMGas("gase", REG, tweak, registry, liquids, oreDict, machine, machineGroup, data, matter, material, partGroup, blockPartGroup, null);
+        GMGas mGas = new GMGas("gase", REG, tweak, registry, liquids, oreDict, machine, machineGroup, data, matter, material, partGroup, blockPartGroup, toolGroup, null);
         mGas.readFile();
         mGas.writeMaterialFiles("materials/materialDatas/", "gases", "gases", datasPriority, 1000);
-        GMPlasma mPlasma = new GMPlasma("plasma", REG, tweak, registry, liquids, oreDict, machine, machineGroup, data, matter, material, partGroup, blockPartGroup, null);
+        GMPlasma mPlasma = new GMPlasma("plasma", REG, tweak, registry, liquids, oreDict, machine, machineGroup, data, matter, material, partGroup, blockPartGroup, toolGroup, null);
         mPlasma.readFile();
         mPlasma.writeMaterialFiles("materials/materialDatas/", "plasmas", "plasma", datasPriority, 1000);
 
         //solid material datas
-        GWood wood = new GWood("wood", REG, tweak, registry, liquids, oreDict, machine, machineGroup, data, matter, material, partGroup, blockPartGroup, mSolid);
+        GWood wood = new GWood("wood", REG, tweak, registry, liquids, oreDict, machine, machineGroup, data, matter, material, partGroup, blockPartGroup, toolGroup, mSolid);
         wood.readFile();
         sb.append(wood.writeMaterials());
-        GStone stone = new GStone("stone", REG, tweak, registry, liquids, oreDict, machine, machineGroup, data, matter, material, partGroup, blockPartGroup, mSolid);
+        GStone stone = new GStone("stone", REG, tweak, registry, liquids, oreDict, machine, machineGroup, data, matter, material, partGroup, blockPartGroup, toolGroup, mSolid);
         stone.readFile();
         sb.append(stone.writeMaterials());
-        GGem gem = new GGem("gem", REG, tweak, registry, liquids, oreDict, machine, machineGroup, data, matter, material, partGroup, blockPartGroup, mSolid);
+        GGem gem = new GGem("gem", REG, tweak, registry, liquids, oreDict, machine, machineGroup, data, matter, material, partGroup, blockPartGroup, toolGroup, mSolid);
         gem.readFile();
         sb.append(gem.writeMaterials());
-        GNuclear nuclear = new GNuclear("nuclear", REG, tweak, registry, liquids, oreDict, machine, machineGroup, data, matter, material, partGroup, blockPartGroup, mSolid, molecule);
+        GNuclear nuclear = new GNuclear("nuclear", REG, tweak, registry, liquids, oreDict, machine, machineGroup, data, matter, material, partGroup, blockPartGroup, toolGroup, mSolid, molecule);
         nuclear.readFile();
         sb.append(nuclear.writeMaterials());
 
         //liquid+solid material datas
-        GMetal metal = new GMetal("metal", REG, tweak, registry, liquids, oreDict, machine, machineGroup, data, matter, material, partGroup, blockPartGroup, mSolid, mLiquid);
+        GMetal metal = new GMetal("metal", REG, tweak, registry, liquids, oreDict, machine, machineGroup, data, matter, material, partGroup, blockPartGroup, toolGroup, mSolid, mLiquid);
         metal.readFile();
         sb.append(metal.writeMaterials());
-        GAlloy alloy = new GAlloy("alloy", REG, tweak, registry, liquids, oreDict, machine, machineGroup, data, matter, material, partGroup, blockPartGroup, mSolid, mLiquid);
+        GAlloy alloy = new GAlloy("alloy", REG, tweak, registry, liquids, oreDict, machine, machineGroup, data, matter, material, partGroup, blockPartGroup, toolGroup, mSolid, mLiquid);
         alloy.readFile();
         sb.append(alloy.writeMaterials());
-        GPlastic plastic = new GPlastic("plastic", REG, tweak, registry, liquids, oreDict, machine, machineGroup, data, matter, material, partGroup, blockPartGroup, mSolid, mLiquid);
+        GPlastic plastic = new GPlastic("plastic", REG, tweak, registry, liquids, oreDict, machine, machineGroup, data, matter, material, partGroup, blockPartGroup, toolGroup, mSolid, mLiquid);
         plastic.readFile();
         sb.append(plastic.writeMaterials());
-        GRubber rubber = new GRubber("rubber", REG, tweak, registry, liquids, oreDict, machine, machineGroup, data, matter, material, partGroup, blockPartGroup, mSolid, mLiquid);
+        GRubber rubber = new GRubber("rubber", REG, tweak, registry, liquids, oreDict, machine, machineGroup, data, matter, material, partGroup, blockPartGroup, toolGroup, mSolid, mLiquid);
         rubber.readFile();
         sb.append(rubber.writeMaterials());
+        GTool tool = new GTool("tool", REG, tweak, registry, liquids, oreDict, machine, machineGroup, data, matter, material, partGroup, blockPartGroup, toolGroup, mSolid, mLiquid);
+        tool.readFile();
+        sb.append(tool.writeMaterials());
 
         //tinkers material datas
         int ticPriority = 600;
-        GTinkerCastable tCastable = new GTinkerCastable("TinkerCastable", REG, tweak, registry, liquids, oreDict, machine, machineGroup, data, matter, material, partGroup, blockPartGroup, tcParts, tcTraits, alloy, metal, plastic, rubber);
+        GTinkerCastable tCastable = new GTinkerCastable("TinkerCastable", REG, tweak, registry, liquids, oreDict, machine, machineGroup, data, matter, material, partGroup, blockPartGroup, toolGroup, tcParts, tcTraits, alloy, metal, plastic, rubber);
         tCastable.readFile();
         tCastable.writeMaterialFiles("materials/materialDatas/", "tCastables", "tinkers castable", ticPriority, 1000);
-        GTinkerCraftable tCraftable = new GTinkerCraftable("TinkerCraftable", REG, tweak, registry, liquids, oreDict, machine, machineGroup, data, matter, material, partGroup, blockPartGroup, tcParts, tcTraits);
+        GTinkerCraftable tCraftable = new GTinkerCraftable("TinkerCraftable", REG, tweak, registry, liquids, oreDict, machine, machineGroup, data, matter, material, partGroup, blockPartGroup, toolGroup, tcParts, tcTraits);
         tCraftable.readFile();
         tCraftable.writeMaterialFiles("materials/materialDatas/", "tCraftables", "tinkers craftable", ticPriority, 1000);
-        GTinkerCustom tCustom = new GTinkerCustom("TinkerCustom", REG, tweak, registry, liquids, oreDict, machine, machineGroup, data, matter, material, partGroup, blockPartGroup, tcParts, tcTraits);
+        GTinkerCustom tCustom = new GTinkerCustom("TinkerCustom", REG, tweak, registry, liquids, oreDict, machine, machineGroup, data, matter, material, partGroup, blockPartGroup, toolGroup, tcParts, tcTraits);
         tCustom.readFile();
         tCustom.writeMaterialFiles("materials/materialDatas/", "tCustoms", "tinkers custom", ticPriority, 1000);
         //export armor stats to config
@@ -265,7 +276,7 @@ public class MainMaterials {
         );
 
         //ore system
-        GOre ore = new GOre("ore", REG, tweak, registry, liquids, oreDict, machine, machineGroup, data, matter, material, partGroup, blockPartGroup, mSolid, stone);
+        GOre ore = new GOre("ore", REG, tweak, registry, liquids, oreDict, machine, machineGroup, data, matter, material, partGroup, blockPartGroup, toolGroup, mSolid, stone);
         ore.readFile();
         sb.append(ore.writeMaterials());
         GOreVein veins = new GOreVein("oreVein", ore, dimension, biomes);
@@ -293,6 +304,7 @@ public class MainMaterials {
         bw.write(plasma.localize());
         bw.write(part.localize());
         bw.write(blockPart.localize());
+        bw.write(toolPart.localize());
         //material data
         bw.write(mLiquid.localize());
         bw.write(mGas.localize());

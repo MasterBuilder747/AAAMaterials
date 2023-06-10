@@ -15,6 +15,7 @@ import Main.Generators.MachineResource.GMachineData;
 import Main.Generators.MachineResource.GMachineMatter;
 import Main.Generators.PartGroup.GBlockPartGroup;
 import Main.Generators.PartGroup.GPartGroup;
+import Main.Generators.PartGroup.GToolPartGroup;
 import Main.Replacement;
 import Main.Util;
 
@@ -26,12 +27,12 @@ public class GCompoundComposition extends AGChemicalComposition<CompoundComposit
     public GCompoundComposition(String filename, boolean isReg,
                                 GRegistry registry, GLiquidRegistry liquids, GOreDictRegistry ores,
                                 GMachine machine, GMachineGroup machineGroup, GMachineData data, GMachineMatter matter,
-                                GMaterial material, GPartGroup partGroup, GBlockPartGroup blockPartGroup,
+                                GMaterial material, GPartGroup partGroup, GBlockPartGroup blockPartGroup, GToolPartGroup toolGroup,
                                 GMoleculeComposition molecule) {
         super(9, filename, isReg,
                 registry, liquids, ores,
                 machine, machineGroup, data, matter,
-                material, partGroup, blockPartGroup,
+                material, partGroup, blockPartGroup, toolGroup,
                 false);
         this.molecule = molecule;
     }

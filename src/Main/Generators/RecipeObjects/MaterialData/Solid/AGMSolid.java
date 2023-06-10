@@ -16,6 +16,7 @@ import Main.Generators.MachineResource.GMachineData;
 import Main.Generators.MachineResource.GMachineMatter;
 import Main.Generators.PartGroup.GBlockPartGroup;
 import Main.Generators.PartGroup.GPartGroup;
+import Main.Generators.PartGroup.GToolPartGroup;
 import Main.Generators.RecipeObjects.MaterialData.AGMaterialData;
 import Main.Generators.RecipeObjects.MaterialData.GMSolid;
 import Main.Generators.Tweakers.GRecipeTweak;
@@ -29,12 +30,12 @@ public abstract class AGMSolid <S extends AMSolid> extends AGMaterialData<S> {
     public AGMSolid(int params, String filename, boolean isReg,
                     GRecipeTweak tweak, GRegistry registry, GLiquidRegistry liquids, GOreDictRegistry ores,
                     GMachine machine, GMachineGroup machineGroup, GMachineData data, GMachineMatter matter,
-                    GMaterial material, GPartGroup partGroup, GBlockPartGroup blockPartGroup,
+                    GMaterial material, GPartGroup partGroup, GBlockPartGroup blockPartGroup, GToolPartGroup toolGroup,
                     GMSolid solid, boolean isDust, boolean isFineDust, boolean isPowder) {
         super(params, filename, "Solid", isReg,
                 tweak, registry, liquids, ores,
                 machine, machineGroup, data, matter,
-                material, partGroup, blockPartGroup);
+                material, partGroup, blockPartGroup, toolGroup);
         this.solid = solid;
         this.isDust = isDust;
         this.isFineDust = isFineDust;
@@ -43,12 +44,12 @@ public abstract class AGMSolid <S extends AMSolid> extends AGMaterialData<S> {
     public AGMSolid(int params, String filename, String solidFolder, boolean isReg,
                     GRecipeTweak tweak, GRegistry registry, GLiquidRegistry liquids, GOreDictRegistry ores,
                     GMachine machine, GMachineGroup machineGroup, GMachineData data, GMachineMatter matter,
-                    GMaterial material, GPartGroup partGroup, GBlockPartGroup blockPartGroup,
+                    GMaterial material, GPartGroup partGroup, GBlockPartGroup blockPartGroup, GToolPartGroup toolGroup,
                     GMSolid solid, boolean isDust, boolean isFineDust, boolean isPowder) {
         super(params, filename, "Solid/"+solidFolder, isReg,
                 tweak, registry, liquids, ores,
                 machine, machineGroup, data, matter,
-                material, partGroup, blockPartGroup);
+                material, partGroup, blockPartGroup, toolGroup);
         this.solid = solid;
         this.isDust = isDust;
         this.isFineDust = isFineDust;

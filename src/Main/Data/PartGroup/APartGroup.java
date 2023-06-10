@@ -7,8 +7,9 @@ public abstract class APartGroup<P extends APart> extends AData {
     //defines a Part[] in zs form
     P[] parts;
 
-    public APartGroup(String NAME) {
+    public APartGroup(String NAME, P[] parts) {
         super(NAME);
+        this.parts = parts;
     }
 
     public P[] getParts() {

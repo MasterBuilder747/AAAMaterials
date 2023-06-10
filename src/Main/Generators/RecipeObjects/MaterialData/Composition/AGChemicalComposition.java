@@ -16,6 +16,7 @@ import Main.Generators.MachineResource.GMachineData;
 import Main.Generators.MachineResource.GMachineMatter;
 import Main.Generators.PartGroup.GBlockPartGroup;
 import Main.Generators.PartGroup.GPartGroup;
+import Main.Generators.PartGroup.GToolPartGroup;
 import Main.Generators.RecipeObjects.MaterialData.AGMaterialData;
 
 import java.io.BufferedReader;
@@ -27,12 +28,12 @@ public abstract class AGChemicalComposition<C extends AChemicalComposition> exte
     public AGChemicalComposition(int PARAMS, String filename, boolean isReg,
                                  GRegistry registry, GLiquidRegistry liquids, GOreDictRegistry ores,
                                  GMachine machine, GMachineGroup machineGroup, GMachineData data, GMachineMatter matter,
-                                 GMaterial material, GPartGroup partGroup, GBlockPartGroup blockPartGroup,
+                                 GMaterial material, GPartGroup partGroup, GBlockPartGroup blockPartGroup, GToolPartGroup toolGroup,
                                  boolean isSingular) {
         super(PARAMS-8, filename + "_composition", isReg,
                 null, registry, liquids, ores,
                 machine, machineGroup, data, matter,
-                material, partGroup, blockPartGroup);
+                material, partGroup, blockPartGroup, toolGroup);
         this.isSingular = isSingular;
     }
 

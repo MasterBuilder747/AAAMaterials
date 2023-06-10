@@ -6,27 +6,33 @@ import Main.Data.Machine.MachineGroup;
 import Main.Data.Material;
 import Main.Data.RecipeObject.Localized.Liquid.LLiquid;
 import Main.Data.RecipeObject.Localized.Liquid.LPlasma;
+import Main.Data.RecipeObject.Localized.Part.LTool;
 import Main.Data.RecipeObject.MaterialData.Liquid.MLiquid;
 import Main.Data.Tweakers.RecipeTweak;
+import Main.Util;
 
 public class Tool extends AMalleable {
+    double resistance;
+
     public Tool(RecipeTweak tweak, int minVoltage, double powerMultiplierIn, double powerMultiplierOut,
-                 int baseTime, double[] tickDecMultipliers, LLiquid data, LPlasma matterIn, LPlasma matterOut,
-                 Registry[] items, String[] liquids, String[] ores,
-                 Machine[] machines, MachineGroup[] machineGroups,
-                 Material m,
-                 MLiquid molten) {
+                int baseTime, double[] tickDecMultipliers, LLiquid data, LPlasma matterIn, LPlasma matterOut,
+                Registry[] items, String[] liquids, String[] ores,
+                Machine[] machines, MachineGroup[] machineGroups,
+                Material m,
+                MLiquid molten, double meltingMultiplier,
+                double resistance) {
         super("Tool",
                 tweak, minVoltage, powerMultiplierIn, powerMultiplierOut,
                 baseTime, tickDecMultipliers, data, matterIn, matterOut,
                 items, liquids, ores,
                 machines, machineGroups,
                 m,
-                molten, 1);
+                molten, meltingMultiplier);
+        this.resistance = resistance;
     }
 
     @Override
-    protected String buildPartMaterials() {
+    protected String buildPartRecipes() {
         //this needs to extend (use) Metal or Alloy
         //these are metal tools for metalworking, making metal parts
         //use machines with no power usage:
@@ -41,12 +47,53 @@ public class Tool extends AMalleable {
         //durability (stacks of the item)
         //chance to consume one durability (resistance)
 
-        return null;
+        //stick handle + metal head
+        //initial tools are crafted, but most are made in the metal workbench/anvil
+        //this uses a tweaker for the usage, put the crafting for the tools here
+        StringBuilder sb = new StringBuilder();
+
+        LTool[] tools = this.getToolsWithOverrides();
+        if (tools != null) {
+            int i = 0;
+            for (LTool p : tools) {
+                if (p.amount > 0) {
+                    sb.append(addRecipe(
+                            i, "machine", true, this.baseTime, 0,
+                            this.tickDecMultipliers, 1, new int[]{1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
+                            this.minVoltage, this.powerMultiplierIn, this.powerMultiplierOut,
+                            p.oreDict, "-", "-", "molten*" + (int)((p.amount * this.meltingMultiplier) / p.durability),
+                            "codeMeltingTool", 50, this.data.NAME + "*25",
+                            this.matterIn.NAME + "*100", this.matterOut.NAME + "*100"
+                    ));
+                    i++;
+                }
+            }
+        }
+
+        if (this.getToolsWithOverrides() != null) {
+            for (LTool t : this.getToolsWithOverrides()) {
+                sb.append(t.buildRecipe());
+            }
+        }
+        return sb.toString();
     }
 
     @Override
-    protected String buildPartRecipes() {
-        return null;
+    protected String buildPartMaterials() {
+        return this.genToolGroups();
+    }
+
+    @Override
+    protected String customItemKey(String key) {
+        //hammer:1
+        String[] toolSyn = Util.split(key, ":");
+        if (toolSyn.length != 2) error("Tool syntax " + key + " is wrong, use toolName:amountOfUses");
+        String toolName = toolSyn[0];
+        int amtOfUses = parseInt(toolSyn[1]);
+        LTool tool = this.getTool(toolName);
+        assert tool != null;
+        String item = getUnlocalizedByKey(tool.oreDict);
+        return (100*(1-this.resistance))+"%"+item+"*"+amtOfUses;
     }
 
     @Override

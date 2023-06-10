@@ -4,6 +4,7 @@ import Main.Data.GameData.Registry;
 import Main.Data.Material;
 import Main.Data.PartGroup.BlockPartGroup;
 import Main.Data.PartGroup.PartGroup;
+import Main.Data.PartGroup.ToolGroup;
 import Main.Data.RecipeObject.Localized.Liquid.LLiquid;
 import Main.Data.RecipeObject.Localized.Liquid.LPlasma;
 import Main.Data.RecipeObject.MaterialData.AMaterialData;
@@ -18,6 +19,7 @@ import Main.Generators.MachineResource.GMachineData;
 import Main.Generators.MachineResource.GMachineMatter;
 import Main.Generators.PartGroup.GBlockPartGroup;
 import Main.Generators.PartGroup.GPartGroup;
+import Main.Generators.PartGroup.GToolPartGroup;
 import Main.Generators.RecipeObjects.AGRecipeObject;
 import Main.Generators.Tweakers.GRecipeTweak;
 import Main.Util;
@@ -26,32 +28,36 @@ import java.io.BufferedReader;
 import java.util.ArrayList;
 
 public abstract class AGMaterialData<M extends AMaterialData> extends AGRecipeObject<M> {
-    protected GPartGroup partGroup; //needed for validating partGroups to be used in recipes
-    protected GBlockPartGroup blockPartGroup; //needed for validating partGroups to be used in recipes
+    //material data that is stored to indicate what is registered for a given material
     protected GMaterial material; //required for passing material data through
 
-    //material data that is stored to indicate what is registered for a given material
+    protected GPartGroup partGroup; //needed for validating partGroups to be used in recipes
+    protected GBlockPartGroup blockPartGroup; //needed for validating partGroups to be used in recipes
+    protected GToolPartGroup toolGroup; //needed for validating toolGroups to be used in recipes
+
     public AGMaterialData(int PARAMS, String filename, boolean isReg,
                           GRecipeTweak tweak, GRegistry registry, GLiquidRegistry liquids, GOreDictRegistry ores,
                           GMachine machine, GMachineGroup machineGroup, GMachineData data, GMachineMatter matter,
-                          GMaterial material, GPartGroup partGroup, GBlockPartGroup blockPartGroup) {
+                          GMaterial material, GPartGroup partGroup, GBlockPartGroup blockPartGroup, GToolPartGroup toolGroup) {
         super(PARAMS+1, filename, "Material", isReg,
                 tweak, registry, liquids, ores,
                 machine, machineGroup, data, matter);
         this.material = material;
         this.partGroup = partGroup;
         this.blockPartGroup = blockPartGroup;
+        this.toolGroup = toolGroup;
     }
     public AGMaterialData(int PARAMS, String filename, String materialFolder, boolean isReg,
                           GRecipeTweak tweak, GRegistry registry, GLiquidRegistry liquids, GOreDictRegistry ores,
                           GMachine machine, GMachineGroup machineGroup, GMachineData data, GMachineMatter matter,
-                          GMaterial material, GPartGroup partGroup, GBlockPartGroup blockPartGroup) {
+                          GMaterial material, GPartGroup partGroup, GBlockPartGroup blockPartGroup, GToolPartGroup toolGroup) {
         super(PARAMS+1, filename, "Material/"+materialFolder, isReg,
                 tweak, registry, liquids, ores,
                 machine, machineGroup, data, matter);
         this.material = material;
         this.partGroup = partGroup;
         this.blockPartGroup = blockPartGroup;
+        this.toolGroup = toolGroup;
     }
 
     @Override
@@ -113,6 +119,17 @@ public abstract class AGMaterialData<M extends AMaterialData> extends AGRecipeOb
         return this.blockPartGroup.getPart(partGroupName);
     }
 
+    protected ToolGroup[] genToolGroups(String[] partGroupNames) {
+        ArrayList<ToolGroup> partGroups = new ArrayList<>();
+        for (String s : partGroupNames) {
+            partGroups.add(this.toolGroup.getPart(s));
+        }
+        return partGroups.toArray(new ToolGroup[0]);
+    }
+    protected ToolGroup genToolGroup(String partGroupName) {
+        return this.toolGroup.getPart(partGroupName);
+    }
+
     //this is called after genPartGroups
     protected void updateRegistryKeys(M r) {
         if (this.isReg) {
@@ -130,6 +147,15 @@ public abstract class AGMaterialData<M extends AMaterialData> extends AGRecipeOb
             r.addAllRegistryDatas(keys, regs);
         }
     }
+    protected void updateToolRegistryKeys(M r) {
+        if (this.isReg) {
+            String[] keys = r.getToolKeys();
+            String[] names = r.toolRegistryNames.toArray(new String[0]);
+            Registry[] regs = getRegistries(names);
+            r.addAllRegistryDatas(keys, regs);
+        }
+    }
+
     protected Registry[] getRegistries(String[] registries) {
         ArrayList<Registry> regs = new ArrayList<>();
         for (String s : registries) {

@@ -11,10 +11,10 @@ import Main.Generators.MachineResource.GMachineMatter;
 import Main.Generators.RecipeObjects.Localized.AGLocal;
 
 public abstract class AGPart<P extends APart> extends AGLocal<P> {
-    public AGPart(String filename, boolean isReg,
+    public AGPart(int params, String filename, boolean isReg,
                  GRegistry registry, GLiquidRegistry liquids, GOreDictRegistry ores,
                  GMachine machine, GMachineGroup machineGroup, GMachineData data, GMachineMatter matter) {
-        super(4, filename, "Part", isReg,
+        super(params, filename, "Part", isReg,
                 registry, liquids, ores,
                 machine, machineGroup, data, matter);
     }

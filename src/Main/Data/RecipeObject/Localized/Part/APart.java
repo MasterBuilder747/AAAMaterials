@@ -36,7 +36,7 @@ public abstract class APart extends ALocalizedData {
                  Registry[] items, String[] liquids, String[] ores,
                  Machine[] machines, MachineGroup[] machineGroups,
                  String localName,
-                 String  oreDict, boolean hasOverlay, int amount) {
+                 String oreDict, boolean hasOverlay, int amount) {
         super(NAME, type,
                 items, liquids, ores,
                 machines, machineGroups,

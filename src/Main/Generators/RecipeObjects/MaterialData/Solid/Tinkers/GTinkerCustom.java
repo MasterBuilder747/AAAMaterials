@@ -17,6 +17,7 @@ import Main.Generators.MachineResource.GMachineData;
 import Main.Generators.MachineResource.GMachineMatter;
 import Main.Generators.PartGroup.GBlockPartGroup;
 import Main.Generators.PartGroup.GPartGroup;
+import Main.Generators.PartGroup.GToolPartGroup;
 import Main.Generators.Tweakers.GRecipeTweak;
 
 public class GTinkerCustom extends AGTinkers<TinkerCustom> {
@@ -24,14 +25,14 @@ public class GTinkerCustom extends AGTinkers<TinkerCustom> {
             String filename, boolean isReg,
             GRecipeTweak tweak, GRegistry registry, GLiquidRegistry liquids, GOreDictRegistry ores,
             GMachine machine, GMachineGroup machineGroup, GMachineData data, GMachineMatter matter,
-            GMaterial material, GPartGroup partGroup, GBlockPartGroup blockPartGroup,
+            GMaterial material, GPartGroup partGroup, GBlockPartGroup blockPartGroup, GToolPartGroup toolGroup,
             GTCPartRegistry parts, GTCTraitRegistry traits
     ) {
         super(
             7+5, filename, isReg,
             tweak, registry, liquids, ores,
             machine, machineGroup, data, matter,
-            material, partGroup, blockPartGroup,
+            material, partGroup, blockPartGroup, toolGroup,
             parts, traits
         );
     }

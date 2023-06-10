@@ -17,6 +17,7 @@ import Main.Generators.MachineResource.GMachineData;
 import Main.Generators.MachineResource.GMachineMatter;
 import Main.Generators.PartGroup.GBlockPartGroup;
 import Main.Generators.PartGroup.GPartGroup;
+import Main.Generators.PartGroup.GToolPartGroup;
 import Main.Generators.RecipeObjects.MaterialData.GMSolid;
 import Main.Generators.RecipeObjects.MaterialData.Liquid.GMLiquid;
 import Main.Generators.RecipeObjects.MaterialData.Solid.AGMSolid;
@@ -28,13 +29,13 @@ public abstract class AGMalleable <M extends AMalleable> extends AGMSolid<M> {
     public AGMalleable(int params, String filename, boolean isReg,
                        GRecipeTweak tweak, GRegistry registry, GLiquidRegistry liquids, GOreDictRegistry ores,
                        GMachine machine, GMachineGroup machineGroup, GMachineData data, GMachineMatter matter,
-                       GMaterial material, GPartGroup partGroup, GBlockPartGroup blockPartGroup,
+                       GMaterial material, GPartGroup partGroup, GBlockPartGroup blockPartGroup, GToolPartGroup toolGroup,
                        GMSolid solid, boolean isDust, boolean isFineDust, boolean isPowder,
                        GMLiquid liquid) {
         super(params, filename, "Malleable", isReg,
                 tweak, registry, liquids, ores,
                 machine, machineGroup, data, matter,
-                material, partGroup, blockPartGroup,
+                material, partGroup, blockPartGroup, toolGroup,
                 solid, isDust, isFineDust, isPowder);
         this.liquid = liquid;
     }

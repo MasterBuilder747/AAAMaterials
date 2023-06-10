@@ -13,7 +13,7 @@ public class GPart extends AGPart<LPart> {
     public GPart(String filename, boolean isReg,
                  GRegistry registry, GLiquidRegistry liquids, GOreDictRegistry ores,
                  GMachine machine, GMachineGroup machineGroup, GMachineData data, GMachineMatter matter) {
-        super(filename, isReg,
+        super(4, filename, isReg,
                 registry, liquids, ores,
                 machine, machineGroup, data, matter);
     }

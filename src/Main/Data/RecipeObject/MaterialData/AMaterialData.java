@@ -7,12 +7,14 @@ import Main.Data.Machine.MachineGroup;
 import Main.Data.Material;
 import Main.Data.PartGroup.BlockPartGroup;
 import Main.Data.PartGroup.PartGroup;
+import Main.Data.PartGroup.ToolGroup;
 import Main.Data.RecipeObject.ARecipeObject;
 import Main.Data.RecipeObject.LiquidRegistryData;
 import Main.Data.RecipeObject.Localized.Liquid.LLiquid;
 import Main.Data.RecipeObject.Localized.Liquid.LPlasma;
 import Main.Data.RecipeObject.Localized.Part.LBlockPart;
 import Main.Data.RecipeObject.Localized.Part.LPart;
+import Main.Data.RecipeObject.Localized.Part.LTool;
 import Main.Data.RecipeObject.MaterialData.Composition.AChemicalComposition;
 import Main.Data.RecipeObject.RecipeObjectException;
 import Main.Data.RecipeObject.RegistryData;
@@ -22,20 +24,34 @@ import java.util.ArrayList;
 import java.util.Arrays;
 
 public abstract class AMaterialData extends ARecipeObject {
-    protected Material m; //in case basic data is needed
+    
+    protected Material m;
+    
     protected PartGroup[] partGroups; //all the known partGroups to be added by this child object
     protected BlockPartGroup[] blockPartGroups; //all the known blockPartGroups to be added by this child object
+    protected ToolGroup[] toolGroups; //all the known toolGroups to be added by this child object
+    
     private boolean[] enablePartGroups; //used internally to get only enabled partGroups
     private boolean[] enableBlockPartGroups; //used internally to get only enabled blockPartGroups
+    private boolean[] enableToolGroups; //used internally to get only enabled toolGroups
+    
     private boolean[] isPartGroupOverride; //do we have any part overrides in the partGroup?
-    private boolean[] isBlockPartGroupOverride; //do we have any part overrides in the blockPartGroup?
+    private boolean[] isBlockPartGroupOverride; //do we have any block overrides in the blockPartGroup?
+    private boolean[] isToolGroupOverride; //do we have any tool overrides in the toolGroup?
+    
     protected boolean[][] partOverrides; //if so, what parts are excluded from being loaded?
-    protected boolean[][] blockPartOverrides; //if so, what parts are excluded from being loaded?
+    protected boolean[][] blockPartOverrides; //if so, what blocks are excluded from being loaded?
+    protected boolean[][] toolOverrides; //if so, what tools are excluded from being loaded?
+    
     public ArrayList<String> partRegistryNames; //the registry name that is specific to the material to be used for searching for the registry
     public ArrayList<String> blockRegistryNames; //the registry name that is specific to the material to be used for searching for the registry
+    public ArrayList<String> toolRegistryNames; //the registry name that is specific to the material to be used for searching for the registry
+    
     public ArrayList<PartGroup> enabledPartGroups; //each partGroup that is enabled for this material
     public ArrayList<BlockPartGroup> enabledBlockPartGroups; //each blockPartGroup that is enabled for this material
-
+    public ArrayList<ToolGroup> enabledToolGroups; //each toolGroup that is enabled for this material
+    
+    
     //only used by MSolid and AMLiquids, but these needs to be in scope when doing recipes
     protected String altName;
     protected String altColor;
@@ -55,8 +71,10 @@ public abstract class AMaterialData extends ARecipeObject {
         this.m = m;
         this.partRegistryNames = new ArrayList<>();
         this.blockRegistryNames = new ArrayList<>();
+        this.toolRegistryNames = new ArrayList<>();
         this.enabledPartGroups = new ArrayList<>();
         this.enabledBlockPartGroups = new ArrayList<>();
+        this.enabledToolGroups = new ArrayList<>();
         //for any existing key, exclude it from having an additional tooltip
         for (RegistryData r : m.keys) r.isTooltipExclusion = true;
     }
@@ -163,15 +181,22 @@ public abstract class AMaterialData extends ARecipeObject {
     protected String parseKeyRecipeBracket(String key) {
         return this.getBracket(rmAmt(key))+"*"+parseAmt(key);
     }
+    
     @Override
     public String getUnlocalizedByKey(String key) { //externally called if needed (eg, stone)
+        /*
         //this searches through item and block parts, since they are both keys in Material
         if (this.partGroups != null && this.isEnabledPart(key)) {
             return this.get(key).getUnlocalizedNameWithMeta();
         } else if (this.blockPartGroups != null && this.isEnabledBlockPart(key)) {
             return this.get(key).getUnlocalizedNameWithMeta();
+        } else if (this.toolGroups != null && this.isEnabledTool(key)) {
+            return this.get(key).getUnlocalizedNameWithMeta();
         } else return null;
+        */
+        return this.get(key).getUnlocalizedNameWithMeta();
     }
+    
     protected boolean isEnabledPart(String key) {
         //returns if the partGroup that part is a part of is enabled for this MaterialData
         for (int i = 0; i < this.partGroups.length; i++) {
@@ -194,9 +219,21 @@ public abstract class AMaterialData extends ARecipeObject {
         }
         return false;
     }
+    protected boolean isEnabledTool(String key) {
+        //returns if the blockPartGroup that part is a part of is enabled for this MaterialData
+        for (int i = 0; i < this.toolGroups.length; i++) {
+            for (LTool p : this.toolGroups[i].getParts()) {
+                if (p.oreDict.equals(rmAmt(key))) {
+                    return this.enableToolGroups[i];
+                }
+            }
+        }
+        return false;
+    }
 
     protected LPart[] getPartsWithOverrides() {
         ArrayList<LPart> out = new ArrayList<>();
+        if (this.partGroups == null) return null;
         for (int i = 0; i < this.partGroups.length; i++) {
             if (this.enablePartGroups[i]) {
                 out.addAll(Arrays.asList(partGroups[i].getParts()));
@@ -206,12 +243,23 @@ public abstract class AMaterialData extends ARecipeObject {
     }
     protected LBlockPart[] getBlockPartsWithOverrides() {
         ArrayList<LBlockPart> out = new ArrayList<>();
+        if (this.blockPartGroups == null) return null;
         for (int i = 0; i < this.blockPartGroups.length; i++) {
             if (this.enableBlockPartGroups[i]) {
                 out.addAll(Arrays.asList(blockPartGroups[i].getParts()));
             }
         }
         return out.toArray(new LBlockPart[0]);
+    }
+    protected LTool[] getToolsWithOverrides() {
+        ArrayList<LTool> out = new ArrayList<>();
+        if (this.toolGroups == null) return null;
+        for (int i = 0; i < this.toolGroups.length; i++) {
+            if (this.enableToolGroups[i]) {
+                out.addAll(Arrays.asList(toolGroups[i].getParts()));
+            }
+        }
+        return out.toArray(new LTool[0]);
     }
 
     protected PartGroup getPartGroup(String s) {
@@ -232,11 +280,23 @@ public abstract class AMaterialData extends ARecipeObject {
         error(s, this.NAME);
         return null;
     }
+    protected ToolGroup getToolGroup(String s) {
+        for (ToolGroup p : this.toolGroups) {
+            if (p.NAME.equals(s)) {
+                return p;
+            }
+        }
+        error(s, this.NAME);
+        return null;
+    }
 
     protected String buildPart(PartGroup partGroup, boolean newline) {
         return this.m.NAME + ".registerParts(" + partGroup.NAME + ");" + ((newline) ? "\n" : " ");
     }
     protected String buildBlockPart(BlockPartGroup partGroup, boolean newline) {
+        return this.m.NAME + ".registerParts(" + partGroup.NAME + ");" + ((newline) ? "\n" : " ");
+    }
+    protected String buildTool(ToolGroup partGroup, boolean newline) {
         return this.m.NAME + ".registerParts(" + partGroup.NAME + ");" + ((newline) ? "\n" : " ");
     }
     protected String buildAltPart(String name, PartGroup partGroup) {
@@ -245,16 +305,25 @@ public abstract class AMaterialData extends ARecipeObject {
     protected String buildAltBlockPart(String name, BlockPartGroup partGroup) {
         return name + ".registerParts(" + partGroup.NAME + ");\n";
     }
+    protected String buildAltTool(String name, ToolGroup partGroup) {
+        return name + ".registerParts(" + partGroup.NAME + ");\n";
+    }
     protected String buildAltPart(String name, PartGroup partGroup, boolean newline) {
         return name + ".registerParts(" + partGroup.NAME + "); " + ((newline) ? "\n" : " ");
     }
     protected String buildAltBlockPart(String name, BlockPartGroup partGroup, boolean newline) {
         return name + ".registerParts(" + partGroup.NAME + "); " + ((newline) ? "\n" : " ");
     }
+    protected String buildAltTool(String name, ToolGroup partGroup, boolean newline) {
+        return name + ".registerParts(" + partGroup.NAME + "); " + ((newline) ? "\n" : " ");
+    }
     protected String buildPartOverride(LPart p, boolean newline) {
         return this.m.NAME + ".registerPart(part_" + p.NAME + ");" + ((newline) ? "\n" : " ");
     }
     protected String buildBlockPartOverride(LBlockPart p, boolean newline) {
+        return this.m.NAME + ".registerPart(block_" + p.NAME + ");" + ((newline) ? "\n" : " ");
+    }
+    protected String buildToolOverride(LTool p, boolean newline) {
         return this.m.NAME + ".registerPart(block_" + p.NAME + ");" + ((newline) ? "\n" : " ");
     }
 
@@ -276,6 +345,15 @@ public abstract class AMaterialData extends ARecipeObject {
         }
         return outs.toArray(new String[0]);
     }
+    //append a custom key based on the block variant
+    public String[] getKeys(String variant) {
+        ArrayList<String> outs = new ArrayList<>();
+        LPart[] parts = this.getPartsWithOverrides();
+        for (LPart p : parts) {
+            outs.add(variant+"_"+p.oreDict);
+        }
+        return outs.toArray(new String[0]);
+    }
     public String[] getBlockKeys() {
         ArrayList<String> outs = new ArrayList<>();
         LBlockPart[] parts = this.getBlockPartsWithOverrides();
@@ -284,12 +362,11 @@ public abstract class AMaterialData extends ARecipeObject {
         }
         return outs.toArray(new String[0]);
     }
-    //append a custom key based on the block variant
-    public String[] getKeys(String variant) {
+    public String[] getToolKeys() {
         ArrayList<String> outs = new ArrayList<>();
-        LPart[] parts = this.getPartsWithOverrides();
-        for (LPart p : parts) {
-            outs.add(variant+"_"+p.oreDict);
+        LTool[] parts = this.getToolsWithOverrides();
+        for (LTool p : parts) {
+            outs.add(p.oreDict);
         }
         return outs.toArray(new String[0]);
     }
@@ -375,7 +452,7 @@ public abstract class AMaterialData extends ARecipeObject {
         this.enableBlockPartGroups = new boolean[]{enableBlockPartGroup};
         this.setBlockPartGroupsReg(exclusions);
     }
-    public void setPartGroupsTrue(RegistryData[] exclusions, BlockPartGroup[] blockPartGroups) {
+    public void setBlockGroupsTrue(RegistryData[] exclusions, BlockPartGroup[] blockPartGroups) {
         this.blockPartGroups = blockPartGroups;
         this.enableBlockPartGroups = new boolean[blockPartGroups.length];
         for (int i = 0; i < partGroups.length; i++) {
@@ -383,12 +460,12 @@ public abstract class AMaterialData extends ARecipeObject {
         }
         this.setBlockPartGroupsReg(exclusions);
     }
-    public void setPartGroupTrue(RegistryData[] exclusions, BlockPartGroup blockPartGroup) {
+    public void setBlockGroupTrue(RegistryData[] exclusions, BlockPartGroup blockPartGroup) {
         this.blockPartGroups = new BlockPartGroup[]{blockPartGroup};
         this.enableBlockPartGroups = new boolean[]{true};
         this.setBlockPartGroupsReg(exclusions);
     }
-    public void setPartGroupTrueCustom(RegistryData[] exclusions, String block, BlockPartGroup blockPartGroup) {
+    public void setBlockGroupTrueCustom(RegistryData[] exclusions, String block, BlockPartGroup blockPartGroup) {
         this.blockPartGroups = new BlockPartGroup[]{blockPartGroup};
         this.enableBlockPartGroups = new boolean[]{true};
         this.setBlockPartGroupsReg(exclusions, block);
@@ -426,11 +503,84 @@ public abstract class AMaterialData extends ARecipeObject {
         }
     }
 
+    //set toolGroups
+    public void setToolGroups(RegistryData[] exclusions, ToolGroup[] partBlockGroups, boolean[] enableToolGroups) {
+        this.toolGroups = partBlockGroups;
+        this.enableToolGroups = enableToolGroups;
+        this.setToolGroupsReg(exclusions);
+    }
+    public void setToolGroup(RegistryData[] exclusions, ToolGroup partBlockGroup, boolean enableToolGroup) {
+        this.toolGroups = new ToolGroup[]{partBlockGroup};
+        this.enableToolGroups = new boolean[]{enableToolGroup};
+        this.setToolGroupsReg(exclusions);
+    }
+    public void setToolGroupsTrue(RegistryData[] exclusions, ToolGroup[] toolGroups) {
+        this.toolGroups = toolGroups;
+        this.enableToolGroups = new boolean[toolGroups.length];
+        for (int i = 0; i < this.toolGroups.length; i++) {
+            this.enableToolGroups[i] = true;
+        }
+        this.setToolGroupsReg(exclusions);
+    }
+    public void setToolGroupTrue(RegistryData[] exclusions, ToolGroup toolGroup) {
+        this.toolGroups = new ToolGroup[]{toolGroup};
+        this.enableToolGroups = new boolean[]{true};
+        this.setToolGroupsReg(exclusions);
+    }
+    public void setToolGroupTrueCustom(RegistryData[] exclusions, String block, ToolGroup toolGroup) {
+        this.toolGroups = new ToolGroup[]{toolGroup};
+        this.enableToolGroups = new boolean[]{true};
+        this.setToolGroupsReg(exclusions, block);
+    }
+    //call this to get each unlocalized registry name to be used for finding the registries
+    private void setToolGroupsReg(RegistryData[] exclusions) {
+        setToolGroupsReg(exclusions, null);
+    }
+    private void setToolGroupsReg(RegistryData[] exclusions, String block) {
+        if (block != null) block+=" ";
+        else block = "";
+        this.isToolGroupOverride = new boolean[enableToolGroups.length];
+        this.toolOverrides = new boolean[enableToolGroups.length][];
+        for (int i = 0; i < toolGroups.length; i++) {
+            this.toolOverrides[i] = new boolean[toolGroups[i].getParts().length];
+            if (this.enableToolGroups[i]) {
+                this.enabledToolGroups.add(toolGroups[i]);
+                for (int j = 0; j < toolGroups[i].getParts().length; j++) {
+                    LTool p = toolGroups[i].getParts()[j];
+                    String addName = null;
+                    if (exclusions != null) {
+                        for (RegistryData r : exclusions) {
+                            if (p.oreDict.equals(r.key)) {
+                                this.toolOverrides[i][j] = true;
+                                this.isToolGroupOverride[i] = true;
+                                addName = r.r.getUnlocalizedNameWithMeta();
+                                break;
+                            }
+                        }
+                    }
+                    if (addName == null) {
+                        String add;
+                        if (this instanceof MSolid && this.altName != null) {
+                            add = this.altName;
+                        } else {
+                            add = this.m.NAME;
+                        }
+                        this.toolRegistryNames.add(block+add+"_"+p.NAME);
+                    }
+                    else this.toolRegistryNames.add("@"+addName);
+                }
+            }
+        }
+    }
+
     public boolean[] getEnablePartGroups() {
         return this.enablePartGroups;
     }
     public boolean[] getEnableBlockPartGroups() {
         return this.enableBlockPartGroups;
+    }
+    public boolean[] getEnableToolGroups() {
+        return this.enableToolGroups;
     }
 
     protected String genPartGroups() {
@@ -469,6 +619,25 @@ public abstract class AMaterialData extends ARecipeObject {
         }
         return sb.toString();
     }
+    protected String genToolGroups() {
+        StringBuilder sb = new StringBuilder();
+        for (int i = 0; i < this.toolGroups.length; i++) {
+            if (this.enableToolGroups[i]) {
+                if (this.isToolGroupOverride[i]) {
+                    LTool[] parts = this.toolGroups[i].getParts();
+                    for (int j = 0; j < parts.length; j++) {
+                        if (!this.toolOverrides[i][j]) {
+                            sb.append(this.buildToolOverride(parts[j], true));
+                        }
+                    }
+                } else {
+                    sb.append(this.buildTool(this.toolGroups[i], true));
+                }
+            }
+        }
+        return sb.toString();
+    }
+    
     protected String genPartGroups(boolean newline) {
         StringBuilder sb = new StringBuilder();
         for (int i = 0; i < this.partGroups.length; i++) {
@@ -483,6 +652,15 @@ public abstract class AMaterialData extends ARecipeObject {
         for (int i = 0; i < this.blockPartGroups.length; i++) {
             if (this.enableBlockPartGroups[i]) {
                 sb.append(this.buildBlockPart(this.blockPartGroups[i], newline));
+            }
+        }
+        return sb.toString();
+    }
+    protected String genToolGroups(boolean newline) {
+        StringBuilder sb = new StringBuilder();
+        for (int i = 0; i < this.toolGroups.length; i++) {
+            if (this.enableToolGroups[i]) {
+                sb.append(this.buildTool(this.toolGroups[i], newline));
             }
         }
         return sb.toString();
@@ -504,6 +682,26 @@ public abstract class AMaterialData extends ARecipeObject {
             }
         }
         return sb.toString();
+    }
+    protected String genAltToolGroups(String[] strings) {
+        StringBuilder sb = new StringBuilder();
+        for (int i = 0; i < this.toolGroups.length; i++) {
+            if (this.enableToolGroups[i]) {
+                sb.append(this.buildAltTool(strings[i], this.toolGroups[i]));
+            }
+        }
+        return sb.toString();
+    }
+
+    protected LTool getTool(String key) {
+        if (this.toolGroups != null) {
+            for (LTool t : this.getToolsWithOverrides()) {
+                if (t.oreDict.equals(key)) {
+                    return t;
+                }
+            }
+        } else error("No tool parts exist for material " + m.NAME);
+        return null;
     }
 
     //recipes using keys
