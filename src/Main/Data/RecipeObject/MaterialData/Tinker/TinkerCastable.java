@@ -47,27 +47,21 @@ public class TinkerCastable extends ATinkers {
         //melting of TiC parts into the appropriate molten liquid amount
         int i = 0;
         for (TCPart p : tcParts) {
-            /*
-            sb.append(
-                addRecipe(
-                    i, "melting", 1, (int)(p.amount * 60), 0.5,
-                    "+red*100", "-orange*100", 100, 100,
-                    "<>"+p.getBracket(), "-", "-", "^molten(" + (int)(p.amount * 144 * this.meltingMultiplier) + ")",
-                    "code"
-                )
-            );
-            i++;
-
-             */
+            if (p.amount > 0) {
+                sb.append(addRecipe(
+                        i, "machine", true, this.baseTime, 0,
+                        this.tickDecMultipliers, 1, new int[]{1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
+                        this.minVoltage, this.powerMultiplierIn, this.powerMultiplierOut,
+                        "<>"+p.getBracket()+";0%"+getCast(p.r.NAME), "-", "-", "molten*" + (int)((144*p.amount) * this.meltingMultiplier),
+                        "codeMeltingTiCPart", 50, this.data.NAME + "*25",
+                        this.matterIn.NAME + "*100", this.matterOut.NAME + "*100"
+                ));
+                i++;
+            }
         }
         //casting
         //machine
         return sb.toString();
-    }
-
-    @Override
-    protected String customItemKey(String key) {
-        return null;
     }
 
     @Override

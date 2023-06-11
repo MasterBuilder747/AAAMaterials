@@ -8,7 +8,9 @@ import Main.Data.Material;
 import Main.Data.RecipeObject.Localized.Liquid.LLiquid;
 import Main.Data.RecipeObject.Localized.Liquid.LPlasma;
 import Main.Data.RecipeObject.MaterialData.AMaterialData;
+import Main.Data.RecipeObject.MaterialData.Composition.AChemicalComposition;
 import Main.Data.Tweakers.RecipeTweak;
+import Main.Generators.GeneratorException;
 import Main.Util;
 
 import java.util.ArrayList;
@@ -84,6 +86,23 @@ public abstract class ATinkers extends AMaterialData {
         this.oreDict = oreDict; //ingot, string etc...
         this.parts = parts;
     }
+
+    @Override
+    protected String buildAdditionalRecipes() {
+        StringBuilder sb = new StringBuilder();
+
+        String r = buildSpecificRecipe();
+        if (r != null) sb.append(r);
+
+        AChemicalComposition comp = this.m.getComp();
+        if (comp != null) {
+            sb.append(comp.addTCTooltips(this.getKeysArray()));
+        }
+
+        if (r == null && comp == null) return "";
+        return sb.toString();
+    }
+    protected abstract String buildSpecificRecipe();
 
     //TiC material parts
     //head and arrowHead
@@ -316,6 +335,46 @@ public abstract class ATinkers extends AMaterialData {
                 ", " + iconNew + ", <ore:" + oreDict + Util.toUpper(m.NAME) + ">, " + molten + ", " +
                 //IItemStack[] items, int[] amtsNeeded, int[] amtsMatched,
                 createItemArray(matItems) + ", " + createArray(amountNeeded) + ", " + createArray(amountMatched) + ", ";
+    }
+
+    @Override
+    protected String customItemKey(String s) {
+        //50%shard*2
+        double chance = -1;
+        if (s.contains("%")) {
+            chance = parseDouble(s.substring(0, s.indexOf("%")));
+            s = s.substring(s.indexOf("%")+1);
+        }
+        int amount = 1;
+        if (s.contains("*")) {
+            amount = Integer.parseInt(s.substring(s.indexOf("*")+1));
+            if (amount < 1) throw new GeneratorException("Amount must be greater than 0 for amount " + amount);
+            s = s.substring(0, s.indexOf("*"));
+        }
+        StringBuilder sb = new StringBuilder();
+        if (chance != -1) sb.append(chance).append("%");
+        sb.append(getTCPart(s));
+        if (amount != 1) sb.append("*").append(amount);
+        return sb.toString();
+    }
+
+    protected String getTCPart(String key) {
+        for (TCPart p : this.parts) {
+            if (p.NAME.equals(key)) {
+                p.addMaterial(this.m.NAME);
+                return "<>"+p.getBracket();
+            }
+        }
+        error("Unknown TiC part: " + key);
+        return null;
+    }
+
+    //recipe utils, key is the registry (mod:reg)
+    protected String getCast(String key) {
+        return "<><tconstruct:cast>.withTag({PartType: \""+key+"\"})";
+    }
+    protected String getPattern(String key) {
+        return "<><tconstruct:pattern>.withTag({PartType: \""+key+"\"})";
     }
 
     @Override

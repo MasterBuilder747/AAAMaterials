@@ -61,6 +61,17 @@ public abstract class AChemicalComposition extends AMaterialData {
         }
         return sb.toString();
     }
+    //only call this in ATinker, otherwise bad parts will have nbt added to them
+    public String addTCTooltips(RegistryData[] registries) {
+        StringBuilder sb = new StringBuilder();
+        for(RegistryData d : registries) {
+            if (!d.isTooltipExclusion) {
+                d.r.nbt = "{Material:\"cot_"+this.m.NAME+"\"}";
+                sb.append(d.r.getNBTBracket()).append(".addTooltip(\"").append(generateTooltip()).append("\");\n");
+            }
+        }
+        return sb.toString();
+    }
 
     Composition getCComp() {
         return this.composition;

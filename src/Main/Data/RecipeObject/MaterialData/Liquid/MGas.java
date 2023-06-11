@@ -27,11 +27,19 @@ public class MGas extends AMLiquid {
                 m,
                 compReg, "gas");
         m.scGas = statesToChangeTo;
+        String localN = null;
+        switch (m.state) {
+            case "solid" -> localN = altName == null ? m.LOCALNAME + " Gas" : altName;
+            case "liquid" -> localN = altName == null ? m.LOCALNAME + " Vapor" : altName;
+            case "gas" -> localN = altName == null ? m.LOCALNAME : altName;
+            default -> error("Invalid state " + m.state + " for material " + m.NAME);
+        }
+        assert localN != null;
         LGas g = new LGas(
                 m.NAME +"_gas",
                 items, liquids, ores,
                 machines, machineGroups,
-                altName == null ? m.LOCALNAME + " Gas" : altName,
+                localN,
                 m.color, true, vaporize,
                 density, luminosity, temperature, viscosity
         );

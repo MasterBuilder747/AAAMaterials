@@ -6,7 +6,6 @@ import Main.Data.Machine.Machine;
 import Main.Data.Machine.MachineGroup;
 import Main.Data.Material;
 import Main.Data.RecipeObject.Localized.Liquid.LLiquid;
-import Main.Data.RecipeObject.Localized.Liquid.LMolten;
 import Main.Data.RecipeObject.Localized.Liquid.LPlasma;
 import Main.Data.Tweakers.RecipeTweak;
 import Main.Generators.RecipeObjects.MaterialData.Composition.CompositionRegistry;
@@ -27,41 +26,26 @@ public class MLiquid extends AMLiquid {
                 m,
                 compReg, "liquid");
         m.scLiquid = statesToChangeTo;
+        String localN = null;
+        String key = "liquid";
         switch (m.state) {
             case "solid" -> {
-                LMolten ll = new LMolten(
-                        m.NAME + "_molten",
-                        items, liquids, ores,
-                        machines, machineGroups,
-                        altName == null ? m.LOCALNAME + " Molten" : altName,
-                        m.color, true, vaporize,
-                        density, luminosity, temperature, viscosity);
-                addMatLiqKey("molten", ll);
-                addLiquidKey("molten", new LiquidRegistry(ll));
+                localN = altName == null ? "Molten " + m.LOCALNAME : altName;
+                key = "molten";
             }
-            case "liquid" -> {
-                LLiquid ll = new LLiquid(
-                        m.NAME + "_liquid",
-                        items, liquids, ores,
-                        machines, machineGroups,
-                        altName == null ? m.LOCALNAME : altName,
-                        m.color, true, vaporize,
-                        density, luminosity, temperature, viscosity);
-                addMatLiqKey("liquid", ll);
-                addLiquidKey("liquid", new LiquidRegistry(ll));
-            }
-            case "gas" -> {
-                LLiquid g = new LLiquid(
-                        m.NAME +"_liquid",
-                        items, liquids, ores,
-                        machines, machineGroups,
-                        altName == null ? "Liquid " + m.LOCALNAME : altName,
-                        m.color, true, vaporize,
-                        density, luminosity, temperature, viscosity);
-                addMatLiqKey("liquid", g);
-                addLiquidKey("liquid", new LiquidRegistry(g));
-            }
+            case "liquid" -> localN = altName == null ? m.LOCALNAME : altName;
+            case "gas" -> localN = altName == null ? "Liquid " + m.LOCALNAME : altName;
             default -> error("Invalid state " + m.state + " for material " + m.NAME);
         }
+        assert localN != null;
+        LLiquid ll = new LLiquid(
+                m.NAME +"_"+key,
+                items, liquids, ores,
+                machines, machineGroups,
+                localN,
+                m.color, true, vaporize,
+                density, luminosity, temperature, viscosity);
+        addMatLiqKey(key, ll);
+        addLiquidKey(key, new LiquidRegistry(ll));
     }
 }
