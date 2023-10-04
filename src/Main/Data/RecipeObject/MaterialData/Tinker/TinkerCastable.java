@@ -52,7 +52,7 @@ public class TinkerCastable extends ATinkers {
                         i, "machine", true, this.baseTime, 0,
                         this.tickDecMultipliers, 1, new int[]{1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
                         this.minVoltage, this.powerMultiplierIn, this.powerMultiplierOut,
-                        "<>"+p.getBracket()+";0%"+getCast(p.r.NAME), "-", "-", "molten*" + (int)((144*p.amount) * this.meltingMultiplier),
+                        "<>"+p.getBracket()/*+";0%"+getCast(p.r.NAME)*/, "-", "-", "molten*" + (int)((144*p.amount) * this.meltingMultiplier),
                         "codeMeltingTiCPart", 50, this.data.NAME + "*25",
                         this.matterIn.NAME + "*100", this.matterOut.NAME + "*100"
                 ));

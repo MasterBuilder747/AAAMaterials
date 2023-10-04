@@ -30,7 +30,7 @@ public class RecipeObject extends AData {
                       int minVoltage, double powerMultiplierIn, double powerMultiplierOut,
                       String[] itemInputs, String[] liquidInputs, String[] itemOutputs, String[] liquidOutputs,
                       int chemAmount, String data, String matterIn, String matterOut) {
-        if (minVoltage > 16 || minVoltage < 1) error("minimum voltage must be between 1 and 16 inclusive");
+        if (minVoltage > 16 || minVoltage < 0) error("minimum voltage must be between 0 and 16 inclusive");
         if (powerMultiplierIn > 1 || powerMultiplierIn < 0) error("power multiplier in must be between 0 and 1 inclusive");
         if (powerMultiplierOut > 1 || powerMultiplierOut < 0) error("power multiplier out must be between 0 and 1 inclusive");
         long minEnergyIn = Math.round(Util.getVoltage(minVoltage) * powerMultiplierIn);
@@ -39,12 +39,18 @@ public class RecipeObject extends AData {
 
         int arrSize;
         if (this.machine != null) {
-            arrSize = machine.maxVoltage-(minVoltage-1);
-            this.recipes = new MachineRecipe[arrSize];
-            this.recipes[0] = populateFirstRecipe(name, this.machine, time, priority, minVoltage, minEnergyIn, minEnergyOut,
-                    baseRecipeAmount, ioMultipliers, itemInputs, liquidInputs, itemOutputs, liquidOutputs, chemAmount, data, matterIn, matterOut);
-            populateRecipes(1, this.recipes.length, name, this.recipes, this.machine, time, priority, minVoltage, minEnergyIn, minEnergyOut,
-                    baseRecipeAmount, ioMultipliers, tickDecMultipliers, itemInputs, liquidInputs, itemOutputs, liquidOutputs, chemAmount, data, matterIn, matterOut);
+            if (minVoltage == 0) {
+                this.recipes = new MachineRecipe[1];
+                this.recipes[0] = populateOneRecipe(name, this.machine, time, priority, minVoltage, minEnergyIn, minEnergyOut,
+                        baseRecipeAmount, itemInputs, liquidInputs, itemOutputs, liquidOutputs);
+            } else {
+                arrSize = machine.maxVoltage - (minVoltage - 1);
+                this.recipes = new MachineRecipe[arrSize];
+                this.recipes[0] = populateFirstRecipe(name, this.machine, time, priority, minVoltage, minEnergyIn, minEnergyOut,
+                        baseRecipeAmount, ioMultipliers, itemInputs, liquidInputs, itemOutputs, liquidOutputs, chemAmount, data, matterIn, matterOut);
+                populateRecipes(1, this.recipes.length, name, this.recipes, this.machine, time, priority, minVoltage, minEnergyIn, minEnergyOut,
+                        baseRecipeAmount, ioMultipliers, tickDecMultipliers, itemInputs, liquidInputs, itemOutputs, liquidOutputs, chemAmount, data, matterIn, matterOut);
+            }
         } else {
             arrSize = 16-(minVoltage-1);
             this.recipes = new MachineRecipe[arrSize];
@@ -106,6 +112,18 @@ public class RecipeObject extends AData {
                 }
             }
         }
+    }
+    //voltage of 0
+    private MachineRecipe populateOneRecipe(String name, Machine machine, int time, int priority, int minVoltage, long minEnergyIn, long minEnergyOut,
+                                            int baseRecipeAmount,
+                                            String[] itemInputs, String[] liquidInputs, String[] itemOutputs, String[] liquidOutputs) {
+        MachineRecipe r = new MachineRecipe(name+Util.toUpper(this.NAME)+"vt"+minVoltage, machine, time, priority, minEnergyIn, minEnergyOut);
+        int ioMultiplier = 1;
+        r.itemInputs = generateIOAmounts(itemInputs, baseRecipeAmount, ioMultiplier);
+        r.liquidInputs = generateIOAmounts(liquidInputs, baseRecipeAmount, ioMultiplier);
+        r.itemOutputs = generateIOAmounts(itemOutputs, baseRecipeAmount, ioMultiplier);
+        r.liquidOutputs = generateIOAmounts(liquidOutputs, baseRecipeAmount, ioMultiplier);
+        return r;
     }
     private MachineRecipe populateFirstRecipe(String name, Machine machine, int time, int priority, int minVoltage, long minEnergyIn, long minEnergyOut,
                                               int baseRecipeAmount, int[] ioMultipliers,

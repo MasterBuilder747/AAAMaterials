@@ -7,6 +7,7 @@ import Main.Json.JsonObject;
 import Main.Json.Value;
 import Main.Util;
 import org.json.JSONArray;
+import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.BufferedWriter;
@@ -114,8 +115,19 @@ public class Machine extends AData {
         for (int i = 0; i < paletteA.length(); i++) {
             String name = paletteA.getJSONObject(i).getString("Name");
             if (!name.equals("minecraft:air")) {
-                JSONObject pJson = paletteA.getJSONObject(i).getJSONObject("Properties");
-                palette.add(new MachineBlockstateData(name, pJson.toMap()));
+                JSONObject pJson = null;
+                boolean noProperties = false;
+                try {
+                    pJson = paletteA.getJSONObject(i).getJSONObject("Properties");
+                } catch (JSONException e) {
+                    //there are some blocks with no properties (eg, iron block)
+                    noProperties = true;
+                }
+                if (noProperties) {
+                    palette.add(new MachineBlockstateData(name, null, noProperties));
+                } else {
+                    palette.add(new MachineBlockstateData(name, pJson.toMap(), noProperties));
+                }
             } else {
                 airState = i;
             }
@@ -128,7 +140,7 @@ public class Machine extends AData {
             if (state != airState) {
                 MachineBlockstateData pal = palette.get(state);
                 String reg = getBlockRegistry(pal.registryName, pal.properties);
-                MachineBlockstateData mm = new MachineBlockstateData(reg, null);
+                MachineBlockstateData mm = new MachineBlockstateData(reg, null, true);
                 mm.addCoordinates(bSizes[0], bSizes[1], bSizes[2]);
                 blocks.add(mm);
             }
@@ -242,7 +254,7 @@ public class Machine extends AData {
                                 if (key.equals(bm.blockStateKey)) {
                                     String value = kv.substring(kv.indexOf("=")+1);
                                     for (int i = 0; i < bm.values.length; i++) {
-                                        if (value.equals(bm.values[i])) {
+                                        if (value.equals(bm.values[i].toLowerCase())) {
                                             meta = bm.metas[i];
                                             breaking = true;
                                             break;
@@ -411,7 +423,7 @@ public class Machine extends AData {
             case 5 -> 32000;
             case 6 -> 64000;
             case 7 -> 2147483647;
-            default -> -1;
+            default -> 0;
         };
     }
 

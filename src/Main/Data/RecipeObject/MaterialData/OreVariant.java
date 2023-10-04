@@ -9,6 +9,7 @@ import Main.Data.PartGroup.PartGroup;
 import Main.Data.RecipeObject.Localized.Liquid.LLiquid;
 import Main.Data.RecipeObject.Localized.Liquid.LPlasma;
 import Main.Data.RecipeObject.MaterialData.Solid.Stone;
+import Main.Data.Tweakers.ORecipeTweak;
 import Main.Data.Tweakers.RecipeTweak;
 import Main.Util;
 
@@ -98,30 +99,64 @@ public class OreVariant extends AMaterialData {
         if (this.block.equals("stone")) {
             //printNames();
             StringBuilder sb = new StringBuilder();
-            /*
             if (this.tweak != null) {
-                String[] recipes = this.tweak.getRecipes();
+                ORecipeTweak[] recipes = this.tweak.getRecipes();
                 for (int i = 0; i < recipes.length; i++) {
-                    String r = recipes[i];
-                    String[] p = Util.split(r, ",");
-                    int j = 0;
-                    for (Stone s : this.stones) {
-                        //can add custom parameters if needed
+                    String iIn = recipes[i].iInput;
+                    String iOut = recipes[i].iOutput;
+                    if (iIn.startsWith("$") || iIn.startsWith("+") || iOut.startsWith("$") || iOut.startsWith("+")) {
+                        int j = 0;
+                        for (Stone s : this.stones) {
+                            sb.append(addRecipe(
+                                    j, recipes[i].machine, recipes[i].isMachineGroup, this.baseTime, recipes[i].priority,
+                                    this.tickDecMultipliers, recipes[i].baseRecipeAmount, recipes[i].ioMultipliers,
+                                    this.minVoltage, this.powerMultiplierIn, this.powerMultiplierOut,
+                                    getStoneData(iIn, s), parseKey(recipes[i].lInput, s, true),
+                                    getStoneData(iOut, s), parseKey(recipes[i].lOutput, s, true),
+                                    "tweakerStone" + i, recipes[i].chemAmount, this.data.NAME + "*" + recipes[i].dataAmount,
+                                    this.matterIn.NAME + "*" + recipes[i].matInAmount, this.matterOut.NAME + "*" + recipes[i].matOutAmount
+                            ));
+                            j++;
+                        }
+                    } else {
                         sb.append(addRecipe(
-                            i,
-                            "tweaker"+j
+                                i, recipes[i].machine, recipes[i].isMachineGroup, this.baseTime, recipes[i].priority,
+                                this.tickDecMultipliers, recipes[i].baseRecipeAmount, recipes[i].ioMultipliers,
+                                this.minVoltage, this.powerMultiplierIn, this.powerMultiplierOut,
+                                iIn, recipes[i].lInput, iOut, recipes[i].lOutput,
+                                "tweaker" + i, recipes[i].chemAmount, this.data.NAME + "*" + recipes[i].dataAmount,
+                                this.matterIn.NAME + "*" + recipes[i].matInAmount, this.matterOut.NAME + "*" + recipes[i].matOutAmount
                         ));
-                        j++;
                     }
                 }
                 return sb.toString();
             }
-
-             */
         }
         return null;
     }
 
+    private String parseKey(String key, Stone s, boolean isLiquid) {
+        if (!isLiquid) {
+            if (key.startsWith("+") || key.startsWith("$")) {
+                String[] keys = Util.split(key.substring(1), ":");
+                if (keys.length != 0) {
+                    error("Key syntax must contain a ':' and must have a key and dataValue for " + key);
+                }
+                key = keys[0];
+                String data = keys[1];
+                if (key.equals("stone")) {
+                    return getStoneData(data, s);
+                } else if (key.equals("material")) {
+                    return this.m.get(data).getUnlocalizedNameWithMeta();
+                } else {
+                    error("Unknown key: " + key);
+                    return null;
+                }
+            } else return key;
+        } else {
+            return key;
+        }
+    }
     private String getStoneData(String s, Stone stone) {
         if (s.contains("$") || s.contains("+")) {
             StringBuilder sb = new StringBuilder();
@@ -158,11 +193,7 @@ public class OreVariant extends AMaterialData {
     }
 
     @Override
-    protected String customItemKey(String key) {
-        return null;
-    }
+    protected String customItemKey(String key) {return null;}
     @Override
-    protected String customLiquidKey(String key) {
-        return null;
-    }
+    protected String customLiquidKey(String key) {return null;}
 }

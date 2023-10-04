@@ -7,10 +7,12 @@ public class MachineBlockstateData {
     public String registryName;
     public Map<String, Object> properties;
     public int x, y, z;
+    public boolean noProperties;
 
-    MachineBlockstateData(String registryName, Map<String, Object> properties) {
+    MachineBlockstateData(String registryName, Map<String, Object> properties, boolean noProperties) {
         this.registryName = registryName;
         this.properties = properties;
+        this.noProperties = noProperties;
     }
 
     public void addCoordinates(int x, int y, int z) {

@@ -8,6 +8,7 @@ import Main.Data.RecipeObject.Localized.Liquid.LLiquid;
 import Main.Data.RecipeObject.Localized.Liquid.LPlasma;
 import Main.Data.RecipeObject.Localized.Part.LTool;
 import Main.Data.RecipeObject.MaterialData.Liquid.MLiquid;
+import Main.Data.Tweakers.ORecipeTweak;
 import Main.Data.Tweakers.RecipeTweak;
 import Main.Util;
 
@@ -75,6 +76,27 @@ public class Tool extends AMalleable {
                 sb.append(t.buildRecipe());
             }
         }
+        return sb.toString();
+    }
+
+    @Override
+    public String buildRecipe() {
+        StringBuilder sb = new StringBuilder();
+        if (this.tweak != null && !this.customUserRecipes) {
+            ORecipeTweak[] recipes = this.tweak.getRecipes();
+            for (int i = 0; i < recipes.length; i++) {
+                sb.append(addRecipe(
+                        i, recipes[i].machine, recipes[i].isMachineGroup, this.baseTime, recipes[i].priority,
+                        this.tickDecMultipliers, recipes[i].baseRecipeAmount, recipes[i].ioMultipliers,
+                        0, 0, 0,
+                        recipes[i].iInput, recipes[i].lInput, recipes[i].iOutput, recipes[i].lOutput,
+                        "tweaker", 0, "",
+                        "", ""
+                ));
+            }
+        }
+        String b = buildAdditionalRecipes();
+        if (b != null) sb.append(b);
         return sb.toString();
     }
 

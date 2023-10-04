@@ -179,7 +179,6 @@ public class MainMaterials {
         GToolPartGroup toolGroup = new GToolPartGroup("toolGroup", toolPart);
         toolGroup.readFile();
         bw.write(toolGroup.writeMaterials());
-
         //elements
         GElement element = new GElement("element");
         element.readFile();
