@@ -2,7 +2,7 @@ package Main.Generators;
 
 import Main.Data.AData;
 import Main.Parameter.ParameterException;
-import Main.Stopwatch;
+import Main.ProcessTimer;
 import Main.Util;
 
 import java.io.*;
@@ -42,16 +42,13 @@ public abstract class AGenerator<D extends AData> {
     }
     //construct > readFile > register(write)
     public void readFile() {
-        System.out.print("Reading file " + this.filename + "s.txt... ");
-        Stopwatch w = new Stopwatch();
-        w.start();
+        ProcessTimer pt = new ProcessTimer("Reading file " + this.filename + "s.txt");
         try {
             populateObjects();
         } catch (IOException e) {
             e.printStackTrace();
         }
-        w.stop();
-        System.out.println("completed in " + w.getMillis() + " ms");
+        pt.stop();
     }
     protected void populateObjects() throws IOException {
         FileReader fr = new FileReader(Util.HOME + Util.FILES + this.SUBFOLDER + "/" + this.filename.toLowerCase() + "s.txt");
@@ -82,9 +79,7 @@ public abstract class AGenerator<D extends AData> {
     public String writeMaterials() {
         StringBuilder sb = new StringBuilder();
         String test;
-        System.out.print("Writing from " + this.filename + "s.txt... ");
-        Stopwatch w = new Stopwatch();
-        w.start();
+        ProcessTimer pt = new ProcessTimer("Writing from " + this.filename + "s.txt");
         if (objects.size() > 0) {
             test = objects.get(0).buildMaterial();
             if (test != null) {
@@ -98,17 +93,14 @@ public abstract class AGenerator<D extends AData> {
                 sb.append("\n");
             }
         }
-        w.stop();
-        System.out.println("completed in " + w.getMillis() + " ms");
+        pt.stop();
         return sb.toString();
     }
     //split each materialData script code into separate files
     public void writeMaterialFiles(String path, String filename, String label,
                                    int priority, int threshold) throws IOException {
         String test;
-        System.out.print("Writing from " + this.filename + "s.txt... ");
-        Stopwatch w = new Stopwatch();
-        w.start();
+        ProcessTimer pt = new ProcessTimer("Writing from " + this.filename + "s.txt");
         if (objects.size() > 0) {
             test = objects.get(0).buildMaterial();
             if (test != null) {
@@ -131,13 +123,10 @@ public abstract class AGenerator<D extends AData> {
                 }
             }
         }
-        w.stop();
-        System.out.println("completed in " + w.getMillis() + " ms");
+        pt.stop();
     }
     public String writeRecipes() {
-        System.out.print("Writing from " + this.filename + "s.txt... ");
-        Stopwatch w = new Stopwatch();
-        w.start();
+        ProcessTimer pt = new ProcessTimer("Writing from " + this.filename + "s.txt... ");
         StringBuilder sb = new StringBuilder();
         String test;
         if (objects.size() > 0) {
@@ -153,8 +142,7 @@ public abstract class AGenerator<D extends AData> {
                 sb.append("\n");
             }
         }
-        w.stop();
-        System.out.println("completed in " + w.getMillis() + " ms");
+        pt.stop();
         return sb.toString();
     }
     protected String appendHeader() {
@@ -167,6 +155,9 @@ public abstract class AGenerator<D extends AData> {
     }
     public void replace(D o) {
         this.objects.set(this.objects.indexOf(this.get(o.NAME)), o);
+    }
+    public void add(D o) {
+        this.objects.add(o);
     }
     public D get(String s) {
         for (D o : objects) {

@@ -48,7 +48,7 @@ public class RecipeObject extends AData {
                 this.recipes = new MachineRecipe[arrSize];
                 this.recipes[0] = populateFirstRecipe(name, this.machine, time, priority, minVoltage, minEnergyIn, minEnergyOut,
                         baseRecipeAmount, ioMultipliers, itemInputs, liquidInputs, itemOutputs, liquidOutputs, chemAmount, data, matterIn, matterOut);
-                populateRecipes(1, this.recipes.length, name, this.recipes, this.machine, time, priority, minVoltage, minEnergyIn, minEnergyOut,
+                populateRecipes(1, this.recipes.length, name, this.recipes, this.machine, this.machine.NAME, time, priority, minVoltage, minEnergyIn, minEnergyOut,
                         baseRecipeAmount, ioMultipliers, tickDecMultipliers, itemInputs, liquidInputs, itemOutputs, liquidOutputs, chemAmount, data, matterIn, matterOut);
             }
         } else {
@@ -59,7 +59,7 @@ public class RecipeObject extends AData {
                 if (this.machineGroup.ultimate != null) {
                     this.recipes[0] = populateFirstRecipe(name, this.machineGroup.ultimate, time, priority, minVoltage, minEnergyIn, minEnergyOut,
                             baseRecipeAmount, ioMultipliers, itemInputs, liquidInputs, itemOutputs, liquidOutputs, chemAmount, data, matterIn, matterOut);
-                    populateRecipes(1, this.recipes.length, name, this.recipes, this.machineGroup.ultimate, time, priority, minVoltage, minEnergyIn, minEnergyOut,
+                    populateRecipes(1, this.recipes.length, name, this.recipes, this.machineGroup.ultimate, this.machineGroup.NAME, time, priority, minVoltage, minEnergyIn, minEnergyOut,
                             baseRecipeAmount, ioMultipliers, tickDecMultipliers, itemInputs, liquidInputs, itemOutputs, liquidOutputs, chemAmount, data, matterIn, matterOut);
                 }
             } else if (minVoltage > 8) {
@@ -67,11 +67,11 @@ public class RecipeObject extends AData {
                 if (this.machineGroup.industrial != null) {
                     this.recipes[0] = populateFirstRecipe(name, this.machineGroup.industrial, time, priority, minVoltage, minEnergyIn, minEnergyOut,
                             baseRecipeAmount, ioMultipliers, itemInputs, liquidInputs, itemOutputs, liquidOutputs, chemAmount, data, null, null);
-                    populateRecipes(1, 12 - (minVoltage - 1), name, this.recipes, this.machineGroup.industrial, time, priority, minVoltage, minEnergyIn, minEnergyOut,
+                    populateRecipes(1, 12 - (minVoltage - 1), name, this.recipes, this.machineGroup.industrial, this.machineGroup.NAME, time, priority, minVoltage, minEnergyIn, minEnergyOut,
                             baseRecipeAmount, ioMultipliers, tickDecMultipliers, itemInputs, liquidInputs, itemOutputs, liquidOutputs, chemAmount, data, null, null);
                 }
                 if (this.machineGroup.ultimate != null) {
-                    populateRecipes(12 - (minVoltage - 1), this.recipes.length, name, this.recipes, this.machineGroup.ultimate, time, priority, minVoltage, minEnergyIn, minEnergyOut,
+                    populateRecipes(12 - (minVoltage - 1), this.recipes.length, name, this.recipes, this.machineGroup.ultimate, this.machineGroup.NAME, time, priority, minVoltage, minEnergyIn, minEnergyOut,
                             baseRecipeAmount, ioMultipliers, tickDecMultipliers, itemInputs, liquidInputs, itemOutputs, liquidOutputs, chemAmount, data, matterIn, matterOut);
                 }
             } else if (minVoltage > 4) {
@@ -79,15 +79,15 @@ public class RecipeObject extends AData {
                 if (this.machineGroup.advanced != null) {
                     this.recipes[0] = populateFirstRecipe(name, this.machineGroup.advanced, time, priority, minVoltage, minEnergyIn, minEnergyOut,
                             baseRecipeAmount, ioMultipliers, itemInputs, liquidInputs, itemOutputs, liquidOutputs, chemAmount, null, null, null);
-                    populateRecipes(1, 8 - (minVoltage - 1), name, this.recipes, this.machineGroup.advanced, time, priority, minVoltage, minEnergyIn, minEnergyOut,
+                    populateRecipes(1, 8 - (minVoltage - 1), name, this.recipes, this.machineGroup.advanced, this.machineGroup.NAME, time, priority, minVoltage, minEnergyIn, minEnergyOut,
                             baseRecipeAmount, ioMultipliers, tickDecMultipliers, itemInputs, liquidInputs, itemOutputs, liquidOutputs, chemAmount, null, null, null);
                 }
                 if (this.machineGroup.industrial != null) {
-                    populateRecipes(8 - (minVoltage - 1), 12 - (minVoltage - 1), name, this.recipes, this.machineGroup.industrial, time, priority, minVoltage, minEnergyIn, minEnergyOut,
+                    populateRecipes(8 - (minVoltage - 1), 12 - (minVoltage - 1), name, this.recipes, this.machineGroup.industrial, this.machineGroup.NAME, time, priority, minVoltage, minEnergyIn, minEnergyOut,
                             baseRecipeAmount, ioMultipliers, tickDecMultipliers, itemInputs, liquidInputs, itemOutputs, liquidOutputs, chemAmount, data, null, null);
                 }
                 if (this.machineGroup.ultimate != null) {
-                    populateRecipes(12 - (minVoltage - 1), this.recipes.length, name, this.recipes, this.machineGroup.ultimate, time, priority, minVoltage, minEnergyIn, minEnergyOut,
+                    populateRecipes(12 - (minVoltage - 1), this.recipes.length, name, this.recipes, this.machineGroup.ultimate, this.machineGroup.NAME, time, priority, minVoltage, minEnergyIn, minEnergyOut,
                             baseRecipeAmount, ioMultipliers, tickDecMultipliers, itemInputs, liquidInputs, itemOutputs, liquidOutputs, chemAmount, data, matterIn, matterOut);
                 }
             } else {
@@ -95,19 +95,19 @@ public class RecipeObject extends AData {
                 if (this.machineGroup.basic != null) {
                     this.recipes[0] = populateFirstRecipe(name, this.machineGroup.basic, time, priority, minVoltage, minEnergyIn, minEnergyOut,
                             baseRecipeAmount, ioMultipliers, itemInputs, liquidInputs, itemOutputs, liquidOutputs, 0, null, null, null);
-                    populateRecipes(1, 4 - (minVoltage - 1), name, this.recipes, this.machineGroup.basic, time, priority, minVoltage, minEnergyIn, minEnergyOut,
+                    populateRecipes(1, 4 - (minVoltage - 1), name, this.recipes, this.machineGroup.basic, this.machineGroup.NAME, time, priority, minVoltage, minEnergyIn, minEnergyOut,
                             baseRecipeAmount, ioMultipliers, tickDecMultipliers, itemInputs, liquidInputs, itemOutputs, liquidOutputs, 0, null, null, null);
                 }
                 if (this.machineGroup.advanced != null) {
-                    populateRecipes(4 - (minVoltage - 1), 8 - (minVoltage - 1), name, this.recipes, this.machineGroup.advanced, time, priority, minVoltage, minEnergyIn, minEnergyOut,
+                    populateRecipes(4 - (minVoltage - 1), 8 - (minVoltage - 1), name, this.recipes, this.machineGroup.advanced, this.machineGroup.NAME, time, priority, minVoltage, minEnergyIn, minEnergyOut,
                             baseRecipeAmount, ioMultipliers, tickDecMultipliers, itemInputs, liquidInputs, itemOutputs, liquidOutputs, chemAmount, null, null, null);
                 }
                 if (this.machineGroup.industrial != null) {
-                    populateRecipes(8 - (minVoltage - 1), 12 - (minVoltage - 1), name, this.recipes, this.machineGroup.industrial, time, priority, minVoltage, minEnergyIn, minEnergyOut,
+                    populateRecipes(8 - (minVoltage - 1), 12 - (minVoltage - 1), name, this.recipes, this.machineGroup.industrial, this.machineGroup.NAME, time, priority, minVoltage, minEnergyIn, minEnergyOut,
                             baseRecipeAmount, ioMultipliers, tickDecMultipliers, itemInputs, liquidInputs, itemOutputs, liquidOutputs, chemAmount, data, null, null);
                 }
                 if (this.machineGroup.ultimate != null) {
-                    populateRecipes(12 - (minVoltage - 1), this.recipes.length, name, this.recipes, this.machineGroup.ultimate, time, priority, minVoltage, minEnergyIn, minEnergyOut,
+                    populateRecipes(12 - (minVoltage - 1), this.recipes.length, name, this.recipes, this.machineGroup.ultimate, this.machineGroup.NAME, time, priority, minVoltage, minEnergyIn, minEnergyOut,
                             baseRecipeAmount, ioMultipliers, tickDecMultipliers, itemInputs, liquidInputs, itemOutputs, liquidOutputs, chemAmount, data, matterIn, matterOut);
                 }
             }
@@ -150,7 +150,7 @@ public class RecipeObject extends AData {
         }
         return r;
     }
-    private void populateRecipes(int startingIndex, int size, String name, MachineRecipe[] recipes, Machine machine, int time, int priority,
+    private void populateRecipes(int startingIndex, int size, String name, MachineRecipe[] recipes, Machine machine, String machineName, int time, int priority,
                                  int minVoltage, long minEnergyIn, long minEnergyOut,
                                  int baseRecipeAmount, int[] ioMultipliers, double[] tickDecMultipliers,
                                  String[] itemInputs, String[] liquidInputs, String[] itemOutputs, String[] liquidOutputs,
@@ -171,6 +171,10 @@ public class RecipeObject extends AData {
             r.itemOutputs = generateIOAmounts(itemOutputs, baseRecipeAmount, ioMultiplier);
             r.liquidOutputs = generateIOAmounts(liquidOutputs, baseRecipeAmount, ioMultiplier);
             r.setVoltageUpgradeItem(i+1);
+            int ii = i+1;
+            if (ii != minVoltage && ii != 5 && ii != 9 && ii != 13) {
+                r.setMachineUpgradeItem(ii, machineName);
+            }
             if (chemAmount > 0 && machine.chemical != null) {
                 r.liquidInputs.add(generateIOAmount(machine.chemical+"*"+chemAmount, baseRecipeAmount, ioMultiplier));
             }

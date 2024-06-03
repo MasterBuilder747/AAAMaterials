@@ -4,7 +4,7 @@ import Main.Data.RecipeObject.MaterialData.Composition.Composition;
 
 //internal class for the composition system that allows for replacements in a composition
 public class Replacement {
-    Composition[] comps;
+    public Composition[] comps;
     int amount;
     Composition c; //to continue the linked list of compositions
 
@@ -36,6 +36,41 @@ public class Replacement {
         }
         if (this.c != null) {
             sb.append(c);
+        }
+        return sb.toString();
+    }
+    public String toText() {
+        //outputs the searching text {,}n
+        StringBuilder sb = new StringBuilder();
+        sb.append("{");
+        for (int i = 0; i < this.comps.length-1; i++) {
+            sb.append(this.comps[i].toSymbolNoCharge());
+            sb.append(",");
+        }
+        sb.append(this.comps[this.comps.length-1].toSymbolNoCharge());
+        sb.append("}");
+        if (this.amount > 1) {
+            sb.append(this.amount);
+        }
+        if (this.c != null) {
+            sb.append(c.toSymbolNoCharge());
+        }
+        return sb.toString();
+    }
+    public String toCompFileSyntax() {
+        //similar to toText, except use material name
+        StringBuilder sb = new StringBuilder();
+        sb.append("{");
+        for (int i = 0; i < this.comps.length-1; i++) {
+            sb.append(this.comps[i].toCompFileSyntax());
+        }
+        sb.append(this.comps[this.comps.length-1].toCompFileSyntax());
+        sb.append("}");
+        if (this.amount > 1) {
+            sb.append(this.amount);
+        }
+        if (this.c != null) {
+            sb.append(c.toCompFileSyntax());
         }
         return sb.toString();
     }

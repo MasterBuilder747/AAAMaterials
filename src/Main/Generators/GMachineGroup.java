@@ -3,6 +3,7 @@ package Main.Generators;
 import Main.Data.GameData.Other.BlockstateMeta;
 import Main.Data.GameData.Registry;
 import Main.Data.Machine.MachineGroup;
+import Main.Data.RecipeObject.Localized.LItem;
 import Main.Generators.GameData.GLiquidRegistry;
 import Main.Generators.GameData.GRegistry;
 import Main.Generators.GameData.Other.GBlockstateMeta;
@@ -53,6 +54,25 @@ public class GMachineGroup extends AGenerator<MachineGroup> {
         if (mg.advanced != null) machine.objects.add(mg.advanced);
         if (mg.industrial != null) machine.objects.add(mg.industrial);
         if (mg.ultimate != null) machine.objects.add(mg.ultimate);
+    }
+
+    public String buildUpgradeItems() {
+        StringBuilder sb = new StringBuilder();
+        for (MachineGroup g : this.objects) {
+            for (LItem i : g.upgradeItems) {
+                sb.append(i.buildMaterial());
+            }
+        }
+        return sb.toString();
+    }
+    public String localizeUpgradeItems() {
+        StringBuilder sb = new StringBuilder();
+        for (MachineGroup g : this.objects) {
+            for (LItem i : g.upgradeItems) {
+                sb.append(i.localize());
+            }
+        }
+        return sb.toString();
     }
 
     @Deprecated

@@ -53,6 +53,9 @@ public class Recipe extends AData {
     public void setVoltageUpgradeItem(int voltage) {
         this.itemInputs.add("0%contenttweaker:"+Util.getVoltageAbb(voltage)+"_upgrade");
     }
+    public void setMachineUpgradeItem(int voltage, String machineName) {
+        this.itemInputs.add("0%contenttweaker:upgrade_"+machineName+"_"+voltage);
+    }
 
     private void genJson() throws IOException {
         //1 file per recipe

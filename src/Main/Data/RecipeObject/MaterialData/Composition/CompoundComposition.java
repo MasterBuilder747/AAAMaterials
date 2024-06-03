@@ -38,18 +38,22 @@ public class CompoundComposition extends AChemicalComposition {
     public boolean isChemReact; //chemically combine
     public boolean isElectrolyze; //chemically separate
 
-    String subType; //more characterization for recipes
+    public String subType; //more characterization for recipes
+    public boolean useInCompound; //use this ion in automatic compounds?
+    public boolean useInEquation; //use this compound in automatic equations?
 
     public CompoundComposition(Registry[] items, String[] liquids, String[] ores,
                                Machine[] machines, MachineGroup[] machineGroups,
                                Material m,
-                               Composition c, String compType, int charge, boolean isDefault,
+                               Composition c, String compType, int charge, boolean useInCompound, boolean useInEquation, boolean isDefault,
                                String subType, boolean isMixing, boolean isCentrifuge, boolean isChemReact, boolean isElectrolyze) {
         super("CompoundComposition",
                 items, liquids, ores,
                 machines, machineGroups,
                 m,
                 c, compType, charge, isDefault, false);
+        this.useInCompound = useInCompound;
+        this.useInEquation = useInEquation;
         this.subType = subType;
         this.isMixing = isMixing;
         this.isChemReact = isChemReact;
@@ -57,6 +61,13 @@ public class CompoundComposition extends AChemicalComposition {
         this.isElectrolyze = isElectrolyze;
     }
     //compositions do not support user recipes as they do not add any material parts
+
+    public String getOtherMaterialName(String exclusion) {
+        return composition.getOtherMaterialName(exclusion);
+    }
+    public int getMatAmount(String mat) {
+        return composition.getMatAmount(mat);
+    }
 
     @Override
     protected void setSymbol() {

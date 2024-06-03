@@ -18,6 +18,8 @@ public class MoleculeComposition extends AChemicalComposition {
 
     public String symbolWCharge; //ex: Am3+
 
+    public String suffix;
+
     public MoleculeComposition(Registry[] items, String[] liquids, String[] ores,
                                Machine[] machines, MachineGroup[] machineGroups,
                                Material m,

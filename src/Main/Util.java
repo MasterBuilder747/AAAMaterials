@@ -4,10 +4,7 @@ import org.json.JSONObject;
 
 import java.awt.*;
 import java.io.*;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.Locale;
+import java.util.*;
 
 public class Util {
     //any global variables to be used
@@ -277,9 +274,10 @@ public class Util {
     public static String printArrayTxt(String[] a) {
         return Arrays.toString(a);
     }
-    public static void printArray(String[] a) {
-        System.out.println(printArrayTxt(a));
-    }
+    public static void printArray(boolean[] a) { System.out.println(Arrays.toString(a)); }
+    public static void printArray(double[] a) { System.out.println(Arrays.toString(a)); }
+    public static void printArray(int[] a) { System.out.println(Arrays.toString(a)); }
+    public static void printArray(String[] a) { System.out.println(printArrayTxt(a)); }
     public static String getArrayOut(String[] a) {
         return Arrays.toString(a);
     }
@@ -358,9 +356,236 @@ public class Util {
 
     //Strings
     public static String[] split(String s, String regex) {
-        if (s.equals("")) return new String[0];
+        if (s.isEmpty()) return new String[0];
         if (regex.equals(".")) return s.split("\\.");
+        if (regex.equals("+")) return s.split("\\+");
+        if (regex.equals("*")) return s.split("\\*");
         return s.split(regex+"\\s*");
+    }
+
+    public static boolean isTrailing(double d, int threshold) {
+        //0.666666... * 2 = 1.333 * 10^3 = 1333.0
+        //12.666666... * 2 = 25.333 * 10^3 = 2533.3
+        //because longs are limited to 18 characters
+        //return true if d contains a portion of some numerical value
+        //at the decimal point located at threshold, where 1 is one decimal place and on
+        if (threshold > 18 || threshold < 1) throw new IllegalArgumentException("trailing precision must be between 1 and 18 inclusive");
+        threshold--;
+        double base = d*(Math.pow(10, threshold));
+        long trail = (long)(Util.thresholdRound(d, threshold)*(Math.pow(10, threshold)));
+        //System.out.println(base);
+        //System.out.println(trail);
+        return (base-trail) != 0;
+    }
+
+    public static double preciseRound(double d, final int PRECISION) {
+        //return the double rounded only if its decimal portion is:
+        //0.n..9999999...a
+        //0.n..0000000...a
+        //where a is some one-digit character that is not significant to the rest of the number
+        String s = String.valueOf(d);
+        //handle "E" if necessary
+        if (s.contains("E-")) {
+            //if the double contains an E at all, this assumes that it is too small to be greater than 1
+            //ex: 0.000001 is 1.0E-6
+            return 0;
+            //double a = Double.parseDouble(s.substring(0, s.indexOf("E")));
+            //int p = Integer.parseInt(s.substring(s.indexOf("E")+1));
+        }
+        int count0 = 0;
+        int count9 = 0;
+        int i = s.length()-2;
+        while (i > -1 && s.charAt(i) == '0' && s.charAt(i) != '.') {
+            count0++;
+            i--;
+        }
+        i = s.length()-2;
+        while (i > -1 && s.charAt(i) == '9' && s.charAt(i) != '.') {
+            count9++;
+            i--;
+        }
+        if (count0 > PRECISION) {
+            //0....000a
+            //0.333 * 0.333
+            return Double.parseDouble(s.substring(0, ((s.length()-1)-count0)));
+        }
+        if (count9 > PRECISION) {
+            //0.6666 * 0.6677
+            //0....999a
+            if (count9 == s.substring(s.indexOf(".")+1).length()-1) {
+                //this contains all 9s
+                return (int)d+1;
+            }
+            int lastNum = Integer.parseInt(s.substring(((s.length()-1)-count9)-1, ((s.length()-1)-count9)));
+            lastNum++;
+            return Double.parseDouble(s.substring(0, ((s.length()-1)-count9)-1)+lastNum);
+        }
+        return d;
+    }
+
+    public static int[] simplifyRatio(int max, int min) {
+        //returns a size 2 int containing the smaller and larger numbers simplified
+        //find the highest factor that evenly simplifies these numbers
+        //ex: 9 and 6 -> 3 and 2
+        //6 and 2 -> 3 and 1
+        //12 and 6 -> 2 and 1 (not 6 and 3!)
+        if (min > max || min < 1) return null; //invalid
+        if (min == 1) return new int[]{max, min}; //3 and 1 -> 3 and 1
+        ArrayList<Integer> factors = new ArrayList<>();
+        for (int i = 2; i < max+1; i++) {
+            if (max % i == 0 && min % i == 0) factors.add(i);
+        }
+        if (!factors.isEmpty()) {
+            int factor = factors.get(factors.size() - 1);
+            max /= factor;
+            min /= factor;
+        }
+        return new int[]{max, min};
+    }
+
+    public static double thresholdRound(double d, int precision) {
+        //precision: (1 to 10), 0 or less to disable
+        //0.999999999999 -> 1 //precision 0
+        //0.000000000001 -> 0 //precision 0
+        //0.500000000001 -> 0.5 //precision 1
+        //0.499999999998 -> 0 //precision 0
+        //0.333333333333 -> 0.3 //precision 1
+        //0.111111111111 -> 0.11 //precision 2
+        if (precision < 1) return Math.round(d);
+        int i = (int)d;
+        d = d-i;
+        return i + ((Math.round(Math.pow(10, precision)*(d))) / Math.pow(10, precision));
+    }
+
+    public static <T> ArrayList<T> combineArrays(T[] arr1, T[] arr2) {
+        ArrayList<T> combinedList = new ArrayList<>();
+        combinedList.addAll(Arrays.asList(arr1));
+        combinedList.addAll(Arrays.asList(arr2));
+        return combinedList;
+    }
+
+    //lowercase only. If uppercase needed, use toUppercase
+    public static String intToLetter(int num) {
+        return switch (num) {
+            case 1 -> "a";
+            case 2 -> "b";
+            case 3 -> "c";
+            case 4 -> "d";
+            case 5 -> "e";
+            case 6 -> "f";
+            case 7 -> "g";
+            case 8 -> "h";
+            case 9 -> "i";
+            case 10 -> "j";
+            case 11 -> "k";
+            case 12 -> "l";
+            case 13 -> "m";
+            case 14 -> "n";
+            case 15 -> "o";
+            case 16 -> "p";
+            case 17 -> "q";
+            case 18 -> "r";
+            case 19 -> "s";
+            case 20 -> "t";
+            case 21 -> "u";
+            case 22 -> "v";
+            case 23 -> "w";
+            case 24 -> "x";
+            case 25 -> "y";
+            case 26 -> "z";
+            default -> null;
+        };
+    }
+    public static int letterToInt(String s) {
+        return switch (s) {
+            case "a" -> 1;
+            case "b" -> 2;
+            case "c" -> 3;
+            case "d" -> 4;
+            case "e" -> 5;
+            case "f" -> 6;
+            case "g" -> 7;
+            case "h" -> 8;
+            case "i" -> 9;
+            case "j" -> 10;
+            case "k" -> 11;
+            case "l" -> 12;
+            case "m" -> 13;
+            case "n" -> 14;
+            case "o" -> 15;
+            case "p" -> 16;
+            case "q" -> 17;
+            case "r" -> 18;
+            case "s" -> 19;
+            case "t" -> 20;
+            case "u" -> 21;
+            case "v" -> 22;
+            case "w" -> 23;
+            case "x" -> 24;
+            case "y" -> 25;
+            case "z" -> 26;
+            default -> -1;
+        };
+    }
+
+    public static String intToRomanNum(int n) {
+        return switch (n) {
+            case 1 -> "i";
+            case 2 -> "ii";
+            case 3 -> "iii";
+            case 4 -> "iv";
+            case 5 -> "v";
+            case 6 -> "vi";
+            case 7 -> "vii";
+            case 8 -> "viii";
+            case 9 -> "ix";
+            case 10 -> "x";
+            case 11 -> "xi";
+            case 12 -> "xii";
+            default -> null;
+        };
+    }
+
+    //returns the next letter in the alphabet, lowercase only. If at the end or invalid, returns null
+    public static String nextLetter(String s) {
+        if (letterToInt(s) == -1) return null;
+        int firstLetter = letterToInt(s);
+        firstLetter++;
+        return intToLetter(firstLetter);
+    }
+
+    public static String intToHex(int a) {
+        switch (a) {
+            case 0, 1, 2, 3, 4, 5, 6, 7, 8, 9 -> {return Integer.toString(a);}
+            case 10 -> {return "a";}
+            case 11 -> {return "b";}
+            case 12 -> {return "c";}
+            case 13 -> {return "d";}
+            case 14 -> {return "e";}
+            case 15 -> {return "f";}
+            default -> {return null;}
+        }
+    }
+
+    public static String randHexColor(long seed) {
+        Random rand = new Random(seed);
+        StringBuilder sb = new StringBuilder();
+        for (int i = 0; i < 6; i++) {
+            String hexValue = intToHex((int)(16 * rand.nextDouble()));
+            if (hexValue == null) return null;
+            else sb.append(hexValue);
+        }
+        return sb.toString();
+    }
+    public static String randHexColor() {
+        Random rand = new Random();
+        StringBuilder sb = new StringBuilder();
+        for (int i = 0; i < 6; i++) {
+            String hexValue = intToHex((int)(16 * rand.nextDouble()));
+            if (hexValue == null) return null;
+            else sb.append(hexValue);
+        }
+        return sb.toString();
     }
 
     //Arrays
@@ -421,6 +646,59 @@ public class Util {
             case 16 -> "inf";
             default -> null;
         };
+    }
+    public static String getVoltageAbbUpper(int tier) {
+        return switch (tier) {
+            case 1  -> "LV";
+            case 2  -> "MV";
+            case 3  -> "HV";
+            case 4  -> "EV";
+            case 5  -> "IV";
+            case 6  -> "LuV";
+            case 7  -> "ZPV";
+            case 8  -> "UV";
+            case 9  -> "UMV";
+            case 10 -> "UHV";
+            case 11 -> "UEV";
+            case 12 -> "UIV";
+            case 13 -> "ULV";
+            case 14 -> "UZV";
+            case 15 -> "UUU";
+            case 16 -> "Inf";
+            default -> null;
+        };
+    }
+
+    //parse array
+    public static String[] parseArray(String s) {
+        return split(s, ",");
+    }
+    public static String[] parseArray(String s, String otherDelimiter) {
+        return split(s, otherDelimiter);
+    }
+    public static double[] parseDoubleArr(String s) {
+        String[] ss = parseArray(s);
+        double[] out = new double[ss.length];
+        for (int i = 0; i < ss.length; i++) {
+            out[i] = Double.parseDouble(ss[i]);
+        }
+        return out;
+    }
+    public static int[] parseIntArr(String s) {
+        String[] ss = parseArray(s);
+        int[] out = new int[ss.length];
+        for (int i = 0; i < ss.length; i++) {
+            out[i] = Integer.parseInt(ss[i]);
+        }
+        return out;
+    }
+    public static boolean[] parseBoolArr(String s) {
+        String[] ss = parseArray(s);
+        boolean[] out = new boolean[ss.length];
+        for (int i = 0; i < ss.length; i++) {
+            out[i] = Boolean.parseBoolean(ss[i]);
+        }
+        return out;
     }
 
     //unicaode
@@ -558,6 +836,11 @@ public class Util {
         return false;
     }
     public static boolean isUppercase(String s) {
+        if (isNumeric(s)) return false;
+        char[] chk = s.toCharArray();
+        for (char c : chk) {
+            if (!Character.isLetter(c)) return false;
+        }
         return s.matches(s.toUpperCase());
     }
     public static boolean isNumeric(String s) {
@@ -571,6 +854,7 @@ public class Util {
         }
         return true;
     }
+
     public static boolean validateHEX(String s) {
         for (char c : s.toCharArray()) {
             if (c == '.') return false;

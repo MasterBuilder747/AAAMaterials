@@ -24,6 +24,7 @@ import Main.Generators.RecipeObjects.Localized.Part.GPart;
 import Main.Generators.RecipeObjects.Localized.Part.GToolPart;
 import Main.Generators.RecipeObjects.MaterialData.Composition.GCompoundComposition;
 import Main.Generators.RecipeObjects.MaterialData.Composition.GMoleculeComposition;
+import Main.Generators.RecipeObjects.MaterialData.EquationCreation.GCompoundGen;
 import Main.Generators.RecipeObjects.MaterialData.GMSolid;
 import Main.Generators.RecipeObjects.MaterialData.Liquid.GMGas;
 import Main.Generators.RecipeObjects.MaterialData.Liquid.GMLiquid;
@@ -50,7 +51,7 @@ public class MainMaterials {
     //4 the pack's .cfg files to be created via code
     public final static boolean REG = false;
 
-    public static void main(String[] args) throws IOException {
+    public static void main() throws IOException {
         Stopwatch w = new Stopwatch();
         w.start();
 
@@ -132,6 +133,13 @@ public class MainMaterials {
         machineGroup.writeMaterials();
         bw.close();
 
+        //machine upgrade items (custom items for machine tier specific recipes)
+        fw = new FileWriter(Util.HOME + Util.DEPLOY + "scripts/materials/machine-upgrades.zs");
+        bw = new BufferedWriter(fw);
+        bw.write(Util.writeHeader("machine upgrades", -1,900, null, true, null));
+        bw.write(machineGroup.buildUpgradeItems());
+        bw.close();
+
         //custom content
         fw = new FileWriter(Util.HOME + Util.DEPLOY + "scripts/materials/materials-custom" + ".zs");
         bw = new BufferedWriter(fw);
@@ -196,6 +204,7 @@ public class MainMaterials {
         GCompoundComposition compound = new GCompoundComposition("compound", REG, registry, liquids, oreDict, machine, machineGroup, data, matter, material, partGroup, blockPartGroup, toolGroup, molecule);
         compound.readFile();
         compound.writeMaterials();
+        //compound.printParseComps();
 
         GRecipeTweak tweak = null; //placeholder for constructors
 
@@ -214,6 +223,29 @@ public class MainMaterials {
         GMPlasma mPlasma = new GMPlasma("plasma", REG, tweak, registry, liquids, oreDict, machine, machineGroup, data, matter, material, partGroup, blockPartGroup, toolGroup, null);
         mPlasma.readFile();
         mPlasma.writeMaterialFiles("materials/materialDatas/", "plasmas", "plasma", datasPriority, 1000);
+
+        /*
+        //create automatic chemical recipes
+        final boolean CREATECHEMRECIPES = true;
+        final int THREADS = 12;
+        if (CREATECHEMRECIPES) {
+            AGCompoundRec singleR = new CRSingleReplacement("singlereplacement", REG, tweak, registry, liquids, oreDict, machine, machineGroup, data, matter, material, partGroup, blockPartGroup, toolGroup, molecule, compound, THREADS);
+            try {
+                singleR.createChemicalRecipes(false);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+                System.exit(1);
+            }
+            AGCompoundRec doubleR = new CRDoubleReplacement("doublereplacement", REG, tweak, registry, liquids, oreDict, machine, machineGroup, data, matter, material, partGroup, blockPartGroup, toolGroup, molecule, compound, THREADS);
+            try {
+                doubleR.createChemicalRecipes(false);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+                System.exit(1);
+            }
+        }
+
+         */
 
         //solid material datas
         GWood wood = new GWood("wood", REG, tweak, registry, liquids, oreDict, machine, machineGroup, data, matter, material, partGroup, blockPartGroup, toolGroup, mSolid);
@@ -294,6 +326,8 @@ public class MainMaterials {
         //machine resource
         bw.write(data.localize());
         bw.write(matter.localize());
+        //machine upgrade items
+        bw.write(machineGroup.localizeUpgradeItems());
         //custom data
         bw.write(block.localize());
         bw.write(item.localize());
@@ -347,6 +381,21 @@ public class MainMaterials {
         bw = new BufferedWriter(fw);
         bw.write(biome.genSeasons());
         bw.close();
+
+        //generate chemicals
+        final boolean GENCHEMS = false;
+        if (GENCHEMS) {
+            GCompoundGen compGen = new GCompoundGen("compGen", REG, tweak, registry, liquids, oreDict, machine, machineGroup, data, matter, material, partGroup, blockPartGroup, toolGroup, molecule, compound, mLiquid);
+            String[] files = compGen.createMaterialFile();
+            fw = new FileWriter(Util.HOME + Util.DEPLOY + "genMats.txt");
+            bw = new BufferedWriter(fw);
+            bw.write(files[0]);
+            bw.close();
+            fw = new FileWriter(Util.HOME + Util.DEPLOY + "genComps.txt");
+            bw = new BufferedWriter(fw);
+            bw.write(files[1]);
+            bw.close();
+        }
 
         w.stop();
         System.out.println();

@@ -46,7 +46,7 @@ public class GMoleculeComposition extends AGChemicalComposition<MoleculeComposit
         boolean isDefault = parseBoolean(s[2]);
         int charge = parseInt(s[4]);
         int isotope = parseInt(s[5]);
-        if (isotope < 0) error("isotope " + isotope + " for composition " + c.toSymbol() + " must be non-negative");
+        if (isotope < 0) error("isotope " + isotope + " for composition " + c.toSymbolWithCharge() + " must be non-negative");
         c.setMoleculeCharge(charge);
         /*
             element
@@ -62,15 +62,17 @@ public class GMoleculeComposition extends AGChemicalComposition<MoleculeComposit
         */
         int mValue = -1;
         int metaPwr = 0;
+        String suffix = null;
         switch (compType) {
             case "element" -> {
                 if (isotope != 0) typeError(c, "element", "an isotope of 0");
                 if (!isDefault) typeError(c, "element", "a default composition of true");
             }
             case "ion" -> {
-                if (isotope != 0) typeError(c, "ion", "an isotope of 0");
+                //if (isotope != 0) typeError(c, "ion", "an isotope of 0");
                 if (isDefault) typeError(c, "ion", "a default composition of false");
                 if (charge == 0) typeError(c, "ion", "a non-zero charge");
+                if (charge < 0) typeError(c, "ion", "requires a suffix name after the type: ion;suffixName");
             }
             //variant and magnetic are the same, but we will use magnetic differently in recipes
             case "variant" -> {
@@ -104,6 +106,8 @@ public class GMoleculeComposition extends AGChemicalComposition<MoleculeComposit
                     if (mValue < -1) error("mValue must be greater than -1 for compType syntax " + compType);
                     metaPwr = parseInt(metaArr[2]);
                     compType = "metastable";
+                } else if (compType.startsWith("ion;")) {
+                    if (charge < 0) suffix = parseArray(compType, ";")[1];
                 } else if (compType.equals("special_character")) {
                     //whatever
                 } else {
@@ -118,12 +122,13 @@ public class GMoleculeComposition extends AGChemicalComposition<MoleculeComposit
                 c, compType, charge, isDefault,
                 isDiatomic, isotope, mValue);
         if (metaPwr != 0) comp.setMetastability(metaPwr);
+        if (suffix != null) comp.suffix = suffix;
         m.addComposition(comp);
         objects.add(comp);
     }
 
     private void typeError(Composition c, String type, String msg) {
-        error("Composition " + c.toSymbol() + " of type " + type + " must have " + msg);
+        error("Composition " + c.toSymbolWithCharge() + " of type " + type + " must have " + msg);
     }
 
     //ex: Am3+-241m2

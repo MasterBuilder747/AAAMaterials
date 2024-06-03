@@ -29,7 +29,7 @@ public class GCompoundComposition extends AGChemicalComposition<CompoundComposit
                                 GMachine machine, GMachineGroup machineGroup, GMachineData data, GMachineMatter matter,
                                 GMaterial material, GPartGroup partGroup, GBlockPartGroup blockPartGroup, GToolPartGroup toolGroup,
                                 GMoleculeComposition molecule) {
-        super(9, filename, isReg,
+        super(11, filename, isReg,
                 registry, liquids, ores,
                 machine, machineGroup, data, matter,
                 material, partGroup, blockPartGroup, toolGroup,
@@ -40,7 +40,8 @@ public class GCompoundComposition extends AGChemicalComposition<CompoundComposit
     @Override
     protected void readChemCompParameters(Material m, String[] s) {
         //material,
-        //Composition,type,subtype,charge_override,isDefault,
+        //Composition,type,subtype,charge_override,
+        //useInEquation,isDefault,
         //isMixing,isCentrifuge,isChemReact,isElectrolyze
         String compStr = s[0];
         ArrayList<Composition> comps = createMaterialCompoundComp(compStr);
@@ -55,8 +56,8 @@ public class GCompoundComposition extends AGChemicalComposition<CompoundComposit
                 getItems(), getLiquids(), getOres(),
                 getMachineRegistry(), getMachineGroupRegistry(),
                 m,
-                c, type, charge, parseBoolean(s[4]),
-                subtype, parseBoolean(s[5]), parseBoolean(s[6]), parseBoolean(s[7]), parseBoolean(s[8]));
+                c, type, charge, parseBoolean(s[4]), parseBoolean(s[5]), parseBoolean(s[6]),
+                subtype, parseBoolean(s[7]), parseBoolean(s[8]), parseBoolean(s[9]), parseBoolean(s[10]));
         m.addComposition(comp);
         objects.add(comp);
     }
@@ -204,13 +205,18 @@ public class GCompoundComposition extends AGChemicalComposition<CompoundComposit
                                             //Symbol_symbol[Symbol][Empty]
                                             MoleculeComposition mole = molecule.getMole(s0 + s1, line);
                                             comps.add(new Composition(mole.getE(), 1, mole.charge));
-                                            i++;
+                                            if (Util.isUppercase(s2)) {
+                                                mole = molecule.getMole(s2, line);
+                                                comps.add(new Composition(mole.getE(), 1, mole.charge));
+                                            } else {
+                                                error("Last char " + s2 + " must be uppercase at index " + i+2);
+                                            }
                                         } else {
                                             //Symbol_symbolNumber[Empty]
                                             MoleculeComposition mole = molecule.getMole(s0 + s1, line);
                                             comps.add(new Composition(mole.getE(), parseInt(s2), mole.charge));
-                                            i+=2;
                                         }
+                                        i+=2;
                                         break;
                                     } else {
                                         if (Util.isNumeric(s2)) {
@@ -279,5 +285,16 @@ public class GCompoundComposition extends AGChemicalComposition<CompoundComposit
         }
         error("Unknown composition " + s, line);
         return null;
+    }
+
+    public void printParseComps() {
+        for (CompoundComposition c : this.getObjects()) {
+            if (c.isDefault && (c.compType.equals("compound") || c.compType.equals("ion"))) {
+                String out = "\""+ c.printComp() + ":" + c.getMaterial().NAME+"\",";
+                if (!out.contains("(") && !out.contains("{")) {
+                    System.out.println(out);
+                }
+            }
+        }
     }
 }

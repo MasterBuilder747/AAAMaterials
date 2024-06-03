@@ -3,7 +3,10 @@ package Main.Data.Machine;
 import Main.Data.AData;
 import Main.Data.GameData.Other.BlockstateMeta;
 import Main.Data.GameData.Registry;
+import Main.Data.RecipeObject.Localized.LItem;
 import Main.Util;
+
+import java.util.ArrayList;
 
 public class MachineGroup extends AData {
     String localName;
@@ -19,6 +22,8 @@ public class MachineGroup extends AData {
     public Machine industrial;
     public Machine ultimate; //cannot be null, every group has at least one ult tier
 
+    public ArrayList<LItem> upgradeItems;
+
     //arrays are from least to greatest machine tier
     public MachineGroup(String name, String localName, String[] colors, boolean[] reqBlueprints, int minVoltage, String[] chemicals,
                         Registry[] registries, BlockstateMeta[] blockMetas
@@ -31,6 +36,7 @@ public class MachineGroup extends AData {
         this.chemicals = chemicals;
         this.registries = registries;
         this.blockMetas = blockMetas;
+        this.upgradeItems = new ArrayList<>();
         buildMachines();
     }
     private void buildMachines() {
@@ -57,6 +63,16 @@ public class MachineGroup extends AData {
         if (advanced != null) this.advanced.buildMaterial();
         if (industrial != null) this.industrial.buildMaterial();
         if (ultimate != null) this.ultimate.buildMaterial();
+        //build upgrade items
+        //upgrade_wiremill_2
+        //MV Wiremill Upgrade
+        for (int i = minVoltage; i < 17; i++) {
+            if (i != minVoltage && i != 5 && i != 9 && i != 13) {
+                String unlocName = "upgrade_" + this.NAME + "_" + i;
+                String locName = Util.getVoltageAbbUpper(i) + " " + localName + " Upgrade";
+                upgradeItems.add(new LItem(unlocName, null, null, null, null, null, locName));
+            }
+        }
         return null;
     }
 

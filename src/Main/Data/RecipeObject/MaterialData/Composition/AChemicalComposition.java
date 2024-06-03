@@ -19,6 +19,7 @@ import Main.Data.RecipeObject.RegistryData;
 //photosynthesis: CO2-g + H2O > C6H12O6-s + O2-g => 6*CO2-g + 6*H2O [sun] > C6H12O6-s + 6O2-g
 //-s solid, -l liquid -g gas, -p plasma, etc... (letter not needed (but can be shown) for default state of material)
 public abstract class AChemicalComposition extends AMaterialData {
+
     //recipe system is disabled here
     Composition composition; //a string of defined element(s) and their count(s) in a string with special syntax
     public int charge;
@@ -62,6 +63,8 @@ public abstract class AChemicalComposition extends AMaterialData {
         return sb.toString();
     }
     //only call this in ATinker, otherwise bad parts will have nbt added to them
+
+
     public String addTCTooltips(RegistryData[] registries) {
         StringBuilder sb = new StringBuilder();
         for(RegistryData d : registries) {
@@ -77,6 +80,15 @@ public abstract class AChemicalComposition extends AMaterialData {
         return this.composition;
     }
 
+    public String printComp() {
+        return this.composition.toSymbolNoCharge();
+    }
+    public String getCompFileSyntax() {
+        String out = this.composition.toCompFileSyntax();
+        if (out.equals("MATERIAL")) return "["+m.NAME+"]";
+        else return out;
+    }
+
     public abstract String generateTooltip();
     public Element getE() {
         if (this.isMolecule) {
@@ -84,6 +96,23 @@ public abstract class AChemicalComposition extends AMaterialData {
         } else {
             throw new IllegalArgumentException("No element for composition " + this);
         }
+    }
+
+    public int getSize() {
+        return this.composition.getSize();
+    }
+    public boolean containsMaterial(String name) {
+        return this.composition.containsMaterial(name);
+    }
+    public boolean containsReplacement() {
+        return this.composition.containsReplacement();
+    }
+
+    public String[] getCompList() {
+        return this.composition.getAll();
+    }
+    public String[] getMaterials(boolean includeReplacements) {
+        return this.composition.getAllMats(includeReplacements);
     }
 
     @Override
